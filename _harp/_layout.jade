@@ -6,10 +6,9 @@ html.no-js(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title #{ title || 'Learn to develop OSLC applications'}
 
-    link(rel="stylesheet" href="/css/autoprefixed/oslc.css")
-    //link(rel="stylesheet" href="/css/autoprefixed/oslc_enhanced.css")
+    link(rel="stylesheet" href="/developing-oslc-applications/css/autoprefixed/oslc.css")
 
-    script(src="/js/lib/modernizr.js")
+    script(src="/developing-oslc-applications/js/lib/modernizr.js")
     
     script.
       // add .mustard/.no-mustard css classes
@@ -17,7 +16,7 @@ html.no-js(lang="en")
       
       Modernizr.load([{
         test: Modernizr.mustard,
-        yep: '/css/autoprefixed/oslc_enhanced.css'
+        yep: '/developing-oslc-applications/css/autoprefixed/oslc_enhanced.css'
       }])
       
     
@@ -30,9 +29,9 @@ html.no-js(lang="en")
             span.navburger-line.middle
             span.navburger-line.bottom
         .body
-          a.flag.image-link(href="/")
+          a.flag.image-link(href="/developing-oslc-applications/")
             .image
-              img.logo-img(src="/img/logo-old-50px.png")              
+              img.logo-img(src="/developing-oslc-applications/img/logo-old-50px.png")              
             .body
               span.logo-text
                 abbr.oslc-name(title="Open Services for Lifecycle Collaboration") OSLC
@@ -43,8 +42,8 @@ html.no-js(lang="en")
       nav.nav
         .menu.primary
           .item.desk-up
-            a.image-link(href="/")
-              img(src="/img/logo-old-big.gif")
+            a.image-link(href="/developing-oslc-applications/")
+              img(src="/developing-oslc-applications/img/logo-old-big.gif")
               span.logo-text
                 abbr.oslc-name(title="Open Services for Lifecycle Collaboration") OSLC
                 span.project-name Developer&rsquo;s Guide
@@ -52,7 +51,7 @@ html.no-js(lang="en")
             - var $i = 1;
             for page, slug in public._data
               li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
-                a(href="/#{ slug === 'index' ? '' : (slug + '.html' }") #{ page.title }
+                a(href="/developing-oslc-applications/#{ slug === 'index' ? '' : (slug + '.html') }") #{ page.title }
             li.item(role="presentation")
               a(href="http://open-services.net/") open-services.net
       main.main
