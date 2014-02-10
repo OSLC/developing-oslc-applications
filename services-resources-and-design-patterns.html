@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Services, resources, and design patterns</title><link rel="stylesheet" href="/css/autoprefixed/oslc.css"><!--link(rel="stylesheet" href="/css/autoprefixed/oslc_enhanced.css")--><script src="/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: '/css/autoprefixed/oslc_enhanced.css'
+}])
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="/" class="flag image-link"><div class="image"><img src="/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer&rsquo;s Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="/" class="image-link"><img src="/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer&rsquo;s Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="/#{ slug === 'index' ? '' : (slug + '.html' }">Why develop OSLC applications?</a></li><li role="presentation" class="item "><a href="/#{ slug === 'index' ? '' : (slug + '.html' }">Get started with developing OSLC applications</a></li><li role="presentation" class="item "><a href="/#{ slug === 'index' ? '' : (slug + '.html' }">Technical foundations</a></li><li role="presentation" class="item current"><a href="/#{ slug === 'index' ? '' : (slug + '.html' }">Services, resources, and design patterns</a></li><li role="presentation" class="item "><a href="/#{ slug === 'index' ? '' : (slug + '.html' }">Tools &amp; SDKs</a></li><li role="presentation" class="item "><a href="/#{ slug === 'index' ? '' : (slug + '.html' }">Sample applications and code</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Services, resources, and design patterns</h1></header><section class="content"><div class="copy"><p>The <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification">OSLC Core specification</a> defines the basic patterns and protocols that any OSLC software must implement. The other workgroups define additional resources or extend existing ones, but they do not add new protocols.</p>
+<p>Here are the major resources defined in the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification">OSLC Core specification</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Resource or Pattern</th>
+<th>Description</th>
+<th>More information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Provider</td>
+<td>A resource that describes a collection of resources and tells you how to create new resources, find existing resources, or expose a user interface to do either</td>
+<td><a href="http://open-services.net/resources/tutorials/oslc-primer/serviceprovider/">OSLC Primer: Service Provider</a></td>
+</tr>
+<tr>
+<td>Resource Paging</td>
+<td>A pattern to break long lists of resources into smaller pages, and provide a URL for the next page</td>
+<td><a href="http://open-services.net/resources/tutorials/oslc-primer/resource-paging/">OSLC Primer: Resource Paging</a></td>
+</tr>
+<tr>
+<td>Queries</td>
+<td>Standard query string patterns to retrieve a subset of resources or properties</td>
+<td><a href="http://open-services.net/resources/tutorials/oslc-primer/query-mechanisms/">OSLC Primer: Query mechanisms</a></td>
+</tr>
+<tr>
+<td>Resource Shapes</td>
+<td>Documents that define and describe the properties a resources should have, including acceptable values, cardinality, and whether or not those properties are required</td>
+<td><a href="http://open-services.net/resources/tutorials/oslc-primer/resourceshapes/">OSLC Primer: Resource Shapes</a></td>
+</tr>
+<tr>
+<td>Creation Factory</td>
+<td>A service that creates new resources and (via HTTP <code>POST</code>) and may also provide the Resource Shape for new resources</td>
+<td><a href="http://open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;table=up;up=#Creation_Factories">Core 2.0: Creation Factories</a> </td>
+</tr>
+<tr>
+<td>Service Provider Catalog</td>
+<td>A resources that lists a set of ServiceProviders</td>
+<td><a href="http://open-services.net/resources/tutorials/oslc-primer/serviceprovider/">OSLC Primer:  ServiceProvider</a></td>
+</tr>
+<tr>
+<td>Delegated User Interface (UI) dialogs</td>
+<td>A method for embedding an interface to create or find resources inside another tool</td>
+<td><a href="http://open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs/">OSLC Primer: Delegated UI dialogs</a></td>
+</tr>
+<tr>
+<td>UI Previews</td>
+<td>A method for discovering and displaying a preview of a resource in another tool</td>
+<td><a href="http://open-services.net/resources/tutorials/oslc-primer/ui-preview/">OSLC Primer: UI Preview</a></td>
+</tr>
+</tbody>
+</table>
+<p>To explore some of our other specifications, the OSLC Core Workgroup maintains <a href="http://open-services.net/wiki/core/Vocabulary-index/">a list of OSLC vocabularies and specifications</a> that includes relationship diagrams. </p>
+</div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p></footer></body><script src="/js/oslc.js"></script></html>

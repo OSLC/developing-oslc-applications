@@ -1,0 +1,58 @@
+body {
+  border-top: 3px solid $accent-color;
+}
+
+.header,
+.footer { 
+  background-color: $header-and-nav-bg; 
+  @include rem(padding, 4px 8px 5px);
+}
+
+.logo-text {
+  display: block;
+  @include rem(margin-left, 10px);
+  color: #555;
+}
+
+abbr.oslc-name {
+  @extend %text-size-xl;
+  letter-spacing: 1px;
+  border-bottom: 0 !important;
+}
+
+.menu {
+  
+  .items {
+    @extend %list-reset;
+  }
+  
+  .item {
+    background-color: $header-and-nav-bg;
+    @include rem(padding, 8px 16px); 
+    border-bottom: 1px solid #ccc;
+  }
+  
+  li.item {
+    padding: 0;
+
+    > a {
+      display: block;
+      @include rem(padding, 8px 16px); 
+      text-decoration: none;
+      background-position: 100%;
+    }
+  }
+
+  .current a,
+  .item a:hover,
+  a.current,
+  a.item:hover {
+    background-color: $main-menu-current-item-bg;
+  }
+  
+}
+
+.main {
+  @include rem(padding, 16px 8px);
+  background-color: $main-menu-current-item-bg;
+}

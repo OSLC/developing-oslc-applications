@@ -1,0 +1,20 @@
+{
+  "index": {
+    "title": "Why develop OSLC applications?" 
+  },
+  "get-started": {
+    "title": "Get started with developing OSLC applications"
+  },  
+  "technical-foundations": {
+    "title": "Technical foundations" 
+  },
+  "services-resources-and-design-patterns": {
+    "title": "Services, resources, and design patterns" 
+  },
+  "tools-and-sdks" : {
+    "title": "Tools & SDKs"
+  },
+  "sample-applications-and-code": {
+    "title": "Sample applications and code"
+  }
+}

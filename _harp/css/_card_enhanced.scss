@@ -1,0 +1,15 @@
+.card {
+  > .header,
+  > .body {
+    @include respond-to(knee-up) {
+      @include rem(padding-left, 20px);
+      @include rem(padding-right, 20px);
+    }    
+  }
+}
+
+.card > .header > .title {
+  @include respond-to(desk-up) {
+    @include text-size-xxxl;
+  }
+}

@@ -1,0 +1,115 @@
+/**
+ * OOCSS Media and Module groups 
+ */
+
+//
+// Classic
+// 
+
+// https://github.com/stubbornella/oocss/blob/master/core/module/mod.css
+.body, .media { overflow:hidden; *overflow:visible; zoom:1; }	
+
+//	https://github.com/stubbornella/oocss/tree/master/core/media
+.media{
+ .image { float:left; }
+ .image img { display:block; }
+ &.reversed .image { float:right; }
+  
+}
+
+
+//
+// "Flag" variation
+// Vertically centers the image and body with no math
+// http://csswizardry.com/2013/05/the-flag-object/
+//
+// Requires display-table, so we're at IE8+
+//
+
+// fallback
+.no-display-table .flag {
+  @extend .media;
+}
+
+.flag {
+  display: table;
+  // force the flag to go full-width
+  width: 100%;
+  
+  > .image, 
+  > .body { 
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  > .image {
+    // fixes an issue with very old FF table layouts
+    // forces .image cells to collapse to fit content
+    // appears to have no consequences elsewhere other than having to un-do it
+    width: 0; 
+  }
+  
+  // Force the body to take up the remaining space
+  > .body { width: 100%; }
+  
+  > .image img { display: block; }
+
+  //
+  // Bottom alignment (also not possible with .media)
+  // for top alignment, use the classic .media
+  //
+  &.bottom {
+    > .image, 
+    > .body {
+      vertical-align: bottom; 
+    }
+  }
+
+}
+
+//
+// With Flexbox!
+// 
+// Keeping it to .flexbox
+// Legacy (mostly really old FF) has some trouble with widths
+//
+.flexbox {
+  // Un-do the block formatting context
+  .body, 
+  .media { overflow: visible; }
+  
+  .media, .flag {
+    display: flex;
+    
+    // flex items don't care about floats, display table, vertical-align, whatever
+    // don't need to un-do those bits
+    
+    > .image,
+    > .body {
+      width: auto;
+    }
+    
+    > .body { 
+      flex: 1; 
+    }
+    
+    &.reversed > .image {
+      float: none;
+      order: 1;
+    }
+  }
+  
+  .media {
+    align-items: flex-start;
+  }
+  
+  .flag {
+    align-items: center;
+    
+    &.bottom {
+      align-items: flex-end;
+    }
+    
+  }
+  
+}

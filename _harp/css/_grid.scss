@@ -1,0 +1,233 @@
+/* ==========================================================================
+   GRID SYSTEM
+   
+   Flexbox grid with an inline-block fallback
+   Columns are equal-width and have gutter spacing (no lines) by default
+   
+   For current flexbox support see:
+     - http://philipwalton.github.io/solved-by-flexbox/
+     - http://caniuse.com/flexbox
+   
+   As of this writing, you've got 
+     - IE 11
+     - Chrome
+     - Safari / iOS
+     - Opera
+     - FF 22+ (with .flexboxlegacy)
+     - IE10 (has a weird "tweener" syntax)
+   
+   Requires: 
+    - inline-block from Bourbon library
+    - flexbox helper
+    - rem helper ( @include rem(property, px-value|s); )
+   ========================================================================== */
+
+@mixin grid-row( $gutter: 16px ) {
+
+  // pretty-much bulletproof inline-block grid layout
+  // http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-0-3-0
+  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.31em;
+  word-spacing: -0.43em;
+
+  // Flexbox override, if supported
+  // default flex-flow is column, which is what we want
+  .flexbox & {
+    display: flex;
+
+    // Allow flex children to wrap if they get too big (like inline-block)
+    // FF 22-27 doesn't support flex-wrap
+    flex-wrap: wrap;
+  }
+  
+  /* 
+   * This is the best way I've found to allow infinite nesting 
+   * with easy gutters.
+   *
+   * The advantages are:
+   *  - you easily achieve classic grid proportions (all cells equal size)
+   *    with simple math
+   *  - nested .grid rows line up with no extra work
+   *  - gutters between columns with no extra markup (this drove me nuts on OSLC v2)
+   * 
+   * The drawbacks are twofold:
+   *  - negative margins are aggressively weird
+   *  - b/c of negative margins you cannot apply a background color to the .grid object
+   *    or cells directly
+   */   
+  @include rem( margin-left, -$gutter/2 );
+  @include rem( margin-right, -$gutter/2 );
+
+  /* 
+   * Double gutters
+   */
+  &.relaxed {
+    @include rem( margin-left, -$gutter );
+    @include rem( margin-right, -$gutter );
+  }
+  
+  /* 
+   * For when the gutters get too weird to deal with
+   * This will remove all negative margins and gutters
+   * 
+   * To keep this reasonable, you'll need to also put .collapsed
+   * on any nested .grid objects
+   */
+  &.collapsed {
+    margin-left: 0;
+    margin-right: 0;
+  }
+      
+}
+
+
+@mixin grid-column ( $gutter: 16px, $divider-color: #CCC ) {
+
+  // restore the font stack for inline-block elements
+  font-family: $helvetica;
+  letter-spacing: normal;
+  word-spacing: normal;
+  @include inline-block;
+  vertical-align: top;
+  
+  /* 
+   * if you do nothing else this handles everything for you like magic!
+   * ... (for flexbox, at least)
+   * 
+   * all items will be equal proportion in the same row (1:1 size)
+   * just keep adding to your heart's content.
+   * 
+   * obviously that's not how it'll work out for the inline-block fallback
+   */
+  .flexbox & {
+    flex: 1;
+  }
+  
+
+  //
+  // Standard 
+  //
+  @include rem( padding-left, $gutter/2 );
+  @include rem( padding-right, $gutter/2 );
+  
+  //
+  // Relaxed
+  //  
+  .relaxed > & {
+    @include rem( padding-left, $gutter );
+    @include rem( padding-right, $gutter );
+  }
+  
+  //
+  // Collapsed
+  //
+  .collapsed > & {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  /**
+  * Blocks
+  * Extra bonus for flexbox browsers
+  * Set display: flex and columns will auto-grow in height to match each other
+  */
+  .flexbox .blocks > & {
+    display: flex;
+    
+    // If there's insufficient content, flex children won't be full width
+    // This will let the child element be full width 
+    & > * { width: 100%; }
+  }
+  
+  /**
+   * Grid dividers
+   */
+  .divided > & { 
+    border-right: 1px solid $divider-color; 
+  }
+  
+  .divided > &:last-child { 
+    border-right: 0
+  }
+
+}
+
+
+.grid {
+
+  @include grid-row($grid-gutter);
+
+  &.test > div {
+    //background-color: lighten( $base-color, 40% );    
+  }
+  
+  &.test p { 
+    margin: 0;
+    background-color: pink;
+  }
+  
+  &.test.blocks > .column > div {
+    background-color: #ccc;
+    padding: 5px;
+  }
+  
+}
+
+.column { 
+  @include grid-column($grid-gutter, #333); 
+}
+
+/*
+ * "Hand" classes
+ * We're "mobile first" so these are phone-up
+ */
+@for $i from 1 through $grid-total-columns {
+  $width: $i / $grid-total-columns * 100%;
+  
+  .hand-#{$i} {
+    width: $width;
+    
+    .flexbox & { 
+      width: auto;
+      /**
+       * see: 
+       *   - http://philipwalton.github.io/solved-by-flexbox/demos/grids/
+       *   - http://www.w3.org/TR/css3-flexbox/#flex
+       *   - https://github.com/zeMirco/flexbox-grid
+       * 
+       * flex shorthand (flex-grow, flex-shrink, flex-basis):
+       *   - grow: 0 means it won't grow if there's free space
+       *   - shrink: 0 means it won't shrink to fit in a row
+       *   - basis: defines (starting) width of the element (takes a standard width value)
+      **/
+      flex: 0 0 $width;
+    }
+  }
+
+}
+
+@include respond-to(hand-only) {
+  .knee-up,
+  .knee-only,
+  .desk-up,
+  .desk-only,
+  .workstation-up,
+  .workstation-only,
+  .neckbeard-up,
+  .neckbeard-only {
+    display: none !important;
+  }
+}
+
+.no-js, .no-mustard {
+  .knee-up,
+  .knee-only,
+  .desk-up,
+  .desk-only,
+  .workstation-up,
+  .workstation-only,
+  .neckbeard-up,
+  .neckbeard-only {
+    display: none !important;
+  }
+}
