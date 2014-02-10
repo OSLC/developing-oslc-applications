@@ -75,11 +75,11 @@ if( 'querySelector' in document && 'localStorage' in window && 'addEventListener
   var load = [];
   
   polyfills.forEach(function( test ){
-    Modernizr[test] || load.push('/js/lib/polyfills/' + test + '.js');
+    Modernizr[test] || load.push('/developing-oslc-applications/js/lib/polyfills/' + test + '.js');
   });
   
   libraries.forEach(function( lib ){
-    load.push( '/js/lib/' + lib + '.js' );
+    load.push( '/developing-oslc-applications/js/lib/' + lib + '.js' );
   });
   
   Modernizr.load({
