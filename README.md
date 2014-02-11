@@ -5,4 +5,4 @@ Developing OSLC Applications
 
 ## Want to contribute?
 
-See something wrong? Have something you think we should link to? Want to see more topics? [Create an issue](https://github.com/OSLC/developing-oslc-applications/issues) or send a pull request. The site content is in the `gh-pages` branch.
+See something wrong? Have something you think we should link to? Want to see more topics? [Create an issue](https://github.com/OSLC/developing-oslc-applications/issues) or send a pull request. The site content is in the [`gh-pages`](https://github.com/OSLC/developing-oslc-applications/tree/gh-pages) branch.
