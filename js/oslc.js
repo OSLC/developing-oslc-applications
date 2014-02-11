@@ -1,3 +1,5 @@
+window.site_url = window.site_url || '/';
+
 /**
  * Cut the mustard
  */
@@ -75,11 +77,11 @@ if( 'querySelector' in document && 'localStorage' in window && 'addEventListener
   var load = [];
   
   polyfills.forEach(function( test ){
-    Modernizr[test] || load.push('/developing-oslc-applications/js/lib/polyfills/' + test + '.js');
+    Modernizr[test] || load.push( window.site_url + 'js/lib/polyfills/' + test + '.js');
   });
   
   libraries.forEach(function( lib ){
-    load.push( '/developing-oslc-applications/js/lib/' + lib + '.js' );
+    load.push( window.site_url + 'js/lib/' + lib + '.js' );
   });
   
   Modernizr.load({
