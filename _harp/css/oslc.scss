@@ -16,6 +16,9 @@ html {
 	font-size: 100%;
 	//‑webkit‑text‑size‑adjust: 100%;
 	
+	// First part of doing a flexbox 'sticky' footer
+	height: 100%;
+	
 	@include respond-to(workstation-up) {
 	  font-size: $font-size-l/$font-size-m * 100%;
 	}
@@ -36,7 +39,7 @@ html {
 body {
   // http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
   @extend %sticky-footer-flexcolumns;
-  min-height: 100vh;
+  min-height: 100%;
   
   // Make sure iOS respects your sizes
   
