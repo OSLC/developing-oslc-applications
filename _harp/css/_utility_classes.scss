@@ -3,7 +3,7 @@
 .right { @extend %right; }
 .pos-rel { @extend %pos-rel; }
 .pos-abs { @extend %pos-abs; }
-.prevent-flicker { @include prevent-flicker; }
+.prevent-flicker { @extend %prevent-flicker; }
 
 
 //

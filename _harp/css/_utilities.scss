@@ -33,7 +33,9 @@
 @mixin prevent-flicker {
   -webkit-backface-visibility: hidden;
 }
-
+%prevent-flicker {
+  @include prevent-flicker;
+}
 
 /*
  * Text size mixins / placeholders

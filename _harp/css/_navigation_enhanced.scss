@@ -21,11 +21,12 @@
   @include rem( height, $navburger-size/7 );
   @include rem( width, $navburger-size );
   
+  transform: translateZ(0);
   transition: all $navburger-transition-time ease-in-out;
 }
 
 .navburger-line {
-  @extend prevent-flicker;
+  @extend %prevent-flicker;
   @extend %navburger-line;
   
   &.middle { 
@@ -47,7 +48,7 @@
 
   .navburger {
     > .middle {
-      transform: translate(100%, 0);
+      transform: translate(100%, 0) translateZ(0);
       opacity: 0;
       transition-delay: 0s;
     }
@@ -89,7 +90,7 @@ body > .header {
 }
 
 .nav {
-  @include prevent-flicker;
+  @extend %prevent-flicker;
   max-height: 0px;
   overflow: hidden;
   transition: all .5s ease-in-out;
@@ -138,7 +139,7 @@ body > .header {
   }
   
   @include respond-to(knee-only) {
-    transform: translate3d(0,-100%,0);
+    transform: translate3d(-100%,0,0);
   }
   
   .logo-text {
@@ -182,7 +183,7 @@ body > .header {
 }
 
 .main {
-  @include prevent-flicker;
+  @extend %prevent-flicker;
 
   @include respond-to(knee-up) {
     transition: all .2s ease-in-out;
