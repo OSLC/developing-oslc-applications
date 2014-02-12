@@ -1,11 +1,41 @@
-Integrating software is hard; we want it to be easier. And we need your help.
+<div class="notice">
+  <div class="header">
+    <h2 class="title">&ldquo;OSL-what now?&rdquo;</h2>
+  </div>
+  <div class="content">
+    Open Services for Lifecycle Collaboration (OSLC) is a community that writes specifications to integrate software. Learn more at <a href="why-develop-oslc-applications.html">Why develop OSLC applications</a> and <a href="http://open-services.net/">at our main site</a>.
+  </div>
+</div>
 
-[We define standardized ways](http://open-services.net/specifications/) to represent common resources in software development (for example, a defect or a performance test). We also define standardized methods to allow other applications to access, display, preview, find, create, and update those resources.
+For a high-level overview of how to add OSLC support to software, we recommend our video "[Getting started on implementing OSLC](http://www.youtube.com/watch?v=-oXqudLmNMI)":
 
-With standardized resources and methods, any tool can access and manipulate the data and artifacts from any other compliant tool. So instead of a variety of fragile point-to-point integrations you have **one common way to connect and integrate [many products](http://open-services.net/software/)**. It's not quite plug-and-play, but it's close.
+<iframe width="640" height="360" src="//www.youtube.com/embed/-oXqudLmNMI" frameborder="0" allowfullscreen></iframe>
 
-**We want OSLC to succeed because better and easier integrations will save everyone time and money**. And we think that software with OSLC integration has a competitive advantage.
+The description [on YouTube](www.youtube.com/watch?v=-oXqudLmNMI) includes a table of contents and links to references.
 
-Don't just take our word for it. [Icaro Technologies](http://open-services.net/resources/presentations/reducing-system-integration-costs-with-oslc-and-data-federation/) estimated that they could have saved *two million dollars* over two years if they used OSLC standards for a project with more than 10 integrations. And major industry groups like [SPRINT](http://www.sprint-iot.eu/) and [EADS](http://www.eads.com/eads/int/en.html) have decided that OSLC-compliant software can help them collaborate and verify requirements [on highly complex products like commercial airplanes](http://open-services.net/resources/videos/concurrent-engineering-for-systems-based-on-oslc).
 
-OSLC specifications are *free to adopt*, and we want them to spread. So help us out! 
+Explore our tutorial
+----------------------------------------------
+
+For a more detailed look at what goes into OSLC support, read through our tutorial "[Integrating Products with OSLC](http://open-services.net/resources/tutorials/integrating-products-with-oslc/)", which walks you through building an adapter that adds OSLC support to the popular Bugzilla defect-tracking software. 
+
+The concepts in the tutorial are broadly applicable to other software.
+
+If you're **building an OSLC provider** (in other words, software that *outputs* OSLC resources), you'll learn how to
+
+- [Provide Service Providers and catalogs](http://open-services.net/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-service-providers-and-catalogs/)
+- [Represent Bugzilla bugs as OSLC Change Management resources](http://open-services.net/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-oslc-representations/)
+- [Provide UI Previews](http://open-services.net/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-ui-previews/)
+- [Provide a delegated UI for finding existing bugs](http://open-services.net/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-a-delegated-ui-for-selection/)
+- [Provide a delegated UI for creating new bugs](http://open-services.net/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-a-delegated-ui-for-creation/)
+- [Allow software to programmatically create new bugs](http://open-services.net/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-a-creation-factory/)
+
+If you're **building an OSLC consumer application**, you'll learn how to:
+
+- [Link to OSLC resources in another application and display previews](http://open-services.net/resources/tutorials/integrating-products-with-oslc/integrating-with-an-oslc-provider/implementing-links-and-previews/)
+- [Find, select, and create bugs without leaving the application with delegated UIs](http://open-services.net/resources/tutorials/integrating-products-with-oslc/integrating-with-an-oslc-provider/making-incident-to-defect-linking-easy/)
+- [Parse OSLC resources](http://open-services.net/resources/tutorials/integrating-products-with-oslc/integrating-with-an-oslc-provider/implementing-a-customers-to-notify-page/)
+- [Create new bugs automatically](http://open-services.net/resources/tutorials/integrating-products-with-oslc/integrating-with-an-oslc-provider/automated-bug-creation/)
+
+The tutorial has working sample applications and [detailed instructions for running them](http://open-services.net/resources/tutorials/integrating-products-with-oslc/running-the-examples/).
+

@@ -1,9 +1,9 @@
 {
   "index": {
-    "title": "Why develop OSLC applications?" 
-  },
-  "get-started": {
     "title": "Get started with developing OSLC applications"
+  },
+  "why-develop-oslc-applications": {
+    "title": "Why develop OSLC applications?" 
   },  
   "technical-foundations": {
     "title": "Technical foundations" 

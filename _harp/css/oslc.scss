@@ -7,60 +7,26 @@
 
 // Reset
 @import 'reset';
+
 @import 'grid';
 @import 'media';
-
+@import 'sticky_footer';
 
 html {
 	// set a base of 100%/16px for simpleton browsers (+ knee-up)
 	font-size: 100%;
 	//‑webkit‑text‑size‑adjust: 100%;
 	
-	// First part of doing a flexbox 'sticky' footer
-	height: 100%;
-	
 	@include respond-to(workstation-up) {
 	  font-size: $font-size-l/$font-size-m * 100%;
 	}
 }
 
-%sticky-footer-flexcolumns {
-  display: flex;
-  flex-direction: column;
-}
-
-// use this for the elements that have to grow to body height
-%sticky-footer-body-elements {
-  // *should* just be flex(1) but (1 0 auto) fixes an issue in IE10
-  // http://thatemil.com/blog/2013/11/03/sticky-footers-flexbox-and-ie10/
-	flex: 1 0 auto;
-}
-
-body {
-  // http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
-  @extend %sticky-footer-flexcolumns;
-  min-height: 100%;
-  
-  // Make sure iOS respects your sizes
-  
-}
-
-// Additional markup for sticky footer. 
-// This is the element that Will expand to body height. 
-// Must be a direct child of <body>
-
 .sticky-footer-body {
-  @extend %sticky-footer-body-elements;
-
-  // last touch: this makes sure the next child also grows
-  // this is because the wraps for the off-canvas use absolute positioning
-  @extend %sticky-footer-flexcolumns;
-
   // Because this is the element that's growing, put the main content bg color here
   background-color: #666;  
 }
 
-.main { @extend %sticky-footer-body-elements; }
 
 //
 // Header / Navigation
@@ -77,10 +43,12 @@ body {
 //
 // Tables
 //
-@import 'tables';
-.table {
-  @extend %table;
-}
+
+
+//
+// Notices
+//
+@import 'notice';
 
 //
 // Body Copy

@@ -1,0 +1,15 @@
+.notice {
+  @extend .card;
+  background-color: #fcfcfc;
+  border-top: 3px solid #666;
+  margin-bottom: 1em;
+  
+  .header {
+    background-color: #999;
+    @include rem(margin-bottom, 4px);
+    
+    > .title {
+      @include text-size-l;
+    }
+  }
+}

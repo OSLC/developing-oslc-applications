@@ -1,0 +1,42 @@
+/*
+ * Sticky Footer with no restrictions on the size of the footer area like traditional solutions
+ * 
+ * Flexbox is awesome.
+ * 
+ * http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+ * https://github.com/philipwalton/solved-by-flexbox/blob/master/_sass/components/_site.scss
+ */
+
+html { height: 100%; }
+
+%sticky-footer-flexcolumns {
+  display: flex;
+  flex-direction: column;
+}
+
+// use this for the elements that have to grow to body height
+%sticky-footer-body-elements {
+  // *should* just be flex(1) but (1 0 auto) fixes an issue in IE10
+  // http://thatemil.com/blog/2013/11/03/sticky-footers-flexbox-and-ie10/
+	flex: 1 0 auto;
+}
+
+body {
+  // http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+  @extend %sticky-footer-flexcolumns;
+  min-height: 100%;
+}
+
+// Additional markup for sticky footer. 
+// This is the element that Will expand to body height. 
+// Must be a direct child of <body>
+
+.sticky-footer-body {
+  @extend %sticky-footer-body-elements;
+
+  // last touch: this makes sure the next child also grows
+  // this is because the wraps for the off-canvas use absolute positioning
+  @extend %sticky-footer-flexcolumns;
+}
+
+.main { @extend %sticky-footer-body-elements; }

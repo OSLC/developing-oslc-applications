@@ -167,18 +167,8 @@ body > .header {
 .primary .item {
   
   > a {
-    @include linear-gradient(to right, $main-menu-current-item-bg 0%, $main-menu-current-item-bg 50%, $header-and-nav-bg 50%, $header-and-nav-bg 100% );
-    background-size: 200% auto;
-    
-    //background-position: 100%;
-    
-    transition: all .33s ease-in-out;
+    transition: all .2s ease-out;
   }
-  
-  &.current > a, a.current, a:hover {
-    background-position: 0;
-  }
-
   
 }
 

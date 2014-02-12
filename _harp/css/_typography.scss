@@ -1,0 +1,75 @@
+/*
+ * Text size mixins / placeholders
+ */
+
+// 11px
+@mixin text-size-xs {
+  @include rem(font-size, $font-size-xs);
+}
+%text-size-xs {
+  @include text-size-xs;
+}
+
+// 13px
+@mixin text-size-s {
+  @include rem(font-size, $font-size-s);
+}
+%text-size-s {
+  @include text-size-s;
+}
+
+// 16px
+@mixin text-size-m {
+  @include rem(font-size, $font-size-m);
+}
+%text-size-m {
+  @include text-size-m;
+}
+
+// 19px
+@mixin text-size-l {
+  @include rem(font-size, $font-size-l);
+}
+%text-size-l {
+  @include text-size-l;
+}
+
+// 23px
+@mixin text-size-xl {
+  @include rem(font-size, $font-size-xl);
+}
+%text-size-xl {
+  @include text-size-xl;
+}
+
+// 27px
+@mixin text-size-xxl {
+  @include rem(font-size, $font-size-xxl);
+}
+%text-size-xxl {
+  @include text-size-xxl;
+}
+
+// 32px
+@mixin text-size-xxxl {
+  @include rem(font-size, $font-size-xxxl);
+}
+%text-size-xxxl {
+  @include text-size-xxxl;
+}
+
+// 38px
+@mixin text-size-xxxxl {
+  @include rem(font-size, $font-size-xxxxl);
+}
+%text-size-xxxxl {
+  @include text-size-xxxxl;
+}
+
+// 48px
+@mixin text-size-xxxxxl {
+  @include rem(font-size, $font-size-xxxxxl);
+}
+%text-size-xxxxxl {
+  @include text-size-xxxxxl;
+}
