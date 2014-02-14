@@ -7,7 +7,7 @@ html.no-js(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title #{ title || 'Learn to develop OSLC applications'}
 
-    link(rel="stylesheet" href="#{ site_url }css/autoprefixed/oslc.css")
+    link(rel="stylesheet" href="#{ site_url }css/oslc.css")
 
     script(src="#{ site_url }js/lib/modernizr.js")
     
@@ -17,8 +17,8 @@ html.no-js(lang="en")
       
       Modernizr.load([{
         test: Modernizr.mustard,
-        yep: '#{ site_url }css/autoprefixed/oslc_enhanced.css'
-      }])
+        yep: '#{ site_url }css/oslc_enhanced.css'
+      }]);
       
     
   body
