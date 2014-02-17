@@ -1,5 +1,7 @@
 {
   "globals": {
-    "org_abbr": "OSLC"
+    "org_name": "Open Services for Lifecycle Collaboration",
+    "org_abbr": "OSLC",
+    "site_name": "Developer Guide"
   }
 }

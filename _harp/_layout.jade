@@ -22,7 +22,6 @@ html.no-js(lang="en")
       
     
   body
-    #{ site_title }
     header.header
       .flag
         .image
@@ -36,9 +35,9 @@ html.no-js(lang="en")
               img.logo-img(src="#{ site_url }img/logo-old-50px.png")              
             .body
               span.logo-text
-                abbr.oslc-name(title="Open Services for Lifecycle Collaboration") OSLC
+                abbr.oslc-name(title="#{ org_name }") #{ org_abbr }
                 br
-                span.project-name Developer&rsquo;s Guide
+                span.project-name #{ site_name }
 
     .sticky-footer-body.off-canvas-wrap      
       nav.nav
@@ -47,8 +46,8 @@ html.no-js(lang="en")
             a.image-link(href="#{ site_url }")
               img(src="#{ site_url }img/logo-old-big.gif")
               span.logo-text
-                abbr.oslc-name(title="Open Services for Lifecycle Collaboration") OSLC
-                span.project-name Developer&rsquo;s Guide
+                abbr.oslc-name(title="#{ org_name }") #{ org_abbr }
+                span.project-name #{ site_name }
           ul.items
             - var $i = 1;
             for page, slug in public._data
