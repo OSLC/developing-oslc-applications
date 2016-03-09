@@ -8,7 +8,7 @@ OSLC4JS's goal is to minimize the cost of developing the OSLC specifications, re
 
 The following sections provide a brief description of each OSLC4J sub-project and provide links to the development sites and related work products. The figure below shows the relationship between the modules created in the projects, and how they are assembled into a Web application. 
 
-![OSLC4JS Schematic](/img/OSLC4JS-schematic.png)
+![OSLC4JS Schematic](img/OSLC4JS-schematic.png)
 
 Adapter middleware in the figure represents some Express.js middleware component that provides CRUD access to some existing data source. This provides a simple way for vendors to provide OSLC access to their data sources without having to implement the details of OSLC and/or LDP.
 
