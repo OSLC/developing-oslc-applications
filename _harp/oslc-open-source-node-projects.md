@@ -1,12 +1,16 @@
 Eclipse/Lyo provides a set of Java based APIs and generative tools to support the creation of OSLC domain servers and integrated client applications. While Eclipse/Lyo provides a very rich and robust platfrom for OSLC development, it has a relatively high learning curve and that can increase development time, costs and risks. 
 
-OSLC4JS represents a set of related Open Source projects supporting the creation and integration of OSLC based client and server applications that leverage the dynamic and asynchronous capabilities of JavaScript and Node.js. The LDP Service and OSLC Service projects provide Express.js middleware components that can be used to add OSLC and LDP services to any Express Web application. The OSLC Browser and OSLC Server projects use these services to create sample OSLC client and server apps that can easily and dynamically adapted to any OSLC domain, extensions to domains, and/or integrations between domains. 
+OSLC4JS represents a set of related Open Source projects supporting the creation and integration of OSLC based client and server applications that leverage the dynamic and asynchronous capabilities of JavaScript and Node.js. The LDP Service and OSLC Service projects provide Express.js middleware components that can be used to add LDP and/or OSLC services to any Express Web application. The OSLC Browser and OSLC Server projects use these services to create sample OSLC client and server apps that can easily and dynamically adapted to any OSLC domain, extensions to domains, and/or integrations between domains. 
 
 OSLC4JS's goal is to minimize the cost of developing the OSLC specifications, reference implementation and test suites. The OASIS OSLC specifications would also benefit from a reference implementation in dynamic language such as JavaScript. 
 
 ## The OSLC4JS Projects
 
-The following sections provide a brief description of each OSLC4J sub-project and provide links to the development sites and related work products.
+The following sections provide a brief description of each OSLC4J sub-project and provide links to the development sites and related work products. The figure below shows the relationship between the modules created in the projects, and how they are assembled into a Web application. 
+
+![OSLC4JS Schematic](/img/OSLC4JS-schematic.png)
+
+Adapter middleware in the figure represents some Express.js middleware component that provides CRUD access to some existing data source. This provides a simple way for vendors to provide OSLC access to their data sources without having to implement the details of OSLC and/or LDP.
 
 A [oslc4js Slack Channel](https://openintegrations.slack.com/archives/oslc4js) has been created to facilitate collaborative development of these Open Source Projects.
 
