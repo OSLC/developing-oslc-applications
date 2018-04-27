@@ -17,6 +17,9 @@
   "sample-applications-and-code": {
     "title": "Sample applications and code"
   },
+  "iotp-adaptor-sample": {
+    "title": "Sample OSLC adapter for IoT Platform"
+  },
   "oslc-open-source-node-projects": {
     "title": "OSLC Open Source Node.js Projects"
   }

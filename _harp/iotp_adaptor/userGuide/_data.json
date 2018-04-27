@@ -1,0 +1,17 @@
+{
+  "user-guide": {
+    "title": "Overview"
+  },
+  "install-and-config": {
+    "title": "Installation and Configuration" 
+  },  
+  "administration": {
+    "title": "Administration" 
+  },
+  "debug-interface": {
+    "title": "Generated Debug Web App" 
+  },
+  "using" : {
+    "title": "Using with IBM Continuous Engineering"
+  }
+}

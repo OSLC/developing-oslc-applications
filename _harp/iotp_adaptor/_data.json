@@ -1,0 +1,44 @@
+{
+  "developer-guide": {
+    "title": "Developer Guide"
+  },
+  "environment-setup": {
+    "title": "eclipse environment setup" 
+  },  
+  "toolchain-model": {
+    "title": "The toolchain model" 
+  },
+  "code-generator": {
+    "title": "Generating the server code" 
+  },
+  "exploring-the-code" : {
+    "title": "Exploring the generated code"
+  },
+  "ssl-support": {
+    "title": "https and SSL support"
+  },
+  "authentication": {
+    "title": "Authentication"
+  },
+  "rootservices": {
+    "title": "Creating the rootservices document"
+  },
+  "consumer-friend": {
+    "title": "Connecting Servers"
+  },
+  "artifact-container-associations": {
+    "title": "Artifact Container Associations"
+  },
+  "dialogs": {
+    "title": "Updating generated dialogs"
+  },
+  "implement-domain-class": {
+    "title": "Implementing a Domain Class"
+  },
+  "trs-provider": {
+    "title": "Implementing a TRS Provider"
+  },
+  "junit-tests": {
+    "title": "JUnit Tests"
+  }
+}

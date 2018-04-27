@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Administration</title><link rel="stylesheet" href="http://oslc.github.io/developing-oslc-applications/css/oslc.css"><script src="http://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'http://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/user-guide.html">Overview</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/install-and-config.html">Installation and Configuration</a></li><li role="presentation" class="item current"><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/administration.html">Administration</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/debug-interface.html">Generated Debug Web App</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/using.html">Using with IBM Continuous Engineering</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Administration</h1></header><section class="content"><div class="copy"><h1>Introduction</h1><p>The following sections describe how to administer the IBM Continuous Engineering applications (RDNG, RTC, RQM, etc.) to enable lifecycle management of IBM Watson IoT Platform resources using the OSLC iotp-adaptor server. </p>
+<p>The administration steps connect the CE applications with the iotp-adaptor OSLC server, and establish the artifact container associations between the CE project areas and the IoT Platform organizations. This will enable the creation of links between CE resources and IoT Platform resources.</p>
+<h1>Establish cross-server communication</h1><p>For lifecycle management applications to interact with the IoT Platform artifacts, you must establish communication between the Jazz Team Server that hosts the lifecycle management applications and the iotp-adaptor OSLC server. This relationship between the two servers is called a friend relationship. It indicates that the requests coming from the servers can be trusted, and the two servers can communicate with each other. By creating this friend relationship and associating project areas, you can link tasks, defects, stories, or requirements from the lifecycle management applications with IoT Platform artifacts. To establish the friend relationship between Jazz Team Server and the connector, you must log in to Jazz Team Server with an account that has Jazz Project Administrator privileges.</p>
+<ol>
+<li>Log on to Jazz Team Server, and go to the Administration page. In your web browser, enter: <a href="https://host_name:port/jts/admin">https://host_name:port/jts/admin</a>. host_name is the host name with the DNS domain reference of the computer where the Jazz Team Server is installed.</li>
+<li>On the Jazz Team Server Administration page, click the Server tab.</li>
+<li>From the menu on the left, under Communication, click Friends (Outbound).</li>
+<li>On the Friends page, in the Friends List section, click Add.</li>
+<li>In the Add Friend window, specify the field values:<ol>
+<li>Enter the root services URI for the connector in the following format:</li>
+<li><a href="https://host_name:port/iotp/rootservices">https://host_name:port/iotp/rootservices</a> </li>
+<li>Note: The URI is case sensitive. Use the same values as the ones that are set for scheme, host, and port in the web.xml file.</li>
+<li>Enter a name to identify the friend server. For example, CE Connector for IoT.</li>
+<li>Click Next, and enter the OAuth Secret twice.</li>
+<li>Note: You must remember the OAuth Secret for later use.</li>
+<li>Select the Trusted check box. Trusted consumers can share authorization with other trusted consumers and do not require user approval to access data.</li>
+<li>Click Create Friend.</li>
+</ol>
+</li>
+<li>Click Next. You can see the provisional key.</li>
+<li>On the Authorize Provisional Key page, click Grant access for the provisional key.</li>
+<li>Type your IBM IoT Platform credentials, and click Continue.</li>
+<li>Enter the server name, select the Trusted check box, and click Allow. A message indicates that the provisional key is approved.</li>
+<li>Click Finish. On the Friends page, the friend relationship is established, and the relationship is displayed in the list of friends.</li>
+</ol>
+<h1>Creating artifact container associations</h1><p>Artifact container associations connect service providers with consumers. An artifact container includes a set of artifacts and capabilities specified by a service provider.</p>
+<p>Artifact containers are often the unit of access control and version management. The CE tools use project areas as artifact containers, each tool managing different artifacts and links between artifacts. The Watson IoT platform uses organizations as the artifact container. Choose the appropriate artifact container association for the tool and links you want to use to connect CE artifacts with Watson IoT Platform artifacts.</p>
+<ol>
+<li>Associate the connector with each CE application you will use it with. In each application, go to Manage Project Areas. Note: Continuous engineering applications can be Change Management, Quality Management, or DOORS Next Generation.</li>
+<li>On the Application Administration page, from the Active Project Areas list, click a project area to configure.</li>
+<li>Scroll to the Associations section; then click Add.</li>
+<li>In the Add Association dialog box:<ul>
+<li>From the Application list, select the target connector application to link to.</li>
+<li>From the Association list, select the connector association.</li>
+<li>In the Artifact Containers section, select the project area that the connector links to, and then click OK.</li>
+</ul>
+</li>
+<li>Use the following table to find the supported associations and links for each application. <img src="images/artifact-container-associations.png" alt="Artifact Container Associations" title="Artifact Container Associations"></li>
+<li>Click OK to close the Add Association dialog box.</li>
+</ol></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>

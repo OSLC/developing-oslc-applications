@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Overview</title><link rel="stylesheet" href="http://oslc.github.io/developing-oslc-applications/css/oslc.css"><script src="http://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'http://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item current"><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/user-guide.html">Overview</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/install-and-config.html">Installation and Configuration</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/administration.html">Administration</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/debug-interface.html">Generated Debug Web App</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/using.html">Using with IBM Continuous Engineering</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Overview</h1></header><section class="content"><div class="copy"><div class="notice">
+  <div class="header">
+    <h2 class="title">Using The OSLC adaptor for Watson IoT Platform</h2>
+  </div>
+  <div class="content">
+    How to install, configure, administer and use the iotp-adaptor to manage the lifecycle of IBM Watson IoT Platform Resources.
+  </div>
+</div>
+
+<h1>Introduction</h1><p>The IBM Continuous Engineering (CE) development tools and methods combined with the IBM Watson IoT Platform help development teams to design and implement complex, reliable, and secure IoT solutions. The iotp-adaptor project demonstrates how to use the eclipse/Lyo Designer toolchain modeler and code generator to build an OSLC adaptor that extends these capabilities to support scalable development of IBM Watson IoT Platform solutions.</p>
+<p>The iotp-adaptor is a JEE Web application (WAR file) that exposes the Watson IoT Platform resources as OSLC resources. It provides the typical OSLC capabilities including:</p>
+<ul>
+<li>OSLC Discovery: the OSLC ServiceProvider resources correspond to the Watson IoT Platform organizations</li>
+<li>CRUD operations on RDF resource representations in various RDF serialization formats</li>
+<li>Creation factories to create Watson IoT Platform resources</li>
+<li>Delegated creation and selection dialogs to establish links between CE requirements, change requests, design elements, test cases, etc. and Watson IoT Platform resources</li>
+<li>Resource preview for displaying links and small and large preview</li>
+<li>Minimal OSLC query capability</li>
+<li>Simple Tracked Resource Set provider for device types</li>
+</ul>
+<h1>Business Challenge</h1><p>The Internet of Things (IoT) is driving businesses to transform themselves into connected, digital enterprises to take advantage of new opportunities for optimizing operations, increasing customer engagement and loyalty, developing new revenue streams and business models, disrupting existing markets, and innovating faster with an IoT feedback loop that informs business and engineering leaders.</p>
+<p>But being fast to market, which is challenging in its own right, is not enough. IoT solutions that interact with the physical world through sensors and actuators can cause serious harm, financial loss, or reputation damage if the solution fails to perform. Doing enterprise-scale transformations to realize enterprise-level business value requires enterprise-appropriate systems and software engineering processes.</p>
+<p>Systems engineers and developers need to be able to connect their IoT Platform development activities with the rest of their Systems and Software Engineering methods and tools in order to:</p>
+<h1>Integration Solutions</h1><p>IoT solutions have many components that are typically hosted on multiple runtime environments and developed by multiple teams. Coordinating across these teams while designing, building, and evolving an enterprise solution is especially challenging.</p>
+<p>IBM IoT Continuous Engineering (CE) tools and practices can be employed to design and build dependable enterprise IoT solutions. The iotp-adaptor is an example of how to use OSLC to extend development practices by including the teams who build IoT solution components on the IBM Watson IoT Platform.  Using iotp-adaptor, you can work with views of your IoT solution, including IoT Platform devices. You can link these IoT Platform artifacts to any other artifact in the Continuous Engineering solution, such as requirements, change requests, or test cases. You can also use Rational Engineering Lifecycle Management for traceability and impact analysis of potential changes to your IoT solutions.</p>
+<p>The iotp-adaptor provides an OSLC server that exposes IBM Watson IoT Platform artifacts using standard OSLC capabilities. The IoT Platform artifacts participate in change management, impact analysis, requirements-driven development, requirements-driven testing, and other common development practices.</p>
+<p>The following diagram shows how the IoT CE environment works with the Watson IoT Platform:</p>
+<p><img src="images/concepts-detailed.png" alt="iotp-adaptor concepts" title="iotp-adaptor Concepts"></p>
+<ul>
+<li>The CE solution runs on Cloud or in your data center. For more information, see the CE Connector for IoT Installation Guide.</li>
+<li>CE4IoTConnector is a WAR file that runs on the CE Jazz Team Server. It requests information from the Watson IoT Platform and from IBM Cloud about the resources that are available in the IBM Watson IoT Platform and Node-RED applications.</li>
+<li>As soon as the IoT Platform artifacts are represented as OSLC resources in the CE solution, you can use existing CE capabilities and practices with those resources.</li>
+</ul>
+<h1>Business Value</h1><p>OSLC adaptors integrate lifecycle management tools like IBM&#39;s Continuous Engineering Solutions with the resources who&#39;s lifecycle teams need to manage. This helps close the gap between client demands and solution capabilities. Addressing the challenges above with OSLC integration solutions helps teams:</p>
+<ul>
+<li>Turn existing products into connected products</li>
+<li>Innovate faster with an IoT feedback loop to business leaders and engineering, including use of Watson services for advanced analytics</li>
+<li>Achieve consistency and robustness across the product development process to enable efficient, cost effective, and reliable (high quality) implementation<ul>
+<li>Design complex system-of-systems solutions (requirements management, systems engineering, MBSE)</li>
+<li>Manage change effectively across the IoT solution lifecycle (change requests following customized workflow, traceability, and impact analysis of lifecycle artifacts)</li>
+<li>Manage risk (particularly deployment risks) and respond more effectively when risks materialize</li>
+<li>Enable validation of the solution architecture against the system requirements and use cases</li>
+<li>Improve development collaboration across geographical and organizational boundaries</li>
+</ul>
+</li>
+<li>Develop your solution design ground truth necessary to estimate costs and effort</li>
+</ul>
+<h1>Introduction to the Watson IoT Platform Domain</h1><p>The IoT Platform Domain defines a design-level view of Watson IoT Platform resources in IBM Rhapsody Design manager. This view provides an abstraction of the IoT Platform organization and application implementation details in order to facilitate the design and lifecycle management of your IoT devices and Node-RED flows. The IoT Platform domain defines the analysis and design artifacts that can be integrated with other lifecycle management artifacts including requirements, work items, test cases and other UML or SysML model elements.</p>
+<p>The IoT Platform domain is organized into two parts or ontologies: Bluemix and the IoT Platform, as shown in the following UML model sketches:</p>
+<p><img src="images/iot-and-bluemix-packages.png" alt="IoT Platform and Bluemix Domains" title="IoT Platform and Bluemix Domains"></p>
+<p>The Bluemix ontology covers design artifacts that are common to all Bluemix projects. A Bluemix Organization establishes the unit of organization and user management for the Spaces that it contains. Spaces can be used to scope applications and provisioned services for different purposes or lifecycle phases. For example, a typical organization might have different spaces for managing different lifecycle phases such as development, testing, preproduction and production. Applications represent the deployed instances of the Bluemix runtime platform with its bound services. Applications typically have routes that provide access to the running application. All of the Bluemix classes, and many of the Watson IoT Platform artifacts described below specialize Platform Resource which provides a platform URI property that supports direct navigation from Design Manager to the represented Watson IoT Platform resource.</p>
+<p>Note: this technical preview imports Node-RED applications from Bluemix. The Bluemix organizations, spaces, and other applications and services are not currently included.</p>
+<p><img src="images/bluemix-ontology.png" alt="Bluemix Ontology" title="Bluemix Ontology"></p>
+<p>The IoT Platform ontology extends the Bluemix ontology with artifacts that represent design artifacts derived from Watson IoT Platform devices and applications. IoTP Organization extends Bluemix Organization to address IoT Platform specific properties. Like a Bluemix Organization. IoTP Organization is the unit of user management. An IoTP Organization manages Device Types, each with their own Device Properties. Device Type and Device Property classes abstract the Watson IoT Platform device type and device schema elements. A Device represents an instance of a Device Type, and something that would be deployed to the Watson IoT Platform to collect real-time data.</p>
+<p>The IoTP Organization also manages Rules for real-time analytics. A Rule has a condition property which is a string representation of the RTI rule condition. The design view enables you to see and manage dependencies between the rules and the devices they reference.</p>
+<p>A Node-RED Application is a specialization of a Bluemix Application and represents the Node-RED applications in a Bluemix organization. This allows you to manage the dependencies between your Node-RED flows and the devices they use.</p>
+<p><img src="images/iotp-ontology.png" alt="IoT Platform Ontology" title="IoT Platform Ontology"></p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>

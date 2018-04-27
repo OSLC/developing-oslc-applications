@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installation and Configuration</title><link rel="stylesheet" href="http://oslc.github.io/developing-oslc-applications/css/oslc.css"><script src="http://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'http://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/user-guide.html">Overview</a></li><li role="presentation" class="item current"><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/install-and-config.html">Installation and Configuration</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/administration.html">Administration</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/debug-interface.html">Generated Debug Web App</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/userGuide/using.html">Using with IBM Continuous Engineering</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Installation and Configuration</h1></header><section class="content"><div class="copy"><h1>Installation</h1><p>The iopt-adaptor is sample code available at <a href="https://github.com/OSLC/iotp-adaptor">OSLC/iotp-adaptor</a>. The GitHub repo does not contain a build of the adaptor, so you will need to build one yourself. <a href="../environment-setup">Environment Setup</a> describes in detail how to do this in an eclipse Maven project. But if you have maven installed on your machine, you can easily use the command line to build the WAR file.</p>
+<pre><code>git clone https://github.com/OSLC/iotp-adaptor.git
+cd iotp-adaptor/CE4IoTConnector
+mvn install
+</code></pre><p>This will result in creating target/iotp-0.0.1-SNAPSHOT.war. You can then install this WAR file in any compatible JEE container such as Tomcat, Jetty, WebSphere Liberty, etc.</p>
+<p>For example, download <a href="https://tomcat.apache.org/download-90.cgi">Tomcat 9</a> and unzip in a convenient folder. Follow the instructions in <a href="http://www.baeldung.com/tomcat-deploy-war">How do Deploy a WAR File to Tomcat</a> to deploy target/iotp-0.0.1-SNAPSHOT.war to webapp/iotp.war. Then start the tomcat server and visit [](<a href="http://localhost:8080/iotp">http://localhost:8080/iotp</a>. Here&#39;s a brief summary of the instructions:</p>
+<ol>
+<li>Download and unzip <a href="https://tomcat.apache.org/download-90.cgi">Tomcat 9</a></li>
+<li>Set $CATALINA_BASE to where you unzipped Tomcat 9</li>
+<li>Make sure $CATALINA_BASE/bin/startup.sh, shutdown.sh and catalina.sh are executable</li>
+<li>Edit $CATALINA_BASE/conf/tomcat-users.xml as needed</li>
+<li>Edit $CATALINA_BASE/conf/server.xml as needed (perhaps to change the port)</li>
+<li>copy target/iotp-0.0.1-SNAPSHOT.war to $CATALINA_BASE/iotp.war</li>
+<li>Start the Tomcat Server using $CATALINA_BASE/bin/startup.sh</li>
+<li>Visit <a href="http://localhost/iotp/"></a> to access the Watson IoT Platform resources using the iotp-adaptor.</li>
+</ol>
+<p>Here&#39;s some minimal sample commands that work on MacOS. Adjust the paths below to where you cloned iotp-adaptor and installed Tomcat, and open the link on the browser any way that is convenient for you. This also assumes you&#39;re using the default base uri of <a href="http://localhost:8080">http://localhost:8080</a>, port 8080, and scheme http in the iotp/WEB-INF/web.xml file.</p>
+<pre><code>cd ~/bin
+wget http://www.trieuvan.com/apache/tomcat/tomcat-9/v9.0.7/bin/apache-tomcat-9.0.7.zip
+unzip apache-tomcat-9.0.7.zip
+CATALINA_BASE=apache-tomcat-9.0.7
+cd $CATALINA_BASE/bin
+chmod +x startup.sh shutdown.sh catalina.sh
+cp ~/GitHub/iotp-adaptor/CE4IoTConnector/target/iotp-0.0.1-SNAPSHOT.war $CATALINA_BASE/webapp/iotp.war
+$CATALINA_BASE/bin/startup.sh
+open /Applications/Safari.app http://localhost:8081/iotp
+</code></pre><h1>Configuration</h1><p>iotp-adaptor doesn&#39;t require much configuration, but there are a few things you may want to set. After Tomcat runs, iotp.war will be uncompressed into folder iotp. The iotp-adapter configuration parameters are in the iotp/WEB-INF/web.xml file. The default values are:</p>
+<ul>
+<li>com.ibm.oslc.adaptor.iotp.servlet.scheme: http</li>
+<li>com.ibm.oslc.adaptor.iotp.servlet.baseurl: <a href="http://localhost:8080">http://localhost:8080</a></li>
+<li>com.ibm.oslc.adaptor.iotp.servlet.port: 8080</li>
+</ul>
+<p>These values correspond to the defaults for Tomcat, so no editing is required if Tomcat is running on localhost and port 8080.</p>
+<p>If these values need to change, edit them in the web.xml file. For example, here&#39;s how to change the port to 8081:</p>
+<pre><code>    &lt;context-param&gt;
+        &lt;description&gt;Scheme used for URI when registering ServiceProvider.  Can be overridden by System property of the same name.&lt;/description&gt;
+        &lt;param-name&gt;com.ibm.oslc.adaptor.iotp.servlet.scheme&lt;/param-name&gt;
+        &lt;param-value&gt;http&lt;/param-value&gt;
+    &lt;/context-param&gt;
+    &lt;context-param&gt;
+        &lt;description&gt;Base URI for the adaptor.&lt;/description&gt;
+        &lt;param-name&gt;com.ibm.oslc.adaptor.iotp.servlet.baseurl&lt;/param-name&gt;
+        &lt;param-value&gt;http://localhost:8081&lt;/param-value&gt;
+    &lt;/context-param&gt;
+    &lt;context-param&gt;
+        &lt;description&gt;Port used for URI when registering ServiceProvider.  Can be overridden by System property of the same name.&lt;/description&gt;
+        &lt;param-name&gt;com.ibm.oslc.adaptor.iotp.servlet.port&lt;/param-name&gt;
+        &lt;param-value&gt;8081&lt;/param-value&gt;
+    &lt;/context-param&gt;
+</code></pre></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>
