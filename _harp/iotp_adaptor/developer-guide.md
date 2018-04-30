@@ -11,7 +11,7 @@
 
 # Introduction
 
-See the [iotp-adaptor User Guide](./userGuide/user-guide) for information on how to install, configure, administer and use the iotp-adaptor OSLC server. This Developer Guide explains how the adaptor was build and integrated with the IBM CE jazz.net applications.
+See the [iotp-adaptor User Guide](./userGuide/user-guide) for information on how to install, configure, administer and use the iotp-adaptor OSLC server. This Developer Guide explains how the adaptor was build and integrated with the IBM CE jazz.net applications. The source code is available in a the GitHub [iotp-adaptor Project](https://github.com/OSLC/iotp-adaptor).
 
 iotp-adaptor was designed and initially created using the [eclipse/Lyo Designer Toolchain Modeler and Code Generator](https://wiki.eclipse.org/Lyo/ToolchainModellingAndCodeGenerationWorkshop). This tool using model-based development techniques to generate an OSLC server implementation with a minimal Web UI "debug" application that allows you to browse the OSLC services and adapted resources. The code generator uses [M2T](https://www.eclipse.org/modeling/m2t/) templates that were developed using the eclipse/Lyo [OSLC4J Bugzilla](https://wiki.eclipse.org/Lyo/BuildOSLC4JBugzilla) sample application. 
 

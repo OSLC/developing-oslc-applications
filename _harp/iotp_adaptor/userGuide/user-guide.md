@@ -21,6 +21,10 @@ The iotp-adaptor is a JEE Web application (WAR file) that exposes the Watson IoT
 * Minimal OSLC query capability
 * Simple Tracked Resource Set provider for device types
 
+See [iotp-adaptor Developer Guide](../developer-guide) for documentation on how the iotp-adaptor OSLC server was developed.
+
+The source code is available in a the GitHub [iotp-adaptor Project](https://github.com/OSLC/iotp-adaptor).
+
 # Business Challenge
 
 The Internet of Things (IoT) is driving businesses to transform themselves into connected, digital enterprises to take advantage of new opportunities for optimizing operations, increasing customer engagement and loyalty, developing new revenue streams and business models, disrupting existing markets, and innovating faster with an IoT feedback loop that informs business and engineering leaders.
