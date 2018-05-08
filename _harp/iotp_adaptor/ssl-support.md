@@ -1,16 +1,6 @@
 This section provides an overview of https and Secure Sockets Layer (SSL) as a useful reference for dealing with secure connections with OSLC servers. 
 
-However, the simple summary is that eclipse/Lyo OSLC4J oauth-consumer-store provides file system and RDF storage of SSL certificates (truststore or keystore). Lyo Designer generates code that uses this Maven artifact: 
-
-```
-<dependency>
-	<groupId>org.eclipse.lyo.server</groupId>
-	<artifactId>oauth-consumer-store</artifactId>
-	<version>2.3.0</version>
-</dependency>
-
-```
-So SSL certificate handling is done for you. You can also easily configure Jetty, Tomcat, or any Web server to handle creation of self-assigned certificates that users can accepts then challenged by their browsers. 
+You can configure Jetty, Tomcat, or any Web server to handle creation of self-assigned certificates that users can accepts then challenged by their browsers. 
 
 This makes handling SSL relatively easy, and provides increased security at low development cost.
 

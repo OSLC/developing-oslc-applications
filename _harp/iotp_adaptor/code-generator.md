@@ -31,20 +31,36 @@ To add JAX-RS REST services for OAuth1.0a and the CE4IoTConnector TRS provider, 
         RESOURCE_CLASSES.add(ResourceShapeService.class);
 
         // Start of user code Custom Resource Classes
-                // OAuth service
-                try {
-                        RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
-                        RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
-                } catch (ClassNotFoundException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                }
-                // TRS service
-                RESOURCE_CLASSES.add(TrackedResourceSetService.class);
-            // End of user code
+        // OAuth service and Swagger.io service
+        try {
+            RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
+            RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
+            RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.ApiListingResource.class);
+            RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        // TRS service  
+        RESOURCE_CLASSES.add(TrackedResourceSetService.class);
+        
+         // trigger Jena init
+         ModelFactory.createDefaultModel();
+         // force plain XML writer
+         RDFWriterFImpl.alternative(null);
+        // End of user code
 ```
 
-The OAuth classes have to be added by name instead of through imports because they are defined in a Web application WAR file, not a Java JAR file.
+The OAuth classes have to be added by name instead of through imports because they are defined in a separate, reusable Web application WAR file, not a Java JAR file.
+
+***Important***: When eclipse/Lyo OSLC4J updated to Apache Jena 3, the behavior of the serialization of RDF/XML changed in a way that cannot be consumed by the jazz.net apps. You'll notice this if the jazz.net apps can't read your server provider catalogs, even though the RDF/XML looks completely correct. RDF/XML can have many valid, but syntactically different formats. The following statements configre Jena 3 to use RDF/XML serialization formats that can be consumed by the jazz.net apps (which are still using an earlier version of Jena).
+
+```
+         // trigger Jena init
+         ModelFactory.createDefaultModel();
+         // force plain XML writer
+         RDFWriterFImpl.alternative(null);
+```
 
 You are now ready to implement each of the domain classes. Details are provided in [Implementing a Domain Class](./implement-domain-class). But first, there's a few details about the code generator that need to be understood in terms of generated vs. user code.
 

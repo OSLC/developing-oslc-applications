@@ -6,7 +6,191 @@ Modernizr.load([{
   yep: 'http://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
 }]);
 
-</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/developer-guide.html">Developer Guide</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/environment-setup.html">eclipse environment setup</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/toolchain-model.html">The toolchain model</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/code-generator.html">Generating the server code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/exploring-the-code.html">Exploring the generated code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/ssl-support.html">https and SSL support</a></li><li role="presentation" class="item current"><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/authentication.html">Authentication</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/rootservices.html">Creating the rootservices document</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/consumer-friend.html">Connecting Servers</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/artifact-container-associations.html">Artifact Container Associations</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/dialogs.html">Updating generated dialogs</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/implement-domain-class.html">Implementing a Domain Class</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/trs-provider.html">Implementing a TRS Provider</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/junit-tests.html">JUnit Tests</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Authentication</h1></header><section class="content"><div class="copy"><h1>Authentication</h1><h1>CredentialsFilter and Session Management</h1><h1>IoT Platform Login</h1><h1>OAuth Authentication</h1></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/developer-guide.html">Developer Guide</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/environment-setup.html">eclipse environment setup</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/toolchain-model.html">The toolchain model</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/code-generator.html">Generating the server code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/exploring-the-code.html">Exploring the generated code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/ssl-support.html">https and SSL support</a></li><li role="presentation" class="item current"><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/authentication.html">Authentication</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/rootservices.html">Creating the rootservices document</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/consumer-friend.html">Connecting Servers</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/artifact-container-associations.html">Artifact Container Associations</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/dialogs.html">Updating generated dialogs</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/implement-domain-class.html">Implementing a Domain Class</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/trs-provider.html">Implementing a TRS Provider</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/junit-tests.html">JUnit Tests</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Authentication</h1></header><section class="content"><div class="copy"><p>Authentication is used to allow a client to make requests of a server, or to enable servers to interact after approval by an administrator. The jazz.net CE applications establish client/server communication in 2 steps:</p>
+<ol>
+<li>Creating a relationship at the application/server level (&quot;friendship&quot; or consumer-provider/client-server relationship), which enables the two applications to communicate, and </li>
+<li>Creating associations at the project area level, which specifies for an individual project which projects on other servers it can access. </li>
+</ol>
+<p>Project area associations are used to establish connections between service providers to enable access through OSLC. These associations are primarily used for creation and selection dialogs, and resource preview, providing the OSLC discovery information the clients need to get the creation and selection dialog URLs, the queryBase URL, etc. This important topic is covered in <a href="./artifact-container-associations">Artifact Container Associations</a>. </p>
+<p>This section deals with authentication in the context of integrating an OSLC server with the jazz.net apps.</p>
+<p>Here are some useful links:</p>
+<ul>
+<li><a href="https://jazz.net/library/article/75">Jazz Server Authentication Explained</a></li>
+<li><a href="https://jazz.net/wiki/bin/view/Main/JFSCoreSecurity#User_Authentication">Jazz Foundation Core Security</a></li>
+<li><a href="https://jazz.net/wiki/bin/view/Main/NativeClientAuthentication">Authentication of a native client with a Jazz-based application</a></li>
+<li><a href="https://jazz.net/wiki/bin/view/Main/NativeClientAuthentication">Native Client Authentication</a></li>
+<li><a href="https://jazz.net/wiki/bin/view/Main/JAFSdkDelegatingAuth#OAuth">User Authentication for Applications Written with the JAF SDK</a></li>
+</ul>
+<h1>Authentication</h1><p>OSLC servers that wish to integrate with the jazz.net apps should support connections with CE version 5.0.2 as well as 6.x. [5.0.2 is the release designated for longer-term support, don&#39;t think you need to support earlier ones.] Therefore you should consider support for OAuth 1.0a. CE clients will need to assume OAuth 1.0a, and establish the friend relationships using consumer keys provided by your OSLC adaptor/server.</p>
+<p>A client or consumer (including OSLC servers acting as clients) - i.e. the application/server making requests like GET, PUT, POST, etc - requires a special consumer key and a &quot;secret&quot; to include with requests in order to authenticate with the server providing the request result.</p>
+<p>In the CE applications, there are 2 alternatives to establish the friendship:</p>
+<p>1) On the server/provider side, the admin creates a consumer key and associated secret.  On the client/consumer side, the admin adds the server/provider as a friend, specifying the key and secret.  A server might use a different consumer key for each unique client relationship, or it might use the same key for multiple clients. </p>
+<p>2) The client app adds the server/provider as a friend, which may create a provisional consumer key and secret. The server (admin) then accepts the provisional consumer key to complete the friendship and authenticate requests from that client. This simplifies the creation of the friend relationship and the required consumer key into more or less a single step.  </p>
+<p>A friend is an application or a Jazz Team Server to which this application is allowed make outbound requests, in order to consume the services provided by the friend. That is, the friend is a server providing an accepted consumer key for which this application can be an authenticated client.</p>
+<p>When a client app has a friend relationship to a server app, it can make requests of that server app, utilizing the agreed upon consumer key for request authentication. These requests are directional - the consumer is the client making the request, and the friend app that provided the consumer key is the server responding to the request. That means the friend/client can make OSLC creation/selection dialog request, can query resources or get resource previews of resources managed by the server with the consumer key.</p>
+<h2>What about backlinks?</h2><p>if RDNG provides a consumer key for RTC, and RTC has a friend relationship to RDNG using that consumer key [i.e. RTC is an &quot;incoming consumer/client&quot; for DNG], you could create a link from an RTC WorkItem to an RDNG Requirement. But (in a non-config context) this would generally result in a backlink being created in the RDNG Requirement to the RTC WorkItem. </p>
+<p>If RDNG does not have a friend relationship with RTC (and RTC therefore provides no consumer key for RDNG), can this backlink still be created? The backlink is created by doing a POST or PUT from RTC to RDNG, which is fine because RTC has the friend relationship and can make the request with the proper consumer key.</p>
+<p>But what can you do with that link in RDNG? Can it be navigated? Does it support resource preview? The link will show up in RDNG as a URL without resource preview, but you can click on the link and navigate to RTC as RTC will redirect the GET on the URL to its web application (if there is no Accept header). Authentication in this case is addressed by the user login, not consumer keys. </p>
+<p>Configuring OAuth consumers enables websites or applications (consumers) to access protected resources from a web server (provider) through an API that does not require users to disclose their their service provider credentials to the consumers. The server provides the consumer key which is used by clients to provide authentication tokens for their requests.</p>
+<p>In the Web server, create a consumer (inbound) key that can be used to allow consumer applications to access this server.</p>
+<p>Adding a friend relationship allows you to specify other OSLC servers with which you want to establish client-to-server communication. Enter the location information of another Jazz Team Server or CLM application and a code phrase to use as the OAuth secret. Then request access to that server to create an OAuth consumer key and store the information in the friends list. After the OAuth key is authorized by the other server, this server will be able to interact with the other Jazz Team Server or CLM application.</p>
+<p>All communication between the CE apps and CE4IoTConnector server is one way. The links are all owned by the CE apps, and the CE4IoTConnector is a server providing target resources for those links. The CE4IoTConnector is never a client of any of the CE apps and cannot store any links to resources in those apps.</p>
+<p>CE4IoTConnector needs to be able to provide consumer keys for the CE friend apps. This could be done with a single consumer key that is created by the administrator and used for all client/friend apps. Or the client apps could create provisional keys when creating the friend connection, and these could be automatically accepted and stored in the CE4IoTConnector server&#39;s keystore.</p>
+<h1>CredentialsFilter and Session Management</h1><h1>IoT Platform Login</h1><h1>OAuth Authentication</h1><p>OAuth authentication is used to allow a client (Oauth consumer) to make requests of a server (OAuth service provider) without exposing the user’s server credentials to the client. A server may also act as a client to other servers when linking across OSLC servers. The authentication is established by adding a Friend relationship to the consuming sever so that the consumer can utilize a consumer key and secret to establish an OAuth connection between the client and sever in order to communicate with the providing friend server. </p>
+<p>Project area associations are used to establish connections between OSLC service providers to enable access through OSLC. These associations are primarily used for creation and selection dialogs, and resource preview, providing the OSLC discovery information the clients need to get the creation and selection dialog URLs, the queryBase URL, etc.</p>
+<p>OAuth Server-to-Server Authentication</p>
+<p>An OSLC server may need to support connections with CE versions prior to 6.0. To do so they would need to support OAuth 1.0a. CE clients should assume OAuth 1.0a, and establish the friend relationships using consumer keys provided by the CE4IoTConnector server.</p>
+<p> Establishing the consumer/friend relationship requires access to a jazz.net root services document that provides the following URLs the friend server is expected to support for OAuth authentication:
+    <jfs:oauthrealmname>Server Provider’s Realm</jfs:oauthrealmname>
+    <jfs:oauthdomain><a href="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp">https://ce4iot.rtp.raleigh.ibm.com:9443/iotp</a></jfs:oauthdomain>
+    <jfs:oauthrequestconsumerkeyurl rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/requestKey">
+    <jfs:oauthapprovalmoduleurl rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/approveKey">
+    <jfs:oauthrequesttokenurl rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/requestToken">
+    <jfs:oauthuserauthorizationurl rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/authorize">
+    <jfs:oauthaccesstokenurl rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/accessToken"></p>
+<p>This information provides the jazz-based consumer app with the information it needs to execute the OAuth authentication sequence, and provides the service provider consumer key and secret needed to start the sequence.</p>
+<p>A server can create a consumer key that can be used by clients to make requests of that server. A server might use a different consumer key for each unique client connection, or it might allow the same key to be used by multiple clients.</p>
+<p>Consumer keys can have an associated functional user id. If they do, client applications can access protected resources using an Authorization OAuth header containing the consumer key and secret. The functional user’s credentials and licenses are automatically used. This is not the recommended approach however because all client/server interaction would be based on a single functional user, not the user actually using the system. See OAuthClient.java for an example.</p>
+<p>A client (including OSLC servers acting as clients) needs to create a friend relationship with a server it wants to access, and needs a consumer key that can be used to authenticate those requests.</p>
+<p>CE apps provide a convenience for creating consumer/friend relationships. A client app can create a friend with a provisional consumer key. The server can then choose to accept the provisional consumer key as a consumer key for authenticating requests from that client. This simplifies the creation of the friend relationship and the required consumer key into more or less a single step.</p>
+<p>When a client app has a friend relationship to a server app, it can make requests of that server app, utilizing the agreed upon consumer key and secret for request authentication. These requests are directional - the friend is the client making the request, and the app with the consumer key is the server responding to the request. That means the friend/client can make OSLC creation/selection dialog request, can query resources or get resource previews of resources managed by the server with the consumer key.</p>
+<p>Configuring OAuth consumers enables websites or applications (consumers) to access protected resources from a web server (service provider) through an API that does not require users to disclose their their service provider credentials to the consumers. The server provides the consumer key which is used by clients to provide authentication tokens for their requests.</p>
+<p>In the Web server, create a consumer (inbound) key that can be used to allow consumer applications to access this server.</p>
+<p>Adding a friend relationship allows you to specify other Jazz-based servers with which you want to establish client-to-server communication. Enter the location information of another Jazz Team Server or CLM application and a code phrase to use as the OAuth secret. Then request access to that server to create an OAuth consumer key and store the information in the friends list. After the OAuth key is authorized by the other server, this server will be able to interact with the other Jazz Team Server or CLM application.</p>
+<p>All communication between the CE apps and an OSLC server is one way. The links may be all owned by the CE apps, and the OSLC server is a server providing those links. The OSLC server may not be a client of any of the CE apps and need not store any links to resources in those apps.</p>
+<p>An OSLC server will need to be able to provide consumer keys for the CE friend apps. This could be done with a single consumer key that is created by the administrator and used for all client/friend apps. Or the client apps could create provisional keys when creating the friend connection, and these could be automatically accepted and stored in the OSLC server, perhaps in encrypted in an OAuth keystore.</p>
+<p>To determine how your OSLC server needs to interact with the CE apps, explore the connection between RDNG and RTC, and duplicate that.</p>
+<p>RTC server provides a consumer key for client/friend RDNG - RNDG can create links to RTC work items. The consumer/friend relationship allows the servers to communicate but the ability to consume is directional.</p>
+<p>See Oauth and OSLC in Apple notes.</p>
+<p>IBM Add OAuth authentication support to HttpClient 
+OAuth Core 1.0 Revision A
+<a href="https://oauth.net/1/">https://oauth.net/1/</a> 
+<a href="https://javadocs.nightly.sakaiproject.org/net/oauth/client/OAuthClient.html">https://javadocs.nightly.sakaiproject.org/net/oauth/client/OAuthClient.html</a> 
+<a href="https://phkrief.wordpress.com/2010/09/15/jazz-form-based-authentication/">https://phkrief.wordpress.com/2010/09/15/jazz-form-based-authentication/</a> 
+<a href="https://jazz.net/wiki/bin/view/Main/NativeClientAuthentication">https://jazz.net/wiki/bin/view/Main/NativeClientAuthentication</a> 
+<a href="https://oauth.net/core/1.0/">https://oauth.net/core/1.0/</a> </p>
+<p>OAuth JavaDoc
+net.oauth
+net.oauth.client
+net.oauth.http
+net.oauth.server
+net.oauth.signature
+net.oauth.signature.pem</p>
+<p>OAuth provides an authentication mechanism for a consumer to access a service without exposing the user’s service credentials to the consumer application.</p>
+<p>Service Provider: A web application that allows access via OAuth.
+User: An individual who has an account with the Service Provider.
+Consumer: A website or application that uses OAuth to access the Service Provider on behalf of the User.
+Protected Resource(s): Data controlled by the Service Provider, which the Consumer can access through authentication.
+Consumer Developer: An individual or organization that implements a Consumer.
+Consumer Key: A value used by the Consumer to identify itself to the Service Provider.
+Consumer Secret: A secret used by the Consumer to establish ownership of the Consumer Key.
+Request Token: A value used by the Consumer to obtain authorization from the User, and exchanged for an Access Token.
+Access Token: A value used by the Consumer to gain access to the Protected Resources on behalf of the User, instead of using the User&#39;s Service Provider credentials.
+Token Secret: A secret used by the Consumer to establish ownership of a given Token.
+OAuth Protocol Parameters: Parameters with names beginning with oauth_.</p>
+<p>Consumer uses a Consumer Key and Consumer Secret to authenticate the Consumer with the Service Provider in order to provide access the service, instead of using a User’s credentials directly. </p>
+<p>OAuth defines three request URLs:</p>
+<p>Request Token URL: The URL used to obtain an unauthorized Request Token, described in Section 6.1.
+User Authorization URL: The URL used to obtain User authorization for Consumer access, described in Section 6.2.
+Access Token URL: The URL used to exchange the User-authorized Request Token for an Access Token, described in Section 6.3.</p>
+<p>The three URLs MUST include scheme, authority (host), and path</p>
+<p>Service Provider:</p>
+<ul>
+<li>enable Consumer Developers to establish Consumer Key and Consumer Secret - jazz.net apps provide an admin page where an administrator can create trusted consumer keys with a secret and functional user id.</li>
+<li>The URLs the Consumer will use when making OAuth requests, and the HTTP methods (i.e. GET, POST, etc.) used in the Request Token URL and Access Token URL. - specified in Jazz Root Services Specification</li>
+<li>Signature methods supported by the Service Provider.</li>
+<li>Any additional request parameters that the Service Provider requires in order to obtain a Token. Service Provider specific parameters MUST NOT begin with oauth_.</li>
+<li>Sends OAuth response parameters in entity response body as encoded name=value pairs separated by &amp;</li>
+</ul>
+<p>Consumer:</p>
+<ul>
+<li>Must have access to a Consumer Key and Secret</li>
+<li>Must encode all parameter names and values</li>
+<li>Sends OAuth Protocol Parameters to the Service Provider in one of three methods:<ol>
+<li>HTTP Authorization Header as defined in OAuth HTTP Authorization Scheme</li>
+<li>POST entity request body with content-type: application/x-www-form-urlencoded</li>
+<li>URL query parameters</li>
+</ol>
+</li>
+</ul>
+<p>Authorization Header:
+        Authorization: OAuth realm=&quot;<a href="http://sp.example.com/">http://sp.example.com/</a>&quot;,
+               oauth_consumer_key=&quot;0685bd9184jfhq22&quot;,
+               oauth_token=&quot;ad180jjd733klru7&quot;,
+               oauth_signature_method=&quot;HMAC-SHA1&quot;,
+               oauth_signature=&quot;wOJIO9A2W5mFwDgiDvZbTSMK%2FPY%3D&quot;,
+               oauth_timestamp=&quot;137131200&quot;,
+               oauth_nonce=&quot;4572616e48616d6d65724c61686176&quot;,
+               oauth_version=&quot;1.0&quot;</p>
+<p>Authenticating with OAuth</p>
+<p>￼
+Request Token: Used by the Consumer to ask the User to authorize access to the Protected Resources. The User-authorized Request Token is exchanged for an Access Token, MUST only be used once, and MUST NOT be used for any other purpose. It is RECOMMENDED that Request Tokens have a limited lifetime.</p>
+<p>Access Token: Used by the Consumer to access the Protected Resources on behalf of the User. Access Tokens MAY limit access to certain Protected Resources, and MAY have a limited lifetime. Service Providers SHOULD allow Users to revoke Access Tokens. Only the Access Token SHALL be used to access the Protect Resources.</p>
+<p>OAuth Authentication is done in three steps:</p>
+<ol>
+<li>The Consumer obtains an unauthorized Request Token (which can only be used to obtain an Access Token.</li>
+<li>The User authorizes the Request Token.</li>
+<li><p>The Consumer exchanges the Request Token for an Access Token.</p>
+</li>
+<li><p>The consumer requests a temporary token for the OAuth handshake. This token is used to maintain the handshake session.</p>
+</li>
+<li>After validating the consumer, the service provider issues a short-term request token.</li>
+<li>The consumer sends an HTTP redirect response to the user&#39;s browser and leads the user to the service provider for authorization.</li>
+<li>The user reviews the authorization request and grants access to the consumer on the service provider site if he trusts the consumer.</li>
+<li>The service provider confirms the authorization and sends an HTTP redirect response to the user&#39;s browser.</li>
+<li>The user&#39;s browser is redirected to the consumer&#39;s callback URL, where the consumer can complete the remaining part of the handshake.</li>
+<li>The consumer requests the access token from the service provider with a verifier passed in the previous step.</li>
+<li>Upon successful validation, the service provider issues the access token to access the protected resources.</li>
+<li>After the OAuth handshake completes, the access token is issued and the consumer can use the access token to access the protected resources on behalf of the user.</li>
+<li>The service provider validates each incoming OAuth request and returns the protected resources if the consumer is authorized.1: Obtaining the Unauthorized Request Token</li>
+</ol>
+<p>POST {Request Token URL}
+Authorization: oauth_consumer_key=&quot;8c0bed7b2ed84de59473318d41cabf70&quot;, oauth_signature_method=&quot;HMAC-SHA1&quot;, oauth_timestamp=&quot;1519939527&quot;, oauth_nonce=&quot;1733594657695709&quot;, oauth_version=&quot;1.0&quot;, oauth_signature=&quot;RDSO7oANUkxetv%2Ftkybzy2dUURI%3D&quot;</p>
+<p>oauth_signature is the Consumer Secret, encoded according to the oauth_signature_method.</p>
+<p>The OAuth Bible</p>
+<p>Signature - Request method &amp; URL &amp; parameters encrypted against a key consisting of consumer_secret &amp; token_secret</p>
+<p>Consumer Key - identifier generated by server </p>
+<p>Jazz Root Services Specification</p>
+<p>Defines the OAuth service provider properties as defined in OAuth Core 1.0, section 4.1</p>
+<p>jfs:oauthRequestTokenUrl
+(optional) - provides this application&#39;s Request Token URL used to obtain an unauthorized Request Token (OAuth Core 1.0, section 6.1). To obtain a Request Token, the Consumer sends an HTTP POST request to the application&#39;s Request Token URL, passing OAuth Protocol Parameters by any of the methods described in OAuth spec, section 5.4.</p>
+<p>jfs:oauthUserAuthorizationUrl
+(optional) - provides this application&#39;s User Authorization URL used to obtain User authorization for Consumer access (OAuth Core 1.0, section 6.2). To obtain approval from the User, a client constructs the URL of an HTTP GET request to the application&#39;s User Authorization URL with parameters passed in the query part, and then opens the constructed URL via the User&#39;s web browser.</p>
+<p>jfs:oauthAccessTokenUrl
+(optional) - provides this application&#39;s Access Token URL used to exchange the User-authorized Request Token for an Access Token (OAuth Core 1.0, section 6.3). To request an Access Token, the Consumer sends an HTTP POST request to the application&#39;s Access Token URL, passing OAuth Protocol Parameters by any of the methods described in OAuth spec, section 5.2.</p>
+<p>jfs:oauthRealmName
+(optional) - provides this application&#39;s OAuth realm name. This string is used in the realm parameter of WWW-Authenticate and Authorization headers and to identify the protection space (see OAuth spec, section 5.4).</p>
+<p>jfs:oauthDomain
+(optional) - a comma-separated list of absolute-URIs, as specified in RFC 3986 - Uniform Resource Identifier (URI): Generic Syntax, that define the protection space. URIs in this list may refer to different servers. The client SHOULD use this list to determine the set of URIs for which the same authentication information may be sent: any URI that has a URI in this list as a prefix (after both have been made absolute) MAY be assumed to be in the same protection space.</p>
+<p>OAuth discovery parameters in a typical JTS:</p>
+<pre><code>&lt;jfs:oauthDomain&gt;https://ce4iot.rtp.raleigh.ibm.com:9443/jts,https://ce4iot.rtp.raleigh.ibm.com:9443/rm&lt;/jfs:oauthDomain&gt;
+&lt;jfs:oauthRealmName&gt;Jazz&lt;/jfs:oauthRealmName&gt;
+&lt;jfs:oauthAccessTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/oauth-access-token&quot; /&gt;
+&lt;jfs:oauthApprovalModuleUrl    rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/_ajax-modules/com.ibm.team.repository.AuthorizeOAuth&quot; /&gt;
+&lt;jfs:oauthExpireTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/oauth-expire-token&quot; /&gt;
+&lt;jfs:oauthRequestConsumerKeyUrl    rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/oauth-request-consumer&quot; /&gt;
+&lt;jfs:oauthRequestTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/oauth-request-token&quot; /&gt;
+&lt;jfs:oauthUserAuthorizationUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/oauth-authorize&quot; /&gt;
+&lt;jfs:jauthCheckAuthUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/jauth-check-auth&quot; /&gt;
+&lt;jfs:jauthCheckTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/jauth-check-token&quot; /&gt;
+&lt;jfs:jauthIssueTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/jauth-issue-token&quot; /&gt;
+&lt;jfs:jauthProxyUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/jauth-proxy&quot; /&gt;
+&lt;jfs:jauthRevokeTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/jauth-revoke-token&quot; /&gt;
+&lt;jfs:jauthSigninUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/jts/jauth-signin&quot; /&gt;
+</code></pre><p>OSLC4J OAuth Client</p>
+<p>Uses Package net.oauth</p>
+<p><a href="https://wiki.eclipse.org/Lyo/BuildClient">https://wiki.eclipse.org/Lyo/BuildClient</a> - section &quot;Two-legged OAuthSample&quot; describes how to run the OAuthClient sample.</p>
+<p>Sample code of an OAuth implementation that is used to log on to the RM server is in the “Open Services for Lifecycle Collaboration Workshop” article at <a href="https://jazz.net/library/article/635">https://jazz.net/library/article/635</a>. For details, see Example04.java.</p>
+<p>Two-legged OAuth does not require an access token or a user to type in a password. You simply need the consumer key and consumer secret to sign the requests. Performing two-legged OAuth is generally preferable to storing a username and password on the client, although you should treat the consumer secret like it&#39;s a password.</p>
+<ol>
+<li>Visit <a href="https://ce4iot.rtp.raleigh.ibm.com:9443/ccm/admin">https://ce4iot.rtp.raleigh.ibm.com:9443/ccm/admin</a> and add a consumer key, note the key and remember the secret - Note: the authorized key must have a functional user id.</li>
+<li>Add the key and secret to oauth.properties</li>
+<li>Run Java Application OAuthClient with argument: <a href="https://ce4iot.rtp.raleigh.ibm.com:9443/ccm/oslc/workitems/catalog">https://ce4iot.rtp.raleigh.ibm.com:9443/ccm/oslc/workitems/catalog</a></li>
+</ol>
+<p>cd git/org.eclipse.lyo.client/org.eclipse.lyo.client.java.oauth.sample
+mvn install
+mvn exec:java -Dexec.mainClass=&quot;org.eclipse.lyo.client.oauth.sample.OAuthClient&quot; -Dexec.args=&quot;<a href="https://ce4iot.rtp.raleigh.ibm.com:9443/ccm/oslc/workitems/catalog">https://ce4iot.rtp.raleigh.ibm.com:9443/ccm/oslc/workitems/catalog</a>&quot;</p>
+<p>This sample application will use the OAuth consumer key and secret to access the RTC service provider catalog, a protected resource.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

@@ -6,7 +6,215 @@ Modernizr.load([{
   yep: 'http://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
 }]);
 
-</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/developer-guide.html">Developer Guide</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/environment-setup.html">eclipse environment setup</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/toolchain-model.html">The toolchain model</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/code-generator.html">Generating the server code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/exploring-the-code.html">Exploring the generated code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/ssl-support.html">https and SSL support</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/authentication.html">Authentication</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/rootservices.html">Creating the rootservices document</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/consumer-friend.html">Connecting Servers</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/artifact-container-associations.html">Artifact Container Associations</a></li><li role="presentation" class="item current"><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/dialogs.html">Updating generated dialogs</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/implement-domain-class.html">Implementing a Domain Class</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/trs-provider.html">Implementing a TRS Provider</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/junit-tests.html">JUnit Tests</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Updating generated dialogs</h1></header><section class="content"><div class="copy"><h1>Modifying the generated dialogs</h1><h2>Selection Dialog</h2><h2>Creation Dialog</h2><h2>Small Preview Dialog</h2><h2>Large Preview Dialog</h2></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/developer-guide.html">Developer Guide</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/environment-setup.html">eclipse environment setup</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/toolchain-model.html">The toolchain model</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/code-generator.html">Generating the server code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/exploring-the-code.html">Exploring the generated code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/ssl-support.html">https and SSL support</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/authentication.html">Authentication</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/rootservices.html">Creating the rootservices document</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/consumer-friend.html">Connecting Servers</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/artifact-container-associations.html">Artifact Container Associations</a></li><li role="presentation" class="item current"><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/dialogs.html">Updating generated dialogs</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/implement-domain-class.html">Implementing a Domain Class</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/trs-provider.html">Implementing a TRS Provider</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/junit-tests.html">JUnit Tests</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Updating generated dialogs</h1></header><section class="content"><div class="copy"><p>Depending on the adapter interface model, Lyo Designer may generate default implementations of selection and creation dialogs and will generate default implementations of small and large preview dialogs. These will generally need to be updated for UI style, format and content in order to match the environment in which these dialogs will be used.</p>
+<p>In the case of CE4IoTConnector, these dialogs might be updated to more closely align with the look and feel of the jazz.net application since its generally intended to be used to integrate with those applications.</p>
+<p>This sample code makes some minor and typical changes to the dialogs to give some example so things other adapters might need to do.</p>
+<p>Note that the entire body of the JSP pages that implement the Lyo Designer generated dialogs are in protected user code. This is because it is expected that these dialogs will need to be significantly customized. If you need to restore the generated default, simply delete the JSP page and regenerate the code.</p>
+<h2>Selection Dialog</h2><p>Before going into the details of the selection dialog format, it might be helpful to understand how the selection dialogs work.</p>
+<h3>Selection Dialog Implementation</h3><p>The lifecycle scenario of the Lyo Designer generated selection dialog starts with the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/java/com/ibm/oslc/adaptor/iotp/services/IoTPlatformService.java">IoTPlatformService</a> class. This class defines all the JAX-RS services that are generated from the adapter interface model. The selection dialog service is implemented using the following generated selector method:</p>
+<pre><code>    @OslcDialog
+    (
+         title = &quot;IotSelectionDialog&quot;,
+         label = &quot;IoT Platform Selection Dialog&quot;,
+         uri = &quot;iotp/{iotId}/resources/selector&quot;,
+         hintWidth = &quot;525px&quot;,
+         hintHeight = &quot;325px&quot;,
+         resourceTypes = {Oslc_rmDomainConstants.REQUIREMENT_TYPE, Oslc_cmDomainConstants.CHANGEREQUEST_TYPE, Oslc_amDomainConstants.RESOURCE_TYPE},
+         usages = {&quot;http://open-services.net/ns/am#IoTPSelectionDialog&quot;}
+    )
+    @GET
+    @Path(&quot;selector&quot;)
+    @Consumes({ MediaType.TEXT_HTML, MediaType.WILDCARD })
+    public void RequirementAndChangeRequestAndResourceSelector(
+        @QueryParam(&quot;terms&quot;) final String terms
+        , @PathParam(&quot;iotId&quot;) final String iotId
+        ) throws ServletException, IOException
+</code></pre><p>The @OslcDialog annotation defines the selection dialog, and the selector method will be invoked when a client makes an HTTP GET request on the @Path URL. The iotId parameter in the path is the IoT Platform organization id, which corresponds to the service provider we are going to select resources from. The terms query parameter contains the Java regular expression that will be used to match against resource titles.</p>
+<p>The GET on the selection dialog is actually done twice, once when the client requests the selection dialog and again when the the user presses the Search button. The first GET detects that the terms parameter is null and redirects the request to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselector.jsp">iotpselectiondialogselector.jsp</a> page. This page dynamically creates the selection dialog as describe in the next section. The client application embeds this selection dialog in an HTML iframe of its dialog and the selection dialog is displayed to the user.</p>
+<p>Next the user selects a resource type to search on, enters a Java regular expression in the search field, and presses the Search button. This calls the JavaScript search method in the delegatedUItyped.js which does a GET on the selection dialog again, this time with a non-null terms query parameter.</p>
+<p>This time the selector service sees the terms query parameter is not null, and uses the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java">CE4IoTConnectorManager</a> RequirementAndChangeRequestAndResourceSelector method to find the matching resources. It then dispatches the request to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselectorresults.jsp">iotpselectiondialogselectorresults.jsp</a> which formulates the selected resources into the oslc:results JSON object which is the entity request body of the GET done by the search JavaScript method. This result is then displayed in the results field in the selection dialog so the user can select the resources. </p>
+<p>The user can now select one or more resources and press the OK button. This formulates the window message and send it to the client dialog where the selection is processed.</p>
+<p>You can se all this work in the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/selectiondialogsampleclient.jsp">selectiondialogsampleclient.jsp</a> file. This JSP demonstrates what a typical client application would do to use a selection dialog provided by the server. It simply displays the titles of the selected resources.</p>
+<h3>CE4IoTConnector Selection Dialog</h3><p>CE4IoTConnector uses a single selection dialog for all resources. Separate selection dialogs for each resource type would result in a lot of redundant dialogs, and would not provide any means for users to choose what to select. This is because the jazz.net apps expect the server&#39;s selection dialog to deal with navigating, querying, searching, etc. for its resources inside its selection dialog. </p>
+<p>So generally a server will provide a single selection dialog for each service provider, and that selection dialog will provide some means for allowing users to choose what to select. </p>
+<p>This selection dialog is implemented in <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselector.jsp">iotpselectiondialogselector.jsp</a>. It uses a simple HTML select element to provide a drop-down selection list of resource types. It then uses the generated search field to search for resources by title, using Java regular expressions for matching.</p>
+<pre><code>Type: &lt;select id=&quot;selectType&quot;&gt;
+      &lt;option value=&quot;device&quot;&gt;Device&lt;/option&gt;
+      &lt;option value=&quot;devicetype&quot;&gt;DeviceType&lt;/option&gt;
+      &lt;option value=&quot;thing&quot;&gt;Thing&lt;/option&gt;
+      &lt;option value=&quot;thingtype&quot;&gt;ThingType&lt;/option&gt;
+      &lt;option value=&quot;logicalinterface&quot;&gt;LogicalInterface&lt;/option&gt;
+      &lt;option value=&quot;physicalinterface&quot;&gt;PhysicalInterface&lt;/option&gt;
+      &lt;option value=&quot;eventtype&quot;&gt;EventType&lt;/option&gt;
+      &lt;option value=&quot;schema&quot;&gt;Schema&lt;/option&gt;
+      &lt;option value=&quot;rule&quot;&gt;Rule&lt;/option&gt;      
+  &lt;/select&gt;
+</code></pre><p>A simple JavaScript script sets the type query parameter and adds it to the selection dialog URL so that it is available to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java">CE4IoTConnectorManager</a> RequirementAndChangeRequestAndResourceSelector method.</p>
+<pre><code>  &lt;script&gt;
+  var selectionUri = {}
+  $(document).ready(function() {
+        var selectType = document.getElementById(&quot;selectType&quot;)
+        $(&#39;#selectType&#39;).on(&#39;click&#39;, function load() {
+            var type = selectType.options[selectType.selectedIndex].value
+            selectionUri = &#39;&lt;%= selectionUri %&gt;?type=&#39;+type  // provide the selected type as a query parameter
+         })
+         selectType.selectedIndex = 1
+         selectType.click()
+      })
+  &lt;/script&gt;
+</code></pre><p>Note that although this type parameter is not declared using an @QueryParam(&quot;type&quot;) parameter of the method that handles GET on the selection dialog, this parameter is available to CE4IoTConnectorManager:</p>
+<pre><code>    public static List&lt;AbstractResource&gt; RequirementAndChangeRequestAndResourceSelector(HttpServletRequest httpServletRequest, final String iotId, String terms)   
+    {
+        List&lt;AbstractResource&gt; resources = null;
+
+        // Start of user code RequirementAndChangeRequestAndResourceSelector
+        try {
+            String resourceType = httpServletRequest.getParameter(&quot;type&quot;);
+            if (resourceType == null) resourceType = &quot;devicetype&quot;;
+            IotpServiceProviderInfo info = IoTAPIImplementation.getIotpServiceProviderInfo(httpServletRequest, iotId);
+            resources = new ArrayList&lt;AbstractResource&gt;();
+            if (resourceType.equals(&quot;devicetype&quot;)) resources.addAll(queryDeviceTypes(httpServletRequest, iotId, terms, 1, 10000));
+            if (resourceType.equals(&quot;device&quot;)) resources.addAll(queryDevices(httpServletRequest, info.iotId, terms, 1, 10000));                
+            if (resourceType.equals(&quot;thingtype&quot;)) resources.addAll(queryThingTypes(httpServletRequest, info.iotId, terms, 1, 10000));
+            if (resourceType.equals(&quot;rule&quot;)) resources.addAll(queryRules(httpServletRequest, info.iotId, terms, 1, 10000));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new WebApplicationException(e, Status.INTERNAL_SERVER_ERROR);
+        }
+        // End of user code
+        return resources;
+    }
+</code></pre><p>This second parameter did however require a small change in the generated delegateUI.js file. Since that file does not support protected user code sections, it was necessary to clone that file to delegetedUItyped.js and add the change there:</p>
+<pre><code>  xmlhttp.open(&quot;GET&quot;, baseUrl + &quot;&amp;terms=&quot; + encodeURIComponent(terms), true);
+</code></pre><p>The terms parameter now follows the type parameter, so it needs to start with &amp; not ?. And <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselector.jsp">iotpselectiondialogselector.jsp</a> is updated to used delegatedUItyped.js instead of delegatedUI.js.</p>
+<pre><code>    &lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%=UriBuilder.fromUri(OSLC4JUtils.getPublicURI()).path(&quot;delegatedUItyped.js&quot;).build().toString()%&gt;&quot;&gt;&lt;/script&gt;
+</code></pre><h2>Creation Dialog</h2><p>Before going into the details of the creation dialog format, it might be helpful to understand how the generated creation dialogs work.</p>
+<h3>Creation Dialog Implementation</h3><p>The lifecycle scenario of the Lyo Designer generated creation dialog, like all OSLC services, also starts with the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/java/com/ibm/oslc/adaptor/iotp/services/IoTPlatformService.java">IoTPlatformService</a> class. The creation dialog service is implemented using the following generated creator method:</p>
+<pre><code>    @GET
+    @Path(&quot;creator&quot;)
+    @Consumes({MediaType.WILDCARD})
+    public void ResourceAndChangeRequestAndRequirementCreator(
+                @PathParam(&quot;iotId&quot;) final String iotId
+        ) throws IOException, ServletException
+</code></pre><p>This method simply sets some request attributes and delegates to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpcreationdialogcreator.jsp">iotpcreationdialogcreator.jsp</a> JSP.</p>
+<p>The user fills in the fields as needed and presses the OK button. This sends a POST message to the resource creation service using the JavaScript create method in <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/delegatedUI.js">delegatedUI.js</a>. </p>
+<pre><code>    @OslcDialog
+    (
+         title = &quot;ResourceCreationDialog&quot;,
+         label = &quot;Resource Creation Dialog&quot;,
+         uri = &quot;iotp/{iotId}/resources/creator&quot;,
+         hintWidth = &quot;525px&quot;,
+         hintHeight = &quot;225px&quot;,
+         resourceTypes = {Oslc_amDomainConstants.RESOURCE_TYPE, Oslc_cmDomainConstants.CHANGEREQUEST_TYPE, Oslc_rmDomainConstants.REQUIREMENT_TYPE},
+         usages = {&quot;http://open-services.net/ns/am#IoTPCreationDialog&quot;}
+    )
+    @POST
+    @Path(&quot;creator&quot;)
+    @Consumes({ MediaType.APPLICATION_FORM_URLENCODED})
+    public void createResourceAndChangeRequestAndRequirement(
+            @PathParam(&quot;iotId&quot;) final String iotId)
+</code></pre><p>This method has user code that examines the type query parameter, and use it to call the right creation method in the CE4IoTConnectorManager. This code has to be updated in order to support creation of additional resource types.</p>
+<pre><code>            // Start of user code createResourceAndChangeRequestAndRequirement
+            // TODO Implement code to create the new resource. This method seems to be expected to handle more than a single type of resources.
+            // Get the user selected resource type from the query parameter
+            String[] paramValues;
+            Resource aResource = new Resource();
+            String resourceType = httpServletRequest.getParameter(&quot;type&quot;);
+            if (resourceType.equals(&quot;devicetype&quot;)) {
+                aResource = new DeviceType();
+            } else if  (resourceType.equals(&quot;device&quot;)) {
+                aResource = new Device();                
+            }
+            // generic Resource Properties to set (and these are all that are needed for any IoT Platform resource:
+            paramValues = httpServletRequest.getParameterValues(&quot;identifier&quot;);
+            if (paramValues != null) {
+                    if (paramValues.length == 1) {
+                        if (paramValues[0].length() != 0) {
+                            aResource.setIdentifier(paramValues[0]);
+                            aResource.setTitle(aResource.getIdentifier());
+                            aResource.setShortTitle(aResource.getIdentifier());
+                            // else, there is an empty value for that parameter, and hence ignore since the parameter is not actually set.
+                        }
+                    }
+                    paramValues = httpServletRequest.getParameterValues(&quot;description&quot;);
+                    if (paramValues != null) {
+                            if (paramValues.length == 1) {
+                                if (paramValues[0].length() != 0)
+                                    aResource.setDescription(paramValues[0]);
+                                // else, there is an empty value for that parameter, and hence ignore since the parameter is not actually set.
+                            }
+
+                    }
+            }
+
+            if (resourceType.equals(&quot;devicetype&quot;)) {
+                newResource = CE4IoTConnectorManager.createDeviceType(httpServletRequest, (DeviceType)aResource, iotId);
+            } else if  (resourceType.equals(&quot;device&quot;)) {
+                String typeId = httpServletRequest.getParameter(&quot;typeId&quot;);
+                ((Device)aResource).setTypeId(typeId);
+                newResource = CE4IoTConnectorManager.createDevice(httpServletRequest, (Device)aResource, iotId);
+            }
+
+            // End of user code
+</code></pre><h3>CE4IoTConnector Creation Dialog</h3><p>CE4IoTConnector also uses a single creation dialog for all resources. Separate creation dialogs for each resource type would result in a lot of redundant dialogs, and would not provide any means for users to choose what to create. This is because the jazz.net apps expect the server&#39;s creation dialog to deal with determining what resource to create inside its creation dialog. </p>
+<p>The creation dialog is implemented in <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpcreationdialogcreator.jsp">iotpcreationdialogcreator.jsp</a>. It uses a simple HTML select element to provide a drop-down selection list of resource types. </p>
+<pre><code>  Type: &lt;select id=&quot;selectType&quot;&gt;
+      &lt;option value=&quot;device&quot;&gt;Device&lt;/option&gt;
+      &lt;option value=&quot;devicetype&quot;&gt;DeviceType&lt;/option&gt;
+      &lt;option value=&quot;thing&quot;&gt;Thing&lt;/option&gt;
+      &lt;option value=&quot;thingtype&quot;&gt;ThingType&lt;/option&gt;
+      &lt;option value=&quot;logicalinterface&quot;&gt;LogicalInterface&lt;/option&gt;
+      &lt;option value=&quot;physicalinterface&quot;&gt;PhysicalInterface&lt;/option&gt;
+      &lt;option value=&quot;eventtype&quot;&gt;EventType&lt;/option&gt;
+      &lt;option value=&quot;schema&quot;&gt;Schema&lt;/option&gt;
+      &lt;option value=&quot;rule&quot;&gt;Rule&lt;/option&gt;      
+  &lt;/select&gt;
+</code></pre><p>A simple JavaScript script sets the type query parameter and adds it to the creation dialog URL so that it is available to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java">CE4IoTConnectorManager</a> RequirementAndChangeRequestAndResourceSelector method.</p>
+<pre><code>  &lt;script&gt;
+  var creatorUri = {}
+  $(document).ready(function() {
+        var selectType = document.getElementById(&quot;selectType&quot;)
+        $(&#39;#selectType&#39;).on(&#39;click&#39;, function load() {
+            var type = selectType.options[selectType.selectedIndex].value
+              var parser = document.createElement(&#39;a&#39;)
+            parser.href = document.URL
+            var uri = parser.protocol+&#39;//&#39;+parser.host+&#39;/iotp/creators/&#39;+type+&#39;.jsp&#39;
+            creatorUri = &#39;&lt;%= creatorUri %&gt;&#39;+&#39;?type=&#39;+type  // provide the selected type as a query parameter
+            $(&#39;#Create #resourceProperties&#39;).load(uri)      
+         })
+         selectType.selectedIndex = 1
+         selectType.click()
+      })
+  &lt;/script&gt;
+</code></pre><p>This script sets the type query parameter which is use in the IoTPlatformService creator service to determine which resource type to create, and to call the proper CE4IoTConnectorManager creation method. It also loads the appropriate content from JSP pages in the <a href="https://github.com/OSLC/iotp-adaptor/tree/master/CE4IoTConnector/src/main/webapp/creators">creators</a> folder. These dialogs contain the HTML fragments that are specific to each resource. The implementation of these dialogs is similar to what Lyo Designer would create for individual resource creation dialogs.</p>
+<h2>Small Preview Dialog</h2><p>Lyo Designer generates a JAX-RS service method for each resource small preview. GET on this URL returns the OSLC Compact resource with the client then uses to get the resource icon, title and small and large preview dialog URLs.</p>
+<pre><code>    @GET
+    @Path(&quot;deviceTypes/{deviceTypeId}&quot;)
+    @Produces({OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML})
+    public Compact getDeviceTypeCompact(
+        @PathParam(&quot;iotId&quot;) final String iotId, @PathParam(&quot;deviceTypeId&quot;) final String deviceTypeId
+        ) throws ServletException, IOException, URISyntaxException
+</code></pre><p>Clients then do GETs on the individual dialog URLs. The dialogs are dynamic HTML pages implemented as JSPs, one for each resource. For example, Device small preview is implemented in <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/devicesmallpreview.jsp">devicesmallpreview.jsp</a>.</p>
+<p>The actual fields displayed will likely need to be adjusted for style, format, and to remove any fields that should not be shown. This is what was provided for <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/devicesmallpreview.jsp">devicesmallpreview.jsp</a>:</p>
+<pre><code>&lt;%
+  Device aDevice = (Device) request.getAttribute(&quot;aDevice&quot;);
+  JsonObject deviceData = aDevice.getDeviceData(request);
+%&gt;
+...
+          &lt;dl class=&quot;row&quot;&gt;
+            &lt;dt class=&quot;col-sm-3&quot;&gt;typeId&lt;/dt&gt;
+            &lt;dd class=&quot;col-sm-9&quot;&gt;&lt;%= aDevice.typeIdToHtml()%&gt;&lt;/dd&gt;
+            &lt;dt class=&quot;col-sm-3&quot;&gt;description&lt;/dt&gt;
+            &lt;dd class=&quot;col-sm-9&quot;&gt;&lt;%= aDevice.descriptionToHtml()%&gt;&lt;/dd&gt;
+&lt;% for (Map.Entry&lt;String, JsonElement&gt; e : deviceData.entrySet()) { %&gt;  
+            &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;%= e.getKey() %&gt; &lt;/dt&gt;
+            &lt;dt class=&quot;col-sm-9&quot;&gt;&lt;%= e.getValue().toString() %&gt; &lt;dd&gt;
+&lt;% } %&gt;         
+          &lt;/dl&gt;
+</code></pre><p>Notice the change in attributes to control the description list. See <a href="http://v4-alpha.getbootstrap.com/migration/">http://v4-alpha.getbootstrap.com/migration/</a> which says:
+.dl-horizontal has been dropped. Instead, use .row on <dl> and use grid column classes (or mixins) on its <dt> and <dd> children as shown in <a href="https://getbootstrap.com/docs/4.0/content/typography/#description-list-alignment">Description list alignment</a>. </dd></dt></dl></p>
+<p>Notice also that the Device small preview also includes additional fields to show the Device&#39;s current runtime values. This shows how preview dialogs can be extended to so additional data as needed.</p>
+<h2>Large Preview Dialog</h2><p>Large preview dialogs are similar to small preview dialogs. The only difference is in their content and layout. See <a href="https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/webapp/com/ibm/oslc/adaptor/iotp/devicetypelargepreview.jsp">iotp/devicetypelargepreview.jsp</a> for a typical example.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
