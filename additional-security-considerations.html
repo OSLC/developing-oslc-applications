@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="http://oslc.github.io/developing-oslc-applications/css/oslc.css"><script src="http://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'http://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/">Get started with developing OSLC applications</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/why-develop-oslc-applications.html">Why develop OSLC applications?</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/technical-foundations.html">Technical foundations</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/services-resources-and-design-patterns.html">Services, resources, and design patterns</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/tools-and-sdks.html">Tools &amp; SDKs</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/sample-applications-and-code.html">Sample applications and code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp-adaptor-sample.html">Sample OSLC adapter for IoT Platform</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html">OSLC Open Source Node.js Projects</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title"></h1></header><section class="content"><div class="copy"><h1>Configurations Necessary for Distributed Deployments</h1><p>An adapter is often a web service that gathers and dispenses information from a federation of servers. Modern web browsers employ several protection mechanisms to prevent attackers from gaining access to unauthorized information and from forcing the user&#39;s browsers to perform forbidden behavior.</p>
+<p>Such protections include:</p>
+<ul>
+<li>Session Management with JSESSIONID</li>
+<li>Mixed-mode guards</li>
+<li>Cross-Origin Resource Sharing guards</li>
+<li>Content Security Policies</li>
+<li>Cross-site Request Forgery guards</li>
+</ul>
+<p>Successful operation of the integration adapter requires that each of these protection mechanisms is properly configured on the appropriate servers of the federated deployment.</p>
+<h2>Session Management Cookie (JSESSIONID)</h2><p>If you install the Adapter web application and Collaborative Lifecycle Management (CLM) on the same WebSphere Application Server or if the Adapter and CLM are behind the same reverse proxy, such as IBM HTTP Server (IHS), you must change the HTTP session management cookie name. CLM and the adapter both use the same JSESSIONID cookie in an HTTP session. CLM sometimes resets the cookie when you log in, which causes the adapter to lose its session in some linking scenarios. See <a href="ChangingHTTPcookienameTomcat.html">Changing the HTTP session management cookie name for Apache Tomcat</a> or <a href="ChangingHTTPcookienameWAS.html">Changing the HTTP session management cookie name for WebSphere</a> as required.</p>
+<h2>HTTP / HTTPS Mixed-mode Blocking</h2><p>&quot;Mixed-mode&quot; is the requesting of content from both insecure HTTP servers and secure HTTPS servers and the execution of browser scripts from a set of servers using both HTTP and HTTPS protocols.</p>
+<p>In legacy browsers, the browser would allow script loaded from HTTPS servers to make &quot;mixed-mode&quot; requests to HTTP servers. Today, modern browsers block these requests.</p>
+<p>To avoid mixed-mode denial of service, the organization&#39;s servers must all use only HTTP or must all use HTTPS. Furthermore, when using HTTPS, the servers must use SSL Certificate credentials which are issued by trusted root Certificate Authorities. An organization cannot use &quot;self-signed&quot; SSL certificates.</p>
+<p>Not only must each server in the deployment present a valid, root-trusted SSL certificate, each of the other two JVMs which act as clients to the other server must explicitly add the SSL certificate to their &quot;cacerts&quot; key stores.</p>
+<p>The &quot;cacerts&quot; file used by an application is often not the same as the one used by a user&#39;s browser or by the default &quot;JAVA_HOME&quot; JVM on the hosting server.</p>
+<p>To assure that proper SSL keys are published and then are trusted:</p>
+<ol>
+<li>Obtain a Java SSL connection utility such as &quot;portecle&quot; or &quot;SSLpoke&quot;</li>
+<li>Obtain 3 root-CA-signed certifications from a service such as &quot;LetsEncrypt&quot;</li>
+<li>On the CLM server<ul>
+<li>install the root-CA-signed certificate into the Tomcat, WAS, or WAS Liberty keystore used by the particular server (e.g. into the server.xml file)</li>
+<li>Log into the PLM server<ul>
+<li>use &quot;portecle&quot; to open the cacerts file of the Windchill&#39;s Java distribution. Typically, this is located under /opt/Windchill/Java.</li>
+</ul>
+</li>
+<li>Examine the SSL connection to the HTTPS URL of the CLM server  <ul>
+<li>Save each of the discovered certificates (there are often three) as PEM format files</li>
+<li>Import each of the PEM certificates into the PLM server&#39;s cacerts file<ul>
+<li>Log into the RLIA server</li>
+<li>use &quot;portecle&quot; to open the cacerts file of the RLIA distribution. Typically, this is located under /opt/Java.</li>
+<li>Examine the SSL connection to the HTTPS URL of the CLM server</li>
+<li>Save each of the discovered certificates (there are often three) as PEM format files</li>
+<li>Import each of the PEM certificates into the RLIA server&#39;s cacerts file</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>On the PLM server<ul>
+<li>re-configure Windchill for SSL service and disable it for HTTP service</li>
+<li>install the root-CA-signed certificate into the Apache keystore used by Windchill</li>
+<li>Log into the CLM server<ul>
+<li>use &quot;portecle&quot; to open the cacerts file of the CLM distribution. Typically, this is located under /opt/IBM/JazzServer.</li>
+<li>Examine the SSL connection to the HTTPS URL of the PLM server</li>
+<li>Save each of the discovered certificates (there are often three) as PEM format files</li>
+<li>Import each of the PEM certificates into the CLM server&#39;s cacerts file</li>
+</ul>
+</li>
+<li>Log into the RLIA server<ul>
+<li>use &quot;portecle&quot; to open the cacerts file of the RLIA distribution. Typically, this is located under /opt/Java.</li>
+<li>Examine the SSL connection to the HTTPS URL of the PLM server</li>
+<li>Save each of the discovered certificates (there are often three) as PEM format files</li>
+<li>Import each of the PEM certificates into the RLIA server&#39;s cacerts file</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>On the RLIA server<ul>
+<li>install the root-CA-signed certificate into the Tomcat, WAS, or WAS Liberty keystore used by the particular server (e.g. into the server.xml file)</li>
+<li>Log into the CLM server<ul>
+<li>use &quot;portecle&quot; to open the cacerts file of the CLM distribution. Typically, this is located under /opt/IBM/JazzServer.</li>
+<li>Examine the SSL connection to the HTTPS URL of the RLIA server</li>
+<li>Save each of the discovered certificates (there are often three) as PEM format files</li>
+<li>Import each of the PEM certificates into the CLM server&#39;s cacerts file</li>
+</ul>
+</li>
+<li>Log into the PLM server<ul>
+<li>use &quot;portecle&quot; to open the cacerts file of the Windchill&#39;s Java distribution. Typically, this is located under /opt/Windchill/Java.</li>
+<li>Examine the SSL connection to the HTTPS URL of the RLIA server</li>
+<li>Save each of the discovered certificates (there are often three) as PEM format files</li>
+<li>Import each of the PEM certificates into the PLM server&#39;s cacerts file</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>When finished, you should have 3 root-signed certificates and 6 trust relationships. If one or more of these 9 configurations is incorrect, the Adapter integration will fail in one or more ways.</p>
+<h1>Cross-Origin Resource Sharing (CORS)</h1><p>Within the Adapter integration, the Windchill Javascript in the browser of a PLM user will attempt to make requests directly to the CLM server from script that was sourced either from the PLM server (in Windchill extensions) or from the RLIA server (in JSP-loaded scripts). Without CORS support on the CLM server, the user&#39;s browser will reject those cross-origin requests.</p>
+<p>Note that CORS-blocking is particularly difficult to diagnose because the browsers are required by the CORS standards to return HTTP 200 (OK) for XHR requests that have, in fact, never been sent to the servers.</p>
+<blockquote>
+<p>Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to let a user agent gain permission to access selected resources from a server on a different origin (domain) than the site currently in use. A user agent makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port than the one from which the current document originated.</p>
+<p>An example of a cross-origin request: A HTML page served from <a href="http://domain-a.com">http://domain-a.com</a> makes an &lt;img&gt; src request for <a href="http://domain-b.com/image.jpg">http://domain-b.com/image.jpg</a>. Many pages on the web today load resources like CSS stylesheets, images, and scripts from separate domains, such as content delivery networks (CDNs).</p>
+<p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy. This means that a web application using those APIs can only request HTTP resources from the same domain the application was loaded from unless CORS headers are used.</p>
+<footer>&quot;MDN CORS Site&quot;:<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</a> </footer>
+
+</blockquote>
+<p>Server-side CORS support can either be implemented directly within the servlet controllers of the target application (e.g. within the internal code of Jazz CLM itself) or by features of the execution environment hosting the CLM application (e.g. within IBM WAS Liberty).</p>
+<p>See <a href="ConfiguringCORSforApacheTomcat.html">Configuring CORS for Apache Tomcat</a> or <a href="ConfiguringCORSforIBMWASLiberty.html">Configuring CORS for IBM WAS Liberty</a> as appropriate. If you deploy a different execution host, consult its documentation for how to enable CORS.</p>
+<p>Regardless of which execution environment is in use, the configuration for CORS necessary for the adapter includes the following HTTP Headers with the values shown:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Header</th>
+<th>Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client</td>
+<td>Origin</td>
+<td>@<a href="https://windchill.acme.com@">https://windchill.acme.com@</a></td>
+<td>Predates CORS but must be included in requests from the client to the server</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Access-Control-Allow-Origin</td>
+<td>@<a href="https://windchill.acme.com@">https://windchill.acme.com@</a></td>
+<td>Replace this with the URL(s) for your PLM server(s)</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Access-Control-Allow-Methods</td>
+<td>OPTIONS, GET, DELETE, POST, PUT, PATCH</td>
+<td>OPTIONS is necessary for XHR pre-flight CORS requests</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Access-Control-Allow-Headers</td>
+<td>Origin, Authorization, DoorsRP-Request-Type</td>
+<td>Which headers can pass client-to-server across origins</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Access-Control-Expose-Headers</td>
+<td>WWW-Authenticate, X-jazz-web-oauth-url</td>
+<td>Which headers can flow back from server-to-client</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Access-Control-Allow-Credentials</td>
+<td>&quot;true&quot;</td>
+<td>Necessary for cookies to be exchanged across origins</td>
+</tr>
+</tbody>
+</table>
+<p>Integration developers should be aware that for the browser to honor CORS requests and responses, the XHR requests in the client Javascript have to include the &quot;withCredentials: true&quot; parameter.</p>
+<h2>Content Security Policies (CSP)</h2><p>In addition to performing client-to-server requests, the adapter within the Windchill Javascript in the browser of a PLM user will also attempt to make requests between the browser&#39;s execution contexts, that is between windows whose source was loaded either from the PLM server (in Windchill extensions) or from the RLIA server (in JSP-loaded scripts) or from the CLM server (in iframe content). Without the use of CSP headers on the servers, the user&#39;s browser will reject those cross-domain requests.</p>
+<blockquote>
+<p>A primary goal of Content Security Policy (CSP) is to mitigate and report Cross-site Scripting (XSS) attacks. XSS attacks exploit the browser&#39;s trust of the content received from the server. Malicious scripts are executed by the victim&#39;s browser because the browser trusts the source of the content, even when it&#39;s not coming from where it seems to be coming from.</p>
+<p>CSP makes it possible for server administrators to reduce or eliminate the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts. A CSP compatible browser will then only execute scripts loaded in source files received from those whitelisted domains, ignoring all other script (including inline scripts and event-handling HTML attributes).&quot;</p>
+<footer>&quot;MDN CSP Site&quot;:<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP</a> </footer>
+
+</blockquote>
+<p>In legacy versions of browsers and of Javascript, a programmer could set the targetOrigin argument in window.postMessage calls to be &quot;&#10033;&quot; to allow all sites to post messages between the browser&#39;s windows. In modern versions of the browsers, the use of &quot;&#10033;&quot; only disables the error warning that the browser would otherwise raise for cross-site messaging. Today, the servers must provide a suitable Content-Security-Policy header for their scripts and the programmer must supply a proper host URL for the targetOrigin parameter.</p>
+<p>To configure CSP support in Jazz CLM for the PLM server:</p>
+<ol>
+<li>Browse to the JTS admin site for each of the CLM realms with which the adapter has an association<ul>
+<li>for example to &quot;rm&quot;, &quot;cm&quot;, and &quot;gc&quot;</li>
+</ul>
+</li>
+<li>Select Manage this Application from the Administration menu</li>
+<li>Select Whitelist from the panel of Consumers, Friends, and Whitelist</li>
+<li>Add a new URL for the PLM server to the set of any Whitelisted URLs already present<ul>
+<li>for example, @<a href="https://windchill.acme.com@">https://windchill.acme.com@</a></li>
+</ul>
+</li>
+</ol>
+<h2>Cross-Site Request Forgery (CSRF)</h2><p>The adapter server responds to requests that are external to it with information that is intended only for the authorized user making the originating request. To assure that responses from the server are not sent to unauthorized strangers, the adapter server exploits CSRF protections.</p>
+<blockquote>
+<p>Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they&#39;re currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data, since the attacker has no way to see the response to the forged request.&quot;</p>
+<footer>&quot;OWASP CSRF Site&quot;:<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)/">https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)/</a> </footer>
+
+</blockquote>
+<p>The adapter web application uses the OWASP CSRF Guard as a Java Servlet Request Filter on each request to inject session state to prevent CSRF attacks.</p>
+<p>Your network should not employ HTTP packet filters that strip CSRF state from packets or use proxy servers that neglect to pass along CSRF state.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>
