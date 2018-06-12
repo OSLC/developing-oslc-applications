@@ -96,23 +96,20 @@ The rootservices document also provides discovery information for the Tracked Re
 
 * trackedResourceSet: The base URL for accessing the TRS base resources and changeLog.
 * title: the title of the TRS provider, shown in the LQE data source views
-* type: the type of the TRS resources
+* type: the type of the TRS resources, the "machine readable" identifier to compare for uniqueness - does not need to be dereferenceable
 * domain: the OSLC domain(s) of the TRS resources
 
-The CE4IoTConnector provides a simple TRS provider for AM and CM resources:
+The CE4IoTConnector provides a simple TRS 2.0 provider for AM and CM resources:
 
 ```
-    <iotp:trackedResourceSetProvider>
-        <trs:TrackedResourceSetProvider>
-            <trs:trackedResourceSet rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/trs" />
-            <dc:title>TRS 2.0 for IoT Platform Resources</dc:title>
-            <dc:description>TRS 2.0 feed for IoT Platform resources</dc:description>
-            <dc:type     rdf:resource="http://open-services.net/ns/cm#" />
-            <oslc:domain rdf:resource="http://open-services.net/ns/cm#" />
-            <oslc:domain rdf:resource="http://open-services.net/ns/am#" />
-        </trs:TrackedResourceSetProvider>
-    </iotp:trackedResourceSetProvider>
-</rdf:Description>
+    <trs:TrackedResourceSetProvider>
+        <trs:trackedResourceSet rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/trs" />
+        <dc:title>TRS 2.0 for IoT Platform Resources</dc:title>
+        <dc:description>TRS 2.0 feed for IoT Platform resources</dc:description>
+        <dc:type     rdf:resource="http://open-services.net/ns/cm#" />
+        <oslc:domain rdf:resource="http://open-services.net/ns/cm#" />
+        <oslc:domain rdf:resource="http://open-services.net/ns/am#" />
+    </trs:TrackedResourceSetProvider>
 ```
 
 ## Implementing the rootservices Document

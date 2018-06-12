@@ -77,21 +77,18 @@ Modernizr.load([{
 <ul>
 <li>trackedResourceSet: The base URL for accessing the TRS base resources and changeLog.</li>
 <li>title: the title of the TRS provider, shown in the LQE data source views</li>
-<li>type: the type of the TRS resources</li>
+<li>type: the type of the TRS resources, the &quot;machine readable&quot; identifier to compare for uniqueness - does not need to be dereferenceable</li>
 <li>domain: the OSLC domain(s) of the TRS resources</li>
 </ul>
-<p>The CE4IoTConnector provides a simple TRS provider for AM and CM resources:</p>
-<pre><code>    &lt;iotp:trackedResourceSetProvider&gt;
-        &lt;trs:TrackedResourceSetProvider&gt;
-            &lt;trs:trackedResourceSet rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/trs&quot; /&gt;
-            &lt;dc:title&gt;TRS 2.0 for IoT Platform Resources&lt;/dc:title&gt;
-            &lt;dc:description&gt;TRS 2.0 feed for IoT Platform resources&lt;/dc:description&gt;
-            &lt;dc:type     rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
-            &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
-            &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/am#&quot; /&gt;
-        &lt;/trs:TrackedResourceSetProvider&gt;
-    &lt;/iotp:trackedResourceSetProvider&gt;
-&lt;/rdf:Description&gt;
+<p>The CE4IoTConnector provides a simple TRS 2.0 provider for AM and CM resources:</p>
+<pre><code>    &lt;trs:TrackedResourceSetProvider&gt;
+        &lt;trs:trackedResourceSet rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/trs&quot; /&gt;
+        &lt;dc:title&gt;TRS 2.0 for IoT Platform Resources&lt;/dc:title&gt;
+        &lt;dc:description&gt;TRS 2.0 feed for IoT Platform resources&lt;/dc:description&gt;
+        &lt;dc:type     rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
+        &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
+        &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/am#&quot; /&gt;
+    &lt;/trs:TrackedResourceSetProvider&gt;
 </code></pre><h2>Implementing the rootservices Document</h2><p>The CE4IoTConnector rootservices resource is provided the RootServicesService servlet which sets some request attributes and the dispatches to <code>/rootservices_rdfxml.jsp</code>. The URL to the RootServicesServices servlet is specified in the web.xml file. By convention the URL is the base URL of the server followed by <code>/rootservices</code>.</p>
 <pre><code>    &lt;servlet&gt;
         &lt;servlet-name&gt;RootServicesService&lt;/servlet-name&gt;

@@ -30,6 +30,8 @@ Here are some useful links:
 * [Native Client Authentication](https://jazz.net/wiki/bin/view/Main/NativeClientAuthentication)
 * [User Authentication for Applications Written with the JAF SDK](https://jazz.net/wiki/bin/view/Main/JAFSdkDelegatingAuth#OAuth)
 * [The OAuth Bible](http://oauthbible.com)
+* [One-legged OAuth](http://oauthbible.com/#oauth-10a-one-legged) provides quick access to OAuth with some security drawbacks (no user authentication required)
+* [Two-legged OAuth](http://oauthbible.com/#oauth-10a-two-legged) follows the OAuth flow but avoids the user authentication step
 
 # Authentication
 
@@ -47,7 +49,7 @@ A **Friend** is an application or a Jazz Team Server to which this application i
 
 When a client app has a friend relationship to a server app, it can make requests of that server app, utilizing the agreed upon consumer key for request authentication. These requests are directional - the consumer is the client making the request, and the friend app that provided the consumer key is the server responding to the request. That means the consumer/client can make OSLC creation/selection dialog request, can query resources or GET resource previews of resources managed by the server with the consumer key. Bidirectional server-to-server interactions require a friend to be added to both servers.
 
-A consumer key/secret pair is essentially a login account for an application. If a functional user is associated with the consumer key, consuming apps can use an Authorization header with the consumer key and secret directly to access protected resources. The consumer app is interacting as the functional user. If the functional user has administration privileges, then the application has administrative privileges. So the fact that a consumer key can be created via a REST service means there needs to be some protection so the system administrators can confirm that it was really intended to be created, and not created by a hacker or rogue agent. This is why creation of a consumer key requires an administrator to activate a provisional key.
+A consumer key/secret pair is essentially a login account for an application. If a functional user is associated with the consumer key, consuming apps can use an OAuth Authorization header with the consumer key and secret to access protected resources using [One-legged OAuth](http://oauthbible.com/#oauth-10a-one-legged). The consumer app is interacting as the functional user. Note that the functional user has administration privileges, providing the application with administrative privileges. So the fact that a consumer key can be created via a REST service means there needs to be some protection so the system administrators can confirm that it was really intended to be created, and not created by a hacker or rogue agent. This is why creation of a consumer key requires an administrator to activate a provisional key.
 
 The OAuth spec does not address how client credentials (consumer key and secret) are created, meaning implementations can do whatever they want - it is outside the scope of the specification.
 
@@ -63,13 +65,13 @@ If RDNG does not have a friend relationship with RTC (and RTC therefore provides
 
 But what can you do with that link in RDNG? Can it be navigated? Does it support resource preview? The link will show up in RDNG as a URL without resource preview, but you can click on the link and navigate to RTC as RTC will redirect the GET on the URL to its web application (if there is no Accept header). Authentication in this case is addressed by the user login, not consumer keys. 
 
-All communication between the CE apps and iotp-connector server is one way. The links are all owned by the CE apps, and the iotp-connector is a server providing target resources for those links. The iotp-connector is never a client of any of the CE apps and cannot store any links to resources in those apps.
+All communication between the CE apps and iotp-adaptor server is one way. The links are all owned by the CE apps, and the iotp-adaptor is a server providing target resources for those links. The iotp-adaptor is never a client of any of the CE apps and cannot store any links to resources in those apps.
  
-The iotp-connector server needs to be able to provide consumer keys for the CE friend apps. This could be done with a single consumer key that is created by the administrator and used for all client/friend apps. Or the client apps could create provisional keys when creating the friend connection, and these could be automatically accepted and stored in the iotp-connector server's consumer store.
+The iotp-adaptor server needs to be able to provide consumer keys for the CE friend apps. This could be done with a single consumer key that is created by the administrator and used for all client/friend apps. Or the client apps could create provisional keys when creating the friend connection, and these could be automatically accepted and stored in the iotp-adaptor server's consumer store.
 
 # CredentialsFilter and Session Management
 
-The iotp-connector server uses a JEE servlet filter to intercept all requests to protected resources. This filter is configured in the application's deployment descriptor (web.xml file):
+The iotp-adaptor server uses a JEE servlet filter to intercept all requests to protected resources. This filter is configured in the application's deployment descriptor (web.xml file):
 
 ```
 	<filter>
@@ -88,7 +90,7 @@ If the request is authenticated with a valid OAuth access token, the request ses
 
 # IoT Platform and Bluemix APIs
 
-IoTPClient.java and BluemixClient.java provide simple convenience APIs that abstract the IoT Platform and Bluemix REST services needed to support iotp-connector access needs. It is instances of these classes that are stored in the JEE session and are used by the CE4IoTConnectorManager for all platform access. Bluemix uses a bearer token for authentication. The Bluemix.login() method logs in the user, establishes the bearer token and uses it for subsequent access. 
+IoTPClient.java and BluemixClient.java provide simple convenience APIs that abstract the IoT Platform and Bluemix REST services needed to support iotp-adaptor access needs. It is instances of these classes that are stored in the JEE session and are used by the CE4IoTConnectorManager for all platform access. Bluemix uses a bearer token for authentication. The Bluemix.login() method logs in the user, establishes the bearer token and uses it for subsequent access. 
 
 IoTPClient.login() uses Cloud Identity Access Management (IAM) to handle login. Cloud IAM requires each application to have a clientId and secret. See [Managing user API keys](https://console.bluemix.net/docs/iam/userid_keys.html#userapikey) for information on how to get an clientId and secret for your application. This information needs to be provided in the src/main/resources/config.properties file. For example:
 
