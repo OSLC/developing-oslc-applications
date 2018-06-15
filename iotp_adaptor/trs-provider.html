@@ -7,7 +7,7 @@ Modernizr.load([{
 }]);
 
 </script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="http://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap">     <nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="http://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="http://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/developer-guide.html">Developer Guide</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/environment-setup.html">eclipse environment setup</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/toolchain-model.html">The toolchain model</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/code-generator.html">Generating the server code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/exploring-the-code.html">Exploring the generated code</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/ssl-support.html">https and SSL support</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/authentication.html">Authentication</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/rootservices.html">Creating the rootservices document</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/consumer-friend.html">Connecting Servers</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/artifact-container-associations.html">Artifact Container Associations</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/dialogs.html">Updating generated dialogs</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/implement-domain-class.html">Implementing a Domain Class</a></li><li role="presentation" class="item current"><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/trs-provider.html">Implementing a TRS Provider</a></li><li role="presentation" class="item "><a href="http://oslc.github.io/developing-oslc-applications/iotp_adaptor/junit-tests.html">JUnit Tests</a></li><li role="presentation" class="item"><a href="http://open-services.net/">open-services.net</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Implementing a TRS Provider</h1></header><section class="content"><div class="copy"><h1>Implementing a TRS Provider</h1><p>These are some notes I took implementing the iotp-adaptor TRS provider. These will evolve and get cleaned up over time, but I wanted to get something out as quickly as possible.</p>
-<h2>TRS Resources</h2><ul>
+<h1>TRS Resources</h1><ul>
 <li>The OSLC TRS specification is currently being migrated to OASIS.  Here are some useful resources:</li>
 <li><a href="http://open-services.net/wiki/core/TrackedResourceSet-2.0/">TRS 2.0 Specification</a> - this is being migrated to OASIS</li>
 <li><a href="http://open-services.net/wiki/core/IndexableLinkedDataProvider-2.0/">Indexable Linked Data Provider 2.0</a> - this was a proposed change to the TRS 2.0 specification to focus on LDP that was never completed. Its content is being incorporated into TRS 3.0</li>
@@ -20,87 +20,191 @@ Modernizr.load([{
 <li><a href="https://wiki.eclipse.org/Lyo/BuildTRS4JBugzilla">Bugzilla TRS Provider Example</a> - describes building and running the Bugzilla sample TRS provider</li>
 <li><a href="https://ibm.box.com/s/6j83j0948nalizq6y9puhlhynhe7t5kb">LQE Report Builder Integration for 3rd Party Applications</a> - describes the steps required configure a TRS provider to support access control, process filters and JRS Query Builder</li>
 </ul>
-<h1>Configuring LQE to use iotp-adaptor TRS provider</h1><p>See Setup Rational Engineering Lifecycle Manager, Lifecycle Query Engine, Jazz Team Server and Tracked Resource Set Provider for Bugzilla</p>
-<p>Currently the TRS provider service is run in the credentials of the logged in user when the TRS URI: <a href="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs">https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs</a>. This is OK for testing, but is not sufficient for production. </p>
-<p>For production, we need functional IDs representing each TRS consumer. These should be provided in a config.properties file. Passwords will need to be encrypted. </p>
-<h2>Prerequisites Integrating with LQE</h2><p>A TRS client that keeps the latest clone of a Tracked Resource Set is certainly implemented like a daemon and there is no chance to ask the user to submit credentials via login page. Consequently, OAuth communication code needs to be extended so that a Provider, and a Consumer (a TRS client), can communicate without user interaction (a.k.a. two-legged OAuth). </p>
-<h3>Create the rootservices document</h3><p>This is needed to bootstrap discovery for the jazz based apps.</p>
-<p>/rootservices provides the roots services document required to create a friend relationship needed for LQE to be a Friend of the TRS provider. This document defines the TRS provider to the jazz-base apps.</p>
+<h2>Persisting and Pruning the Change Log (TRS Provider rebase)</h2><p>TRS providers are responsible for managing the base change log for their consumers. In theory, the base is established at the &quot;beginning of time&quot; and the change log continues to grow forever. A TRS provider may choose to periodically, or on some significant event, rebase or recalculate the base resources and prune the change log. The server should retain at least seven days of of the most recent change events in the change log, and set the cutoffEvent to the most recent retained change event to give clients time to catch up to the new base and change log. </p>
+<p>See <a href="https://wiki.eclipse.org/Lyo/TRSReferenceApplication#Persisting_and_Pruning_the_Change_Log">Persisting and Pruning the Change Log</a> in the eclipse/Lyo <a href="https://wiki.eclipse.org/Lyo/TRSReferenceApplication">TRS Reference Application</a> for details.</p>
+<p>The <strong>cutoffEvent</strong> property of the Base identifies the point in the Change Log at which processing of Change Events can be cut off because older changes are already covered by the new Base after the rebase operation.</p>
+<p>iotp-adaptor does not currently support TRS provider rebase operations, or the rebase can be done manually while the other CE servers are down. Proper rebase support would need to be implemented in a production TRS provider.</p>
+<p>TRS consumers wouldn&#39;t be aware of a rebase as long as they are refreshed within the 7 day window. However, if a server was down for an extended time, it would need to reindex or risk loosing change events.</p>
+<p>Servers could rebase often as long as some change events prior to the cutoffEvent are retained.  For some servers, especially those with very large numbers of resources, the cost involved in recalculating the entire base set and setting up the TRS base RDF might be quite high. The cost of pruning the change log after a rebase should not be high - just forget the events more than 7 days behind the new cutoff.</p>
+<p>A very frequent rebase would potentially increase the risk that a client is half-way through reading the base when it was replaced, increasing the need for the server to detect and reject attempts to read pages or members from an old base. It would also increase the risk of clients that are off-line for more than 7 days loosing change events because their base is out of date.</p>
+<h2>Persisting the Base and ChangeLog</h2><p>See org.eclipse.lyo.rio.trs.util.TRSObject.java in the <a href="https://wiki.eclipse.org/Lyo/TRSReferenceApplication">TRS Reference Application</a> for how to implement best practices for persisting and pruning the TRS provider&#39;s change log. </p>
+<p>Base::cutoffEvent is an RDF property. The most recent Change Log entry that is accounted for in this Base. When rdf:nil, the Base is an enumeration at the start of time. </p>
+<p>buildBaseResourcesAndChangeLogsWithScanning currently recreates the base every time the server is restarted. It should instead read last base and change log from files and pickup where it left off. This will prevent a rebase operation on every server restart, and therefore ensure slow TRS consumers don’t miss any change events. iotp-adaptor does not do this in order to keep the example TRS provider as simple as possible. </p>
+<p>Ideally the change log would be stored in a queryable database in order to more efficiently support paging. It may also be possible to store each change log page in separate files, ordered by change event.</p>
+<h1>Adding a TRS provider to iotp-adaptor</h1><p>The following sections describe the steps required to add a TRS provider to an OSLC server generated by eclipse/Lyo Designer.</p>
+<h3>Update the pom.xml file to include the dependency on oslc-trs.</h3><pre><code> &lt;dependency&gt;
+        &lt;groupId&gt;org.eclipse.lyo&lt;/groupId&gt;
+        &lt;artifactId&gt;oslc-trs&lt;/artifactId&gt;
+        &lt;version&gt;2.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h3>Create package com.ibm.oslc.adaptor.iotp.trs for the TRS provider implementation</h3><p><strong>TrackedResourceSetService.java</strong> - provides the JAX-RS services to get the TRS, Base, ChangeLog, etc. resources</p>
+<p><strong>TRSObject.java</strong> - provides the adaptor specific implementation of the methods to:</p>
+<ul>
+<li>buildBaseResourcesAnChangeLogs calls buildBaseResourcesAndChangeLogsWithScanning</li>
+<li>getBaseResource - calls buildBaseResourcesAndChangeLogsWithScanning and returns the baseResources</li>
+<li>getChangeLog - calls buildBaseResourcesAndChangeLogsWithScanning and returns the changeLogs</li>
+</ul>
+<p>These are the TRS adapter methods called by TrackedResourceSetService that actually do the work on the underlying data sources. These methods are implemented in TRSObject.java. Currently they all call TRSObject.buildBaseResourcesAndChangeLogsWithScanning.</p>
+<p><strong>TRSObject.buildBaseResourcesAndChangeLogsWithScanning</strong>:</p>
+<ul>
+<li>Does not yet address paging or reindexing in the initial implementation</li>
+<li>If baseResources is null, the base and change log are recreated from scratch. </li>
+<li>calls updateChangeLog () to update the change log</li>
+</ul>
+<p>buildBaseResourcesAndChangeLogsWithScanning currently recreates the base every time the server is restarted. In a production version it should instead read last base and change log from files or a database, and pickup where it left off. This will minimize changes sent to the TRS consumers. </p>
+<p><strong>getBase</strong> - gets the base resources</p>
+<p>The base resources consist of all the IoT Platform resources managed by the organization to which the configured trs_user is a member. The getBase() method reads all organizations, and for each organization it:</p>
+<ol>
+<li>Uses IoT Platform REST APIs to get all instances of DeviceType, LogicalInterface, PhysicalInterface, EventType, Schema, ThingType, Rule, Thing and Device</li>
+<li>Calculates the OSLC URI from the element id.</li>
+<li>adds it to the resource Base.</li>
+</ol>
+<p>Paging should be handled by how the URLs are added to the baseResources. As the IoT Platform resource URIs are constructed from the IoT Platform scan, they are organized into page objects that can be indexed by page number. That is, the Base stores the members by page.</p>
+<p>The getBase method also not currently put the members into pages. The members are added directly to the base as if there was only one large page.</p>
+<p>The getBase method currently only reads the DeviceTypes - it needs to also read, create the OSLC URI and add members to the base for:</p>
+<ul>
+<li>LogicalInterface</li>
+<li>PhysicalInterface</li>
+<li>EventType</li>
+<li>Schema</li>
+<li>Device</li>
+<li>ThingType</li>
+<li>Rule</li>
+<li>Thing</li>
+</ul>
+<p>These are resources are not included because 1) iotp-adaptor is not a production TRS provider and 2) the simple scan method used to detect changes would put too much load on the Watson IoT Platform. An event-based change management mechanism would be needed for more efficient change log generation.</p>
+<p><strong>updateChangeLog</strong> - detects and logs changes in IoT platform resources</p>
+<p>The Watson IoT Platform does not yet provide an notification of changes to platform resources. Currently MQTT messages from physical devices on the edge of the internet are processed by the PhysicalInterface of a Device according to its DeviceType in order to get the runtime data values for the Device. However there is no other notification available to the IoT Platform REST APIs. As a result, the only way to detect changes in IoT platform resources is to scan every resource and examine the modification dates. The updateChangeLog method:</p>
+<ol>
+<li>Keeps a lastSnapshot of the Base resources</li>
+<li>Gets the latestSnapshot of the base</li>
+<li>Compares the members of latestSnapshot with lastSnapshot<ol>
+<li>adds Creation event to the change log for resources in latestSnapshot, but not in lastSnapshot</li>
+<li>adds Modification event for resources that have changed based on their last update times (which are different for Device and DeviceType than the other resources)</li>
+<li>add Deletion events for anything that was in lastSnapshot, but not in latestSnapshot</li>
+<li>sets lastSnapShot to latestSnapshot </li>
+</ol>
+</li>
+</ol>
+<p>updateChangeLog in a production implementation would to add the events to the ChangeLog by pages and set the trs:previous property to the URL of the previous change log. </p>
+<h3>Register the TRS provider REST services</h3><p>Register the new REST service class with the application referenced in javax.ws.rs.Application parameter in the web.xml file: com.ibm.oslc.adaptor.iotp.servlet.Application:</p>
+<pre><code>    // Start of user code Custom Resource Classes
+    // TRS service
+    RESOURCE_CLASSES.add(TrackedResourceSetService.class);
+    // End of user code
+</code></pre><h3>Add the TRS provider to the rootservices document</h3><p>This is needed to bootstrap discovery for the jazz based apps. For example, LQE can use the iotp-adaptor root services document to discover the TRS providers and the OAuth URLs needed to add the iotp-adaptor TRS provider as a Data source. The rootservices_rdfxml.jsp file is modified to add the TRS provider information:</p>
+<p>/rootservices provides the root services document required to create a friend relationship needed for LQE to be a Friend of the TRS provider. This document defines the TRS provider to the jazz-base apps.</p>
 <p>Update the iotp-adaptor rootservices to provide additional TRS provider information:</p>
-<pre><code>xmlns:trs2=&quot;http://open-services.net/ns/core/trs#&quot;
+<pre><code>    xmlns:iotp=&quot;http://jazz.net/ns/dm/iotp#&quot;
+    xmlns:oslc=&quot;http://open-services.net/ns/core#&quot;
+    xmlns:dc=&quot;http://purl.org/dc/terms/&quot;
+    xmlns:trs2=&quot;http://open-services.net/ns/core/trs#&quot;
 
-&lt;trs2:TrackedResourceSet&gt;
-    &lt;trs2:trackedResourceSet rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/trs&quot; /&gt;
-    &lt;dc:title&gt;TRS 2.0 for IoT Platform Resources&lt;/dc:title&gt;
-    &lt;dc:description&gt;TRS 2.0 feed for IoT Platform resources&lt;/dc:description&gt;
-    &lt;dc:type     rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
-    &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
-    &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/am#&quot; /&gt;
-&lt;/trs2:TrackedResourceSet&gt;
-</code></pre><h3>Add a CredentialsFilter to handle OAuth Authentication</h3><p>A CredentialsFilter class is used to manage the OAuth authentication between the consumer and friend applications, using the Lyo server oauth nested web app.</p>
-<p>This is different than the CredentialsFilter I cloned from the BugzillaAdapter sample and the <a href="https://wiki.eclipse.org/Lyo/TRSSDK#TRS_Reference_Application">TRS Workshop, 3 TRS Reference Application, TRS reference application guided tour</a> describes the code very nicely. The difference is this CredentialsFilter implements two-legged OAuth flow using validateTwoLeggedOAuthMessage(OAuthMessage) in the doFilter method. This allows LQE to authenticate with iotp-adaptor without provideing user credentials as long as a functional user id has been provided. This is an alternative approach that won&#39;t work for iotp-adapter because IoT Platform credentials are required to access the Watson IoT Platform. So the TRS provider can use the same CredentialsFilter that authenticates other OSLC requests. </p>
-<p>if the doFilter is  handling an two-legged OAuth request, it schecks to see if the token is blank to see if this is a two-legged oauth request. If it is, it validates the message:</p>
+    &lt;!-- IoT Platform Tracked Resource Set Provider --&gt;
+    &lt;iotp:trackedResourceSetProvider&gt;
+        &lt;trs2:TrackedResourceSet&gt;
+            &lt;trs:trackedResourceSet rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs&quot; /&gt;
+            &lt;dc:title&gt;TRS 2.0 for IoT Platform Resources&lt;/dc:title&gt;
+            &lt;dc:description&gt;TRS 2.0 feed for IoT Platform resources&lt;/dc:description&gt;
+            &lt;dc:type     rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
+            &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
+            &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/am#&quot; /&gt;
+        &lt;/trs2:TrackedResourceSet&gt;
+    &lt;/iotp:trackedResourceSetProvider&gt;
+</code></pre><p>This information is not currently documented in the jazz.net <a href="https://jazz.net/wiki/bin/view/Main/RootServicesSpec">Root Services Specification</a> but is described in an LQE workgroup March 2015 meeting.</p>
+<h3>Add two-legged OAuth support to the CredentialsFilter</h3><p>Adding a TRS provider as an application such as an LQE data source typically uses OAuth <a href="http://oauthbible.com/#oauth-10a-two-legged">two-legged</a> authentication. This allows the iotp-adaptor server to respond to HTTP requests authenticated with OAuth without requiring a user to enter their credentials. The interaction between a TRS consumer and a TRS provider wouldn&#39;t typically involve individual users. Instead a functional ID is often used to authenticate access to the TRS provider. Use the trs4j-bugzilla-sample as a model for updating the CredentialsFilter.doFilter method.</p>
+<p>A validated OAuth authentication still requires a connection to the IoT Platform and Bluemix. This requires a functional ID that has credentials for logging in to both of these platforms, and is a member of the organizations that will be accessible through the TRS provider. iotp-adaptor gets this user id and and password from its config.properties file. These values, along with the baseURI and port will need to be provided by installation and configuration.</p>
+<p>The CredentialsFilter class is used to manage the OAuth authentication between the consumer and friend applications, using the Lyo server oauth-webapp nested web app.</p>
+<p>This is different than the CredentialsFilter from the BugzillaAdapter sample because it needs to support two-legged OAuth. The <a href="https://wiki.eclipse.org/Lyo/TRSSDK#TRS_Reference_Application">TRS Workshop, 3 TRS Reference Application, TRS reference application guided tour</a> describes the code very nicely. The iotp-adaptor CredentialsFilter implements two-legged OAuth flow using validateTwoLeggedOAuthMessage(OAuthMessage) in the doFilter method. This allows LQE to authenticate with iotp-adaptor without providing user credentials as long as a functional user id has been provided. The functional user ID for the iotp-adapter is specified as the trs_user in the config.properties file and is the credentials used to access the Watson IoT Platform. </p>
+<p>If the doFilter checks to see if the token is blank to see if this is a two-legged oauth request. If it is, it validates the message:</p>
 <pre><code>// test if this is a valid two-legged oauth request
 if (&quot;&quot;.equals(message.getToken())) {
     validateTwoLeggedOAuthMessage(message);
     isTwoLeggedOAuthRequest = true;
 }
-</code></pre><p>Assuming the message is valid, it proceeds as if it was not an oauth request and does a normal login with credentials provided by the user.</p>
-<p>Use the same credentials you use to login to iotp-adaptor to approve provisional keys when creating the consumer/friend relationships.</p>
-<p>There are other examples of AbstractAdapterCredentialsFilter in trs4j-bugzilla-sample, including one that supports multiple threads. These may be useful for iotp-adaptor</p>
-<p>Two-legged OAuth</p>
-<p>This is required so a TRS Provider (server), and a TRS Consumer (server), can communicate without user interaction.</p>
-<p>A request by the “trusted” consumer is processed using a pre-defined user account (a.k.a. functional user). In the Bugzilla TRS adapter workshop, the user is admin user and is specified in bugz.properties file: root@localhost.here and passw0rd.
-See CredentialsFilter.java in org.eclipse.lyo.oslc4j.bugzilla.servlet</p>
-<p>The first authentication access is with a blank token which will be non-null, but will raise an OAuthProblemException because there will be no secret for that token. This is what the two-legged OAuth code needs to deal with.</p>
-<p>Have to add this code to iotp-adaptor’s CredentialsFilter.</p>
-<p>Two-headed authentication does not provide any credentials from the user’s session because the OAuth token is used for authentication, not credentials from the client.  This is why anything that uses OAuth must authenticate with some provided admin Id.</p>
-<p>LQE authenticates with the iotp-adaptor (TRS) server using OAuth. However, this does not provide the admin credentials of the admin user who accepted the provisional key to iotp-adaptor. So when LQE makes a request for the base or change log resources, iotp-adaptor has no IoT Platform user credentials to use to login. So the request fails with 401.</p>
-<p>Something has to provide IoT Platform credentials in order to access the iotp-adaptor TRS provider in order for LQE to read the TRS resources.</p>
-<p>The trs4j-bugzilla-sample provides these credentials in the bugs.properties file. This would not be appropriate for iotp-adaptor. In CredentialsFilter.doFilter(), </p>
-<pre><code>if (isTwoLeggedOAuthRequest) {
-    connector = keyToConnectorCache.get(&quot;&quot;);
-    if (connector == null) {
-       credentials = BugzillaManager.getAdminCredentials();
-       connector = getBugzillaConnector(credentials);
-       keyToConnectorCache.put(&quot;&quot;, connector);
-    }
-} else {
-   // ...
-}
-</code></pre><p>The credentials provided when accepting the provisional key are used to create the authenticated Bugzilla connector, and this is stored in the keyToConnectorCache for use by the TRS provider.</p>
-<p>Hard-coding the id and password in the CredentialsFilter does allow the LQE connection to work and the TRS feed is recognized.</p>
-<p>iotp-adaptor needs to access the credentials for establishing server-to-server connections using OAuth for the TRS provider from information stored in a config.properties file. This will require encrypting the password.</p>
-<p>The RTC Java SDK has support for obfuscating passwords:</p>
-<pre><code>import com.ibm.team.repository.common.util.ObfuscationHelper;
-ObfuscationHelper.encryptString(passwd) - in some main program.
-   try {
-      password = ObfuscationHelper.decryptString((&quot;encodedPassword&quot;);
-   } catch (UnsupportedEncodingException | GeneralSecurityException e) {
-      // ignore decoding errors
-   }
-</code></pre><p>It would be unfortunate to have to depend on the RTC SDK though. Look for another solution. The encoder and decoder need to use the same key, and it must be hidden (in binary code).</p>
-<h2>Integrating with JTS, LQE and RELM</h2><p>LQE and RELM run in the JTS which requires a Friend authenticated with OAuth to the iotp-adaptor server. Then new Data Source can be configured in LQE to the iotp-adaptor TRS provider (described in the rootservices resource). LQE will now have the data form the IoT Platform as described by the provided resource shapes. RELM can also have a friend to iotp-adaptor so that resource preview can work on IoT Platform resources in the RELM views. RELM views can be created using the JTS query builder which also uses the provided IoT platform resource shapes.</p>
-<h3>Add a Friend in JTS (for LQE and RELM) to the TRS provider server</h3><p>LQE runs in the JTS and uses /jts/admin to add the friends. It is not a separate application like most of the other CE apps.</p>
-<p>Goto the JTS server admin and add a Friend to the TRS provider server - same as any other friend. Provide the rootservices URI for the friend server, and authenticate and authorize the provisional key with JTS admin credentials. </p>
-<p>Server Admin: <a href="https://ce4iot.rtp.raleigh.ibm.com:9443/jts/admin">https://ce4iot.rtp.raleigh.ibm.com:9443/jts/admin</a>
-Root Services URI: <a href="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/rootservices">https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/rootservices</a></p>
+</code></pre><p>Assuming the message is valid, it proceeds as if it was not an OAuth request and does a normal login with credentials provided by the user.</p>
+<p>There are other examples of AbstractAdapterCredentialsFilter in trs4j-bugzilla-sample, including one that supports multiple threads. These may be useful for other adaptors</p>
+<h3>Testing the IoT Platform TRS Provider</h3><p>Testing this minimal TRS provider consists of accessing the TRS and its base and change log resources. These requests can be authenticated with the credentials of the logged in user, or using two-legged OAuth if your REST client supports (Postman only supports OAuth1.0, not OAuth1.0a). </p>
+<ul>
+<li>Get the TRS: <a href="https://localhost:8080/iotp/services/trs">https://localhost:8080/iotp/services/trs</a></li>
+<li>Get the Base resources: <a href="https://localhost:8080/iotp/services/trs/base">https://localhost:8080/iotp/services/trs/base</a></li>
+<li>Get the ChangeLog: <a href="https://localhost:8080/iotp/services/trs/changeLog">https://localhost:8080/iotp/services/trs/changeLog</a> </li>
+</ul>
+<p>Verify the content is as expected. It should be something like:</p>
+<pre><code>@prefix trs:     &lt;http://open-services.net/ns/core/trs#&gt; .
+@prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd:     &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix dcterms:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix ldp:     &lt;http://www.w3.org/ns/ldp#&gt; .
+@prefix rdfs:    &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix oslc:    &lt;http://open-services.net/ns/core#&gt; .
+
+&lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs&gt;
+      a       trs:TrackedResourceSet ;
+      trs:base &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs/base&gt; ;
+      trs:changeLog
+              [ a       trs:ChangeLog ;
+                trs:change &lt;urn:urn-3:trs-provider:2018-06-07T20:52:16Z:3&gt;
+              ] .
+
+&lt;urn:urn-3:trs-provider:2018-06-07T20:52:16Z:3&gt;
+      a       trs:Deletion ;
+      trs:changed 
+          &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestID1&gt; ,         &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestIDXXXX99&gt; , 
+          &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestGatewayType&gt; , 
+          &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/May17_123&gt; , 
+          &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestDeviceType&gt; , 
+          &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TempCtrl&gt; , 
+          &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestID999999&gt; , 
+          &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestID2345&gt; , &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestPie&gt; , 
+          &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/8dm156/resources/deviceTypes/TempCtrl&gt; ;
+      trs:order &quot;3&quot;^^xsd:int .
+</code></pre><h1>Configuring LQE to use iotp-adaptor TRS provider</h1><p>This simple TRS provider provides a surprising amount of capability by simply adding IoT Platform resources to LQE. You can:</p>
+<ul>
+<li>Use the LEQ admin application to explore IoT Platform data with SPARQL queries</li>
+<li>Create RELM custom artifact elements on IoT Platform resources</li>
+<li>Create RELM traceability and impact analysis views that show requirements, change requests, and test cases connected to realizing device types</li>
+<li>Create JRS reports using custom SPARQL queries</li>
+</ul>
+<p>This section describes how to add the iotp-adaptor TRS provider as a data source in LQE. </p>
+<p>See <a href="https://jazz.net/library/article/1313">Setup Rational Engineering Lifecycle Manager, Lifecycle Query Engine, Jazz Team Server and Tracked Resource Set Provider for Bugzilla</a> for details.</p>
+<h2>Prerequisites Integrating with LQE</h2><p>A TRS client that keeps the latest clone of a Tracked Resource Set is certainly implemented like a daemon and there is no chance to ask the user to submit credentials via login page. Consequently, OAuth communication code needs to be extended so that a Provider, and a Consumer (a TRS client), can communicate without user interaction (a.k.a. two-legged OAuth). </p>
+<p>When adding a TRS provider as a data source to LQE, LQE needs to have the OAuth URLs to do the two-legged authentication, the consumer key and secret, and the URL for the TRS provider. Typically these are provided in the rootservices document as described above.</p>
+<p>The OAuth functional ID used by the iotp-adaptor TRS provider  provided in the trs_user propert in the config.properties file. The trs_user_password should be encrypted in a production version, but is left open in this sample application. Be cautions about exposing any meaningful user credentials in this sample application.</p>
+<h2>Integrating with JTS, LQE and RELM</h2><p>LQE and RELM run in the JTS which requires a Friend authenticated with OAuth to the iotp-adaptor server. Then new Data Source can be configured in LQE to the iotp-adaptor TRS provider (described in the rootservices resource). LQE will now have the data from the IoT Platform as described by the provided resource shapes. RELM can also have a friend to iotp-adaptor so that resource preview can work on IoT Platform resources in the RELM views.</p>
+<h3>Add a Friend in JTS (for LQE and RELM) to the TRS provider server</h3><p>LQE runs in the JTS and uses /jts/admin to add the friends. It is not a separate application like some of the other CE apps.</p>
+<p>Goto the JTS server admin and add a Friend to the TRS provider server - same as any other friend. Provide the iotp-adaptor rootservices URI for the friend server, and authenticate and authorize the provisional key with JTS admin credentials. </p>
+<p>Server Admin: <a href="https://localhost:8080/jts/admin">https://localhost:8080/jts/admin</a>
+Root Services URI: <a href="https://localhost:8080/iotp/rootservices">https://localhost:8080/iotp/rootservices</a></p>
 <p>Make the friend Trusted to avoid any unnecessary dialogs.</p>
-<h2>Configure an LQE data source from the TRS provider Friend</h2><p>Open  <a href="https://ce4iot.rtp.raleigh.ibm.com:9443/lqe/web/admin/data-sources">https://ce4iot.rtp.raleigh.ibm.com:9443/lqe/web/admin/data-sources</a> 
-Click Manage Data Sources and then Add Data Source
-Choose Root Services URL and enter the rootservices URL for the TRS provider:
-<a href="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/rootservices">https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/rootservices</a></p>
-<p>Select the desired TRS provider URL listed in the rootservices document.</p>
-<p>Use the consumer key and secret for the Friend you added to to the JTS</p>
-<p>Change any configuration that is necessary:</p>
-<p>The test connection succeeds, as does updating the data source</p>
-<p>Reindexing LQE data source succeeded, and the resources that couldn’t be read don’t exist and that’s fine. I have’t created them yet, especially in other organizations.</p>
-<h2>Test the Integration</h2><p>After the rebuild index is completed, use SPARQL to query LQE for the newly added data sources.
-<a href="https://ce4iot.rtp.raleigh.ibm.com:9443/lqe/web/admin/home">https://ce4iot.rtp.raleigh.ibm.com:9443/lqe/web/admin/home</a>, click on the Query tab.
-SPARQL Endpoint: <a href="https://ce4iot.rtp.raleigh.ibm.com:9443/lqe/sparql">https://ce4iot.rtp.raleigh.ibm.com:9443/lqe/sparql</a> POST to this URL with a SPARQL query entity request body to get results.</p>
-<p><a href="https://ce4iot.rtp.raleigh.ibm.com:9443/lqe/web/query">https://ce4iot.rtp.raleigh.ibm.com:9443/lqe/web/query</a></p>
-<p>Click the Query tab link.
-Enter a query such as:</p>
+<p>The iotp-adaptor OSLC server provides a simple admin UI for managing OAuth consumer keys. This UI is actually provided by the eclipse/Lyo oauth-webapp sub-application. </p>
+<p>Navigate to <a href="https://localhost:8080/iotp/services/oauth/admin">https://localhost:8080/iotp/services/oauth/admin</a> and enter your Watson IoT platform credentials. You will see a page that allows you to manage the OAuth consumers that have been configured for the iotp-adaptor server through adding friends to the jazz-apps. You can approve provisional keys here, or delete active keys that are no longer needed. These same keys are displayed in the friends tab of the Jazz Team Server admin page (/jts/admin). You will need to remember the consumer secret you used to add the friend, it is not displayed anywhere.</p>
+<h2>Configure an LQE data source from the TRS provider Friend</h2><p>Next, add the iotp-adaptor TRS provider as a data source to LQE:</p>
+<ol>
+<li>Open  <a href="https://rlia4iot.raleigh.ibm.com:9443/lqe/web/admin/data-sources">https://rlia4iot.raleigh.ibm.com:9443/lqe/web/admin/data-sources</a> </li>
+<li>Click Manage Data Sources and then Add Data Source</li>
+<li>Choose <code>Root Services URL</code> and enter the rootservices URL for the TRS provider (e.g., <a href="https://localhost:8080/iotp/rootservices">https://localhost:8080/iotp/rootservices</a>)</li>
+<li>Select the desired TRS provider URL listed in the rootservices document</li>
+<li>Use the consumer key and secret for the Friend you added to to the JTS</li>
+<li>Change any configuration information as desired</li>
+<li>Click <code>Test Connection</code> to test the connection to the server</li>
+<li>Click <code>Finish</code> to add the data source.</li>
+</ol>
+<p>After successfully adding the data source. LQE will begin processing the TRS provider, reading all the base resources.</p>
+<h2>Configure the iotp-adaptor data source permissions</h2><p>LQE uses TRS AccessContext resources to specify access control of its resources. The data in LQE is a copy of the data contributed by the TRS providers in the configured data sources. Each of these TRS providers will have its own user authentication and access control configured to protect its resources. Once these resources are copied into LQE, the individual TRS provider access control no longer applies. So it is important to configure LQE permissions on the TRS data sources to avoid unintended or innapproprate read access to resources a user should not be able to see. </p>
+<p>The iotp-adapter does not currently support TRS AccessContext resources, or provide what LQE calls &#39;process&#39; resources (which typically correspond to jazz-app project areas or OSLC service providers), nor does it contribute its resource shapes. These will be covered in future implementations and documented in later sections.</p>
+<p>For iotp-adaptor data sources, the LQE permissions apply to the whole data source. Future versions of the TRS provider will provide LEQ process resources that correspond to the IoT Platform organizations in order to specify finer grained access control.</p>
+<p>By default, an LEQ data source will have permissions that provide no access. This prevents unintended access to the resources. As a result, any SPARQL query or RELM view on iotp-adaptor data will show no data. To configure permissions in order to provide data access:</p>
+<ol>
+<li>Navigate your browser to <code>https://localhost:8080/lqe/web/admin/home</code></li>
+<li>Click on <code>Manage data sources</code></li>
+<li>Click on the <code>Permissions</code> link under <code>Access Control</code></li>
+<li>Select the iotp-adaptor data source in the Permissions Data Groups.</li>
+<li>Choose <code>Assign different permissions</code></li>
+<li>Add any Groups or Users who should have access to the IoT Platform resource provided by the iotp-adaptor data source. For testing, you can use the <code>Everyone</code> group to open access to any logged in user</li>
+</ol>
+<h2>Test the Integration</h2><p>After the rebuild index is completed, use SPARQL to query LQE for the newly added data sources. Navigate your browser to <code>https://localhost:8080/lqe/web/admin/home</code>, and click on the Query tab. Or you can use a REST client to access the LQE SPARQL Endpoint: <code>https://localhost:8080/lqe/sparql</code> and POST to this URL with a SPARQL query entity request body to get results.</p>
+<p>Enter a query such as:</p>
 <pre><code>PREFIX dcterms: &lt;http://purl.org/dc/terms/&gt; 
 PREFIX oslc_cm: &lt;http://open-services.net/ns/cm#&gt; 
 SELECT ?resource ?title 
@@ -113,20 +217,17 @@ SELECT ?resource ?title
 </code></pre><p>See <a href="https://clmpractice.org/2015/12/01/clm-6-x-improved-sparql-editor/">Steve Blog</a> for lots of good information on RELM and LQE</p>
 <h2>Integrating the TRS provider with RELM</h2><p>If the TRS provider is also an OSLC resource preview provider, and iotp-adaptor is, you can add a Friend in RELM to the TRS provider so RELM can display resource preview of the resource properties it queries from LQE.</p>
 <p>RELM and LQE both run inside the JTS, so the friend added to JTS to iotp-adaptor works for both.</p>
-<p><a href="https://ce4iot.rtp.raleigh.ibm.com:9443/relm/admin">https://ce4iot.rtp.raleigh.ibm.com:9443/relm/admin</a>  </p>
-<p><a href="https://ce4iot.rtp.raleigh.ibm.com:9443/ccm/web/projects/Low%20Flow%20Washer%20(Change%20Management)#action=com.ibm.team.workitem.viewWorkItem&amp;id=93">https://ce4iot.rtp.raleigh.ibm.com:9443/ccm/web/projects/Low%20Flow%20Washer%20(Change%20Management)#action=com.ibm.team.workitem.viewWorkItem&amp;id=93</a></p>
-<p>instanceShape set for IoT Platform resource has extra / after OSLC4JUtils.getServletURI():
-        <oslc:instanceshape rdf:resource="https://localhost:9443/iotp/services//resourceShapes/iotDeviceType"></p>
-<h2>Creating RELM Views for the TRS provider resources</h2><p>RELM uses JRS query builder to build queries for views. So iotp-adaptor TRS Provider needs to implement LQE requirements for JRS providers in order for RELM views to work. We do not want users to have to use SPARQL or other low-level queries to create these views.</p>
-<p>JRS requires two data sources:
-process - project areas
-the applications data sources</p>
-<p>JRS doesn’t like instanceShapes. 
-instanceShape is specific to that type in the process, not each individual resource.</p>
-<h1>Implementing Support for JRS</h1><p>See LQE Report Builder Integration for 3rd Party Applications for the specific requirements. </p>
+<h2>Creating RELM Views for the TRS provider resources</h2><p>In order to include IoT Platform resources in RELM views, a RELM custom artifact element needs to be created that can be added to the RELM views. It is beyond the scope of this document to define RELM custom artifact elements, see the <a href="https://www.ibm.com/support/knowledgecenter/SS2L6K_6.0.6/com.ibm.team.jp.relm.doc/topics/t_creating_custom_artifact_element.html">RELM help</a></p>
+<h1>Implementing Support for JRS</h1><p>The JRS Report Builder (RB) and Rational Engineering Lifecycle Manager (RELM) use LQE as a data source for reporting and document generation. There are additional requirements on data published by TRS providers that are intended to be used for JRS. Extending the iotp-adaptor TRS provider with process, access context and resource shapes will enable the following additional capabilities:</p>
+<ul>
+<li>Filtering by IoT Platform organization in RELM views</li>
+<li>LQE access control at the organization level instead of the whole TRS provider</li>
+<li>Use of JRS Query Builder (QB) for query and reporting</li>
+<li>RPE documentation generation (indirectly through JRS QB)</li>
+</ul>
 <p>TRS providers wishing to contribute data for JRS need to also publish &quot;process resources&quot; (such as project areas and service providers), artifact resources and resource shapes with their properties, and configurations.</p>
-<p>LQE uses process resources with a separate TRS provider to manage the shapes. This separates shapes that usually don&#39;t change once they are read from other user resources that may be changing a lot. </p>
-<p>LQE uses the process TRS resources to identify the service providers, and to manage access control lists.</p>
+<p>LQE typically uses process resources with a separate TRS provider to manage the shapes. This separates shapes that usually don&#39;t change once they are read from other user resources that may be changing a lot. </p>
+<p>LQE uses the process TRS resources to identify the service providers, to manage access control lists, and to provide additional filtering.</p>
 <p>In general, you need to:</p>
 <ol>
 <li>Publish your application’s data and metadata as tracked resource sets in tracked resource sets<ul>
@@ -143,7 +244,73 @@ Resource shapes for each type, with all defined properties for that type</li>
 <li>The ability to report on relationships in either direction</li>
 </ul>
 </li>
-</ol></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+</ol>
+<p><img src="./images/LQE-process-resources.png" alt="LQE Process Resources" title="LEQ Process Resources"></p>
+<p>The following sections describe changes to the iotp-adaptor TRS provider in order to support JRS. See <a href="https://jazz.net/library/article/91450">Integrating external data sources with LQE and Report Builder</a> for details.</p>
+<h2>Adding the iotp-adaptor domain vocabulary to LQE</h2><p>LQE supports importing static vocabularies as an optional step that allows types to be reused across applications. To see the available vocabularies and manually add vocabularies, navigate your browser to <code>https://rlia4iot.raleigh.ibm.com:9443/lqe/web/admin/vocabularies</code>.</p>
+<p>Alternatively TRS providers can provide new and updated metadata such as types and properties as well as resource instances. These are more dynamic than static vocabularies since Applications can reference and extend the static vocabularies in their TRS feeds.</p>
+<p>Most third-party applications or external data sources should use TRS feeds instead of static vocabularies.</p>
+<p>Optional:</p>
+<ul>
+<li>[ ] Create the iotp-adaptor domain vocabulary. We have URLs for the individual shapes, but not the vocabulary. It would also be nice to have a single URL with all the shapes.</li>
+<li>[ ] Publish the iotp-adaptor domain vocabulary </li>
+</ul>
+<h2>Defining TRS providers</h2><p>The iotp-adaptor TRS provider should provide two TRS providers as configured in the rootservices document:</p>
+<ol>
+<li><strong>process resources</strong> - represent service providers, resource containers, and units of access control. Correspond to IoT Platform organizations for iotp-adaptor</li>
+<li><strong>data and metadata resources</strong> - defines the resource instances, resource shapes, and configuration components that are managed by iotp-adaptor</li>
+</ol>
+<p>These are defined in the rootservices document:</p>
+<pre><code>&lt;iotp:trackedResourceSetProvider&gt;
+    &lt;trs:TrackedResourceSetProvider&gt;
+        &lt;trs:trackedResourceSet rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/trs&quot; /&gt;
+        &lt;dc:title&gt;TRS 2.0 for IoT Platform Resources&lt;/dc:title&gt;
+        &lt;dc:description&gt;TRS 2.0 feed for IoT Platform resources&lt;/dc:description&gt;
+        &lt;dc:type     rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
+        &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
+        &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/am#&quot; /&gt;
+    &lt;/trs:TrackedResourceSetProvider&gt;
+&lt;/iotp:trackedResourceSetProvider&gt;
+</code></pre><p>LQE requires each TRS provider to specifies the dcterms:type property to classify feed resources in order to support merging resource shapes for Report Builder. This is usually an OSLC domain URI:</p>
+<ul>
+<li><a href="http://open-services.net/ns/am#">http://open-services.net/ns/am#</a></li>
+<li><a href="http://open-services.net/ns/cm#">http://open-services.net/ns/cm#</a></li>
+<li><a href="http://open-services.net/ns/qm#">http://open-services.net/ns/qm#</a></li>
+<li><a href="http://open-services.net/ns/rm#">http://open-services.net/ns/rm#</a></li>
+<li><a href="http://open-services.net/ns/config#">http://open-services.net/ns/config#</a></li>
+<li><a href="http://jazz.net/ns/process#">http://jazz.net/ns/process#</a></li>
+</ul>
+<h2>Publishing process resources</h2><p>The app’s process TRS provider supports three kinds of resources:</p>
+<ol>
+<li>Project area and related resources</li>
+<li>OSLC service provider resources</li>
+<li>OSLC access context resources</li>
+</ol>
+<p>RB and LQE use these resources for:</p>
+<ol>
+<li><strong>AccessContext</strong> that define a user’s visibility/access permissions on the data</li>
+<li><p><strong>Scope filtering</strong> in RELM, RB UI and report queries by project area</p>
+</li>
+<li><p>[ ] For scope filtering by project area to work, all resources must include process:projectArea property </p>
+</li>
+<li><p>[ ] iotp-adaptor simulates a project area for each IoT Platform organization.</p>
+</li>
+</ol>
+<p>Add these assertions to the TRS provider base resources and change log:</p>
+<p><code>&lt;iotp-adaptor organization/service provider URL&gt; rdf: type process:ProjectArea</code></p>
+<p>Include these properties in all resource shapes:</p>
+<ul>
+<li>oslc:serviceProvider </li>
+<li>process:projectArea </li>
+<li>acc:accessContext??</li>
+</ul>
+<p>Include values for these properties in the resource instances (oslc:serviceProvider is already provided)</p>
+<ul>
+<li>oslc:serviceProvider <code>&lt;iotp-adaptor organization/service provider URL&gt;</code> (this is already provided)</li>
+<li>process:projectArea <code>&lt;iotp-adaptor organization/service provider URL&gt;</code></li>
+<li>acc:accessContext</li>
+</ul>
+<p>With the metadata described above, RB will recognize your application’s simulated project areas and correctly associate its resource shapes and resources. RB will include your simulated project areas in the Limit Scope section of the report editor, and display the associated types and properties for those project areas. LQE will recognize the AccessContexts and allow you to configure user and group permissions.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
