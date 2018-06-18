@@ -32,7 +32,7 @@ Modernizr.load([{
 </code></pre><p>The @OslcDialog annotation defines the selection dialog, and the selector method will be invoked when a client makes an HTTP GET request on the @Path URL. The iotId parameter in the path is the IoT Platform organization id, which corresponds to the service provider we are going to select resources from. The terms query parameter contains the Java regular expression that will be used to match against resource titles.</p>
 <p>The GET on the selection dialog is actually done twice, once when the client requests the selection dialog and again when the the user presses the Search button. The first GET detects that the terms parameter is null and redirects the request to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselector.jsp">iotpselectiondialogselector.jsp</a> page. This page dynamically creates the selection dialog as describe in the next section. The client application embeds this selection dialog in an HTML iframe of its dialog and the selection dialog is displayed to the user.</p>
 <p>Next the user selects a resource type to search on, enters a Java regular expression in the search field, and presses the Search button. This calls the JavaScript search method in the delegatedUItyped.js which does a GET on the selection dialog again, this time with a non-null terms query parameter.</p>
-<p>This time the selector service sees the terms query parameter is not null, and uses the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/iotp-adaptorManager.java">iotp-adaptorManager</a> RequirementAndChangeRequestAndResourceSelector method to find the matching resources. It then dispatches the request to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselectorresults.jsp">iotpselectiondialogselectorresults.jsp</a> which formulates the selected resources into the oslc:results JSON object which is the entity request body of the GET done by the search JavaScript method. This result is then displayed in the results field in the selection dialog so the user can select the resources. </p>
+<p>This time the selector service sees the terms query parameter is not null, and uses the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java">CE4IoTConnectorManager</a> RequirementAndChangeRequestAndResourceSelector method to find the matching resources. It then dispatches the request to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselectorresults.jsp">iotpselectiondialogselectorresults.jsp</a> which formulates the selected resources into the oslc:results JSON object which is the entity request body of the GET done by the search JavaScript method. This result is then displayed in the results field in the selection dialog so the user can select the resources. </p>
 <p>The user can now select one or more resources and press the OK button. This formulates the window message and send it to the client dialog where the selection is processed.</p>
 <p>You can se all this work in the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/webapp/com/ibm/oslc/adaptor/iotp/selectiondialogsampleclient.jsp">selectiondialogsampleclient.jsp</a> file. This JSP demonstrates what a typical client application would do to use a selection dialog provided by the server. It simply displays the titles of the selected resources.</p>
 <h3>iotp-adaptor Selection Dialog</h3><p>iotp-adaptor uses a single selection dialog for all resources. Separate selection dialogs for each resource type would result in a lot of redundant dialogs, and would not provide any means for users to choose what to select. This is because the jazz.net apps expect the server&#39;s selection dialog to deal with navigating, querying, searching, etc. for its resources inside its selection dialog. </p>
@@ -49,7 +49,7 @@ Modernizr.load([{
       &lt;option value=&quot;schema&quot;&gt;Schema&lt;/option&gt;
       &lt;option value=&quot;rule&quot;&gt;Rule&lt;/option&gt;      
   &lt;/select&gt;
-</code></pre><p>A simple JavaScript script sets the type query parameter and adds it to the selection dialog URL so that it is available to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/iotp-adaptorManager.java">iotp-adaptorManager</a> RequirementAndChangeRequestAndResourceSelector method.</p>
+</code></pre><p>A simple JavaScript script sets the type query parameter and adds it to the selection dialog URL so that it is available to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java">CE4IoTConnectorManager</a> RequirementAndChangeRequestAndResourceSelector method.</p>
 <pre><code>  &lt;script&gt;
   var selectionUri = {}
   $(document).ready(function() {
@@ -62,7 +62,7 @@ Modernizr.load([{
          selectType.click()
       })
   &lt;/script&gt;
-</code></pre><p>Note that although this type parameter is not declared using an @QueryParam(&quot;type&quot;) parameter of the method that handles GET on the selection dialog, this parameter is available to iotp-adaptorManager:</p>
+</code></pre><p>Note that although this type parameter is not declared using an @QueryParam(&quot;type&quot;) parameter of the method that handles GET on the selection dialog, this parameter is available to CE4IoTConnectorManager:</p>
 <pre><code>    public static List&lt;AbstractResource&gt; RequirementAndChangeRequestAndResourceSelector(HttpServletRequest httpServletRequest, final String iotId, String terms)   
     {
         List&lt;AbstractResource&gt; resources = null;
@@ -113,7 +113,7 @@ Modernizr.load([{
     @Consumes({ MediaType.APPLICATION_FORM_URLENCODED})
     public void createResourceAndChangeRequestAndRequirement(
             @PathParam(&quot;iotId&quot;) final String iotId)
-</code></pre><p>This method has user code that examines the type query parameter, and use it to call the right creation method in the iotp-adaptorManager. This code has to be updated in order to support creation of additional resource types.</p>
+</code></pre><p>This method has user code that examines the type query parameter, and use it to call the right creation method in the CE4IoTConnectorManager. This code has to be updated in order to support creation of additional resource types.</p>
 <pre><code>            // Start of user code createResourceAndChangeRequestAndRequirement
             // TODO Implement code to create the new resource. This method seems to be expected to handle more than a single type of resources.
             // Get the user selected resource type from the query parameter
@@ -148,11 +148,11 @@ Modernizr.load([{
             }
 
             if (resourceType.equals(&quot;devicetype&quot;)) {
-                newResource = iotp-adaptorManager.createDeviceType(httpServletRequest, (DeviceType)aResource, iotId);
+                newResource = CE4IoTConnectorManager.createDeviceType(httpServletRequest, (DeviceType)aResource, iotId);
             } else if  (resourceType.equals(&quot;device&quot;)) {
                 String typeId = httpServletRequest.getParameter(&quot;typeId&quot;);
                 ((Device)aResource).setTypeId(typeId);
-                newResource = iotp-adaptorManager.createDevice(httpServletRequest, (Device)aResource, iotId);
+                newResource = CE4IoTConnectorManager.createDevice(httpServletRequest, (Device)aResource, iotId);
             }
 
             // End of user code
@@ -169,7 +169,7 @@ Modernizr.load([{
       &lt;option value=&quot;schema&quot;&gt;Schema&lt;/option&gt;
       &lt;option value=&quot;rule&quot;&gt;Rule&lt;/option&gt;      
   &lt;/select&gt;
-</code></pre><p>A simple JavaScript script sets the type query parameter and adds it to the creation dialog URL so that it is available to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/iotp-adaptorManager.java">iotp-adaptorManager</a> RequirementAndChangeRequestAndResourceSelector method.</p>
+</code></pre><p>A simple JavaScript script sets the type query parameter and adds it to the creation dialog URL so that it is available to the <a href="https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java">CE4IoTConnectorManager</a> RequirementAndChangeRequestAndResourceSelector method.</p>
 <pre><code>  &lt;script&gt;
   var creatorUri = {}
   $(document).ready(function() {
@@ -186,7 +186,7 @@ Modernizr.load([{
          selectType.click()
       })
   &lt;/script&gt;
-</code></pre><p>This script sets the type query parameter which is use in the IoTPlatformService creator service to determine which resource type to create, and to call the proper iotp-adaptorManager creation method. It also loads the appropriate content from JSP pages in the <a href="https://github.com/OSLC/iotp-adaptor/tree/master/iotp-adaptor/src/main/webapp/creators">creators</a> folder. These dialogs contain the HTML fragments that are specific to each resource. The implementation of these dialogs is similar to what Lyo Designer would create for individual resource creation dialogs.</p>
+</code></pre><p>This script sets the type query parameter which is use in the IoTPlatformService creator service to determine which resource type to create, and to call the proper CE4IoTConnectorManager creation method. It also loads the appropriate content from JSP pages in the <a href="https://github.com/OSLC/iotp-adaptor/tree/master/iotp-adaptor/src/main/webapp/creators">creators</a> folder. These dialogs contain the HTML fragments that are specific to each resource. The implementation of these dialogs is similar to what Lyo Designer would create for individual resource creation dialogs.</p>
 <h2>Small Preview Dialog</h2><p>Lyo Designer generates a JAX-RS service method for each resource small preview. GET on this URL returns the OSLC Compact resource with the client then uses to get the resource icon, title and small and large preview dialog URLs.</p>
 <pre><code>    @GET
     @Path(&quot;deviceTypes/{deviceTypeId}&quot;)

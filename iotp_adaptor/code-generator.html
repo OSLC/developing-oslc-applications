@@ -48,7 +48,7 @@ Modernizr.load([{
          // force plain XML writer
          RDFWriterFImpl.alternative(null);
 </code></pre><p>You are now ready to implement each of the domain classes. Details are provided in <a href="./implement-domain-class">Implementing a Domain Class</a>. But first, there&#39;s a few details about the code generator that need to be understood in terms of generated vs. user code.</p>
-<h2>Adding User Code to Generated Classes and JSPs</h2><p>The Lyo Designer M2T templates contain markers that indicate where users or developers can add code to customize or complete the implementation of generated modules. When the code generator runs, these markers are added as structured comments in the generated code to indicate the boundaries where developers can add additional or customized code. For example, here&#39;s the generated code for the getDeviceType method that is generated in the iotp-adaptorManager.java file:</p>
+<h2>Adding User Code to Generated Classes and JSPs</h2><p>The Lyo Designer M2T templates contain markers that indicate where users or developers can add code to customize or complete the implementation of generated modules. When the code generator runs, these markers are added as structured comments in the generated code to indicate the boundaries where developers can add additional or customized code. For example, here&#39;s the generated code for the getDeviceType method that is generated in the CE4IoTConnectorManager.java file:</p>
 <pre><code>    public static DeviceType getDeviceType(HttpServletRequest httpServletRequest, final String iotId, final String deviceTypeId)
     {
         DeviceType aResource = null;

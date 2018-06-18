@@ -90,7 +90,7 @@ If the request is authenticated with a valid OAuth access token, the request ses
 
 # IoT Platform and Bluemix APIs
 
-IoTPClient.java and BluemixClient.java provide simple convenience APIs that abstract the IoT Platform and Bluemix REST services needed to support iotp-adaptor access needs. It is instances of these classes that are stored in the JEE session and are used by the iotp-adaptorManager for all platform access. Bluemix uses a bearer token for authentication. The Bluemix.login() method logs in the user, establishes the bearer token and uses it for subsequent access. 
+IoTPClient.java and BluemixClient.java provide simple convenience APIs that abstract the IoT Platform and Bluemix REST services needed to support iotp-adaptor access needs. It is instances of these classes that are stored in the JEE session and are used by the CE4IoTConnectorManager for all platform access. Bluemix uses a bearer token for authentication. The Bluemix.login() method logs in the user, establishes the bearer token and uses it for subsequent access. 
 
 IoTPClient.login() uses Cloud Identity Access Management (IAM) to handle login. Cloud IAM requires each application to have a clientId and secret. See [Managing user API keys](https://console.bluemix.net/docs/iam/userid_keys.html#userapikey) for information on how to get an clientId and secret for your application. This information needs to be provided in the src/main/resources/config.properties file. For example:
 

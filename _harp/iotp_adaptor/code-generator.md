@@ -66,7 +66,7 @@ You are now ready to implement each of the domain classes. Details are provided 
 
 ## Adding User Code to Generated Classes and JSPs
 
-The Lyo Designer M2T templates contain markers that indicate where users or developers can add code to customize or complete the implementation of generated modules. When the code generator runs, these markers are added as structured comments in the generated code to indicate the boundaries where developers can add additional or customized code. For example, here's the generated code for the getDeviceType method that is generated in the iotp-adaptorManager.java file:
+The Lyo Designer M2T templates contain markers that indicate where users or developers can add code to customize or complete the implementation of generated modules. When the code generator runs, these markers are added as structured comments in the generated code to indicate the boundaries where developers can add additional or customized code. For example, here's the generated code for the getDeviceType method that is generated in the CE4IoTConnectorManager.java file:
 
 ```
     public static DeviceType getDeviceType(HttpServletRequest httpServletRequest, final String iotId, final String deviceTypeId)

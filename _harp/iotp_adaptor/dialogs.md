@@ -39,7 +39,7 @@ The GET on the selection dialog is actually done twice, once when the client req
 
 Next the user selects a resource type to search on, enters a Java regular expression in the search field, and presses the Search button. This calls the JavaScript search method in the delegatedUItyped.js which does a GET on the selection dialog again, this time with a non-null terms query parameter.
 
-This time the selector service sees the terms query parameter is not null, and uses the [iotp-adaptorManager](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/iotp-adaptorManager.java) RequirementAndChangeRequestAndResourceSelector method to find the matching resources. It then dispatches the request to the [iotpselectiondialogselectorresults.jsp](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselectorresults.jsp) which formulates the selected resources into the oslc:results JSON object which is the entity request body of the GET done by the search JavaScript method. This result is then displayed in the results field in the selection dialog so the user can select the resources. 
+This time the selector service sees the terms query parameter is not null, and uses the [CE4IoTConnectorManager](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java) RequirementAndChangeRequestAndResourceSelector method to find the matching resources. It then dispatches the request to the [iotpselectiondialogselectorresults.jsp](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/webapp/com/ibm/oslc/adaptor/iotp/iotpselectiondialogselectorresults.jsp) which formulates the selected resources into the oslc:results JSON object which is the entity request body of the GET done by the search JavaScript method. This result is then displayed in the results field in the selection dialog so the user can select the resources. 
 
 The user can now select one or more resources and press the OK button. This formulates the window message and send it to the client dialog where the selection is processed.
 
@@ -67,7 +67,7 @@ Type: <select id="selectType">
   </select>
 
 ```
-A simple JavaScript script sets the type query parameter and adds it to the selection dialog URL so that it is available to the [iotp-adaptorManager](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/iotp-adaptorManager.java) RequirementAndChangeRequestAndResourceSelector method.
+A simple JavaScript script sets the type query parameter and adds it to the selection dialog URL so that it is available to the [CE4IoTConnectorManager](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java) RequirementAndChangeRequestAndResourceSelector method.
 
 ```
   <script>
@@ -83,7 +83,7 @@ A simple JavaScript script sets the type query parameter and adds it to the sele
 	  })
   </script>
 ```
-Note that although this type parameter is not declared using an @QueryParam("type") parameter of the method that handles GET on the selection dialog, this parameter is available to iotp-adaptorManager:
+Note that although this type parameter is not declared using an @QueryParam("type") parameter of the method that handles GET on the selection dialog, this parameter is available to CE4IoTConnectorManager:
 
 ```
     public static List<AbstractResource> RequirementAndChangeRequestAndResourceSelector(HttpServletRequest httpServletRequest, final String iotId, String terms)   
@@ -156,7 +156,7 @@ The user fills in the fields as needed and presses the OK button. This sends a P
     public void createResourceAndChangeRequestAndRequirement(
             @PathParam("iotId") final String iotId)
 ```
-This method has user code that examines the type query parameter, and use it to call the right creation method in the iotp-adaptorManager. This code has to be updated in order to support creation of additional resource types.
+This method has user code that examines the type query parameter, and use it to call the right creation method in the CE4IoTConnectorManager. This code has to be updated in order to support creation of additional resource types.
 
 ```
             // Start of user code createResourceAndChangeRequestAndRequirement
@@ -193,11 +193,11 @@ This method has user code that examines the type query parameter, and use it to 
             }
             
             if (resourceType.equals("devicetype")) {
-                newResource = iotp-adaptorManager.createDeviceType(httpServletRequest, (DeviceType)aResource, iotId);
+                newResource = CE4IoTConnectorManager.createDeviceType(httpServletRequest, (DeviceType)aResource, iotId);
             } else if  (resourceType.equals("device")) {
             	String typeId = httpServletRequest.getParameter("typeId");
             	((Device)aResource).setTypeId(typeId);
-                newResource = iotp-adaptorManager.createDevice(httpServletRequest, (Device)aResource, iotId);
+                newResource = CE4IoTConnectorManager.createDevice(httpServletRequest, (Device)aResource, iotId);
             }
 
             // End of user code
@@ -222,7 +222,7 @@ The creation dialog is implemented in [iotpcreationdialogcreator.jsp](https://gi
   	<option value="rule">Rule</option>  	
   </select>
 ```
-A simple JavaScript script sets the type query parameter and adds it to the creation dialog URL so that it is available to the [iotp-adaptorManager](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/iotp-adaptorManager.java) RequirementAndChangeRequestAndResourceSelector method.
+A simple JavaScript script sets the type query parameter and adds it to the creation dialog URL so that it is available to the [CE4IoTConnectorManager](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/CE4IoTConnectorManager.java) RequirementAndChangeRequestAndResourceSelector method.
 
 ```
   <script>
@@ -242,7 +242,7 @@ A simple JavaScript script sets the type query parameter and adds it to the crea
 	  })
   </script>
 ```
-This script sets the type query parameter which is use in the IoTPlatformService creator service to determine which resource type to create, and to call the proper iotp-adaptorManager creation method. It also loads the appropriate content from JSP pages in the [creators](https://github.com/OSLC/iotp-adaptor/tree/master/iotp-adaptor/src/main/webapp/creators) folder. These dialogs contain the HTML fragments that are specific to each resource. The implementation of these dialogs is similar to what Lyo Designer would create for individual resource creation dialogs.
+This script sets the type query parameter which is use in the IoTPlatformService creator service to determine which resource type to create, and to call the proper CE4IoTConnectorManager creation method. It also loads the appropriate content from JSP pages in the [creators](https://github.com/OSLC/iotp-adaptor/tree/master/iotp-adaptor/src/main/webapp/creators) folder. These dialogs contain the HTML fragments that are specific to each resource. The implementation of these dialogs is similar to what Lyo Designer would create for individual resource creation dialogs.
 
 ## Small Preview Dialog
 

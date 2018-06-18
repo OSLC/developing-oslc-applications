@@ -196,7 +196,7 @@ However, there is a simple work around in this case. The Watson IoT Platform RES
 
 This is not a general solution to this problem, only something that works because of a somewhat unique design of the Watson IoT Platform REST APIs. Some other options that could be considered, but that have not yet been tried are:
 
-1. Define a new “DeviceType” ServiceProvider, and move the DeviceCreationFactory under it. This would require the iotp-adaptorManager:getServiceProviderInfos() to be dynamic since device types could be added anytime.
+1. Define a new “DeviceType” ServiceProvider, and move the DeviceCreationFactory under it. This would require the CE4IoTConnectorManager:getServiceProviderInfos() to be dynamic since device types could be added anytime.
 2. Set one value of the {typeId} parameter in the paramterValueMap, in the method ServiceProviderCatalogSingleton:initServiceProviders. This results in registering single CreationFactory in the ServiceProviderCatalog, Service Provider and Service, even though there are many. Hoever, REST requests with the varying {typeId} will be handled just fine by Jax-RS.
 
 
