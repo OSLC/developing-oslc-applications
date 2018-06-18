@@ -4,7 +4,7 @@ The iopt-adaptor is sample code available at [OSLC/iotp-adaptor](https://github.
 
 ```
 git clone https://github.com/OSLC/iotp-adaptor.git
-cd iotp-adaptor/CE4IoTConnector
+cd iotp-adaptor/iotp-adaptor
 mvn install
 ```
 This will result in creating target/iotp-0.0.1-SNAPSHOT.war. You can then install this WAR file in any compatible JEE container such as Tomcat, Jetty, WebSphere Liberty, etc.
@@ -29,7 +29,7 @@ unzip apache-tomcat-9.0.7.zip
 CATALINA_BASE=apache-tomcat-9.0.7
 cd $CATALINA_BASE/bin
 chmod +x startup.sh shutdown.sh catalina.sh
-cp ~/GitHub/iotp-adaptor/CE4IoTConnector/target/iotp-0.0.1-SNAPSHOT.war $CATALINA_BASE/webapp/iotp.war
+cp ~/GitHub/iotp-adaptor/iotp-adaptor/target/iotp-0.0.1-SNAPSHOT.war $CATALINA_BASE/webapp/iotp.war
 $CATALINA_BASE/bin/startup.sh
 open /Applications/Safari.app http://localhost:8081/iotp
 

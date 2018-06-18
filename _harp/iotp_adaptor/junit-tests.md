@@ -1,6 +1,6 @@
 # JUnit Tests
 
-Sample JUnit tests are provided to test the CRUD operations on the IoT Platform DeviceType resource in `com.ibm.oslc.adaptor.tests.CE4IoTConnectorTests.java`. This can be used as a pattern to develop tests for other resources as they are supported.
+Sample JUnit tests are provided to test the CRUD operations on the IoT Platform DeviceType resource in `com.ibm.oslc.adaptor.tests.iotp-adaptorTests.java`. This can be used as a pattern to develop tests for other resources as they are supported.
 
 
 

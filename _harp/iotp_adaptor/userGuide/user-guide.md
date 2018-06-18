@@ -47,7 +47,7 @@ The following diagram shows how the IoT CE environment works with the Watson IoT
 ![iotp-adaptor concepts](images/concepts-detailed.png "iotp-adaptor Concepts")
 
 * The CE solution runs on Cloud or in your data center. For more information, see the CE Connector for IoT Installation Guide.
-* CE4IoTConnector is a WAR file that runs on the CE Jazz Team Server. It requests information from the Watson IoT Platform and from IBM Cloud about the resources that are available in the IBM Watson IoT Platform and Node-RED applications.
+* iotp-adaptor is a WAR file that runs on the CE Jazz Team Server. It requests information from the Watson IoT Platform and from IBM Cloud about the resources that are available in the IBM Watson IoT Platform and Node-RED applications.
 * As soon as the IoT Platform artifacts are represented as OSLC resources in the CE solution, you can use existing CE capabilities and practices with those resources.
 
 # Business Value

@@ -1,4 +1,4 @@
-# Modeling the CE4IoTConnector Toolchain
+# Modeling the iotp-adaptor Toolchain
 
 * Domain specifications
 * Basic CRUD operations
@@ -8,25 +8,24 @@
 
 ## eclipse/Lyo Designer Overview
 
-The [eclipse/Lyo Designer Toolchain Modeler and Code Generator](https://wiki.eclipse.org/Lyo/AdaptorCodeGeneratorWorkshop) is used for developing an OSLC4J provider using a code generator based on an EMF model of OSLC domain specifications. Here are some useful resources regarding OSLC, eclipse/Lyo and the ToolChain modeler.
+The [eclipse/Lyo Designer](https://github.com/eclipse/lyo.designer/wiki) is used for developing an OSLC4J provider using a code generator based on an EMF model of OSLC domain specifications. Here are some useful resources regarding OSLC, eclipse/Lyo and the ToolChain modeler.
 
+* [Eclipse Lyo Designer](https://github.com/eclipse/lyo.designer/wiki) The  GitHub Repository where Lyo Designer is developed and documented
+* [Lyo Designer Documentation](https://github.com/eclipse/lyo.designer/wiki) Documentation describing how to install, create specification and toolchain models, and complete the toolchain implementation.
 * [Linked Data and OSLC Tutorial](http://open-services.net/linked-data-and-oslc-tutorial-2015-update/), 2015, Jad El-Khoury:  good overview of OSLC 2.0 but does not cover Lyo Designer
 * [Linked Data and OSLC for Tool Interoperability - Part 1/2](https://www.youtube.com/watch?v=qQRZtd4EC7E&t=280s) November 2015, Jad El-Khoury
 * [Linked Data and OSLC for Tool Interoperability - Part 2/2](https://www.youtube.com/watch?v=k0cOAkEWvBs) This 2-part series doesn’t cover OSLC 3 or the code generator
 * [Modeling Support for Linked Data Approach to Tool Interoperability](https://www.thinkmind.org/index.php?view=article&articleid=alldata_2016_3_10_90030) - supporting article for the Lyo Designer Toolchain code generator
-* [Adapter Code Generator Workshop](https://wiki.eclipse.org/index.php?title=Lyo/AdaptorCodeGeneratorWorkshop&oldid=410372) - the old tutorial that use EMF editors and does not use the Toolchain editors built on the Sirius modeling tools framework
-* [Toolchain Modeling and Code Generation Workshop](https://wiki.eclipse.org/Lyo/ToolchainModellingAndCodeGenerationWorkshop) - generate a complete OSLC toolchain. This is the key documentation for the Toolchain Modeler and Code Generator
-* [Lyo Designer Domain Specification Modeling](https://wiki.eclipse.org/Lyo/DomainSpecificationModelling) - provides additional documentation on Lyo Designer, in particular, how to handle large or reusable domain models
 * [An OSLC4J Code Generator - Presentation & Demo](https://www.youtube.com/watch?v=nEImx_c6K5U) by Jad El-Khoury, KTH - 24/02/2014 KTH, Stockholm, Sweden - does cover the code generator, but not the toolchain
 
 Jad El-Khoury maintains an adaptor that is code generated under a public repository http://git.md.kth.se:8080/scm/git/se.kth.md.iee.pub; folder (\src\BugzillaAdaptor). The generator is based on the original OSLC4J Bugzilla adaptor. Relative to the reference implementation, the generator covers most features, but does not address rootservices or integration with the IBM CE apps. To access and install the BugzillaAdaptor:
 
 * git clone http://git.md.kth.se:8080/scm/git/se.kth.md.iee.pub
-* Then import existing projects into your workspace browsing to ~/git/se.kth.md.iee.pub. There will be four eclipse projects that can be imported from there.f
+* Then import existing projects into your workspace browsing to `~/git/se.kth.md.iee.pub`. There will be four eclipse projects that can be imported from there.
 
 The toolchain code generator creates an {adapter}Manager class that has to be implemented after code generation to get, create and search domain model elements. See [Exploring the generated code](./exploring-the-code) and [Implementing a Domain Class](./implement-domain-class) for details.
 
-The eclipse setup information at [Lyo Designer Workshop](https://wiki.eclipse.org/Lyo/AdaptorCodeGeneratorWorkshop/EclipseSetup) includes all the packages necessary to also run an OSLC4J application. To build the generator itself, all that is necessary is (1) Acceleo (2) EMF Facet SDK and (3) EMF - Eclipse Modeling Framework SDK (Diagram Editor for Ecore is optional). The Lyo Designer editor is a Sirius 5.x model editor.
+The eclipse setup information at [Installing Lyo Designer](https://github.com/eclipse/lyo.designer/wiki/User-Manual-for-Domain-Specification-Modelling#eclipse-setup) includes all the packages necessary to also run an OSLC4J application. To build the generator itself, all that is necessary is (1) Acceleo (2) EMF Facet SDK and (3) EMF - Eclipse Modeling Framework SDK (Diagram Editor for Ecore is optional). The Lyo Designer editor is a Sirius 5.x model editor.
 
 Lyo Designer is based on EMF model and Acceleo code generator. Acdeleo is an eclipse project that implements the OMG MOF to Text generation (M2T) framework. M2T is the language and framework used to develop the Lyo Designer code generation templates.
 
@@ -34,7 +33,7 @@ Lyo Designer is based on EMF model and Acceleo code generator. Acdeleo is an ecl
 
 Here's a brief overview of the process for using Lyo Designer to create a toolchain model and generate the implementation.
 
-1. Create a new [eclipse project](https://wiki.eclipse.org/Lyo/ToolchainModellingAndCodeGenerationWorkshop#Sample_Modelling_Project) this is ready for code generation
+1. Create a new [eclipse project](https://github.com/eclipse/lyo.designer/wiki/User-Manual-for-Domain-Specification-Modelling#create-a-modelling-project) this is ready for code generation
 2. Create an adapter model
 3. Define the adaptor model
 4. Configure adaptor code generator
@@ -64,11 +63,11 @@ See [eclipse environment setup](./environment-setup) for detailed instructions o
 
 ## Using the Toolchain Modeler
 
-The [Lyo Designer Workshop](https://wiki.eclipse.org/Lyo/ToolchainModellingAndCodeGenerationWorkshop) provides details on how to install, setup and use Lyo Designer to create an adaptor model and generate the code. We won't duplicate that information here. What's included here are some notes on using the Toochain modeler, including things that are unique to iotp-adaptor, possible issues and some things that aren't yet fully documented.
+The [Lyo Designer Documentation](https://github.com/eclipse/lyo.designer/wiki) provides details on how to install, setup and use Lyo Designer to create an adaptor model and generate the code. We won't duplicate that information here. What's included here are some notes on using the Toochain modeler, including things that are unique to iotp-adaptor, possible issues and some things that aren't yet fully documented.
 
 1. Don't use "Application" or "Service" as a resource name as it would conflict on import with the generated servlet name Application.java and Service.java. For Bluemix, use App and CFService.
 1. The generator doesn’t deal with resource renames or deletes - the old classes from a previous generation are left. You need to delete them all and re-generate if a lot of renames were done. Also delete src/main/webapp/com*, the generated JSP pages. Its easy to see which files were recently generated by looking at their modification times in the eclipse Properties view. 
-1. Reused domains usually get new classes generated in each reuse instead of reusing already generated libraries. Lyo Designer does provide a way to [generate reusable domains](https://wiki.eclipse.org/Lyo/DomainSpecificationModelling#Handling_Large_Models) packages and classes.
+1. Reused domains usually get new classes generated in each reuse instead of reusing already generated libraries. Lyo Designer does provide a way to [reuse common domains](https://github.com/eclipse/lyo.designer/wiki/User-Manual-for-Domain-Specification-Modelling#common-domains) packages and classes.
 2. Import the org.eclipse.lyo.tools.domainmodels project into your workspace from git://git.eclipse.org/gitroot/lyo/org.eclipse.lyo.tools.git
 1. In your modeling project, right click on the “Project Dependencies” in the Project Explorer tree, and select “Add Model”
  1. Select “Browse Workspace”
@@ -81,7 +80,7 @@ The [Lyo Designer Workshop](https://wiki.eclipse.org/Lyo/ToolchainModellingAndCo
 A **ServiceProvider** represents a container of managed resources and specifies the Services the server provides on those resources. A **Service** provides basic CRUD operations, creation factory, query capability and delegated creation and/or selection dialogs on specified OSLC domain resources. Here's some guidelines on using multiple service providers and multiple services.
 
 1. A service provider represents a container of resources and the provided OSLC services. Typical resource containers would be jazz.net application Project Areas, IoT Platform and IBM Cloud Organizations, LDP Containers, etc.
-1. Each service provider would have separate services for each supported domain. There will often be only one. However CE4IoTConnector has two since it integrated the IoT Platform and IBM Cloud domains.
+1. Each service provider would have separate services for each supported domain. There will often be only one. However iotp-adaptor has two since it integrated the IoT Platform and IBM Cloud domains.
 1. Each service can have zero or more BasicCapability, CreationFactory, QueryCapability and/or Dialog capabilities
 1. Each capability can manage zero or more resources and may specify information about the managed resources using ResourceShapes. 
 2. Creation and Selection Dialog can use different dialogs for different resources if they have different shapes. or you can choose to use the same dialog for all resources and edit the generated JSP files to use a selection list to select the desired resource type.
@@ -105,7 +104,7 @@ The iotp-adaptor domain model is based on the IBM Watson IoT Platform and Bluemi
 
 ### Bluemix Domain
 
-The Bluemix domain models Node-RED flows and the associated Bluemix resources. We include Node-RED flows in the CE4IoTConnector because it is not unusual to read data from and write data to IoT Platform devices in flows, or to implement rule actions using Node-RED flows. All Bluemix domain classes extend oslc_am:Resource and are therefore OSLC Architecture Management resources.
+The Bluemix domain models Node-RED flows and the associated Bluemix resources. We include Node-RED flows in the iotp-adaptor because it is not unusual to read data from and write data to IoT Platform devices in flows, or to implement rule actions using Node-RED flows. All Bluemix domain classes extend oslc_am:Resource and are therefore OSLC Architecture Management resources.
 
 ![Bluemix Domain](./images/Bluemix-Domain.png "Bluemix Domain")
 
@@ -163,7 +162,7 @@ Here are some simple guidelines on updating the Toolchain specification mode:
 
 This capability defines what IoT Platform and Bluemix resources support HTTP create, read, write and/or delete operations (i.e., HTTP POST, GET, PUT, and DELETE methods).
 
-All of the OSLC services are defined in Adaptor Interfaces, in this case, and Adaptor Interface named CE4IoTConnector. The CE4IoTConnectorModel uses a separate Adaptor Interface diagram for each service in order to make it easier to develop and update the services. The Toolchain editor by default puts all services and resources on every Adaptor Interface diagram. So you have to select and hide the model elements you don't want to be visible on any individual diagram. When you add a new resource or service to any of these adaptor interface diagrams, it will appear on all the diagrams. You'll need to edit each diagram and hide the resources you don't want to see on that diagram.
+All of the OSLC services are defined in Adaptor Interfaces, in this case, and Adaptor Interface named iotp-adaptor. The iotp-adaptorModel uses a separate Adaptor Interface diagram for each service in order to make it easier to develop and update the services. The Toolchain editor by default puts all services and resources on every Adaptor Interface diagram. So you have to select and hide the model elements you don't want to be visible on any individual diagram. When you add a new resource or service to any of these adaptor interface diagrams, it will appear on all the diagrams. You'll need to edit each diagram and hide the resources you don't want to see on that diagram.
 
 ![CRUD Operations](./images/CRUD-Operations.png "CRUD Operations")
 
@@ -197,7 +196,7 @@ However, there is a simple work around in this case. The Watson IoT Platform RES
 
 This is not a general solution to this problem, only something that works because of a somewhat unique design of the Watson IoT Platform REST APIs. Some other options that could be considered, but that have not yet been tried are:
 
-1. Define a new “DeviceType” ServiceProvider, and move the DeviceCreationFactory under it. This would require the CE4IoTConnectorManager:getServiceProviderInfos() to be dynamic since device types could be added anytime.
+1. Define a new “DeviceType” ServiceProvider, and move the DeviceCreationFactory under it. This would require the iotp-adaptorManager:getServiceProviderInfos() to be dynamic since device types could be added anytime.
 2. Set one value of the {typeId} parameter in the paramterValueMap, in the method ServiceProviderCatalogSingleton:initServiceProviders. This results in registering single CreationFactory in the ServiceProviderCatalog, Service Provider and Service, even though there are many. Hoever, REST requests with the varying {typeId} will be handled just fine by Jax-RS.
 
 
@@ -209,7 +208,7 @@ While it is possible to use a different CreationDialog capability for each resou
 
 For example, here's the dialog RDNG uses to create an implementedBy link from a Requirement to an IoT Platform resource. If we select create a new, there's no way for RDNG to say what kind of IoT Platform resource to create, and therefore no way to specify which creation dialog to get.
 
-An easy way to solve this is to provide only a single creation dialog, and add an HTML select element to select the kind of resource to create in the CE4IoTConnector creation dialog itself. 
+An easy way to solve this is to provide only a single creation dialog, and add an HTML select element to select the kind of resource to create in the iotp-adaptor creation dialog itself. 
 
 ```
   <body style="padding: 10px;">
@@ -237,7 +236,7 @@ There is another curious thing about the the creation dialog: its used to create
 
 This is done in oder to allow IoT Platform resources to be the target of link types that are supported by the jazz.net apps: RTC, RDNG, RQM and RDM. This will require some explanation.
 
-All these tools use jazz.net project areas as the source of their service providers. Each project area can be configured with artifact containers that represent services providers accessible from the same or friend servers. Each artifact container or service provider can specify creation dialogs for its resources, including CE4IoTConnector. 
+All these tools use jazz.net project areas as the source of their service providers. Each project area can be configured with artifact containers that represent services providers accessible from the same or friend servers. Each artifact container or service provider can specify creation dialogs for its resources, including iotp-adaptor. 
 
 The link types supported by the jazz.net apps are based on the OSLC domain specifications (RM, CM, AM and QM), and are extended by the vocabularies defined in the [http://jazz.net/ns](http://jazz.net/ns) namespaces. The jazz.net apps in most cases have fixed expectations about the resources they expose through OSLC to other servers, and the link types and target resource types they are expecting through artifact container associations from other friend servers. 
 
@@ -245,13 +244,13 @@ For example, RDNG supports Requirement and RequirementCollection OSLC RM resourc
 
 RDNG, and many of the other jazz.net tools, do support custom artifact types and link types. But RDNG does not at this time support extensible link types across server boundaries, it only supports them within a project area, or with resources in other requirements management project areas on the same server that have exactly the same custom link types. As a result, RDNG would not know anything about link types and resources defined in the IoT Platform and/or Bluemix domains, it would only support the link types defined in [http://jazz.net/ns/dm/linktypes#](http://jazz.net/ns/dm/linktypes#) since all the linkable resources in the IoT Platform and Bluemix domains extend oslc_am:Resource.
 
-So we specified the resource that can be created by the CE4IoTConnector creation dialog to be oslc_rm:Requirement, oslc_cm:ChangeRequest and oslc_am:Resource to "mark" the creation dialog to allow RDNG and other jazz.net apps to recognize the creation dialog as a valid "picker" for resources that are acceptable as the targets for app supported link types.
+So we specified the resource that can be created by the iotp-adaptor creation dialog to be oslc_rm:Requirement, oslc_cm:ChangeRequest and oslc_am:Resource to "mark" the creation dialog to allow RDNG and other jazz.net apps to recognize the creation dialog as a valid "picker" for resources that are acceptable as the targets for app supported link types.
 
 Now you might ask, why wasn't oalc_am:Resource enough? That would have provided a pretty rich set of link types defined in [http://jazz.net/ns/dm/linktypes#](http://jazz.net/ns/dm/linktypes#) that are already supported by the jazz.net apps. And the IoT Platform and Bluemix resources are certainly a lot more like AM resources than they are requirements or change requests.
 
-The reason is an artifact of the CE4IoTConnector design. CE4IoTConnector is an OSLC adapter that follows what we might call the "pure facade" adapter. That is, CE4IoTConnector node no user management and has no persistence of its own, this just an OSLC facade on Watson IoT Platform and IBM Cloud, delegating everything these components. 
+The reason is an artifact of the iotp-adaptor design. iotp-adaptor is an OSLC adapter that follows what we might call the "pure facade" adapter. That is, iotp-adaptor node no user management and has no persistence of its own, this just an OSLC facade on Watson IoT Platform and IBM Cloud, delegating everything these components. 
 
-What this means is that CE4IoTConnector does not have any means of storing links, partly because it has no storage capability of its own, and the Watson IoT Platform and IBM Cloud don't (easily) provide extensibility features that could be used to store these links. So all the links have to stored in the CE jazz.net apps. 
+What this means is that iotp-adaptor does not have any means of storing links, partly because it has no storage capability of its own, and the Watson IoT Platform and IBM Cloud don't (easily) provide extensibility features that could be used to store these links. So all the links have to stored in the CE jazz.net apps. 
 
 This constraint has implications because of the link ownership implementations of the CE jazz.net tools. For example, RDNG can create links to architecture management resources in Rational Design Manager (RDM). However, it expects RDM to actually store the link. The sequence goes like this:
 
@@ -264,7 +263,7 @@ This constraint has implications because of the link ownership implementations o
 7. RDNG gets a Window message with the URL of the selected or created resource. RDNG does a get on that resource, adds an assertion of the incoming link type (e.g., resource implementsRequirement requirement instead of requirement implementedByArchitecturalElement) to the oslc_am:Resource
 8. RDNG does a PUT to update the resource in RDM so that the link is actually stored in RDM.
 
-So you see why having IoT Platform resources be oslc_am:Resource wasn't enough, because its not possible for CE4IoTConnector to store the link. It can do the PUT, but the link will be lost if its not stored in the jazz.net app.
+So you see why having IoT Platform resources be oslc_am:Resource wasn't enough, because its not possible for iotp-adaptor to store the link. It can do the PUT, but the link will be lost if its not stored in the jazz.net app.
 
 We exploit this in the following ways. RDNG will store a backlink to an oslc_cm:ChangeManagement resources, so we can use this to store the link to an IoT Platform resource. But to do this, the IoT Platform resource must masquerade as an oslc_cm:ChangeRequest, otherwise RDNG will report that the artifact container does not provide any pickers for CM resources. We do this by "marking" the creation and selection dialogs to indicate their oslc:resourceType is an oslc_cm:ChangeRequest, and we "mark" each of the IoT Platform resources to indicate they have rdf:type oslc_cm:Resouce. This is surely a hack, but there you go, we sometimes do what we have to do. The alternative would be to add storage to CE4IoTConnecgtor and we wanted to see how far we could go without doing that.
 
@@ -272,9 +271,9 @@ RDNG will store oslc:references links to oslc_rm:Requirement resources, so we al
 
 This also allows RTD and RQM to be able to link to IoT Platfom resources because both of those tools can link to requirements and/or change requests and can store the links.
 
-Now this approach doesn't work if the project areas are enabled for global configuration management. This is because RDNG can no longer store the backlink to a change request. But that's ok for now since the IoT Platform resources aren't versioned enabled (yet) and therefore couldn't be configuration contributing. We are still exploring how CE4IoTConnector might be made config-aware and still not store any links. But that will be a future consideration when eclipse/Lyo OSLC4J and Lyo Designer become config aware.
+Now this approach doesn't work if the project areas are enabled for global configuration management. This is because RDNG can no longer store the backlink to a change request. But that's ok for now since the IoT Platform resources aren't versioned enabled (yet) and therefore couldn't be configuration contributing. We are still exploring how iotp-adaptor might be made config-aware and still not store any links. But that will be a future consideration when eclipse/Lyo OSLC4J and Lyo Designer become config aware.
 
-Now its clear that this approach is limited, requires a lot of knowledge about the specific link types, acceptable target resource types, and storage implementation details of the CE jazz.net applications. This results in some coupling between the CE jazz.net apps, and CE4IoTConnector. We can see the negative effect of this coupling because the solution breaks if the project areas are config enabled. But this is not an atypical approach to doing integrations and configuration management aside, the coupling is actually pretty loose. 
+Now its clear that this approach is limited, requires a lot of knowledge about the specific link types, acceptable target resource types, and storage implementation details of the CE jazz.net applications. This results in some coupling between the CE jazz.net apps, and iotp-adaptor. We can see the negative effect of this coupling because the solution breaks if the project areas are config enabled. But this is not an atypical approach to doing integrations and configuration management aside, the coupling is actually pretty loose. 
 
 ## OSLC Selection Dialogs
 
@@ -293,10 +292,10 @@ This diagram defines the query capability service for each resource that can be 
 
 The current implementation does not support the OSLC query capability. Rather the "query" is just a Java regular expression matching the dcterms:title of the resource. A future version might implement OSLC query if there is sufficient need.
 
-## CE4IoTConnector Toolchain
+## iotp-adaptor Toolchain
 
-The final part of the adaptor model is the CE4IoTConnector Toolchain diagram. A Toolchain diagram defines the OSLC client and server applications that will be generated that consume and provide OSLC domain resources using the defined services. Each adaptor interface of the toolchain defines an OSLC server that can provide and consume resources. For CE4IoTConnector, like most OSLC adapters, there is only one adaptor interface, and it only provides managed resources, it doesn't consume any from any other OSLC server.
+The final part of the adaptor model is the iotp-adaptor Toolchain diagram. A Toolchain diagram defines the OSLC client and server applications that will be generated that consume and provide OSLC domain resources using the defined services. Each adaptor interface of the toolchain defines an OSLC server that can provide and consume resources. For iotp-adaptor, like most OSLC adapters, there is only one adaptor interface, and it only provides managed resources, it doesn't consume any from any other OSLC server.
 
-![CE4IoTConnector](./images/CE4IoTConnector.png "CE4IoTConnector")
+![iotp-adaptor](./images/iotp-adaptor.png "iotp-adaptor")
 
 The Java Class Base Namespace `com.ibm.oslc.adaptor.iotp` provides the package name to be used to contain all the generated Java classes.

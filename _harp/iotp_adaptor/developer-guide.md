@@ -13,7 +13,7 @@
 
 See the [iotp-adaptor User Guide](./userGuide/user-guide) for information on how to install, configure, administer and use the iotp-adaptor OSLC server. This Developer Guide explains how the adaptor was build and integrated with the IBM CE jazz.net applications. The source code is available in a the GitHub [iotp-adaptor Project](https://github.com/OSLC/iotp-adaptor).
 
-iotp-adaptor was designed and initially created using the [eclipse/Lyo Designer Toolchain Modeler and Code Generator](https://wiki.eclipse.org/Lyo/ToolchainModellingAndCodeGenerationWorkshop). This tool using model-based development techniques to generate an OSLC server implementation with a minimal Web UI "debug" application that allows you to browse the OSLC services and adapted resources. The code generator uses [M2T](https://www.eclipse.org/modeling/m2t/) templates that were developed using the eclipse/Lyo [OSLC4J Bugzilla](https://wiki.eclipse.org/Lyo/BuildOSLC4JBugzilla) sample application. 
+iotp-adaptor was designed and initially created using the [eclipse/Lyo Designer](https://github.com/eclipse/lyo.designer/wiki). This tool using model-based development techniques to generate an OSLC server implementation with a minimal Web UI "debug" application that allows you to browse the OSLC services and adapted resources. The code generator uses [M2T](https://www.eclipse.org/modeling/m2t/) templates that were developed using the eclipse/Lyo [OSLC4J Bugzilla](https://wiki.eclipse.org/Lyo/BuildOSLC4JBugzilla) sample application. 
 
 The Lyo Designer code generator creates an [OSLC Core 2.0](http://open-services.net/bin/view/Main/OslcCoreSpecification) compliant OSLC server. This server is sufficient to explore the adapted resources using OSLC capabilities, but it is not enough to be able to integrate that server with the IBM jazz.net based applications. Additional considerations must be addressed in order to integrate with these applications including:
 
@@ -29,7 +29,7 @@ The iotp-adaptor Developer Guide walks through all of these considerations and p
 * [eclipse environment setup](./environment-setup.html): describes how to setup an eclipse development environment for developing the model and code. Eclipse is required in order to use Lyo Designer, which is an eclipse plug-in.
 * [The toolchain model](./toolchain-model.html) - describes the design of the Watson IoT Platform OSLC domain model, and the model of the OSLC services that are provided
 * [Generating the server code](./code-generator.html) - explains how to generate the server implementation using the Lyo Designer code generator with additional details for managing embedded user code.
-* [Exploring the generated code](./exploring-the-code.html)  - looks at the structure of the CE4IoTConnector eclipse project, and discusses the key folders and files of the generated application.
+* [Exploring the generated code](./exploring-the-code.html)  - looks at the structure of the iotp-adaptor eclipse project, and discusses the key folders and files of the generated application.
 * [https and SSL support](./ssl-support.html) - discusses the important topic of secure connections and how to configure the Web application to support SSL, and how to manage self-assigned certificates.
 * [Authentication](./authentication.html) - addresses the often sticky problem of end-user login as well as server-to-server connections through OAuth.
 * [Creating the rootservices document](./rootservices.html) - Describes how to provide a rootservices document which is required to establish consumer/friend connections between the jazz.net applications (primarily the Jazz Team Server) and the iotp-adaptor. 
@@ -46,7 +46,7 @@ The iotp-adaptor Developer Guide walks through all of these considerations and p
 * [OSLC Developer Guide](http://oslc.github.io/developing-oslc-applications/)
 * [OSLC Primer](http://open-services.net/primer)
 * [eclipse/Lyo Project](https://www.eclipse.org/lyo/)
-* [Lyo Designer](https://wiki.eclipse.org/Lyo/ToolchainModellingAndCodeGenerationWorkshop)
+* [Lyo Designer](https://github.com/eclipse/lyo.designer/wiki)
 * [OSLC Swagger.io](https://github.com/OSLC/OSLC-API)
 * [OSLC GitHub Organization](https://github.com/OSLC)
 * [iotp-adaptor Project](https://github.com/OSLC/iotp-adaptor)

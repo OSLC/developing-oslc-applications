@@ -1,14 +1,14 @@
 # Code Generator
 
-## Generating the CE4IoTConnector Implementation
+## Generating the iotp-adaptor Implementation
 
 Select the IoTP Adapter toolchain, right click and invoke OSLC Lyo Designer > Generate Complete Toolchain Java Code: 
 
 ![Generate the code](./images/Generate-the-code.png "Generate the code")
 
-The code generator will popup a dialog and ask you to select the target folder to generate into. Select the CE4IoTConnector eclipse maven project and click OK.
+The code generator will popup a dialog and ask you to select the target folder to generate into. Select the iotp-adaptor eclipse maven project and click OK.
 
-The code will be generated in the CE4IoTConnector project using the following folder/package structure:
+The code will be generated in the iotp-adaptor project using the following folder/package structure:
 
 ![Generated project structure](./images/Generated-project.png "Generated project structure")
 
@@ -23,9 +23,9 @@ Integration with the jazz.net apps requires first adding a friend server to the 
 
 The CE jazz.net applications support a number of approaches to  establishing secure connections between servers. This important, and often challenging topic is covered in further detail in [Authentication](authentication). 
 
-CE4IoTConnector uses [OAuth1.0a](https://oauth.net/core/1.0a/) as the mechanism for establishing secure connections with the CE jazz.net apps because that's what's supported by eclipse/Lyo OSLC4J, and that's what's commonly configured for CE and other OSLC server installations. 
+iotp-adaptor uses [OAuth1.0a](https://oauth.net/core/1.0a/) as the mechanism for establishing secure connections with the CE jazz.net apps because that's what's supported by eclipse/Lyo OSLC4J, and that's what's commonly configured for CE and other OSLC server installations. 
 
-To add JAX-RS REST services for OAuth1.0a and the CE4IoTConnector TRS provider, edit com.ibm.oslc.applicaiton.iotp.servlet/Application.java and add the following user code. Be sure any code you customize is inside Start of user code and End of user code comments:
+To add JAX-RS REST services for OAuth1.0a and the iotp-adaptor TRS provider, edit com.ibm.oslc.applicaiton.iotp.servlet/Application.java and add the following user code. Be sure any code you customize is inside Start of user code and End of user code comments:
 
 ```
         RESOURCE_CLASSES.add(ResourceShapeService.class);
@@ -66,7 +66,7 @@ You are now ready to implement each of the domain classes. Details are provided 
 
 ## Adding User Code to Generated Classes and JSPs
 
-The Lyo Designer M2T templates contain markers that indicate where users or developers can add code to customize or complete the implementation of generated modules. When the code generator runs, these markers are added as structured comments in the generated code to indicate the boundaries where developers can add additional or customized code. For example, here's the generated code for the getDeviceType method that is generated in the CE4IoTConnectorManager.java file:
+The Lyo Designer M2T templates contain markers that indicate where users or developers can add code to customize or complete the implementation of generated modules. When the code generator runs, these markers are added as structured comments in the generated code to indicate the boundaries where developers can add additional or customized code. For example, here's the generated code for the getDeviceType method that is generated in the iotp-adaptorManager.java file:
 
 ```
     public static DeviceType getDeviceType(HttpServletRequest httpServletRequest, final String iotId, final String deviceTypeId)

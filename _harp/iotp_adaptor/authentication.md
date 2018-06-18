@@ -84,19 +84,19 @@ The iotp-adaptor server uses a JEE servlet filter to intercept all requests to p
         <url-pattern>/services/*</url-pattern>
 	</filter-mapping>
 ```
-[CredentialsFilter.java](https://github.com/OSLC/iotp-adaptor/blob/master/CE4IoTConnector/src/main/java/com/ibm/oslc/adaptor/iotp/impl/CredentialsFilter.java) handles both user and OAuth authentication in its doFilter() method. 
+[CredentialsFilter.java](https://github.com/OSLC/iotp-adaptor/blob/master/iotp-adaptor/src/main/java/com/ibm/oslc/adaptor/iotp/impl/CredentialsFilter.java) handles both user and OAuth authentication in its doFilter() method. 
 
 If the request is authenticated with a valid OAuth access token, the request session uses the IoT Platform and Bluemix connectors that were established when the OAuth access token was created. If its not an OAuth request, then HTTP Basic authentication is assumed and the credentials are obtained from the Authorization header and used to login to the IoT Platform and Bluemix. If the user successfully logs in, then the connections are saved in the session for future use, and avoids having repeated logins.
 
 # IoT Platform and Bluemix APIs
 
-IoTPClient.java and BluemixClient.java provide simple convenience APIs that abstract the IoT Platform and Bluemix REST services needed to support iotp-adaptor access needs. It is instances of these classes that are stored in the JEE session and are used by the CE4IoTConnectorManager for all platform access. Bluemix uses a bearer token for authentication. The Bluemix.login() method logs in the user, establishes the bearer token and uses it for subsequent access. 
+IoTPClient.java and BluemixClient.java provide simple convenience APIs that abstract the IoT Platform and Bluemix REST services needed to support iotp-adaptor access needs. It is instances of these classes that are stored in the JEE session and are used by the iotp-adaptorManager for all platform access. Bluemix uses a bearer token for authentication. The Bluemix.login() method logs in the user, establishes the bearer token and uses it for subsequent access. 
 
 IoTPClient.login() uses Cloud Identity Access Management (IAM) to handle login. Cloud IAM requires each application to have a clientId and secret. See [Managing user API keys](https://console.bluemix.net/docs/iam/userid_keys.html#userapikey) for information on how to get an clientId and secret for your application. This information needs to be provided in the src/main/resources/config.properties file. For example:
 
 ```
 # Cloud IAM application credentials
-clientId=CE4IoTConnector
+clientId=iotp-adaptor
 secret=C54AB68YA513
 ```
 
@@ -137,7 +137,7 @@ The iotp-connecter server makes use of eclipse/Lyo ConsumersService and OAuthSer
 
 ## OAuth Server-to-Server Authentication
 
-An OSLC server may need to support connections with CE versions prior to 6.0. To do so they would need to support OAuth 1.0a. CE clients should assume OAuth 1.0a, and establish the friend relationships using consumer keys provided by the CE4IoTConnector server.
+An OSLC server may need to support connections with CE versions prior to 6.0. To do so they would need to support OAuth 1.0a. CE clients should assume OAuth 1.0a, and establish the friend relationships using consumer keys provided by the iotp-adaptor server.
 
  Establishing the consumer/friend relationship requires access to a jazz.net root services document that provides the following URLs the friend server is expected to support for OAuth authentication as defined in [Jazz Root Services Specification](https://jazz.net/wiki/bin/view/Main/RootServicesSpec) and documented further in [Jazz Foundation Core Security](https://jazz.net/wiki/bin/view/Main/JFSCoreSecurity):
 

@@ -1,6 +1,6 @@
 # Environment Setup
 
-iotp-adaptor was developed using [eclipse/Lyo Designer Toolchain Modeler and Code Generator](https://wiki.eclipse.org/Lyo/ToolchainModellingAndCodeGenerationWorkshop) which is an eclipse plug-in. So you'll need to use eclipse to follow along in this Developer Guide, as well as create your own adpaters using a similar technique.
+iotp-adaptor was developed using [eclipse/Lyo Designer](https://github.com/eclipse/lyo.designer/wiki) which is an eclipse plug-in. So you'll need to use eclipse to follow along in this Developer Guide, as well as create your own adpaters using a similar technique.
 
 This section summarizes how to install and configure eclipse so it is ready to be used for adapter development. It doesn't go into a lot of detail, and assumes some familiarity with eclipse, JEE and git. If you need help on any of these, the Web is full of great tutorials, references and samples that are a quick Google/Bing search away.
 
@@ -44,7 +44,7 @@ Note: If the About Eclipse menu item, and clicking on the Installation Details b
 
 ## Install Jetty
 
-You can deploy the WAR file created in the iotp-adaptor/CE4IoTConnector eclipse Maven project to any JEE container. However, Jetty is a very convenient container to use for rapid development. Install Jetty from [https://www.eclipse.org/jetty/download.htm](https://www.eclipse.org/jetty/download.htm).
+You can deploy the WAR file created in the iotp-adaptor/iotp-adaptor eclipse Maven project to any JEE container. However, Jetty is a very convenient container to use for rapid development. Install Jetty from [https://www.eclipse.org/jetty/download.htm](https://www.eclipse.org/jetty/download.htm).
 
 1. Start eclipse
 
@@ -66,12 +66,12 @@ Now that your eclipse platform is all setup, you're ready to clone the iotp-adap
 1. Start eclipse
 2. Open the Git perspective
 3. paste the following URI in the Git Repositories view: https://github.com/OSLC/iotp-adaptor.git
-4. Select the iotp-adaptor repository, right click, and invoke Import Maven Projects... to import the CE4IoTConnector maven project. Note: if this menu item isn't available, you will need to install the m2e egit connector from the eclipse marketplace. Follow [these instructions](https://stackoverflow.com/questions/4542104/how-do-you-get-git-integration-working-with-m2eclipse). 
-5. Select the iotp-awaptor repository again, right click and invoke Import Projects... to import the CE4IoTConnector-model project. 
+4. Select the iotp-adaptor repository, right click, and invoke Import Maven Projects... to import the iotp-adaptor maven project. Note: if this menu item isn't available, you will need to install the m2e egit connector from the eclipse marketplace. Follow [these instructions](https://stackoverflow.com/questions/4542104/how-do-you-get-git-integration-working-with-m2eclipse). 
+5. Select the iotp-awaptor repository again, right click and invoke Import Projects... to import the iotp-adaptor-model project. 
 5. Switch to the Java EE perspective
-6. Expand eclipse maven project CE4IoTConnector
+6. Expand eclipse maven project iotp-adaptor
 7. Select the pom.xml file, right click and invoke Run As > Maven install
 
-If all goes well, you should have completed the build of CE4IoTConnector, and the deployable WAR file will be in target/iotp-0.0.1-SNAPSHOT (or something similar, the version might be different).
+If all goes well, you should have completed the build of iotp-adaptor, and the deployable WAR file will be in target/iotp-0.0.1-SNAPSHOT (or something similar, the version might be different).
 
-Note, when you load a Maven project (instead of an eclipse project), Maven automatically updates the eclipse project settings from information in the Maven pom.xml file. If you make significant changes to the pom.xml file, you may need to update the eclipse project settings again. To do this, select the CE4IoTConnector project, right click, and invoke Maven > Update Project.... This will ensure the eclipse automatic build will use the same settings and dependencies as the Maven commands (e.g., mvn install from the command line or Run As > Maven install from the Project Explorer). This way compilation errors will show up in the Project Explorer and Markers view as you are editing.
+Note, when you load a Maven project (instead of an eclipse project), Maven automatically updates the eclipse project settings from information in the Maven pom.xml file. If you make significant changes to the pom.xml file, you may need to update the eclipse project settings again. To do this, select the iotp-adaptor project, right click, and invoke Maven > Update Project.... This will ensure the eclipse automatic build will use the same settings and dependencies as the Maven commands (e.g., mvn install from the command line or Run As > Maven install from the Project Explorer). This way compilation errors will show up in the Project Explorer and Markers view as you are editing.

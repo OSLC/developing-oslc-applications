@@ -57,7 +57,7 @@ The keytool command is used for self-authentication or data integrity and authen
 For example: 
 
 ```
-cd ~/workspace/CE4IoTConnector
+cd ~/workspace/iotp-adaptor
 keytool -keystore keystore -alias jetty -genkey -keyalg RSA -validity 360
 
 Enter keystore password: passw0rd

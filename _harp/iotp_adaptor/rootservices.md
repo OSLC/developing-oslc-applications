@@ -2,15 +2,15 @@ All the jazz.net application provide and expect a `rootservices` resource that p
 
 The URL for the rootservices document has to be provided when adding a Friend to an consuming jazz.net application. This rootservices document provide the information the consuming server needs in order to use OSLC services provided by the server.
 
-CE4IoTConnector, and other servers that want to integrate with the jazz.net apps need to provide at least three categories of information:
+iotp-adaptor, and other servers that want to integrate with the jazz.net apps need to provide at least three categories of information:
 
 1. The URLs to the provided service provider catalog - for artifact container associations
 2. The OAuth authentication URLs - for OAuth authentication when adding a friend
 3. The TRS provider - for adding LQE data sources
 
-## Sample CE4IoTConnector rootservices resource
+## Sample iotp-adaptor rootservices resource
 
-Here's a sample of the CE4IoTConnector rootservices document, and a sample of the minimum information a server needs to provide for the jazz.net apps to be able to integrate with them:
+Here's a sample of the iotp-adaptor rootservices document, and a sample of the minimum information a server needs to provide for the jazz.net apps to be able to integrate with them:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -26,7 +26,7 @@ Here's a sample of the CE4IoTConnector rootservices document, and a sample of th
     xmlns:jfs="http://jazz.net/xmlns/prod/jazz/jfs/1.0/" 
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	
-    <dc:title>OSLC AM CE4IoTConnector Jazz Root Services</dc:title>
+    <dc:title>OSLC AM iotp-adaptor Jazz Root Services</dc:title>
     
     <!-- OAuth URLs for establishing server-to-server connections -->
     <jfs:oauthRealmName>IoTPlatform</jfs:oauthRealmName>
@@ -74,7 +74,7 @@ The [OAuth1.0a](https://oauth.net/core/1.0a/) sequence requires a set of URLs th
 
 ## Service Providers
 
-Once the consumer app has successfully added, authenticated and accepted the provisional consumer key, the jazz.net applications can now communicate with the CE4IoTConnector server. But in order for the consumer to use any of the server's OSLC services, it needs to discover what services are provided and get the URLs used to access the services. 
+Once the consumer app has successfully added, authenticated and accepted the provisional consumer key, the jazz.net applications can now communicate with the iotp-adaptor server. But in order for the consumer to use any of the server's OSLC services, it needs to discover what services are provided and get the URLs used to access the services. 
 
 The rootservices document defines a number of service providers for this purpose, each of which provides the URL to the ServiceProviderCatalog for a given set of domain services.
 
@@ -84,7 +84,7 @@ The rootservices document defines a number of service providers for this purpose
     <oslc_cm:cmServiceProviders rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/catalog/singleton" />
 ```
 
-CE4IoTConnector resources are all modeled to be subclasses of oslc_am:Resource, but are "marked" to masquerade as oslc_rm:Requirement and oslc_cm:ChangeRequest in order to be able to participate as link targets to standard OSLC domain link types supported by the jazz.net applications. See [The toolchain model](./toolchain-model) for details.
+iotp-adaptor resources are all modeled to be subclasses of oslc_am:Resource, but are "marked" to masquerade as oslc_rm:Requirement and oslc_cm:ChangeRequest in order to be able to participate as link targets to standard OSLC domain link types supported by the jazz.net applications. See [The toolchain model](./toolchain-model) for details.
 
 The service provider catalog URLs are used to access OSLC discovery resources to so the client can discover what OSLC services are available, and at what URL.
 
@@ -99,7 +99,7 @@ The rootservices document also provides discovery information for the Tracked Re
 * type: the type of the TRS resources, the "machine readable" identifier to compare for uniqueness - does not need to be dereferenceable
 * domain: the OSLC domain(s) of the TRS resources
 
-The CE4IoTConnector provides a simple TRS 2.0 provider for AM and CM resources:
+The iotp-adaptor provides a simple TRS 2.0 provider for AM and CM resources:
 
 ```
     <trs:TrackedResourceSetProvider>
@@ -114,7 +114,7 @@ The CE4IoTConnector provides a simple TRS 2.0 provider for AM and CM resources:
 
 ## Implementing the rootservices Document
 
-The CE4IoTConnector rootservices resource is provided the RootServicesService servlet which sets some request attributes and the dispatches to `/rootservices_rdfxml.jsp`. The URL to the RootServicesServices servlet is specified in the web.xml file. By convention the URL is the base URL of the server followed by `/rootservices`.
+The iotp-adaptor rootservices resource is provided the RootServicesService servlet which sets some request attributes and the dispatches to `/rootservices_rdfxml.jsp`. The URL to the RootServicesServices servlet is specified in the web.xml file. By convention the URL is the base URL of the server followed by `/rootservices`.
 
 ```
 	<servlet>
@@ -147,7 +147,7 @@ String about = (String) request.getAttribute("about");
     xmlns:jfs="http://jazz.net/xmlns/prod/jazz/jfs/1.0/" 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
-	<dcterms:title>OSLC AM CE4IoTConnector Jazz Root Services</dcterms:title>
+	<dcterms:title>OSLC AM iotp-adaptor Jazz Root Services</dcterms:title>
 	<oslc_am:amServiceProviders rdf:resource="<%= catalogUri %>" />
 	<oslc_rm:rmServiceProviders rdf:resource="<%= catalogUri %>" />
 	<oslc_cm:cmServiceProviders rdf:resource="<%= catalogUri %>" />
