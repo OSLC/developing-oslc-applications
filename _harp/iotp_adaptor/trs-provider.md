@@ -194,6 +194,8 @@ Testing this minimal TRS provider consists of accessing the TRS and its base and
 
 Verify the content is as expected. It should be something like:
 
+Get the TRS: https://localhost:9443/iotp/services/trs
+
 ```
 @prefix trs:     <http://open-services.net/ns/core/trs#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -224,6 +226,42 @@ Verify the content is as expected. It should be something like:
       	<https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/8dm156/resources/deviceTypes/TempCtrl> ;
       trs:order "3"^^xsd:int .
 
+```
+
+Get the Base resources: https://localhost:9443/iotp/services/trs/base
+ 
+```
+<rdf:RDF 
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/" 
+  xmlns:oslc="http://open-services.net/ns/core#" 
+  xmlns:ldp="http://www.w3.org/ns/ldp#" 
+  xmlns:trs="http://open-services.net/ns/core/trs#" 
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<ldp:Page rdf:about="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs/base/1">
+<ldp:nextPage rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+<ldp:pageOf>
+<ldp:Container rdf:about="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs/base">
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/5yj0cn/resources/deviceTypes/washingMachine"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TempCtrl23"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/LFWM1"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TempSensor01"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/NewDeviceType"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TestDevice"/>
+<trs:cutoffEvent rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/NewDevice1"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/5yj0cn/resources/deviceTypes/zsprobeqp000005"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TempControllers"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/NTCThermistor-II"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TempSensor1"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/Watson-IoT-Sensor-Simulator"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/dq2on5/resources/deviceTypes/ff"/>
+<rdfs:member rdf:resource="https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/LFWM"/>
+</ldp:Container>
+</ldp:pageOf>
+</ldp:Page>
+</rdf:RDF>
 ```
 
 

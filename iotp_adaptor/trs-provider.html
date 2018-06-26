@@ -131,6 +131,7 @@ if (&quot;&quot;.equals(message.getToken())) {
 <li>Get the ChangeLog: <a href="https://localhost:8080/iotp/services/trs/changeLog">https://localhost:8080/iotp/services/trs/changeLog</a> </li>
 </ul>
 <p>Verify the content is as expected. It should be something like:</p>
+<p>Get the TRS: <a href="https://localhost:9443/iotp/services/trs">https://localhost:9443/iotp/services/trs</a></p>
 <pre><code>@prefix trs:     &lt;http://open-services.net/ns/core/trs#&gt; .
 @prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix xsd:     &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -159,6 +160,38 @@ if (&quot;&quot;.equals(message.getToken())) {
           &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestID2345&gt; , &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/ov305m/resources/deviceTypes/TestPie&gt; , 
           &lt;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/8dm156/resources/deviceTypes/TempCtrl&gt; ;
       trs:order &quot;3&quot;^^xsd:int .
+</code></pre><p>Get the Base resources: <a href="https://localhost:9443/iotp/services/trs/base">https://localhost:9443/iotp/services/trs/base</a></p>
+<pre><code>&lt;rdf:RDF 
+  xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; 
+  xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot; 
+  xmlns:oslc=&quot;http://open-services.net/ns/core#&quot; 
+  xmlns:ldp=&quot;http://www.w3.org/ns/ldp#&quot; 
+  xmlns:trs=&quot;http://open-services.net/ns/core/trs#&quot; 
+  xmlns:rdfs=&quot;http://www.w3.org/2000/01/rdf-schema#&quot; 
+  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema#&quot;&gt;
+&lt;ldp:Page rdf:about=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs/base/1&quot;&gt;
+&lt;ldp:nextPage rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&quot;/&gt;
+&lt;ldp:pageOf&gt;
+&lt;ldp:Container rdf:about=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/trs/base&quot;&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/5yj0cn/resources/deviceTypes/washingMachine&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TempCtrl23&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/LFWM1&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TempSensor01&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/NewDeviceType&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TestDevice&quot;/&gt;
+&lt;trs:cutoffEvent rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/NewDevice1&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/5yj0cn/resources/deviceTypes/zsprobeqp000005&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TempControllers&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/NTCThermistor-II&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/TempSensor1&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/Watson-IoT-Sensor-Simulator&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/dq2on5/resources/deviceTypes/ff&quot;/&gt;
+&lt;rdfs:member rdf:resource=&quot;https://rlia4iot.raleigh.ibm.com:9443/iotp/services/iotp/rhu3zv/resources/deviceTypes/LFWM&quot;/&gt;
+&lt;/ldp:Container&gt;
+&lt;/ldp:pageOf&gt;
+&lt;/ldp:Page&gt;
+&lt;/rdf:RDF&gt;
 </code></pre><h1>Configuring LQE to use iotp-adaptor TRS provider</h1><p>This simple TRS provider provides a surprising amount of capability by simply adding IoT Platform resources to LQE. You can:</p>
 <ul>
 <li>Use the LEQ admin application to explore IoT Platform data with SPARQL queries</li>
