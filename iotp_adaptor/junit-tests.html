@@ -33,8 +33,7 @@ Modernizr.load([{
                     Oslc_iotDomainConstants.IOT_PLATFORM_NAMSPACE, Oslc_iotDomainConstants.DEVICETYPE_TYPE);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-</code></pre><p>At some point, this simple approach should be migrated into the eclipse/Lyo Java client API. </p>
+        }</code></pre><p>At some point, this simple approach should be migrated into the eclipse/Lyo Java client API. </p>
 <p>You will probably get deprecated code warnings in this code because OSLC4J OslcClient needs to be updated to use the updated HttpClient</p>
 <h2>A Typical Resource Test Case</h2><p>The tests for CRUD operations on resources follow a typical pattern:</p>
 <ol>
@@ -88,8 +87,7 @@ Modernizr.load([{
         assertEquals(response.getStatusCode(), HttpStatus.SC_OK);
         logger.info(&quot;Deleted DeviceType: &quot; + uri);
         response.consumeContent();
-    }
-</code></pre><p>Eventually test cases for all supported IoT Platform Resources should be implemented. But since this is intended to be incomplete sample code for the purposes of enhancing the OSLC Developer Guide, these details are not covered.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    }</code></pre><p>Eventually test cases for all supported IoT Platform Resources should be implemented. But since this is intended to be incomplete sample code for the purposes of enhancing the OSLC Developer Guide, these details are not covered.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

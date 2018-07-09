@@ -48,8 +48,11 @@ Added the following:</p>
 <li>Start eclipse</li>
 </ol>
 <p>After installing, edit your .bash_profile or whatever is appropriate for your platform and set the JETTY_HOME environment variable. For example:</p>
-<pre><code>export JETTY_HOME=~/Applications/jetty-distribution-9.4.5.v20170502
-</code></pre><h2>Install git and GitHub Desktop</h2><p><a href="https://github.com/OSLC/iotp-adaptor">iotp-adaptor</a> is a GitHub project, so you&#39;ll need to use git to access the source code. If you&#39;re here, you are likely already quite familiar with git. But just in case, here&#39;s a few notes to get you started. </p>
+<pre><code>export JETTY_HOME=~/Applications/jetty-distribution-9.4.5.v20170502</code></pre><p>Next use the Eclipse Marketplace to install Eclipse Jetty if you want to be able to lanuch iotp-adaptor as a Jetty Webapp. Use <code>src/main/sebapp</code> as the WEbApp Folder so that changes made during debugging will be immediately available. Typically use <code>/iotp</code> as the Context Path.</p>
+<p>Add the following VM arguments:</p>
+<pre><code>-Diot.platform.base=internetofthings.ibmcloud.com
+-Diot.platform.api.version=v0002
+-Dlog4j.debug=true</code></pre><h2>Install git and GitHub Desktop</h2><p><a href="https://github.com/OSLC/iotp-adaptor">iotp-adaptor</a> is a GitHub project, so you&#39;ll need to use git to access the source code. If you&#39;re here, you are likely already quite familiar with git. But just in case, here&#39;s a few notes to get you started. </p>
 <p>You can use EGit in eclipse, <a href="https://git-scm.com/downloads">git</a> command line interface, and/or <a href="https://desktop.github.com">GitHub Desktop</a>. These are all efficient, effective ways to use git and each has characteristics that make it useful in different contexts. The <a href="https://git-scm.com/docs">git reference manual</a> is also a very useful resource if you forget the specifics of a particular git command. There more at the <a href="https://git-scm.com/doc">git documentation site</a>.</p>
 <h1>Getting the iotp-adaptor Code</h1><p>Now that your eclipse platform is all setup, you&#39;re ready to clone the iotp-adaptor repository and install the eclipse Maven projects. The following is a brief summary of how to do this: </p>
 <ol>

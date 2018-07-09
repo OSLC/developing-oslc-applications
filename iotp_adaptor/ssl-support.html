@@ -71,13 +71,11 @@ Is CN=Fred Johnson, OU=Acme, O=Acme Development, L=Boston, ST=MA, C=US correct?
 
 Enter key password for &lt;jetty&gt;
     (RETURN if same as keystore password): passw0rd
-Re-enter new password:
-</code></pre><h3><a href="https://www.eclipse.org/jetty/documentation/current/configuring-ssl.html#requesting-trusted-certificate">Requesting a Trusted Certificate </a></h3><p>The above will generate a minimal certificate for SSL, but the browser will not trust this certificate and will prompt the user to that effect, asking them to trust you and add the self-assigned certificate. Some users may be unwilling to do so.</p>
+Re-enter new password:</code></pre><h3><a href="https://www.eclipse.org/jetty/documentation/current/configuring-ssl.html#requesting-trusted-certificate">Requesting a Trusted Certificate </a></h3><p>The above will generate a minimal certificate for SSL, but the browser will not trust this certificate and will prompt the user to that effect, asking them to trust you and add the self-assigned certificate. Some users may be unwilling to do so.</p>
 <p>Optionally you can generate a Certificate Signing Request (CSR) to have the certificate signed by a third-party certificate authority (CA) that is already configured in the user’s browser. These signed certificates will be automatically added to the browser. This is usually not free, your company may have specific policies for CSR. CAs include: AddTrust, Entrust, GeoTrust, RSA Data Security, Thawte, VISA, ValiCert, Verisign, and beTRUSTed.</p>
 <h3><a href="https://www.eclipse.org/jetty/documentation/current/configuring-ssl.html#loading-keys-and-certificates">Loading Keys and Certificates</a></h3><p>Once a CA has sent you a certificate, or if you generated your own certificate without keytool, you need to load it into a JSSE keystore. This is not needed if you generated a self-assigned certificate with keytool as the keystore already contains the self-assigned certificate.</p>
 <p>Use keytool to load a certificate in PEM form directly into a keystore. The PEM format is a text encoding of certificates.</p>
-<pre><code>keytool -keystore keystore -import -alias jetty -file jetty.crt -trustcacerts
-</code></pre><h3><a href="https://www.eclipse.org/jetty/documentation/current/configuring-ssl.html#configuring-sslcontextfactory">Configuring the Jetty SslContextFactory</a></h3><p>For Tomcat, edit server.xml and configure a connector:</p>
+<pre><code>keytool -keystore keystore -import -alias jetty -file jetty.crt -trustcacerts</code></pre><h3><a href="https://www.eclipse.org/jetty/documentation/current/configuring-ssl.html#configuring-sslcontextfactory">Configuring the Jetty SslContextFactory</a></h3><p>For Tomcat, edit server.xml and configure a connector:</p>
 <pre><code>&lt;Connector 
     port=&quot;443&quot; maxHttpHeaderSize=&quot;8192&quot; maxThreads=&quot;150&quot;
     minSpareThreads=&quot;25&quot; maxSpareThreads=&quot;75&quot;
@@ -86,8 +84,7 @@ Re-enter new password:
     SSLEnabled=&quot;true&quot; clientAuth=&quot;false&quot;
     sslProtocol=&quot;TLS&quot; keyAlias=&quot;server&quot; 
     keystoreFile=&quot;/home/user_name/your_site_name.jks&quot; 
-    keystorePass=&quot;your_keystore_password&quot; /&gt;
-</code></pre><p>DN contains: CN is the website, OU is subdivision of the company, O is the company name, L is the city, S is the province/state and C is the country code.</p>
+    keystorePass=&quot;your_keystore_password&quot; /&gt;</code></pre><p>DN contains: CN is the website, OU is subdivision of the company, O is the company name, L is the city, S is the province/state and C is the country code.</p>
 <p>There are two kinds of certificates, ones that contain the private key and ones that don’t. keytool never import/exports private keys.</p>
 <p>For the Jetty Distribution, edit <code>&lt;jetty-base&gt;/start.d/ssl.ini</code> and set the following properties. Note: use the Eclipse Jetty Project with an installed Jetty runtime which automates much of the configuration. </p>
 <p>These instructions are applicable to an installed Jetty runtime, and are retained for completeness. </p>
@@ -104,13 +101,11 @@ Re-enter new password:
 <li>jetty.sslContext.keyStorePath Sets the location of the keystore that you configured with your certificates.</li>
 <li>jetty.sslContext.keyStorePassword Sets the Password for the keystore.</li>
 </ul>
-<pre><code>java -jar /path/to/jetty-dist/start.jar --add-to-start=ssl
-</code></pre><p>In eclipse jetty, ${jetty.base}/start.d</p>
+<pre><code>java -jar /path/to/jetty-dist/start.jar --add-to-start=ssl</code></pre><p>In eclipse jetty, ${jetty.base}/start.d</p>
 <h3><a href="https://www.eclipse.org/jetty/documentation/9.4.x/jetty-maven-plugin.html">Configuring the jetty maven plugin</a> for SSL/TLS support</h3><p>Note: While the Jetty Maven Plugin can be very useful for development we do not recommend its use in a production capacity. In order for the plugin to work it needs to leverage many internal Maven apis and Maven itself it not a production deployment tool. We recommend either the traditional distribution deployment approach or using <a href="https://www.eclipse.org/jetty/documentation/9.4.x/advanced-embedding.html">embedded Jetty</a>.</p>
 <pre><code>mvn jetty:run # runs jetty on an unassembled webapp
 
-mvn jetty:help -Ddetail=true -Dgoal=&lt;goal name&gt;
-</code></pre><p>See the list of goals supported by maven Jetty plugin.</p>
+mvn jetty:help -Ddetail=true -Dgoal=&lt;goal name&gt;</code></pre><p>See the list of goals supported by maven Jetty plugin.</p>
 <h3><a href="https://www.eclipse.org/jetty/documentation/9.4.x/configuring-connectors.html">Configuring Jetty Connectors</a></h3><p>Jetty 9 has a single selector-based non-blocking I/O connector, and a collection of <a href="http://www.eclipse.org/jetty/javadoc/9.4.6-SNAPSHOT/org/eclipse/jetty/server/ConnectionFactory.html">ConnectionFactories</a> now configure the protocol on the connector.</p>
 <p>See <a href="http://whitehorseplanet.org/gate/topics/documentation/public/jetty_ssl_configuration.html">How To Configure Jetty for SSL/HTTPS</a></p>
 <h2>Using Eclipse Jetty Project</h2><p>The Eclipse Jetty Project, accessed from the Eclipse Marketplace, provides a launch configuration for launching a Jetty server out of eclipse. It can work with the bundled Jetta or a manually installed Jetty.</p>

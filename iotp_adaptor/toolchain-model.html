@@ -174,8 +174,7 @@ Modernizr.load([{
       &lt;option value=&quot;eventtype&quot;&gt;EventType&lt;/option&gt;
       &lt;option value=&quot;schema&quot;&gt;Schema&lt;/option&gt;
       &lt;option value=&quot;rule&quot;&gt;Rule&lt;/option&gt;      
-  &lt;/select&gt;
-</code></pre><p>We&#39;ll cover this in more detail when looking at the <a href="./exploring-the-code">generated code</a>. For now, we&#39;ll have Lyo Designer just generate a single creation dialog for generic resources, and edit the generated dialogs to add the type select element and the code for processing it.</p>
+  &lt;/select&gt;</code></pre><p>We&#39;ll cover this in more detail when looking at the <a href="./exploring-the-code">generated code</a>. For now, we&#39;ll have Lyo Designer just generate a single creation dialog for generic resources, and edit the generated dialogs to add the type select element and the code for processing it.</p>
 <p><img src="./images/Creation-Dialogs.png" alt="Creation Dialogs" title="Creation Dialogs"></p>
 <p>Notice that there is no creation dialog for the Bluemix Service Provider&#39;s Services. This is because Space and NodeREDApp are read-only in our design. This is because the mechanics of creating spaces and Node-RED flows is somewhat complex and better handled directly by IBM Cloud.</p>
 <h3>Marker Types</h3><p>There is another curious thing about the the creation dialog: its used to create instances of IoT Platform resources. But the adapter interface model shows the ResourceCreation dialog is used to create oslc_cm:ChangeRequest, <code>oslc_rm:Requirement</code> and <code>oslc_am:Resource</code>. Why is that?</p>

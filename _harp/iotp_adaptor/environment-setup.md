@@ -52,6 +52,16 @@ After installing, edit your .bash_profile or whatever is appropriate for your pl
 
     export JETTY_HOME=~/Applications/jetty-distribution-9.4.5.v20170502
 
+Next use the Eclipse Marketplace to install Eclipse Jetty if you want to be able to lanuch iotp-adaptor as a Jetty Webapp. Use `src/main/sebapp` as the WEbApp Folder so that changes made during debugging will be immediately available. Typically use `/iotp` as the Context Path.
+
+Add the following VM arguments:
+
+```
+-Diot.platform.base=internetofthings.ibmcloud.com
+-Diot.platform.api.version=v0002
+-Dlog4j.debug=true
+```
+ 
 ## Install git and GitHub Desktop
 
 [iotp-adaptor](https://github.com/OSLC/iotp-adaptor) is a GitHub project, so you'll need to use git to access the source code. If you're here, you are likely already quite familiar with git. But just in case, here's a few notes to get you started. 

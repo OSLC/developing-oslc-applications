@@ -37,16 +37,14 @@ Modernizr.load([{
          ModelFactory.createDefaultModel();
          // force plain XML writer
          RDFWriterFImpl.alternative(null);
-        // End of user code
-</code></pre><p>This add additional services to your Web app in order to support OAuth1.0a. The OAuth classes need to be added using the Class.ForName method instead of through imports because they are defined in a separate, reusable Web application WAR file, not a Java JAR file.</p>
+        // End of user code</code></pre><p>This add additional services to your Web app in order to support OAuth1.0a. The OAuth classes need to be added using the Class.ForName method instead of through imports because they are defined in a separate, reusable Web application WAR file, not a Java JAR file.</p>
 <p>This dependency in the iotp-adaptor pom.xml file causes the oauth-webapp to be merged with the iotp-adaptor app when the user does a maven install.</p>
 <pre><code>        &lt;dependency&gt;
             &lt;groupId&gt;org.eclipse.lyo.server&lt;/groupId&gt;
             &lt;artifactId&gt;oauth-webapp&lt;/artifactId&gt;
             &lt;version&gt;${lyo.version}&lt;/version&gt;
             &lt;type&gt;war&lt;/type&gt;
-        &lt;/dependency&gt;
-</code></pre></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        &lt;/dependency&gt;</code></pre></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

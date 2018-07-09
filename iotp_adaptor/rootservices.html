@@ -55,8 +55,7 @@ Modernizr.load([{
             &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/am#&quot; /&gt;
         &lt;/trs:TrackedResourceSetProvider&gt;
     &lt;/iotp:trackedResourceSetProvider&gt;
-&lt;/rdf:Description&gt;
-</code></pre><h2>OAuth Authentication</h2><p>The rootservices document is an unprotected resource, a resource that does not require authentication in order to be accessed. The reason for this is that the URLs for the OAuth authentication sequence must be accessible, and so these are provided in an unprotected resource.</p>
+&lt;/rdf:Description&gt;</code></pre><h2>OAuth Authentication</h2><p>The rootservices document is an unprotected resource, a resource that does not require authentication in order to be accessed. The reason for this is that the URLs for the OAuth authentication sequence must be accessible, and so these are provided in an unprotected resource.</p>
 <p>The <a href="https://oauth.net/core/1.0a/">OAuth1.0a</a> sequence requires a set of URLs that the server provides and clients use to authenticate communication. The names of the properties in the rootservices resource correspond closely to their names in the OAuth1.0a protocol.</p>
 <pre><code>    &lt;jfs:oauthRealmName&gt;IoTPlatform&lt;/jfs:oauthRealmName&gt;
     &lt;jfs:oauthDomain&gt;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp&lt;/jfs:oauthDomain&gt;
@@ -64,13 +63,11 @@ Modernizr.load([{
     &lt;jfs:oauthApprovalModuleUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/approveKey&quot; /&gt;
     &lt;jfs:oauthRequestTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/requestToken&quot;/&gt;
     &lt;jfs:oauthUserAuthorizationUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/authorize&quot; /&gt;
-    &lt;jfs:oauthAccessTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/accessToken&quot;/&gt;
-</code></pre><h2>Service Providers</h2><p>Once the consumer app has successfully added, authenticated and accepted the provisional consumer key, the jazz.net applications can now communicate with the iotp-adaptor server. But in order for the consumer to use any of the server&#39;s OSLC services, it needs to discover what services are provided and get the URLs used to access the services. </p>
+    &lt;jfs:oauthAccessTokenUrl rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/oauth/accessToken&quot;/&gt;</code></pre><h2>Service Providers</h2><p>Once the consumer app has successfully added, authenticated and accepted the provisional consumer key, the jazz.net applications can now communicate with the iotp-adaptor server. But in order for the consumer to use any of the server&#39;s OSLC services, it needs to discover what services are provided and get the URLs used to access the services. </p>
 <p>The rootservices document defines a number of service providers for this purpose, each of which provides the URL to the ServiceProviderCatalog for a given set of domain services.</p>
 <pre><code>    &lt;oslc_am:amServiceProviders rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/catalog/singleton&quot; /&gt;
     &lt;oslc_rm:rmServiceProviders rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/catalog/singleton&quot; /&gt;
-    &lt;oslc_cm:cmServiceProviders rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/catalog/singleton&quot; /&gt;
-</code></pre><p>iotp-adaptor resources are all modeled to be subclasses of oslc_am:Resource, but are &quot;marked&quot; to masquerade as oslc_rm:Requirement and oslc_cm:ChangeRequest in order to be able to participate as link targets to standard OSLC domain link types supported by the jazz.net applications. See <a href="./toolchain-model">The toolchain model</a> for details.</p>
+    &lt;oslc_cm:cmServiceProviders rdf:resource=&quot;https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/catalog/singleton&quot; /&gt;</code></pre><p>iotp-adaptor resources are all modeled to be subclasses of oslc_am:Resource, but are &quot;marked&quot; to masquerade as oslc_rm:Requirement and oslc_cm:ChangeRequest in order to be able to participate as link targets to standard OSLC domain link types supported by the jazz.net applications. See <a href="./toolchain-model">The toolchain model</a> for details.</p>
 <p>The service provider catalog URLs are used to access OSLC discovery resources to so the client can discover what OSLC services are available, and at what URL.</p>
 <p><img src="./images/CoreDiscovery.png" alt="OSLC Discovery Capability" title="OSLC Discovery Capability"></p>
 <h2>TRS Provider</h2><p>The rootservices document also provides discovery information for the Tracked Resource Sets (TRS) the server provides. Each TRS provides the following information as defined in the <a href="http://open-services.net/wiki/core/TrackedResourceSet-2.0/">OSLC Tracked Resource Set Specification</a>:</p>
@@ -88,8 +85,7 @@ Modernizr.load([{
         &lt;dc:type     rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
         &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
         &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/am#&quot; /&gt;
-    &lt;/trs:TrackedResourceSetProvider&gt;
-</code></pre><h2>Implementing the rootservices Document</h2><p>The iotp-adaptor rootservices resource is provided the RootServicesService servlet which sets some request attributes and the dispatches to <code>/rootservices_rdfxml.jsp</code>. The URL to the RootServicesServices servlet is specified in the web.xml file. By convention the URL is the base URL of the server followed by <code>/rootservices</code>.</p>
+    &lt;/trs:TrackedResourceSetProvider&gt;</code></pre><h2>Implementing the rootservices Document</h2><p>The iotp-adaptor rootservices resource is provided the RootServicesService servlet which sets some request attributes and the dispatches to <code>/rootservices_rdfxml.jsp</code>. The URL to the RootServicesServices servlet is specified in the web.xml file. By convention the URL is the base URL of the server followed by <code>/rootservices</code>.</p>
 <pre><code>    &lt;servlet&gt;
         &lt;servlet-name&gt;RootServicesService&lt;/servlet-name&gt;
         &lt;servlet-class&gt;com.ibm.oslc.adaptor.iotp.impl.RootServicesService&lt;/servlet-class&gt;
@@ -97,8 +93,7 @@ Modernizr.load([{
     &lt;servlet-mapping&gt;
         &lt;servlet-name&gt;RootServicesService&lt;/servlet-name&gt;
         &lt;url-pattern&gt;/rootservices&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
-</code></pre><p>The <code>/rootservices_rdfxml.jsp</code> file is a simple JSP page that uses the request attributes set by the servlet and then simply outputs the RDF/XML directly.</p>
+    &lt;/servlet-mapping&gt;</code></pre><p>The <code>/rootservices_rdfxml.jsp</code> file is a simple JSP page that uses the request attributes set by the servlet and then simply outputs the RDF/XML directly.</p>
 <pre><code>&lt;%@ page contentType=&quot;application/rdf+xml&quot; language=&quot;java&quot; pageEncoding=&quot;UTF-8&quot; %&gt;
 &lt;%
 String baseUri = (String) request.getAttribute(&quot;baseUri&quot;);
@@ -133,8 +128,7 @@ String about = (String) request.getAttribute(&quot;about&quot;);
             &lt;trs:trackedResourceSet rdf:resource=&quot;&lt;%= baseUri + &quot;/services/trs&quot; %&gt;&quot; /&gt;
         &lt;/trs:TrackedResourceSetProvider&gt;        
     &lt;/iotp:trackedResourceSetProvider&gt;
-&lt;/rdf:Description&gt;
-</code></pre></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+&lt;/rdf:Description&gt;</code></pre></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

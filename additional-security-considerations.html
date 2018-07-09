@@ -89,11 +89,15 @@ Modernizr.load([{
 <p>Note that CORS-blocking is particularly difficult to diagnose because the browsers are required by the CORS standards to return HTTP 200 (OK) for XHR requests that have, in fact, never been sent to the servers.</p>
 <blockquote>
 <p>Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to let a user agent gain permission to access selected resources from a server on a different origin (domain) than the site currently in use. A user agent makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port than the one from which the current document originated.</p>
-<p>An example of a cross-origin request: A HTML page served from <a href="http://domain-a.com">http://domain-a.com</a> makes an &lt;img&gt; src request for <a href="http://domain-b.com/image.jpg">http://domain-b.com/image.jpg</a>. Many pages on the web today load resources like CSS stylesheets, images, and scripts from separate domains, such as content delivery networks (CDNs).</p>
-<p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy. This means that a web application using those APIs can only request HTTP resources from the same domain the application was loaded from unless CORS headers are used.</p>
-<footer>&quot;MDN CORS Site&quot;:<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</a> </footer>
-
 </blockquote>
+<blockquote>
+<p>An example of a cross-origin request: A HTML page served from <a href="http://domain-a.com">http://domain-a.com</a> makes an &lt;img&gt; src request for <a href="http://domain-b.com/image.jpg">http://domain-b.com/image.jpg</a>. Many pages on the web today load resources like CSS stylesheets, images, and scripts from separate domains, such as content delivery networks (CDNs).</p>
+</blockquote>
+<blockquote>
+<p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy. This means that a web application using those APIs can only request HTTP resources from the same domain the application was loaded from unless CORS headers are used.</p>
+</blockquote>
+<footer>"MDN CORS Site":https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS </footer>
+
 <p>Server-side CORS support can either be implemented directly within the servlet controllers of the target application (e.g. within the internal code of Jazz CLM itself) or by features of the execution environment hosting the CLM application (e.g. within IBM WAS Liberty).</p>
 <p>See <a href="ConfiguringCORSforApacheTomcat.html">Configuring CORS for Apache Tomcat</a> or <a href="ConfiguringCORSforIBMWASLiberty.html">Configuring CORS for IBM WAS Liberty</a> as appropriate. If you deploy a different execution host, consult its documentation for how to enable CORS.</p>
 <p>Regardless of which execution environment is in use, the configuration for CORS necessary for the adapter includes the following HTTP Headers with the values shown:</p>
@@ -106,8 +110,7 @@ Modernizr.load([{
 <th>Note</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Client</td>
 <td>Origin</td>
 <td>@<a href="https://windchill.acme.com@">https://windchill.acme.com@</a></td>
@@ -143,16 +146,17 @@ Modernizr.load([{
 <td>&quot;true&quot;</td>
 <td>Necessary for cookies to be exchanged across origins</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>Integration developers should be aware that for the browser to honor CORS requests and responses, the XHR requests in the client Javascript have to include the &quot;withCredentials: true&quot; parameter.</p>
 <h2>Content Security Policies (CSP)</h2><p>In addition to performing client-to-server requests, the adapter within the Windchill Javascript in the browser of a PLM user will also attempt to make requests between the browser&#39;s execution contexts, that is between windows whose source was loaded either from the PLM server (in Windchill extensions) or from the RLIA server (in JSP-loaded scripts) or from the CLM server (in iframe content). Without the use of CSP headers on the servers, the user&#39;s browser will reject those cross-domain requests.</p>
 <blockquote>
 <p>A primary goal of Content Security Policy (CSP) is to mitigate and report Cross-site Scripting (XSS) attacks. XSS attacks exploit the browser&#39;s trust of the content received from the server. Malicious scripts are executed by the victim&#39;s browser because the browser trusts the source of the content, even when it&#39;s not coming from where it seems to be coming from.</p>
-<p>CSP makes it possible for server administrators to reduce or eliminate the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts. A CSP compatible browser will then only execute scripts loaded in source files received from those whitelisted domains, ignoring all other script (including inline scripts and event-handling HTML attributes).&quot;</p>
-<footer>&quot;MDN CSP Site&quot;:<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP</a> </footer>
-
 </blockquote>
+<blockquote>
+<p>CSP makes it possible for server administrators to reduce or eliminate the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts. A CSP compatible browser will then only execute scripts loaded in source files received from those whitelisted domains, ignoring all other script (including inline scripts and event-handling HTML attributes).&quot;</p>
+</blockquote>
+<footer>"MDN CSP Site":https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP </footer>
+
 <p>In legacy versions of browsers and of Javascript, a programmer could set the targetOrigin argument in window.postMessage calls to be &quot;&#10033;&quot; to allow all sites to post messages between the browser&#39;s windows. In modern versions of the browsers, the use of &quot;&#10033;&quot; only disables the error warning that the browser would otherwise raise for cross-site messaging. Today, the servers must provide a suitable Content-Security-Policy header for their scripts and the programmer must supply a proper host URL for the targetOrigin parameter.</p>
 <p>To configure CSP support in Jazz CLM for the PLM server:</p>
 <ol>
@@ -170,9 +174,9 @@ Modernizr.load([{
 <h2>Cross-Site Request Forgery (CSRF)</h2><p>The adapter server responds to requests that are external to it with information that is intended only for the authorized user making the originating request. To assure that responses from the server are not sent to unauthorized strangers, the adapter server exploits CSRF protections.</p>
 <blockquote>
 <p>Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they&#39;re currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data, since the attacker has no way to see the response to the forged request.&quot;</p>
-<footer>&quot;OWASP CSRF Site&quot;:<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)/">https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)/</a> </footer>
-
 </blockquote>
+<footer>"OWASP CSRF Site":https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)/ </footer>
+
 <p>The adapter web application uses the OWASP CSRF Guard as a Java Servlet Request Filter on each request to inject session state to prevent CSRF attacks.</p>
 <p>Your network should not employ HTTP packet filters that strip CSRF state from packets or use proxy servers that neglect to pass along CSRF state.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

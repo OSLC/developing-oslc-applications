@@ -34,8 +34,7 @@ Modernizr.load([{
     &lt;description&gt;Port used for URI when registering ServiceProvider.  Can be overridden by System property of the same name.&lt;/description&gt;
     &lt;param-name&gt;com.ibm.oslc.adaptor.iotp.servlet.port&lt;/param-name&gt;
     &lt;param-value&gt;9443&lt;/param-value&gt;
-  &lt;/context-param&gt;
-</code></pre><p>OSLC4J and therefore iotp-adaptor, use JAX-RS and Apache Wink to implement RESTful web services. These elements in the web.xml deployment descriptor establish the base web application.</p>
+  &lt;/context-param&gt;</code></pre><p>OSLC4J and therefore iotp-adaptor, use JAX-RS and Apache Wink to implement RESTful web services. These elements in the web.xml deployment descriptor establish the base web application.</p>
 <pre><code>  &lt;servlet&gt;
     &lt;description&gt;JAX-RS Tools Generated - Do not modify&lt;/description&gt;
     &lt;servlet-name&gt;JAX-RS Servlet&lt;/servlet-name&gt;
@@ -45,13 +44,11 @@ Modernizr.load([{
       &lt;param-value&gt;com.ibm.oslc.adaptor.iotp.servlet.Application&lt;/param-value&gt;
     &lt;/init-param&gt;
     &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-  &lt;/servlet&gt;
-</code></pre><p>All of the generated web services are mapped to the JAX-RS servlet using the /services/* URL pattern:</p>
+  &lt;/servlet&gt;</code></pre><p>All of the generated web services are mapped to the JAX-RS servlet using the /services/* URL pattern:</p>
 <pre><code>  &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;JAX-RS Servlet&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/services/*&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;
-</code></pre><p>In order to integrate with the CE jazz-apps, it iotp-adaptor needs to include a rootservices document. This is added to the web.xml file using the RootServicesService servlet.</p>
+  &lt;/servlet-mapping&gt;</code></pre><p>In order to integrate with the CE jazz-apps, it iotp-adaptor needs to include a rootservices document. This is added to the web.xml file using the RootServicesService servlet.</p>
 <pre><code>  &lt;servlet&gt;
     &lt;servlet-name&gt;RootServicesService&lt;/servlet-name&gt;
     &lt;servlet-class&gt;com.ibm.oslc.adaptor.iotp.impl.RootServicesService&lt;/servlet-class&gt;
@@ -59,8 +56,7 @@ Modernizr.load([{
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;RootServicesService&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/rootservices&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;
-</code></pre><p>In order to support authentication, all service requests are directed through the CredentialsFilter. This servlet filter handles all the authorization challenges by delegating to the Watson IoT Platform. I also handles an OAuth1.0a authentication requests that come from the OSLC4J oauth-webapp.</p>
+  &lt;/servlet-mapping&gt;</code></pre><p>In order to support authentication, all service requests are directed through the CredentialsFilter. This servlet filter handles all the authorization challenges by delegating to the Watson IoT Platform. I also handles an OAuth1.0a authentication requests that come from the OSLC4J oauth-webapp.</p>
 <pre><code>  &lt;filter&gt;
     &lt;display-name&gt;CredentialsFilter&lt;/display-name&gt;
     &lt;filter-name&gt;CredentialsFilter&lt;/filter-name&gt;
@@ -70,8 +66,7 @@ Modernizr.load([{
     &lt;filter-name&gt;CredentialsFilter&lt;/filter-name&gt;
     &lt;url-pattern&gt;/services/*&lt;/url-pattern&gt;
   &lt;/filter-mapping&gt;
-  &lt;servlet&gt;
-</code></pre><h3>Application.java</h3><p>There are some additional application features that are added to the com.ibm.oslc.adaptor.iotp.servlet.Application class. These web application features include:</p>
+  &lt;servlet&gt;</code></pre><h3>Application.java</h3><p>There are some additional application features that are added to the com.ibm.oslc.adaptor.iotp.servlet.Application class. These web application features include:</p>
 <ul>
 <li>OAuth1.0a authentication using OSLC4J oauth-webapp</li>
 <li>The iotp-adaptor TRS provider service</li>
@@ -95,8 +90,7 @@ Modernizr.load([{
          ModelFactory.createDefaultModel();
          // force plain XML writer
          RDFWriterFImpl.alternative(null);
-        // End of user code
-</code></pre><p>The iotp-adaptor also provides support for accessing a Swagger.io interface for the JAX-RS RESTful web services using the @Api annotation. See <a href="https://wiki.eclipse.org/Lyo/creating_OSLC4J_project#Access_the_Swagger_Documentation">OpenApi/Swagger Support</a> for how to configure your OSLC adaptor for Swagger.io support.</p>
+        // End of user code</code></pre><p>The iotp-adaptor also provides support for accessing a Swagger.io interface for the JAX-RS RESTful web services using the @Api annotation. See <a href="https://wiki.eclipse.org/Lyo/creating_OSLC4J_project#Access_the_Swagger_Documentation">OpenApi/Swagger Support</a> for how to configure your OSLC adaptor for Swagger.io support.</p>
 <p>These additional services are available at the following URLs:</p>
 <ul>
 <li>OAuth Administration: <code>https://rlia4iot.raleigh.ibm.com:9443/iotp/services/oauth/admin</code>, you can manage consumer keys here.</li>
@@ -122,8 +116,7 @@ Modernizr.load([{
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>BmxServiceproviderInfo</td>
 <td>Specifies the information needed in a Bluemix service provider: its name, id, and organization id.</td>
 </tr>
@@ -155,8 +148,7 @@ Modernizr.load([{
 <td>RootServicesService</td>
 <td>A servlet that implements the rootservices resource needed to integrate with the IBM jazz-apps</td>
 </tr>
-</tbody>
-</table></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+</tbody></table></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a></p><p><a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a></p></footer></body><script>window.site_url = 'http://oslc.github.io/developing-oslc-applications/';</script><script src="http://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
