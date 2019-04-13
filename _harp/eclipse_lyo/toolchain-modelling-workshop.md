@@ -11,7 +11,7 @@ For seperations of concerns, Lyo Designer structures the toolchain model around 
     Specification](http://open-services.net/bin/view/Main/OslcCoreSpecification)
     and the [Resource Shape constraint
     language](http://open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource).
-    - Lyo Designer can also be used to solely model domains, as instructed under the [User Manual for Domain Specification Modelling](./user-manual-for-domain-specification-modellin).
+    - Lyo Designer can also be used to solely model domains, as instructed under the [Domain Specification Modelling Workshop](./domain-specification-modelling-workshop).
 -   **Toolchain View** – To allocate resources to tools. For each tool,
     the set of resources being exposes and/or consumed are defined.
 -   **Adapter Interface View** – To design the internal details of the
@@ -60,9 +60,9 @@ If you wish to cite this modelling prototype in scientific papers
 Eclipse Setup
 =============
 
-First, make sure your Eclipse environment is setup as expected for general OSLC4J development, as instructed in [General Setup for OSLC4J development](https://wiki.eclipse.org/Lyo/General_Setup_for_OSLC4J_Development)
+First, make sure your Eclipse environment is setup as expected for general OSLC4J development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
-Then, make sure you [install Lyo Designer](Installing-Lyo-Designer)
+Then, make sure you [install Lyo Designer](install-lyo-designer)
 
 Create a Toolchain Modelling Project
 ====================================
@@ -192,7 +192,7 @@ In this view, you can define the set of domain specifications of
 relevance to the tool-chain, including the definition of *Resources* and
 *Resource Properties* that form each *Domain Specification*.
 
-The instructions below explain how to define your domains within the same toolchain model. Lyo Designer also allows you to import and reuse existing Domain Specification models, as instructed under the [User Manual for Domain Specification Modelling](./user-manual-for-toolchain-modelling)
+The instructions below explain how to define your domains within the same toolchain model. Lyo Designer also allows you to import and reuse existing Domain Specification models, as instructed under the [Domain Specification Modelling Workshop](domain-specification-modelling-workshop)
 
 ![An example domain specification
 diagram](./images/LyoToolchainModel-SpecificationDiagram.png "An example domain specification diagram")
@@ -396,14 +396,13 @@ Java code. But it is first necessary to setup the Eclipse projects for
 each of the adaptors.
 
 For each of the Adaptor Interfaces in the model, create and setup an
-Eclipse OSLC4J project as instructed under [Create an OSLC4J
-project](./create-an-oslc4j-project).
+Eclipse OSLC4J project as instructed under [Setup an OSLC Provider/Consumer Application](./setup-an-oslc-provider-consumer-application).
 
 These projects will then be populated with the generated code needed.
 
 **Note:** Make sure each project is configured to match the Adaptor
 Interface project properties defined under [ Toolchain
-View](./user-manual-for-toolchain-modelling#toolchain-view)
+View](./toolchain-modelling-workshop#toolchain-view)
 
 Generate OSLC4J Java code
 =========================

@@ -11,11 +11,8 @@
   "services-resources-and-design-patterns": {
     "title": "Services, resources, and design patterns" 
   },
-  "eclipse-lyo" : {
-    "title": "Eclipse Lyo"
-  },
-  "tools-and-sdks" : {
-    "title": "Tools & SDKs"
+  "./eclipse_lyo/eclipse-lyo" : {
+    "title": "Tools & SDKs for Java Developers - Eclipse Lyo"
   },
   "sample-applications-and-code": {
     "title": "Sample applications and code"

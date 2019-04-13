@@ -1,6 +1,6 @@
 # Eclipse Setup 
 
-Make sure your environment is setup for OSLC4J development as instructed on [General Setup for OSLC4J development](./general-setup-for-oslc4j-development)
+Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
 # Sample Projects
 
@@ -16,8 +16,7 @@ In the instructions below, we assume the following parameters, which you will ne
 * Base Package Name for Java Classes: *com.sample.adaptor*
 
 We will here only create the code skeleton. The
-[Toolchain Modelling and Code Generation
-Workshop](./user-manual-for-toolchain-modelling) can then be used to generate the necessary code to become a fully functional adaptor.
+[Toolchain Modelling Workshop](./toolchain-modelling-workshop) can then be used to generate the necessary code to become a fully functional adaptor.
 
 Creation of the skeleton consists of 2 steps:
 
@@ -35,21 +34,21 @@ To create a Maven project from an archetype via Eclipse
 1. Uncheck the *Use default Workspace location* option and point it to the project root
 1. Press *Next*
 
-![](./images/CreateMavenAdaptorProject_Step1.png){width=800px}
+![](./images/CreateMavenAdaptorProject_Step1.png)
 
 Next, select the `maven-archetype-webapp` archetype:
 
-![](./images/CreateMavenAdaptorProject_Step2.png){width=800px}
+![](./images/CreateMavenAdaptorProject_Step2.png)
 
 Next, Fill in the **Group Id**, **Artefact Id**, and the **Package Base**.
 
 * The **Package Base** value (`com.sample.adaptor` on this page) will be used as a base package for your adaptor code.
 
-![](./images/CreateMavenAdaptorProject_Step3.png){width=800px}
+![](./images/CreateMavenAdaptorProject_Step3.png)
 
 You should now have the project in Eclipse and the following folder structure:
 
-![](./images/CreateMavenAdaptorProject_CodeStructure.png){width=800px}
+![](./images/CreateMavenAdaptorProject_CodeStructure.png)
 
 ## Customise the project POM file
 

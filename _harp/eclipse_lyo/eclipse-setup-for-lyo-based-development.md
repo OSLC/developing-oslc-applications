@@ -1,16 +1,15 @@
-You first need to setup an Eclipse environment for general OSLC4J
+You first need to setup an Eclipse environment for general Lyo
 development:
 
-1.  Unless already installed, you need to first install the JDK 8 (see
-    the [prerequisites](.7prerequisites-for-building-lyo-projects)).
+1.  Unless already installed, you need to first install the JDK 8.
 1.  Install your preferred Eclipse distribution. Which distribution to
     use?
     -   [Eclipse IDE for Java EE
-        Developers](https://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr2)
-        seems to cover the necessary [prerequisites for Building Lyo
-        Projects](Lyo/prereqs "wikilink").
+        Developers](https://www.eclipse.org/downloads/packages/release/oxygen/3a/eclipse-ide-java-ee-developers)
+        seems to cover the necessary prerequisites for Building Lyo
+        Projects.
     -   [Eclipse IDE for Java
-        Developers](https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/lunasr2)
+        Developers](https://www.eclipse.org/downloads/packages/release/oxygen/3a/eclipse-ide-java-developers)
         can be used, together with the following 2 additional plugins:
         -   *Eclipse Java EE Developer Tools*
         -   *Eclipse Java Web Developer Tools*

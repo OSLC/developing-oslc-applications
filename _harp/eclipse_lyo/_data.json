@@ -1,23 +1,23 @@
 {
-  "general-setup-for-oslc4j-development": {
-    "title": "General Setup for OSLC4J Development"
+  "eclipse-lyo": {
+    "title": "Tools & SDKs for Java Developers - Eclipse Lyo"
   },
-  "create-an-oslc4j-project": {
-    "title": "Create an OSLC4J Project"
+  "eclipse-setup-for-lyo-based-development": {
+    "title": "Eclipse Setup for Lyo-based Development"
   },
-  "prerequisites-for-building-lyo-projects": {
-    "title": "Prerequisites for Building Lyo Projects"
+  "setup-an-oslc-provider-consumer-application": {
+    "title": "Setup an OSLC Provider/Consumer Application"
   },
   "lyo-designer": {
-    "title": "Lyo-Designer"
+    "title": "Model the Toolchain - Lyo Designer"
   },
-  "installing-lyo-designer": {
-    "title": "Installing Lyo Designer" 
+  "install-lyo-designer": {
+    "title": "Install Lyo Designer" 
   },
-  "user-manual-for-toolchain-modelling": {
-    "title": "User Manual for Toolchain Modelling"
+  "toolchain-modelling-workshop": {
+    "title": "Toolchain Modelling Workshop"
   },
-  "user-manual-for-domain-specification-modelling": {
-    "title": "User Manual for Domain Specification Modelling"
+  "domain-specification-modelling-workshop": {
+    "title": "Domain Specification Modelling Workshop"
   }
 }

@@ -50,9 +50,9 @@ html.no-js(lang="en")
                 span.project-name #{ site_name }
           ul.items
             - var $i = 1;
-            for page, slug in public.iotp_adaptor._data
+            for page, slug in public.eclipse_lyo._data
               li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
-                a(href="#{ site_url }#{ slug === 'index' ? '' : ('iotp_adaptor/' + slug + '.html') }") #{ page.title }
+                a(href="#{ site_url }#{ slug === 'index' ? '' : ('eclipse_lyo/' + slug + '.html') }") #{ page.title }
             li.item(role="presentation")
               a(href="http://open-services.net/") open-services.net
       main.main
