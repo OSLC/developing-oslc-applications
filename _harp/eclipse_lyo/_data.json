@@ -1,0 +1,23 @@
+{
+  "eclipse-lyo": {
+    "title": "Tools & SDKs for Java Developers - Eclipse Lyo"
+  },
+  "eclipse-setup-for-lyo-based-development": {
+    "title": "Eclipse Setup for Lyo-based Development"
+  },
+  "setup-an-oslc-provider-consumer-application": {
+    "title": "Setup an OSLC Provider/Consumer Application"
+  },
+  "lyo-designer": {
+    "title": "Model the Toolchain - Lyo Designer"
+  },
+  "install-lyo-designer": {
+    "title": "Install Lyo Designer" 
+  },
+  "toolchain-modelling-workshop": {
+    "title": "Toolchain Modelling Workshop"
+  },
+  "domain-specification-modelling-workshop": {
+    "title": "Domain Specification Modelling Workshop"
+  }
+}
