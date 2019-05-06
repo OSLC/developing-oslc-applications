@@ -1,4 +1,4 @@
-- var site_url = environment == "production" ? 'http://oslc.github.io/developing-oslc-applications/' : '/';
+- var site_url = environment == "production" ? 'https://oslc.github.io/developing-oslc-applications/' : '/';
 doctype
 html.no-js(lang="en")
   head
@@ -8,6 +8,9 @@ html.no-js(lang="en")
     title #{ title || 'Learn to develop OSLC applications'}
 
     link(rel="stylesheet" href="#{ site_url }css/oslc.css")
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous")
+
 
     script(src="#{ site_url }js/lib/modernizr.js")
     
@@ -49,12 +52,13 @@ html.no-js(lang="en")
                 abbr.oslc-name(title="#{ org_name }") #{ org_abbr }
                 span.project-name #{ site_name }
           ul.items
+            li.item(role="presentation")
+              a(href="https://open-services.net/" target="_blank")
+               | Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i>
             - var $i = 1;
             for page, slug in public._data
               li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
                 a(href="#{ site_url }#{ slug === 'index' ? '' : (slug + '.html') }") #{ page.title }
-            li.item(role="presentation")
-              a(href="http://open-services.net/") open-services.net
       main.main
         .card
           header.header
@@ -66,9 +70,7 @@ html.no-js(lang="en")
         a.close-off-canvas(role="button", aria-label="Toggle Navigation", data-toggle-class="primary-nav-is-open", data-toggle-target="body")
     footer.footer
       p
-       | All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a>
-      p
-       | <a href="https://github.com/OSLC/developing-oslc-applications">Github</a> <a href="https://github.com/OSLC/developing-oslc-applications/issues">Issues</a> <a href="http://open-services.net">OSLC Home</a>
+       | All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a>       
   script.
     window.site_url = '#{site_url}';
   script(src="#{ site_url }js/oslc.js")
