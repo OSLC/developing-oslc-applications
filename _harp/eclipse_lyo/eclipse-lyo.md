@@ -81,7 +81,7 @@ Other components:
 
 Lyo also includes instructions and source code for a range of OSLC Server implementations:
 
-* [Bugzilla](https://wiki.eclipse.org/Lyo/BuildOSLC4JBugzilla) - an example of what Eclipse Lyo can be used for, in the form of an OSLC-CM compatible adapter for the Bugzilla bugtracker application. It wraps Bugzilla (interacting with it through Bugzilla's native XMLRPC API) with an OSLC-CM provider server accessible through REST calls.
+* [Bugzilla](https://github.com/eclipse/lyo.docs/tree/master/lyo-rest-workshop) - an example of what Eclipse Lyo can be used for, in the form of an OSLC-CM compatible adapter for the Bugzilla bugtracker application. It wraps Bugzilla (interacting with it through Bugzilla's native XMLRPC API) with an OSLC-CM provider server accessible through REST calls.
 * [Sample OSLC client](https://wiki.eclipse.org/Lyo/BuildClient) - that demonstrates how to use the Lyo client to interact with OSLC Service Providers in various ways.
 * [SharePoint](https://wiki.eclipse.org/Lyo/SharepointAdapter) - This SharePoint adapter looks through the sharepoint OData collections for collections where the ContentType is defined as "Document". For each SharePoint library that contains documents, an OSLC service provider is created with the basic services for OSLC Delegated dialogs for selection and creation as well as listing the documents with a UI preview.
 * The [Hudson and Jenkins](https://wiki.eclipse.org/Lyo/JenkinsPlugin) adapor implements the OSLC Automation specification.
