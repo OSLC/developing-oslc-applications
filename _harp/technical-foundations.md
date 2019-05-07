@@ -11,7 +11,7 @@ If you're new to linked data and RDF, we've put together [a playlist of videos](
 
 ### RESTful web architecture and HTTP
 
-You should be familiar with designing [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer#Central_principle) applications. 
+You should be familiar with designing [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer#Architectural_constraints) applications.
 
 For a quick primer, we recommend [“Learn REST” by Dr. M. Elkstein](http://rest.elkstein.org/), particularly these sections:
 
@@ -21,7 +21,7 @@ For a quick primer, we recommend [“Learn REST” by Dr. M. Elkstein](http://re
 4. [More Complex REST Requests](http://rest.elkstein.org/2008/02/more-complex-rest-requests.html)
 5. [REST Server Responses](http://rest.elkstein.org/2008/02/rest-server-responses.html)
 
-For OSLC implementations, you must use [HTTP protocol](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). 
+For OSLC implementations, you must use [HTTP protocol](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol).
 
 
 ### RDF, Turtle, JSON, and HTML
