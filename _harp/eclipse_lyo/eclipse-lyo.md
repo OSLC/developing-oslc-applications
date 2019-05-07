@@ -45,7 +45,7 @@ Lyo Designer supports incremental development, where manual changes to the gener
 
 * How to [install Lyo Designer](./install-lyo-designer)
 * How to use Lyo Designer to [model a toolchain](./toolchain-modelling-workshop) and generate an initial code base
-* How to use Lyo Designer to [model domain specifications](./domain-specification-modelling-workshop), and generate OSLC4J-annotated Java classes to reflect the defined OSLC Resources. 
+* How to use Lyo Designer to [model domain specifications](./domain-specification-modelling-workshop), and generate OSLC4J-annotated Java classes to reflect the defined OSLC Resources.
 * If you want to contribute to Lyo Designer, you can [work from its source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)
 
 
@@ -59,11 +59,11 @@ Additional components of the Lyo project include:
 <dependency>
     <groupId>org.eclipse.lyo.clients</groupId>
     <artifactId>oslc-java-client</artifactId>
-    <version>2.2.0</version>
+    <version>2.4.0</version>
 </dependency>
 ```
 
-Find more information in the [Javadocs](https://download.eclipse.org/lyo/docs/client/2.2.0/overview-summary.html).
+Find more information in the [Javadocs](https://download.eclipse.org/lyo/docs/client/2.4.0/overview-summary.html).
 
 Other components:
 
@@ -71,7 +71,7 @@ Other components:
 * [Lyo Store](https://github.com/eclipse/lyo-store) - a library that provides a simple interface for working with a triplestore via Java objects representing OSLC Resources.
 * [Test Suite](https://wiki.eclipse.org/Lyo/LyoTestSuite) - provides a suite of tests which will test OSLC domain provider implementations against the specification.
 * [Reference Implementations](https://wiki.eclipse.org/Lyo/BuildingOSLC4J) - See how OSLC works directly with working samples and with a simple server to test against.
-* [_Reference Implementations (OUTDATED)_](Lyo/LyoRIO) - a simple, bare-bones reference implementation of the OSLC specifications. RIOs are intended to help those who are adopting OSLC by providing a functioning system that can be explored via a simple UI and REST services, or by taking a look at the source code.
+* [_Reference Implementations (OUTDATED)_](https://github.com/eclipse/lyo.rio) - a simple, bare-bones reference implementation of the OSLC specifications. RIOs are intended to help those who are adopting OSLC by providing a functioning system that can be explored via a simple UI and REST services, or by taking a look at the source code.
 * [**Perl libraries and samples**](http://wiki.eclipse.org/Lyo/LyoPerl): modules for Perl for interacting with OSLC providers, including the [Net-OSLC PERL library](http://arroway.github.com/Net-OSLC-CM/)
 * [_OSLC4JS Javascript OSLC library (experimental)_](https://wiki.eclipse.org/Lyo/Oslc4Js).
     - [OSLC4JS architecture](http://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html)
@@ -88,4 +88,3 @@ Lyo also includes instructions and source code for a range of OSLC Server implem
 * [Simulink](https://wiki.eclipse.org/Lyo/Simulink)
 * [MagicDraw](https://wiki.eclipse.org/Lyo/MagicDraw)
 * The [Lyo LDP reference implementation](https://wiki.eclipse.org/Lyo/BuildLDPSample) - is a sample Java implementation of the W3C Linked Data Platform 1.0 Candidate Recommendation using JAX-RS (Apache CXF) and Jena TDB.
-
