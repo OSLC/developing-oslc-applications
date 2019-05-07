@@ -13,17 +13,17 @@ html.no-js(lang="en")
 
 
     script(src="#{ site_url }js/lib/modernizr.js")
-    
+
     script.
       // add .mustard/.no-mustard css classes
       Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
-      
+
       Modernizr.load([{
         test: Modernizr.mustard,
         yep: '#{ site_url }css/oslc_enhanced.css'
       }]);
-      
-    
+
+
   body
     header.header
       .flag
@@ -35,14 +35,14 @@ html.no-js(lang="en")
         .body
           a.flag.image-link(href="#{ site_url }")
             .image
-              img.logo-img(src="#{ site_url }img/logo-old-50px.png")              
+              img.logo-img(src="#{ site_url }img/logo-old-50px.png")
             .body
               span.logo-text
                 abbr.oslc-name(title="#{ org_name }") #{ org_abbr }
                 br
                 span.project-name #{ site_name }
 
-    .sticky-footer-body.off-canvas-wrap      
+    .sticky-footer-body.off-canvas-wrap
       nav.nav
         .menu.primary
           .item.desk-up
@@ -55,10 +55,31 @@ html.no-js(lang="en")
             li.item(role="presentation")
               a(href="https://open-services.net/" target="_blank")
                | Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i>
-            - var $i = 1;
-            for page, slug in public._data
-              li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
-                a(href="#{ site_url }#{ slug === 'index' ? '' : (slug + '.html') }") #{ page.title }
+            - var dir = current.path[0]
+            case dir
+              when 'eclipse_lyo'
+                - var $i = 1;
+                for page, slug in public.eclipse_lyo._data
+                  li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
+                    a(href="#{ site_url }#{ slug === 'index' ? '' : ('eclipse_lyo/' + slug + '.html') }") #{ page.title }
+              when 'iotp_adaptor'
+                - var subdir = current.path[1]
+                case subdir
+                  when 'userGuide'
+                    - var $i = 1;
+                    for page, slug in public.iotp_adaptor.userGuide._data
+                      li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
+                        a(href="#{ site_url }#{ slug === 'index' ? '' : ('iotp_adaptor/userGuide/' + slug + '.html') }") #{ page.title }
+                  default
+                    - var $i = 1;
+                    for page, slug in public.iotp_adaptor._data
+                      li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
+                        a(href="#{ site_url }#{ slug === 'index' ? '' : ('iotp_adaptor/' + slug + '.html') }") #{ page.title }
+              default
+                - var $i = 1;
+                for page, slug in public._data
+                  li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
+                    a(href="#{ site_url }#{ slug === 'index' ? '' : (slug + '.html') }") #{ page.title }
       main.main
         .card
           header.header
@@ -66,11 +87,11 @@ html.no-js(lang="en")
           section.content
             div.copy
               != yield
-            
+
         a.close-off-canvas(role="button", aria-label="Toggle Navigation", data-toggle-class="primary-nav-is-open", data-toggle-target="body")
     footer.footer
       p
-       | All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a>       
+       | All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a>
   script.
     window.site_url = '#{site_url}';
   script(src="#{ site_url }js/oslc.js")
