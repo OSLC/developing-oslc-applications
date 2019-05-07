@@ -9,7 +9,7 @@ Modernizr.load([{
 </script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-lyo.html">Tools &amp; SDKs for Java Developers - Eclipse Lyo</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-setup-for-lyo-based-development.html">Eclipse Setup for Lyo-based Development</a></li><li role="presentation" class="item current"><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html">Setup an OSLC Provider/Consumer Application</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/lyo-designer.html">Model the Toolchain - Lyo Designer</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/install-lyo-designer.html">Install Lyo Designer</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html">Toolchain Modelling Workshop</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html">Domain Specification Modelling Workshop</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Setup an OSLC Provider/Consumer Application</h1></header><section class="content"><div class="copy"><h1>Eclipse Setup</h1><p>Make sure your environment is setup for OSLC4J development as instructed on <a href="./eclipse-setup-for-lyo-based-development">Eclipse Setup for Lyo-based Development</a></p>
 <h1>Sample Projects</h1><p>As a complement when following the instructions below, you can find sample projects under the <a href="https://github.com/OSLC/lyo-adaptor-sample-modelling">Lyo Adaptor Sample Modelling</a> git repository.</p>
 <h1>Create an OSLC4J project</h1><p>The steps below guide you through the necessary steps of creating an Eclipse project with the necessary configurations to develop any OSLC4J adaptor.</p>
-<p>In the instructions below, we assume the following parameters, which you will need to adjust for your particular project: </p>
+<p>In the instructions below, we assume the following parameters, which you will need to adjust for your particular project:</p>
 <ul>
 <li>Eclipse Project Name: <em>adaptor-sample-webapp</em></li>
 <li>Base Package Name for Java Classes: <em>com.sample.adaptor</em></li>
@@ -23,9 +23,9 @@ Modernizr.load([{
 </ol>
 <h2>Creating a Maven project from an archetype</h2><p>To create a Maven project from an archetype via Eclipse</p>
 <ol>
-<li>select <em>File -&gt; New -&gt; Other</em> </li>
-<li>then select <em>Maven Project</em> under <em>Maven</em> group. </li>
-<li>Leave the <em>Create a simple project</em> checkbox unchecked. </li>
+<li>select <em>File -&gt; New -&gt; Other</em></li>
+<li>then select <em>Maven Project</em> under <em>Maven</em> group.</li>
+<li>Leave the <em>Create a simple project</em> checkbox unchecked.</li>
 <li>Uncheck the <em>Use default Workspace location</em> option and point it to the project root</li>
 <li>Press <em>Next</em></li>
 </ol>
@@ -140,10 +140,10 @@ use. We will use the simplest option:</p>
   &lt;artifactId&gt;oslc-java-client&lt;/artifactId&gt;
   &lt;version&gt;${version.lyo.core}&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h3>Embedded Jetty server for quick debugging</h3><p>Finally, you should use an embedded servlet container during the debugging to simplify the development process. </p>
+<h3>Embedded Jetty server for quick debugging</h3><p>Finally, you should use an embedded servlet container during the debugging to simplify the development process.</p>
 <p>Replace the existing <code>&lt;build&gt;</code> entry with the Jetty configuration below, using the following customisations:</p>
 <ul>
-<li><p><em>adaptor-sample</em> is the context path that can be the same as your eclipse project name (or something more appropriate) </p>
+<li><p><em>adaptor-sample</em> is the context path that can be the same as your eclipse project name (or something more appropriate)</p>
 </li>
 <li><p><em>8080</em> is the port number you want to run the services on.</p>
 </li>
@@ -175,9 +175,9 @@ use. We will use the simplest option:</p>
 &lt;/build&gt;</code></pre>
 <h2>Customise the web configuration</h2><p>Modify the parameters in <code>/src/main/webapp/WEB-INF/web.xml</code> according to the template below.</p>
 <ul>
-<li><em>Adaptor Sample</em> could be the same as your eclipse project name (or something more appropriate) </li>
-<li><em>com.sample.adaptor</em> should be the same as the base package name for your project. </li>
-<li><em>8080</em> should match the port number specified in the POM file for Jetty configuration. </li>
+<li><em>Adaptor Sample</em> could be the same as your eclipse project name (or something more appropriate)</li>
+<li><em>com.sample.adaptor</em> should be the same as the base package name for your project.</li>
+<li><em>8080</em> should match the port number specified in the POM file for Jetty configuration.</li>
 </ul>
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -208,18 +208,18 @@ use. We will use the simplest option:</p>
     &lt;url-pattern&gt;/services/*&lt;/url-pattern&gt;
   &lt;/servlet-mapping&gt;
 &lt;/web-app&gt;</code></pre>
-<h1>Final tips</h1><p>If you get the error <em>Project configuration is not up-to-date with pom.xml</em>, simply right click on the eclipse project and select Maven--&gt;Update Project ... </p>
+<h1>Final tips</h1><p>If you get the error <em>Project configuration is not up-to-date with pom.xml</em>, simply right click on the eclipse project and select Maven--&gt;Update Project ...</p>
 <h1>Run the adaptor</h1><p>Once the adaptor is developed, you can run it by selecting <em>Run As --&gt; Maven build ...</em> from the project&#39;s context menu, and setting the goal to <code>clean jetty:run-exploded</code>.</p>
 <p>You can now access your adaptor from <a href="http://localhost:8080/adaptor-sample">http://localhost:8080/adaptor-sample</a></p>
 <ul>
-<li><em>adaptor-sample</em> and <em>8080</em> will depend on your particular settings, as instructed above. </li>
+<li><em>adaptor-sample</em> and <em>8080</em> will depend on your particular settings, as instructed above.</li>
 </ul>
 <h1>OpenApi/Swagger Support (Optional)</h1><p>Being already a REST web server, an OSLC4J project can relatively easily be documented using <a href="https://swagger.io/">OpenApi/Swagger</a>.</p>
-<p>The instructions below provide the minimal settings necessary for an OSLC4J project. </p>
+<p>The instructions below provide the minimal settings necessary for an OSLC4J project.</p>
 <ul>
-<li><p>Additional suggestions are also provided, given that a typical OSLC4J project might differ from that assumed by OpenApi/Swagger.  </p>
+<li><p>Additional suggestions are also provided, given that a typical OSLC4J project might differ from that assumed by OpenApi/Swagger.</p>
 </li>
-<li><p>One major difference is the fact that OSLC assumes an RDF data model, where resources are defined using OSLC Shapes. Swagger/OpenApi does not explicitly recognise such a model. </p>
+<li><p>One major difference is the fact that OSLC assumes an RDF data model, where resources are defined using OSLC Shapes. Swagger/OpenApi does not explicitly recognise such a model.</p>
 </li>
 </ul>
 <p>The instructions below are based on <a href="https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X">Swagger Core JAX RS Project Setup 1.5.X</a>, compiled for a typical OSLC4J project, as instructed in this wiki.</p>
@@ -257,7 +257,7 @@ use. We will use the simplest option:</p>
     &lt;/init-param&gt;
     &lt;load-on-startup&gt;2&lt;/load-on-startup&gt;
   &lt;/servlet&gt;</code></pre>
-<h2>Add OpenApi Annotations (Almost Optional)</h2><p>The OpenApi documentation can be achieved with as little as adding <em>@Api</em> to each REST/OSLC service in your project. This is detailed in the first step below. While the remaining intructions are optional, they are highly recommended to provide a documentation that can best reflect the OSLC services. </p>
+<h2>Add OpenApi Annotations (Almost Optional)</h2><p>The OpenApi documentation can be achieved with as little as adding <em>@Api</em> to each REST/OSLC service in your project. This is detailed in the first step below. While the remaining intructions are optional, they are highly recommended to provide a documentation that can best reflect the OSLC services.</p>
 <h3>@Api</h3><ol>
 <li>For each REST service (ie. OSLC Service), simply add the <em>@Api</em> annotation.</li>
 <li>(<em>OPTIONAL</em>) add the <em>value</em> and <em>description</em> details. The <em>value</em> is used to group the REST methods into common categories, helping in the structuring of the methods in the documentaton. You can give it the same value as that of the @Path annotation, collecting all REST methods for the same service together.</li>
@@ -266,7 +266,7 @@ use. We will use the simplest option:</p>
 @OslcService(Oslc_rmDomainConstants.REQUIREMENTS_MANAGEMENT_DOMAIN)
 @Path(&quot;requirements&quot;)</code></pre>
 <h3>@ApiOperation (Optional)</h3><p>For each REST method, add the <em>@ApiOperation</em> Swagger annotation.</p>
-<p><strong>Important</strong>: In <a href="https://swagger.io/docs/specification/paths-and-operations/">OpenApi</a>, an operation is defined as unique through the combination of its path and method. This means that two C.R.U.D. methods for the same path are not allowed – even if they have different parameters (including Accept and Content-Type annotations). </p>
+<p><strong>Important</strong>: In <a href="https://swagger.io/docs/specification/paths-and-operations/">OpenApi</a>, an operation is defined as unique through the combination of its path and method. This means that two C.R.U.D. methods for the same path are not allowed – even if they have different parameters (including Accept and Content-Type annotations).</p>
 <ul>
 <li>Example: Your OSLC Service may define two different Java methods to separately handle HTML and RDF/XML content types. OpenApi will only recognise one of these two methods, while ignoring the other.</li>
 <li>Workaround: Annotate ALL methods that are identified as unique with the complete list of media types in the <em>produces</em> property of the @ApiOperation annotation. This way, the generated documentation correctly indicates the existance of all methods.</li>
@@ -282,7 +282,7 @@ use. We will use the simplest option:</p>
 @OslcNamespace(Oslc_rmDomainConstants.REQUIREMENT_NAMESPACE)
 @OslcName(Oslc_rmDomainConstants.REQUIREMENT_LOCALNAME)
 @OslcResourceShape(title = &quot;Requirement Resource Shape&quot;, describes = Oslc_rmDomainConstants.REQUIREMENT_TYPE)
-public class Requirement 
+public class Requirement
 ...</code></pre>
 <h2>Access the Swagger Documentation</h2><p><strong>You are done!</strong> You should now be able to access the the OpenAPI specification document (yaml file) at:</p>
 <pre><code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code></pre><p>You can copy the yaml file to a <a href="https://editor.swagger.io">Swagger Editor</a>, to view the API documentation, as well as generate client/Server SDK code for a number of languages and platforms.</p>
@@ -293,10 +293,10 @@ public class Requirement
 </li>
 <li><p>Copy the content of the &#39;<em>dist</em>&#39; folder to &#39;<em>/src/main/webapp/swagger-ui</em>&#39;, under your web project.</p>
 </li>
-<li><p>Edit the &#39;swagger-ui/index.html&#39; file, replacing the url &#39;<a href="http://petstore.swagger.io/v2/swagger.json&#39;">http://petstore.swagger.io/v2/swagger.json&#39;</a> with the url of your own yaml file &#39;<a href="http://localhost:8080/adaptor-sample/services/swagger.yaml&#39;">http://localhost:8080/adaptor-sample/services/swagger.yaml&#39;</a></p>
+<li><p>Edit the <code>swagger-ui/index.html</code> file, replacing the url <code>http://petstore.swagger.io/v2/swagger.json</code> with the url of your own yaml file <code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code>.</p>
 </li>
 </ol>
-<p><strong>You are done!</strong> The generated interactive API console can now be accessed via </p>
+<p><strong>You are done!</strong> The generated interactive API console can now be accessed via</p>
 <pre><code>http://localhost:8080/adaptor-sample/swagger-ui</code></pre></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

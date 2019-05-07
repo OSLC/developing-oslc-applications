@@ -1,4 +1,4 @@
-# Eclipse Setup 
+# Eclipse Setup
 
 Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
@@ -10,7 +10,7 @@ As a complement when following the instructions below, you can find sample proje
 
 The steps below guide you through the necessary steps of creating an Eclipse project with the necessary configurations to develop any OSLC4J adaptor.
 
-In the instructions below, we assume the following parameters, which you will need to adjust for your particular project: 
+In the instructions below, we assume the following parameters, which you will need to adjust for your particular project:
 
 * Eclipse Project Name: *adaptor-sample-webapp*
 * Base Package Name for Java Classes: *com.sample.adaptor*
@@ -28,9 +28,9 @@ Creation of the skeleton consists of 2 steps:
 
 To create a Maven project from an archetype via Eclipse
 
-1. select *File -> New -> Other* 
-1. then select *Maven Project* under *Maven* group. 
-1. Leave the *Create a simple project* checkbox unchecked. 
+1. select *File -> New -> Other*
+1. then select *Maven Project* under *Maven* group.
+1. Leave the *Create a simple project* checkbox unchecked.
 1. Uncheck the *Use default Workspace location* option and point it to the project root
 1. Press *Next*
 
@@ -194,11 +194,11 @@ If you use OAuth or consume any resources in your Adaptor Interface, an OSLC cli
 
 ### Embedded Jetty server for quick debugging
 
-Finally, you should use an embedded servlet container during the debugging to simplify the development process. 
+Finally, you should use an embedded servlet container during the debugging to simplify the development process.
 
 Replace the existing `<build>` entry with the Jetty configuration below, using the following customisations:
 
-* *adaptor-sample* is the context path that can be the same as your eclipse project name (or something more appropriate) 
+* *adaptor-sample* is the context path that can be the same as your eclipse project name (or something more appropriate)
 
 * *8080* is the port number you want to run the services on.
 
@@ -235,9 +235,9 @@ This will make your adaptor available under the path http://localhost:8080/adapt
 
 Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the template below.
 
-* *Adaptor Sample* could be the same as your eclipse project name (or something more appropriate) 
-* *com.sample.adaptor* should be the same as the base package name for your project. 
-* *8080* should match the port number specified in the POM file for Jetty configuration. 
+* *Adaptor Sample* could be the same as your eclipse project name (or something more appropriate)
+* *com.sample.adaptor* should be the same as the base package name for your project.
+* *8080* should match the port number specified in the POM file for Jetty configuration.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -272,7 +272,7 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 ```
 # Final tips
 
-If you get the error *Project configuration is not up-to-date with pom.xml*, simply right click on the eclipse project and select Maven--&gt;Update Project ... 
+If you get the error *Project configuration is not up-to-date with pom.xml*, simply right click on the eclipse project and select Maven--&gt;Update Project ...
 
 # Run the adaptor
 
@@ -280,17 +280,17 @@ Once the adaptor is developed, you can run it by selecting *Run As --&gt; Maven 
 
 You can now access your adaptor from http://localhost:8080/adaptor-sample
 
-* *adaptor-sample* and *8080* will depend on your particular settings, as instructed above. 
+* *adaptor-sample* and *8080* will depend on your particular settings, as instructed above.
 
 # OpenApi/Swagger Support (Optional)
 
 Being already a REST web server, an OSLC4J project can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/).
 
-The instructions below provide the minimal settings necessary for an OSLC4J project. 
+The instructions below provide the minimal settings necessary for an OSLC4J project.
 
-* Additional suggestions are also provided, given that a typical OSLC4J project might differ from that assumed by OpenApi/Swagger.  
+* Additional suggestions are also provided, given that a typical OSLC4J project might differ from that assumed by OpenApi/Swagger.
 
-* One major difference is the fact that OSLC assumes an RDF data model, where resources are defined using OSLC Shapes. Swagger/OpenApi does not explicitly recognise such a model. 
+* One major difference is the fact that OSLC assumes an RDF data model, where resources are defined using OSLC Shapes. Swagger/OpenApi does not explicitly recognise such a model.
 
 The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical OSLC4J project, as instructed in this wiki.
 
@@ -305,7 +305,7 @@ Add the following Swagger dependency to your maven pom.xml file
   <version>1.5.17</version>
 </dependency>
 ```
-## Add Swagger-Core's JAX-RS Providers to your Application 
+## Add Swagger-Core's JAX-RS Providers to your Application
 Add swagger-core's providers to the OslcWinkApplication class of your server.
 
 ```java
@@ -345,7 +345,7 @@ Add the following to your web.xml:
 
 ## Add OpenApi Annotations (Almost Optional)
 
-The OpenApi documentation can be achieved with as little as adding *@Api* to each REST/OSLC service in your project. This is detailed in the first step below. While the remaining intructions are optional, they are highly recommended to provide a documentation that can best reflect the OSLC services. 
+The OpenApi documentation can be achieved with as little as adding *@Api* to each REST/OSLC service in your project. This is detailed in the first step below. While the remaining intructions are optional, they are highly recommended to provide a documentation that can best reflect the OSLC services.
 
 ### @Api
 
@@ -362,7 +362,7 @@ The OpenApi documentation can be achieved with as little as adding *@Api* to eac
 
 For each REST method, add the *@ApiOperation* Swagger annotation.
 
-**Important**: In [OpenApi](https://swagger.io/docs/specification/paths-and-operations/), an operation is defined as unique through the combination of its path and method. This means that two C.R.U.D. methods for the same path are not allowed – even if they have different parameters (including Accept and Content-Type annotations). 
+**Important**: In [OpenApi](https://swagger.io/docs/specification/paths-and-operations/), an operation is defined as unique through the combination of its path and method. This means that two C.R.U.D. methods for the same path are not allowed – even if they have different parameters (including Accept and Content-Type annotations).
 
 * Example: Your OSLC Service may define two different Java methods to separately handle HTML and RDF/XML content types. OpenApi will only recognise one of these two methods, while ignoring the other.
 * Workaround: Annotate ALL methods that are identified as unique with the complete list of media types in the *produces* property of the @ApiOperation annotation. This way, the generated documentation correctly indicates the existance of all methods.
@@ -385,7 +385,7 @@ For each Java class that models an OSLC-resource (@OslcName annotation), add an 
 @OslcNamespace(Oslc_rmDomainConstants.REQUIREMENT_NAMESPACE)
 @OslcName(Oslc_rmDomainConstants.REQUIREMENT_LOCALNAME)
 @OslcResourceShape(title = "Requirement Resource Shape", describes = Oslc_rmDomainConstants.REQUIREMENT_TYPE)
-public class Requirement 
+public class Requirement
 ...
 ```
 ## Access the Swagger Documentation
@@ -405,9 +405,8 @@ The following steps allows you to integrate [Swagger UI](https://swagger.io/swag
 
 1. Copy the content of the '*dist*' folder to '*/src/main/webapp/swagger-ui*', under your web project.
 
-1. Edit the 'swagger-ui/index.html' file, replacing the url 'http://petstore.swagger.io/v2/swagger.json' with the url of your own yaml file 'http://localhost:8080/adaptor-sample/services/swagger.yaml'
+1. Edit the `swagger-ui/index.html` file, replacing the url `http://petstore.swagger.io/v2/swagger.json` with the url of your own yaml file `http://localhost:8080/adaptor-sample/services/swagger.yaml`.
 
-**You are done!** The generated interactive API console can now be accessed via 
+**You are done!** The generated interactive API console can now be accessed via
 
     http://localhost:8080/adaptor-sample/swagger-ui
-
