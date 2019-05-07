@@ -1,16 +1,16 @@
 Introduction
 ============
 This workshop presents the use of Lyo Designer to graphically model a complete OSLC-based toolchain (including the interactions between OSLC servers and clients), and/or single server and/or client.
-The instructions also include a walkthrough of the generated OSLC4J-compliant code. 
+The instructions also include a walkthrough of the generated OSLC4J-compliant code.
 
 For seperations of concerns, Lyo Designer structures the toolchain model around the following three viewpoints
 (Illustrations and details can be found later in this workshop):
 
 -   **Domain Specification View** – To define the types of resources,
     their properties and relationships, according the [OSLC Core
-    Specification](http://open-services.net/bin/view/Main/OslcCoreSpecification)
+    Specification](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification)
     and the [Resource Shape constraint
-    language](http://open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource).
+    language](https://archive.open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource).
     - Lyo Designer can also be used to solely model domains, as instructed under the [Domain Specification Modelling Workshop](./domain-specification-modelling-workshop).
 -   **Toolchain View** – To allocate resources to tools. For each tool,
     the set of resources being exposes and/or consumed are defined.
@@ -26,7 +26,7 @@ understanding of the Linked Data and OSLC concepts remains necessary in
 order to build a valid model. For an introduction to Linked Data and
 OSLC, the following resources on open-services.net can be recommended:
 [Linked Data and OSLC Tutorial (2015
-Update)](http://open-services.net/linked-data-and-oslc-tutorial-2015-update/)
+Update)](https://archive.open-services.net/linked-data-and-oslc-tutorial-2015-update/)
 
 This tutorial takes you through the steps from creating the initial
 modelling project to the code generation and final execution of the tool
@@ -85,7 +85,7 @@ You will be modelling a toolchain that can potentially consist of a number of OS
         adaptor1-project-webapp/
         adaptor2-project-webapp/
 
-Where 
+Where
 
 * The top `toolchain-project` directory may be a git repository root
 
@@ -138,7 +138,7 @@ main parts:
 -   **Domain Specification** - Modelling the OSLC
     domain specification(s) to be exposed and/or consumed by the
     adaptor, as defined in [the OSLC Core
-    Specification](http://open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;up=#Service_Provider_Resources).
+    Specification](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;up=#Service_Provider_Resources).
 -   **Server** - modelling the OSLC resources - and their corresponding
     services - to be exposed by the adaptor.
 -   **Client** - modelling the interactions - as a client - that the
@@ -522,7 +522,7 @@ To configure a single Domain Specification's generation settings:
 
 The generation settings of a Domain Specification override those set for the overall Specification model.
 
-**Important to note** that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource *oslc:Requirement* contains a reference property *dcterms:creator*, whose range is Resource *foaf:Person*. If the *OSLC* and *FOAF* Domain Specifications are generated into different maven projects, the *OSLC* maven project should include a maven dependency to the *FOAF* maven project.  
+**Important to note** that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource *oslc:Requirement* contains a reference property *dcterms:creator*, whose range is Resource *foaf:Person*. If the *OSLC* and *FOAF* Domain Specifications are generated into different maven projects, the *OSLC* maven project should include a maven dependency to the *FOAF* maven project.
 
 Fill in the internal implementation of each adaptor
 ===================================================
@@ -563,5 +563,3 @@ Once the manual code is completed, You are now ready to run an adaptor.
     <http://localhost:8080/YourAdaptor/services/catalog/singleton>
     -   You need to at least implement the getServiceProviderInfos
         method and some of resource C.R.U.D. methods first.
-
-

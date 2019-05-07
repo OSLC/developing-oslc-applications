@@ -7,14 +7,14 @@ Modernizr.load([{
 }]);
 
 </script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-old-50px.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-old-big.gif"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-lyo.html">Tools &amp; SDKs for Java Developers - Eclipse Lyo</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-setup-for-lyo-based-development.html">Eclipse Setup for Lyo-based Development</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html">Setup an OSLC Provider/Consumer Application</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/lyo-designer.html">Model the Toolchain - Lyo Designer</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/install-lyo-designer.html">Install Lyo Designer</a></li><li role="presentation" class="item current"><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html">Toolchain Modelling Workshop</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html">Domain Specification Modelling Workshop</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Toolchain Modelling Workshop</h1></header><section class="content"><div class="copy"><h1>Introduction</h1><p>This workshop presents the use of Lyo Designer to graphically model a complete OSLC-based toolchain (including the interactions between OSLC servers and clients), and/or single server and/or client.
-The instructions also include a walkthrough of the generated OSLC4J-compliant code. </p>
+The instructions also include a walkthrough of the generated OSLC4J-compliant code.</p>
 <p>For seperations of concerns, Lyo Designer structures the toolchain model around the following three viewpoints
 (Illustrations and details can be found later in this workshop):</p>
 <ul>
 <li><strong>Domain Specification View</strong> – To define the types of resources,
-their properties and relationships, according the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification">OSLC Core
+their properties and relationships, according the <a href="https://archive.open-services.net/bin/view/Main/OslcCoreSpecification">OSLC Core
 Specification</a>
-and the <a href="http://open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource">Resource Shape constraint
+and the <a href="https://archive.open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource">Resource Shape constraint
 language</a>.<ul>
 <li>Lyo Designer can also be used to solely model domains, as instructed under the <a href="./domain-specification-modelling-workshop">Domain Specification Modelling Workshop</a>.</li>
 </ul>
@@ -32,7 +32,7 @@ the OSLC standard (such as Linked Data, RDF, etc.). However, a basic
 understanding of the Linked Data and OSLC concepts remains necessary in
 order to build a valid model. For an introduction to Linked Data and
 OSLC, the following resources on open-services.net can be recommended:
-<a href="http://open-services.net/linked-data-and-oslc-tutorial-2015-update/">Linked Data and OSLC Tutorial (2015
+<a href="https://archive.open-services.net/linked-data-and-oslc-tutorial-2015-update/">Linked Data and OSLC Tutorial (2015
 Update)</a></p>
 <p>This tutorial takes you through the steps from creating the initial
 modelling project to the code generation and final execution of the tool
@@ -67,7 +67,7 @@ in another set of projects.</p>
 <pre><code>toolchain-project/
     toolchain-project-model/
     adaptor1-project-webapp/
-    adaptor2-project-webapp/</code></pre><p>Where </p>
+    adaptor2-project-webapp/</code></pre><p>Where</p>
 <ul>
 <li><p>The top <code>toolchain-project</code> directory may be a git repository root</p>
 </li>
@@ -119,7 +119,7 @@ main parts:</p>
 <ul>
 <li><strong>Domain Specification</strong> - Modelling the OSLC
 domain specification(s) to be exposed and/or consumed by the
-adaptor, as defined in <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;up=#Service_Provider_Resources">the OSLC Core
+adaptor, as defined in <a href="https://archive.open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;up=#Service_Provider_Resources">the OSLC Core
 Specification</a>.</li>
 <li><strong>Server</strong> - modelling the OSLC resources - and their corresponding
 services - to be exposed by the adaptor.</li>
@@ -521,7 +521,7 @@ Instead, it may be desired to generated the OSLC-resource Java classes into a co
 <li>Enter (a) relative file path (b) the package name of the Java classes to be generated.</li>
 </ol>
 <p>The generation settings of a Domain Specification override those set for the overall Specification model.</p>
-<p><strong>Important to note</strong> that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource <em>oslc:Requirement</em> contains a reference property <em>dcterms:creator</em>, whose range is Resource <em>foaf:Person</em>. If the <em>OSLC</em> and <em>FOAF</em> Domain Specifications are generated into different maven projects, the <em>OSLC</em> maven project should include a maven dependency to the <em>FOAF</em> maven project.  </p>
+<p><strong>Important to note</strong> that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource <em>oslc:Requirement</em> contains a reference property <em>dcterms:creator</em>, whose range is Resource <em>foaf:Person</em>. If the <em>OSLC</em> and <em>FOAF</em> Domain Specifications are generated into different maven projects, the <em>OSLC</em> maven project should include a maven dependency to the <em>FOAF</em> maven project.</p>
 <h1>Fill in the internal implementation of each adaptor</h1><p>The manual code the developer needs to implement is concentrated in a
 single class - the <strong>AdaptorManager</strong> class (in the
 <em>your.basepackage.name</em> package). The methods that need to be provided

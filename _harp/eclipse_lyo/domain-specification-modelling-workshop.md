@@ -1,6 +1,6 @@
 Introduction
 ============
-With Lyo Designer, you can graphically model your domain specifications according to the OSLC Core specification. A **Domain Specification** defines the types of resources, their properties and relationships, according the [OSLC Core Specification](http://open-services.net/bin/view/Main/OslcCoreSpecification) and the [Resource Shape constraint language](http://open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource).
+With Lyo Designer, you can graphically model your domain specifications according to the OSLC Core specification. A **Domain Specification** defines the types of resources, their properties and relationships, according the [OSLC Core Specification](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification) and the [Resource Shape constraint language](https://archive.open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource).
 
 From such a model, you can produce a library of Java classes, with the appropriate Lyo OSLC4J annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo OSLC4J SDK.
 
@@ -34,7 +34,7 @@ So, a recommended structure of your projects is the following:
         domain1-project/
         domain2-project/
 
-Where 
+Where
 
 * The top `oslc-project` directory may be a git repository root
 * `oslc-model-project` is the Lyo Designer modelling project, where your model is managed.
@@ -130,7 +130,7 @@ But first a sample model that can be used to illustrate the suggested techniques
 A model of the OSLC and other common domains is already available for reuse. To reuse these common specifications:
 
 1. Clone the [Github lyo.domains](https://github.com/eclipse/lyo.domains) git repository
-1. Import the project *org.eclipse.lyo.tools.domainmodels*. 
+1. Import the project *org.eclipse.lyo.tools.domainmodels*.
     * This project models many of the OSLC domains across a number of diagrams.
 1. Navigate the model as any other Domain Specification model.
 
@@ -138,7 +138,7 @@ In the next subsections, you will learn how to import this model into other mode
 
 Creating multiple diagrams within the same model file
 ---------------------------------------
-Within a single model, you can create any number of diagrams, each of which can contain any number of (overlapping) Domain Specifications. 
+Within a single model, you can create any number of diagrams, each of which can contain any number of (overlapping) Domain Specifications.
 
 1. Open the Model Explorer view.
 1.  Expand the *domainModel.xml* file until the
@@ -182,7 +182,7 @@ You first need to create the necessary OSLC4J project(s), onto which the code wi
     * At the least the `oslc4j-core` dependency is necessary.
 1. Configure the Specification model's settings to generate code within the newly created OSLC4J project.
     1. Right-click inside the Specification Diagram (without selecting any Domain Specification) and select the context menu item **OSLC Lyo Designer > Set Java Generation Settings**
-    1. Enter a relative file path, to which the Java classes will be generated. 
+    1. Enter a relative file path, to which the Java classes will be generated.
         * Relative to what? anything you desire. In the comming steps, you get to define the absolute path of the defined relative path.
         * **Tips:** the relative path can be the path *within* your OSLC4J project (such as *domain-project/src/main/java*), while the absolute path (defined in next step) relates to the path up until the OSLC4J project.
     1. Enter the package name (*com.domain.resources*) of the Java classes to be generated.
@@ -205,7 +205,7 @@ To configure a Domain Specification's generation settings:
 
 The generation settings of a Domain Specification override those set for the overall Specification model.
 
-**Important to note** that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource *oslc:Requirement* contains a reference property *dcterms:creator*, whose range is Resource *foaf:Person*. If the *OSLC* and *FOAF* Domain Specifications are generated into different maven projects, the *OSLC* maven project should include a maven dependency to the *FOAF* maven project.  
+**Important to note** that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource *oslc:Requirement* contains a reference property *dcterms:creator*, whose range is Resource *foaf:Person*. If the *OSLC* and *FOAF* Domain Specifications are generated into different maven projects, the *OSLC* maven project should include a maven dependency to the *FOAF* maven project.
 
 Browsing the generated code
 ---------------------------

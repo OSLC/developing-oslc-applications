@@ -18,8 +18,8 @@ Modernizr.load([{
 
 
 <h1>Introduction</h1><p>See the <a href="./userGuide/user-guide">iotp-adaptor User Guide</a> for information on how to install, configure, administer and use the iotp-adaptor OSLC server. This Developer Guide explains how the adaptor was build and integrated with the IBM CE jazz.net applications. The source code is available in a the GitHub <a href="https://github.com/OSLC/iotp-adaptor">iotp-adaptor Project</a>.</p>
-<p>iotp-adaptor was designed and initially created using the <a href="https://github.com/eclipse/lyo.designer/wiki">eclipse/Lyo Designer</a>. This tool using model-based development techniques to generate an OSLC server implementation with a minimal Web UI &quot;debug&quot; application that allows you to browse the OSLC services and adapted resources. The code generator uses <a href="https://www.eclipse.org/modeling/m2t/">M2T</a> templates that were developed using the eclipse/Lyo <a href="https://wiki.eclipse.org/Lyo/BuildOSLC4JBugzilla">OSLC4J Bugzilla</a> sample application. </p>
-<p>The Lyo Designer code generator creates an <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification">OSLC Core 2.0</a> compliant OSLC server. This server is sufficient to explore the adapted resources using OSLC capabilities, but it is not enough to be able to integrate that server with the IBM jazz.net based applications. Additional considerations must be addressed in order to integrate with these applications including:</p>
+<p>iotp-adaptor was designed and initially created using the <a href="https://github.com/eclipse/lyo.designer/wiki">eclipse/Lyo Designer</a>. This tool using model-based development techniques to generate an OSLC server implementation with a minimal Web UI &quot;debug&quot; application that allows you to browse the OSLC services and adapted resources. The code generator uses <a href="https://www.eclipse.org/modeling/m2t/">M2T</a> templates that were developed using the eclipse/Lyo <a href="https://wiki.eclipse.org/Lyo/BuildOSLC4JBugzilla">OSLC4J Bugzilla</a> sample application.</p>
+<p>The Lyo Designer code generator creates an <a href="https://archive.open-services.net/bin/view/Main/OslcCoreSpecification">OSLC Core 2.0</a> compliant OSLC server. This server is sufficient to explore the adapted resources using OSLC capabilities, but it is not enough to be able to integrate that server with the IBM jazz.net based applications. Additional considerations must be addressed in order to integrate with these applications including:</p>
 <ul>
 <li>Providing a rootservices document for discovering server discovery capabilities</li>
 <li>Establishing Consumer/Friend relationships using OAuth to allow servers to interact</li>
@@ -36,7 +36,7 @@ Modernizr.load([{
 <li><a href="./exploring-the-code.html">Exploring the generated code</a>  - looks at the structure of the iotp-adaptor eclipse project, and discusses the key folders and files of the generated application.</li>
 <li><a href="./ssl-support.html">https and SSL support</a> - discusses the important topic of secure connections and how to configure the Web application to support SSL, and how to manage self-assigned certificates.</li>
 <li><a href="./authentication.html">Authentication</a> - addresses the often sticky problem of end-user login as well as server-to-server connections through OAuth.</li>
-<li><a href="./rootservices.html">Creating the rootservices document</a> - Describes how to provide a rootservices document which is required to establish consumer/friend connections between the jazz.net applications (primarily the Jazz Team Server) and the iotp-adaptor. </li>
+<li><a href="./rootservices.html">Creating the rootservices document</a> - Describes how to provide a rootservices document which is required to establish consumer/friend connections between the jazz.net applications (primarily the Jazz Team Server) and the iotp-adaptor.</li>
 <li><a href="./consumer-friend.html">Connecting Servers</a> - describes how to create a consumer/friend relationship using OAuth in order to establish server-to-server communications with jazz.net applications</li>
 <li><a href="./artifact-container-associations.html">Artifact Container Associations</a> - describes how to configure jazz.net application project areas so they are able to access OSLC services provided by iotp-adaptor</li>
 <li><a href="./dialogs.html">Updating generated dialogs</a> - explains how to customize the preview and delegated dialogs created by the Lyo Designer code generator</li>
@@ -45,9 +45,9 @@ Modernizr.load([{
 <li><a href="./junit-tests.html">JUnit Tests</a> - describes an example of a typical JUnit test that tests the OSLC CRUD operations of an IoT Platform resource.</li>
 </ul>
 <h1>Resources</h1><ul>
-<li><a href="http://open-services.net">OSLC Web Site</a></li>
+<li><a href="https://open-services.net">OSLC Web Site</a></li>
 <li><a href="http://oslc.github.io/developing-oslc-applications/">OSLC Developer Guide</a></li>
-<li><a href="http://open-services.net/primer">OSLC Primer</a></li>
+<li><a href="https://archive.open-services.net/primer">OSLC Primer</a></li>
 <li><a href="https://www.eclipse.org/lyo/">eclipse/Lyo Project</a></li>
 <li><a href="https://github.com/eclipse/lyo.designer/wiki">Lyo Designer</a></li>
 <li><a href="https://github.com/OSLC/OSLC-API">OSLC Swagger.io</a></li>

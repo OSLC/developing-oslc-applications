@@ -6,7 +6,7 @@ To build software that supports OSLC, you should be familiar with the following 
 
 <iframe width="640" height="480" src="//www.youtube.com/embed/40mjwqGEKBU" frameborder="0" allowfullscreen></iframe>
 
-If you're new to linked data and RDF, we've put together [a playlist of videos](http://open-services.net/resources/videos/linked-data-and-rdf-overview-playlist/) that can help you catch up.
+If you're new to linked data and RDF, we've put together [a playlist of videos](https://archive.open-services.net/resources/videos/linked-data-and-rdf-overview-playlist/) that can help you catch up.
 
 
 ### RESTful web architecture and HTTP
