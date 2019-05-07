@@ -43,7 +43,7 @@ Added the following:</p>
 </ol>
 <p>You&#39;ll need to restart eclipse to complete the installation.</p>
 <p>Note: If the About Eclipse menu item, and clicking on the Installation Details button show no installed software, restart with eclipse with the -clean option.</p>
-<h2>Install Jetty</h2><p>You can deploy the WAR file created in the iotp-adaptor/iotp-adaptor eclipse Maven project to any JEE container. However, Jetty is a very convenient container to use for rapid development. Install Jetty from <a href="https://www.eclipse.org/jetty/download.htm">https://www.eclipse.org/jetty/download.htm</a>.</p>
+<h2>Install Jetty</h2><p>You can deploy the WAR file created in the iotp-adaptor/iotp-adaptor eclipse Maven project to any JEE container. However, Jetty is a very convenient container to use for rapid development. Install Jetty from <a href="https://www.eclipse.org/jetty/download.html">https://www.eclipse.org/jetty/download.html</a>.</p>
 <ol>
 <li>Start eclipse</li>
 </ol>
@@ -52,15 +52,15 @@ Added the following:</p>
 <p>Add the following VM arguments:</p>
 <pre><code>-Diot.platform.base=internetofthings.ibmcloud.com
 -Diot.platform.api.version=v0002
--Dlog4j.debug=true</code></pre><h2>Install git and GitHub Desktop</h2><p><a href="https://github.com/OSLC/iotp-adaptor">iotp-adaptor</a> is a GitHub project, so you&#39;ll need to use git to access the source code. If you&#39;re here, you are likely already quite familiar with git. But just in case, here&#39;s a few notes to get you started. </p>
+-Dlog4j.debug=true</code></pre><h2>Install git and GitHub Desktop</h2><p><a href="https://github.com/OSLC/iotp-adaptor">iotp-adaptor</a> is a GitHub project, so you&#39;ll need to use git to access the source code. If you&#39;re here, you are likely already quite familiar with git. But just in case, here&#39;s a few notes to get you started.</p>
 <p>You can use EGit in eclipse, <a href="https://git-scm.com/downloads">git</a> command line interface, and/or <a href="https://desktop.github.com">GitHub Desktop</a>. These are all efficient, effective ways to use git and each has characteristics that make it useful in different contexts. The <a href="https://git-scm.com/docs">git reference manual</a> is also a very useful resource if you forget the specifics of a particular git command. There more at the <a href="https://git-scm.com/doc">git documentation site</a>.</p>
-<h1>Getting the iotp-adaptor Code</h1><p>Now that your eclipse platform is all setup, you&#39;re ready to clone the iotp-adaptor repository and install the eclipse Maven projects. The following is a brief summary of how to do this: </p>
+<h1>Getting the iotp-adaptor Code</h1><p>Now that your eclipse platform is all setup, you&#39;re ready to clone the iotp-adaptor repository and install the eclipse Maven projects. The following is a brief summary of how to do this:</p>
 <ol>
 <li>Start eclipse</li>
 <li>Open the Git perspective</li>
 <li>paste the following URI in the Git Repositories view: <a href="https://github.com/OSLC/iotp-adaptor.git">https://github.com/OSLC/iotp-adaptor.git</a></li>
-<li>Select the iotp-adaptor repository, right click, and invoke Import Maven Projects... to import the iotp-adaptor maven project. Note: if this menu item isn&#39;t available, you will need to install the m2e egit connector from the eclipse marketplace. Follow <a href="https://stackoverflow.com/questions/4542104/how-do-you-get-git-integration-working-with-m2eclipse">these instructions</a>. </li>
-<li>Select the iotp-awaptor repository again, right click and invoke Import Projects... to import the iotp-adaptor-model project. </li>
+<li>Select the iotp-adaptor repository, right click, and invoke Import Maven Projects... to import the iotp-adaptor maven project. Note: if this menu item isn&#39;t available, you will need to install the m2e egit connector from the eclipse marketplace. Follow <a href="https://stackoverflow.com/questions/4542104/how-do-you-get-git-integration-working-with-m2eclipse">these instructions</a>.</li>
+<li>Select the iotp-awaptor repository again, right click and invoke Import Projects... to import the iotp-adaptor-model project.</li>
 <li>Switch to the Java EE perspective</li>
 <li>Expand eclipse maven project iotp-adaptor</li>
 <li>Select the pom.xml file, right click and invoke Run As &gt; Maven install</li>

@@ -67,7 +67,7 @@ Model OSLC Domain Specifications
 
 You are now ready to graphically specify the OSLC domain specifications.
 
-For general instructions on Lyo Designer, the reader is referred to the general [Lyo Designer manual](./user-manual-for-toolchain-modelling).
+For general instructions on Lyo Designer, the reader is referred to the general [Lyo Designer manual](./toolchain-modelling-workshop).
 
 In the *SpecificationDiagram*, you can define a set of domain specifications, within which you define *Resources* and
 *Resource Properties*.
