@@ -1,5 +1,5 @@
 The Modelling environment and code generator is known to work on Eclipse
-Neon and Oxygen. But, first make sure your Eclipse environment is setup
+versions up until [Eclipse 2018-09 (4.9)](https://www.eclipse.org/downloads/packages/release/2018-09/r/eclipse-ide-java-ee-developers). But, first make sure your Eclipse environment is setup
 as expected for general Lyo-based development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
 The easiest way to install Lyo Designer is via the update-site
