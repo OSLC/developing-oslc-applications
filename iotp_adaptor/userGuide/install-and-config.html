@@ -10,7 +10,7 @@ Modernizr.load([{
 <pre><code>git clone https://github.com/OSLC/iotp-adaptor.git
 cd iotp-adaptor/iotp-adaptor
 mvn install</code></pre><p>This will result in creating target/iotp-0.0.1-SNAPSHOT.war. You can then install this WAR file in any compatible JEE container such as Tomcat, Jetty, WebSphere Liberty, etc.</p>
-<p>For example, download <a href="https://tomcat.apache.org/download-90.cgi">Tomcat 9</a> and unzip in a convenient folder. Follow the instructions in <a href="http://www.baeldung.com/tomcat-deploy-war">How do Deploy a WAR File to Tomcat</a> to deploy target/iotp-0.0.1-SNAPSHOT.war to webapp/iotp.war. Then start the tomcat server and visit [](<a href="http://localhost:8080/iotp">http://localhost:8080/iotp</a>. Here&#39;s a brief summary of the instructions:</p>
+<p>For example, download <a href="https://tomcat.apache.org/download-90.cgi">Tomcat 9</a> and unzip in a convenient folder. Follow the instructions in <a href="http://www.baeldung.com/tomcat-deploy-war">How do Deploy a WAR File to Tomcat</a> to deploy target/iotp-0.0.1-SNAPSHOT.war to webapp/iotp.war. Then start the tomcat server and visit <a href="http://localhost:8080/iotp">http://localhost:8080/iotp</a>. Here&#39;s a brief summary of the instructions:</p>
 <ol>
 <li>Download and unzip <a href="https://tomcat.apache.org/download-90.cgi">Tomcat 9</a></li>
 <li>Set $CATALINA_BASE to where you unzipped Tomcat 9</li>
@@ -19,7 +19,7 @@ mvn install</code></pre><p>This will result in creating target/iotp-0.0.1-SNAPSH
 <li>Edit $CATALINA_BASE/conf/server.xml as needed (perhaps to change the port)</li>
 <li>copy target/iotp-0.0.1-SNAPSHOT.war to $CATALINA_BASE/iotp.war</li>
 <li>Start the Tomcat Server using $CATALINA_BASE/bin/startup.sh</li>
-<li>Visit <a href="http://localhost/iotp/"></a> to access the Watson IoT Platform resources using the iotp-adaptor.</li>
+<li>Visit <a href="http://localhost/iotp/">http://localhost:8080/iotp</a> to access the Watson IoT Platform resources using the iotp-adaptor.</li>
 </ol>
 <p>Here&#39;s some minimal sample commands that work on MacOS. Adjust the paths below to where you cloned iotp-adaptor and installed Tomcat, and open the link on the browser any way that is convenient for you. This also assumes you&#39;re using the default base uri of <a href="http://localhost:8080">http://localhost:8080</a>, port 8080, and scheme http in the iotp/WEB-INF/web.xml file.</p>
 <pre><code>cd ~/bin

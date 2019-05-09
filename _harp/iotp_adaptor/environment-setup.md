@@ -52,7 +52,7 @@ After installing, edit your .bash_profile or whatever is appropriate for your pl
 
     export JETTY_HOME=~/Applications/jetty-distribution-9.4.5.v20170502
 
-Next use the Eclipse Marketplace to install Eclipse Jetty if you want to be able to lanuch iotp-adaptor as a Jetty Webapp. Use `src/main/sebapp` as the WEbApp Folder so that changes made during debugging will be immediately available. Typically use `/iotp` as the Context Path.
+Next use the Eclipse Marketplace to install Eclipse Jetty if you want to be able to lanuch iotp-adaptor as a Jetty Webapp. Use `src/main/webapp` as the WebApp Folder so that changes made during debugging will be immediately available. Typically use `/iotp` as the Context Path.
 
 Add the following VM arguments:
 

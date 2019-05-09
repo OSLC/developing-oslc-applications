@@ -9,7 +9,7 @@ mvn install
 ```
 This will result in creating target/iotp-0.0.1-SNAPSHOT.war. You can then install this WAR file in any compatible JEE container such as Tomcat, Jetty, WebSphere Liberty, etc.
 
-For example, download [Tomcat 9](https://tomcat.apache.org/download-90.cgi) and unzip in a convenient folder. Follow the instructions in [How do Deploy a WAR File to Tomcat](http://www.baeldung.com/tomcat-deploy-war) to deploy target/iotp-0.0.1-SNAPSHOT.war to webapp/iotp.war. Then start the tomcat server and visit [](http://localhost:8080/iotp. Here's a brief summary of the instructions:
+For example, download [Tomcat 9](https://tomcat.apache.org/download-90.cgi) and unzip in a convenient folder. Follow the instructions in [How do Deploy a WAR File to Tomcat](http://www.baeldung.com/tomcat-deploy-war) to deploy target/iotp-0.0.1-SNAPSHOT.war to webapp/iotp.war. Then start the tomcat server and visit [http://localhost:8080/iotp](http://localhost:8080/iotp). Here's a brief summary of the instructions:
 
 1. Download and unzip [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
 2. Set $CATALINA_BASE to where you unzipped Tomcat 9
@@ -18,7 +18,7 @@ For example, download [Tomcat 9](https://tomcat.apache.org/download-90.cgi) and 
 5. Edit $CATALINA_BASE/conf/server.xml as needed (perhaps to change the port)
 6. copy target/iotp-0.0.1-SNAPSHOT.war to $CATALINA_BASE/iotp.war
 7. Start the Tomcat Server using $CATALINA_BASE/bin/startup.sh
-8. Visit [](http://localhost/iotp/) to access the Watson IoT Platform resources using the iotp-adaptor.
+8. Visit [http://localhost:8080/iotp](http://localhost/iotp/) to access the Watson IoT Platform resources using the iotp-adaptor.
 
 Here's some minimal sample commands that work on MacOS. Adjust the paths below to where you cloned iotp-adaptor and installed Tomcat, and open the link on the browser any way that is convenient for you. This also assumes you're using the default base uri of http://localhost:8080, port 8080, and scheme http in the iotp/WEB-INF/web.xml file.
 
