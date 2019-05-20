@@ -1,14 +1,6 @@
-# Eclipse Setup
-
-Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
-
-# Sample Projects
-
-As a complement when following the instructions below, you can find sample projects under the [Lyo Adaptor Sample Modelling](https://github.com/OSLC/lyo-adaptor-sample-modelling) git repository.
-
 # Create an OSLC4J project
 
-The steps below guide you through the necessary steps of creating an Eclipse project with the necessary configurations to develop any OSLC4J adaptor.
+The steps below guide you through the necessary steps of creating a Java project with the necessary configurations to develop any OSLC4J adaptor. The instructions assume you are using the Eclipse IDE, but should be equally valid for any other development environment.
 
 In the instructions below, we assume the following parameters, which you will need to adjust for your particular project:
 
@@ -18,13 +10,39 @@ In the instructions below, we assume the following parameters, which you will ne
 We will here only create the code skeleton. The
 [Toolchain Modelling Workshop](./toolchain-modelling-workshop) can then be used to generate the necessary code to become a fully functional adaptor.
 
-Creation of the skeleton consists of 2 steps:
+Creation of the skeleton consists of these steps:
 
-1. creating a Maven project from an archetype
-1. customising the generated project with the Lyo-specific configuration
+1. Creating a Maven project from an archetype
+1. Customise the project POM file
+1. Customise the web configuration
+1. (Optional) Provide OpenApi/Swagger Support
+
+But first ...
+
+## 1. Setup Eclipse
+
+Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+
+## 2. Decide if you want to adopt JAX-RS 1.0 or 2.0?
+Starting with the upcoming release 4.0.0, Lyo will support JAX-RS 2.0, and will no longer depend on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc.  
+On the otherhand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
+
+we recommend you adopt the latest versions of Lyo.
+
+The instructions below will vary depending on the Lyo version to be adopted. We will refer to the version as *version.lyo*, which can then take one of the two values:
+
+* 4.0.0-SNAPSHOT
+* 2.4.0
+
+## 3. Refer to Sample Projects
+
+As a complement when following the instructions below, you can find sample projects under the [Lyo Adaptor Sample Modelling](https://github.com/OSLC/lyo-adaptor-sample-modelling) git repository.
+
+* For Lyo 4.0.0-SNAPSHOT, please refer to the *4.0.0-SNAPSHOT* branch.
+* For Lyo 2.4.0, please refer to the *master* branch.
 
 
-## Creating a Maven project from an archetype
+# Create a Maven project
 
 To create a Maven project from an archetype via Eclipse
 
@@ -50,14 +68,16 @@ You should now have the project in Eclipse and the following folder structure:
 
 ![](./images/CreateMavenAdaptorProject_CodeStructure.png)
 
-## Customise the project POM file
+# Customise the project POM file
 
 We now need to modify the project *pom.xml* file.
 
-### General POM changes
+## Setup general POM properties
 
 We need to make sure our project uses UTF-8 and JDK 1.8. We will also use
-properties to define a common version for Lyo Core and Lyo Server packages:
+properties to define a common version for Lyo packages:
+
+Of course, ```ENTER-LYO-VERSION-HERE``` is either ```4.0.0-SNAPSHOT``` or ```2.4.0```, depending on your choice of JAX-RS version.
 
 ```xml
 <properties>
@@ -65,14 +85,69 @@ properties to define a common version for Lyo Core and Lyo Server packages:
   <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   <maven.compiler.source>1.8</maven.compiler.source>
   <maven.compiler.target>1.8</maven.compiler.target>
-  <version.lyo.core>2.2.0</version.lyo.core>
-  <version.lyo.server>2.2.0</version.lyo.server>
+  <version.lyo>ENTER-LYO-VERSION-HERE</version.lyo>
 </properties>
 ```
-### Java EE 6
+## Lyo repositories
+
+an OSLC4J project will use Lyo dependencies that we need to declare. Before we
+can do that, we need to add the Lyo repository. After that, we are ready to add the dependencies.
+
+```xml
+<repositories>
+  <repository>
+    <id>lyo-releases</id>
+    <name>Eclipse Lyo Releases</name>
+    <url>https://repo.eclipse.org/content/repositories/lyo-releases/</url>
+    <snapshots>
+      <enabled>false</enabled>
+    </snapshots>
+  </repository>
+  <repository>
+    <id>lyo-snapshots</id>
+    <name>Eclipse Lyo Snapshots</name>
+    <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+  </repository>
+</repositories>
+```
+
+## SLF4J package dependencies
+
+Lyo uses SLF4J for logging, leaving the choice of the actual logging library to
+use. We will use the simplest option:
+
+```xml
+<dependency>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-simple</artifactId>
+  <version>1.7.21</version>
+  <scope>runtime</scope>
+</dependency>
+```
+
+## Servlet dependencies
 
 We require Java EE 6 or higher and JSTL:
 
+### for Lyo 4.0.0-SNAPSHOT 
+```xml
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>javax.servlet-api</artifactId>
+  <version>3.1.0</version>
+  <scope>provided</scope>
+</dependency>
+<dependency>
+  <groupId>javax.servlet.jsp.jstl</groupId>
+  <artifactId>javax.servlet.jsp.jstl-api</artifactId>
+  <version>1.2.2</version>
+</dependency>
+```
+
+### for Lyo 2.4.0 and earlier 
 ```xml
 <dependency>
   <groupId>javax.servlet</groupId>
@@ -87,112 +162,107 @@ We require Java EE 6 or higher and JSTL:
 </dependency>
 ```
 
-### Lyo repositories
+## JAX-RS implementation dependencies
 
-an OSLC4J project will use Lyo dependencies that we need to declare. Before we
-can do that, we need to add the Lyo repository. After that, we are ready to add the dependencies.
-
-```xml
-  <repositories>
-    <repository>
-      <id>lyo-releases</id>
-      <name>lyo-releases repository</name>
-      <url>https://repo.eclipse.org/content/repositories/lyo-releases/</url>
-    </repository>
-  </repositories>
-```
-
-### SLF4J package dependencies
-
-Lyo uses SLF4J for logging, leaving the choice of the actual logging library to
-use. We will use the simplest option:
-
+### for Lyo 4.0.0-SNAPSHOT 
+For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementation, such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. Below is an example for Jersey.
 ```xml
 <dependency>
-  <groupId>org.slf4j</groupId>
-  <artifactId>slf4j-simple</artifactId>
-  <version>1.7.21</version>
-  <scope>runtime</scope>
+  <groupId>org.glassfish.jersey.core</groupId>
+  <artifactId>jersey-server</artifactId>
+  <version>2.25.1</version>
+</dependency>
+<dependency>
+  <groupId>org.glassfish.jersey.containers</groupId>
+  <artifactId>jersey-container-servlet</artifactId>
+  <version>2.25.1</version>
 </dependency>
 ```
 
-### Lyo package dependencies
+### for Lyo 2.4.0 and earlier 
+For Lyo release 2.4.0 (and earlier), a Lyo package includes a dependency to the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
 
-Lyo dependencies need:
+```
+<dependency>
+  <groupId>org.eclipse.lyo.oslc4j.core</groupId>
+  <artifactId>oslc4j-wink</artifactId>
+  <version>${version.lyo}</version>
+</dependency>
+```
+
+## Lyo dependencies
+
+The minimal Lyo dependencies are:
 
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.oslc4j.core</groupId>
   <artifactId>oslc4j-core</artifactId>
-  <version>${version.lyo.core}</version>
+  <version>${version.lyo}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.lyo.oslc4j.core</groupId>
   <artifactId>oslc4j-jena-provider</artifactId>
-  <version>${version.lyo.core}</version>
-</dependency>
-<dependency>
-  <groupId>org.eclipse.lyo.oslc4j.core</groupId>
-  <artifactId>oslc4j-wink</artifactId>
-  <version>${version.lyo.core}</version>
+  <version>${version.lyo}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.lyo.oslc4j.core</groupId>
   <artifactId>oslc4j-json4j-provider</artifactId>
-  <version>${version.lyo.core}</version>
+  <version>${version.lyo}</version>
 </dependency>
 ```
 
-### OAuth support
+## OSLC OAuth support
 
-Finally, your adaptor might need to includes the experimental support for OAuth:
+If your adaptor needs to support OAuth, include the following:
 
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.server</groupId>
   <artifactId>oauth-core</artifactId>
-  <version>${version.lyo.server}</version>
+  <version>${version.lyo}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.lyo.server</groupId>
   <artifactId>oauth-consumer-store</artifactId>
-  <version>${version.lyo.server}</version>
-  <exclusions>
-    <exclusion>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-    </exclusion>
-  </exclusions>
+  <version>${version.lyo}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.lyo.server</groupId>
   <artifactId>oauth-webapp</artifactId>
-  <version>${version.lyo.server}</version>
+  <version>${version.lyo}</version>
   <type>war</type>
 </dependency>
 ```
 
-> Exclusions are due to the [Bug 513477](https://bugs.eclipse.org/bugs/show_bug.cgi?id=513477)
+To support OAuth, you will need to add the following JAX-RS Providers to your Application (the `javax.ws.rs.core.Application` subclass)
+```java
+RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
+RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
+```
+## OSLC Client support
 
-> OAuth is enabled by default. If you want to disable it, open the generated `Application` class and do the following changes:
->
-> * comment out line `RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));`
-> * comment out line `RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));`
-> * change `catch (ClassNotFoundException e)` to `catch (Exception e)`
+If your adaptor also needs to consume resources from another adaptor, a dependency to the OSLC client package is needed:
 
-### OSLC Client support
+### for Lyo 4.0.0-SNAPSHOT 
+```xml
+<dependency>
+  <groupId>org.eclipse.lyo.clients</groupId>
+  <artifactId>oslc4j-client</artifactId>
+  <version>${version.lyo}</version>
+</dependency>
+```
 
-If you use OAuth or consume any resources in your Adaptor Interface, an OSLC client dependency is needed:
-
+### for Lyo 2.4.0 and earlier 
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.clients</groupId>
   <artifactId>oslc-java-client</artifactId>
-  <version>${version.lyo.core}</version>
+  <version>${version.lyo}</version>
 </dependency>
 ```
 
-### Embedded Jetty server for quick debugging
+## Configure the Embedded Jetty server for quick debugging
 
 Finally, you should use an embedded servlet container during the debugging to simplify the development process.
 
@@ -231,13 +301,16 @@ This will make your adaptor available under the path http://localhost:8080/adapt
 </build>
 ```
 
-## Customise the web configuration
+# Customise the web configuration
 
 Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the template below.
 
 * *Adaptor Sample* could be the same as your eclipse project name (or something more appropriate)
 * *com.sample.adaptor* should be the same as the base package name for your project.
 * *8080* should match the port number specified in the POM file for Jetty configuration.
+* ```ENTER-SERVLET-CLASS-HERE``` depends on the Lyo version and choice of JAX-RS implementation:
+  * For ```4.0.0-SNAPSHOT``` and a Jersey implementation: ```org.glassfish.jersey.servlet.ServletContainer```
+  * For ```2.4.0```:  ```org.apache.wink.server.internal.servlet.RestServlet```
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -257,7 +330,7 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
   </listener>
   <servlet>
     <servlet-name>JAX-RS Servlet</servlet-name>
-    <servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
+    <servlet-class>ENTER-SERVLET-CLASS-HERE</servlet-class>
     <init-param>
       <param-name>javax.ws.rs.Application</param-name>
       <param-value>com.sample.adaptor.servlet.Application</param-value>
@@ -270,19 +343,8 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
   </servlet-mapping>
 </web-app>
 ```
-# Final tips
 
-If you get the error *Project configuration is not up-to-date with pom.xml*, simply right click on the eclipse project and select Maven--&gt;Update Project ...
-
-# Run the adaptor
-
-Once the adaptor is developed, you can run it by selecting *Run As --&gt; Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-exploded`.
-
-You can now access your adaptor from http://localhost:8080/adaptor-sample
-
-* *adaptor-sample* and *8080* will depend on your particular settings, as instructed above.
-
-# OpenApi/Swagger Support (Optional)
+# (Optional) Provide OpenApi/Swagger Support
 
 Being already a REST web server, an OSLC4J project can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/).
 
@@ -298,6 +360,17 @@ The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](ht
 
 Add the following Swagger dependency to your maven pom.xml file
 
+### for Lyo 4.0.0-SNAPSHOT 
+Assuming you are adopting the Jersey implementation with the version specified above.
+```xml
+<dependency>
+  <groupId>io.swagger</groupId>
+  <artifactId>swagger-jersey2-jaxrs</artifactId>
+  <version>1.5.22</version>
+</dependency>
+```
+
+### for Lyo 2.4.0 and earlier 
 ```xml
 <dependency>
   <groupId>io.swagger</groupId>
@@ -305,6 +378,7 @@ Add the following Swagger dependency to your maven pom.xml file
   <version>1.5.17</version>
 </dependency>
 ```
+
 ## Add Swagger-Core's JAX-RS Providers to your Application
 Add swagger-core's providers to the OslcWinkApplication class of your server.
 
@@ -410,3 +484,15 @@ The following steps allows you to integrate [Swagger UI](https://swagger.io/swag
 **You are done!** The generated interactive API console can now be accessed via
 
     http://localhost:8080/adaptor-sample/swagger-ui
+
+# Run the adaptor
+
+Once the adaptor is developed, you can run it by selecting *Run As --&gt; Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-exploded`.
+
+You can now access your adaptor from http://localhost:8080/adaptor-sample
+
+* *adaptor-sample* and *8080* will depend on your particular settings, as instructed above.
+
+## Some tips
+
+If you get the error *Project configuration is not up-to-date with pom.xml*, simply right click on the eclipse project and select Maven--&gt;Update Project ...
