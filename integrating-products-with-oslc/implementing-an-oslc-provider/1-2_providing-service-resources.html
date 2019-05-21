@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/">Get started with developing OSLC applications</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/why-develop-oslc-applications.html">Why develop OSLC applications?</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/technical-foundations.html">Technical foundations</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/services-resources-and-design-patterns.html">Services, resources, and design patterns</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/./eclipse_lyo/eclipse-lyo.html">Tools &amp; SDKs for Java Developers - Eclipse Lyo</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/sample-applications-and-code.html">Sample applications and code</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/iotp-adaptor-sample.html">Sample OSLC adapter for IoT Platform</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html">OSLC Open Source Node.js Projects</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title"></h1></header><section class="content"><div class="copy"><p>The next step in implementing the OSLC Change Management specification is to determine what high-level organizational concept in your product best maps to <a href="/resources/tutorials/oslc-primer/serviceprovider/">OSLC Service Providers</a> – the central organizing concept of OSLC that represents a &quot;container&quot; of resources.</p>
+<p>In Bugzilla, bugs are organized by Product. Before you can use Bugzilla, you have to tell the system which Products exist in order to report bugs against them.</p>
+<p>Given that, in our adapter each Bugzilla Product will be represented by an OSLC Service Provider REST service. Each Service Provider will include URIs for <a href="/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-a-delegated-ui-for-selection/">a Delegated UI for bug selection</a>, a <a href="http://open-services.rtp.raleigh.ibm.com/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-a-delegated-ui-for-creation/">Delegated UI for bug creation</a>, a Query Capability so that bugs can be queried via HTTP GET, and <a href="http://open-services.rtp.raleigh.ibm.com/resources/tutorials/integrating-products-with-oslc/implementing-an-oslc-provider/providing-a-delegated-ui-for-creation/">a Creation Factory</a> so that new bugs can be created via HTTP POST.</p>
+<p>To enable client programs to find the Service Providers provided by Bugzilla (and because one Bugzilla instance can have multiple Products), we&#39;ll use <a href="/resources/tutorials/oslc-primer/serviceprovidercatalog/">an OSLC Service Provider Catalog</a>. When a client wants to connect to Bugzilla, it first fetches the catalog, which provides a list of Service Providers. In the end, a client can start with the URI of the one Service Provider Catalog offered by Bugzilla and navigate to the Service Providers (one per Product in Bugzilla).</p>
+<p>Here are the URLs that will be supported with our adapter (running at <code>/OSLC4JBugzilla/</code>) for our OSLC-CM implementation:</p>
+<ul>
+<li><code>http://HOST/OSLC4JBugzilla/services/catalog/singleton</code><br>  This URL will return the <a href="/resources/tutorials/oslc-primer/serviceprovidercatalog/">OSLC Service Provider Catalog</a></li>
+<li><code>http://HOST/OSLC4JBugzilla/services/serviceProviders/{product_id}</code><br>  Returns the <a href="/resources/tutorials/oslc-primer/serviceprovider/">OSLC Service Provider</a> for the Product identified by {product_id} number</li>
+<li><code>http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests</code>
+  If using HTTP GET, returns a list of bugs in the product identified by {product_id}; if using HTTP POST, initiates the Creation Factory for creating a new bug and returns that new bug</li>
+<li><code>http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests/{change_request_id}</code>
+  Returns the Change Request identified by ID {change_request_id}, in a variety of content-types</li>
+<li><code>http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests/selector</code>
+  This URL is for the delegated UI selection dialog for the Product identified by ID {product_id}</li>
+<li><code>http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests/creator</code>
+  Returns Delegated UI creation dialog for the Product identified by ID {product_id}</li>
+<li><code>http://HOST/OSLC4JBugzilla/services/resourceShapes/changeRequest</code>
+  Returns the creation and query <a href="http://open-services.rtp.raleigh.ibm.com/resources/tutorials/oslc-primer/resourceshapes/">Resource Shape</a> for Bugzilla bugs</li>
+</ul>
+<p>Each of of the URLs above will be handled by a JAX-RS annotated method and our code will have to be able to form all of those types of URLs. That brings us to an important point about OSLC:</p>
+<h2>Clients don&#39;t need to form URLs</h2><p>With OSLC, there&#39;s rarely any need to form URLs. Clients should not be constructing URLs, or making assumptions about how URLs are formed; <strong>instead they should be able to navigate</strong> to all of the other REST service URLs by following links from a Service Provider Catalog.</p>
+<h2>Basic application architecture</h2><p>On the OSLC4J Bugzilla application, all REST services are handled by a Bugzilla Application JAX-RS servlet, which is mapped to the URL pattern <code>/services/*</code> in <code>OSLC4JBugzilla/src/main/webapp/WEB-INF/web.xml</code>:</p>
+<pre><code>&lt;servlet&gt;
+  &lt;servlet-name&gt;JAX-RS Servlet&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;org.apache.wink.server.internal.servlet.RestServlet&lt;/servlet-class&gt;   
+  &lt;init-param&gt;
+    &lt;param-name&gt;javax.ws.rs.Application&lt;/param-name&gt;
+    &lt;param-value&gt;org.eclipse.lyo.oslc4j.bugzilla.services.BugzillaApplication&lt;/param-value&gt;
+  &lt;/init-param&gt;
+  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;JAX-RS Servlet&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;/services/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</code></pre><h2>Providing a Service Provider Catalog</h2><p>In our adapter, we use a simple pattern to implement OSLC REST services: for each operation, a JAX-RS method will accept incoming requests, load the data necessary to render a response, perform the requested operation, and then render the resulting RDF or other representations.</p>
+<p>The Service Provider Catalog is defined in <strong>ServiceProviderCatalogService</strong> (in the <strong>org.eclipse.lyo.oslc4j.bugzilla.services</strong> package). The catalog is available at the URL <code>http://HOST/OSLC4JBugzilla/services/catalog/singleton</code> and will list the OSLC Service Providers (one per Bugzilla product).</p>
+<h3>Defining a JAX-RS method for the Service Provider Catalog</h3><p>In the file <code>ServiceProviderCatalogService.java</code> (in the <strong>org.eclipse.lyo.oslc4j.bugzilla .servlet</strong> package), view the JAX-RS annotation which defines the class that will run at <code>http://HOST/OSLC4JBugzilla/services/catalog/</code>:</p>
+<pre><code>@Path(&quot;catalog&quot;)
+public class ServiceProviderCatalogService
+{
+    [ServiceProviderCatalog code]
+}</code></pre><p>That class has a variety of methods that will return a Service Provider Catalog in a variety of formats. More on those later on.</p>
+<h3>Retrieving Bugzilla product IDs</h3><p>To build our catalog, we register the Bugzilla product IDs with the <strong>ServiceProviderCatalogSingleton</strong> class (in the <strong>org.eclipse.lyo.oslc4j.bugzilla.servlet</strong> package). The major activity happens in the <strong>initServiceProvidersFromProducts()</strong> method.</p>
+<p>First, we create a connection to Bugzilla:</p>
+<pre><code>BugzillaConnector bc = BugzillaManager.getBugzillaConnector(httpServletRequest);</code></pre><p>If there&#39;s a valid connection, we fetch a list of Bugzilla products:</p>
+<pre><code>GetAccessibleProducts getProductIds = new GetAccessibleProducts();
+bc.executeMethod(getProductIds);
+Integer[] productIds = getProductIds.getIds();
+
+String basePath = BugzillaManager.getBugzServiceBase();</code></pre><p>Then for each Bugzilla product, we register an OSLC Service Provider:</p>
+<pre><code>for (Integer p : productIds) {
+    String productId = Integer.toString(p);
+
+    if (! serviceProviders.containsKey(productId)) {
+
+        GetProduct getProductMethod = new GetProduct(p);
+        bc.executeMethod(getProductMethod);
+        String product = getProductMethod.getProduct().getName();
+
+
+        Map&lt;String, Object&gt; parameterMap = new HashMap&lt;String, Object&gt;();
+        parameterMap.put(&quot;productId&quot;,productId);
+        final ServiceProvider bugzillaServiceProvider = BugzillaServiceProviderFactory.createServiceProvider(basePath, product, parameterMap);
+        registerServiceProvider(basePath,bugzillaServiceProvider,productId);
+    }
+}</code></pre><p>(Of particular note is the <code>parameterMap</code> HashMap, which will be used to add the Bugzilla productId to the URLs of our services in the <strong>BugzillaChangeRequestService</strong> class. More on that later.)</p>
+<h3>Displaying the Service Provider Catalog as HTML</h3><p>Back in the file <code>ServiceProviderCatalogService.java</code> (in the <strong>org.eclipse.lyo.oslc4j.bugzilla.services</strong> package), view the <strong>getHtmlServiceProvider()</strong> method, which forwards the <code>catalog</code> object to a JSP template to produce the HTML:</p>
+<pre><code>if (catalog !=null )
+{
+    httpServletRequest.setAttribute(&quot;bugzillaUri&quot;, BugzillaManager.getBugzillaUri());
+    httpServletRequest.setAttribute(&quot;catalog&quot;,catalog);
+
+    RequestDispatcher rd = httpServletRequest.getRequestDispatcher(&quot;/cm/serviceprovidercatalog_html.jsp&quot;);
+    try {
+        rd.forward(httpServletRequest, httpServletResponse);
+    } catch (Exception e) {                
+        e.printStackTrace();
+        throw new WebApplicationException(e);
+    } 
+}</code></pre><p>Next, view the file <code>src/main/webapp/cm/serviceprovidercatalog_html.jsp</code>, which is the JSP template for displaying the catalog in HTML. It&#39;s a pretty typical HTML page and it reuses stylesheets from the Bugzilla application. </p>
+<p>Of particular note are the dynamic segments. First, near the top of the file, the catalog variable is set from the passed catalog attribute:</p>
+<pre><code>String bugzillaUri = (String) request.getAttribute(&quot;bugzillaUri&quot;);
+ServiceProviderCatalog catalog = (ServiceProviderCatalog)request.getAttribute(&quot;catalog&quot;);</code></pre><p>And near the bottom of the file, we loop through the service providers in the catalog and output a heading with the name of the product (<strong>getTitle()</strong>) and a link (<strong>getAbout()</strong>):</p>
+<pre><code>&lt;% for (ServiceProvider s : catalog.getServiceProviders()) { %&gt;
+&lt;h3&gt;Service Provider for Product &lt;%= s.getTitle() %&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;&lt;%= s.getAbout() %&gt;&quot;&gt;
+        &lt;%= s.getAbout() %&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;% } %&gt;</code></pre><p>If you&#39;re running the example applications, you can see this in action at <a href="http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton">http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton</a>.</p>
+<p><img src="http://open-services.net/uploads/resources/serviceprovidercatalog-html.png" alt="Screen capture of the Service Provider Catalog in a web browser"></p>
+<h2>Retrieving and displaying details about a Service Provider</h2><p>Next, we&#39;ll display the details for each product as an OSLC Service Provider in an HTML page. </p>
+<p>Similar to the Service Provider Catalog, the <strong>ServiceProviderService</strong> class in the <strong>org.eclipse.lyo.oslc4j.bugzilla.services</strong> package defines the URL structure:</p>
+<pre><code>@Path(&quot;serviceProviders&quot;)
+public class ServiceProviderService
+{
+  [ServiceProviderClass code]
+}</code></pre><p>The class <strong>ServiceProviderService</strong> has several methods that fetch the appropriate data and present it in a variety of formats. For the moment, we&#39;ll explore the <strong>getHtmlServiceProvider()</strong> method:</p>
+<pre><code>@GET
+@Path(&quot;{serviceProviderId}&quot;)
+@Produces(MediaType.TEXT_HTML)
+public void getHtmlServiceProvider(@PathParam(&quot;serviceProviderId&quot;) final String serviceProviderId)
+{
+    ServiceProvider serviceProvider = ServiceProviderCatalogSingleton.getServiceProvider(httpServletRequest, serviceProviderId);
+
+    Service [] services = serviceProvider.getServices();
+
+    if (services !=null &amp;&amp; services.length &gt; 0)
+    {
+        //Bugzilla adapter should only have one Service per ServiceProvider
+        httpServletRequest.setAttribute(&quot;bugzillaUri&quot;, BugzillaManager.getBugzillaUri());
+        httpServletRequest.setAttribute(&quot;service&quot;, services[0]);
+        httpServletRequest.setAttribute(&quot;serviceProvider&quot;, serviceProvider);
+
+        RequestDispatcher rd = httpServletRequest.getRequestDispatcher(&quot;/cm/serviceprovider_html.jsp&quot;);
+        try {
+            rd.forward(httpServletRequest, httpServletResponse);
+        } catch (Exception e) {                
+            e.printStackTrace();
+            throw new WebApplicationException(e);
+        } 
+    }
+}</code></pre><p>Like the Service Provider Catalog class, we retrieve information from Bugzilla; however, here we only retrieve information about a single Product (from the URL /serviceProviders/{ProductId}). We then dispatch <code>serviceprovider_html.jsp</code> to display information about it in HTML.</p>
+<h3>Displaying the Service Provider as HTML</h3><p>In <code>src/main/webapp/cm/serviceprovider_html.jsp</code>, view near the top of the file where we assemble all the URLs for OSLC services (which we&#39;ll cover later) such as query capability, delegated dialogs, and resource shapes:</p>
+<pre><code>&lt;%
+String bugzillaUri = (String) request.getAttribute(&quot;bugzillaUri&quot;);
+Service service = (Service)request.getAttribute(&quot;service&quot;);
+ServiceProvider serviceProvider = (ServiceProvider)request.getAttribute(&quot;serviceProvider&quot;);
+
+//OSLC Dialogs
+Dialog [] selectionDialogs = service.getSelectionDialogs();
+String selectionDialog = selectionDialogs[0].getDialog().toString();
+Dialog [] creationDialogs = service.getCreationDialogs();
+String creationDialog = creationDialogs[0].getDialog().toString();
+
+//OSLC CreationFactory and shape
+CreationFactory [] creationFactories = service.getCreationFactories();
+String creationFactory = creationFactories[0].getCreation().toString();
+URI[] creationShapes = creationFactories[0].getResourceShapes();
+String creationShape = creationShapes[0].toString();
+
+//OSLC QueryCapability and shape
+QueryCapability [] queryCapabilities= service.getQueryCapabilities();
+String queryCapability = queryCapabilities[0].getQueryBase().toString();
+String queryShape = queryCapabilities[0].getResourceShape().toString();    
+
+%&gt;</code></pre><p>And towards the bottom, you&#39;ll find the HTML where we display those URLs:</p>
+<pre><code>&lt;h2&gt;OSLC-CM Resource Selector Dialog&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;&lt;%= selectionDialog %&gt;&quot;&gt;
+            &lt;%= selectionDialog %&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;OSLC-CM Resource Creator Dialog&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;&lt;%= creationDialog %&gt;&quot;&gt;
+            &lt;%= creationDialog %&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;OSLC-CM Resource Creation Factory and Resource Shape&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;&lt;%= creationFactory %&gt;&quot;&gt;
+            &lt;%= creationFactory %&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&lt;%= creationShape %&gt;&quot;&gt;
+            &lt;%= creationShape %&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;OSLC-CM Resource Query Capability and Resource Shape&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;&lt;%= queryCapability %&gt;&quot;&gt;
+            &lt;%= queryCapability %&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&lt;%= queryShape %&gt;&quot;&gt;
+            &lt;%= queryShape %&gt;&lt;/a&gt;&lt;/p&gt;</code></pre><h3>Browsing the Service Provider Catalog and Service Providers</h3><p>If you&#39;re running the example applications, browse to <a href="http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton">http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton</a>.</p>
+<p>Click on the link for any Service Provider (the number of Service Providers you&#39;ll see depends on the number of available Products on your Bugzilla server). You should see an HTML page with links to the available REST services, similar to this:</p>
+<p><img src="http://open-services.net/uploads/resources/serviceprovidercatalog-html.png" alt="Screen capture of a Service Provider in a web browser"></p>
+<h2>Providing RDF+XML or JSON representations of Service Providers and Service Provider Catalogs</h2><p>Although the HTML representations we created above are useful as an educational and debugging tool, to connect to another tool (and comply with the specification!) we&#39;ll need to also create machine-readable formats, specifically RDF+XML and JSON.</p>
+<h3>Providing RDF+XML or JSON representations manually</h3><p>One way you could create RDF+XML or JSON representations of these OSLC resources would be nearly the same as the HTML representation: build and gather the data for the resource and dispatch a JSP template to output it in the proper format.</p>
+<p>Your JSP template for RDF+XML for the ServiceProvider might look similar to this:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;%@ page contentType=&quot;application/rdf+xml&quot; language=&quot;java&quot;%&gt;
+&lt;%@ page import=&quot;java.net.URI&quot; %&gt;
+&lt;%@ page import=&quot;jbugz.base.Product&quot; %&gt;  
+&lt;%
+// Load up the data sent in with the JSP template
+String bugzillaUri = (String) request.getAttribute(&quot;bugzillaUri&quot;);
+Service service = (Service)request.getAttribute(&quot;service&quot;);
+ServiceProvider serviceProvider = (ServiceProvider)request.getAttribute(&quot;serviceProvider&quot;);
+
+// Build the OSLC dialogs here
+// ...
+
+%&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+        xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot;
+        xmlns:oslc=&quot;http://open-services.net/ns/core#&quot;&gt;
+
+&lt;oslc:ServiceProvider
+    rdf:about=&quot;&lt;%= serviceProvider.getAbout() %&gt;&quot;&gt;
+&lt;dcterms:title&gt;OSLC-CM Adapter/Bugzilla Service Provider: 
+Product &lt;%= serviceProvider.getTitle() + &quot;(&quot; + serviceProvider.getIdentifier() + &quot;)&quot; %&gt;&lt;/dcterms:title&gt;
+&lt;dcterms:description&gt;
+Enables navigation to OSLC-CM Resource Creator and Selector Dialogs
+&lt;/dcterms:description&gt;
+
+&lt;oslc:service&gt;
+    &lt;oslc:Service&gt;        
+        &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot; /&gt;
+        &lt;!-- URLs to your OSLC services (dialogs, etc.) will go here --&gt;
+    &lt;/oslc:Service&gt;
+&lt;/oslc:service&gt;
+
+&lt;/oslc:ServiceProvider&gt;
+&lt;/rdf:RDF&gt;</code></pre><p>Although using another JSP template gives you complete control over the output, you have a higher risk of creating improperly formatted output. There are other options:</p>
+<ul>
+<li><strong>Use an RDF API</strong>: build an RDF graph of triples and then serialize it into RDF+XML. This ensures proper formatting, but it&#39;s another API to work with.</li>
+<li><strong>Use an XML DOM API</strong>: build up a DOM and then serialize it to XML. </li>
+</ul>
+<p>Use whatever you&#39;re most comfortable with. However, with Eclipse Lyo there&#39;s an easier way.</p>
+<h3>Providing RDF+XML or JSON representations with OSLC4J</h3><p>Open the <code>ServiceProviderService.java</code> class in the <strong>org.eclipse.lyo.oslc4j.bugzilla.services</strong> package and check out the <strong>getServiceProvider</strong> method:</p>
+<pre><code>@GET
+@Path(&quot;{serviceProviderId}&quot;)
+@Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})
+public ServiceProvider getServiceProvider(@PathParam(&quot;serviceProviderId&quot;) final String serviceProviderId)
+{
+    httpServletResponse.addHeader(&quot;Oslc-Core-Version&quot;,&quot;2.0&quot;);
+    return ServiceProviderCatalogSingleton.getServiceProvider(httpServletRequest, serviceProviderId);
+}</code></pre><p>That&#39;s it for outputting Service Providers in a XML, RDF+XML, and JSON! You&#39;ll find similar code for the Service Provider Catalog in the <code>ServiceProviderCatalogService.java</code> file.</p>
+<p>What&#39;s happening is the OSLC4J toolkit includes JAX-RS message body writers that serialize the Java representation of the Service Provider (or any OSLC resource) to RDF+XML, JSON, or XML. Likewise, it can convert OSLC resources in any of those formats back into Java objects. We&#39;ll explore this more in the next topic.</p>
+<h4>Viewing the machine-readable formats of a Service Provider Catalog</h4><p>Let&#39;s try it out!</p>
+<ol>
+<li><p>In Firefox or Chrome, open the Poster plugin. Poster is a browser plugin (for <a href="https://addons.mozilla.org/en-us/firefox/addon/poster/">Firefox</a> and <a href="https://chrome.google.com/webstore/detail/chrome-poster/cdjfedloinmbppobahmonnjigpmlajcd">Chrome</a>) which can be used to send HTTP REST requests with full control over HTTP headers and their values.</p>
+</li>
+<li><p>For the <strong>URL</strong> field, type the URL for the Service Provider Catalog: </p>
+<pre><code> http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton</code></pre></li>
+<li><p>For the <strong>User Auth</strong> fields, type your Bugzilla username and password.</p>
+</li>
+<li><p>On the Headers tab, for the <strong>Name</strong> type <code>Accept</code> and for the <strong>Value</strong> type any of the following:</p>
+<ul>
+<li><p><code>application/rdf+xml</code></p>
+</li>
+<li><p><code>application/json</code></p>
+</li>
+<li><p><code>application/xml</code></p>
+<p>Then, click <strong>Add/Change</strong> to add the <code>Accept</code> header.</p>
+</li>
+</ul>
+</li>
+<li><p>Click <strong>Get</strong> to execute the HTTP GET method. You should receive the complete Service Provider Catalog in the format you requested via <code>Accept</code> header. OSLC4J and JAX-RS produce the correct serialization based on the <code>Accept</code> header.</p>
+</li>
+</ol>
+<p>Next, try it with the URL for one of the Service Providers. (The exact URL will depend on the Product ID of the products on your Bugzilla server.)</p>
+<p>Now, a client can start with a single URL (for the catalog) and navigate to all of the Service Providers. A client could use this to show a list of Products to a user and allow them to pick which ones to report bugs against, or query for existing bugs.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>

@@ -62,6 +62,11 @@ html.no-js(lang="en")
                 for page, slug in public.eclipse_lyo._data
                   li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
                     a(href="#{ site_url }#{ slug === 'index' ? '' : ('eclipse_lyo/' + slug + '.html') }") #{ page.title }
+              when 'integrating_products_with_oslc'
+                - var $i = 1;
+                for page, slug in public.integrating_products_with_oslc._data
+                  li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
+                    a(href="#{ site_url }#{ slug === 'index' ? '' : ('integrating_products_with_oslc/' + slug + '.html') }") #{ page.title }
               when 'iotp_adaptor'
                 - var subdir = current.path[1]
                 case subdir

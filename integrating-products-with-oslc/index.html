@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tutorial Overview</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item current"><a href="https://oslc.github.io/developing-oslc-applications/">Get started with developing OSLC applications</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/why-develop-oslc-applications.html">Why develop OSLC applications?</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/technical-foundations.html">Technical foundations</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/services-resources-and-design-patterns.html">Services, resources, and design patterns</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/./eclipse_lyo/eclipse-lyo.html">Tools &amp; SDKs for Java Developers - Eclipse Lyo</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/sample-applications-and-code.html">Sample applications and code</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/iotp-adaptor-sample.html">Sample OSLC adapter for IoT Platform</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html">OSLC Open Source Node.js Projects</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Tutorial Overview</h1></header><section class="content"><div class="copy"><p>This tutorial explains how to implement OSLC consumers and providers by examining realistic use cases and showing how to implement OSLC specifications with lots of examples and working code. It is organized into the following parts:</p>
+<ol>
+<li>This introduction</li>
+<li><a href="/integrating-products-with-oslc/overview-of-oslc/"><strong>A brief overview of OSLC</strong></a></li>
+<li><a href="/integrating-products-with-oslc/running-the-examples/"><strong>Downloading and starting the sample applications</strong></a></li>
+<li><a href="/integrating-products-with-oslc/implementing-an-oslc-provider/"><strong>Part 1</strong>, turning Bugzilla into a provider of the Change Management OSLC specification</a>. We&#39;ll walk through the architecture of the integration, create OSLC catalogs and representations, provide delegated UIs, and allow you to create Bugzilla bugs programmatically.</li>
+<li><a href="/integrating-products-with-oslc/integrating-with-an-oslc-provider/"><strong>Part 2</strong>, turning a home-grown application into a consumer of the Change Management OSLC specification</a> that works with the Bugzilla adapter from Part 1. We&#39;ll implement links to Bugzilla bugs, UI previews, delegated UIs, and automated bug creation.</li>
+</ol>
+<h2>Audience</h2><p>This tutorial is for people who will be writing code to implement OSLC consumers and providers; we assume the following about you:</p>
+<ul>
+<li>You understand the basics of software development, web architecture, HTTP, <a href="http://youtu.be/40mjwqGEKBU">linked data</a>, and <a href="http://www.youtube.com/watch?v=Nk9TOx1sBUk&amp;feature=share&amp;list=PLpqpu1CS6Rj4dRKWX1UICKseBq_20nk6k">RDF</a></li>
+<li>You want to learn more about OSLC</li>
+<li>You can follow examples in XML, JSON, HTML, and JavaScript</li>
+<li>You can understand server-side programming languages, particularly in Java and JSP (see below)</li>
+<li>You want to learn more about how <a href="http://www.eclipse.org/lyo/">Eclipse Lyo</a> can help you more quickly develop OSLC-driven integrations</li>
+</ul>
+<div class="notice">
+  <div class="header">
+    <h3 class="title">On the choice of server-side programming language</h3>
+  </div>  
+  <div class="body">
+    Although our sample applications use Java and JSP, many of the methods of implementing OSLC are the same regardless of your choice of server-side programming-language. Later versions of this document might expand to other languages and platforms. OSLC is a community effort and we'd love your help in adding examples in different programming languages to this tutorial (or other material) to help those on other platforms such as Perl, PHP, Python, Ruby, or .Net.  
+  </div>
+</div>
+
+<h2>The Sample applications</h2><p>You can follow along with the OSLC Tutorial by using the following software:</p>
+<ul>
+<li>Bugzilla: a common open-source defect tracking application. You can use <a href="http://landfill.bugzilla.org/">the public Bugzilla Landfill</a> site if you do not want to set up your own Bugzilla application.</li>
+<li>OSLC4J Bugzilla adapter: a full-featured adapter that presents Bugzilla bugs as OSLC Change Management v2 resources. In our examples, we assume the Bugzilla adapter is running at <a href="http://localhost:8080/OSLC4JBugzilla"><code>http://localhost:8080/OSLC4JBugzilla</code></a></li>
+<li>NinaCRM: A simple, fictional Customer Relationship Management (CRM) system that hosts OSLC UI Preview and OSLC Delegated UI examples, implemented as a Java EE web application. In our examples, we assume that NinaCRM is running at <a href="http://localhost:8181/ninacrm"><code>http://localhost:8181/ninacrm</code></a></li>
+<li>Poster browser plugin (for <a href="https://addons.mozilla.org/en-US/firefox/addon/poster/">Firefox</a> or <a href="https://chrome.google.com/webstore/detail/chrome-poster/cdjfedloinmbppobahmonnjigpmlajcd">Chrome</a>): we will browse and manipulate OSLC resources with this plugin that makes it easy to issue HTTP requests and set custom headers. An alternative for Firefox is <a href="https://addons.mozilla.org/en-us/firefox/addon/restclient/">RESTClient</a>.</li>
+</ul>
+<p>See our section about <a href="/integrating-products-with-oslc/running-the-examples/">downloading, building, and starting the NinaCRM and OSLC4J Bugzilla applications</a>.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>

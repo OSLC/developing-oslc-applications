@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Downloading and starting the sample applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/">Get started with developing OSLC applications</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/why-develop-oslc-applications.html">Why develop OSLC applications?</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/technical-foundations.html">Technical foundations</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/services-resources-and-design-patterns.html">Services, resources, and design patterns</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/./eclipse_lyo/eclipse-lyo.html">Tools &amp; SDKs for Java Developers - Eclipse Lyo</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/sample-applications-and-code.html">Sample applications and code</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/iotp-adaptor-sample.html">Sample OSLC adapter for IoT Platform</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html">OSLC Open Source Node.js Projects</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Downloading and starting the sample applications</h1></header><section class="content"><div class="copy"><h2>Running the example applications</h2><p>This section explains how to run the OSLC4J Bugzilla Adapter and the NinaCRM example application.</p>
+<h2>Installing prerequisites</h2><h3>Downloading and installing Eclipse</h3><p>You’ll be using Eclipse and some add-ons to simplify the setup.</p>
+<p>You need Eclipse 3.6 or later. <a href="http://eclipse.org/downloads/">Download Eclipse here</a>. Download the <strong>Eclipse IDE for Java EE Developers</strong>.</p>
+<p>After you install Eclipse, start the Eclipse application.</p>
+<p>In the Workspace Launcher window, create a new directory for your Eclipse workspace or accept the default Workspace location.</p>
+<h3>Installing EGit</h3><p>All of the samples are in Git source control; EGit provides a GUI to work with Git repositories.</p>
+<ol>
+<li>In Eclipse, click <strong>Help</strong> &rarr; <strong>Install New Software</strong>.</li>
+<li>In the Install window, in the <strong>Work with</strong> field paste in the following: <code>http://download.eclipse.org/egit/updates</code></li>
+<li>Click <strong>Add…</strong>.</li>
+<li>In the Add Repository window, in the <strong>Name</strong> field, type something memorable like <code>EGit</code>, then click <strong>OK</strong>.</li>
+<li>Select <strong>Eclipse Git Team Provider</strong> and click <strong>Next</strong>.</li>
+<li>On the Install Details page, click <strong>Next</strong>.</li>
+<li>On the Review Licenses page, review the license, select <strong>I accept the terms of the license agreement</strong> and click <strong>Finish</strong>.</li>
+<li>After EGit installs, on the Software Updates window click <strong>Yes</strong> to restart Eclipse.</li>
+</ol>
+<h3>Installing M2Eclipse</h3><p>Our samples use the Maven build automation tools; you’ll use the M2Eclipse Maven plugin to manage Maven from Eclipse.</p>
+<ol>
+<li>In Eclipse, click <strong>Help</strong> &rarr; <strong>Install New Software</strong>.</li>
+<li>In the Install window, in the <strong>Work with</strong> field paste in the following:<br><code>http://download.eclipse.org/technology/m2e/releases</code></li>
+<li>Click <strong>Add…</strong>.</li>
+<li>In the Add Repository window, in the <strong>Name</strong> field, type something memorable like <code>M2Eclipse</code>, then click <strong>OK</strong>.</li>
+<li>Select <strong>Maven Integration for Eclipse</strong> and click <strong>Next</strong>.</li>
+<li>On the Review Licenses page, review the license, select <strong>I accept the terms of the license agreement</strong> and click <strong>Finish</strong>.</li>
+<li>After M2Eclipse installs, on the Software Updates window, click “Yes” to restart Eclipse.</li>
+</ol>
+<h3>Installing the OSLC4J toolkit</h3><ol>
+<li>In Eclipse, open the Git Repositories view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Other</strong>, search for <code>Git repo</code> and click <strong>OK</strong>.)</li>
+<li>Click <strong>Clone a Git Repository</strong>.</li>
+<li>In the Clone Git Repository window, in the <strong>URI</strong> field paste the following:<br><code>http://git.eclipse.org/gitroot/lyo/org.eclipse.lyo.core.git</code><br>The <strong>Host</strong> and <strong>Repository</strong> fields will autofill. Leave the <strong>Username</strong> and <strong>Password</strong> fields empty.</li>
+<li>Click <strong>Next</strong>.</li>
+<li>On the Branch Selection page, select <strong>master</strong> and click <strong>Next</strong>.</li>
+<li>For the <strong>Destination</strong>, select a folder for the files or accept the default of your Eclipse workspace.</li>
+<li>Click <strong>Finish</strong>. <code>org.eclipse.lyo.core</code> will appear in the Git Repositories view.</li>
+<li>In the Git Repositories view, right-click <strong>org.eclipse.lyo.core</strong> and click <strong>Import Projects</strong>.</li>
+<li>In the Import Projects from Git Repository wizard, select <strong>Import existing projects</strong> and click <strong>Next</strong>.</li>
+<li>Select all components of OSLC4J core (this is the default) and click <strong>Finish</strong>.</li>
+</ol>
+<p>Next, build the OSLC4J project.</p>
+<h3>Build the OSLC4J projects</h3><ol>
+<li>In Eclipse, open the Project Explorer view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Project Explorer</strong>)</li>
+<li>In the Project Explorer view, expand <strong>org.eclipse.lyo.oslc4j.build</strong>.</li>
+<li>Right-click on <strong>pom.xml</strong>, then click <strong>Run as</strong> &rarr; <strong>Maven Clean</strong>.</li>
+<li>Right-click on <strong>pom.xml</strong>, then click <strong>Run as</strong> &rarr; <strong>Maven Install</strong>. In the Console view, you’ll see a lot fly by; it should end with <code>BUILD SUCCESS</code>.</li>
+</ol>
+<h3>[Optional] Create an account at Bugzilla Landfill</h3><p>Landfill is an always-running, open Bugzilla server that you can use if you don’t want to use your own Bugzilla application or set up a new one.</p>
+<p><a href="https://landfill.bugzilla.org/bugzilla-4.2-branch/createaccount.cgi">Create an account here</a>.</p>
+<h2>Downloading, building, and running the sample applications</h2><h3>Cloning the Lyo documentation and server repositories</h3><p>The Eclipse Lyo documentation Git repository has the Bugzilla Adapter and NinaCRM sample applications.</p>
+<ol>
+<li>In Eclipse, open the Git Repositories view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Other</strong>, search for <code>Git repo</code> and click <strong>OK</strong>.)</li>
+<li>Click <strong>Clone a Git Repository</strong>.</li>
+<li>In the Clone Git Repository window, in the <strong>URI</strong> field paste the following:<br><code>git://git.eclipse.org/gitroot/lyo/org.eclipse.lyo.docs.git</code>
+The <strong>Host</strong> and <strong>Repository</strong> fields will autofill. Leave the <strong>Username</strong> and <strong>Password</strong> fields empty.</li>
+<li>Click <strong>Next</strong>.</li>
+<li>On the Branch Selection page, select <strong>master</strong> and click <strong>Next</strong>.</li>
+<li>For the <strong>Destination</strong>, select a folder for the files or accept the default of your Eclipse workspace.</li>
+<li>Click <strong>Finish</strong>. <code>org.eclipse.lyo.docs</code> will appear in the Git Repositories view.</li>
+<li>Repeat steps 2–7 for the server repository at <code>git://git.eclipse.org/gitroot/lyo/org.eclipse.lyo.server.git</code>.</li>
+</ol>
+<p>Next, import the documentation projects:</p>
+<ol>
+<li>In the Git Repositories view, right-click <strong>org.eclipse.lyo.docs</strong> and click <strong>Import Projects</strong>.</li>
+<li>In the Import Projects from Git Repository wizard, select <strong>Import existing projects</strong> and click <strong>Next</strong>.</li>
+<li>Select <strong>org.eclipse.lyo.oslc4j.bugzilla</strong> and <strong>ninacrm</strong> and click <strong>Finish</strong>.</li>
+</ol>
+<p>Finally, import the server projects:</p>
+<ol>
+<li><p>In the Git Repositories view, right-click <strong>org.eclipse.lyo.server</strong> and click <strong>Import Projects</strong>.</p>
+</li>
+<li><p>In the Import Projects from Git Repository wizard, select <strong>Import existing projects</strong> and click <strong>Next</strong>.</p>
+</li>
+<li><p>Select the following projects:</p>
+<ul>
+<li><strong>org.eclipse.lyo.server.oauth.consumerstore</strong></li>
+<li><strong>org.eclipse.lyo.server.oauth.core</strong></li>
+<li><strong>org.eclipse.lyo.server.oauth.webapp</strong></li>
+</ul>
+<p>and click <strong>Finish</strong>.</p>
+</li>
+</ol>
+<h3>Configuring the Bugzilla adapter</h3><p>Configure the Bugzilla adapter to point to your Bugzilla application.</p>
+<ol>
+<li><p>In Eclipse, open the Project Explorer view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Project Explorer</strong>)</p>
+</li>
+<li><p>In the Project Explorer view, find and edit the file <code>org.eclipse.lyo.oslc4j.bugzilla/src/main/resources/bugz.properties</code>.</p>
+</li>
+<li><p>Edit the <code>bugzilla_uri</code> property to the URL of your Bugzilla server. If you’re using Bugzilla Landfill, it will look similar to this:</p>
+<p> <code>bugzilla_uri=https://landfill.bugzilla.org/bugzilla-4.2-branch</code></p>
+<p> There are multiple versions of Bugzilla running at landfill.bugzilla.org; be sure to select the version where you have a user ID.</p>
+</li>
+<li><p>For the <code>admin</code> property, provide your Bugzilla user ID. For Bugzilla Landfill, it will be the email address you used when you created your account:</p>
+<p> <code>admin=you@example.com</code></p>
+<p> (This is the ID you will use to log in to the OAuth application).</p>
+</li>
+<li><p>Save <code>bugz.properties</code>.</p>
+</li>
+</ol>
+<h3>Building the applications</h3><p>First, update the project configurations for the projects.</p>
+<ol>
+<li><p>In Eclipse, open the Package Explorer view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Package Explorer</strong>)</p>
+</li>
+<li><p>In the Package Explorer view, select the following packages:</p>
+<ul>
+<li><strong>ninacrm</strong></li>
+<li><strong>org.eclipse.lyo.oslc4j.bugzilla</strong></li>
+<li><strong>org.eclipse.lyo.server.oauth.consumerstore</strong></li>
+<li><strong>org.eclipse.lyo.server.oauth.core</strong></li>
+<li><strong>org.eclipse.lyo.server.oauth.webapp</strong></li>
+</ul>
+</li>
+<li><p>Right-click and select <strong>Maven</strong> &rarr; <strong>Update Project</strong>.</p>
+</li>
+<li><p>In the Update Maven Project window, verify that those 5 projects are selected and click <strong>OK</strong>.</p>
+</li>
+</ol>
+<p>Next, install the projects:</p>
+<ol>
+<li><p>In the Package Explorer view, expand <strong>org.eclipse.lyo.server.oauth.core</strong>.</p>
+</li>
+<li><p>Find the file <strong>pom.xml</strong></p>
+</li>
+<li><p>Right-click on <strong>pom.xml</strong> and select <strong>Run as</strong> &rarr; <strong>Maven Clean</strong>.</p>
+</li>
+<li><p>Right-click on <strong>pom.xml</strong> and select <strong>Run as</strong> &rarr; <strong>Maven Install</strong>. You should eventually see a success message in the Console view.</p>
+</li>
+<li><p>Repeat steps 1–3 for the following packages <em>in this order</em>:</p>
+<ol>
+<li><strong>org.eclipse.lyo.server.oauth.consumerstore</strong></li>
+<li><strong>org.eclipse.lyo.server.oauth.webapp</strong></li>
+<li><strong>org.eclipse.lyo.oslc4j.bugzilla</strong></li>
+<li><strong>ninacrm</strong></li>
+</ol>
+</li>
+</ol>
+<h3>Running the sample applications</h3><h4>Starting the OSLC4J Bugzilla adapter:</h4><ol>
+<li>In Eclipse, click <strong>Run</strong> &rarr; <strong>Run Configurations</strong>.</li>
+<li>In the Run Configurations window, expand <strong>Maven Build</strong>.</li>
+<li>Click <strong>OSLC4JBugzilla</strong>.</li>
+<li>Click <strong>Run</strong>. This will start the application.</li>
+</ol>
+<p>You will see a lot of messages in the Console view. The application will be running when you see this:</p>
+<pre><code>[INFO] Started Jetty Server
+[INFO] Starting scanner at interval of 5 seconds.</code></pre><p>In your web browser navigate to the OSLC Catalog at <a href="http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton">http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton</a></p>
+<p>Log in with your Bugzilla user ID and password.</p>
+<h4>Starting NinaCRM</h4><ol>
+<li>In Eclipse, click <strong>Run</strong> &rarr; <strong>Run Configurations</strong>.</li>
+<li>In the Run Configurations window, expand <strong>Maven Build</strong>.</li>
+<li>Click <strong>Launch NinaCRM</strong>.</li>
+<li>Click <strong>Run</strong>. This will start the application.</li>
+</ol>
+<p>When the server starts, in your web browser navigate to <a href="http://localhost:8181/ninacrm">http://localhost:8181/ninacrm</a> to see the NinaCRM example.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>
