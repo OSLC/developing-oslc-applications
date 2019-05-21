@@ -1,6 +1,6 @@
 # Create an OSLC4J project
 
-The steps below guide you through the necessary steps of creating a Java project with the necessary configurations to develop any OSLC4J adaptor. The instructions assume you are using the Eclipse IDE, but should be equally valid for any other development environment.
+The steps below guide you through the necessary steps of creating a Java project with the necessary configurations to develop any OSLC4J server/client. The instructions assume you are using the Eclipse IDE, but should be equally valid for any other development environment.
 
 In the instructions below, we assume the following parameters, which you will need to adjust for your particular project:
 
@@ -8,7 +8,7 @@ In the instructions below, we assume the following parameters, which you will ne
 * Base Package Name for Java Classes: *com.sample.adaptor*
 
 We will here only create the code skeleton. The
-[Toolchain Modelling Workshop](./toolchain-modelling-workshop) can then be used to generate the necessary code to become a fully functional adaptor.
+[Toolchain Modelling Workshop](./toolchain-modelling-workshop) can then be used to generate the necessary code to become a fully functional server.
 
 Creation of the skeleton consists of these steps:
 
@@ -25,11 +25,11 @@ Make sure your environment is setup for OSLC4J development as instructed on [Ecl
 
 ## 2. Decide if you want to adopt JAX-RS 1.0 or 2.0?
 Starting with the upcoming release 4.0.0, Lyo will support JAX-RS 2.0, and will no longer depend on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc.  
-On the otherhand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
+On the other hand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
 
 we recommend you adopt the latest versions of Lyo.
 
-The instructions below will vary depending on the Lyo version to be adopted. We will refer to the version as *version.lyo*, which can then take one of the two values:
+The instructions below will vary depending on the Lyo version to be adopted. We will refer to the version as *${version.lyo}*, which can then take one of the two values:
 
 * 4.0.0-SNAPSHOT
 * 2.4.0
@@ -60,7 +60,7 @@ Next, select the `maven-archetype-webapp` archetype:
 
 Next, Fill in the **Group Id**, **Artefact Id**, and the **Package Base**.
 
-* The **Package Base** value (`com.sample.adaptor` on this page) will be used as a base package for your adaptor code.
+* The **Package Base** value (`com.sample.adaptor` on this page) will be used as a base package for your server code.
 
 ![](./images/CreateMavenAdaptorProject_Step3.png)
 
@@ -214,7 +214,7 @@ The minimal Lyo dependencies are:
 
 ## OSLC OAuth support
 
-If your adaptor needs to support OAuth, include the following:
+If your server needs to support OAuth, include the following:
 
 ```xml
 <dependency>
@@ -242,7 +242,7 @@ RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services
 ```
 ## OSLC Client support
 
-If your adaptor also needs to consume resources from another adaptor, a dependency to the OSLC client package is needed:
+If your OSLC server also needs to consume resources from another server, a dependency to the OSLC client package is needed:
 
 ### for Lyo 4.0.0-SNAPSHOT 
 ```xml
@@ -272,7 +272,7 @@ Replace the existing `<build>` entry with the Jetty configuration below, using t
 
 * *8080* is the port number you want to run the services on.
 
-This will make your adaptor available under the path http://localhost:8080/adaptor-sample
+This will make your server available under the path http://localhost:8080/adaptor-sample
 
 ```xml
 <build>
@@ -485,11 +485,11 @@ The following steps allows you to integrate [Swagger UI](https://swagger.io/swag
 
     http://localhost:8080/adaptor-sample/swagger-ui
 
-# Run the adaptor
+# Run the server
 
-Once the adaptor is developed, you can run it by selecting *Run As --&gt; Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-exploded`.
+Once the server is developed, you can run it by selecting *Run As --&gt; Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-exploded`.
 
-You can now access your adaptor from http://localhost:8080/adaptor-sample
+You can now access your server from http://localhost:8080/adaptor-sample
 
 * *adaptor-sample* and *8080* will depend on your particular settings, as instructed above.
 
