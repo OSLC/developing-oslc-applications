@@ -104,4 +104,4 @@ Finally, the JAX-RS resource definitions are in `org.eclipse.lyo.oslc4j.bugzilla
 <div class="notice warning"><p>In older versions of this tutorial and Bugzilla adapter, we defined many  individual servlets in the application's <code>web.xml</code> file; now, the OSLC4J Bugzilla adapter uses JAX-RS to handle URLs, requests, and resources.</p></div>
 
 
- Next: [Part 1.2, Providing Service Resources](1_2_providing_service_resources)
+Next: [Part 1.2, Providing Service Resources](1_2_providing_service_resources)

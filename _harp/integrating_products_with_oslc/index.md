@@ -2,7 +2,11 @@
 
 (Can be [downloaded as pdf](/integrating_products_with_oslc/integrating_with_oslc_tutorial.pdf))
 
-This tutorial explains how to implement OSLC consumers and providers by examining realistic use cases and showing how to implement OSLC specifications with lots of examples and working code. It is organized into the following parts:
+This tutorial explains how to implement OSLC consumers and providers by examining realistic use cases and showing how to implement OSLC specifications with lots of examples and working code. 
+
+This tutorial walks you through a fully developed adapter, with no need to code. If you want to have a more hands-on approach, you can refer to the complementary [hands-on tutorial](https://github.com/eclipse/lyo.docs/blob/master/lyo-rest-workshop/Lab1/Lyo_OSLC_Workshop.pdf) takes you through the incremental programming steps.
+
+It is organized into the following parts:
 
 1. This introduction
 2. [__A brief overview of OSLC__](/integrating_products_with_oslc/overview_of_oslc/)
@@ -39,4 +43,7 @@ You can follow along with the OSLC Tutorial by using the following software:
 + NinaCRM: A simple, fictional Customer Relationship Management (CRM) system that hosts OSLC UI Preview and OSLC Delegated UI examples, implemented as a Java EE web application. In our examples, we assume that NinaCRM is running at [`http://localhost:8181/ninacrm`](http://localhost:8181/ninacrm)
 + Poster browser plugin (for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/poster/) or [Chrome](https://chrome.google.com/webstore/detail/chrome-poster/cdjfedloinmbppobahmonnjigpmlajcd)): we will browse and manipulate OSLC resources with this plugin that makes it easy to issue HTTP requests and set custom headers. An alternative for Firefox is [RESTClient](https://addons.mozilla.org/en-us/firefox/addon/restclient/).
 
-See our section about [downloading, building, and starting the NinaCRM and OSLC4J Bugzilla applications](/integrating_products_with_oslc/running_the_examples/).
+For more information, see our section about [downloading, building, and starting the NinaCRM and OSLC4J Bugzilla applications](/integrating_products_with_oslc/running_the_examples/).
+
+Get Started: [A brief overview of OSLC](overview_of_oslc)
+
