@@ -19,9 +19,7 @@ The Eclipse Lyo tutorial documentation Git repository has the Bugzilla Adapter a
 
 1.  In Eclipse, open the Git Repositories view. (**Window** &rarr; **Show View** &rarr; **Other**, search for `Git repo` and click **OK**.)
 2.  Click **Clone a Git Repository**.
-3.  In the Clone Git Repository window, in the **URI** field paste the following:  
-`https://github.com/eclipse/lyo.docs`
-The **Host** and **Repository** fields will autofill. Leave the **Username** and **Password** fields empty.
+3.  In the Clone Git Repository window, in the **URI** field paste the following [https://github.com/eclipse/lyo.docs](https://github.com/eclipse/lyo.docs). The **Host** and **Repository** fields will autofill. Leave the **Username** and **Password** fields empty.
 4.  Click **Next**.
 5.  On the Branch Selection page, select **master** and click **Next**.
 6.  For the **Destination**, select a folder for the files or accept the default of your Eclipse workspace.
