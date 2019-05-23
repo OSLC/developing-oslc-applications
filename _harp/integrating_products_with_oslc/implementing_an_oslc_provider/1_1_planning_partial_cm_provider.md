@@ -89,7 +89,7 @@ In our case, building an adapter makes the most sense.
 
 The OSLC4J Bugzilla adapter is a RESTful web application built on Java EE with [JAX-RS](http://docs.oracle.com/javaee/6/tutorial/doc/giepu.html). It has the following additional dependencies:
 
-+ [OSLC4J](http://wiki.eclipse.org/Lyo/LyoOSLC4J): part of [Eclipse Lyo](../../eclipse_lyo/eclipse-lyo), OSLC4J is a Java toolkit that simplifies building OSLC applications
++ [OSLC4J SDK part of Eclipse Lyo](../../eclipse_lyo/eclipse-lyo), OSLC4J is a Java toolkit that simplifies building OSLC applications
 + [J2Bugzilla](http://code.google.com/p/j2bugzilla/): Java wrapper classes for Bugzilla's XML-RPC based web services interface
 
 In addition, it uses the following helper classes (in the `utils` directory):
