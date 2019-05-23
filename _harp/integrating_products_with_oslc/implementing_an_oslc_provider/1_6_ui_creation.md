@@ -1,6 +1,6 @@
 # Providing a delegated UI for creating bugs
 
-Providing [a delegated user interface (UI) dialog](https://archive.open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs/) for creating new resources is similar to the process for providing one for selecting existing resources: we must  create an HTML Form, the fields within that form, and then set up the server-side handling of the form submission.
+Providing [a delegated user interface (UI) dialog](https://open-services.net/resources/oslc-primer/#delegated-user-interface-dialogs) for creating new resources is similar to the process for providing one for selecting existing resources: we must  create an HTML Form, the fields within that form, and then set up the server-side handling of the form submission.
 
 Here's the plan:
 

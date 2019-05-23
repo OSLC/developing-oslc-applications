@@ -14,8 +14,11 @@
   "./eclipse_lyo/eclipse-lyo" : {
     "title": "Tools & SDKs for Java Developers - Eclipse Lyo"
   },
-  "tutorials-and-sample-applications": {
-    "title": "Tutorials and sample applications"
+  "tutorials": {
+    "title": "Tutorials"
+  },
+  "sample-applications-and-code": {
+    "title": "Sample applications and code"
   },
   "iotp-adaptor-sample": {
     "title": "Sample OSLC adapter for IoT Platform"

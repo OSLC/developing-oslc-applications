@@ -1,19 +1,19 @@
 # Providing Service Providers and Catalogs 
 
-The next step in implementing the OSLC Change Management specification is to determine what high-level organizational concept in your product best maps to [OSLC Service Providers](https://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovider/) – the central organizing concept of OSLC that represents a "container" of resources.
+The next step in implementing the OSLC Change Management specification is to determine what high-level organizational concept in your product best maps to [OSLC Service Providers](https://open-services.net/resources/oslc-primer/#serviceprovider) – the central organizing concept of OSLC that represents a "container" of resources.
 
 In Bugzilla, bugs are organized by Product. Before you can use Bugzilla, you have to tell the system which Products exist in order to report bugs against them.
 
 Given that, in our adapter each Bugzilla Product will be represented by an OSLC Service Provider REST service. Each Service Provider will include URIs for [a Delegated UI for bug selection](/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection/), a [Delegated UI for bug creation](/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation/), a Query Capability so that bugs can be queried via HTTP GET, and [a Creation Factory](/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation/) so that new bugs can be created via HTTP POST.
 
-To enable client programs to find the Service Providers provided by Bugzilla (and because one Bugzilla instance can have multiple Products), we'll use [an OSLC Service Provider Catalog](https://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovidercatalog/index.html). When a client wants to connect to Bugzilla, it first fetches the catalog, which provides a list of Service Providers. In the end, a client can start with the URI of the one Service Provider Catalog offered by Bugzilla and navigate to the Service Providers (one per Product in Bugzilla).
+To enable client programs to find the Service Providers provided by Bugzilla (and because one Bugzilla instance can have multiple Products), we'll use [an OSLC Service Provider Catalog](https://open-services.net/resources/oslc-primer/#serviceprovidercatalog). When a client wants to connect to Bugzilla, it first fetches the catalog, which provides a list of Service Providers. In the end, a client can start with the URI of the one Service Provider Catalog offered by Bugzilla and navigate to the Service Providers (one per Product in Bugzilla).
 
 Here are the URLs that will be supported with our adapter (running at `/OSLC4JBugzilla/`) for our OSLC-CM implementation:
 
 + `http://HOST/OSLC4JBugzilla/services/catalog/singleton`  
-    This URL will return the [OSLC Service Provider Catalog](https://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovidercatalog/index.html)
+    This URL will return the [OSLC Service Provider Catalog](https://open-services.net/resources/oslc-primer/#serviceprovidercatalog)
 + `http://HOST/OSLC4JBugzilla/services/serviceProviders/{product_id}`  
-    Returns the [OSLC Service Provider](https://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovider/) for the Product identified by {product_id} number
+    Returns the [OSLC Service Provider](https://open-services.net/resources/oslc-primer/#serviceprovider) for the Product identified by {product_id} number
 + `http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests`
     If using HTTP GET, returns a list of bugs in the product identified by {product_id}; if using HTTP POST, initiates the Creation Factory for creating a new bug and returns that new bug
 + `http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests/{change_request_id}`
@@ -23,7 +23,7 @@ Here are the URLs that will be supported with our adapter (running at `/OSLC4JBu
 + `http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests/creator`
     Returns Delegated UI creation dialog for the Product identified by ID {product_id}
 + `http://HOST/OSLC4JBugzilla/services/resourceShapes/changeRequest`
-    Returns the creation and query [Resource Shape](https://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes/) for Bugzilla bugs
+    Returns the creation and query [Resource Shape](https://open-services.net/resources/oslc-primer/#resourceshapes) for Bugzilla bugs
 
 Each of of the URLs above will be handled by a JAX-RS annotated method and our code will have to be able to form all of those types of URLs. That brings us to an important point about OSLC:
 

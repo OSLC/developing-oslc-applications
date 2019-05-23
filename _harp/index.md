@@ -3,7 +3,7 @@
     <h2 class="title">&ldquo;OSL-<a href="http://i.imgur.com/Z5YNc0z.gif">whaaaat</a> now?&rdquo;</h2>
   </div>
   <div class="content">
-    Open Services for Lifecycle Collaboration (OSLC) is a community that writes specifications to integrate software. Learn more at <a href="why-develop-oslc-applications.html">Why develop OSLC applications</a> and <a href="http://archive.open-services.net/">at our main site</a>.
+    Open Services for Lifecycle Collaboration (OSLC) is a community that writes specifications to integrate software. Learn more at <a href="why-develop-oslc-applications.html">Why develop OSLC applications</a> and <a href="http://open-services.net/">at our main site</a>.
   </div>
 </div>
 
@@ -15,7 +15,7 @@ For a high-level overview of how to add OSLC support to software, we recommend o
 Explore our tutorial
 ----------------------------------------------
 
-For a more detailed look at what goes into OSLC support, read through our tutorials "[Integrating Products with OSLC](/tutorials-and-sample-applications)", which walks you through building an adapter that adds OSLC support to the popular Bugzilla defect-tracking software. 
+For a more detailed look at what goes into OSLC support, read through our tutorials "[Integrating Products with OSLC](/tutorials)", which walks you through building an adapter that adds OSLC support to the popular Bugzilla defect-tracking software. 
 
 The concepts in the tutorial are broadly applicable to other software.
 

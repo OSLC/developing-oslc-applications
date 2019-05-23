@@ -4,7 +4,7 @@ In the previous section, we added the ability to display a small preview of OSLC
 
 ## Introduction to OSLC Delegated UI
 
-[OSLC Delegated UI](http://archive.open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs/) is a way for a web application to provide a UI for creating and selecting resources, one that can be used by other web applications. 
+[OSLC Delegated UI](http://archive.open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs) is a way for a web application to provide a UI for creating and selecting resources, one that can be used by other web applications. 
 
 To explain why it's called "Delegated" UI, consider our example: we want the NinaCRM system to be able to create and select bugs managed by the separate OSLC4JBugzilla system; however, we do not want to create a new UI to collect the information or duplicate OSLC4JBugzilla's methods of checking that the information is valid. Instead, we want to *delegate* the creation and selection of bugs to the OSLC4JBugzilla system.
 
@@ -16,7 +16,7 @@ Earlier in this tutorial, we walked through an implementation of Delegated UIs f
 
 The application that wants to use the Delegated UI (the OSLC Consumer) creates an `<iframe>` for the Delegated UI so that the user can interact with it. The Consumer application must also listen to the `<iframe>` do something with the results of the user's actions.
 
-You can learn more about Delegated UI in the [OSLC Primer](http://archive.open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs/).
+You can learn more about Delegated UI in the [OSLC Primer](http://archive.open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs).
 
 
 ## Parsing the Service Provider Documents

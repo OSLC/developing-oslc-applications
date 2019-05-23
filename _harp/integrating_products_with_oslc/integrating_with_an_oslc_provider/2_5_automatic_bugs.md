@@ -11,9 +11,9 @@ As with the last section, we won't create an entire service; instead, we'll focu
 
 ## Using a Service Provider Catalog to find a Service Provider.
 
-For our OSLC-CM Bugzilla Adapter (or any OSLC provider), the starting point for exploring OSLC capabilities is the [Service Provider Catalog document](http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovidercatalog/). 
+For our OSLC-CM Bugzilla Adapter (or any OSLC provider), the starting point for exploring OSLC capabilities is the [Service Provider Catalog document](http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovidercatalog). 
 
-You can read more about [implementing Service Provider Catalogs for our Bugzilla Adapter here](/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/). In short, we represent every Bugzilla Product as a [Service Provider resource](http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovider/), and we collect all of those Service Providers in one Service Provider Catalog. 
+You can read more about [implementing Service Provider Catalogs for our Bugzilla Adapter here](/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/). In short, we represent every Bugzilla Product as a [Service Provider resource](http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovider), and we collect all of those Service Providers in one Service Provider Catalog. 
 
 The general principle is that clients should only need to know the URL for the Catalog; from the Catalog, clients can navigate to the other OSLC services. In other words, _clients should not have to hard-code URLs to individual OSLC services_.
 
@@ -94,7 +94,7 @@ Once we've navigated from a Catalog to a Service Provider resource, here's a sam
 	
 You can read more about [implementing Service Providers](/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/) and [implementing creation factories](/integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory/) for our Bugzilla adapter.
 
-Of most interest to our team developing a way to automatically create bugs are the contents of the `<oslc:service>` element (**(1)**). The Service has an `oslc:creationFactory` property (**(2)**) with a value of `oslc:CreationFactory`. The creation factory has values that indicate it is for creating Change Requests (**(3)**), the URI for posting new Change Requests (**(4)**), and the URI of the [Resource Shape](http://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes/) (**(5)**) that lists the required fields for bug creation. The usage value (**(5)**) indicates that this is the default Creation Factory to use.
+Of most interest to our team developing a way to automatically create bugs are the contents of the `<oslc:service>` element (**(1)**). The Service has an `oslc:creationFactory` property (**(2)**) with a value of `oslc:CreationFactory`. The creation factory has values that indicate it is for creating Change Requests (**(3)**), the URI for posting new Change Requests (**(4)**), and the URI of the [Resource Shape](http://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes) (**(5)**) that lists the required fields for bug creation. The usage value (**(5)**) indicates that this is the default Creation Factory to use.
 
 With this information, the build and testing scripts can parse the Service Provider document and discover the Creation Factory URL, which is the URL for posting new bugs.
 
@@ -105,7 +105,7 @@ First, though, let's explore the Resource Shape document.
 
 It's not enough to just know the URL to POST bugs to; the testing scripts must also create a properly formatted OSLC-CM Change Request representation with the required property values and property values that are valid. Each Product defined in Bugzilla might have different required fields, custom fields and different allowed values.
 
-It's entirely possible confer with the Bugzilla system's administration and figure out the required and allowed values, _or_ you could use the OSLC OSLC Creation Factory's [Resource Shape document](http://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes/), which provides the same information.
+It's entirely possible confer with the Bugzilla system's administration and figure out the required and allowed values, _or_ you could use the OSLC OSLC Creation Factory's [Resource Shape document](http://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes), which provides the same information.
 
 An example Resource Shape document in RDF/XML form is below (you can see the Resource Shape from our Bugzilla Adapter at <http://localhost:8080/OSLC4JBugzilla/services/resourceShapes/changeRequest>):
 

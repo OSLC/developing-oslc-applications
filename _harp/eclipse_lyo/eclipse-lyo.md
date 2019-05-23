@@ -17,7 +17,7 @@ The library provides:
 
 **Further Information**
 
-* Explore our [tutorial to use the OSLC4J SDK when building an OSLC provider or consumer application](../index).
+* Explore our [tutorials to use the OSLC4J SDK when building an OSLC provider or consumer application](/tutorials).
 * How to [setup an OSLC provider/consumer applications](./setup-an-oslc-provider-consumer-application), ready for Lyo-based development.
 
 # Lyo Designer

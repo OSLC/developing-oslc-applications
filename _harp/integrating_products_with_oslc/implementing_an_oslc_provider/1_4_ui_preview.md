@@ -1,6 +1,6 @@
 # Providing UI Previews
 
-Once you establish relationships between resources using links, you can enable a very useful form of integration known as [UI Preview](https://archive.open-services.net/resources/tutorials/oslc-primer/ui-preview/). When a user is viewing a resource in a web browser, they might see a list of links to related resources that are in another application. UI Preview makes it easy for them to learn about those resources in context and without leaving the web page that they are looking at. When users “hover” over a link with their mouse or focus on it, they can see a brief preview of that resource in a tool-tip or a pop-up window. 
+Once you establish relationships between resources using links, you can enable a very useful form of integration known as [UI Preview](https://open-services.net/resources/oslc-primer/#ui-preview). When a user is viewing a resource in a web browser, they might see a list of links to related resources that are in another application. UI Preview makes it easy for them to learn about those resources in context and without leaving the web page that they are looking at. When users “hover” over a link with their mouse or focus on it, they can see a brief preview of that resource in a tool-tip or a pop-up window. 
 
 For all the details, see the [OSLC UI Preview specification](https://archive.open-services.net/bin/view/Main/OslcCoreUiPreview.html). (Don’t worry; this one is pretty short.)
 

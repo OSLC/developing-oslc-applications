@@ -120,7 +120,7 @@ If you can create new bugs on your Bugzilla application, you should be able to c
 
 ## Providing a ResourceShape document
 
-To make it possible for client programs to automatically determine which BugzillaChangeRequest fields are required and the allowed values for those fields, we should provide a [Resource Shape](https://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes/index.html) for every creation factory.
+To make it possible for client programs to automatically determine which BugzillaChangeRequest fields are required and the allowed values for those fields, we should provide a [Resource Shape](https://open-services.net/resources/oslc-primer/#resourceshapes) for every creation factory.
 
 [Resource Shapes](http://archive.open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;table=up#Overview) are descriptive documents that define the set of OSLC Properties expected in a resource for specific operations (i.e. creation, update or query) along with the value types, allowed values, cardinality and optionality of each OSLC property. A client can use this information when creating new resources.
 

@@ -1,6 +1,6 @@
 # Providing a delegated UI for selection and search 
 
-Now that we have the basic services and resources defined for BugzillaChangeRequests (our Bugzilla-specific extension of OSLC ChangeRequests), our next step is to implement [delegated user interface (UI) dialogs](https://archive.open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs/) to allow the following actions from an OSLC Consumer:
+Now that we have the basic services and resources defined for BugzillaChangeRequests (our Bugzilla-specific extension of OSLC ChangeRequests), our next step is to implement [delegated user interface (UI) dialogs](https://open-services.net/resources/oslc-primer/#delegated-user-interface-dialogs) to allow the following actions from an OSLC Consumer:
 
 + Search for and select Bugzilla bugs
 + Create a new bug in Bugzilla
