@@ -12,7 +12,7 @@ By using Delegated UI, Nina will enable support reps to add links from Incidents
 
 ### The mechanics of Delegated UI
 
-Earlier in this tutorial, we walked through an implementation of Delegated UIs for OSLC4JBugzilla, both for [selecting bugs](/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection/) and [creating new bugs](/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation/). In addition to providing the UI and handling the results, the OSLC4JBugzilla adapter (or any other OSLC provider application) announces in its [Service Provider Documents](/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/) the URL location and recommended size of the UI.
+Earlier in this tutorial, we walked through an implementation of Delegated UIs for OSLC4JBugzilla, both for [selecting bugs](../implementing_an_oslc_provider/1_5_ui_selection/) and [creating new bugs](../implementing_an_oslc_provider/1_6_ui_creation/). In addition to providing the UI and handling the results, the OSLC4JBugzilla adapter (or any other OSLC provider application) announces in its [Service Provider Documents](../implementing_an_oslc_provider/1_2_providing_service_resources/) the URL location and recommended size of the UI.
 
 The application that wants to use the Delegated UI (the OSLC Consumer) creates an `<iframe>` for the Delegated UI so that the user can interact with it. The Consumer application must also listen to the `<iframe>` do something with the results of the user's actions.
 
@@ -26,9 +26,9 @@ You can learn more about Delegated UI in the [OSLC Primer](http://archive.open-s
 <p>A better implementation would be one that properly parses the Service Provider and thus could work with any OSLC Provider.</p>
 </div>
 
-As we noted when [we implemented Service Providers and Catalogs](/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/), one of the cores of OSLC is that clients should not have to hard-code any URLs other than a Service Provider Catalog. Clients should be able to parse the Catalog and navigate from the Catalog to the Service Providers; the Service Providers will then expose the available OSLC services.
+As we noted when [we implemented Service Providers and Catalogs](../implementing_an_oslc_provider/1_2_providing_service_resources), one of the cores of OSLC is that clients should not have to hard-code any URLs other than a Service Provider Catalog. Clients should be able to parse the Catalog and navigate from the Catalog to the Service Providers; the Service Providers will then expose the available OSLC services.
 
-If you'd like to follow along with a real Service Provider Catalog or Service Provider, see the ["Viewing the machine-readable formats of a Service Provider Catalog" section near the bottom of this section](/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/).
+If you'd like to follow along with a real Service Provider Catalog or Service Provider, see the ["Viewing the machine-readable formats of a Service Provider Catalog" section near the bottom of this section](../implementing_an_oslc_provider/1_2_providing_service_resources).
 
 Below is a part of a sample RDF/XML representation of a Service Provider that exposes both a Delegated UI for selection (`<oslc:selectionDialog>`) and a Delegated UI for Creation (`<oslc:creationDialog >`):
 

@@ -1,10 +1,10 @@
 # Providing OSLC representations of Bugzilla bugs
 
-In the [previous section](/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/) we noted that we used OSLC4J to transform Plain Old Java Object (POJO) representations of OSLC resources into RDF, XML, and JSON formats. In this section, we'll look more closely at how OSLC4J defines OSLC resources. Then we'll make Bugzilla Bugs available as OSLC Change Management resources in a variety of formats.
+In the [previous section](1_2_providing_service_resources) we noted that we used OSLC4J to transform Plain Old Java Object (POJO) representations of OSLC resources into RDF, XML, and JSON formats. In this section, we'll look more closely at how OSLC4J defines OSLC resources. Then we'll make Bugzilla Bugs available as OSLC Change Management resources in a variety of formats.
 
 ## What is OSLC4J?
 
-OSLC4J, part of the [Eclipse Lyo](/eclipse_lyo/eclipse-lyo) project, is a Java SDK for developing OSLC provider or consumer implementations. OSLC resources can be modeled with plain old Java objects (POJOs) which are annotated to provide the information OSLC4J needs to create resource shapes, service provider documents, and to serialize/de-serialize OSLC resources from Java to representations such as RDF or JSON.
+OSLC4J, part of the [Eclipse Lyo](../../eclipse_lyo/eclipse-lyo) project, is a Java SDK for developing OSLC provider or consumer implementations. OSLC resources can be modeled with plain old Java objects (POJOs) which are annotated to provide the information OSLC4J needs to create resource shapes, service provider documents, and to serialize/de-serialize OSLC resources from Java to representations such as RDF or JSON.
 
 ## Defining OSLC resources with OSLC4J
 
@@ -104,7 +104,7 @@ You can explore the `fromBug()` method to see how the other properties are set.
 
 ## Providing OSLC representations of Bugzilla bugs
 
-Like with the **ServiceProviderService** and **ServiceProviderCatalogService** (discussed in [in more detail in the previous section](/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/)), the **BugzillaChangeRequestService** class has many JAX-RS methods to handle both collections of BugzillaChangeRequests and individual BugzillaChangeRequests with a a variety of HTTP requests and output formats.
+Like with the **ServiceProviderService** and **ServiceProviderCatalogService** (discussed in [in more detail in the previous section](1_2_providing_service_resources)), the **BugzillaChangeRequestService** class has many JAX-RS methods to handle both collections of BugzillaChangeRequests and individual BugzillaChangeRequests with a a variety of HTTP requests and output formats.
 
 Open `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.services** package. 
 

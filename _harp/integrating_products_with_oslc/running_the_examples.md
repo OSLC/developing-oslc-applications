@@ -4,7 +4,7 @@ This section explains how to run the OSLC4J Bugzilla Adapter and the NinaCRM exa
 
 ## Installing prerequisites
 
-Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](/eclipse_lyo/eclipse-setup-for-lyo-based-development)
+Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development)
 
 ## [Optional] Create an account at Bugzilla Landfill
 

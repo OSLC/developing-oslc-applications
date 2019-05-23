@@ -1,6 +1,6 @@
 {
   "eclipse-lyo": {
-    "title": "Tools & SDKs for Java Developers - Eclipse Lyo"
+    "title": "Eclipse Lyo - support for Java developers"
   },
   "eclipse-setup-for-lyo-based-development": {
     "title": "Eclipse Setup for Lyo-based Development"
@@ -9,10 +9,10 @@
     "title": "Setup an OSLC Provider/Consumer Application"
   },
   "lyo-designer": {
-    "title": "Model the Toolchain - Lyo Designer"
+    "title": "Lyo Designer - Model the Toolchain"
   },
   "install-lyo-designer": {
-    "title": "Install Lyo Designer" 
+    "title": "Lyo Designer - Install" 
   },
   "toolchain-modelling-workshop": {
     "title": "Toolchain Modelling Workshop"

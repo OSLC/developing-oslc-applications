@@ -6,7 +6,7 @@ Open Services for Lifecycle Collaboration (OSLC) is an initiative to define stan
 
 To learn more about core OSLC concepts and architectural underpinnings, read the [OSLC Primer](https://open-services.net/resources/oslc-primer). We'll be implementing many of these core resources and services in this tutorial.
 
-For more information on the value of integrating with open protocols, read our whitepaper ["The Case for Open Services"](/resources/whitepapers/the-case-for-open-services/).
+For more information on the value of integrating with open protocols, read our whitepaper ["The Case for Open Services"](https://archive.open-services.net/resources/whitepapers/the-case-for-open-services/).
 
 Next: [Downloading and starting the sample applications](running_the_examples)
 

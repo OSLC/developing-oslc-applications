@@ -24,7 +24,7 @@ Modernizr.load([{
 <p>In a browser, you&#39;ll be forwarded to the HTML page in Bugzilla for the bug. That&#39;s nice for us, but not so useful for a program that must parse the data. How can we request an RDF/XML representation of a bug?</p>
 <p>OSLC providers are required to provide an RDF/XML representation of resources; however, the normal rules of HTTP and Content Negotiation apply. <strong>If you want RDF/XML then you should ask for it.</strong> Specifically, use <code>Accept</code> headers.</p>
 <p>If you send the same request with an <code>Accept</code> header with the content <code>application/rdf+xml</code>, you should receive RDF/XML back from the adapter.</p>
-<p>You can explore this further with the Poster plugin and the Bugzilla adapter <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j/">where we implemented OSLC representations of Bugzilla bugs</a>.</p>
+<p>You can explore this further with the Poster plugin and the Bugzilla adapter <a href="../implementing_an_oslc_provider/1_3_intro_to_oslc4j/">where we implemented OSLC representations of Bugzilla bugs</a>.</p>
 <p>Here&#39;s a sample Bugzilla bug represented as an RDF/XML BugzillaChangeRequest resource:</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;rdf:RDF
@@ -61,7 +61,7 @@ Modernizr.load([{
 &lt;/rdf:RDF&gt;</code></pre><p>Note the variety of namespace definitions near the top of the document that define short prefix names for properties (e.g., <code>dcterms</code>).</p>
 <p>Inside the <code>&lt;rdf:RDF&gt;</code> root element, there is an <code>&lt;rdf:Description&gt;</code> element with an attribute of <code>rdf:about</code> that is the URI of the Change Request. The <code>&lt;rdf:type&gt;</code> element indicates that this is an OSLC CM request. Each XML element represents a property value of the Change Request.</p>
 <p>OSLC resources use Dublin Core defined properties, like <code>title</code>, <code>description</code>, and <code>id</code>. They also use OSLC defined properties like <code>status</code>, <code>closed</code>, and <code>inprogress</code>. You can find a listing of the different types of properties allowed and required in the <a href="http://open-services.net/bin/view/Main/CmSpecificationV2">OSLC-CM specification</a>. There are also Bugzilla specific properties like <code>component</code> and <code>priority</code>. </p>
-<p>You can learn more about how our OSLC Bugzilla Adapter generates these representations <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j/">here</a>.</p>
+<p>You can learn more about how our OSLC Bugzilla Adapter generates these representations <a href="../implementing_an_oslc_provider/1_3_intro_to_oslc4j/">here</a>.</p>
 <h2>Parsing an OSLC resource</h2><div class="notice tip">
 <p><strong>Note</strong>: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using – <a href="http://wiki.eclipse.org/Lyo/LyoOSLC4J">OSLC4J</a> to convert RDF/XML representations into Java objects, which will most likely be easier to work with. Consider the following to be guidance if you choose to approach this another way.</p>
 </div>

@@ -1,6 +1,6 @@
 # Providing a creation factory 
 
-With OSLC you can [allow people to create bugs via Delegated UI](/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation/); however, like all UI approaches, an actual human user must be involved. What if you want to support automated bug creation; for example, enabling a build server to automatically create a bug whenever there is a test or a build failure? 
+With OSLC you can [allow people to create bugs via Delegated UI](1_6_ui_creation/); however, like all UI approaches, an actual human user must be involved. What if you want to support automated bug creation; for example, enabling a build server to automatically create a bug whenever there is a test or a build failure? 
 
 To allow clients to create new bugs automatically, you need to support an [OSLC Creation Factory](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification.html#Creation_Factories) as described in the [OSLC Core specification](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification.html). 
 
@@ -143,4 +143,4 @@ Because these documents are not really meant to be human-readable, you don't hav
 
 Our Bugzilla adapter now allows Bugzilla to be a reasonably complete OSLC CM provider application. In the next section, we'll take a different application (NinaCRM) and extend it to be an OSLC consumer that can take advantage of all the work we've done here.
 
-[Next: Part 2, Implementing Consumer](/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_0_implementing_consumer)
+[Next: Part 2, Implementing Consumer](../integrating_with_an_oslc_provider/2_0_implementing_consumer)

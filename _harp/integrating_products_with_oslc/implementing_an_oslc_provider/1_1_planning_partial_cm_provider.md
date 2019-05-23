@@ -2,10 +2,10 @@
 
 Our integration use cases that we want to add to Bugzilla require only a partial implementation of the [OSLC Change Management](http://open-services.net/bin/view/Main/CmSpecificationV2) specification:
 
-+ __Service Provider and Catalogs__: These resources describe the services offered and make it possible for consumers of the OSLC CM service to find the ones they need. In Part 2, you will use these to help implement [Automated Bug Creation](/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs/) so that the Testing team's build scripts can use Service Provider documents to locate a URL.
-+ **OSLC representations for bugs**: This means making each Bug available at a stable URI as an OSLC-CM Change Request resource, with RDF/XML and UI Preview representations via content negotiation. In Part 2, these RDF/XML representations will help [automate customer notifications](/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers/).
-+ **Delegated UI for Creation & Selection**: Enables users of other systems to create and select bugs in Bugzilla without leaving the web UI of those other systems. You'll use these dialogs in Part 2's to [make it easy to link a customer incident to a Bugzilla bug](/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI/).
-+ **Creation Factories for bugs**: Enables creation of new bugs by HTTP posting RDF/XML bug representations to the server. We also used this feature in Part 2 [for Automated Bug Creation](/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs/).
++ __Service Provider and Catalogs__: These resources describe the services offered and make it possible for consumers of the OSLC CM service to find the ones they need. In Part 2, you will use these to help implement [Automated Bug Creation](../integrating_with_an_oslc_provider/2_5_automatic_bugs/) so that the Testing team's build scripts can use Service Provider documents to locate a URL.
++ **OSLC representations for bugs**: This means making each Bug available at a stable URI as an OSLC-CM Change Request resource, with RDF/XML and UI Preview representations via content negotiation. In Part 2, these RDF/XML representations will help [automate customer notifications](../integrating_with_an_oslc_provider/2_4_notify_customers/).
++ **Delegated UI for Creation & Selection**: Enables users of other systems to create and select bugs in Bugzilla without leaving the web UI of those other systems. You'll use these dialogs in Part 2's to [make it easy to link a customer incident to a Bugzilla bug](../integrating_with_an_oslc_provider/2_3_delegatedUI/).
++ **Creation Factories for bugs**: Enables creation of new bugs by HTTP posting RDF/XML bug representations to the server. We also used this feature in Part 2 [for Automated Bug Creation](../integrating_with_an_oslc_provider/2_5_automatic_bugs/).
 
 Although this leaves out some seemingly critical parts of OSLC (including UPDATE and DELETE via HTTP and OSLC Query), that's OK. 
 
@@ -85,11 +85,11 @@ In our case, building an adapter makes the most sense.
 
 ## Architecture for the adapter
 
-[Download the OSLC4J Bugzilla adapter](/integrating_products_with_oslc/running_the_examples/). We'll be exploring the adapter instead of writing one from scratch.
+[Download the OSLC4J Bugzilla adapter](../running_the_examples/). We'll be exploring the adapter instead of writing one from scratch.
 
 The OSLC4J Bugzilla adapter is a RESTful web application built on Java EE with [JAX-RS](http://docs.oracle.com/javaee/6/tutorial/doc/giepu.html). It has the following additional dependencies:
 
-+ [OSLC4J](http://wiki.eclipse.org/Lyo/LyoOSLC4J): part of [Eclipse Lyo](/eclipse_lyo/eclipse-lyo), OSLC4J is a Java toolkit that simplifies building OSLC applications
++ [OSLC4J](http://wiki.eclipse.org/Lyo/LyoOSLC4J): part of [Eclipse Lyo](../../eclipse_lyo/eclipse-lyo), OSLC4J is a Java toolkit that simplifies building OSLC applications
 + [J2Bugzilla](http://code.google.com/p/j2bugzilla/): Java wrapper classes for Bugzilla's XML-RPC based web services interface
 
 In addition, it uses the following helper classes (in the `utils` directory):

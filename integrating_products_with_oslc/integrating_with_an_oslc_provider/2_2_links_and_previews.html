@@ -17,7 +17,7 @@ Modernizr.load([{
 <li>You send an HTTP GET for the small or large preview.</li>
 <li>The OSLC provider returns HTML that you can show to the user.</li>
 </ol>
-<p>We explored the OSLC Provider side of this in more detail  <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_4_ui_preview/">earlier in this tutorial</a>.</p>
+<p>We explored the OSLC Provider side of this in more detail  <a href="../implementing_an_oslc_provider/1_4_ui_preview/">earlier in this tutorial</a>.</p>
 <h3>Example XML for a UI preview</h3><p>Here&#39;s an example of the XML that an OSLC Provider will return when you request the UI Preview representation of a resource:</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 
@@ -57,7 +57,7 @@ Modernizr.load([{
 <p>With the simple proxy service, you can send the URL <code>http://example.com/anything/etc</code> to the proxy with the following URL:</p>
 <pre><code>http://localhost:8181/ninacrm/proxy?uri=http://example.com/anything/etc</code></pre><p>The proxy service will call the URL specified with the same method and headers as the original request and the return the results.</p>
 <p>With a proxy service, we can now implement the rest of UI Previews in the browser.</p>
-<h3>Displaying Links to resources</h3><p><a href="/integrating_products_with_oslc/running_the_examples/">Starting the NinaCRM sample application and the Bugzilla adapter</a>.</p>
+<h3>Displaying Links to resources</h3><p><a href="../running_the_examples">Starting the NinaCRM sample application and the Bugzilla adapter</a>.</p>
 <p>Open <a href="http://localhost:8181/ninacrm/">http://localhost:8181/ninacrm/</a> in a web browser. You&#39;ll see a sample incident:</p>
 <p><img src="http://open-services.net/uploads/resources/nina-start.png" alt="Sample incident #676 in the NinaCRM sample application"></p>
 <p>At the bottom, find the <strong>Related Defects</strong> heading. This is where we show links to related bugs in Bugzilla; the HTML is a simple unordered list:</p>

@@ -9,7 +9,7 @@ In this section, we’ll explore how to make our Bugzilla Adapter into a provide
 
 ## Add UI Preview handling to the BugzillaChangeRequestService class
 
-In the [previous section](/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j/) we explored how the **BugzillaChangeRequestService** class handles requests for collections of __BugzillaChangeRequests__ or individual __BugzillaChangeRequests__.
+In the [previous section](1_3_intro_to_oslc4j) we explored how the **BugzillaChangeRequestService** class handles requests for collections of __BugzillaChangeRequests__ or individual __BugzillaChangeRequests__.
 
 To add UI Preview support, we will add two methods to the service:
 
