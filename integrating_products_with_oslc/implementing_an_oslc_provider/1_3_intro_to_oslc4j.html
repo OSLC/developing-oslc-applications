@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc//index.html">Tutorial Overview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/overview_of_oslc.html">A brief overview of OSLC</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/running_the_examples.html">Downloading and starting the sample applications</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_0_implementing_a_provider.html">Part 1, turning Bugzilla into a provider of the Change Management OSLC specification</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_1_planning_partial_cm_provider.html">Part 1.1, Planning Partial CM Provider</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources.html">Part 1.2, Providing Service Resources</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j.html">Part 1.3, Intro to Oslc4j</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_4_ui_preview.html">Part 1.4, UI Preview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.html">Part 1.5, UI Selection</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation.html">Part 1.6, UI Creation</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory.html">Part 1.7, Factory</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_0_implementing_consumer.html">Part 2, Implementing Consumer</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_1_consumer_use_cases.html">Part 2.1, Consumer Use Cases</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_2_links_and_previews.html">Part 2.2, Links and Previews</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI.html">Part 2.3, DelegatedUI</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers.html">Part 2.4, Notify Customers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.html">Part 2.5, Automatic Bugs</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_6_wrapup.html">Part 2.6, Wrapup</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title"></h1></header><section class="content"><div class="copy"><h1>Providing OSLC representations of Bugzilla bugs</h1><p>In the <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/">previous section</a> we noted that we used OSLC4J to transform Plain Old Java Object (POJO) representations of OSLC resources into RDF, XML, and JSON formats. In this section, we&#39;ll look more closely at how OSLC4J defines OSLC resources. Then we&#39;ll make Bugzilla Bugs available as OSLC Change Management resources in a variety of formats.</p>
+<h2>What is OSLC4J?</h2><p>OSLC4J, part of the <a href="/eclipse_lyo/eclipse-lyo">Eclipse Lyo</a> project, is a Java SDK for developing OSLC provider or consumer implementations. OSLC resources can be modeled with plain old Java objects (POJOs) which are annotated to provide the information OSLC4J needs to create resource shapes, service provider documents, and to serialize/de-serialize OSLC resources from Java to representations such as RDF or JSON.</p>
+<h2>Defining OSLC resources with OSLC4J</h2><p>OSLC4J comes with a sample Change Management application that includes the OSLC4J-annotated Java class representing a Change Request (as defined in the OSLC Change Management v2 specification).</p>
+<p>The OSLC4J Bugzilla adapter includes that class (<strong>ChangeRequest</strong>) and extends it with Bugzilla-specific attributes (for example, &quot;Product&quot;, &quot;Platform&quot;, or other attributes that are not part of the OSLC CM specification); this extended change request is called a <strong>BugzillaChangeRequest</strong>.</p>
+<h3>Exploring the OSLC4J ChangeRequest class</h3><p>Open the file <code>ChangeRequest.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla.resources</strong> package and explore the variables and methods. For reference, <a href="http://open-services.net/bin/view/Main/CmSpecificationV2#Resource_ChangeRequest">here is the definition of a Change Request in the OSLC Change Management specification</a>.</p>
+<p>First, observe the private variables at the top of the <strong>ChangeRequest</strong> class. These are the attributes of an OSLC CM V2.0 Change Request. Here are first several, which represent the relationships between Change Requests and other OSLC artifacts:</p>
+<pre><code>private final Set&lt;Link&gt; affectedByDefects           = new HashSet&lt;Link&gt;();
+private final Set&lt;Link&gt; affectsPlanItems            = new HashSet&lt;Link&gt;();
+private final Set&lt;Link&gt; affectsRequirements         = new HashSet&lt;Link&gt;();
+private final Set&lt;Link&gt; affectsTestResults          = new HashSet&lt;Link&gt;();
+private final Set&lt;Link&gt; blocksTestExecutionRecords  = new HashSet&lt;Link&gt;();</code></pre><p>Further down are the primitive attributes of a Change Request:</p>
+<pre><code>private Boolean  approved;
+private Boolean  closed;
+private Date     closeDate;
+private Date     created;
+private String   description;</code></pre><p>Further down, each attribute has an associated getter method. For example, here&#39;s the <code>getIdentifier()</code> method:</p>
+<pre><code>@OslcDescription(&quot;A unique identifier for a resource. Assigned by the service provider when a resource is created. Not intended for end-user display.&quot;)
+@OslcOccurs(Occurs.ExactlyOne)
+@OslcPropertyDefinition(OslcConstants.DCTERMS_NAMESPACE + &quot;identifier&quot;)
+@OslcReadOnly
+@OslcTitle(&quot;Identifier&quot;)
+public String getIdentifier()
+{
+    return identifier;
+}</code></pre><p>Note the OSLC-specific annotations before the method. These are used to not only automatically create OSLC resource shape documents, service provider documents, and service provider catalogs, but also assist with the serialization of Java objects to RDF or JSON:</p>
+<ul>
+<li><code>@OslcOccurs</code> provides the cardinality of the attribute. </li>
+<li><code>@OslcPropertyDefinition</code> providers the namespace qualified attribute name</li>
+<li><code>@OslcReadOnly</code> indicates this attribute should appear in the resource shape as read only</li>
+</ul>
+<p>Because the <em>default type in OSLC4J is a string</em>, there is no type annotation. Look for other attributes with the <code>@OslcValueType</code> annotation for examples of attributes that are not strings. </p>
+<h3>Extending ChangeRequest with Bugzilla attributes</h3><p>Open the file <code>BugzillaChangeRequest.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla.resources</strong> package and explore the variables and methods for the Bugzilla-specific attributes.</p>
+<p>As with the <strong>ChangeRequest</strong> class, the various getter methods (for example, <code>getVersion()</code>) have OSLC annotations.</p>
+<h4>Mapping Bugzilla attributes to OSLC-CM properties</h4><p>To represent a Bugzilla bug as an RDF/XML document for an OSLC Change Management resource, we must map Bugzilla bug attributes to <a href="http://open-services.net/bin/view/Main/CmSpecificationV2#Resource_ChangeRequest">OSLC-CM ChangeRequest properties</a>. The following attributes line up fairly clearly:</p>
+<table>
+<thead>
+<tr>
+<th>Bugzilla Bug field</th>
+<th>Maps to RDF predicate</th>
+<th>Prefixed name*</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td><a href="http://purl.org/dc/terms/identifier">http://purl.org/dc/terms/identifier</a></td>
+<td>dcterms:identifier</td>
+</tr>
+<tr>
+<td>summary</td>
+<td><a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a></td>
+<td>dcterms:title</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="http://open-services.net/ns/cm#status">http://open-services.net/ns/cm#status</a></td>
+<td>oslc_cm:status</td>
+</tr>
+<tr>
+<td>assigned_to</td>
+<td><a href="http://purl.org/dc/terms/contributor">http://purl.org/dc/terms/contributor</a></td>
+<td>dcterms:contributor</td>
+</tr>
+<tr>
+<td>creation_time</td>
+<td><a href="http://purl.org/dc/terms/created">http://purl.org/dc/terms/created</a></td>
+<td>dcterms:created</td>
+</tr>
+<tr>
+<td>last_change_time</td>
+<td><a href="http://purl.org/dc/terms/modified">http://purl.org/dc/terms/modified</a></td>
+<td>dcterms:modified</td>
+</tr>
+</tbody></table>
+<p><small>(* Prefix may be different depending on namespace prefix declaration in the XML)</small></p>
+<p>In the <strong>BugzillaChangeRequest</strong> class, the <code>fromBug()</code> method sets these properties. Near the top of the method, here is the code that sets the properties <code>dcterms:identifier</code>, <code>dcterms:title</code>, and <code>oslc_cm:status</code> properties from (respectively) the ID, Summary, and Status of the Bugzilla bug:</p>
+<pre><code>BugzillaChangeRequest changeRequest = new BugzillaChangeRequest();
+changeRequest.setIdentifier(bug.getID());
+changeRequest.setTitle(bug.getSummary());
+changeRequest.setStatus(bug.getStatus());</code></pre><p>Bugzilla bugs also have attributes that do not map to any OSLC Change Management properties but that are required for Bugzilla. We should make these available in our RDF/XML representations by using the RDF predicates that <a href="http://www.bugzilla.org/docs/2.18/html/faq.html#faq-phb-data">Bugzilla defines for Bug lists</a>, and we&#39;ll use the unique namespace <code>bugz</code> as a prefix (defined in <code>Constants.java</code> as shorthand for <a href="http://www.bugzilla.org/rdf#">http://www.bugzilla.org/rdf#</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Bugzilla Bug field</th>
+<th>Maps to RDF predicate</th>
+<th>Prefixed name*</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>product</td>
+<td><a href="http://www.bugzilla.org/rdf#product">http://www.bugzilla.org/rdf#product</a></td>
+<td>bugz:product</td>
+</tr>
+<tr>
+<td>component</td>
+<td><a href="http://www.bugzilla.org/rdf#component">http://www.bugzilla.org/rdf#component</a></td>
+<td>bugz:component</td>
+</tr>
+<tr>
+<td>version</td>
+<td><a href="http://www.bugzilla.org/rdf#version">http://www.bugzilla.org/rdf#version</a></td>
+<td>bugz:version</td>
+</tr>
+<tr>
+<td>priority</td>
+<td><a href="http://www.bugzilla.org/rdf#priority">http://www.bugzilla.org/rdf#priority</a></td>
+<td>bugz:priority</td>
+</tr>
+<tr>
+<td>platform</td>
+<td><a href="http://www.bugzilla.org/rdf#platform">http://www.bugzilla.org/rdf#platform</a></td>
+<td>bugz:platform</td>
+</tr>
+<tr>
+<td>op_sys</td>
+<td><a href="http://www.bugzilla.org/rdf#op_sys">http://www.bugzilla.org/rdf#op_sys</a></td>
+<td>bugz:operatingSystem</td>
+</tr>
+</tbody></table>
+<p><small>(* Prefix may be different depending on namespace prefix declaration in the XML)</small></p>
+<p>We set these properties in the <code>fromBug()</code> method in the <strong>BugzillaChangeRequest</strong> class. Here&#39;s the code that sets <code>bugz:product</code> and <code>bugz:component</code>:</p>
+<pre><code>changeRequest.setProduct(bug.getProduct());
+changeRequest.setComponent(bug.getComponent());</code></pre><p>You can explore the <code>fromBug()</code> method to see how the other properties are set.</p>
+<h2>Providing OSLC representations of Bugzilla bugs</h2><p>Like with the <strong>ServiceProviderService</strong> and <strong>ServiceProviderCatalogService</strong> (discussed in <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources/">in more detail in the previous section</a>), the <strong>BugzillaChangeRequestService</strong> class has many JAX-RS methods to handle both collections of BugzillaChangeRequests and individual BugzillaChangeRequests with a a variety of HTTP requests and output formats.</p>
+<p>Open <code>BugzillaChangeRequestService.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla.services</strong> package. </p>
+<p>Note the <code>@Path</code> annotation near the top of the class:</p>
+<pre><code>@Path(&quot;{productId}/changeRequests&quot;)</code></pre><p>Recall that in <code>ServiceProviderCatalogSingleton.java</code> we registered a Service Provider for every Bugzilla product and used the product ID of the product in the URL for the Service Provider. So if the ID of a Bugzilla product is <strong>2</strong>, our base URL for the <strong>BugzillaChangeRequestService</strong> methods will be: </p>
+<pre><code>http://hostname:8080/OSLC4JBugzilla/services/2/changeRequests</code></pre><h3>Providing representations of Bugzilla Bugs as RDF+XML or JSON</h3><p>As with Service Providers and the Service Provider Catalog, with OSLC4J we do not have to write manually code the RDF or JSON representation of a bug; the message body writers in OSLC4J automatically serialize the Java object into the appropriate machine-readable format.</p>
+<p>The output is handled by the following methods in the <strong>BugzillaChangeRequestService</strong> class:</p>
+<ul>
+<li><code>getChangeRequests()</code>: RDF/XML, XML and JSON representation of a change request collection</li>
+<li><code>getChangeRequest()</code>: RDF/XML, XML, and JSON representation of a single change request </li>
+</ul>
+<p>Without OSLC4J you could <strong>dispatch a JSP template</strong>, use an <strong>RDF API</strong>, or use an <strong>XML DOM API</strong> to generate the appropriate output format. </p>
+<h4>Viewing the RDF+XML or JSON representation of a collection of Bugzilla bugs</h4><p>The following assumes the Bugzilla adapter is running at <code>localhost:8080/OSLC4JBugzilla</code></p>
+<p>In Firefox or Chrome, open the Poster plugin.</p>
+<p>for the <strong>URL</strong> field, type the URL for a list of all the bugs for a product:</p>
+<pre><code>http://localhost:8080/OSLC4JBugzilla/services/{productId}/changeRequests</code></pre><p>For example, with a product ID of <strong>1</strong>:</p>
+<pre><code>http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests</code></pre><p>For the <strong>User Auth</strong> fields, type your Bugzilla username and password.</p>
+<p>On the Headers tab, for the <strong>Name</strong> type <code>Accept</code> and for the <strong>Value</strong> type any of the following:</p>
+<ul>
+<li><code>application/rdf+xml</code></li>
+<li><code>application/json</code></li>
+<li><code>application/xml</code></li>
+</ul>
+<p>Then, click <strong>Add/Change</strong> to add the <code>Accept</code> header.</p>
+<p>Click <strong>Get</strong> to execute the HTTP GET method and you should receive the collection of bugs in the format you requested via <code>Accept</code> header. OSLC4J and JAX-RS produce the correct serialization based on the <code>Accept</code> header.</p>
+<h4>Viewing the RDF+XML or JSON representation of a Bugzilla bug</h4><p>Follow the procedure above for a collection of bugs, but for the <strong>URL</strong> field, type the URL for a single bug: </p>
+<pre><code>http://localhost:8080/OSLC4JBugzilla/services/{productId}/changeRequests/{bugId}</code></pre><p>For example, with a Product ID of <strong>1</strong> and a Bug ID of <strong>10</strong>:</p>
+<pre><code>http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/10</code></pre><p>Click <strong>Get</strong> and you should receive the bug in the format you requested via <code>Accept</code> header. </p>
+<h3>Displaying a collection of Bugzilla bugs as HTML</h3><p>OSLC4J can simplify providing collections of bugs in machine-readable formats, but we should also provide a more human-friendly HTML listing of Bugzilla bugs.</p>
+<p>In <code>BugzillaChangeRequestService.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla.services</strong> package find the <code>getHtmlCollection()</code> method.</p>
+<pre><code>@GET
+@Produces({ MediaType.TEXT_HTML })
+public Response getHtmlCollection( @PathParam(&quot;productId&quot;) final String productId, […] ) throws ServletException, IOException
+{
+    /* [code for returning a list of bugs with HTML] */
+}</code></pre><p>This method&#39;s basic activity is to retrieve a list of bugs for a Bugzilla product…</p>
+<pre><code>final List&lt;BugzillaChangeRequest&gt; results =
+  BugzillaManager.getBugsByProduct(
+    httpServletRequest, 
+    productId, 
+    page, 
+    limit,
+    where, 
+    prefixMap, 
+    propMap, 
+    orderBy,
+    searchTerms);</code></pre><p>… and dispatch that list to a template (<code>/cm/changerequest_collection_html.jsp</code>):</p>
+<pre><code>httpServletRequest.setAttribute(&quot;results&quot;, results);
+
+/** 
+ * … 
+ */
+
+RequestDispatcher rd = httpServletRequest.getRequestDispatcher(
+&quot;/cm/changerequest_collection_html.jsp&quot;
+);
+rd.forward(httpServletRequest,httpServletResponse);   </code></pre><p>There are multiple parameters for this function that allow you to filter the collection with queries, paginate the results, and change the sort order. The Bugzilla Adapter does not use all of these parameters; however they are necessary for full support of <a href="http://open-services.net/bin/view/Main/OSLCCoreSpecQuery">OSLC Queries</a>.</p>
+<p>Open the file <code>/src/webapp/cm/changerequest_collection_html.jsp</code> in <strong>org.eclipse.lyo.oslc4j.bugzilla</strong>. The HTML layout is nearly identical to that of the Service Providers and Catalog. </p>
+<p>Towards the top, you&#39;ll see that we receive the data:</p>
+<pre><code>&lt;%
+  List&lt;BugzillaChangeRequest&gt; changeRequests = (List&lt;BugzillaChangeRequest&gt;) request.getAttribute(&quot;results&quot;);
+  ServiceProvider serviceProvider = (ServiceProvider) request.getAttribute(&quot;serviceProvider&quot;);
+  String bugzillaUri = (String) request.getAttribute(&quot;bugzillaUri&quot;);
+  String queryUri = (String)request.getAttribute(&quot;queryUri&quot;);
+  String nextPageUri = (String)request.getAttribute(&quot;nextPageUri&quot;);
+%&gt;</code></pre><p>And towards the bottom of the file, we loop through the list of bugs and output the title/summary and a link as HTML:</p>
+<pre><code>&lt;h1&gt;Query Results&lt;/h1&gt;
+
+&lt;% for (BugzillaChangeRequest changeRequest : changeRequests) { %&gt;                
+&lt;p&gt;Summary: &lt;%= changeRequest.getTitle() %&gt;&lt;br /&gt;&lt;a href=&quot;&lt;%= changeRequest.getAbout() %&gt;&quot;&gt;
+  &lt;%= changeRequest.getAbout() %&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;% } %&gt;</code></pre><h4>Browsing all the bugs for a Bugzilla Product</h4><p>Let&#39;s try it out! From the Service Provider Catalog, you can navigate to a list of all bugs for a product.</p>
+<ol>
+<li>If you’re running the example applications, browse to <a href="http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton">http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton</a>.</li>
+<li>Click on the link for any Service Provider for a product (for example, if the product ID is &quot;1&quot;: <a href="http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/1">http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/1</a>.</li>
+<li>Then click on the first link under the <strong>OSLC-CM Resource Query Capability and Resource Shape</strong> heading. For example, if the product ID is &quot;1&quot;:     <a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests">http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests</a></li>
+</ol>
+<p>You should see a page with links to the bugs, similar to this:</p>
+<p><img src="http://open-services.net/uploads/resources/collection-of-bugs-html.png" alt="An HTML page in a browser showing a list of Bugzilla bugs"></p>
+<h3>Forwarding HTML requests for single Bugzilla bugs</h3><p>The Bugzilla application itself can create an HTML page with all the details about a bug – that&#39;s one of its primary features – so why recreate the wheel? </p>
+<p>In the <strong>BugzillaChangeRequestService</strong> class, note the <code>getHtmlChangeRequest()</code> method:</p>
+<pre><code>@GET
+@Path(&quot;{changeRequestId}&quot;)
+@Produces({ MediaType.TEXT_HTML })
+public Response getHtmlChangeRequest(@PathParam(&quot;productId&quot;)       final String productId,
+                                 @PathParam(&quot;changeRequestId&quot;) final String changeRequestId) throws ServletException, IOException, URISyntaxException
+{    
+    String forwardUri = BugzillaManager.getBugzillaUri() + &quot;show_bug.cgi?id=&quot; + changeRequestId;
+    httpServletResponse.sendRedirect(forwardUri);
+    return Response.seeOther(new URI(forwardUri)).build();            
+}</code></pre><p>Simple enough: given the ID number (<code>{changeRequestId}</code>) for a particular bug, the OSLC Bugzilla adapter will forward you directly to the web page for the bug in Bugzilla (<code>show_bug.cgi?id={changeRequestId}</code>). For example, a request from the adapter for bug 531 in Product 1 at the following URL…</p>
+<pre><code>http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/531</code></pre><p>… will forward you to the Bugzilla page for the bug at this URL:</p>
+<pre><code>https://bugzilla-host.example.com/show_bug.cgi?id=531</code></pre><p>That&#39;s useful on its own, but OSLC also specifies a <a href="https://archive.open-services.net/bin/view/Main/OslcCoreUiPreview.html">method called UI Preview </a> for showing preview information about a resource in another tool. We&#39;ll tackle these rich preview formats in the next section.</p>
+<p><a href="1_4_ui_preview">Next: Part 1.4, UI Preview</a></p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>

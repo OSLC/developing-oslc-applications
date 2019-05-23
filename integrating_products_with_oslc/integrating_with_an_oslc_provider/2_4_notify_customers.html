@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc//index.html">Tutorial Overview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/overview_of_oslc.html">A brief overview of OSLC</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/running_the_examples.html">Downloading and starting the sample applications</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_0_implementing_a_provider.html">Part 1, turning Bugzilla into a provider of the Change Management OSLC specification</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_1_planning_partial_cm_provider.html">Part 1.1, Planning Partial CM Provider</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources.html">Part 1.2, Providing Service Resources</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j.html">Part 1.3, Intro to Oslc4j</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_4_ui_preview.html">Part 1.4, UI Preview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.html">Part 1.5, UI Selection</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation.html">Part 1.6, UI Creation</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory.html">Part 1.7, Factory</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_0_implementing_consumer.html">Part 2, Implementing Consumer</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_1_consumer_use_cases.html">Part 2.1, Consumer Use Cases</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_2_links_and_previews.html">Part 2.2, Links and Previews</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI.html">Part 2.3, DelegatedUI</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers.html">Part 2.4, Notify Customers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.html">Part 2.5, Automatic Bugs</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_6_wrapup.html">Part 2.6, Wrapup</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title"></h1></header><section class="content"><div class="copy"><h1>Implementing a &quot;Customers to notify&quot; page</h1><p>In this section, we&#39;ll explore how the ability to parse OSLC resources can help us add the ability to automatically notify customers of bugs that have changed.</p>
+<p>Our plan for automating customer notifications is pretty straight forward. </p>
+<p>When our support reps create Incidents, customers are allowed to request notification for critical bugs, and this is recorded in the CRM system. To automatically send notifications to our customers when there are changes to bugs, we must do the following:</p>
+<ol>
+<li>Query the CRM system to get all Notification Requests; each specifies the URL of a bug, date of last update and the customer&#39;s notification email address.</li>
+<li>For each Notification Request, check the associated bug to see if it has been updated, using HTTP Conditional GET to avoid retrieving and parsing bugs that have not been updated.</li>
+<li>If a bug has been updated, then format a nice notification email and include a summary of the bug.</li>
+</ol>
+<p>We can write a program that can run as a scheduled task on a Build Automation system or just plain old UNIX cron.</p>
+<p>In this tutorial we won&#39;t try to explain the whole program. We&#39;ll focus on the OSLC-specific parts, which are retrieving an OSLC resource via HTTP GET and how to parse an OSLC resource to get property values like title, status, modification date and others. </p>
+<h2>Fetching an OSLC resource with HTTP GET</h2><p>First, as a prerequisite, we have to set up our Notification program to run on a schedule and provide it with whatever network addresses, credentials and other information necessary to connect to the CRM system, Bugzilla, and the Email system. We won&#39;t cover these details here.</p>
+<p>Next, we need to write the code necessary to query the CRM system and get all Notification Requests and code that loops through the list. Then, For each bug, we wants to check and see if the bug has been updated since the last time the program ran. If the bug has been updated, then we want to fetch the bug in RDF/XML form and parse out the information need to form a notification email to the interested customer. </p>
+<h3>Exploring the RDF/XML form of a Bugzilla Bug</h3><p>For this section, start the sample Bugzilla Adapter application. We assume it&#39;s running at <code>localhost:8080</code>.</p>
+<p>With the adapter running, navigate to the following URL in a browser: <a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/17">http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/17</a></p>
+<p>(You might have to substitute different ID numbers for the product and bug)</p>
+<p>In a browser, you&#39;ll be forwarded to the HTML page in Bugzilla for the bug. That&#39;s nice for us, but not so useful for a program that must parse the data. How can we request an RDF/XML representation of a bug?</p>
+<p>OSLC providers are required to provide an RDF/XML representation of resources; however, the normal rules of HTTP and Content Negotiation apply. <strong>If you want RDF/XML then you should ask for it.</strong> Specifically, use <code>Accept</code> headers.</p>
+<p>If you send the same request with an <code>Accept</code> header with the content <code>application/rdf+xml</code>, you should receive RDF/XML back from the adapter.</p>
+<p>You can explore this further with the Poster plugin and the Bugzilla adapter <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j/">where we implemented OSLC representations of Bugzilla bugs</a>.</p>
+<p>Here&#39;s a sample Bugzilla bug represented as an RDF/XML BugzillaChangeRequest resource:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rdf:RDF
+  xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+  xmlns:oslc_data=&quot;http://open-services.net/ns/servicemanagement/1.0/&quot;
+  xmlns:oslc_rm=&quot;http://open-services.net/ns/rm#&quot;
+  xmlns:oslc=&quot;http://open-services.net/ns/core#&quot;
+  xmlns:bugz=&quot;http://www.bugzilla.org/rdf#&quot;
+  xmlns:oslc_scm=&quot;http://open-services.net/ns/scm#&quot;
+  xmlns:foaf=&quot;http://xmlns.com/foaf/0.1/&quot;
+  xmlns:oslc_qm=&quot;http://open-services.net/ns/qm#&quot;
+  xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot;
+  xmlns:oslc_cm=&quot;http://open-services.net/ns/cm#&quot;
+  xmlns:rdfs=&quot;http://www.w3.org/2000/01/rdf-schema#&quot; &gt; 
+  &lt;rdf:Description rdf:about=&quot;http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/17&quot;&gt;
+  &lt;dcterms:contributor rdf:resource=&quot;http://localhost:8080/OSLC4JBugzilla/person?mbox=tara%40bluemartini.com&quot;/&gt;
+  &lt;bugz:operatingSystem&gt;Windows NT&lt;/bugz:operatingSystem&gt;
+  &lt;rdf:type rdf:resource=&quot;http://open-services.net/ns/cm#ChangeRequest&quot;/&gt;
+  &lt;oslc_cm:status&gt;RESOLVED&lt;/oslc_cm:status&gt;
+  &lt;oslc:serviceProvider rdf:resource=&quot;http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/1&quot;/&gt;
+  &lt;bugz:platform&gt;PC&lt;/bugz:platform&gt;
+  &lt;bugz:version&gt;1.0&lt;/bugz:version&gt;
+  &lt;dcterms:created&gt;2000-06-29T22:07:00.000-04:00&lt;/dcterms:created&gt;
+  &lt;dcterms:title rdf:datatype=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral&quot;&gt;Albright Overseas&lt;/dcterms:title&gt;
+  &lt;bugz:component&gt;PoliticalBackStabbing&lt;/bugz:component&gt;
+  &lt;oslc_cm:severity&gt;Unclassified&lt;/oslc_cm:severity&gt;
+  &lt;dcterms:modified&gt;2009-11-14T14:36:54.000-05:00&lt;/dcterms:modified&gt;
+  &lt;bugz:priority&gt;P4&lt;/bugz:priority&gt;
+  &lt;dcterms:identifier&gt;17&lt;/dcterms:identifier&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;http://localhost:8080/OSLC4JBugzilla/person?mbox=tara%40bluemartini.com&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://xmlns.com/foaf/0.1/Person&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</code></pre><p>Note the variety of namespace definitions near the top of the document that define short prefix names for properties (e.g., <code>dcterms</code>).</p>
+<p>Inside the <code>&lt;rdf:RDF&gt;</code> root element, there is an <code>&lt;rdf:Description&gt;</code> element with an attribute of <code>rdf:about</code> that is the URI of the Change Request. The <code>&lt;rdf:type&gt;</code> element indicates that this is an OSLC CM request. Each XML element represents a property value of the Change Request.</p>
+<p>OSLC resources use Dublin Core defined properties, like <code>title</code>, <code>description</code>, and <code>id</code>. They also use OSLC defined properties like <code>status</code>, <code>closed</code>, and <code>inprogress</code>. You can find a listing of the different types of properties allowed and required in the <a href="http://open-services.net/bin/view/Main/CmSpecificationV2">OSLC-CM specification</a>. There are also Bugzilla specific properties like <code>component</code> and <code>priority</code>. </p>
+<p>You can learn more about how our OSLC Bugzilla Adapter generates these representations <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j/">here</a>.</p>
+<h2>Parsing an OSLC resource</h2><div class="notice tip">
+<p><strong>Note</strong>: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using – <a href="http://wiki.eclipse.org/Lyo/LyoOSLC4J">OSLC4J</a> to convert RDF/XML representations into Java objects, which will most likely be easier to work with. Consider the following to be guidance if you choose to approach this another way.</p>
+</div>
+
+<p>If you&#39;ve parsed XML before, then the XML above probably does not look too challenging; however, RDF/XML is very flexible and XML parsing tools are not always the best way to process it. Fortunately, there are plenty of commercial and open source RDF parsing tools.</p>
+<h3>Why you need an RDF parser</h3><p>You can see the flexibility of RDF/XML in action if you compare the RDF/XML for the Change Request above to the <a href="http://open-services.rtp.raleigh.ibm.com/bin/view/Main/CmSpecificationV2Samples#Request_with_no_parameters_as_ap">RDF/XML sample Change Request</a> in the <a href="http://open-services.rtp.raleigh.ibm.com/bin/view/Main/CmSpecificationV2">OSLC-CM specification</a>.</p>
+<p>RDF/XML allows RDF property values to be serialized in a variety of ways. For example, property values about a Change Request could be nested inside an <code>&lt;oslc_cm:ChangeRequest&gt;</code> element, as you see in the OSLC-CM samples, where the element itself indicates the Resource Type. Or they could be nested inside an <code>&lt;rdf:Description&gt;</code> element, as you see above, and the type indicated by an <code>&lt;rdf:type&gt;</code> value. Both are valid forms of RDF/XML and allowed by OSLC, so you will have to accept both forms in any parser code that you write. That&#39;s only one example.</p>
+<p>Another reason to use an RDF parser is that RDF/XML is only one way to serialize RDF. Right now RDF/XML is the popular format and the one required by OSLC, but there are other formats including Turtle, N3 and soon an official RDF serialization for JSON. By using a full-featured RDF parser like Jena, which we discuss below, you can read and write any format with the same code.</p>
+<h3>Finding an RDF/XML parser</h3><p>Instead of trying to write your own RDF/XML parser using XML tools, a better approach is to use an existing RDF/XML parser. There is one for every programming language and most are free and/or open source software. Below is a list of the more popular open source RDF tool-kits, the platform and licensing used by each.</p>
+<ul>
+<li><a href="http://jena.apache.org">http://jena.apache.org</a> - Jena (Java) License: ASL2</li>
+<li><a href="http://www.openrdf.org/">http://www.openrdf.org/</a> - OpenRDF / Sesame (Java) License: ASL2 and BSD-like</li>
+<li><a href="http://rdf.rubyforge.org/">http://rdf.rubyforge.org/</a> - RDF.rb (Ruby) License: Public Domain</li>
+<li><a href="http://librdf.org/bindings/">http://librdf.org/bindings/</a> - Redland (C, Perl, PHP, Python and Ruby) License: ASL2</li>
+<li><a href="http://razor.occams.info/code/semweb/">http://razor.occams.info/code/semweb/</a> - SemWeb.NET (C# / .Net) License: GPL2</li>
+</ul>
+<p>All of the above libraries support RDF parsing and serialization, some form of triple-store RDF storage, and SPARQL query... more than you&#39;ll need for a typical OSLC implementation.</p>
+<p>For our implementation, we&#39;ll be using Jena.</p>
+<h3>How to use Jena to parse RDF/XML resource</h3><p><img src="http://open-services.net/images/jena_logo.png" alt="Jena icon"></p>
+<p>Jena is an open source Java library that offers a wide variety of RDF tools including a parser that can handle RDF/XML and other RDF serializations. Using Jena is straight-forward and should be easy for a Java developer.</p>
+<p>Before you start coding, you must get the Jena JAR and all of its dependency JARs into your development classpath. You can do this by <a href="http://jena.sourceforge.net/downloads.html">downloading the Jena ZIP file</a> which contains all of the necessary JARs, and add them to your IDE project. Or, if you are using Maven, then a dependency on groupId <code>com.hp.hpl.jena</code> and artifactId <code>jena</code> to your Maven POM file.</p>
+<p>Let&#39;s attempt to GET an OSLC Change Request via HTTP, but this time we will do it in Java. When we get the results, we will parse them with Jena and pull out the properties that Nina needs: the OSLC-CM <code>fixed</code> value and the Dublin Core Terms <code>modified</code> date value.</p>
+<p>Note that the following is not a complete Java class:</p>
+<pre><code>import java.net.HttpURLConnection; // (1)
+import java.net.URL;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+
+// class declaration and other things omitted
+
+String resourceURI = &quot;http://localhost:8080/OSLC4JBugzilla/services/1/ChangeRequests/1&quot;;
+URL url = new URL(resourceURI);  // (2)
+HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+conn.setRequestProperty(&quot;Accept&quot;, &quot;application/rdf+xml&quot;);  // (3)
+
+Model model = ModelFactory.createDefaultModel();                
+model.read(conn.getInputStream(), resourceURI); // (4)
+
+Resource resource = model.getResource(resourceURI); // (5)
+
+// (6)
+Property fixedProp = model.getProperty(&quot;http://open-services.net/ns/cm#fixed&quot;);
+
+Statement fixed = model.getProperty(resource, fixedProp); // (7)
+System.err.println(&quot;Fixed = &quot; + fixed.getString()); // (8)
+
+// (9)
+Property modifiedProp = model.getProperty(&quot;http://purl.org/dc/terms/modified&quot;);
+Statement modified = model.getProperty(resource, modifiedProp);
+System.err.println(&quot;Modified = &quot; + modified.getString());</code></pre><p>Here&#39;s what it does:</p>
+<ol>
+<li>Import the Java classes required for the example. Again, this is an incomplete Java class, so we&#39;ve left out the class declaration, method declaration, and other bits;</li>
+<li>Build a URL to a specific change request (hard-coded in the example);</li>
+<li>Open a connection to that URL with an <code>Accept</code> header of <code>application/rdf+xml</code>;</li>
+<li>Create a new Jena model and have it read the response. We pass in the <code>resourceURI</code> so Jena will know how to resolve relative links;</li>
+<li>We use the Jena model to get the <code>Resource</code> for the the Change Request URI</li>
+<li>We use the Jena model to get the Property object for the OSLC-CM <code>fixed</code> property by passing in the <a href="http://open-services.net/ns/cm#fixed">URL for the <code>fixed</code> property</a>;</li>
+<li>We get the value for the <code>fixed</code> property;</li>
+<li>And output that value to <code>stdout</code>;</li>
+<li>We repeat the same process to get the Dublin Core <code>modified</code> property.</li>
+</ol>
+<p>With the ability to parse OSLC Change Request resources in RDF/XML form, you can fairly easily figure out the remainder of the application that will automatically notify customers if there have been any updates to critical bugs.</p>
+<h2>The power of OSLC representations</h2><p>The real power of OSLC on display here is that although we&#39;ve written this code with our  OSLC-CM Adapter for Bugzilla in mind, it will work <em>equally well for any other application that provides data according to the OSLC-CM specification</em>. Because OSLC Providers should all expose the same types of data in the same standard formats, you can build integrations <em>for the OSLC standards and specifications</em> that should work with any compatible software. It&#39;s a different way of thinking about integrations that should help you make powerful, flexible, and future-proof ways to connect software. Cool stuff.</p>
+<p>Next, now that we have a simple understanding of Jena, we&#39;ll use it to help us automatically create Bugzilla bugs – no human involvement required.</p>
+<p><a href="2_5_automatic_bugs">Next: Part 2.5, Automatic Bugs</a></p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>

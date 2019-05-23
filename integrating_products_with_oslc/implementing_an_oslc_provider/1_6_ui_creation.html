@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc//index.html">Tutorial Overview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/overview_of_oslc.html">A brief overview of OSLC</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/running_the_examples.html">Downloading and starting the sample applications</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_0_implementing_a_provider.html">Part 1, turning Bugzilla into a provider of the Change Management OSLC specification</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_1_planning_partial_cm_provider.html">Part 1.1, Planning Partial CM Provider</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources.html">Part 1.2, Providing Service Resources</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j.html">Part 1.3, Intro to Oslc4j</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_4_ui_preview.html">Part 1.4, UI Preview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.html">Part 1.5, UI Selection</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation.html">Part 1.6, UI Creation</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory.html">Part 1.7, Factory</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_0_implementing_consumer.html">Part 2, Implementing Consumer</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_1_consumer_use_cases.html">Part 2.1, Consumer Use Cases</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_2_links_and_previews.html">Part 2.2, Links and Previews</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI.html">Part 2.3, DelegatedUI</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers.html">Part 2.4, Notify Customers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.html">Part 2.5, Automatic Bugs</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_6_wrapup.html">Part 2.6, Wrapup</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title"></h1></header><section class="content"><div class="copy"><h1>Providing a delegated UI for creating bugs</h1><p>Providing <a href="https://open-services.net/resources/oslc-primer/#delegated-user-interface-dialogs">a delegated user interface (UI) dialog</a> for creating new resources is similar to the process for providing one for selecting existing resources: we must  create an HTML Form, the fields within that form, and then set up the server-side handling of the form submission.</p>
+<p>Here&#39;s the plan:</p>
+<ol>
+<li>Add the location of our delegated UI to our Service Provider representations</li>
+<li>Create a utility method that accepts a <strong>BugzillaChangeRequest</strong> and creates a bug in Bugzilla</li>
+<li>Create a service to handle requests to display a delegated UI to create bugs.</li>
+<li>Create a service to accept a <strong>BugzillaChangeRequest</strong> via HTTP POST (sent from the delegated UI form) and create a new bug.</li>
+</ol>
+<h2>Adding the location of the delegated UI for creation to Service Providers</h2><p>As with our delegated UI for selection, it&#39;s relatively easy to add the location of our delegated UI for creation to the various representations of service providers.</p>
+<p>Open <code>BugzillaChangeRequestService.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla</strong> package and search for <code>@OslcDialog</code> (<em>not</em> plural). You’ll see two occurrences: one near the top for the Selection Dialog and Query Capability and one farther down the Creation Dialog:</p>
+<pre><code>@OslcDialog
+(
+title = &quot;Change Request Creation Dialog&quot;,
+label = &quot;Change Request Creation Dialog&quot;,
+uri = &quot;/{productId}/changeRequests/creator&quot;,
+hintWidth = &quot;600px&quot;,
+hintHeight = &quot;375px&quot;,
+resourceTypes = {Constants.TYPE_CHANGE_REQUEST},
+usages = {OslcConstants.OSLC_USAGE_DEFAULT}
+)</code></pre><p>With these annotations, OSLC4J handles the conversion of this information to XML or JSON for you – no additional templating required.</p>
+<p>You can explore <code>/src/main/webapp/cm/serviceprovider_html.jsp</code> to see how to add the links to the HTML representation of a Service Provider (under the <strong>Resource Creator Dialog</strong> heading).</p>
+<p>With this enabled, we&#39;ve defined that the dialog for creating new bugs will be at the following URL (assuming your adapter is running at <code>localhost</code> and port <code>8080</code>):</p>
+<pre><code>http://localhost:8080/OSLC4JBugzilla/services/{productID}/changeRequests/creator</code></pre><h2>Creating a bug from an OSLC BugzillaChangeRequest</h2><p>Before we create the delegated dialog to create new bugs, we will need a server-side helper utility that can accept a <strong>BugzillaChangeRequest</strong> and use its information to create a new bug in Bugzilla.</p>
+<p>Locate <code>BugzillaManager.java</code> in the <code>org.eclipse.lyo.oslc4j.bugzilla</code> package and explore the contents.</p>
+<p>This class contains several static utility methods for interacting with Bugzilla using the <strong>j2bugzilla</strong> library. <code>BugzillaChangeRequestService.java</code> makes use extensive use of the methods in this class.</p>
+<p>Locate the <code>createBug()</code> method. We first retrieve bug properties from the passed <strong>BugzillaChangeRequest</strong>:</p>
+<pre><code>String summary = changeRequest.getTitle();
+String component = changeRequest.getComponent();
+String version = changeRequest.getVersion();
+String operatingSystem = changeRequest.getOperatingSystem();
+String platform = changeRequest.getPlatform();
+String description = changeRequest.getDescription();</code></pre><p>Next, if there are missing fields we set some defaults:</p>
+<pre><code>BugFactory factory = new BugFactory().newBug().setProduct(
+        product.getName());
+
+if (summary != null) {
+  factory.setSummary(summary);
+}
+if (version != null) {
+  factory.setVersion(version);
+}
+if (component != null) {
+  factory.setComponent(component);
+}
+if (platform != null) {
+  factory.setPlatform(platform);
+} else
+  factory.setPlatform(&quot;Other&quot;);
+
+if (operatingSystem != null) {
+  factory.setOperatingSystem(operatingSystem);
+} else
+  factory.setOperatingSystem(&quot;Other&quot;);
+
+if (description != null) {
+  factory.setDescription(description);
+}</code></pre><p>Finally, we call j2bugzilla&#39;s methods to create a bug:</p>
+<pre><code>Bug bug = factory.createBug();
+ReportBug reportBug = new ReportBug(bug);
+bc.executeMethod(reportBug);
+newBugId = Integer.toString(reportBug.getID());</code></pre><p>And return the ID of the new bug:</p>
+<pre><code>return newBugId;</code></pre><p>With that utility in place, we can now set up services for our application to serve up a delegated UI for a user to create a new bug.</p>
+<h2>Displaying the delegated UI to create new bugs</h2><h3>Retrieving valid field values from Bugzilla and dispatching a template</h3><p>We will add another method to our <strong>BugzillaChangeRequestService</strong> class to create and display a delegated UI to create a new bug.</p>
+<p>In our OSLC4J Bugzilla Adapter, open <code>BugzillaChangeRequestService.java</code> and search for the <code>changeRequestCreator()</code> method.</p>
+<p>As with many of our other methods, we first establish which Bugzilla product we&#39;re working with from the URI:</p>
+<pre><code>BugzillaConnector bc =
+  BugzillaManager.getBugzillaConnector(httpServletRequest);
+
+Product product = BugzillaManager.getProduct(httpServletRequest, productId);
+httpServletRequest.setAttribute(&quot;product&quot;, product);</code></pre><p>Next, we use the j2bugzilla <strong>GetLegalValues</strong> API to retrieve the allowed values for the various bug fields. Here&#39;s the code for retrieving the legal values for the <strong>Component</strong> field:</p>
+<pre><code>GetLegalValues getComponentValues = 
+  new GetLegalValues(&quot;component&quot;, product.getID());
+bc.executeMethod(getComponentValues);
+List&lt;String&gt; components = Arrays.asList(getComponentValues.getValues());
+httpServletRequest.setAttribute(&quot;components&quot;, components);</code></pre><p>We have similar code for the <strong>Operating System</strong>, <strong>Platform</strong>, and <strong>Version</strong> fields.</p>
+<p>Finally, we set a few more attributes and dispatch them all to a .jsp template (<code>/cm/changerequest_creator.jsp</code>):</p>
+<pre><code>httpServletRequest.setAttribute(&quot;creatorUri&quot;, uriInfo.getAbsolutePath().toString());
+httpServletRequest.setAttribute(&quot;bugzillaUri&quot;, BugzillaManager.getBugzillaUri());
+
+RequestDispatcher rd = httpServletRequest.getRequestDispatcher(&quot;/cm/changerequest_creator.jsp&quot;);
+rd.forward(httpServletRequest, httpServletResponse);</code></pre><h3>Building the delegated UI to create new bugs</h3><p>Now, open <code>/src/main/webapp/cm/changerequest_creator.jsp</code> and explore the contents.</p>
+<p>As with the delegated UI for selection, note the addition of <code>bugzilla.js</code> in the <code>&lt;head&gt;</code> that has a variety of script methods that we&#39;ll explore soon.</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../../../bugzilla.js&quot;&gt;&lt;/script&gt;</code></pre><p>Next, explore the HTML table and form. We populate the various <code>&lt;select&gt;</code> elements with the legal values that were passed in from the Java service. For example, here&#39;s the input for the <strong>Component</strong> field:</p>
+<pre><code>&lt;select name=&quot;component&quot;&gt;
+&lt;%
+ for (String c : components) {
+%&gt;
+&lt;option value=&quot;&lt;%=c%&gt;&quot;&gt;&lt;%=c%&gt;&lt;/option&gt;
+&lt;%
+  }
+%&gt;
+&lt;/select&gt;</code></pre><p>You&#39;ll see simliar code for the other fields. We also provide a free-form text <code>&lt;input&gt;</code> for the <strong>Summary</strong>…</p>
+<pre><code>&lt;input name=&quot;summary&quot; class=&quot;required text_input&quot;
+  type=&quot;text&quot; style=&quot;width: 400px&quot; id=&quot;summary&quot; required autofocus&gt;</code></pre><p>… and a <code>&lt;textarea&gt;</code> for the <strong>Description</strong>:</p>
+<pre><code>&lt;textarea style=&quot;width: 400px; height: 150px;&quot;
+  id=&quot;description&quot; name=&quot;description&quot;&gt;&lt;/textarea&gt;</code></pre><p>Finally, when you click the <strong>Submit Bug</strong> button we call the JavaScript function <code>create()</code> (from the file <code>src/main/webapp/bugzilla.js</code>):</p>
+<pre><code>&lt;input type=&quot;button&quot;
+  value=&quot;Submit Bug&quot;
+  onclick=&quot;javascript: create( &#39;&lt;%= creatorUri %&gt;&#39; )&quot;&gt;</code></pre><p>We&#39;ll explore the <code>create()</code> JavaScript method in more detail below.</p>
+<h3>Send the values for the new bug back to our adapter</h3><p>Open <code>bugzilla.js</code> and explore the <code>create()</code> function:</p>
+<pre><code>function create(baseUrl){
+  var form = document.getElementById(&quot;Create&quot;);
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState==4 &amp;&amp; (xmlhttp.status==201)) {
+      txt = xmlhttp.responseText;
+      resp = eval(&#39;(&#39; + txt + &#39;)&#39;);
+      // Send response to listener
+      sendResponse(resp.title, resp.resource);
+    }
+  };
+   var postData=&quot;&quot;; 
+   if (form.component) {
+     postData += &quot;&amp;component=&quot;+encodeURIComponent(form.component.value);
+   }
+   if (form.summary) {
+     postData += &quot;&amp;summary=&quot;+encodeURIComponent(form.summary.value);
+   }
+   if (form.version) {
+     postData += &quot;&amp;version=&quot;+encodeURIComponent(form.version.value);
+   }
+   if (form.op_sys) {
+     postData += &quot;&amp;op_sys=&quot;+encodeURIComponent(form.op_sys.value);
+  } 
+  if (form.platform) {
+    postData += &quot;&amp;platform=&quot;+encodeURIComponent(form.platform.value);  
+  }
+  if (form.description) {
+    postData += &quot;&amp;description=&quot;+encodeURIComponent(form.description.value);  
+  }
+  xmlhttp.open(&quot;POST&quot;, baseUrl, true);
+  xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+  xmlhttp.setRequestHeader(&quot;Content-length&quot;,postData.length);
+  xmlhttp.send(postData);
+}</code></pre><p>This method takes the values from our form, converts them into URL query string parameters, and sends data via POST to the <code>createHtmlChangeRequest()</code> method in our <strong>BugzillaChangeRequestService</strong> class via <code>XMLHttpRequest()</code>. </p>
+<p>To see how our adapter handles that POST request, open <code>BugzillaChangeRequestService.java</code> and search for the <code>createHtmlChangeRequest()</code> method.</p>
+<p>Note that this service expects an encoded URL via <code>POST</code> at the same URL path as our delegated UI (<code>&quot;creator&quot;</code>):</p>
+<pre><code>@POST
+@Path(&quot;creator&quot;) 
+@Consumes({ MediaType.APPLICATION_FORM_URLENCODED})</code></pre><p>Our <code>createHtmlChangeRequest()</code> first builds a <strong>BugzillaChangeRequest</strong> from the URL parameters:</p>
+<pre><code>BugzillaChangeRequest changeRequest = new BugzillaChangeRequest();
+changeRequest.setComponent(component);
+changeRequest.setVersion(version);
+changeRequest.setTitle(summary);
+changeRequest.setOperatingSystem(op_sys);
+changeRequest.setPlatform(platform);
+changeRequest.setDescription(description);</code></pre><p>Then we use the <code>createBug()</code> method from <strong>BugzillaManager</strong> (discussed above) to create a new bug in Bugzilla:</p>
+<pre><code>final String newBugId = BugzillaManager.createBug(httpServletRequest, changeRequest, productId);</code></pre><p>With the bug created, we gather some information about our new bug…</p>
+<pre><code>final Bug newBug = BugzillaManager.getBugById(httpServletRequest, newBugId);
+final BugzillaChangeRequest newChangeRequest = BugzillaChangeRequest.fromBug(newBug);
+URI about = getAboutURI(productId + &quot;/changeRequests/&quot; + newBugId);
+newChangeRequest.setAbout(about);
+
+httpServletRequest.setAttribute(&quot;changeRequest&quot;, newChangeRequest);
+httpServletRequest.setAttribute(&quot;changeRequestUri&quot;, newChangeRequest.getAbout().toString());</code></pre><p>… and build a small JSON response to return.</p>
+<pre><code>httpServletResponse.setContentType(&quot;application/json&quot;);
+httpServletResponse.setStatus(Status.CREATED.getStatusCode());
+httpServletResponse.addHeader(&quot;Location&quot;, newChangeRequest.getAbout().toString());
+PrintWriter out = httpServletResponse.getWriter();
+out.print(&quot;{\&quot;title\&quot;: \&quot;&quot; + getChangeRequestLinkLabel(newBug.getID(), summary) + &quot;\&quot;,&quot; +
+        &quot;\&quot;resource\&quot; : \&quot;&quot; + about + &quot;\&quot;}&quot;);
+out.close();</code></pre><p>Back in <code>bugzilla.js</code> the <code>onreadystatechange</code> callback evaluates that JSON response and uses the <code>sendResponse()</code> method (discussed in more detail in the previous section) to send some information about the new bug back to the consumer application (re-copied from above):</p>
+<pre><code>xmlhttp.onreadystatechange = function() {
+  if (xmlhttp.readyState==4 &amp;&amp; (xmlhttp.status==201)) {
+    txt = xmlhttp.responseText;
+    resp = eval(&#39;(&#39; + txt + &#39;)&#39;);
+    // Send response to listener
+    sendResponse(resp.title, resp.resource);
+  }
+};</code></pre><p>We&#39;ll <a href="/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI/">put this dialog to use in the NinaCRM application later on</a>.</p>
+<p>We now have the ability to use user interface delegation as a way to provide a simple way for consumer applications to both create and select bugs. We’ve also exposed this capability from our service provider resource definition. </p>
+<p>Next, we&#39;ll explore how to make it easier for other applications to create new bugs programmatically.</p>
+<p><a href="1_7_factory">Next: Part 1.7, Factory</a></p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>All content <a href="http://creativecommons.org/licenses/by/3.0/us/")>Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>
