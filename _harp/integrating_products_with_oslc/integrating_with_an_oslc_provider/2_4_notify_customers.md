@@ -36,7 +36,7 @@ OSLC providers are required to provide an RDF/XML representation of resources; h
 
 If you send the same request with an `Accept` header with the content `application/rdf+xml`, you should receive RDF/XML back from the adapter.
 
-You can explore this further with the Poster plugin and the Bugzilla adapter [where we implemented OSLC representations of Bugzilla bugs](../implementing_an_oslc_provider/1_3_intro_to_oslc4j/).
+You can explore this further with the Poster plugin and the Bugzilla adapter [where we implemented OSLC representations of Bugzilla bugs](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
 
 Here's a sample Bugzilla bug represented as an RDF/XML BugzillaChangeRequest resource:
 
@@ -80,7 +80,7 @@ Inside the `<rdf:RDF>` root element, there is an `<rdf:Description>` element wit
 
 OSLC resources use Dublin Core defined properties, like `title`, `description`, and `id`. They also use OSLC defined properties like `status`, `closed`, and `inprogress`. You can find a listing of the different types of properties allowed and required in the [OSLC-CM specification](http://open-services.net/bin/view/Main/CmSpecificationV2). There are also Bugzilla specific properties like `component` and `priority`. 
 
-You can learn more about how our OSLC Bugzilla Adapter generates these representations [here](../implementing_an_oslc_provider/1_3_intro_to_oslc4j/).
+You can learn more about how our OSLC Bugzilla Adapter generates these representations [here](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
 
 
 ## Parsing an OSLC resource

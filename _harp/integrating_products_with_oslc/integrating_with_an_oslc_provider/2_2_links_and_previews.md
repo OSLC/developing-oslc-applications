@@ -16,7 +16,7 @@ Here's how UI Preview works in an OSLC consumer:
 4. You send an HTTP GET for the small or large preview.
 5. The OSLC provider returns HTML that you can show to the user.
 
-We explored the OSLC Provider side of this in more detail  [earlier in this tutorial](../implementing_an_oslc_provider/1_4_ui_preview/).
+We explored the OSLC Provider side of this in more detail  [earlier in this tutorial](../implementing_an_oslc_provider/1_4_ui_preview).
 
 ### Example XML for a UI preview
 

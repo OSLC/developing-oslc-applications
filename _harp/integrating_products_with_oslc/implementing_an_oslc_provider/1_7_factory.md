@@ -1,6 +1,6 @@
 # Providing a creation factory 
 
-With OSLC you can [allow people to create bugs via Delegated UI](1_6_ui_creation/); however, like all UI approaches, an actual human user must be involved. What if you want to support automated bug creation; for example, enabling a build server to automatically create a bug whenever there is a test or a build failure? 
+With OSLC you can [allow people to create bugs via Delegated UI](1_6_ui_creation); however, like all UI approaches, an actual human user must be involved. What if you want to support automated bug creation; for example, enabling a build server to automatically create a bug whenever there is a test or a build failure? 
 
 To allow clients to create new bugs automatically, you need to support an [OSLC Creation Factory](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification.html#Creation_Factories) as described in the [OSLC Core specification](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification.html). 
 

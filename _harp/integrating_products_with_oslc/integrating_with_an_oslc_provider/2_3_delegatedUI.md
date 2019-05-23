@@ -12,7 +12,7 @@ By using Delegated UI, Nina will enable support reps to add links from Incidents
 
 ### The mechanics of Delegated UI
 
-Earlier in this tutorial, we walked through an implementation of Delegated UIs for OSLC4JBugzilla, both for [selecting bugs](../implementing_an_oslc_provider/1_5_ui_selection/) and [creating new bugs](../implementing_an_oslc_provider/1_6_ui_creation/). In addition to providing the UI and handling the results, the OSLC4JBugzilla adapter (or any other OSLC provider application) announces in its [Service Provider Documents](../implementing_an_oslc_provider/1_2_providing_service_resources/) the URL location and recommended size of the UI.
+Earlier in this tutorial, we walked through an implementation of Delegated UIs for OSLC4JBugzilla, both for [selecting bugs](../implementing_an_oslc_provider/1_5_ui_selection) and [creating new bugs](../implementing_an_oslc_provider/1_6_ui_creation). In addition to providing the UI and handling the results, the OSLC4JBugzilla adapter (or any other OSLC provider application) announces in its [Service Provider Documents](../implementing_an_oslc_provider/1_2_providing_service_resources) the URL location and recommended size of the UI.
 
 The application that wants to use the Delegated UI (the OSLC Consumer) creates an `<iframe>` for the Delegated UI so that the user can interact with it. The Consumer application must also listen to the `<iframe>` do something with the results of the user's actions.
 

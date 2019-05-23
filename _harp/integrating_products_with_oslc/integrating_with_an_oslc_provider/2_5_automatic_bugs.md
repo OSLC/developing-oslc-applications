@@ -13,7 +13,7 @@ As with the last section, we won't create an entire service; instead, we'll focu
 
 For our OSLC-CM Bugzilla Adapter (or any OSLC provider), the starting point for exploring OSLC capabilities is the [Service Provider Catalog document](http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovidercatalog). 
 
-You can read more about [implementing Service Provider Catalogs for our Bugzilla Adapter here](../implementing_an_oslc_provider/1_2_providing_service_resources/). In short, we represent every Bugzilla Product as a [Service Provider resource](http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovider), and we collect all of those Service Providers in one Service Provider Catalog. 
+You can read more about [implementing Service Provider Catalogs for our Bugzilla Adapter here](../implementing_an_oslc_provider/1_2_providing_service_resources). In short, we represent every Bugzilla Product as a [Service Provider resource](http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovider), and we collect all of those Service Providers in one Service Provider Catalog. 
 
 The general principle is that clients should only need to know the URL for the Catalog; from the Catalog, clients can navigate to the other OSLC services. In other words, _clients should not have to hard-code URLs to individual OSLC services_.
 
@@ -92,7 +92,7 @@ Once we've navigated from a Catalog to a Service Provider resource, here's a sam
 	  </oslc:ServiceProvider>
 	</rdf:RDF>
 	
-You can read more about [implementing Service Providers](../implementing_an_oslc_provider/1_2_providing_service_resources/) and [implementing creation factories](../implementing_an_oslc_provider/1_7_factory/) for our Bugzilla adapter.
+You can read more about [implementing Service Providers](../implementing_an_oslc_provider/1_2_providing_service_resources) and [implementing creation factories](../implementing_an_oslc_provider/1_7_factory) for our Bugzilla adapter.
 
 Of most interest to our team developing a way to automatically create bugs are the contents of the `<oslc:service>` element (**(1)**). The Service has an `oslc:creationFactory` property (**(2)**) with a value of `oslc:CreationFactory`. The creation factory has values that indicate it is for creating Change Requests (**(3)**), the URI for posting new Change Requests (**(4)**), and the URI of the [Resource Shape](http://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes) (**(5)**) that lists the required fields for bug creation. The usage value (**(5)**) indicates that this is the default Creation Factory to use.
 
