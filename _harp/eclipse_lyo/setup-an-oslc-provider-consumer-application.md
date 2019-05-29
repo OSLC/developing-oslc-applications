@@ -132,22 +132,6 @@ use. We will use the simplest option:
 
 We require Java EE 6 or higher and JSTL:
 
-### for Lyo 4.0.0-SNAPSHOT 
-```xml
-<dependency>
-  <groupId>javax.servlet</groupId>
-  <artifactId>javax.servlet-api</artifactId>
-  <version>3.1.0</version>
-  <scope>provided</scope>
-</dependency>
-<dependency>
-  <groupId>javax.servlet.jsp.jstl</groupId>
-  <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-  <version>1.2.2</version>
-</dependency>
-```
-
-### for Lyo 2.4.0 and earlier 
 ```xml
 <dependency>
   <groupId>javax.servlet</groupId>
