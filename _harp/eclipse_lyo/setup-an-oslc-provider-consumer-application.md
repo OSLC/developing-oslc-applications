@@ -264,7 +264,7 @@ This will make your server available under the path http://localhost:8080/adapto
     <plugin>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-maven-plugin</artifactId>
-      <version>9.3.9.v20160517</version>
+      <version>9.4.18.v20190429</version>
       <configuration>
         <webAppConfig>
           <contextPath>/adaptor-sample</contextPath>
