@@ -38,7 +38,7 @@ This tutorial is for people who will be writing code to implement OSLC consumers
 
 You can follow along with the OSLC Tutorial by using the following software:
 
-+ Bugzilla: a common open-source defect tracking application. You can use [the public Bugzilla Landfill](http://landfill.bugzilla.org/) site if you do not want to set up your own Bugzilla application.
++ Bugzilla: a common open-source defect tracking application. In this tutorial, you will configure a running [Bugzilla system using Docker](https://hub.docker.com/r/bugzilla/bugzilla-dev/) if you do not want to set up your own Bugzilla application.
 + OSLC4J Bugzilla adapter: a full-featured adapter that presents Bugzilla bugs as OSLC Change Management v2 resources. In our examples, we assume the Bugzilla adapter is running at [`http://localhost:8080/OSLC4JBugzilla`](http://localhost:8080/OSLC4JBugzilla)
 + NinaCRM: A simple, fictional Customer Relationship Management (CRM) system that hosts OSLC UI Preview and OSLC Delegated UI examples, implemented as a Java EE web application. In our examples, we assume that NinaCRM is running at [`http://localhost:8181/ninacrm`](http://localhost:8181/ninacrm)
 + Poster browser plugin (for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/poster/) or [Chrome](https://chrome.google.com/webstore/detail/chrome-poster/cdjfedloinmbppobahmonnjigpmlajcd)): we will browse and manipulate OSLC resources with this plugin that makes it easy to issue HTTP requests and set custom headers. An alternative for Firefox is [RESTClient](https://addons.mozilla.org/en-us/firefox/addon/restclient/).

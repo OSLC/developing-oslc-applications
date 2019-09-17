@@ -1,55 +1,98 @@
 ## Running the example applications
 
-This section explains how to run the OSLC4J Bugzilla Adapter and the NinaCRM example application.
+This section explains how to setup the development environment to run the OSLC4J Bugzilla Adapter and the NinaCRM example application.
 
-## Installing prerequisites
+## Eclipse Setup
 
 Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development)
 
-## [Optional] Create an account at Bugzilla Landfill
+## Bugzilla Setup
 
-Landfill is an always-running, open Bugzilla server that you can use if you don’t want to use your own Bugzilla application or set up a new one.
+Unless you have a Bugzilla system (with admin access) you can integrate against, you need to setup a running [Bugzilla system using Docker](https://hub.docker.com/r/bugzilla/bugzilla-dev/) for the purposes of this tutorial.
 
-[Create an account here](https://landfill.bugzilla.org/bugzilla-4.2-branch/createaccount.cgi).
+1. [Set up your Docker environment](https://docs.docker.com/get-started/). This is beyound the scope of this tutorial. 
 
+1. Pull the official Bugzilla image from the docker registery
+    ```bash
+	docker pull bugzilla/bugzilla-dev
+    ```
 
-## Importing the tutorial projects
+1. Launch the Bugzilla container, assigning it a convenient name 'bugzilla-dev'.
+    ```bash
+	docker run -p 80:80 --name bugzilla-dev bugzilla/bugzilla-dev
+    ```
+ 
+1. This will start the docker container, with a Bugzilla server. But Bugzilla first needs to be configured before it can be used. In a new shell, login to the container
+    ```bash
+    docker exec -it bugzilla-dev bash
+    ```
+1. Now it is time to configure Bugzilla. You can configure Bugzilla by modifying the file /var/www/html/bugzilla/localconfig as desired. We will here simply assume the initial values without any modifications. If you choose to make changes to the localconfig file, make sure you adjust the commands below accordingly.
 
-The Eclipse Lyo tutorial documentation Git repository has the Bugzilla Adapter and NinaCRM sample applications.
+1. Login to the Mysql server as root
+    ```bash
+	mysql -h localhost -u root
+    ```
 
-1.  In Eclipse, open the Git Repositories view. (**Window** &rarr; **Show View** &rarr; **Other**, search for `Git repo` and click **OK**.)
-2.  Click **Clone a Git Repository**.
-3.  In the Clone Git Repository window, in the **URI** field paste the following [https://github.com/eclipse/lyo.docs](https://github.com/eclipse/lyo.docs). The **Host** and **Repository** fields will autofill. Leave the **Username** and **Password** fields empty.
-4.  Click **Next**.
-5.  On the Branch Selection page, select **master** and click **Next**.
-6.  For the **Destination**, select a folder for the files or accept the default of your Eclipse workspace.
-7.  Click **Finish**. `lyo.docs` will appear in the Git Repositories view.
+1. Create a new user account (with details matching those defined in the bugzilla localconfig file).
+    ```bash
+	create user 'bugs'@'localhost' identified by 'bugs';
+    ```
 
-Next, import the projects:
+1. Create a database 'bugs'
+    ```bash
+	create database bugs;
+    ```
 
-1.  In the Git Repositories view, right-click **lyo.docs** and click **Import Projects**.
-2.  In the Import Projects from Git Repository wizard, select **Import existing projects** and click **Next**.
-3.  Make sure the "Search for nested projects" option is enabled.
-4.  Select the 2 projects **lyo.docs\lyo-rest-workshop\Lab6** and **lyo.docs\lyo-rest-workshop\ninacrm** and click **Finish**.
+1. Grant the 'bugs' account all privileges to the 'bugs' database
+    ```bash
+	grant all privileges on bugs.* to bugs;
+    ```
+
+1. Exist Mysql and relogin again to make sure the 'bugs' account has access to the 'bugs' database
+    ```bash
+	exit
+    mysql -u bugs -D bugs -p
+	exit
+    ```
+	
+1. Now run the ‘checksetup.pl’ script to initlize the Bugzilla application. Among other things, you will be prompted to create an administration account for Bugzilla.
+	```bash
+    cd /var/www/html/bugzilla/
+	./checksetup.pl
+    ```
+
+1.  Once the script is successfully terminated, you can now browse to the Bugzilla homepage at http://localhost/bugzilla. At the very least, you should be able to login given the admin account.
+
+## Importing the tutorial projects into Eclipse
+
+The [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository contains all the necessary code for this tutorial.
+
+1. Clone the [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository
+    1.  In Eclipse, open the Git Repositories view. (**Window** &rarr; **Show View** &rarr; **Other**, search for `Git repo` and click **OK**.)
+    2.  Click **Clone a Git Repository**.
+    3.  In the Clone Git Repository window, in the **URI** field paste the following [https://github.com/eclipse/lyo.docs](https://github.com/eclipse/lyo.docs). The **Host** and **Repository** fields will autofill. Leave the **Username** and **Password** fields empty.
+    4.  Click **Next**.
+    5.  On the Branch Selection page, select **master** and click **Next**.
+    6.  For the **Destination**, select a folder for the files or accept the default of your Eclipse workspace.
+    7.  Click **Finish**. `lyo.docs` will appear in the Git Repositories view.
+
+2. Next, import the tutorial projects into Eclipse
+    1. In Eclipse, switch to the Java perspective. (**Window** &rarr; **Perspective** &rarr; **Open Perspective** &rarr; **Java**)
+    1. Open the Project Explorer view. (**Window** &rarr; **Show View** &rarr; **Project Explorer**)
+    1. Select **File** &rarr; **Import...**
+    1. In the Import dialog that appears select **Maven** &rarr; **Existing Maven Projects**, and click **Next**.
+    1. Browse to the root directory of the recently cloned git repository.
+    1.  Select the 2 projects **\lyo-rest-workshop\Lab6** and **\lyo-rest-workshop\ninacrm** and click **Finish**.
 
 ## Configuring the Bugzilla adapter
 
 Configure the Bugzilla adapter to point to your Bugzilla application.
 
-1.  In Eclipse, open the Project Explorer view. (**Window** &rarr; **Show View** &rarr; **Project Explorer**)
-2.  In the Project Explorer view, find and edit the file `src/main/resources/bugz.properties` in the Lab6 project.
-3.  Edit the `bugzilla_uri` property to the URL of your Bugzilla server. If you’re using Bugzilla Landfill, it will look similar to this:
-
-     `bugzilla_uri=https://landfill.bugzilla.org/bugzilla-4.2-branch`
-
-     There are multiple versions of Bugzilla running at landfill.bugzilla.org; be sure to select the version where you have a user ID.
-4.  For the `admin` property, provide your Bugzilla user ID. For Bugzilla Landfill, it will be the email address you used when you created your account:
-
-     `admin=you@example.com`
-
-     (This is the ID you will use to log in to the OAuth application).
-5.  Save `bugz.properties`.
-
+1. In the Project Explorer view, find and edit the file `src/main/resources/bugz.properties` in the Lab6 project.
+1.  Edit the `bugzilla_uri` property to the URL of your Bugzilla server. If you’re using the Bugzilla docker container, it will be:
+     `bugzilla_uri=http://localhost/bugzilla`
+1.  For the `admin` property, provide your Bugzilla user ID.
+1.  Save `bugz.properties`.
 
 ## Update the applications
 
@@ -59,7 +102,7 @@ Update the project configurations for the projects.
 2.  In the Package Explorer view, select the following packages:
 
     *   **ninacrm**
-    *   **Lab6**
+    *   **oslc4j-bugzilla-sample-lab6**
 
 3.  Right-click and select **Maven** &rarr; **Update Project**.
 4.  In the Update Maven Project window, verify that those projects are selected and click **OK**.
