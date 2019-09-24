@@ -26,6 +26,7 @@ The library:
    * [oslc4j-client, Lyo release 4.0.0](https://download.eclipse.org/lyo/docs/oslc4j-client/latest) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
    * [oslc-java-client, Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/oslc-java-client/latest) - legacy support for JAX-RS 1.0, and the Apache Wink implementation. 
 * [Lyo Client sample code](https://github.com/OSLC/lyo-samples) that demonstrates how to use the Lyo client to interact with OSLC Service Providers in various ways.
+* You are also welcome to contact the development team via [lyo-dev mailing list](https://dev.eclipse.org/mailman/listinfo/lyo-dev)
 
 # Lyo Designer
 
