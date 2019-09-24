@@ -9,20 +9,30 @@ Modernizr.load([{
 </script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration homepage <i class="fas fa-external-link-alt"></i></a></li><li role="presentation" class="item current"><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-lyo.html">Eclipse Lyo - support for Java developers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-setup-for-lyo-based-development.html">Eclipse Setup for Lyo-based Development</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html">Setup an OSLC Provider/Consumer Application</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/lyo-designer.html">Lyo Designer - Model the Toolchain</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/install-lyo-designer.html">Lyo Designer - Install</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html">Toolchain Modelling Workshop</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html">Domain Specification Modelling Workshop</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Eclipse Lyo - support for Java developers</h1></header><section class="content"><div class="copy"><p>The <a href="http://www.eclipse.org/lyo/">Eclipse Lyo</a> project supports Java developers with the development of REST-based servers and clients that need to share heterogeneous information as <a href="https://www.w3.org/TR/rdf11-primer/">RDF resources</a>.</p>
 <p>Eclipse Lyo promotes the use of Linked Data principles and the <a href="http://docs.oasis-open.org/oslc-core/oslc-core/v3.0/oslc-core-v3.0-part1-overview.html">OSLC</a> (Open Services for Lifecycle Collaboration) standard for publishing lifecycle data, to enable the interoperability of heterogeneous products, services, and other distributed network resources.</p>
 <h1>OSLC4J SDK</h1><p>Lyo’s central component is the OSLC4J SDK (Software Development Kit) that helps build REST-based servers and clients, compliant with the OSLC standard.</p>
-<p>The library provides:</p>
+<p>The library:</p>
 <ul>
-<li>Annotations that automate the marshaling/unmarshaling of Java objects to/from Linked Data RDF resources (<a href="https://jena.apache.org/">Apache Jena</a> model).</li>
-<li>Annotations that allow servers to publish their RESTful API capabilities, based on the [OSLC Discovery][oslcv3discovery] approach. This in turn facilitates for clients to discover and use available capabilities.</li>
-<li>JAX-RS Providers and utility classes to facilitate the development of REST operations for accessing, creating, updating and deleting RDF resources.</li>
+<li>Allows an OSLC server to publish their RESTful API capabilities, based on the <a href="http://docs.oasis-open.org/oslc-core/oslc-core/v3.0/oslc-core-v3.0-part2-discovery.html">OSLC Discovery</a> approach. This in turn facilitates for clients to discover and use available capabilities.</li>
+<li>Provides an OSLC server with JAX-RS Providers and utility classes to facilitate the development of REST operations for accessing, creating, updating and deleting RDF resources.</li>
+<li>Provides an OSLC Client with helpful APIs to interact with OSLC Servers. It provides an additional layer of functionality on top of Apache HttpClient, Apache Wink, and OSLC4J that can give you a head start on some of the common use cases such as form login, OAuth handling, service discovery, sending queries, and processing query results.</li>
+<li>Automates the marshaling/unmarshaling of Java objects to/from Linked Data RDF resources (<a href="https://jena.apache.org/">Apache Jena</a> model).</li>
 </ul>
 <p><strong>You do not have to use the Eclipse application to use the OSLC4J SDK</strong>: Although much of the documentation assumes you will be using Eclipse, the SDK is available as maven libraries, as detailed <a href="./setup-an-oslc-provider-consumer-application">Setup an OSLC Provider/Consumer Application</a>.</p>
 <p><strong>Further Information</strong></p>
 <ul>
-<li>Explore our <a href="../tutorials">tutorials to use the OSLC4J SDK when building an OSLC provider or consumer application</a>.</li>
-<li>How to <a href="./setup-an-oslc-provider-consumer-application">setup an OSLC provider/consumer applications</a>, ready for Lyo-based development.</li>
+<li>Explore our <a href="../tutorials">tutorials to use the OSLC4J SDK when building an OSLC Server and/or client application</a>.</li>
+<li>How to <a href="./setup-an-oslc-provider-consumer-application">setup an OSLC Server and/or Client</a>.</li>
+<li>Javadocs for <ul>
+<li><a href="https://download.eclipse.org/lyo/docs/core/4.0.0-SNAPSHOT/">oslc4j-core , Lyo release 4.0.0</a> - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.</li>
+<li><a href="https://download.eclipse.org/lyo/docs/core/2.4.0/">oslc4j-core , Lyo release 2.4.0 and earlier</a> - legacy support for JAX-RS 1.0, and the Apache Wink implementation.</li>
+<li><a href="https://download.eclipse.org/lyo/docs/oslc4j-client/latest">oslc4j-client, Lyo release 4.0.0</a> - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.</li>
+<li><a href="https://download.eclipse.org/lyo/docs/oslc-java-client/latest">oslc-java-client, Lyo release 2.4.0 and earlier</a> - legacy support for JAX-RS 1.0, and the Apache Wink implementation. </li>
+</ul>
+</li>
+<li><a href="https://github.com/OSLC/lyo-samples">Lyo Client sample code</a> that demonstrates how to use the Lyo client to interact with OSLC Service Providers in various ways.</li>
+<li>You are also welcome to contact the development team via <a href="https://dev.eclipse.org/mailman/listinfo/lyo-dev">lyo-dev mailing list</a></li>
 </ul>
 <h1>Lyo Designer</h1><p><a href="lyo-designer">Lyo Designer</a> is an Eclipse plugin that allows one to graphically model (1) the overall system architecture, (2) the information model of the RDF resources being shared, and (3) the individual services and operations of each Server in the system. The figure below shows the information modelling interface:</p>
-<p><img src="images/LyoToolchainModel-SpecificationDiagram.png" alt="An example domain specification diagram">{width=&quot;800&quot;}</p>
+<p><img src="images/LyoToolchainModel-SpecificationDiagram.png" alt="An example domain specification diagram"></p>
 <p>Lyo Designer includes a integrated code generator that synthesizes the model into almost-complete OSLC4J-compliant running implementation.
 The resulting code includes:</p>
 <ul>
@@ -53,14 +63,6 @@ The resulting code includes:</p>
 <li>If you want to contribute to Lyo Designer, you can <a href="https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code">work from its source code</a></li>
 </ul>
 <h1>Additional components</h1><p>Additional components of the Lyo project include:</p>
-<p><strong>OSLC Client</strong> provides helpful APIs to interact with OSLC Servers. It provides an additional layer of functionality on top of Apache HttpClient, Apache Wink, and OSLC4J that can give you a head start on some of the common use cases such as form login, OAuth handling, service discovery, sending queries, and processing query results. Io order to use it, include the following dependency from the Eclipse Maven repositories:</p>
-<pre><code class="language-xml">&lt;dependency&gt;
-    &lt;groupId&gt;org.eclipse.lyo.clients&lt;/groupId&gt;
-    &lt;artifactId&gt;oslc-java-client&lt;/artifactId&gt;
-    &lt;version&gt;2.4.0&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-<p>Find more information in the <a href="https://download.eclipse.org/lyo/docs/client/2.4.0/overview-summary.html">Javadocs</a>.</p>
-<p>Other components:</p>
 <ul>
 <li><a href="https://wiki.eclipse.org/Lyo/TRSSDK">OSLC Tracked Resource Specification (TRS) SDK</a> - provides a simple set of java beans that represent the entities within the TRS specification.</li>
 <li><a href="https://github.com/eclipse/lyo-store">Lyo Store</a> - a library that provides a simple interface for working with a triplestore via Java objects representing OSLC Resources.</li>
@@ -76,8 +78,6 @@ The resulting code includes:</p>
 </ul>
 <h2>Example OSLC4j-based Servers</h2><p>Lyo also includes instructions and source code for a range of OSLC Server implementations:</p>
 <ul>
-<li><a href="https://github.com/eclipse/lyo.docs/tree/master/lyo-rest-workshop">Bugzilla</a> - an example of what Eclipse Lyo can be used for, in the form of an OSLC-CM compatible adapter for the Bugzilla bugtracker application. It wraps Bugzilla (interacting with it through Bugzilla&#39;s native XMLRPC API) with an OSLC-CM provider server accessible through REST calls.</li>
-<li><a href="https://wiki.eclipse.org/Lyo/BuildClient">Sample OSLC client</a> - that demonstrates how to use the Lyo client to interact with OSLC Service Providers in various ways.</li>
 <li><a href="https://wiki.eclipse.org/Lyo/SharepointAdapter">SharePoint</a> - This SharePoint adapter looks through the sharepoint OData collections for collections where the ContentType is defined as &quot;Document&quot;. For each SharePoint library that contains documents, an OSLC service provider is created with the basic services for OSLC Delegated dialogs for selection and creation as well as listing the documents with a UI preview.</li>
 <li>The <a href="https://wiki.eclipse.org/Lyo/JenkinsPlugin">Hudson and Jenkins</a> adapor implements the OSLC Automation specification.</li>
 <li><a href="https://wiki.eclipse.org/Lyo/Simulink">Simulink</a></li>
