@@ -10,20 +10,27 @@ In the instructions below, we assume the following parameters, which you will ne
 We will here only create the code skeleton. The
 [Toolchain Modelling Workshop](./toolchain-modelling-workshop) can then be used to generate the necessary code to become a fully functional server.
 
-Creation of the skeleton consists of these steps:
+As a complement when following the instructions below, you can find sample projects under the [Lyo Adaptor Sample Modelling](https://github.com/OSLC/lyo-adaptor-sample-modelling) git repository.
 
-1. Creating a Maven project from an archetype
-1. Customise the project POM file
-1. Customise the web configuration
-1. (Optional) Provide OpenApi/Swagger Support
+* For Lyo 4.0.0-SNAPSHOT, please refer to the *4.0.0-SNAPSHOT* branch.
+* For Lyo 2.4.0, please refer to the *master* branch.
 
-But first ...
+Creating the project consists of these steps:
 
-## 1. Setup Eclipse
+1. [Setup Eclipse](#setup-eclipse)
+1. [Decide if you want to adopt JAX-RS 1.0 or 2.0?](#decide-jaxrs)
+1. [Create a Maven project](#create-maven-project)
+1. [Customise the project POM file](#customize-project-pom-file)
+1. [Customise the web configuration](#customize-web-configuration)
+1. [(Optional) Provide OpenApi/Swagger Support](#provide-openapi-support)
+1. [(Optional) Provide TRS Support](#provide-trs-support)
+1. [Run the server](#run-server)
+
+# <a name="setup-eclipse"></a>Setup Eclipse
 
 Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
-## 2. Decide if you want to adopt JAX-RS 1.0 or 2.0?
+# <a name="decide-jaxrs"></a>Decide if you want to adopt JAX-RS 1.0 or 2.0?
 Starting with the upcoming release 4.0.0, Lyo will support JAX-RS 2.0, and will no longer depend on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc.  
 On the other hand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
 
@@ -34,15 +41,7 @@ The instructions below will vary depending on the Lyo version to be adopted. We 
 * 4.0.0-SNAPSHOT
 * 2.4.0
 
-## 3. Refer to Sample Projects
-
-As a complement when following the instructions below, you can find sample projects under the [Lyo Adaptor Sample Modelling](https://github.com/OSLC/lyo-adaptor-sample-modelling) git repository.
-
-* For Lyo 4.0.0-SNAPSHOT, please refer to the *4.0.0-SNAPSHOT* branch.
-* For Lyo 2.4.0, please refer to the *master* branch.
-
-
-# Create a Maven project
+# <a name="create-maven-project"></a>Create a Maven project
 
 To create a Maven project from an archetype via Eclipse
 
@@ -68,7 +67,7 @@ You should now have the project in Eclipse and the following folder structure:
 
 ![](./images/CreateMavenAdaptorProject_CodeStructure.png)
 
-# Customise the project POM file
+# <a name="customize-project-pom-file"></a>Customise the project POM file
 
 We now need to modify the project *pom.xml* file.
 
@@ -285,7 +284,7 @@ This will make your server available under the path http://localhost:8080/adapto
 </build>
 ```
 
-# Customise the web configuration
+# <a name="customize-web-configuration"></a>Customise the web configuration
 
 Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the template below.
 
@@ -328,7 +327,7 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 </web-app>
 ```
 
-# (Optional) Provide OpenApi/Swagger Support
+# <a name="provide-openapi-support"></a>(Optional) Provide OpenApi/Swagger Support
 
 Being already a REST web server, an OSLC4J project can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/).
 
@@ -469,7 +468,126 @@ The following steps allows you to integrate [Swagger UI](https://swagger.io/swag
 
     http://localhost:8080/adaptor-sample/swagger-ui
 
-# Run the server
+# <a name="provide-trs-support"></a>(Optional) Provide TRS Support
+
+The purpose of the *TRS Server* library is to provide a developer with a ready
+to use set of classes over which he can provide a minimal implementation that
+will result in a TRS interface with minimal effort.
+
+## Add Maven dependencies
+
+Add a dependency for the TRS Server library:
+
+    <dependency>
+      <groupId>org.eclipse.lyo.trs</groupId>
+      <artifactId>trs-server</artifactId>
+        <version>${version.lyo}</version>
+    </dependency>
+
+
+## Setup the TRS JAX-RS Provider to your Application
+
+The *TRS Server* library already contains a `TrackedResourceSetService` class  that can handle the REST calls for TRS Base and ChangeLog. For this service to work, you will only need to provide a binding to a singleton of a class that implements the `PagedTrs` class.
+
+Register the TRS JAX-RS Provider `TrackedResourceSetService` in your Application (the `javax.ws.rs.core.Application` subclass).
+
+```java
+import org.eclipse.lyo.oslc4j.trs.server.service.TrackedResourceSetService;
+...
+public class Application extends javax.ws.rs.core.Application {
+    private static final Set<Class<?>>         RESOURCE_CLASSES                          = new HashSet<Class<?>>();
+    static
+    {
+      ...
+      RESOURCE_CLASSES.add(TrackedResourceSetService.class);
+      ...
+    }
+    ...
+```
+
+Provide the necessary binding definition for the  `PagedTrs` class.
+
+```java
+import java.util.Collections;
+import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
+import com.sample.adaptor.InmemPagedTrsSingleton;
+import org.glassfish.hk2.utilities.binding.AbstractBinder;
+...
+public class Application extends javax.ws.rs.core.Application {
+    ...
+    @Override
+    public Set<Object> getSingletons() {
+        return Collections.singleton(new AbstractBinder() {
+            @Override
+            protected void configure() {
+                bindFactory(new InmemPagedTrsSingleton()).to(PagedTrs.class);
+            }
+        });
+    }
+```
+
+Define the `InmemPagedTrsSingleton` singleton class. You will need to complete the code example below, with
+* the code that populates  `uris` with the intial set of resources to be managed by `InmemPagedTrs`. 
+* the desired `basePageLimit` and `changelogPageLimit` parameters. 
+
+```java
+package com.sample.adaptor;
+
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.ws.rs.core.UriBuilder;
+import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
+import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
+import org.eclipse.lyo.oslc4j.trs.server.service.TrackedResourceSetService;
+import org.glassfish.hk2.api.Factory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class InmemPagedTrsSingleton implements Factory<PagedTrs> {
+    private final static Logger log = LoggerFactory.getLogger(InmemPagedTrsSingleton.class);
+    private static InmemPagedTrs inmemPagedTrs;
+
+    @Override
+    public InmemPagedTrs provide() {
+        return getInmemPagedTrs();
+    }
+
+    @Override
+    public void dispose(final PagedTrs instance) {
+        log.debug("{} is getting disposed", instance);
+    }
+
+    public static InmemPagedTrs getInmemPagedTrs() {
+        if(inmemPagedTrs == null) {
+            log.debug("Initialising 'InmemPagedTrs' instance");
+            
+            ArrayList<URI> uris = new ArrayList<URI>();
+            
+            //TODO: populate uris with the intial set of resources to be managed by the InmemPagedTrs instance
+            ....
+            // not thread-safe
+            inmemPagedTrs = new InmemPagedTrs(<basePageLimit>, <changelogPageLimit>,
+                UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(TrackedResourceSetService.RESOURCE_PATH).build(), 
+                TrackedResourceSetService.BASE_PATH, TrackedResourceSetService.CHANGELOG_PATH, uris);
+        }
+        return inmemPagedTrs;
+    }
+}
+```
+
+The application is now ready to respond to REST requests from a TRS Client. Once running, the server will respond to requests on the relative path "/trs".
+
+## Update the TRS data set
+To update the set of OSLC resources that form the TRS Base and ChangeLog, simply call the following methods in your code:
+
+* `InmemPagedTrsSingleton.getInmemPagedTrs().onCreated(aResource);`
+* `InmemPagedTrsSingleton.getInmemPagedTrs().onModified(aResource);`
+* `InmemPagedTrsSingleton.getInmemPagedTrs().onDeleted(aResource.getAbout());`
+
+# <a name="run-server"></a>Run the server
 
 Once the server is developed, you can run it by selecting *Run As --&gt; Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-exploded`.
 
