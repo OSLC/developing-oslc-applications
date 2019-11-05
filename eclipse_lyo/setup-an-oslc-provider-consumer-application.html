@@ -1,5 +1,6 @@
 <!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setup an OSLC Provider/Consumer Application</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
 Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
 Modernizr.load([{
   test: Modernizr.mustard,
   yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
@@ -331,9 +332,10 @@ public class Requirement
 </li>
 </ol>
 <p><strong>You are done!</strong> The generated interactive API console can now be accessed via</p>
-<pre><code>http://localhost:8080/adaptor-sample/swagger-ui</code></pre><h1><a name="provide-trs-support"></a>(Optional) Provide TRS Support</h1><p>The purpose of the <em>TRS Server</em> library is to provide a developer with a ready
-to use set of classes over which he can provide a minimal implementation that
-will result in a TRS interface with minimal effort.</p>
+<pre><code>http://localhost:8080/adaptor-sample/swagger-ui</code></pre><h1><a name="provide-trs-support"></a>(Optional) Provide TRS Support</h1><p>The <em>TRS Server</em> library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
+The current implementation supports an In-memory TRS Server that does not persist its TRS resources.
+These classes are however designed to be extended for a persistent solution. 
+For a thourough walkthough of TRS solutions, which among other things ensures persisting the TRS Logs, visit the <a href="./eclipse-lyo#trs-sdk"> additional information on TRS</a>  </p>
 <h2>Add Maven dependencies</h2><p>Add a dependency for the TRS Server library:</p>
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.lyo.trs&lt;/groupId&gt;
