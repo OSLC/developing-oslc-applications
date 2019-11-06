@@ -2,7 +2,7 @@ The [Eclipse Lyo](http://www.eclipse.org/lyo/) project supports Java developers 
 
 Eclipse Lyo promotes the use of Linked Data principles and the [OSLC](http://docs.oasis-open.org/oslc-core/oslc-core/v3.0/oslc-core-v3.0-part1-overview.html) (Open Services for Lifecycle Collaboration) standard for publishing lifecycle data, to enable the interoperability of heterogeneous products, services, and other distributed network resources.
 
-# OSLC4J SDK
+# <a name="oslc4j-sdk"></a>OSLC4J SDK
 
 Lyo’s central component is the OSLC4J SDK (Software Development Kit) that helps build REST-based servers and clients, compliant with the OSLC standard.
 
@@ -28,7 +28,7 @@ The library:
 * [Lyo Client sample code](https://github.com/OSLC/lyo-samples) that demonstrates how to use the Lyo client to interact with OSLC Service Providers in various ways.
 * You are also welcome to contact the development team via [lyo-dev mailing list](https://dev.eclipse.org/mailman/listinfo/lyo-dev)
 
-# Lyo Designer
+# <a name="lyo-designer"></a>Lyo Designer
 
 [Lyo Designer](lyo-designer) is an Eclipse plugin that allows one to graphically model (1) the overall system architecture, (2) the information model of the RDF resources being shared, and (3) the individual services and operations of each Server in the system. The figure below shows the information modelling interface:
 
@@ -57,11 +57,23 @@ Lyo Designer supports incremental development, where manual changes to the gener
 * If you want to contribute to Lyo Designer, you can [work from its source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)
 
 
-# Additional components
+# <a name="trs-sdk"></a>OSLC Tracked Resource Set (TRS) SDK
+
+[OSLC Tracked Resource Set (TRS) SDK](https://wiki.eclipse.org/Lyo/TRSSDK) provides a set of java beans that represent the entities within the [TRS specification 2.0](https://archive.open-services.net/wiki/core/TrackedResourceSet-2.0/). (this specification is being migrated to OASIS, as [TRS 3.0 specification](https://raw.githack.com/oasis-tcs/oslc-core/master/specs/trs/tracked-resource-set.html).)
+
+**Further Information**
+
+* [Javadocs for TRS package](https://download.eclipse.org/lyo/docs/core/latest/index.html?org/eclipse/lyo/core/trs/package-summary.html)
+* [Guide on implementing a TRS provider for the iotp-adaptor](../iotp_adaptor/trs-provider) and integrating with the IBM jazz.net applications. The iotp-adaptor an OSLC server that exposes IBM Watson IoT Platform resources as OSLC resources.
+* [In-memory TRS Server](./setup-an-oslc-provider-consumer-application.html#provide-trs-support) - Instructions on how to integrate a simple TRS Server implementation that does not persist its TRS resources.
+   * [TRS Server Javadocs](https://download.eclipse.org/lyo/docs/trs-server/latest/)
+* [TRS Reference Application guided tour](https://wiki.eclipse.org/Lyo/TRSReferenceApplication) - Provides a guided tour of the TRS reference application and its capabilities.
+* [TRS Workshop](http://wiki.eclipse.org/Lyo/TRSWorkshop) - A TRS workshop for Bugzilla
+
+# <a name="additional-components"></a>Additional components
 
 Additional components of the Lyo project include:
 
-* [OSLC Tracked Resource Specification (TRS) SDK](https://wiki.eclipse.org/Lyo/TRSSDK) - provides a simple set of java beans that represent the entities within the TRS specification.
 * [Lyo Store](https://github.com/eclipse/lyo-store) - a library that provides a simple interface for working with a triplestore via Java objects representing OSLC Resources.
 * [Test Suite](https://wiki.eclipse.org/Lyo/LyoTestSuite) - provides a suite of tests which will test OSLC domain provider implementations against the specification.
 * [Reference Implementations](https://wiki.eclipse.org/Lyo/BuildingOSLC4J) - See how OSLC works directly with working samples and with a simple server to test against.
@@ -71,12 +83,3 @@ Additional components of the Lyo project include:
     - [OSLC4JS architecture](http://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html)
     - [Development with OSLC4JS](https://wiki.eclipse.org/DevelopingOslc4Js)
 
-## Example OSLC4j-based Servers
-
-Lyo also includes instructions and source code for a range of OSLC Server implementations:
-
-* [SharePoint](https://wiki.eclipse.org/Lyo/SharepointAdapter) - This SharePoint adapter looks through the sharepoint OData collections for collections where the ContentType is defined as "Document". For each SharePoint library that contains documents, an OSLC service provider is created with the basic services for OSLC Delegated dialogs for selection and creation as well as listing the documents with a UI preview.
-* The [Hudson and Jenkins](https://wiki.eclipse.org/Lyo/JenkinsPlugin) adapor implements the OSLC Automation specification.
-* [Simulink](https://wiki.eclipse.org/Lyo/Simulink)
-* [MagicDraw](https://wiki.eclipse.org/Lyo/MagicDraw)
-* The [Lyo LDP reference implementation](https://wiki.eclipse.org/Lyo/BuildLDPSample) - is a sample Java implementation of the W3C Linked Data Platform 1.0 Candidate Recommendation using JAX-RS (Apache CXF) and Jena TDB.
