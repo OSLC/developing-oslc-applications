@@ -1,15 +1,15 @@
 {
   "index": {
     "title": "Tutorial Overview",
-    "parent_uri": "/tutorials.html"
+    "parent_uri": "../tutorials.html"
   },
   "overview_of_oslc": {
     "title": "A brief overview of OSLC",
-    "parent_uri": "/tutorials.html"
+    "parent_uri": "../tutorials.html"
   },
   "running_the_examples": {
     "title": "Downloading and starting the sample applications",
-    "parent_uri": "/tutorials.html"
+    "parent_uri": "../tutorials.html"
   },
   "implementing_an_oslc_provider/1_0_implementing_a_provider": {
     "title": "Part 1, turning Bugzilla into a provider of the Change Management OSLC specification"
