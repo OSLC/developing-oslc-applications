@@ -1,23 +1,30 @@
 {
   "eclipse-lyo": {
-    "title": "Eclipse Lyo - support for Java developers"
+    "title": "Eclipse Lyo - support for Java developers",
+    "parent_uri": "/"
   },
   "eclipse-setup-for-lyo-based-development": {
-    "title": "Eclipse Setup for Lyo-based Development"
+    "title": "Eclipse Setup for Lyo-based Development",
+    "parent_uri": "/"
   },
   "setup-an-oslc-provider-consumer-application": {
-    "title": "Setup an OSLC Provider/Consumer Application"
+    "title": "Setup an OSLC Provider/Consumer Application",
+    "parent_uri": "/"
   },
   "lyo-designer": {
-    "title": "Lyo Designer - Model the Toolchain"
+    "title": "Lyo Designer - Model the Toolchain",
+    "parent_uri": "/"
   },
   "install-lyo-designer": {
-    "title": "Lyo Designer - Install" 
+    "title": "Lyo Designer - Install",
+    "parent_uri": "/"
   },
   "toolchain-modelling-workshop": {
-    "title": "Toolchain Modelling Workshop"
+    "title": "Toolchain Modelling Workshop",
+    "parent_uri": "/"
   },
   "domain-specification-modelling-workshop": {
-    "title": "Domain Specification Modelling Workshop"
+    "title": "Domain Specification Modelling Workshop",
+    "parent_uri": "/"
   }
 }

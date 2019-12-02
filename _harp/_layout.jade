@@ -52,9 +52,9 @@ html.no-js(lang="en")
                 abbr.oslc-name(title="#{ org_name }") #{ org_abbr }
                 span.project-name #{ site_name }
           ul.items
-            if(parent)
+            if parent_uri !== null
               li(class='item' role="presentation")
-                a(href="#{ parent }") Go one level up
+                a(href="#{ parent_uri }") <i class="fas fa-level-up-alt"></i> One level up
             - var dir = current.path[0]
             case dir
               when 'eclipse_lyo'
@@ -65,8 +65,10 @@ html.no-js(lang="en")
               when 'integrating_products_with_oslc'
                 - var $i = 1;
                 for page, slug in public.integrating_products_with_oslc._data
+                  //- - var fslug = 'integrating_products_with_oslc/' + slug
                   li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
-                    a(href="#{ site_url }#{ slug === 'index' ? '' : ('integrating_products_with_oslc/' + slug + '.html') }") #{ page.title }
+                    //- a(href="#{ site_url }#{ slug === 'index' ? '' : ('integrating_products_with_oslc/' + slug + '.html') }") #{ page.title }
+                    a(href="#{ site_url }#{ 'integrating_products_with_oslc/' + slug + '.html' }") #{ page.title }
               when 'iotp_adaptor'
                 - var subdir = current.path[1]
                 case subdir
