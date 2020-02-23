@@ -12,7 +12,7 @@
     "parent_uri": "../"
   },
   "lyo-designer": {
-    "title": "Lyo Designer - Model the Toolchain",
+    "title": "Lyo Designer - Toolchain modelling support",
     "parent_uri": "../"
   },
   "install-lyo-designer": {
@@ -25,6 +25,10 @@
   },
   "domain-specification-modelling-workshop": {
     "title": "Domain Specification Modelling Workshop",
+    "parent_uri": "../"
+  },
+  "modelling-howto": {
+    "title": "Modelling - Howto and Advanced Topics",
     "parent_uri": "../"
   }
 }

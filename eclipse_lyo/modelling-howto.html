@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Modelling - Howto and Advanced Topics</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="../"><i class="fas fa-level-up-alt"></i> One level up</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-lyo.html">Eclipse Lyo - support for Java developers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-setup-for-lyo-based-development.html">Eclipse Setup for Lyo-based Development</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html">Setup an OSLC Provider/Consumer Application</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/lyo-designer.html">Lyo Designer - Toolchain modelling support</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/install-lyo-designer.html">Lyo Designer - Install</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html">Toolchain Modelling Workshop</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html">Domain Specification Modelling Workshop</a></li><li role="presentation" class="item current"><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/modelling-howto.html">Modelling - Howto and Advanced Topics</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Modelling - Howto and Advanced Topics</h1></header><section class="content"><div class="copy"><h1><a name="configure-service-url"></a>Configuring the URLs of JAX-RS web services</h1><p>For each <strong>ServiceProviderCatalog</strong>, <strong>ServiceProvider</strong> and <strong>Service</strong> in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify the following optional properties:</p>
+<p>For the <strong>ServiceProvider</strong> web Service:</p>
+<ol>
+<li><em>serviceNamespace</em> - specifies the relative URL for the
+ServiceProvider JAX-RS Service. For example, <em>projects</em>
+will lead to the url
+<em><a href="http://localhost:8080/YourAdaptor/services/projects">http://localhost:8080/YourAdaptor/services/projects</a></em>. The
+default is <em>serviceProviders</em> (leading to the default
+*<a href="http://localhost:8080/YourAdaptor/services/serviceProviders">http://localhost:8080/YourAdaptor/services/serviceProviders</a>*).</li>
+<li><em>instanceID</em> - specifies the relative URL of a single
+service provider, including the parameter variables
+necessary to identify a specific service provider. For
+example, <em>{projectId}</em> leads to the url
+<em><a href="http://localhost:8080/YourAdaptor/services/projects/1">http://localhost:8080/YourAdaptor/services/projects/1</a></em>
+mapping the value 1 to the <em>projectId</em> parameter in the
+java code. Other IDs can be
+<em>collectionName/{collectionName}/project/{projectName}</em>. The
+default is <em>{serviceProviderId}</em>.</li>
+</ol>
+<p>For the <strong>Service</strong> web Service:</p>
+<ol>
+<li><em>serviceNamespace</em> - specifies whether the relative URL of the
+web service should build upon the URL of its managing
+service provider (<em>relativeToServiceProvider</em>), or it should be
+standalone (<em>independantOfServiceProvider</em>).</li>
+</ol>
+<h1><a name="handling-large-models"></a>Handling Large Models</h1><p>To manage large models, Lyo Designer supports two model structuring techniques, which will be detailed in the following subsections:</p>
+<ol>
+<li>Creating multiple diagrams within the same model file</li>
+<li>Composing a model into multiple model files</li>
+</ol>
+<h2>Common Domains</h2><p>But first a sample model that can be used to illustrate the suggested techniques.</p>
+<p>A model of the OSLC and other common domains is already available for reuse. To reuse these common specifications:</p>
+<ol>
+<li>Clone the <a href="https://github.com/eclipse/lyo.domains">Github lyo.domains</a> git repository</li>
+<li>Import the project <em>org.eclipse.lyo.tools.domainmodels</em>.<ul>
+<li>This project models many of the OSLC domains across a number of diagrams.</li>
+</ul>
+</li>
+<li>Navigate the model as any other Domain Specification model.</li>
+</ol>
+<p>In the next subsections, you will learn how to import this model into other models for reuse.</p>
+<h2>Creating multiple diagrams within the same model file</h2><p>Within a single model, you can create any number of diagrams, each of which can contain any number of (overlapping) Domain Specifications.</p>
+<ol>
+<li>Open the Model Explorer view.</li>
+<li>Expand the <em>domainModel.xml</em> file until the
+<em>Specification</em> entry is visible. (Do not double-click on the file. Instead, press the triangle/arrow to the left of the file entry.)</li>
+<li>right-click the <em>Specification</em> entry, and select <strong>New Representation &gt; New SpecificationDiagram</strong>.</li>
+</ol>
+<p>You can define your Domain Specifications in any of these diagrams. Note the following:</p>
+<ul>
+<li>A Diagram can contain any number of Domain Specifications.</li>
+<li>A Domain Specification can be viewed in any number of Specification diagrams.<ul>
+<li>Once defined in a diagram, you can drag-drop a Domain Specification from the Model Explorer view into any other diagram to represent that domain in additional diagrams.</li>
+</ul>
+</li>
+<li>a change to a model entity (a Domain Specification, Resource, Resource Property) are reflected in all diagrams.</li>
+</ul>
+<h2>Composing a model into multiple model files</h2><p>You can import and use a previously defined model, through the addition of <em>Project Dependencies</em>:</p>
+<ol>
+<li>In the <em>Model Explorer</em> view, right-click on the <em>Project Dependencies</em> entry within the modelling project, and select <strong>Add Model</strong>.</li>
+<li>select <strong>Browse Workspace</strong></li>
+<li>Navigate and select the desired model.</li>
+<li>Press <strong>OK</strong>.</li>
+<li>In your own SpecificationDiagram, you can now create relationships to the imported Domain Specifications (or their contained Resources and Resource Properties).<ol>
+<li>Expand the imported Specification model (under the the <em>Project Dependencies</em> entry) until the Domain Specification entries are visible.</li>
+<li>You can drag-drop any Domain Specification into an existing SpecificationDiagram to visualize its content.</li>
+<li>Also, when selecting the Resource Properties of a Resource, you will notice that all imported Resource properties are available as well.</li>
+</ol>
+</li>
+</ol>
+<h1><a name="controlling-generation-parameters"></a>Controlling the generation parameters of Domain Specification(s)</h1><p>By default, the Java classes corresponding to the OSLC Resources of Domain Specification are generated under the same destination folder path as the containing overall model. Similarly, the java package name is the same as that of the containing model.</p>
+<p>It may sometimes be desired to generate OSLC-resource Java classes into a separate java library, which is then included in multiple OSLC projects. For example, you might want to generated the classes from each Domain Specification into a separate Java (maven) projects.</p>
+<p>Lyo Designer allows you to control the generation settings of each individual Domain Specification and/or all Domain Specifications. Such settings will override the <em>java Class Base Namespace</em> and <em>Java Files Base Path</em> settings of an adaptor.</p>
+<p>Lyo Designer allows you even to model Domain Specification(s) without necessarily generating them. This can be useful if:</p>
+<ul>
+<li>you want to model existing implemented Domain Specifications so that they can be used in the model. That is, you can define OSLC services on such Java classes, but you don&#39;t necessarily want to generate these classes.</li>
+<li>You have previously generated domain specificaitons, and have done manual modifications that you don&#39;t want to overrride. </li>
+</ul>
+<p>To configure the generation settings for a single Domain Specification:</p>
+<ol>
+<li>Select <strong>Generation Setting</strong> from the tools pallet, and then select a <strong>Domain Specification</strong> in the diagram.</li>
+<li>Set the generation properties as desired.<ul>
+<li><em>Java Files Path</em> - The relative file path to be used to save the generated Java classes.  </li>
+<li><em>Java class Package Name</em> - The package name of the generated Java classes.</li>
+<li><em>Do Not Generate</em> - whether the Java classes should be generated at all.</li>
+</ul>
+</li>
+</ol>
+<p>To configure the generation settings for all Domain Specifications:</p>
+<ol>
+<li>Select <strong>Generation Setting</strong> from the tools pallet, and then select an empty area in the Specification Diagram (that is, do not select any Domain Specification).</li>
+<li>Set the generation properties as above.</li>
+</ol>
+<p>The following rules applies when generation settings are set at different levels in the model:</p>
+<ul>
+<li>The generation settings of a specific Domain Specification (if defined) override those set for the overall Specification model.</li>
+<li>The generation settings of the overall Specification model (if defined) override those set for a specific Tool Adaptor.</li>
+</ul>
+<p><strong>Important to note</strong> that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource <em>oslc:Requirement</em> contains a reference property <em>dcterms:creator</em>, whose range is Resource <em>foaf:Person</em>. If the <em>OSLC</em> and <em>FOAF</em> Domain Specifications are generated into different maven projects, th   e <em>OSLC</em> maven project should include a maven dependency to the <em>FOAF</em> maven project.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-24416914-3', 'oslc.github.io');
+ga('send', 'pageview');</script></html>

@@ -1,4 +1,4 @@
-Introduction
+<a name="Introduction"></a>Introduction
 ============
 This workshop presents the use of Lyo Designer to graphically model a complete OSLC-based toolchain (including the interactions between OSLC servers and clients), and/or single server and/or client.
 The instructions also include a walkthrough of the generated OSLC4J-compliant code.
@@ -42,12 +42,12 @@ adaptors.
 5.  Perform the final implementation steps to make the adaptors
     ready to run.
 
-Bug Reporting
+<a name="bug-reporting"></a>Bug Reporting
 =============
 
 The prototype presented here is under development and its features may change over time. Your feedback, suggestions for improvements and bug reports are appreciated. In particular, the graphical notation being used is experimental and certainly needs further improvements. Please send any questions or suggestions to the project mailinglist lyo-dev@eclipse.org, or report Bugs/features on [Github](https://github.com/eclipse/lyo.designer/issues)
 
-References
+<a name="references"></a>References
 ==========
 
 If you wish to cite this modelling prototype in scientific papers
@@ -57,14 +57,14 @@ If you wish to cite this modelling prototype in scientific papers
 
 -   El-Khoury, Jad. ["Lyo Code Generator: A Model-based Code Generator for the Development of OSLC-compliant Tool Interfaces."](http://www.sciencedirect.com/science/article/pii/S2352711016300267) SoftwareX, 2016.
 
-Eclipse Setup
+<a name="eclipse-setup"></a>Eclipse Setup
 =============
 
 First, make sure your Eclipse environment is setup as expected for general OSLC4J development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
 Then, make sure you [install Lyo Designer](install-lyo-designer)
 
-Create a Toolchain Modelling Project
+<a name="create-toolchain-modelling-project"></a>Create a Toolchain Modelling Project
 ====================================
 
 We will here create an Eclipse project within which we create the actual
@@ -116,7 +116,9 @@ Create modelling project
     1.  You can now open and edit any of these views, by double-clicking
         on the desired entry.
 
-Model the Toolchain
+*Note:* Lyo Designer also allows you to break up the model into a set of modelling projects for more complicated organisation. See [Handling Large Models](modelling-howto#handling-large-models) for more details.
+
+<a name="model-toolchain"></a>Model the Toolchain
 ===================
 
 You are now ready to graphically specify the desired functionality of
@@ -128,7 +130,7 @@ The instructions to define the three views that form the complete model
 are presented sequentially below. However, the views can be defined in
 any other order.
 
-Modelling Overview
+<a name="modelling-overview"></a>Modelling Overview
 ------------------
 
 The figure below presents the overall meta-model underlying a toolchain
@@ -146,7 +148,7 @@ main parts:
 
 ![The Tool Adaptor Metal Model](./images/OSLCToolAdaptorMetalModel.png "The Tool Adaptor Metal Model")
 
-General Modelling Instructions
+<a name="general-modelling-instructions"></a>General Modelling Instructions
 ------------------------------
 
 The toolchain modelling prototype is based on Sirius. The reader is
@@ -185,7 +187,7 @@ a very short extract (Refer to diagram below):
 -   The **tab-bar** contains the **Filters Selection** button, than
     provide alternatives to hide (or show) diagram elements.
 
-Domain Specification View
+<a name="domain-specification-view"></a>Domain Specification View
 -------------------------
 
 In this view, you can define the set of domain specifications of
@@ -242,7 +244,7 @@ diagram](./images/LyoToolchainModel-SpecificationDiagram.png "An example domain 
     -   **Note**: A **Resource** can refer to **Properties** (Literal
         or Reference) from any other **Domain Specification**.
 
-Toolchain View
+<a name="toolchain-view"></a>Toolchain View
 --------------
 
 In this view, you define the set of tools (at least their OSLC
@@ -278,7 +280,7 @@ diagram](./images/LyoToolchainModel-ToolchainDiagram.png "An example toolchain d
     **AddConsumedResource** tools to define the resources that the
     interface manages or consumes respectively.
 
-Adapter Interface View
+<a name="adaptor-interface-view"></a>Adapter Interface View
 ----------------------
 
 For each **Adaptor Interface** in the **Toolchain** view, you can now
@@ -293,81 +295,53 @@ diagram](./images/LyoToolchainModel-AdaptorInterfaceDiagram.png "An example adap
     open its internal design view.
     1.  If the view is being opened for the first time, you will be
         prompted for a diagram name.
-
-2.  By default, each Adaptor Interface is defined with one
-    **ServiceProviderCatalog**, **ServiceProvider**, **Service** and
-    **BasicCapability**.
-    1.  Set the properties for each of these elements as desired.
+1.  By default, each Adaptor Interface is defined with one
+    **ServiceProviderCatalog**, **ServiceProvider**, **Service**.
+    1.  Set the properties for each of these elements as desired. (See steps below for detailed instructions)
     2.  Note that the model currently supports the definition of one
         (and only one) ServiceProviderCatalog per adaptor.
-
-3.  Use the tools pallet to create any additional **ServiceProviders**.
+1.  Use the tools pallet to create any additional **ServiceProviders**.
     Such elements need to be directly associated with an existing
     **ServiceProviderCatalog** element in the diagram.
     1.  From the Pallet, select the **CreateServiceProvider** tool
-    2.  In the diagram, select the **ServiceProviderCatalog** to which
+    1.  In the diagram, select the **ServiceProviderCatalog** to which
         this **ServiceProvider** belongs.
-    3.  For the newly created **ServiceProvider**, fill-in the
+    1.  For the newly created **ServiceProvider**, fill-in the
         **ServiceProvider** properties (*title*, *description*) as
         defined according to OSLC.
-    4.  (optional) To control the relative URLs used in the
-        ServiceProvider web service, specify the following optional
-        properties:
-        1.  *serviceNamespace* - specifies the relative URL for the
-            ServiceProvider JAX-RS Service. For example, *'projects*
-            will lead to the url
-            *<http://localhost:8080/YourAdaptor/services/projects>*. The
-            default is *serviceProviders* (leading to the default
-            *<http://localhost:8080/YourAdaptor/services/serviceProviders>*).
-        2.  *instanceID* - specifies the relative URL of a single
-            service provider, including the parameter variables
-            necessary to identify a specific service provider. For
-            example, *{projectId}* leads to the url
-            *<http://localhost:8080/YourAdaptor/services/projects/1>*
-            mapping the value 1 to the *projectId* parameter in the
-            java code. Other IDs can be
-            *collectionName/{collectionName}/project/{projectName}*. The
-            default is *{serviceProviderId}*.
-
-4.  For each **ServiceProvider**, create any structure of **Services**
-    and their **Dialogs/CreationFactories/QueryCapabilities**. Such
-    elements need to be directly associated with existing
-    **ServiceProvider** element in the diagram. For example, to create a
-    new **Service**:
+    1. For each **ServiceProviderCatalog** and **ServiceProvider** in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify some of the provided optional properties, as instructed in [Configuring the URLs of the OSLC Services](modelling-howto#configure-service-url).
+1.  For each **ServiceProvider**, create any structure of **Services**
+    and their contained **[Selection Dialog | Creation Dialog | Creation Factories]** capabilities. 
+    A Service element need to be directly associated with existing
+    **ServiceProvider** element in the diagram. To create a new **Service**:
     1.  From the Pallet, select the **CreateService** tool
-    2.  In the diagram, select the **ServiceProvider** to which this
+    1.  In the diagram, select the **ServiceProvider** to which this
         Service element belongs.
-
-5.  For each of the **Dialogs/CreationFactories/QueryCapabilities**,
-    define the **Resources** being managed
-    1.  From the Pallet, select the **AddManagedResource** tool
-    2.  In the diagram, select the
-        **Dialog/CreationFactory/QueryCapability** that manages
-        the Resource.
-
-6.  (optional) To control the relative URLs used in the web service for
-    the C.R.U.D methods of a particular resource, create a
-    **BasicCapability** with the following properties:
-    1.  *serviceNamespace* - specifies whether the relative URL of the
-        resource web service should include the URL of its managing
-        service provider (*relativeToServiceProvider*), or it should be
-        standalone (*independantOfServiceProvider*).
-    2.  *instanceID* - specifies the relative URL of a single resource,
-        including the parameter variables necessary to identify a
-        specific resource. For example, *{changeRequestId}* leads to the
-        url
-        *<http://localhost:8080/YourAdaptor/services/changeRequests/1>*
-        mapping the value 1 to the *changeRequestId* parameter in the
-        java code.
-
-7.  Define the **Resources** that the adaptor consumes
+    1. For each **Service** in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify some of the provided optional properties, as instructed in [Configuring the URLs of the OSLC Services](modelling-howto#configure-service-url).
+1. To define a particular capability, select from the Pallet the desired **[Selection Dialog | Creation Dialog | Creation Factories]** tool.
+    1. In the diagram, select the **Service** to which this capabiliy element belongs.
+    1. For each **[Selection Dialog | Creation Dialog | Creation Factories]**, there will be a corresponding JAX-RS method under the web service of its containing **Service**. The **URI** property under such an element define the relative URL of the method.
+    1.  Define the **Resources** being managed by this capability
+        1.  From the Pallet, select the **AddManagedResource** tool
+        2.  In the diagram, select the capability that manages the Resource.
+1. To define a JAX-RS web service that can perform the RESTful C.R.U.D (Create Read Update Delete) method for a particular OSLC resource, select the **Web Service** tool from the pallet. 
+    1. Define the necessary properties
+        * *Name* - This denotes the Java class name that implement the service method.
+        * *Service URL Pattern* - The relative URL pattern for the web service.
+        * *Resource Url Pattern* - The relative URL pattern for the CRUD methods under this web service.
+            1. You can use *[ResourceType]* to denote the RDF type of the resource.
+            1. You can use the parameter variables necessary to identify a specific resource. For example, *changeRequests{changeRequestId}* leads to the url *<http://localhost:8080/YourAdaptor/services/changeRequests/1>* mapping the value 1 to the *changeRequestId* parameter in the java code.
+    1. Define which of the Read|Delete|Update methods to generate.
+    1.  Define the **Resources** being managed by this capability
+        1.  From the Pallet, select the **AddManagedResource** tool
+        2.  In the diagram, select the **Web Service** that manages the Resource.
+1.  Define the **Resources** that the adaptor consumes
     1.  From the Pallet, select the **AddComsumedResource** tool
     2.  In the diagram, select the **RequiredAdaptor** element.
-
-8.  View the Toolchain view and note that any added Provided/Consumed
+1.  View the Toolchain view and note that any added Provided/Consumed
     resources are now also represented as ports in the toolchain view.
 
-Validate the model
+<a name="validate-model"></a>Validate the model
 ==================
 
 At any time, you can validate your model to ensure that all required
@@ -388,7 +362,7 @@ Validation](./images/Lyo-ToolchainModelValidation.png " Toolchain Model Validati
         first is specific to the Toochain Editor, while the second is
         for general EMF modelling. You are to select to first entry.
 
-Setup OSLC4J projects
+<a name="setup-oslc4j-projects"></a>Setup OSLC4J projects
 =====================
 
 Once your model is complete and validated, you are ready to generate the
@@ -404,28 +378,34 @@ These projects will then be populated with the generated code needed.
 Interface project properties defined under [ Toolchain
 View](./toolchain-modelling-workshop#toolchain-view)
 
-Generate OSLC4J Java code
+<a name="generate-oslc4j-java-code"></a>Generate OSLC4J Java code
 =========================
 
 Once the toolchain model is defined and validated, you can generate the
 corresponding code for each adaptor through the following simple step:
 
-- __For complete toolchain__: Right-click on the toolchain model (*toolchain.xml*) file, and select **OSLC Lyo Designer &gt; Generate Complete Toolchain Java Code**
-- __For an adaptor__: Right-click on the adaptor in the Toolchain view, and select **OSLC Lyo Designer &gt; Generate Java Code**
+1. Trigger the generation
+    - __For complete toolchain__: Right-click on the toolchain model (*toolchain.xml*) file, and select **OSLC Lyo Designer &gt; Generate Complete Toolchain Java Code**
+    - __For an adaptor__: Right-click on the adaptor in the Toolchain view, and select **OSLC Lyo Designer &gt; Generate Java Code**
+1. You will now be prompted to enter the base path to which the java classes are to be generated.
+    * **NOTE:** Alternatively, to avoid such prompt, you can define this path through a *generationPath* property in a *generator.properties* file. The properties file is expected in the same location as the model file.
+1. Press **OK**
+1. Once successful, you will be prompted with a dialog that confirms generation completion.
 
-You will be prompted for the base folder to which the java classes are to be generated. As instructed in the dialog, you can also define the property *generationPath* in a *generator.properties* file to avoid such prompt.
-
-**Note**: The code generator supports an incremental development of the
+**Notes**: 
+* Lyo Designer supports an incremental development of the
 adaptor model. Any manual changes to the generated code (within
 designated placeholders) are maintained upon a subsequent change in the
 adaptor model, and resulting code re-generation.
+* Lyo Designer allows you to generate different parts of the code into different projects (or file locations). This allows for better reuse of generated code packages. See [Controlling the generation parameters of Domain Specification(s)](modelling-howto#controlling-generation-parameters) for more details.
 
 Upon a successful code generation, all the necessary Java classes for
 complete ready-to-run OSLC4J projects are produced. The next section
 gives an overview of the generated code, before proceeding with an
 explanation of the necessary manual code to be provided.
 
-Browsing the generated code
+
+<a name="browse-generated-code"></a>Browsing the generated code
 ===========================
 
 Besides the **AdaptorManager** class (see next section), all generated
@@ -505,26 +485,7 @@ specification model:
     -   ServiceProvider presentations
     -   ServiceProviderCatalog presentations
 
-(Advanced) controlling the generation paths for OSLC-resources
-----------------------------------
-By default, the code generator generates a Java class for each OSLC-resource of relevance to each adaptor. For common resources that are referenced in a number of adaptors (such as foaf:Person), this implies a duplication of the same Java class in each adaptor.
-Instead, it may be desired to generated the OSLC-resource Java classes into a common java library, which is then included in each adaptor project.
-
-Lyo Designer allows you to specify the generation settings for all Domain Specifications and/or each individual Domain Specification. This will override the *java Class Base Namespace* and *Java Files Base Path* settings of each adaptor - for the Domain Specifications that have such overriding settings defined.
-
-To configure the generation settings for all Domain Specifications:
-1. Right-click inside the Specification Diagram (without selecting any Domain Specification) and and select the context menu item **OSLC Lyo Designer &gt; Set Java Generation Settings**
-1. Enter (a) relative file path (b) the package name of the Java classes to be generated.
-
-To configure a single Domain Specification's generation settings:
-1. Right-click on a specific Domain Specification element and select the context menu item **OSLC Lyo Designer &gt; Set Java Generation Settings**
-1. Enter (a) relative file path (b) the package name of the Java classes to be generated.
-
-The generation settings of a Domain Specification override those set for the overall Specification model.
-
-**Important to note** that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource *oslc:Requirement* contains a reference property *dcterms:creator*, whose range is Resource *foaf:Person*. If the *OSLC* and *FOAF* Domain Specifications are generated into different maven projects, the *OSLC* maven project should include a maven dependency to the *FOAF* maven project.
-
-Fill in the internal implementation of each adaptor
+<a name="finin-internal-implementation"></a>Fill in the internal implementation of each adaptor
 ===================================================
 
 The manual code the developer needs to implement is concentrated in a
@@ -550,7 +511,7 @@ In order to enable OAuth on a newly generated adaptor, add the following code to
      RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
      RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
 
-Run the adaptor
+<a name="run-adaptor"></a>Run the adaptor
 ===============
 
 Once the manual code is completed, You are now ready to run an adaptor.
