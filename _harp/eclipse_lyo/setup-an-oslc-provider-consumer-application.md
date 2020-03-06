@@ -446,13 +446,13 @@ public class Requirement
 ...
 ```
 ## Access the Swagger Documentation
-**You are done!** You should now be able to access the the OpenAPI specification document (yaml file) at:
+You can now access the OpenAPI specification document (yaml file) at:
 
     http://localhost:8080/adaptor-sample/services/swagger.yaml
 
 You can copy the yaml file to a [Swagger Editor](https://editor.swagger.io), to view the API documentation, as well as generate client/Server SDK code for a number of languages and platforms.
 
-**But**, with a few more steps, you can also integrate [Swagger UI](https://swagger.io/swagger-ui/) into your OSLC server, providing the end-user with an interactive console of the OSLC services.
+**But wait, there is more...**, with a few more steps, you can also integrate [Swagger UI](https://swagger.io/swagger-ui/) into your OSLC server, providing the end-user with an interactive console of the OSLC services.
 
 ## Integrating Swagger UI
 
@@ -460,13 +460,13 @@ The following steps allows you to integrate [Swagger UI](https://swagger.io/swag
 
 1. Download and extract the [Swagger UI GitHub project](https://github.com/swagger-api/swagger-ui) onto your local computer.
 
-1. Copy the content of the '*dist*' folder to '*/src/main/webapp/swagger-ui*', under your web project.
+1. Copy the '*dist*' folder to under '*/src/main/webapp/swagger-ui*', under your web project.
 
 1. Edit the `swagger-ui/index.html` file, replacing the url `http://petstore.swagger.io/v2/swagger.json` with the url of your own yaml file `http://localhost:8080/adaptor-sample/services/swagger.yaml`.
 
 **You are done!** The generated interactive API console can now be accessed via
 
-    http://localhost:8080/adaptor-sample/swagger-ui
+    http://localhost:8080/adaptor-sample/swagger-ui/dist
 
 # <a name="provide-trs-support"></a>(Optional) Provide TRS Support
 

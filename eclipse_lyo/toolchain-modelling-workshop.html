@@ -48,6 +48,24 @@ functionality, from which almost complete code will be generated.</li>
 <li>Perform the final implementation steps to make the adaptors
 ready to run.</li>
 </ol>
+<h2>Table of Content:</h2><ol>
+<li><a href="#eclipse-setup">Eclipse Setup</a></li>
+<li><a href="#create-toolchain-modelling-project">Create a Toolchain Modelling Project</a></li>
+<li><a href="#model-toolchain">Model the Toolchain</a><ol>
+<li><a href="#modelling-overview">Modelling Overview</a></li>
+<li><a href="#general-modelling-instructions">General Modelling Instructions</a></li>
+<li><a href="#domain-specification-view">Domain Specification View</a></li>
+<li><a href="#toolchain-view">Toolchain View</a></li>
+<li><a href="#adaptor-interface-view">Adapter Interface View</a></li>
+</ol>
+</li>
+<li><a href="#validate-model">Validate the model</a></li>
+<li><a href="#setup-oslc4j-projects">Setup OSLC4J projects</a></li>
+<li><a href="#generate-oslc4j-java-code">Generate OSLC4J Java code</a></li>
+<li><a href="#browse-generated-code">Browsing the generated code</a></li>
+<li><a href="#fill-in-internal-implementation">Fill in the internal implementation of each adaptor</a></li>
+<li><a href="#run-adaptor">Run the adaptor</a></li>
+</ol>
 <h1><a name="bug-reporting"></a>Bug Reporting</h1><p>The prototype presented here is under development and its features may change over time. Your feedback, suggestions for improvements and bug reports are appreciated. In particular, the graphical notation being used is experimental and certainly needs further improvements. Please send any questions or suggestions to the project mailinglist <a href="mailto:lyo-dev@eclipse.org">lyo-dev@eclipse.org</a>, or report Bugs/features on <a href="https://github.com/eclipse/lyo.designer/issues">Github</a></p>
 <h1><a name="references"></a>References</h1><p>If you wish to cite this modelling prototype in scientific papers
     and communications, please reference:</p>
@@ -246,28 +264,24 @@ Interface</strong> elements. For each such <strong>Adaptor Interface</strong>, i
 important to set its properties appropriately, to ensure the code
 generation works as expected. The properties’ meaning is as follows:</p>
 <ol>
-<li><p><em>name</em>: the name of your adaptor</p>
-</li>
-<li><p><em>java Class Base Namespace</em>: the name of the base Java root
-package from which the code of your adaptor will be generated.</p>
-</li>
-<li><p><em>Java Files Base Path</em>: The path where java files will
-be generated. (for example, <em>/src/</em>)</p>
-</li>
-<li><p><em>Javascript Files Base Path</em>: The path where javascript files
-will be generated. (for example, <em>/WebContent</em>)</p>
-</li>
-<li><p><em>Jsp Files Base Path</em>: The path where the Jsp files will
-be generated. (for example, <em>/WebContent</em>)</p>
-</li>
-<li><p><strong>Note</strong>: the paths above are relative to your current location,
+<li><em>name</em>: the name of your adaptor</li>
+<li><em>java Class Base Namespace</em>: the name of the base Java root
+package from which the code of your adaptor will be generated.</li>
+<li><em>Java Files Base Path</em>: The path where java files will
+be generated. (for example, <em>/src/</em>)</li>
+<li><em>Javascript Files Base Path</em>: The path where javascript files
+will be generated. (for example, <em>/WebContent</em>)</li>
+<li><em>Jsp Files Base Path</em>: The path where the Jsp files will
+be generated. (for example, <em>/WebContent</em>)</li>
+</ol>
+<ul>
+<li><strong>Note</strong>: the paths above are relative to your current location,
 which is the toolchain modelling project. You will most likely
 want to generate the code for each adaptor into a different and
 separate project. Indicate your target path for each adaptor
 relative to the modelling project location. For example,
-<em>../adaptor1Project/src/</em></p>
-</li>
-</ol>
+<em>../adaptor1Project/src/</em></li>
+</ul>
 </li>
 <li><p>For each <strong>Adaptor Interface</strong>, use the <strong>AddManagedResource</strong> &amp;
 <strong>AddConsumedResource</strong> tools to define the resources that the
@@ -331,7 +345,7 @@ Service element belongs.</li>
 <li><em>Name</em> - This denotes the Java class name that implement the service method.</li>
 <li><em>Service URL Pattern</em> - The relative URL pattern for the web service.</li>
 <li><em>Resource Url Pattern</em> - The relative URL pattern for the CRUD methods under this web service.<ol>
-<li>You can use *[ResourceType]* to denote the RDF type of the resource.</li>
+<li>You can use <em>[ResourceType]</em> to denote the RDF type of the resource.</li>
 <li>You can use the parameter variables necessary to identify a specific resource. For example, <em>changeRequests{changeRequestId}</em> leads to the url *<a href="http://localhost:8080/YourAdaptor/services/changeRequests/1">http://localhost:8080/YourAdaptor/services/changeRequests/1</a>* mapping the value 1 to the <em>changeRequestId</em> parameter in the java code.</li>
 </ol>
 </li>
@@ -497,7 +511,7 @@ debugging purposes:</p>
 </ul>
 </li>
 </ol>
-<h1><a name="finin-internal-implementation"></a>Fill in the internal implementation of each adaptor</h1><p>The manual code the developer needs to implement is concentrated in a
+<h1><a name="fill-in-internal-implementation"></a>Fill in the internal implementation of each adaptor</h1><p>The manual code the developer needs to implement is concentrated in a
 single class - the <strong>AdaptorManager</strong> class (in the
 <em>your.basepackage.name</em> package). The methods that need to be provided
 are:</p>

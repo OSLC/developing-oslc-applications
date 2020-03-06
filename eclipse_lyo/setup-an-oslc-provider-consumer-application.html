@@ -319,20 +319,20 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
 @OslcResourceShape(title = &quot;Requirement Resource Shape&quot;, describes = Oslc_rmDomainConstants.REQUIREMENT_TYPE)
 public class Requirement
 ...</code></pre>
-<h2>Access the Swagger Documentation</h2><p><strong>You are done!</strong> You should now be able to access the the OpenAPI specification document (yaml file) at:</p>
+<h2>Access the Swagger Documentation</h2><p>You can now access the OpenAPI specification document (yaml file) at:</p>
 <pre><code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code></pre><p>You can copy the yaml file to a <a href="https://editor.swagger.io">Swagger Editor</a>, to view the API documentation, as well as generate client/Server SDK code for a number of languages and platforms.</p>
-<p><strong>But</strong>, with a few more steps, you can also integrate <a href="https://swagger.io/swagger-ui/">Swagger UI</a> into your OSLC server, providing the end-user with an interactive console of the OSLC services.</p>
+<p><strong>But wait, there is more...</strong>, with a few more steps, you can also integrate <a href="https://swagger.io/swagger-ui/">Swagger UI</a> into your OSLC server, providing the end-user with an interactive console of the OSLC services.</p>
 <h2>Integrating Swagger UI</h2><p>The following steps allows you to integrate <a href="https://swagger.io/swagger-ui/">Swagger UI</a> into your OSLC server, to provide the end-user with a visual and interactive presentation of the OSLC services.</p>
 <ol>
 <li><p>Download and extract the <a href="https://github.com/swagger-api/swagger-ui">Swagger UI GitHub project</a> onto your local computer.</p>
 </li>
-<li><p>Copy the content of the &#39;<em>dist</em>&#39; folder to &#39;<em>/src/main/webapp/swagger-ui</em>&#39;, under your web project.</p>
+<li><p>Copy the &#39;<em>dist</em>&#39; folder to under &#39;<em>/src/main/webapp/swagger-ui</em>&#39;, under your web project.</p>
 </li>
 <li><p>Edit the <code>swagger-ui/index.html</code> file, replacing the url <code>http://petstore.swagger.io/v2/swagger.json</code> with the url of your own yaml file <code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code>.</p>
 </li>
 </ol>
 <p><strong>You are done!</strong> The generated interactive API console can now be accessed via</p>
-<pre><code>http://localhost:8080/adaptor-sample/swagger-ui</code></pre><h1><a name="provide-trs-support"></a>(Optional) Provide TRS Support</h1><p>The <em>TRS Server</em> library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
+<pre><code>http://localhost:8080/adaptor-sample/swagger-ui/dist</code></pre><h1><a name="provide-trs-support"></a>(Optional) Provide TRS Support</h1><p>The <em>TRS Server</em> library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
 The current implementation supports an In-memory TRS Server that does not persist its TRS resources.
 These classes are however designed to be extended for a persistent solution. 
 For a thourough walkthough of TRS solutions, which among other things ensures persisting the TRS Logs, visit the <a href="./eclipse-lyo#trs-sdk">additional information on TRS</a>  </p>

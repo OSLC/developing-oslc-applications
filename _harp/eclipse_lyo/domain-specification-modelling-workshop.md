@@ -6,6 +6,15 @@ From such a model, you can produce a library of Java classes, with the appropria
 
 A domains model can also be imported into a toolchain model, to model a complete toolchain, as well as a single server and/or client. (see [Toolchain Modelling Workshop](toolchain-modelling-workshop) for details).
 
+Table of Content:
+-------------------------
+1. [Eclipse Setup](#eclipse-setup)
+1. [Create a Modelling Project](#create-modelling-project)
+1. [Model OSLC Domain Specifications](#model-oslc-domain-specifications)
+1. [Setup OSLC4J projects](#setup-oslc4j-projects)
+1. [Generate OSLC4J Java code](#generate-oslc4j-java-code)
+1. [Browsing the generated code](#browsing-generated-code)
+
 Bug Reporting
 -------------
 

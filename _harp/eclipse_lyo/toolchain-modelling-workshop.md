@@ -42,6 +42,23 @@ adaptors.
 5.  Perform the final implementation steps to make the adaptors
     ready to run.
 
+Table of Content:
+-------------------------
+1. [Eclipse Setup](#eclipse-setup)
+1. [Create a Toolchain Modelling Project](#create-toolchain-modelling-project)
+1. [Model the Toolchain](#model-toolchain)
+   1. [Modelling Overview](#modelling-overview)
+   1. [General Modelling Instructions](#general-modelling-instructions)
+   1. [Domain Specification View](#domain-specification-view)
+   1. [Toolchain View](#toolchain-view)
+   1. [Adapter Interface View](#adaptor-interface-view)
+1. [Validate the model](#validate-model)
+1. [Setup OSLC4J projects](#setup-oslc4j-projects)
+1. [Generate OSLC4J Java code](#generate-oslc4j-java-code)
+1. [Browsing the generated code](#browse-generated-code)
+1. [Fill in the internal implementation of each adaptor](#fill-in-internal-implementation)
+1. [Run the adaptor](#run-adaptor)
+
 <a name="bug-reporting"></a>Bug Reporting
 =============
 
@@ -485,7 +502,7 @@ specification model:
     -   ServiceProvider presentations
     -   ServiceProviderCatalog presentations
 
-<a name="finin-internal-implementation"></a>Fill in the internal implementation of each adaptor
+<a name="fill-in-internal-implementation"></a>Fill in the internal implementation of each adaptor
 ===================================================
 
 The manual code the developer needs to implement is concentrated in a
