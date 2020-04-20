@@ -243,15 +243,9 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
     &lt;url-pattern&gt;/services/*&lt;/url-pattern&gt;
   &lt;/servlet-mapping&gt;
 &lt;/web-app&gt;</code></pre>
-<h1><a name="provide-openapi-support"></a>(Optional) Provide OpenApi/Swagger Support</h1><p>Being already a REST web server, an OSLC4J project can relatively easily be documented using <a href="https://swagger.io/">OpenApi/Swagger</a>.</p>
-<p>The instructions below provide the minimal settings necessary for an OSLC4J project.</p>
-<ul>
-<li><p>Additional suggestions are also provided, given that a typical OSLC4J project might differ from that assumed by OpenApi/Swagger.</p>
-</li>
-<li><p>One major difference is the fact that OSLC assumes an RDF data model, where resources are defined using OSLC Shapes. Swagger/OpenApi does not explicitly recognise such a model.</p>
-</li>
-</ul>
-<p>The instructions below are based on <a href="https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X">Swagger Core JAX RS Project Setup 1.5.X</a>, compiled for a typical OSLC4J project, as instructed in this wiki.</p>
+<h1><a name="provide-openapi-support"></a>(Optional) Provide OpenApi/Swagger Support</h1><p>With OSLC being based on REST, an OSLC Server can relatively easily be documented using <a href="https://swagger.io/">OpenApi/Swagger</a>. </p>
+<p>The instructions below are based on <a href="https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X">Swagger Core JAX RS Project Setup 1.5.X</a>, compiled for a typical OSLC4J project. The instructions are also partially base on 
+<a href="https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8">Co-hosting Swagger UI with your Jersey REST API using Maven dependencies</a>. The instructions provide the minimal settings necessary for an OSLC4J project.</p>
 <h2>Add Maven dependencies</h2><p>Add the following Swagger dependency to your maven pom.xml file</p>
 <h3>for Lyo 4.0.0-SNAPSHOT</h3><p>Assuming you are adopting the Jersey implementation with the version specified above.</p>
 <pre><code class="language-xml">&lt;dependency&gt;
@@ -264,8 +258,58 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
   &lt;artifactId&gt;swagger-jaxrs&lt;/artifactId&gt;
   &lt;version&gt;1.5.17&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h2>Add Swagger-Core&#39;s JAX-RS Providers to your Application</h2><p>Add swagger-core&#39;s providers to the OslcWinkApplication class of your server.</p>
-<pre><code class="language-java">public class Application extends OslcWinkApplication {
+<h2>Co-host Swagger UI with your server</h2><p>The following steps provide the end-user with an interactive console to the OSLC services, by integrating <a href="https://swagger.io/swagger-ui/">Swagger UI</a> with your OSLC server.</p>
+<p>Add the following plugins to the existing <code>&lt;plugins&gt;</code> entry of your <code>pom.xml</code> file. These plugins download and extract the necessary <code>Swagger UI</code> files from <a href="https://github.com/swagger-api/swagger-ui">Swagger UI GitHub project</a> onto your project:</p>
+<pre><code class="language-xml">&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+    ...
+    &lt;/plugin&gt;
+    &lt;plugin&gt;
+      &lt;!-- Download Swagger UI webjar. --&gt;
+      &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
+      &lt;version&gt;3.1.2&lt;/version&gt;
+      &lt;executions&gt;
+          &lt;execution&gt;
+              &lt;phase&gt;prepare-package&lt;/phase&gt;
+              &lt;goals&gt;
+                  &lt;goal&gt;unpack&lt;/goal&gt;
+              &lt;/goals&gt;
+              &lt;configuration&gt;
+                  &lt;artifactItems&gt;
+                      &lt;artifactItem&gt;
+                          &lt;groupId&gt;org.webjars&lt;/groupId&gt;
+                          &lt;artifactId&gt;swagger-ui&lt;/artifactId&gt;
+                          &lt;version&gt;3.25.0&lt;/version&gt;
+                      &lt;/artifactItem&gt;
+                  &lt;/artifactItems&gt;
+                  &lt;outputDirectory&gt;${project.build.directory}/swagger-ui&lt;/outputDirectory&gt;
+              &lt;/configuration&gt;
+          &lt;/execution&gt;
+      &lt;/executions&gt;
+    &lt;/plugin&gt;
+    &lt;plugin&gt;
+      &lt;!-- Add Swagger UI resources to the war file. --&gt;
+      &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+      &lt;version&gt;3.2.3&lt;/version&gt;
+      &lt;configuration&gt;
+          &lt;webResources combine.children=&quot;append&quot;&gt;
+              &lt;resource&gt;
+                  &lt;directory&gt;${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/3.25.0&lt;/directory&gt;
+                  &lt;includes&gt;
+                      &lt;include&gt;**/*.*&lt;/include&gt;
+                  &lt;/includes&gt;
+                  &lt;targetPath&gt;/swagger-ui/dist&lt;/targetPath&gt;
+              &lt;/resource&gt;
+          &lt;/webResources&gt;
+      &lt;/configuration&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;</code></pre>
+<h2>Add Swagger-Core&#39;s JAX-RS Providers to your Application</h2><p>Add swagger-core&#39;s JAX-RS Providers to the Application class that extends <code>javax.ws.rs.core.Application</code></p>
+<pre><code class="language-java">public class Application extends javax.ws.rs.core.Application {
   private static final Set&lt;Class&lt;?&gt;&gt; RESOURCE_CLASSES = new HashSet&lt;Class&lt;?&gt;&gt;();
     static
     {
@@ -319,20 +363,11 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
 @OslcResourceShape(title = &quot;Requirement Resource Shape&quot;, describes = Oslc_rmDomainConstants.REQUIREMENT_TYPE)
 public class Requirement
 ...</code></pre>
-<h2>Access the Swagger Documentation</h2><p>You can now access the OpenAPI specification document (yaml file) at:</p>
+<h2>Access the Swagger UI interactive console</h2><p>Before you can access the <a href="https://swagger.io/swagger-ui/">Swagger UI</a> interactive console for the first time, edit the <code>swagger-ui/index.html</code> file, replacing the url <code>http://petstore.swagger.io/v2/swagger.json</code> with the url of your own yaml file <code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code>.</p>
+<p>The generated interactive API console can be accessed via</p>
+<pre><code>http://localhost:8080/adaptor-sample/swagger-ui/</code></pre><h2>Access OpenAPI specification document (yaml file)</h2><p>You can also access the OpenAPI specification document (yaml file) at:</p>
 <pre><code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code></pre><p>You can copy the yaml file to a <a href="https://editor.swagger.io">Swagger Editor</a>, to view the API documentation, as well as generate client/Server SDK code for a number of languages and platforms.</p>
-<p><strong>But wait, there is more...</strong>, with a few more steps, you can also integrate <a href="https://swagger.io/swagger-ui/">Swagger UI</a> into your OSLC server, providing the end-user with an interactive console of the OSLC services.</p>
-<h2>Integrating Swagger UI</h2><p>The following steps allows you to integrate <a href="https://swagger.io/swagger-ui/">Swagger UI</a> into your OSLC server, to provide the end-user with a visual and interactive presentation of the OSLC services.</p>
-<ol>
-<li><p>Download and extract the <a href="https://github.com/swagger-api/swagger-ui">Swagger UI GitHub project</a> onto your local computer.</p>
-</li>
-<li><p>Copy the &#39;<em>dist</em>&#39; folder to under &#39;<em>/src/main/webapp/swagger-ui</em>&#39;, under your web project.</p>
-</li>
-<li><p>Edit the <code>swagger-ui/index.html</code> file, replacing the url <code>http://petstore.swagger.io/v2/swagger.json</code> with the url of your own yaml file <code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code>.</p>
-</li>
-</ol>
-<p><strong>You are done!</strong> The generated interactive API console can now be accessed via</p>
-<pre><code>http://localhost:8080/adaptor-sample/swagger-ui/dist</code></pre><h1><a name="provide-trs-support"></a>(Optional) Provide TRS Support</h1><p>The <em>TRS Server</em> library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
+<h1><a name="provide-trs-support"></a>(Optional) Provide TRS Support</h1><p>The <em>TRS Server</em> library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
 The current implementation supports an In-memory TRS Server that does not persist its TRS resources.
 These classes are however designed to be extended for a persistent solution. 
 For a thourough walkthough of TRS solutions, which among other things ensures persisting the TRS Logs, visit the <a href="./eclipse-lyo#trs-sdk">additional information on TRS</a>  </p>

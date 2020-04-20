@@ -329,15 +329,10 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 
 # <a name="provide-openapi-support"></a>(Optional) Provide OpenApi/Swagger Support
 
-Being already a REST web server, an OSLC4J project can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/).
+With OSLC being based on REST, an OSLC Server can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/). 
 
-The instructions below provide the minimal settings necessary for an OSLC4J project.
-
-* Additional suggestions are also provided, given that a typical OSLC4J project might differ from that assumed by OpenApi/Swagger.
-
-* One major difference is the fact that OSLC assumes an RDF data model, where resources are defined using OSLC Shapes. Swagger/OpenApi does not explicitly recognise such a model.
-
-The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical OSLC4J project, as instructed in this wiki.
+The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical OSLC4J project. The instructions are also partially base on 
+[Co-hosting Swagger UI with your Jersey REST API using Maven dependencies](https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8). The instructions provide the minimal settings necessary for an OSLC4J project.
 
 ## Add Maven dependencies
 
@@ -361,12 +356,68 @@ Assuming you are adopting the Jersey implementation with the version specified a
   <version>1.5.17</version>
 </dependency>
 ```
+## Co-host Swagger UI with your server 
+
+The following steps provide the end-user with an interactive console to the OSLC services, by integrating [Swagger UI](https://swagger.io/swagger-ui/) with your OSLC server.
+
+Add the following plugins to the existing `<plugins>` entry of your `pom.xml` file. These plugins download and extract the necessary `Swagger UI` files from [Swagger UI GitHub project](https://github.com/swagger-api/swagger-ui) onto your project:
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+    ...
+    </plugin>
+    <plugin>
+      <!-- Download Swagger UI webjar. -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-dependency-plugin</artifactId>
+      <version>3.1.2</version>
+      <executions>
+          <execution>
+              <phase>prepare-package</phase>
+              <goals>
+                  <goal>unpack</goal>
+              </goals>
+              <configuration>
+                  <artifactItems>
+                      <artifactItem>
+                          <groupId>org.webjars</groupId>
+                          <artifactId>swagger-ui</artifactId>
+                          <version>3.25.0</version>
+                      </artifactItem>
+                  </artifactItems>
+                  <outputDirectory>${project.build.directory}/swagger-ui</outputDirectory>
+              </configuration>
+          </execution>
+      </executions>
+    </plugin>
+    <plugin>
+      <!-- Add Swagger UI resources to the war file. -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.2.3</version>
+      <configuration>
+          <webResources combine.children="append">
+              <resource>
+                  <directory>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/3.25.0</directory>
+                  <includes>
+                      <include>**/*.*</include>
+                  </includes>
+                  <targetPath>/swagger-ui/dist</targetPath>
+              </resource>
+          </webResources>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+```
 
 ## Add Swagger-Core's JAX-RS Providers to your Application
-Add swagger-core's providers to the OslcWinkApplication class of your server.
+Add swagger-core's JAX-RS Providers to the Application class that extends ```javax.ws.rs.core.Application```
 
 ```java
-public class Application extends OslcWinkApplication {
+public class Application extends javax.ws.rs.core.Application {
   private static final Set<Class<?>> RESOURCE_CLASSES = new HashSet<Class<?>>();
     static
     {
@@ -445,28 +496,21 @@ For each Java class that models an OSLC-resource (@OslcName annotation), add an 
 public class Requirement
 ...
 ```
-## Access the Swagger Documentation
-You can now access the OpenAPI specification document (yaml file) at:
+
+## Access the Swagger UI interactive console
+
+Before you can access the [Swagger UI](https://swagger.io/swagger-ui/) interactive console for the first time, edit the `swagger-ui/index.html` file, replacing the url `http://petstore.swagger.io/v2/swagger.json` with the url of your own yaml file `http://localhost:8080/adaptor-sample/services/swagger.yaml`.
+
+The generated interactive API console can be accessed via
+
+    http://localhost:8080/adaptor-sample/swagger-ui/
+
+## Access OpenAPI specification document (yaml file)
+You can also access the OpenAPI specification document (yaml file) at:
 
     http://localhost:8080/adaptor-sample/services/swagger.yaml
 
 You can copy the yaml file to a [Swagger Editor](https://editor.swagger.io), to view the API documentation, as well as generate client/Server SDK code for a number of languages and platforms.
-
-**But wait, there is more...**, with a few more steps, you can also integrate [Swagger UI](https://swagger.io/swagger-ui/) into your OSLC server, providing the end-user with an interactive console of the OSLC services.
-
-## Integrating Swagger UI
-
-The following steps allows you to integrate [Swagger UI](https://swagger.io/swagger-ui/) into your OSLC server, to provide the end-user with a visual and interactive presentation of the OSLC services.
-
-1. Download and extract the [Swagger UI GitHub project](https://github.com/swagger-api/swagger-ui) onto your local computer.
-
-1. Copy the '*dist*' folder to under '*/src/main/webapp/swagger-ui*', under your web project.
-
-1. Edit the `swagger-ui/index.html` file, replacing the url `http://petstore.swagger.io/v2/swagger.json` with the url of your own yaml file `http://localhost:8080/adaptor-sample/services/swagger.yaml`.
-
-**You are done!** The generated interactive API console can now be accessed via
-
-    http://localhost:8080/adaptor-sample/swagger-ui/dist
 
 # <a name="provide-trs-support"></a>(Optional) Provide TRS Support
 
