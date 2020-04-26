@@ -259,34 +259,12 @@ interface produces and/or consumes.</p>
 <p><img src="./images/LyoToolchainModel-ToolchainDiagram.png" alt="An example toolchain
 diagram" title="An example toolchain diagram"></p>
 <ol>
-<li><p>Using the tools pallet, create any number of <strong>Adaptor
-Interface</strong> elements. For each such <strong>Adaptor Interface</strong>, it is
-important to set its properties appropriately, to ensure the code
-generation works as expected. The properties’ meaning is as follows:</p>
-<ol>
-<li><em>name</em>: the name of your adaptor</li>
-<li><em>java Class Base Namespace</em>: the name of the base Java root
-package from which the code of your adaptor will be generated.</li>
-<li><em>Java Files Base Path</em>: The path where java files will
-be generated. (for example, <em>/src/</em>)</li>
-<li><em>Javascript Files Base Path</em>: The path where javascript files
-will be generated. (for example, <em>/WebContent</em>)</li>
-<li><em>Jsp Files Base Path</em>: The path where the Jsp files will
-be generated. (for example, <em>/WebContent</em>)</li>
-</ol>
-<ul>
-<li><strong>Note</strong>: the paths above are relative to your current location,
-which is the toolchain modelling project. You will most likely
-want to generate the code for each adaptor into a different and
-separate project. Indicate your target path for each adaptor
-relative to the modelling project location. For example,
-<em>../adaptor1Project/src/</em></li>
-</ul>
-</li>
-<li><p>For each <strong>Adaptor Interface</strong>, use the <strong>AddManagedResource</strong> &amp;
+<li>Using the tools pallet, create any number of <strong>Adaptor
+Interface</strong> elements. </li>
+<li>For each <strong>Adaptor Interface</strong>, you only need to set its <em>name</em> property. All other properties (such as <em>java Class Base Namespace</em>, <em>Java Files Base Path</em>, etc.) are now deprecated.</li>
+<li>For each <strong>Adaptor Interface</strong>, use the <strong>AddManagedResource</strong> &amp;
 <strong>AddConsumedResource</strong> tools to define the resources that the
-interface manages or consumes respectively.</p>
-</li>
+interface manages or consumes respectively.</li>
 </ol>
 <h2><a name="adaptor-interface-view"></a>Adapter Interface View</h2><p>For each <strong>Adaptor Interface</strong> in the <strong>Toolchain</strong> view, you can now
 detail the internal design of the adaptor by defining its OSLC Service
@@ -295,14 +273,29 @@ being generated.</p>
 <p><img src="./images/LyoToolchainModel-AdaptorInterfaceDiagram.png" alt="An example adaptor interface
 diagram" title="An example adaptor interface diagram"></p>
 <ol>
-<li>In the Toolchain view, double-click on the <strong>Adaptor Interface</strong> to
-open its internal design view.<ol>
-<li>If the view is being opened for the first time, you will be
-prompted for a diagram name.</li>
+<li>In the Toolchain view, double-click on the <strong>Adaptor Interface</strong> to open its internal design view. If the view is being opened for the first time, you will be prompted for a diagram name.</li>
+<li>Configure the Adaptor Interface&#39;s server and generation settings. All settings can be found under the <strong>Configuration</strong> element in the diagram. The element consists of three sets of configurations as follows:<ol>
+<li><strong>General</strong>: Contains the general generation settings:<ol>
+<li><em>Files Base Path</em>: The path where the generated files will be generated. Set the path relative to your current location, which is the toolchain modelling project. If you have multiple adaptors, you will most likely want to generate each adaptor into a separate project. In this case, set the path to be, for example, <em>../adaptor1-project-webapp/</em>. If you are modelling a single adaptor and the model exists in teh same project as the target generation project, you can set the path to <em>.</em></li>
+<li><em>Java Base Package Name</em>: the name of the base Java root package from which the code of your adaptor will be generated.</li>
+</ol>
+</li>
+<li><strong>Server Configuration</strong>: relating to the settings of your OSLC server.<ol>
+<li><em>Do not Regenerate Jsp Files</em>: Set this property if you don&#39;t want the automatic re-generation of the JSP files. Missings files will be generated, but any existing files will be left untouched.</li>
+<li><em>Root Server Base Url</em>, <em>Application Context path</em> &amp; <em>Servlet Url Pattern</em>: Configure the URL of your server, which is a combination of these settings to be <em>&lt;Root Server Base Url&gt;/&lt;Application Context path&gt;/&lt;Servlet Url Pattern&gt;</em>. </li>
+<li><em>Jetty Port</em>: Set the server port to be used when running your adaptor as an embedded Jetty server (for quick debugging) using the maven goal <em>jetty:run-exploded</em>.</li>
+</ol>
+</li>
+<li><strong>Project Configuration</strong>: relating to the generation of the development project-specific files, such as the <em>Pom.xml</em> and <em>web.xml</em> files<ol>
+<li><em>Do Not Generate Project Configuration Files</em>: Set this property if you don&#39;t want the automatic generation of these files. </li>
+<li><em>Group Id</em>, <em>Artifact Id</em> &amp; <em>Version</em>: define the maven project settings.</li>
+<li><em>Lyo Version</em>: Define the version of Lyo libraries to use.</li>
+</ol>
+</li>
 </ol>
 </li>
 <li>By default, each Adaptor Interface is defined with one
-<strong>ServiceProviderCatalog</strong>, <strong>ServiceProvider</strong>, <strong>Service</strong>.<ol>
+<strong>ServiceProviderCatalog</strong>, and one <strong>ServiceProvider</strong>. You will build upon this default model to define your own services, etc.<ol>
 <li>Set the properties for each of these elements as desired. (See steps below for detailed instructions)</li>
 <li>Note that the model currently supports the definition of one
 (and only one) ServiceProviderCatalog per adaptor.</li>
@@ -387,14 +380,8 @@ for general EMF modelling. You are to select to first entry.</li>
 </li>
 </ol>
 <h1><a name="setup-oslc4j-projects"></a>Setup OSLC4J projects</h1><p>Once your model is complete and validated, you are ready to generate the
-Java code. But it is first necessary to setup the Eclipse projects for
-each of the adaptors.</p>
-<p>For each of the Adaptor Interfaces in the model, create and setup an
-Eclipse OSLC4J project as instructed under <a href="./setup-an-oslc-provider-consumer-application">Setup an OSLC Provider/Consumer Application</a>.</p>
-<p>These projects will then be populated with the generated code needed.</p>
-<p><strong>Note:</strong> Make sure each project is configured to match the Adaptor
-Interface project properties defined under <a href="./toolchain-modelling-workshop#toolchain-view"> Toolchain
-View</a></p>
+Java code. It is no longer necessary to manually create the Eclipse projects for
+each of the adaptors, since these are created by the generation process. But make sure your adaptor configuration is correct, as instructed <a href="#adaptor-interface-view">above</a>.</p>
 <h1><a name="generate-oslc4j-java-code"></a>Generate OSLC4J Java code</h1><p>Once the toolchain model is defined and validated, you can generate the
 corresponding code for each adaptor through the following simple step:</p>
 <ol>

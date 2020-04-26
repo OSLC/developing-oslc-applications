@@ -71,31 +71,24 @@ diagram" title="An example domain specification diagram"></p>
 <li>Now, follow the Domain Specification modelling instructions (<em>Only this particular section</em>) from the general <a href="./toolchain-modelling-workshop#domain-specification-view">Lyo Designer manual</a>.</li>
 <li>Finally, validate your model by following the validation instructions (<em>Only this particular section</em>) from the general <a href="./toolchain-modelling-workshop#validate-model">Lyo Designer manual</a>.</li>
 </ol>
-<h1><a name="setup-oslc4j-projects"></a>Setup OSLC4J projects</h1><p>Once the Specification model is defined, you can choose to generate the set of Java classes, with the appropriate Lyo OSLC4J annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo OSLC4J SDK.</p>
-<p>You first need to create the necessary OSLC4J project(s), onto which the code will be generated. We here assume the following parameters, which you will need to adjust for your particular project:</p>
-<ul>
-<li>Project Name: <em>domain-project</em></li>
-<li>Base Package Name for Java Classes: <em>com.domain.resources</em></li>
-</ul>
+<h1><a name="setup-oslc4j-projects"></a>Setup OSLC4J projects</h1><p>Once the Specification model is complete and validated, you can choose to generate the set of Java classes, with the appropriate Lyo OSLC4J annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo OSLC4J SDK.</p>
+<p>It is no longer necessary to manually create the Eclipse OSLC4J projects for the Java classes, since these are created by the generation process. </p>
 <ol>
-<li>Create the OSLC4J library project. For example using mvn:<ul>
-<li><strong>mvn archetype:generate -DgroupId=domain-project-group -DartifactId=domain-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</strong></li>
-</ul>
-</li>
-<li>Add the necessary maven dependencies by following the instructions under <a href="./setup-an-oslc-provider-consumer-application">Setup an OSLC Provider/Consumer Application</a>.<ul>
-<li>At the least the <code>oslc4j-core</code> dependency is necessary.</li>
-</ul>
-</li>
-<li>Configure the Specification model&#39;s settings to generate code within the newly created OSLC4J project.<ol>
-<li>Right-click inside the Specification Diagram (without selecting any Domain Specification) and select the context menu item <strong>OSLC Lyo Designer &gt; Set Java Generation Settings</strong></li>
-<li>Enter a relative file path, to which the Java classes will be generated.<ul>
-<li>Relative to what? anything you desire. In the comming steps, you get to define the absolute path of the defined relative path.</li>
-<li><strong>Tips:</strong> the relative path can be the path <em>within</em> your OSLC4J project (such as <em>domain-project/src/main/java</em>), while the absolute path (defined in next step) relates to the path up until the OSLC4J project.</li>
-</ul>
-</li>
-<li>Enter the package name (<em>com.domain.resources</em>) of the Java classes to be generated.</li>
+<li>Use the tools pallet to create a <strong>Specification Configuration</strong>, placing it in the Specification Diagram (and not inside any specific Domain Specification). This element lets you configure the Specification model&#39;s generation settings. The element consists of two sets of configurations as follows:<ol>
+<li><strong>General</strong>: Contains the general generation settings:<ol>
+<li><em>Files Base Path</em>: The path where the generated files will be generated. Set the path relative to your current location, which is the modelling project.</li>
+<li><em>Java Base Package Name</em>: the name of the base Java root package from which the code of your adaptor will be generated.</li>
 </ol>
 </li>
+<li><strong>Project Configuration</strong>: relating to the generation of the development project-specific files, such as the <em>Pom.xml</em> and <em>web.xml</em> files<ol>
+<li><em>Do Not Generate Project Configuration Files</em>: Set this property if you don&#39;t want the automatic generation of these files. </li>
+<li><em>Group Id</em>, <em>Artifact Id</em> &amp; <em>Version</em>: define the maven project settings.</li>
+<li><em>Lyo Version</em>: Define the version of Lyo libraries to use.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>(Optional) If you want to override the genration settings for a specific Domain Specification, you can create a <strong>Specification Configuration</strong> for any specific Domain Specification (by placing it in the Domain Specification). </li>
 </ol>
 <h1><a name="generate-oslc4j-java-code"></a>Generate OSLC4J Java code</h1><p>You are now ready to generate the code:</p>
 <ol>
