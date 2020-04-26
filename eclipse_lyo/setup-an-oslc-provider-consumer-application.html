@@ -7,7 +7,16 @@ Modernizr.load([{
 }]);
 
 </script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="../"><i class="fas fa-level-up-alt"></i> One level up</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-lyo.html">Eclipse Lyo - support for Java developers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-setup-for-lyo-based-development.html">Eclipse Setup for Lyo-based Development</a></li><li role="presentation" class="item current"><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html">Setup an OSLC Provider/Consumer Application</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/lyo-designer.html">Lyo Designer - Toolchain modelling support</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/install-lyo-designer.html">Lyo Designer - Install</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html">Toolchain Modelling Workshop</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html">Domain Specification Modelling Workshop</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/modelling-howto.html">Modelling - Howto and Advanced Topics</a></li></ul></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Setup an OSLC Provider/Consumer Application</h1></header><section class="content"><div class="copy"><h1>Create an OSLC4J project</h1><p>The steps below guide you through the necessary steps of creating a Java project with the necessary configurations to develop any OSLC4J server/client. The instructions assume you are using the Eclipse IDE, but should be equally valid for any other development environment.</p>
-<p>In the instructions below, we assume the following parameters, which you will need to adjust for your particular project:</p>
+<h2>An alternative to the manual steps below</h2><p>An alternative to the instructions on this page is to instead use <a href="./lyo-designer">Lyo Designer</a> to quickly generate the project, including a very basic code skeleton. The generated project will also include the neccessary setup for OpenApi/Swagger support, TRS, etc.</p>
+<ol>
+<li>Make sure your environment is setup for OSLC4J development as instructed on <a href="./eclipse-setup-for-lyo-based-development">Eclipse Setup for Lyo-based Development</a></li>
+<li>install <a href="./install-lyo-designer">Lyo Designer</a></li>
+<li>Follow the <a href="./toolchain-modelling-workshop#create-modelling-project">Create a Modelling Project</a> instructions (<em>Only this particular section</em>) to create the Eclipse project.</li>
+<li>Follow the <a href="./toolchain-modelling-workshop#adaptor-interface-view">Adapter Interface</a> instructions (<em>Only this particular section</em>) to create a single Adaptor Interface in the model. You do not need to create any additional elements, such as a Service Provider Catalog, Service Provider, etc. Just make sure you set the generation settings as expected.</li>
+<li>Follow the <a href="./toolchain-modelling-workshop#generate-oslc4j-java-code">Generate OSLC4J Java code</a> instructions (<em>Only this particular section</em>) to generate your basic project setup.</li>
+<li>You are done! But of course, you can proceed with Lyo Designer to model your complete OSLC Server/Client and generate even more of your project code.</li>
+</ol>
+<h2>Introduction</h2><p>In the instructions below, we assume the following parameters, which you will need to adjust for your particular project:</p>
 <ul>
 <li>Eclipse Project Name: <em>adaptor-sample-webapp</em></li>
 <li>Base Package Name for Java Classes: <em>com.sample.adaptor</em></li>
@@ -30,15 +39,15 @@ Modernizr.load([{
 <li><a href="#provide-trs-support">(Optional) Provide TRS Support</a></li>
 <li><a href="#run-server">Run the server</a></li>
 </ol>
-<h1><a name="setup-eclipse"></a>Setup Eclipse</h1><p>Make sure your environment is setup for OSLC4J development as instructed on <a href="./eclipse-setup-for-lyo-based-development">Eclipse Setup for Lyo-based Development</a></p>
-<h1><a name="decide-jaxrs"></a>Decide if you want to adopt JAX-RS 1.0 or 2.0?</h1><p>Starting with the upcoming release 4.0.0, Lyo will support JAX-RS 2.0, and will no longer depend on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as <a href="https://jersey.github.io/">Jersey</a>, <a href="https://resteasy.github.io/">RESTEasy</a>, etc.<br>On the other hand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the <a href="https://svn.apache.org/repos/infra/websites/production/wink/content/index.html">Apache Wink implementation</a>.</p>
+<h2><a name="setup-eclipse"></a>Setup Eclipse</h2><p>Make sure your environment is setup for OSLC4J development as instructed on <a href="./eclipse-setup-for-lyo-based-development">Eclipse Setup for Lyo-based Development</a></p>
+<h2><a name="decide-jaxrs"></a>Decide if you want to adopt JAX-RS 1.0 or 2.0?</h2><p>Starting with the upcoming release 4.0.0, Lyo will support JAX-RS 2.0, and will no longer depend on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as <a href="https://jersey.github.io/">Jersey</a>, <a href="https://resteasy.github.io/">RESTEasy</a>, etc.<br>On the other hand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the <a href="https://svn.apache.org/repos/infra/websites/production/wink/content/index.html">Apache Wink implementation</a>.</p>
 <p>we recommend you adopt the latest versions of Lyo.</p>
 <p>The instructions below will vary depending on the Lyo version to be adopted. We will refer to the version as <em>${version.lyo}</em>, which can then take one of the two values:</p>
 <ul>
 <li>4.0.0-SNAPSHOT</li>
 <li>2.4.0</li>
 </ul>
-<h1><a name="create-maven-project"></a>Create a Maven project</h1><p>To create a Maven project from an archetype via Eclipse</p>
+<h2><a name="create-maven-project"></a>Create a Maven project</h2><p>To create a Maven project from an archetype via Eclipse</p>
 <ol>
 <li>select <em>File -&gt; New -&gt; Other</em></li>
 <li>then select <em>Maven Project</em> under <em>Maven</em> group.</li>
@@ -56,8 +65,8 @@ Modernizr.load([{
 <p><img src="./images/CreateMavenAdaptorProject_Step3.png" alt=""></p>
 <p>You should now have the project in Eclipse and the following folder structure:</p>
 <p><img src="./images/CreateMavenAdaptorProject_CodeStructure.png" alt=""></p>
-<h1><a name="customize-project-pom-file"></a>Customise the project POM file</h1><p>We now need to modify the project <em>pom.xml</em> file.</p>
-<h2>Setup general POM properties</h2><p>We need to make sure our project uses UTF-8 and JDK 1.8. We will also use
+<h2><a name="customize-project-pom-file"></a>Customise the project POM file</h2><p>We now need to modify the project <em>pom.xml</em> file.</p>
+<h3>Setup general POM properties</h3><p>We need to make sure our project uses UTF-8 and JDK 1.8. We will also use
 properties to define a common version for Lyo packages:</p>
 <p>Of course, <code>ENTER-LYO-VERSION-HERE</code> is either <code>4.0.0-SNAPSHOT</code> or <code>2.4.0</code>, depending on your choice of JAX-RS version.</p>
 <pre><code class="language-xml">&lt;properties&gt;
@@ -67,7 +76,7 @@ properties to define a common version for Lyo packages:</p>
   &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
   &lt;version.lyo&gt;ENTER-LYO-VERSION-HERE&lt;/version.lyo&gt;
 &lt;/properties&gt;</code></pre>
-<h2>Lyo repositories</h2><p>an OSLC4J project will use Lyo dependencies that we need to declare. Before we
+<h3>Lyo repositories</h3><p>an OSLC4J project will use Lyo dependencies that we need to declare. Before we
 can do that, we need to add the Lyo repository. After that, we are ready to add the dependencies.</p>
 <pre><code class="language-xml">&lt;repositories&gt;
   &lt;repository&gt;
@@ -87,7 +96,7 @@ can do that, we need to add the Lyo repository. After that, we are ready to add 
     &lt;/releases&gt;
   &lt;/repository&gt;
 &lt;/repositories&gt;</code></pre>
-<h2>SLF4J package dependencies</h2><p>Lyo uses SLF4J for logging, leaving the choice of the actual logging library to
+<h3>SLF4J package dependencies</h3><p>Lyo uses SLF4J for logging, leaving the choice of the actual logging library to
 use. We will use the simplest option:</p>
 <pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
@@ -95,7 +104,7 @@ use. We will use the simplest option:</p>
   &lt;version&gt;1.7.21&lt;/version&gt;
   &lt;scope&gt;runtime&lt;/scope&gt;
 &lt;/dependency&gt;</code></pre>
-<h2>Servlet dependencies</h2><p>We require Java EE 6 or higher and JSTL:</p>
+<h3>Servlet dependencies</h3><p>We require Java EE 6 or higher and JSTL:</p>
 <pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
   &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
@@ -107,7 +116,7 @@ use. We will use the simplest option:</p>
   &lt;artifactId&gt;jstl&lt;/artifactId&gt;
   &lt;version&gt;1.2&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h2>JAX-RS implementation dependencies</h2><h3>for Lyo 4.0.0-SNAPSHOT</h3><p>For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementation, such as <a href="https://jersey.github.io/">Jersey</a>, <a href="https://resteasy.github.io/">RESTEasy</a>, etc. Below is an example for Jersey.</p>
+<h3>JAX-RS implementation dependencies</h3><h4>for Lyo 4.0.0-SNAPSHOT</h4><p>For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementation, such as <a href="https://jersey.github.io/">Jersey</a>, <a href="https://resteasy.github.io/">RESTEasy</a>, etc. Below is an example for Jersey.</p>
 <pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;org.glassfish.jersey.core&lt;/groupId&gt;
   &lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
@@ -118,12 +127,12 @@ use. We will use the simplest option:</p>
   &lt;artifactId&gt;jersey-container-servlet&lt;/artifactId&gt;
   &lt;version&gt;2.25.1&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h3>for Lyo 2.4.0 and earlier</h3><p>For Lyo release 2.4.0 (and earlier), a Lyo package includes a dependency to the <a href="https://svn.apache.org/repos/infra/websites/production/wink/content/index.html">Apache Wink implementation</a>.</p>
+<h4>for Lyo 2.4.0 and earlier</h4><p>For Lyo release 2.4.0 (and earlier), a Lyo package includes a dependency to the <a href="https://svn.apache.org/repos/infra/websites/production/wink/content/index.html">Apache Wink implementation</a>.</p>
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.lyo.oslc4j.core&lt;/groupId&gt;
   &lt;artifactId&gt;oslc4j-wink&lt;/artifactId&gt;
   &lt;version&gt;${version.lyo}&lt;/version&gt;
-&lt;/dependency&gt;</code></pre><h2>Lyo dependencies</h2><p>The minimal Lyo dependencies are:</p>
+&lt;/dependency&gt;</code></pre><h3>Lyo dependencies</h3><p>The minimal Lyo dependencies are:</p>
 <pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.lyo.oslc4j.core&lt;/groupId&gt;
   &lt;artifactId&gt;oslc4j-core&lt;/artifactId&gt;
@@ -139,7 +148,7 @@ use. We will use the simplest option:</p>
   &lt;artifactId&gt;oslc4j-json4j-provider&lt;/artifactId&gt;
   &lt;version&gt;${version.lyo}&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h2>OSLC OAuth support</h2><p>If your server needs to support OAuth, include the following:</p>
+<h3>OSLC OAuth support</h3><p>If your server needs to support OAuth, include the following:</p>
 <pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.lyo.server&lt;/groupId&gt;
   &lt;artifactId&gt;oauth-core&lt;/artifactId&gt;
@@ -159,18 +168,18 @@ use. We will use the simplest option:</p>
 <p>To support OAuth, you will need to add the following JAX-RS Providers to your Application (the <code>javax.ws.rs.core.Application</code> subclass)</p>
 <pre><code class="language-java">RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.ConsumersService&quot;));
 RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.OAuthService&quot;));</code></pre>
-<h2>OSLC Client support</h2><p>If your OSLC server also needs to consume resources from another server, a dependency to the OSLC client package is needed:</p>
-<h3>for Lyo 4.0.0-SNAPSHOT</h3><pre><code class="language-xml">&lt;dependency&gt;
+<h3>OSLC Client support</h3><p>If your OSLC server also needs to consume resources from another server, a dependency to the OSLC client package is needed:</p>
+<h4>for Lyo 4.0.0-SNAPSHOT</h4><pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.lyo.clients&lt;/groupId&gt;
   &lt;artifactId&gt;oslc4j-client&lt;/artifactId&gt;
   &lt;version&gt;${version.lyo}&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h3>for Lyo 2.4.0 and earlier</h3><pre><code class="language-xml">&lt;dependency&gt;
+<h4>for Lyo 2.4.0 and earlier</h4><pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.lyo.clients&lt;/groupId&gt;
   &lt;artifactId&gt;oslc-java-client&lt;/artifactId&gt;
   &lt;version&gt;${version.lyo}&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h2>Configure the Embedded Jetty server for quick debugging</h2><p>Finally, you should use an embedded servlet container during the debugging to simplify the development process.</p>
+<h3>Configure the Embedded Jetty server for quick debugging</h3><p>Finally, you should use an embedded servlet container during the debugging to simplify the development process.</p>
 <p>Replace the existing <code>&lt;build&gt;</code> entry with the Jetty configuration below, using the following customisations:</p>
 <ul>
 <li><p><em>adaptor-sample</em> is the context path that can be the same as your eclipse project name (or something more appropriate)</p>
@@ -203,7 +212,7 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
     &lt;/plugin&gt;
   &lt;/plugins&gt;
 &lt;/build&gt;</code></pre>
-<h1><a name="customize-web-configuration"></a>Customise the web configuration</h1><p>Modify the parameters in <code>/src/main/webapp/WEB-INF/web.xml</code> according to the template below.</p>
+<h2><a name="customize-web-configuration"></a>Customise the web configuration</h2><p>Modify the parameters in <code>/src/main/webapp/WEB-INF/web.xml</code> according to the template below.</p>
 <ul>
 <li><em>Adaptor Sample</em> could be the same as your eclipse project name (or something more appropriate)</li>
 <li><em>com.sample.adaptor</em> should be the same as the base package name for your project.</li>
@@ -243,22 +252,22 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
     &lt;url-pattern&gt;/services/*&lt;/url-pattern&gt;
   &lt;/servlet-mapping&gt;
 &lt;/web-app&gt;</code></pre>
-<h1><a name="provide-openapi-support"></a>(Optional) Provide OpenApi/Swagger Support</h1><p>With OSLC being based on REST, an OSLC Server can relatively easily be documented using <a href="https://swagger.io/">OpenApi/Swagger</a>. </p>
+<h2><a name="provide-openapi-support"></a>(Optional) Provide OpenApi/Swagger Support</h2><p>With OSLC being based on REST, an OSLC Server can relatively easily be documented using <a href="https://swagger.io/">OpenApi/Swagger</a>. </p>
 <p>The instructions below are based on <a href="https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X">Swagger Core JAX RS Project Setup 1.5.X</a>, compiled for a typical OSLC4J project. The instructions are also partially base on 
 <a href="https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8">Co-hosting Swagger UI with your Jersey REST API using Maven dependencies</a>. The instructions provide the minimal settings necessary for an OSLC4J project.</p>
-<h2>Add Maven dependencies</h2><p>Add the following Swagger dependency to your maven pom.xml file</p>
-<h3>for Lyo 4.0.0-SNAPSHOT</h3><p>Assuming you are adopting the Jersey implementation with the version specified above.</p>
+<h3>Add Maven dependencies</h3><p>Add the following Swagger dependency to your maven pom.xml file</p>
+<h4>for Lyo 4.0.0-SNAPSHOT</h4><p>Assuming you are adopting the Jersey implementation with the version specified above.</p>
 <pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;io.swagger&lt;/groupId&gt;
   &lt;artifactId&gt;swagger-jersey2-jaxrs&lt;/artifactId&gt;
   &lt;version&gt;1.5.22&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h3>for Lyo 2.4.0 and earlier</h3><pre><code class="language-xml">&lt;dependency&gt;
+<h4>for Lyo 2.4.0 and earlier</h4><pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;io.swagger&lt;/groupId&gt;
   &lt;artifactId&gt;swagger-jaxrs&lt;/artifactId&gt;
   &lt;version&gt;1.5.17&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h2>Co-host Swagger UI with your server</h2><p>The following steps provide the end-user with an interactive console to the OSLC services, by integrating <a href="https://swagger.io/swagger-ui/">Swagger UI</a> with your OSLC server.</p>
+<h3>Co-host Swagger UI with your server</h3><p>The following steps provide the end-user with an interactive console to the OSLC services, by integrating <a href="https://swagger.io/swagger-ui/">Swagger UI</a> with your OSLC server.</p>
 <p>Add the following plugins to the existing <code>&lt;plugins&gt;</code> entry of your <code>pom.xml</code> file. These plugins download and extract the necessary <code>Swagger UI</code> files from <a href="https://github.com/swagger-api/swagger-ui">Swagger UI GitHub project</a> onto your project:</p>
 <pre><code class="language-xml">&lt;build&gt;
   &lt;plugins&gt;
@@ -308,7 +317,7 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
     &lt;/plugin&gt;
   &lt;/plugins&gt;
 &lt;/build&gt;</code></pre>
-<h2>Add Swagger-Core&#39;s JAX-RS Providers to your Application</h2><p>Add swagger-core&#39;s JAX-RS Providers to the Application class that extends <code>javax.ws.rs.core.Application</code></p>
+<h3>Add Swagger-Core&#39;s JAX-RS Providers to your Application</h3><p>Add swagger-core&#39;s JAX-RS Providers to the Application class that extends <code>javax.ws.rs.core.Application</code></p>
 <pre><code class="language-java">public class Application extends javax.ws.rs.core.Application {
   private static final Set&lt;Class&lt;?&gt;&gt; RESOURCE_CLASSES = new HashSet&lt;Class&lt;?&gt;&gt;();
     static
@@ -319,7 +328,7 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
       ...
     }
     ...</code></pre>
-<h2>Configure Swagger&#39;s Servlet in the web.xml</h2><p>Add the following to your web.xml:</p>
+<h3>Configure Swagger&#39;s Servlet in the web.xml</h3><p>Add the following to your web.xml:</p>
 <ul>
 <li><em>swagger.api.basepath</em> depends on your particular settings, as instructed above.</li>
 </ul>
@@ -336,15 +345,15 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
     &lt;/init-param&gt;
     &lt;load-on-startup&gt;2&lt;/load-on-startup&gt;
   &lt;/servlet&gt;</code></pre>
-<h2>Add OpenApi Annotations (Almost Optional)</h2><p>The OpenApi documentation can be achieved with as little as adding <em>@Api</em> to each REST/OSLC service in your project. This is detailed in the first step below. While the remaining intructions are optional, they are highly recommended to provide a documentation that can best reflect the OSLC services.</p>
-<h3>@Api</h3><ol>
+<h3>Add OpenApi Annotations (Almost Optional)</h3><p>The OpenApi documentation can be achieved with as little as adding <em>@Api</em> to each REST/OSLC service in your project. This is detailed in the first step below. While the remaining intructions are optional, they are highly recommended to provide a documentation that can best reflect the OSLC services.</p>
+<h4>@Api</h4><ol>
 <li>For each REST service (ie. OSLC Service), simply add the <em>@Api</em> annotation.</li>
 <li>(<em>OPTIONAL</em>) add the <em>value</em> and <em>description</em> details. The <em>value</em> is used to group the REST methods into common categories, helping in the structuring of the methods in the documentaton. You can give it the same value as that of the @Path annotation, collecting all REST methods for the same service together.</li>
 </ol>
 <pre><code class="language-java">@Api(value = &quot;requirements&quot;, description = &quot;OSLC service for resources of type&quot; + &quot;Requirement&quot;)
 @OslcService(Oslc_rmDomainConstants.REQUIREMENTS_MANAGEMENT_DOMAIN)
 @Path(&quot;requirements&quot;)</code></pre>
-<h3>@ApiOperation (Optional)</h3><p>For each REST method, add the <em>@ApiOperation</em> Swagger annotation.</p>
+<h4>@ApiOperation (Optional)</h4><p>For each REST method, add the <em>@ApiOperation</em> Swagger annotation.</p>
 <p><strong>Important</strong>: In <a href="https://swagger.io/docs/specification/paths-and-operations/">OpenApi</a>, an operation is defined as unique through the combination of its path and method. This means that two C.R.U.D. methods for the same path are not allowed – even if they have different parameters (including Accept and Content-Type annotations).</p>
 <ul>
 <li>Example: Your OSLC Service may define two different Java methods to separately handle HTML and RDF/XML content types. OpenApi will only recognise one of these two methods, while ignoring the other.</li>
@@ -356,27 +365,27 @@ RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.ser
     @Path(&quot;{requirementId}&quot;)
     @Produces(OslcMediaType.APPLICATION_RDF_XML)
     public Requirement getRequirement(</code></pre>
-<h3>@ApiModel (Optional)</h3><p>For each Java class that models an OSLC-resource (@OslcName annotation), add an <em>@ApiModel</em> annotation that refers to the Shape of the resource, since a Shape is a more accurate description of the object, than the one automatically generated by Swagger.</p>
+<h4>@ApiModel (Optional)</h4><p>For each Java class that models an OSLC-resource (@OslcName annotation), add an <em>@ApiModel</em> annotation that refers to the Shape of the resource, since a Shape is a more accurate description of the object, than the one automatically generated by Swagger.</p>
 <pre><code class="language-java">@ApiModel(description = &quot;The  model below is only a object structure as derived by swagger.  For a more accurate RDF Description, refer to the Requirement Resource Shape.&quot;)
 @OslcNamespace(Oslc_rmDomainConstants.REQUIREMENT_NAMESPACE)
 @OslcName(Oslc_rmDomainConstants.REQUIREMENT_LOCALNAME)
 @OslcResourceShape(title = &quot;Requirement Resource Shape&quot;, describes = Oslc_rmDomainConstants.REQUIREMENT_TYPE)
 public class Requirement
 ...</code></pre>
-<h2>Access the Swagger UI interactive console</h2><p>Before you can access the <a href="https://swagger.io/swagger-ui/">Swagger UI</a> interactive console for the first time, edit the <code>swagger-ui/index.html</code> file, replacing the url <code>http://petstore.swagger.io/v2/swagger.json</code> with the url of your own yaml file <code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code>.</p>
+<h3>Access the Swagger UI interactive console</h3><p>Before you can access the <a href="https://swagger.io/swagger-ui/">Swagger UI</a> interactive console for the first time, edit the <code>swagger-ui/index.html</code> file, replacing the url <code>http://petstore.swagger.io/v2/swagger.json</code> with the url of your own yaml file <code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code>.</p>
 <p>The generated interactive API console can be accessed via</p>
-<pre><code>http://localhost:8080/adaptor-sample/swagger-ui/</code></pre><h2>Access OpenAPI specification document (yaml file)</h2><p>You can also access the OpenAPI specification document (yaml file) at:</p>
+<pre><code>http://localhost:8080/adaptor-sample/swagger-ui/</code></pre><h3>Access OpenAPI specification document (yaml file)</h3><p>You can also access the OpenAPI specification document (yaml file) at:</p>
 <pre><code>http://localhost:8080/adaptor-sample/services/swagger.yaml</code></pre><p>You can copy the yaml file to a <a href="https://editor.swagger.io">Swagger Editor</a>, to view the API documentation, as well as generate client/Server SDK code for a number of languages and platforms.</p>
-<h1><a name="provide-trs-support"></a>(Optional) Provide TRS Support</h1><p>The <em>TRS Server</em> library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
+<h2><a name="provide-trs-support"></a>(Optional) Provide TRS Support</h2><p>The <em>TRS Server</em> library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
 The current implementation supports an In-memory TRS Server that does not persist its TRS resources.
 These classes are however designed to be extended for a persistent solution. 
 For a thourough walkthough of TRS solutions, which among other things ensures persisting the TRS Logs, visit the <a href="./eclipse-lyo#trs-sdk">additional information on TRS</a>  </p>
-<h2>Add Maven dependencies</h2><p>Add a dependency for the TRS Server library:</p>
+<h3>Add Maven dependencies</h3><p>Add a dependency for the TRS Server library:</p>
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.lyo.trs&lt;/groupId&gt;
   &lt;artifactId&gt;trs-server&lt;/artifactId&gt;
     &lt;version&gt;${version.lyo}&lt;/version&gt;
-&lt;/dependency&gt;</code></pre><h2>Setup the TRS JAX-RS Provider to your Application</h2><p>The <em>TRS Server</em> library already contains a <code>TrackedResourceSetService</code> class  that can handle the REST calls for TRS Base and ChangeLog. For this service to work, you will only need to provide a binding to a singleton of a class that implements the <code>PagedTrs</code> class.</p>
+&lt;/dependency&gt;</code></pre><h3>Setup the TRS JAX-RS Provider to your Application</h3><p>The <em>TRS Server</em> library already contains a <code>TrackedResourceSetService</code> class  that can handle the REST calls for TRS Base and ChangeLog. For this service to work, you will only need to provide a binding to a singleton of a class that implements the <code>PagedTrs</code> class.</p>
 <p>Register the TRS JAX-RS Provider <code>TrackedResourceSetService</code> in your Application (the <code>javax.ws.rs.core.Application</code> subclass).</p>
 <pre><code class="language-java">import org.eclipse.lyo.oslc4j.trs.server.service.TrackedResourceSetService;
 ...
@@ -457,18 +466,18 @@ public class InmemPagedTrsSingleton implements Factory&lt;PagedTrs&gt; {
     }
 }</code></pre>
 <p>The application is now ready to respond to REST requests from a TRS Client. Once running, the server will respond to requests on the relative path &quot;/trs&quot;.</p>
-<h2>Update the TRS data set</h2><p>To update the set of OSLC resources that form the TRS Base and ChangeLog, simply call the following methods in your code:</p>
+<h3>Update the TRS data set</h3><p>To update the set of OSLC resources that form the TRS Base and ChangeLog, simply call the following methods in your code:</p>
 <ul>
 <li><code>InmemPagedTrsSingleton.getInmemPagedTrs().onCreated(aResource);</code></li>
 <li><code>InmemPagedTrsSingleton.getInmemPagedTrs().onModified(aResource);</code></li>
 <li><code>InmemPagedTrsSingleton.getInmemPagedTrs().onDeleted(aResource.getAbout());</code></li>
 </ul>
-<h1><a name="run-server"></a>Run the server</h1><p>Once the server is developed, you can run it by selecting <em>Run As --&gt; Maven build ...</em> from the project&#39;s context menu, and setting the goal to <code>clean jetty:run-exploded</code>.</p>
+<h2><a name="run-server"></a>Run the server</h2><p>Once the server is developed, you can run it by selecting <em>Run As --&gt; Maven build ...</em> from the project&#39;s context menu, and setting the goal to <code>clean jetty:run-exploded</code>.</p>
 <p>You can now access your server from <a href="http://localhost:8080/adaptor-sample">http://localhost:8080/adaptor-sample</a></p>
 <ul>
 <li><em>adaptor-sample</em> and <em>8080</em> will depend on your particular settings, as instructed above.</li>
 </ul>
-<h2>Some tips</h2><p>If you get the error <em>Project configuration is not up-to-date with pom.xml</em>, simply right click on the eclipse project and select Maven--&gt;Update Project ...</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<h3>Some tips</h3><p>If you get the error <em>Project configuration is not up-to-date with pom.xml</em>, simply right click on the eclipse project and select Maven--&gt;Update Project ...</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

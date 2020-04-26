@@ -110,7 +110,7 @@ Where
 
 * each `adaptor-project-webapp` contains each of the adaptors generated from the definitions in `toolchain-project-model`.
 
-Create modelling project
+<a name="create-modelling-project"></a>Create modelling project
 ---------------
 1.  In your Eclipse workspace, switch to the **Modeling** perspective
 1.  Create a new modelling project
