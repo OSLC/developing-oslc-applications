@@ -42,7 +42,7 @@ as expected for general Lyo-based development, as instructed in [Eclipse Setup f
 You can configure the Lyo Designer application to get updates from yet-unreleased builds of Lyo Designer.
 1. Select ***Window\--\>Preferences***
 1. Select ***Install/Update\--\>Available Software Sites***
-1. Either enable or create a new site with the location 'https://download.eclipse.org/lyo/product/p2/edge'
+1. Either enable or create a new site with the location <https://download.eclipse.org/lyo/product/p2/edge>
 1. Click ***Apply and Close***.
 1. Update the appliation by selecting ***help\--\>Check for Updates***
 
