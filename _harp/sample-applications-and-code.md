@@ -1,9 +1,11 @@
 ## Sample applications
 
-Having done the [tutorials](./tutorials), if you'd like to explore some existing code, there are a variety of samples and existing applications available.
+Having done the [tutorials](./tutorials), if you'd like to explore some existing code, there are a variety of samples and existing applications available to be inspired from.
 
 * The [iotp-adaptor](./iotp-adaptor-sample) is an OSLC adapter for IBM Watson IoT Platform. This sample provides a thourough user guide, as well as a developer guide covering many topics such as authentication, TRS, using [Lyo Designer](./eclipse_lyo/eclipse-lyo#lyo-designer), etc.
-* The [Lyo Samples](https://github.com/OSLC/lyo-samples) Github repository includes sample code that addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries.
+* [Lyo Client sample code](https://github.com/OSLC/lyo-samples) - A Github repository that includes sample code to demonstrates how to use the Lyo OSLC4J SDK oslc4j-client to interact with OSLC Service Providers in various ways. It addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries. See the [README.md](https://github.com/OSLC/lyo-samples/blob/master/README.md) file in the repository for further pointers.
+* [JIRA OSLC Plugin](https://github.com/Ericsson/jira-oslc-plugin) - is a Lyo-based implementation of an OSLC Server and Client, realized as an OSGI (JIRA) plugin.
+* [Hansoft OSLC Adaptor](https://github.com/Ericsson/hansoft-oslc-adapter) - is a Lyo-based implementation of an OSLC adaptor for the product planning tool Hansoft.
 * [SharePoint](https://wiki.eclipse.org/Lyo/SharepointAdapter) - This SharePoint adapter looks through the sharepoint OData collections for collections where the ContentType is defined as "Document". For each SharePoint library that contains documents, an OSLC service provider is created with the basic services for OSLC Delegated dialogs for selection and creation as well as listing the documents with a UI preview.
 * The [Hudson and Jenkins](https://wiki.eclipse.org/Lyo/JenkinsPlugin) adapor implements the OSLC Automation specification.
 * [Simulink](https://wiki.eclipse.org/Lyo/Simulink)

@@ -314,15 +314,15 @@ Resource shapes for each type, with all defined properties for that type</li>
 </ol>
 <p>RB and LQE use these resources for:</p>
 <ol>
-<li><strong>AccessContext</strong> that define a user’s visibility/access permissions on the data</li>
-<li><strong>Scope filtering</strong> in RELM, RB UI and report queries by project area</li>
-</ol>
-<ul>
+<li><p><strong>AccessContext</strong> that define a user’s visibility/access permissions on the data</p>
+</li>
+<li><p><strong>Scope filtering</strong> in RELM, RB UI and report queries by project area</p>
+</li>
 <li><input disabled="disabled" type="checkbox"> <p>For scope filtering by project area to work, all resources must include process:projectArea property</p>
 </li>
 <li><input disabled="disabled" type="checkbox"> <p>iotp-adaptor simulates a project area for each IoT Platform organization.</p>
 </li>
-</ul>
+</ol>
 <p>Add these assertions to the TRS provider base resources and change log:</p>
 <p><code>&lt;iotp-adaptor organization/service provider URL&gt; rdf: type process:ProjectArea</code></p>
 <p>Include these properties in all resource shapes:</p>
