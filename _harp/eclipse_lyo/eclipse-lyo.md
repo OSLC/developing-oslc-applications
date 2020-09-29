@@ -2,6 +2,10 @@ The [Eclipse Lyo](http://www.eclipse.org/lyo/) project supports Java developers 
 
 Eclipse Lyo promotes the use of Linked Data principles and the [OSLC](http://docs.oasis-open.org/oslc-core/oslc-core/v3.0/oslc-core-v3.0-part1-overview.html) (Open Services for Lifecycle Collaboration) standard for publishing lifecycle data, to enable the interoperability of heterogeneous products, services, and other distributed network resources.
 
+Below are the main active components of the Eclipse Lyo projects. 
+
+See [Sample applications and code](/sample-applications-and-code.html) for example applications that are based on Eclipse Lyo.  
+
 # <a name="oslc4j-sdk"></a>OSLC4J SDK
 
 Lyo’s central component is the OSLC4J SDK (Software Development Kit) that helps build REST-based servers and clients, compliant with the OSLC standard.
@@ -25,7 +29,7 @@ The library:
    * [oslc4j-core , Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/core/2.4.0/) - legacy support for JAX-RS 1.0, and the Apache Wink implementation.
    * [oslc4j-client, Lyo release 4.0.0](https://download.eclipse.org/lyo/docs/oslc4j-client/latest) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
    * [oslc-java-client, Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/oslc-java-client/latest) - legacy support for JAX-RS 1.0, and the Apache Wink implementation. 
-* [Lyo Client sample code](https://github.com/OSLC/lyo-samples) that demonstrates how to use the Lyo client to interact with OSLC Service Providers in various ways.
+* [Lyo Client sample code](https://github.com/OSLC/lyo-samples) - A Github repository that includes sample code to demonstrates how to use the Lyo OSLC4J SDK oslc4j-client to interact with OSLC Service Providers in various ways. It addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries. See the [README.md](https://github.com/OSLC/lyo-samples/blob/master/README.md) file in the repository for further pointers.
 * You are also welcome to contact the development team via [lyo-dev mailing list](https://dev.eclipse.org/mailman/listinfo/lyo-dev)
 
 # <a name="lyo-designer"></a>Lyo Designer
