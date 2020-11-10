@@ -35,6 +35,7 @@ The library:
 * How to [setup an OSLC Server and/or Client](./setup-an-oslc-provider-consumer-application).
 * Javadocs for [Lyo release 4.1.0 (all components)](https://download.eclipse.org/lyo/docs/all/4.1.0/apidocs/) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
 * [Lyo Client sample code](https://github.com/OSLC/lyo-samples) - A Github repository that includes sample code to demonstrates how to use the Lyo SDK oslc4j-client to interact with OSLC Service Providers in various ways. It addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries. See the [README.md](https://github.com/OSLC/lyo-samples/blob/master/README.md) file in the repository for further pointers.
+* [Lyo Core internals](./lyo-core-internals)
 * You are also welcome to contact the development team via [lyo-dev mailing list](https://dev.eclipse.org/mailman/listinfo/lyo-dev)
 
 ## Lyo Designer
