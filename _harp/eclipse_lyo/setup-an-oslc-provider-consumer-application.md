@@ -242,7 +242,7 @@ If your OSLC server also needs to consume resources from another server, a depen
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.clients</groupId>
-  <artifactId>oslc4j-client</artifactId>
+  <artifactId>oslc-client</artifactId>
   <version>${version.lyo}</version>
 </dependency>
 ```
