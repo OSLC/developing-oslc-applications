@@ -73,6 +73,7 @@ Lyo Designer supports incremental development, where manual changes to the gener
    * [TRS Server Javadocs](https://download.eclipse.org/lyo/docs/trs-server/latest/)
 * [TRS Reference Application guided tour](https://wiki.eclipse.org/Lyo/TRSReferenceApplication) - Provides a guided tour of the TRS reference application and its capabilities.
 * [TRS Workshop](http://wiki.eclipse.org/Lyo/TRSWorkshop) - A TRS workshop for Bugzilla
+* [Lyo Core internals](./lyo-core-internals)
 
 # <a name="additional-components"></a>Additional components
 
