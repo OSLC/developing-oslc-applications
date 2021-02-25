@@ -898,3 +898,8 @@ body > .header {
 .menu .current a {
   font-weight: 700;
 }
+
+img.logo {
+  width: 100px;
+  margin: auto;
+}
