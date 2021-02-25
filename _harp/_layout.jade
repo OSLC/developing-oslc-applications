@@ -87,6 +87,9 @@ html.no-js(lang="en")
                 for page, slug in public._data
                   li(class='item #{ current.source === slug ? "current" : "" }' role="presentation")
                     a(href="#{ site_url }#{ slug === 'index' ? '' : (slug + '.html') }") #{ page.title }
+
+          div
+            |<iframe src="https://duckduckgo.com/search.html?width=220&site=oslc.github.io/developing-oslc-applications/&prefill=Search DuckDuckGo&kn=1" style="overflow:hidden;margin:0 0 0 13px;padding:0;width:305px;height:40px;" frameborder="0"></iframe>
       main.main
         .card
           header.header
