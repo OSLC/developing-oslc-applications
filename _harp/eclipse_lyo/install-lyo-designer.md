@@ -26,8 +26,14 @@ as expected for general Lyo-based development, as instructed in [Eclipse Setup f
 1.  Select both features (1) ***Lyo Code Generator*** and (2) ***Lyo
     Toolchain Designer***.
 1.  Proceed with the installation steps.
+1.  Install the following plugins
+    * Acceleo
+    * Sirius Integration with Xtext
+    * Sirius Properties Views - Runtime Support
+    * Sirius Properties Views - Specifier Support
+    * Sirius Specifier Environment
 
--   **Problems installing?**: If you face problems installing the plugin
+**Problems installing?**: If you face problems installing the plugin
     (or when updating to a new version), try one of the following:
     1.  check the \"Contact all update sites during install to find
         required software\" option
