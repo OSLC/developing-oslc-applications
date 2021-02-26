@@ -32,5 +32,6 @@ as expected for general Lyo-based development, as instructed in [Eclipse Setup f
 **USE AT YOUR RISK**
 
 You can choose to use the following update sites to get updates from yet-unreleased builds of Lyo plugins:
-    * https://download.eclipse.org/lyo/bundle/p2/edge/
-    * https://download.eclipse.org/lyo/bundle/p2/superedge/
+
+    * <https://download.eclipse.org/lyo/bundle/p2/edge/> 
+    * <https://download.eclipse.org/lyo/bundle/p2/superedge/>
