@@ -2,17 +2,11 @@
   "index": {
     "title": "Get started with developing OSLC applications"
   },
-  "why-develop-oslc-applications": {
-    "title": "Why develop OSLC applications?" 
-  },  
-  "technical-foundations": {
-    "title": "Technical foundations" 
-  },
-  "services-resources-and-design-patterns": {
-    "title": "Services, resources, and design patterns" 
-  },
   "./eclipse_lyo/eclipse-lyo" : {
-    "title": "Tools & SDKs for Java Developers - Eclipse Lyo"
+    "title": "Eclipse Lyo - support for Java developers"
+  },
+  "tutorials": {
+    "title": "Tutorials"
   },
   "sample-applications-and-code": {
     "title": "Sample applications and code"
@@ -22,5 +16,14 @@
   },
   "oslc-open-source-node-projects": {
     "title": "OSLC Open Source Node.js Projects"
+  },
+  "why-develop-oslc-applications": {
+    "title": "Why develop OSLC applications?" 
+  },  
+  "technical-foundations": {
+    "title": "Technical foundations" 
+  },
+  "services-resources-and-design-patterns": {
+    "title": "Services, resources, and design patterns" 
   }
 }

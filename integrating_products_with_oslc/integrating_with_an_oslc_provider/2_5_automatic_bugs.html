@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png" class="logo"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/index.html">Tutorial Overview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/overview_of_oslc.html">A brief overview of OSLC</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/running_the_examples.html">Downloading and starting the sample applications</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_0_implementing_a_provider.html">Part 1, turning Bugzilla into a provider of the Change Management OSLC specification</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_1_planning_partial_cm_provider.html">Part 1.1, Planning Partial CM Provider</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources.html">Part 1.2, Providing Service Resources</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j.html">Part 1.3, Intro to Eclipse Lyo</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_4_ui_preview.html">Part 1.4, UI Preview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.html">Part 1.5, UI Selection</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation.html">Part 1.6, UI Creation</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory.html">Part 1.7, Factory</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_0_implementing_consumer.html">Part 2, Implementing Consumer</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_1_consumer_use_cases.html">Part 2.1, Consumer Use Cases</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_2_links_and_previews.html">Part 2.2, Links and Previews</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI.html">Part 2.3, DelegatedUI</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers.html">Part 2.4, Notify Customers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.html">Part 2.5, Automatic Bugs</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_6_wrapup.html">Part 2.6, Wrap up</a></li></ul><div><iframe src="https://duckduckgo.com/search.html?width=220&site=oslc.github.io/developing-oslc-applications/&prefill=Search DuckDuckGo&kn=1" style="overflow:hidden;margin:0 0 0 13px;padding:0;width:305px;height:40px;" frameborder="0"></iframe></div></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title"></h1></header><section class="content"><div class="copy"><h1>Implementing automated bug creation</h1><p>In this section we&#39;ll be building the foundations for a Java service that can automatically create a new bug in Bugzilla whenever a build or a test (from another program) fails. Here&#39;s roughly how the entire system would work:</p>
+<ol>
+<li>The build scripts (or testing programs) will be configured to report bugs against a product in Bugzilla; with the ID for the product, these applications can retrieve the OSLC Service Provider that represents that product.</li>
+<li>The build scripts will retrieve the Service Provider for the product and then parse it to find the Creation Factory URL, or the URL to which you can POST to create new bugs</li>
+<li>The scripts will create an RDF/XML representation of a new bug to be created; if there is an OSLC Resource Shape, they will use that to determine any required fields</li>
+<li>The script will send the RDF/XML representation to the Creation Factory URL using HTTP POST; the adapter will then interact with Bugzilla to create a new bug.</li>
+</ol>
+<p>As with the last section, we won&#39;t create an entire service; instead, we&#39;ll focus on the OSLC-specific parts, like parsing RDF resources and POSTing to an OSLC Creation Factory.</p>
+<h2>Using a Service Provider Catalog to find a Service Provider.</h2><p>For our OSLC-CM Bugzilla Adapter (or any OSLC provider), the starting point for exploring OSLC capabilities is the <a href="http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovidercatalog">Service Provider Catalog document</a>. </p>
+<p>You can read more about <a href="../implementing_an_oslc_provider/1_2_providing_service_resources">implementing Service Provider Catalogs for our Bugzilla Adapter here</a>. In short, we represent every Bugzilla Product as a <a href="http://archive.open-services.net/resources/tutorials/oslc-primer/serviceprovider">Service Provider resource</a>, and we collect all of those Service Providers in one Service Provider Catalog. </p>
+<p>The general principle is that clients should only need to know the URL for the Catalog; from the Catalog, clients can navigate to the other OSLC services. In other words, <em>clients should not have to hard-code URLs to individual OSLC services</em>.</p>
+<p>Here&#39;s a sample Service Provider Catalog document. You can see something similar if you&#39;re running the Bugzilla Adapter and run an HTTP GET request to <code>http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton</code> with an <code>Accept</code> header of <code>application/rdf+xml</code>:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;rdf:RDF xmlns:oslc=&quot;http://open-services.net/ns/core#&quot; 
+  xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot; 
+  xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;oslc:ServiceProviderCatalog rdf:about=&quot;http://localhost:8080/OSLC4JBugzilla/catalog&quot;&gt;
+    &lt;dcterms:title&gt;OSLC-CM Adapter/Bugzilla Service Provider Catalog&lt;/dcterms:title&gt;
+    &lt;dcterms:description&gt;
+    Enables navigation to Service Provider for each Product
+    against which bugs may be reported.
+    &lt;/dcterms:description&gt;
+    &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot;/&gt;
+
+    &lt;oslc:serviceProvider&gt;
+      &lt;oslc:ServiceProvider rdf:about=
+        &quot;http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/2&quot;&gt;
+        &lt;dcterms:title&gt;FoodReplicator&lt;/dcterms:title&gt;  
+      &lt;/oslc:ServiceProvider&gt;
+    &lt;/oslc:serviceProvider&gt;
+
+    &lt;oslc:serviceProvider&gt;
+      &lt;oslc:ServiceProvider rdf:about=
+        &quot;http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/19&quot;&gt;
+        &lt;dcterms:title&gt;Sam&#39;s Widget&lt;/dcterms:title&gt;
+      &lt;/oslc:ServiceProvider&gt;
+    &lt;/oslc:serviceProvider&gt;
+
+  &lt;/oslc:ServiceProviderCatalog&gt;
+&lt;/rdf:RDF&gt;</code></pre><p>The above example catalog has two <code>oslc:serviceProvider</code> values (i.e. <a href="http://open-services.net/ns/core#ServiceProvider">http://open-services.net/ns/core#ServiceProvider</a>). The URL of each provider is specified in the <code>rdf:about</code> attribute, and its title is specified as a <code>dcterms:title</code> property value. For example, the OSLC Service Provider resource for the FoodReplicator product is located at <code>http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/2</code>.</p>
+<p>As we discussed in the previous section, you should use an RDF parser like Jena to parse these documents programmatically.</p>
+<h2>Using a Service Provider to find a Creation Factory</h2><p>Once we&#39;ve navigated from a Catalog to a Service Provider resource, here&#39;s a sample of what you might see (as an RDF/XML document):</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;    
+  xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot;
+  xmlns:oslc=&quot;http://open-services.net/ns/core#&quot;&gt;
+  &lt;oslc:ServiceProvider rdf:about=&quot;http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/2&quot;&gt;
+    &lt;dcterms:title&gt;OSLC-CM Adapter/Bugzilla Service Provider:
+       Product FakePortal(2)&lt;/dcterms:title&gt;
+    &lt;dcterms:description&gt;
+       Enables navigation to OSLC-CM Resource Creator and Selector Dialogs
+    &lt;/dcterms:description&gt;
+    &lt;oslc:service&gt;  &lt;!-- (1) --&gt;
+      &lt;oslc:Service&gt;
+        &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot;/&gt;
+
+        &lt;!-- selection and creation dialog information deleted --&gt;
+
+        &lt;oslc:creationFactory&gt; &lt;!-- (2) --&gt;
+          &lt;oslc:CreationFactory&gt;
+            &lt;dcterms:title&gt;Change Request Creation Factory&lt;/dcterms:title&gt;
+            &lt;oslc:resourceType rdf:resource=  &lt;!-- (3) --&gt;
+               &quot;http://open-services.net/ns/cm#ChangeRequest&quot;/&gt;
+            &lt;oslc:label&gt;CreationFactory&lt;/oslc:label&gt;
+            &lt;oslc:creation rdf:resource=  &lt;!-- (4) --&gt;
+               &quot;http://localhost:8080/OSLC4JBugzilla/services/2/changeRequests&quot;/&gt;
+            &lt;oslc:resourceShape rdf:resource=  &lt;!-- (5) --&gt;
+               &quot;http://localhost:8080/OSLC4JBugzilla/services/resourceShapes/changeRequest&quot;/&gt;
+            &lt;oslc:usage rdf:resource=  &lt;!-- (6) --&gt;
+               &quot;http://open-services.net/ns/core#default&quot;/&gt;
+          &lt;/oslc:CreationFactory&gt;
+        &lt;/oslc:creationFactory&gt;
+      &lt;/oslc:Service&gt;
+    &lt;/oslc:service&gt;
+  &lt;/oslc:ServiceProvider&gt;
+&lt;/rdf:RDF&gt;</code></pre><p>You can read more about <a href="../implementing_an_oslc_provider/1_2_providing_service_resources">implementing Service Providers</a> and <a href="../implementing_an_oslc_provider/1_7_factory">implementing creation factories</a> for our Bugzilla adapter.</p>
+<p>Of most interest to our team developing a way to automatically create bugs are the contents of the <code>&lt;oslc:service&gt;</code> element (<strong>(1)</strong>). The Service has an <code>oslc:creationFactory</code> property (<strong>(2)</strong>) with a value of <code>oslc:CreationFactory</code>. The creation factory has values that indicate it is for creating Change Requests (<strong>(3)</strong>), the URI for posting new Change Requests (<strong>(4)</strong>), and the URI of the <a href="http://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes">Resource Shape</a> (<strong>(5)</strong>) that lists the required fields for bug creation. The usage value (<strong>(5)</strong>) indicates that this is the default Creation Factory to use.</p>
+<p>With this information, the build and testing scripts can parse the Service Provider document and discover the Creation Factory URL, which is the URL for posting new bugs.</p>
+<p>First, though, let&#39;s explore the Resource Shape document.</p>
+<h2>Using a Resource Shape to determine required properties</h2><p>It&#39;s not enough to just know the URL to POST bugs to; the testing scripts must also create a properly formatted OSLC-CM Change Request representation with the required property values and property values that are valid. Each Product defined in Bugzilla might have different required fields, custom fields and different allowed values.</p>
+<p>It&#39;s entirely possible confer with the Bugzilla system&#39;s administration and figure out the required and allowed values, <em>or</em> you could use the OSLC OSLC Creation Factory&#39;s <a href="http://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes">Resource Shape document</a>, which provides the same information.</p>
+<p>An example Resource Shape document in RDF/XML form is below (you can see the Resource Shape from our Bugzilla Adapter at <a href="http://localhost:8080/OSLC4JBugzilla/services/resourceShapes/changeRequest">http://localhost:8080/OSLC4JBugzilla/services/resourceShapes/changeRequest</a>):</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;oslc:Shape xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+   xmlns:dc=&quot;http://purl.org/dc/terms/&quot;
+   xmlns:oslc=&quot;http://open-services.net/xmlns/oslc-core#&quot;
+   xmlns:oslc_cm=&quot;http://open-services.net/xmlns/cm/1.0/&quot;
+   rdf:about=&quot;http://localhost:8080/OSLC4JBugzilla/shape?productId=2&quot;&gt;
+
+   &lt;dc:title&gt;This is the resource shape for a new Bugzilla Bug&lt;/dc:title&gt;
+
+   &lt;oslc:property&gt;
+    &lt;oslc:Property&gt;
+     &lt;oslc:name&gt;title&lt;/oslc:name&gt;
+     &lt;oslc:propertyDefinition rdf:resource=
+      &quot;http://purl.org/dc/terms/title&quot; /&gt;
+     &lt;oslc:valueType rdf:resource=
+      &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral&quot; /&gt;
+     &lt;oslc:occurs rdf:resource=
+      &quot;http://open-service.net/ns/core#Exactly-one&quot; /&gt;
+    &lt;/oslc:Property&gt;
+   &lt;/oslc:property&gt;
+
+   &lt;oslc:property&gt;
+    &lt;oslc:Property&gt;
+     &lt;oslc:name&gt;component&lt;/oslc:name&gt;
+     &lt;oslc:propertyDefinition rdf:resource=
+      &quot;http://www.bugzilla.org/rdf#component&quot; /&gt;
+     &lt;oslc:valueType rdf:resource=
+      &quot;http://www.w3.org/2001/XMLSchema#string&quot; /&gt;
+     &lt;oslc:occurs rdf:resource=
+      &quot;http://open-service.net/ns/core#Exactly-one&quot; /&gt;
+     &lt;oslc:allowedValue&gt;Installer&lt;/oslc:allowedValue&gt;
+     &lt;oslc:allowedValue&gt;User Interface&lt;/oslc:allowedValue&gt;      
+     &lt;/oslc:Property&gt;
+  &lt;/oslc:property&gt;
+
+  &lt;!-- other properties omitted --&gt;
+
+&lt;/oslc:Shape&gt;</code></pre><p>Inside the root <code>oslc:Shape</code> element is the <code>dc:title</code> of the shape, which tells us the shape&#39;s purpose (1). Next there is a series of property values for the <code>oslc:property</code> property. Each one describes the requirements for the property at creation time. In the listing, we omit all but two of the property values: <code>dc:title</code> and <code>bugz:component</code>.</p>
+<p>Each property has a name (<code>oslc:name</code>), a link to the property definition (<code>oslc:propertyDefinition</code>), the acceptable type of value (<code>oslc:valueType</code>) and the cardinality (<code>oslc:occurs</code>), and allowed values (<code>oslc:allowedValue</code>). In our example above, the <code>component</code> property accepts <code>String</code> values; the <code>occurs</code> value of <code>Exactly-one</code> indicates that it is required; and the allowed values are either <code>Installer</code> or <code>User Interface</code>.</p>
+<p>With this information from the Resource Shape document, we can now create and post new bugs.</p>
+<h2>Forming an RDF/XML representation of a Bugzilla bug</h2><div class="callout-box guidance">
+<p><strong>Note</strong>: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using – <a href="http://wiki.eclipse.org/Lyo/LyoOSLC4J">OSLC4J</a> to handle conversions between RDF/XML and plain old Java objects. Consider the following to be guidance if you choose to approach this another way.</p>
+</div>
+
+
+<p>Although you could generate RDF/XML through a variety of techniques, we recommend using a dedicated RDF toolkit like <a href="http://jena.apache.org/">Jena</a>. </p>
+<p>We&#39;ll create a very simple method below: it accepts strings of various property values and returns an RDF/XML representation of a new bug.</p>
+<p>To follow along, open the file <code>NewDefect.java</code> in the <strong>org.eclipse.lyo.samples.ninacrm.examples</strong> package and search for the <code>formNewBug()</code> method.</p>
+<p>First, OSLC-CM requires Change Requests to have an RDF Type and a title:</p>
+<pre><code>Property bugType =
+  new PropertyImpl(&quot;http://open-services.net/ns/cm#ChangeRequest&quot;);
+
+Property titleProp =
+  new PropertyImpl(&quot;http://purl.org/dc/terms/title&quot;);</code></pre><p>Next, we know from the Resource Shape document that new bugs must have property values for the Bugzilla bug properties product, version, component, platform and operating system. So we set up Jena property objects for each of those:</p>
+<pre><code>Property versionProp = 
+  new PropertyImpl(&quot;http://www.bugzilla.org/rdf#version&quot;);
+
+Property componentProp = 
+  new PropertyImpl(&quot;http://www.bugzilla.org/rdf#component&quot;);
+
+Property platformProp = 
+  new PropertyImpl(&quot;http://www.bugzilla.org/rdf#platform&quot;);
+
+Property opsysProp = 
+  new PropertyImpl(&quot;http://www.bugzilla.org/rdf#opsys&quot;);</code></pre><div class="note">
+We are hard-coding required Bugzilla properties here. It would be better – more flexible and future-proof – to programmatically locate and parse a Resource Shape document to determine the required properties; for simplicity's sake, we do not do so here. We leave that as an exercise for the reader.
+</div>
+
+<p>Note that <strong>we did not set the Bugzilla Product</strong>: the product can be determined by the choice of service that you use to post the new bug. (In other words, every Bugzilla product will have its own OSLC Creation Factory.)</p>
+<p>Next, we set up a Jena Model object and adds namespace prefixes. These are not strictly necessary, but they will make the RDF/XML a little more readable and make it look more like the examples in the OSLC specifications, which is useful.</p>
+<pre><code>Model model = ModelFactory.createDefaultModel();
+model.setNsPrefix(&quot;bugz&quot;,    &quot;http://www.bugzilla.org/rdf#&quot;);
+model.setNsPrefix(&quot;dcterms&quot;, &quot;http://purl.org/dc/terms/&quot;);
+model.setNsPrefix(&quot;oslc_cm&quot;, &quot;http://open-services.net/ns/cm#&quot;);</code></pre><p>Once the Model is set up, we create a Resource object using a base URI that is the empty string. We won&#39;t know the URI of the new bug until the OSLC-CM provider has created it and tells us the new URI via the HTTP Location header. </p>
+<pre><code>com.hp.hpl.jena.rdf.model.Resource resource = model.createResource(&quot;&quot;);</code></pre><p>Once we have a Resource, we are ready to add property values for each of the required properties:</p>
+<pre><code>resource.addProperty(RDF.type,     bugType);
+resource.addLiteral(titleProp,     title);
+resource.addLiteral(versionProp,   version);
+resource.addLiteral(componentProp, component);
+resource.addLiteral(platformProp,  platform);
+resource.addLiteral(opsysProp,     opsys);</code></pre><p>Finally, we write out the RDF model in RDF/XML format and return it in string form:</p>
+<pre><code>StringWriter sw = new StringWriter();
+RDFWriter writer = model.getWriter();
+writer.write(model, sw, &quot;/&quot;);
+sw.flush();
+return sw.toString();</code></pre><h2>Using HTTP to POST a new bug</h2><p>With the ability to build RDF/XML representations of a bug in place, we can write a simple example that posts an RDF/XML representation of a new bug to an OSLC-CM Provider:</p>
+<pre><code>public static void postNewBug(
+                   String creationURL,
+                   String title, 
+                   String version, 
+                   String component, 
+                   String platform, 
+                   String opsys) {
+
+  String bug = formNewBug(title, version, component plaform, opsys); // (1) 
+
+  try {
+     URL createURL = new URL(creationURL);  // (2)
+
+     HttpURLConnection conn = (HttpURLConnection)createURL.openConnection();
+     conn.setRequestMethod(&quot;POST&quot;); // (3) 
+     conn.setDoOutput(true);
+     conn.setRequestProperty(&quot;Content-Type&quot;, &quot;application/rdf+xml&quot;);  // (4)
+
+     BufferedOutputStream out = new BufferedOutputStream(conn.getOutputStream());
+     out.write(bug.getBytes(&quot;UTF-8&quot;)); // (5)
+     out.close();
+
+     BufferedReader in = new BufferedReader( // (6)
+      new InputStreamReader(conn.getInputStream()));          
+     String s;
+     while ((s = in.readLine()) != null) {
+       System.out.println(s);
+     }
+     in.close();
+
+     int rc = conn.getResponseCode(); // (7)
+     System.out.println(&quot;Return status: &quot; + rc);
+     System.out.println(&quot;Location: &quot; + conn.getHeaderField(&quot;Location&quot;)); // (8)
+   }
+   catch (IOException e) {
+     e.printStackTrace();
+   }
+}</code></pre><p>The above method accepts as arguments the URL for the creation factory and the required attributes. </p>
+<p>First, we use the <code>formNewBug()</code> method (discussed above) to build the RDF/XML representation of the new bug from the passed property values (<strong>(1)</strong>).</p>
+<p>Next, we create a URL object with the URL of the target Change Request Creation Factory (<strong>(2)</strong>) and use it to open an HTTP connection. We configure that connection for HTTP POST (<strong>(3)</strong>) and set the HTTP Content-Type to inform the server that we are sending RDF/XML data (<strong>(4)</strong>).</p>
+<p>Finally, we write out the bug to the server (<strong>(5)</strong>). To confirm that the POST worked, we write out the results (<strong>(6)</strong>) and the response code (<strong>(7)</strong>) and the Location header (<strong>(8)</strong>). If all went well, the response code should be <code>201</code>, which means <code>Created</code>, and the Location will be the URI of the newly created bug.</p>
+<div class="notice tip">
+<div class="header">
+<h3 class="title">Try it out!</h3>
+</div>
+<div class="body">If you'd like to more details or want to try to post a bug using RDF/XML, see <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory/">our walkthrough of implementing a Creation Factory for our Bugzilla adapter</a>.
+</div>
+</div></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/2_5_automatic_bugs.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ER4THK2G7V', {'anonymize_ip' : true, 'client_storage': 'none'});</script></html>

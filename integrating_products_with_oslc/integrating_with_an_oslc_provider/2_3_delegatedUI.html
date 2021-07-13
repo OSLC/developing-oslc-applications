@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+
+Modernizr.load([{
+  test: Modernizr.mustard,
+  yep: 'https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css'
+}]);
+
+</script></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png" class="logo"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/index.html">Tutorial Overview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/overview_of_oslc.html">A brief overview of OSLC</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/running_the_examples.html">Downloading and starting the sample applications</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_0_implementing_a_provider.html">Part 1, turning Bugzilla into a provider of the Change Management OSLC specification</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_1_planning_partial_cm_provider.html">Part 1.1, Planning Partial CM Provider</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources.html">Part 1.2, Providing Service Resources</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j.html">Part 1.3, Intro to Eclipse Lyo</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_4_ui_preview.html">Part 1.4, UI Preview</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.html">Part 1.5, UI Selection</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation.html">Part 1.6, UI Creation</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory.html">Part 1.7, Factory</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_0_implementing_consumer.html">Part 2, Implementing Consumer</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_1_consumer_use_cases.html">Part 2.1, Consumer Use Cases</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_2_links_and_previews.html">Part 2.2, Links and Previews</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI.html">Part 2.3, DelegatedUI</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers.html">Part 2.4, Notify Customers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.html">Part 2.5, Automatic Bugs</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_6_wrapup.html">Part 2.6, Wrap up</a></li></ul><div><iframe src="https://duckduckgo.com/search.html?width=220&site=oslc.github.io/developing-oslc-applications/&prefill=Search DuckDuckGo&kn=1" style="overflow:hidden;margin:0 0 0 13px;padding:0;width:305px;height:40px;" frameborder="0"></iframe></div></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title"></h1></header><section class="content"><div class="copy"><h1>Implementing OSLC Delegated UIs</h1><p>In the previous section, we added the ability to display a small preview of OSLC4JBugzilla bugs in the NinaCRM application. Now, we&#39;ll take it a step further and allow our support reps to create and select bugs in NinaCRM.</p>
+<h2>Introduction to OSLC Delegated UI</h2><p><a href="http://archive.open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs">OSLC Delegated UI</a> is a way for a web application to provide a UI for creating and selecting resources, one that can be used by other web applications. </p>
+<p>To explain why it&#39;s called &quot;Delegated&quot; UI, consider our example: we want the NinaCRM system to be able to create and select bugs managed by the separate OSLC4JBugzilla system; however, we do not want to create a new UI to collect the information or duplicate OSLC4JBugzilla&#39;s methods of checking that the information is valid. Instead, we want to <em>delegate</em> the creation and selection of bugs to the OSLC4JBugzilla system.</p>
+<p>By using Delegated UI, Nina will enable support reps to add links from Incidents to bugs without leaving the comfort of the CRM system. </p>
+<h3>The mechanics of Delegated UI</h3><p>Earlier in this tutorial, we walked through an implementation of Delegated UIs for OSLC4JBugzilla, both for <a href="../implementing_an_oslc_provider/1_5_ui_selection">selecting bugs</a> and <a href="../implementing_an_oslc_provider/1_6_ui_creation">creating new bugs</a>. In addition to providing the UI and handling the results, the OSLC4JBugzilla adapter (or any other OSLC provider application) announces in its <a href="../implementing_an_oslc_provider/1_2_providing_service_resources">Service Provider Documents</a> the URL location and recommended size of the UI.</p>
+<p>The application that wants to use the Delegated UI (the OSLC Consumer) creates an <code>&lt;iframe&gt;</code> for the Delegated UI so that the user can interact with it. The Consumer application must also listen to the <code>&lt;iframe&gt;</code> do something with the results of the user&#39;s actions.</p>
+<p>You can learn more about Delegated UI in the <a href="http://archive.open-services.net/resources/tutorials/oslc-primer/delegated-user-interface-dialogs">OSLC Primer</a>.</p>
+<h2>Parsing the Service Provider Documents</h2><div class="notice">
+<p><strong>Note</strong>: The NinaCRM sample application does <em>not</em> retrieve a Service Provider document and parse its contents to locate Delegated UIs; for simplicity, the URLs for the delegated UIs are hard-coded in the <code>index.jsp</code> file. </p>
+<p>A better implementation would be one that properly parses the Service Provider and thus could work with any OSLC Provider.</p>
+</div>
+
+<p>As we noted when <a href="../implementing_an_oslc_provider/1_2_providing_service_resources">we implemented Service Providers and Catalogs</a>, one of the cores of OSLC is that clients should not have to hard-code any URLs other than a Service Provider Catalog. Clients should be able to parse the Catalog and navigate from the Catalog to the Service Providers; the Service Providers will then expose the available OSLC services.</p>
+<p>If you&#39;d like to follow along with a real Service Provider Catalog or Service Provider, see the <a href="../implementing_an_oslc_provider/1_2_providing_service_resources">&quot;Viewing the machine-readable formats of a Service Provider Catalog&quot; section near the bottom of this section</a>.</p>
+<p>Below is a part of a sample RDF/XML representation of a Service Provider that exposes both a Delegated UI for selection (<code>&lt;oslc:selectionDialog&gt;</code>) and a Delegated UI for Creation (<code>&lt;oslc:creationDialog &gt;</code>):</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;rdf:RDF
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+   xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot;
+   xmlns:oslc=&quot;http://open-services.net/ns/core#&quot;&gt;
+
+   &lt;oslc:ServiceProvider rdf:about=&quot;http://localhost:8080/OSLC4JBugzilla/services&quot;&gt;  &lt;!-- (1)--&gt;
+      &lt;dcterms:title&gt;Service Provider Catalog&lt;/dcterms:title&gt;
+      &lt;dcterms:description&gt;
+        Simple OSLC Reference Implementation (SORI) for Change Management Service Document
+      &lt;/dcterms:description&gt;
+
+      &lt;!-- etc. etc. etc. omitted everything up to oslc:service property --&gt;
+
+      &lt;oslc:service&gt;  &lt;!-- (2)--&gt;
+        &lt;oslc:Service&gt;
+           &lt;oslc:domain rdf:resource=&quot;http://open-services.net/ns/cm#&quot;/&gt;
+
+        &lt;!-- etc. etc. etc. omitted everything Delegated UI information --&gt;
+
+           &lt;oslc:selectionDialog&gt;  &lt;!-- (3)--&gt;
+              &lt;oslc:Dialog&gt;
+                &lt;dcterms:title&gt;CM Resource Selector&lt;/dcterms:title&gt;
+                &lt;oslc:label&gt;Picker&lt;/oslc:label&gt; &lt;!-- (4)--&gt;
+                &lt;oslc:dialog  &lt;!-- (5)--&gt;
+                   rdf:resource=&quot;http://10.0.1.3:8080/OSLC4JBugzilla/services/1/changeRequests/selector&quot;/&gt;
+                &lt;oslc:hintHeight&gt;325px&lt;/oslc:hintHeight&gt; &lt;!-- (6)--&gt;
+                &lt;oslc:hintWidth&gt;525px&lt;/oslc:hintWidth&gt;
+                &lt;oslc:resourceType  &lt;!-- (7)--&gt;
+                   rdf:resource=&quot;http://open-services.net/ns/cm#ChangeRequest&quot;/&gt;
+                &lt;oslc:usage rdf:resource=&quot;http://open-services.net/ns/core#default&quot;/&gt;
+              &lt;/oslc:Dialog&gt;
+           &lt;/oslc:selectionDialog&gt;
+
+           &lt;oslc:creationDialog&gt; &lt;!-- (8)--&gt;
+              &lt;oslc:Dialog&gt;
+                &lt;dcterms:title&gt;CM Resource Creator&lt;/dcterms:title&gt;
+                &lt;oslc:label&gt;Creator&lt;/oslc:label&gt;  
+                &lt;oslc:dialog rdf:resource=
+                   &quot;http://10.0.1.3:8080/OSLC4JBugzilla/services/1/changeRequests/creator&quot;/&gt;
+                &lt;oslc:hintHeight&gt;375px&lt;/oslc:hintHeight&gt;
+                &lt;oslc:hintWidth&gt;600px&lt;/oslc:hintWidth&gt;
+                &lt;oslc:resourceType rdf:resource=
+                   &quot;http://open-services.net/ns/cm#ChangeRequest&quot;/&gt;
+                &lt;oslc:usage rdf:resource=&quot;http://open-services.net/ns/core#default&quot;/&gt;
+              &lt;/oslc:Dialog&gt;
+           &lt;/oslc:creationDialog&gt;
+        &lt;/oslc:Service&gt;
+      &lt;/oslc:service&gt;
+
+  &lt;/oslc:ServiceProvider&gt;
+&lt;/rdf:RDF&gt;</code></pre><p>Note that both of the delegated UIs have a URL location (<code>rdf:resource</code>) and suggested sizes for the dialogs (<code>&lt;oslc:hintHeight&gt;</code> and <code>&lt;oslc:hintWidth&gt;</code>).</p>
+<p>Since we now know this information, we can add delegated UIs to the NinaCRM application.</p>
+<h2>Adding Delegated UI dialogs to the NinaCRM</h2><p>To follow along, start the NinaCRM application and the Bugzilla Adapter application. Open the sample NinaCRM incident page at <a href="http://localhost:8181/ninacrm/">http://localhost:8181/ninacrm/</a>.</p>
+<p>The HTML and JavaScript for the incident page are in the file <code>index.jsp</code> in <code>/src/main/webapp/</code>.</p>
+<h3>Buttons to launch the dialogs</h3><p>First, we add two buttons to the HTML code of the incident page.</p>
+<p>In the <code>index.jsp</code> file, search for the comment <code>Add link via OSLC Delegated Picker</code>. There you&#39;ll find the HTML for the buttons:</p>
+<pre><code>&lt;button id=&quot;selectDefectButton&quot; type=&quot;button&quot; 
+  dojoType=&quot;dijit.form.Button&quot; onclick=&quot;selectDefect()&quot;&gt;  
+  Select Defect to Link to...
+&lt;/button&gt;
+
+&lt;button id=&quot;createDefectButton&quot; type=&quot;button&quot; 
+  dojoType=&quot;dijit.form.Button&quot; onclick=&quot;createDefect()&quot;&gt;
+  Create Defect to Link to...
+&lt;/button&gt;</code></pre><p>Note that each button uses the Dojo/Dijit button framework and launches a JavaScript method when clicked.</p>
+<p>Next, we add the <code>selectDialog()</code> and <code>createDialog()</code> JavaScript methods.</p>
+<div class="notice tip">
+<p>The following methods use only the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;up=#Post_Message_and_Window_Name_pro">Post Message Protocol from the OSLC specification</a> and will accordingly only work in newer browsers. To support older browsers, you should also implement the Window Name protocol. For more information, see the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;up=#Post_Message_and_Window_Name_pro">OSLC Core Specification</a> and our <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection/">our implementation of Delegated UIs</a>.</p>
+</div>
+
+<p>Because the end-result of both actions is the same – we will be adding a link to either a new or existing bug in Bugzilla – both methods invoke the same <code>postMessageProtocol()</code> method with the appropriate URL:</p>
+<pre><code>function selectDefect() {
+  postMessageProtocol(selectDialogURL);
+}
+
+function createDefect() {
+  postMessageProtocol(createDialogURL);
+}</code></pre><p>Here&#39;s the <code>postMessageProtocol()</code> method that our buttons invoke:</p>
+<pre><code>var iframe;
+function postMessageProtocol(dialogURL) {
+  // Step 1
+  dialogURL += &#39;#oslc-core-postMessage-1.0&#39;;
+
+  // Step 2
+  var listener = dojo.hitch(this, function (e) {
+    var HEADER = &quot;oslc-response:&quot;;
+    if (e.source == iframe.contentWindow &amp;&amp; e.data.indexOf(HEADER) === 0) {
+      // Step 4
+      window.removeEventListener(&#39;message&#39;, listener, false);
+      destroyFrame(iframe);
+      handleMessage(e.data.substr(HEADER.length));        
+    }
+  });
+  window.addEventListener(&#39;message&#39;, listener, false);
+
+  // Step 3
+  iframe = document.createElement(&#39;iframe&#39;);
+  iframe.width = 500;
+  iframe.height = 375;
+  iframe.src = dialogURL;
+
+  // Step 4
+  displayFrame(iframe);
+  container.appendChild(iframe);
+};</code></pre><p>Here&#39;s how it works:</p>
+<ol>
+<li>First, we add the hash <code>#oslc-core-postMessage-1.0</code> to the dialog URLs; this will tell the OSLC Provider application that we&#39;re using the Post Message protocol to communicate with the iframe. </li>
+<li>We add an event listener that listens for a <code>postMessage</code> response with an <code>oslc-response</code> header and then invokes the <code>handleMessage()</code> method (see below)</li>
+<li>We create an <code>iframe</code> element with the content of the dialog URL.</li>
+<li>We then display the <code>iframe</code> element with the <code>displayFrame()</code> method (see below).</li>
+</ol>
+<p>Here&#39;s the <code>displayFrame()</code> method, which is basically a wrapper for the <a href="http://livedocs.dojotoolkit.org/dijit/Dialog">Dojo/Dijit dialog</a> method:</p>
+<pre><code>var dialog;
+function displayFrame(frame) {
+  if (!dialog) dialog = new dijit.Dialog();
+  dialog.setContent(frame);
+  dialog.show();
+}</code></pre><p>And here is the <code>handleMessage()</code> method, which evaluates the returned JSON representation of a bug for the URL and title:</p>
+<pre><code>function handleMessage(message) {
+  var json = message.substring(message.indexOf(&quot;{&quot;), message.length);
+  var results = eval(&quot;(&quot; + json + &quot;)&quot;);
+  var linkname = results[&quot;oslc:results&quot;][0][&quot;oslc:label&quot;];
+  var linkurl = results[&quot;oslc:results&quot;][0][&quot;rdf:resource&quot;];
+  addLink(linkname, linkurl);
+}</code></pre><p>Finally, we add a link to the page with the <code>addLink()</code> method:</p>
+<pre><code>function addLink(linkname, linkurl) {
+  dojo.xhrPost( {  
+    url: &quot;http://&quot;+hostname+&quot;:8181/ninacrm/data&quot;,
+    headers: { &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot; },
+    postData: &quot;linkname=&quot; + linkname + &quot;&amp;linkurl=&quot; + linkurl,
+    load: function(data) {
+      status(&quot;Added link!&quot;);
+      var li = document.createElement(&quot;li&quot;);
+      li.innerHTML = &quot;&lt;a href=&#39;&quot; + linkurl + &quot;&#39; onclick=&#39;showPreview()&#39;&gt;&quot; + linkname + &quot;&lt;/a&gt;&quot;;
+      var ul = dojo.byId(&quot;linkList&quot;).appendChild(li);
+      addPreviewMouseOverHandlers();
+    },
+    error: function (error) {
+      status(&quot;Error adding link!&quot;);
+    }
+  });
+}</code></pre><p>The <code>addLink()</code> method sends the title and URL of the bug to the /ninacrm/data service, which adds the information to the database. If successful, we add the link to the <code>&lt;ul id=&quot;linkList&quot;&gt;</code> element under the <strong>Related Links</strong> header.</p>
+<p>Throughout the process, we update a status message with the <code>status()</code> method:</p>
+<pre><code>function status(msg) {
+  document.getElementById(&quot;status&quot;).innerHTML = msg;
+}</code></pre><h2>Results</h2><p>With all these in place, you should now be able to add links to our incident pages with delegated OSLC dialogs.</p>
+<p>Here&#39;s the dialog for selection:</p>
+<p><img src="http://open-services.net/uploads/resources/nina-select.png" alt="Sample delegated dialog for selecting bugs on the incident page"></p>
+<p>You can search for bugs directly:</p>
+<p><img src="http://open-services.net/uploads/resources/nina-query.png" alt="Using the delegated dialog for selection to search for water"></p>
+<p>You can also create new bugs right from the page:</p>
+<p><img src="http://open-services.net/uploads/resources/nina-create-1.png" alt="Dialog for creating new bugs on the incident page"></p>
+<p>Either way, the new or selected bug appears on the page (complete with the ability to see a UI preview of the bug):</p>
+<p><img src="http://open-services.net/uploads/resources/nina-added-1.png" alt="Bug #3266 added to the incident page"></p>
+<p>At this point, we&#39;ve completed our first milestone goals: the CRM system now uses links,  OSLC UI Preview, and OSLC delegated dialogs to make it faster for support reps to find and create bugs.</p>
+<p><a href="2_4_notify_customers">Next: Part 2.4, Notify Customers</a></p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/2_3_delegatedUI.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ER4THK2G7V', {'anonymize_ip' : true, 'client_storage': 'none'});</script></html>

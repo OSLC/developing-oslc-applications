@@ -5,11 +5,11 @@ development:
 1.  Install your preferred Eclipse distribution. Which distribution to
     use?
     -   [Eclipse IDE for Java EE
-        Developers](https://www.eclipse.org/downloads/packages/release/oxygen/3a/eclipse-ide-java-ee-developers)
+        Developers](https://www.eclipse.org/downloads/packages/release/2018-09/r/eclipse-ide-java-ee-developers)
         seems to cover the necessary prerequisites for Building Lyo
         Projects.
     -   [Eclipse IDE for Java
-        Developers](https://www.eclipse.org/downloads/packages/release/oxygen/3a/eclipse-ide-java-developers)
+        Developers](https://www.eclipse.org/downloads/packages/release/2018-09/r/eclipse-ide-java-developers)
         can be used, together with the following 2 additional plugins:
         -   *Eclipse Java EE Developer Tools*
         -   *Eclipse Java Web Developer Tools*

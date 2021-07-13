@@ -1,44 +1,58 @@
 {
   "developer-guide": {
-    "title": "Developer Guide"
+    "title": "Developer Guide",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "environment-setup": {
-    "title": "eclipse environment setup" 
-  },  
+    "title": "eclipse environment setup",
+    "parent_uri": "../iotp-adaptor-sample.html"
+  },
   "toolchain-model": {
-    "title": "The toolchain model" 
+    "title": "The toolchain model",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "code-generator": {
-    "title": "Generating the server code" 
+    "title": "Generating the server code",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "exploring-the-code" : {
-    "title": "Exploring the generated code"
+    "title": "Exploring the generated code",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "ssl-support": {
-    "title": "https and SSL support"
+    "title": "https and SSL support",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "authentication": {
-    "title": "Authentication"
+    "title": "Authentication",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "rootservices": {
-    "title": "Creating the rootservices document"
+    "title": "Creating the rootservices document",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "consumer-friend": {
-    "title": "Connecting Servers"
+    "title": "Connecting Servers",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "artifact-container-associations": {
-    "title": "Artifact Container Associations"
+    "title": "Artifact Container Associations",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "dialogs": {
-    "title": "Updating generated dialogs"
+    "title": "Updating generated dialogs",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "implement-domain-class": {
-    "title": "Implementing a Domain Class"
+    "title": "Implementing a Domain Class",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "trs-provider": {
-    "title": "Implementing a TRS Provider"
+    "title": "Implementing a TRS Provider",
+    "parent_uri": "../iotp-adaptor-sample.html"
   },
   "junit-tests": {
-    "title": "JUnit Tests"
+    "title": "JUnit Tests",
+    "parent_uri": "../iotp-adaptor-sample.html"
   }
 }

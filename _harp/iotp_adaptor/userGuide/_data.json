@@ -1,17 +1,22 @@
 {
   "user-guide": {
-    "title": "Overview"
+    "title": "Overview",
+    "parent_uri": "../../iotp-adaptor-sample.html"
   },
   "install-and-config": {
-    "title": "Installation and Configuration" 
-  },  
+    "title": "Installation and Configuration",
+    "parent_uri": "../../iotp-adaptor-sample.html"
+  },
   "administration": {
-    "title": "Administration" 
+    "title": "Administration",
+    "parent_uri": "../../iotp-adaptor-sample.html"
   },
   "debug-interface": {
-    "title": "Generated Debug Web App" 
+    "title": "Generated Debug Web App",
+    "parent_uri": "../../iotp-adaptor-sample.html"
   },
   "using" : {
-    "title": "Using with IBM Continuous Engineering"
+    "title": "Using with IBM Continuous Engineering",
+    "parent_uri": "../../iotp-adaptor-sample.html"
   }
 }
