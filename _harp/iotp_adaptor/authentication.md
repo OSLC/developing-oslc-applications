@@ -90,17 +90,14 @@ If the request is authenticated with a valid OAuth access token, the request ses
 
 # IoT Platform and Bluemix APIs
 
-IoTPClient.java and BluemixClient.java provide simple convenience APIs that abstract the IoT Platform and Bluemix REST services needed to support iotp-adaptor access needs. It is instances of these classes that are stored in the JEE session and are used by the CE4IoTConnectorManager for all platform access. Bluemix uses a bearer token for authentication. The Bluemix.login() method logs in the user, establishes the bearer token and uses it for subsequent access.
-
-IoTPClient.login() uses Cloud Identity Access Management (IAM) to handle login. Cloud IAM requires each application to have a clientId and secret. See [Managing user API keys](https://console.bluemix.net/docs/iam/userid_keys.html#userapikey) for information on how to get an clientId and secret for your application. This information needs to be provided in the src/main/resources/config.properties file. For example:
+IoTPClient.java and BluemixClient.java provide simple convenience APIs that abstract the IoT Platform and Bluemix REST services needed to support iotp-adaptor access needs. It is instances of these classes that are stored in the JEE session and are used by the CE4IoTConnectorManager for all platform access. Watson IoT Platform and Bluemix uses a bearer token for authentication. The Bluemix.login() method logs in the user, establishes the bearer token and uses it for subsequent access. The bearer token is obtained using an apiKey through Cloud Identity Access Management (IAM) to handle login. Cloud IAM requires each application to have an apiKey. See [Managing user API keys](https://cloud.ibm.com/iam/apikeys) for information on how to get an apiKey for your application. This information needs to be provided in the src/main/resources/config.properties file. For example:
 
 ```
-# Cloud IAM application credentials
-clientId=iotp-adaptor
-secret=C54AB68YA513
+# Cloud IAM application key
+apiKey=C54AB68YA513
 ```
 
-See [Adoption Application & Quick Start Guide](https://w3-connections.ibm.com/wikis/home?lang=en-us#%21/wiki/38e9d23f-e3d9-4ddd-83a6-1e894ca99766/page/Adoption%20Application%20%26%20Quick%20Start%20Guide) for more information on IBMid.
+See [Using API Connect Reserved](https://cloud.ibm.com/docs/apiconnect?topic=apiconnect-ri-call-apim-apis) for more information on IBMid.
 
 # OAuth Authentication
 
