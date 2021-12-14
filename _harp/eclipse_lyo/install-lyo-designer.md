@@ -14,7 +14,7 @@ The Modelling environment and code generator are known to work on Eclipse
 versions up until Eclipse 2020-09 (v4.18).
 
 The easiest way to install Lyo Designer is via the update-site
-`http://download.eclipse.org/lyo/p2/stable/`. (This URL is intended to
+`http://download.eclipse.org/lyo/p2/stable/` (This URL is intended to
 be accessed via the Eclipse update functionality, and not via a web
 browser.)
 
