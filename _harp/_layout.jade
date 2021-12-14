@@ -10,7 +10,9 @@ html.no-js(lang="en")
     link(rel="stylesheet" href="#{ site_url }css/oslc.css")
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous")
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous")
-
+    link(rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" crossorigin="anonymous")
 
     script(src="#{ site_url }js/lib/modernizr.js")
 
@@ -101,7 +103,7 @@ html.no-js(lang="en")
         a.close-off-canvas(role="button", aria-label="Toggle Navigation", data-toggle-class="primary-nav-is-open", data-toggle-target="body")
     footer.footer
       p
-        |Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/#{ current.source }.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i>
+        |Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/#{ current.path.join('/') }.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i>
   script.
     window.site_url = '#{site_url}';
   script(src="#{ site_url }js/oslc.js")
