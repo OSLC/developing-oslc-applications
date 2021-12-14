@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Generating the server code</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Generating the server code</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
 Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
 
 Modernizr.load([{
@@ -35,17 +35,21 @@ Modernizr.load([{
         }
         // TRS service  
         RESOURCE_CLASSES.add(TrackedResourceSetService.class);
-
+        
          // trigger Jena init
          ModelFactory.createDefaultModel();
          // force plain XML writer
          RDFWriterFImpl.alternative(null);
-        // End of user code</code></pre><p>The OAuth classes have to be added by name instead of through imports because they are defined in a separate, reusable Web application WAR file, not a Java JAR file.</p>
-<p><strong><em>Important</em></strong>: When eclipse/Lyo OSLC4J updated to Apache Jena 3, the behavior of the serialization of RDF/XML changed in a way that cannot be consumed by the jazz.net apps. You&#39;ll notice this if the jazz.net apps can&#39;t read your server provider catalogs, even though the RDF/XML looks completely correct. RDF/XML can have many valid, but syntactically different formats. The following statements configre Jena 3 to use RDF/XML serialization formats that can be consumed by the jazz.net apps (which are still using an earlier version of Jena).</p>
+        // End of user code
+</code></pre>
+<p>The OAuth classes have to be added by name instead of through imports because they are defined in a separate, reusable Web application WAR file, not a Java JAR file.</p>
+<p><em><strong>Important</strong></em>: When eclipse/Lyo OSLC4J updated to Apache Jena 3, the behavior of the serialization of RDF/XML changed in a way that cannot be consumed by the jazz.net apps. You&#39;ll notice this if the jazz.net apps can&#39;t read your server provider catalogs, even though the RDF/XML looks completely correct. RDF/XML can have many valid, but syntactically different formats. The following statements configre Jena 3 to use RDF/XML serialization formats that can be consumed by the jazz.net apps (which are still using an earlier version of Jena).</p>
 <pre><code>         // trigger Jena init
          ModelFactory.createDefaultModel();
          // force plain XML writer
-         RDFWriterFImpl.alternative(null);</code></pre><p>You are now ready to implement each of the domain classes. Details are provided in <a href="./implement-domain-class">Implementing a Domain Class</a>. But first, there&#39;s a few details about the code generator that need to be understood in terms of generated vs. user code.</p>
+         RDFWriterFImpl.alternative(null);
+</code></pre>
+<p>You are now ready to implement each of the domain classes. Details are provided in <a href="./implement-domain-class">Implementing a Domain Class</a>. But first, there&#39;s a few details about the code generator that need to be understood in terms of generated vs. user code.</p>
 <h2>Adding User Code to Generated Classes and JSPs</h2><p>The Lyo Designer M2T templates contain markers that indicate where users or developers can add code to customize or complete the implementation of generated modules. When the code generator runs, these markers are added as structured comments in the generated code to indicate the boundaries where developers can add additional or customized code. For example, here&#39;s the generated code for the getDeviceType method that is generated in the CE4IoTConnectorManager.java file:</p>
 <pre><code>    public static DeviceType getDeviceType(HttpServletRequest httpServletRequest, final String iotId, final String deviceTypeId)
     {
@@ -54,11 +58,13 @@ Modernizr.load([{
         // TODO Implement code to create a DeviceType        
         // End of user code
         return aResource;
-    }</code></pre><p>These generated TODO comments will show up as java Task elements in the eclipse Markers view. Developers will replace these TODO comments with the actual implementing code. For example, here&#39;s the implementation for getDeviceType:</p>
+    }
+</code></pre>
+<p>These generated TODO comments will show up as java Task elements in the eclipse Markers view. Developers will replace these TODO comments with the actual implementing code. For example, here&#39;s the implementation for getDeviceType:</p>
 <pre><code>    public static DeviceType getDeviceType(HttpServletRequest httpServletRequest, final String iotId, final String deviceTypeId)
     {
         DeviceType aResource = null;
-
+        
         // Start of user code getDeviceType
         try {
             if (deviceTypeId == null) {
@@ -79,25 +85,30 @@ Modernizr.load([{
         }
         // End of user code
         return aResource;
-    }</code></pre><p>The following guidelines should be carefully followed for any code that was generated by any <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwigxoT1yabaAhWvtlkKHR84BjwQFggpMAA&amp;url=https%3A%2F%2Fwww.eclipse.org%2Fmodeling%2Fm2t%2F&amp;usg=AOvVaw0DTaDfGB_DiZD-YDwvKIW0">eclipse Modeling M2T</a> - based code generator, including Lyo Designer. If these guidelines are not followed, it is very likely that regenerating the code will loose changes and result in defects that are difficult to detect.</p>
+    }
+</code></pre>
+<p>The following guidelines should be carefully followed for any code that was generated by any <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwigxoT1yabaAhWvtlkKHR84BjwQFggpMAA&amp;url=https%3A%2F%2Fwww.eclipse.org%2Fmodeling%2Fm2t%2F&amp;usg=AOvVaw0DTaDfGB_DiZD-YDwvKIW0">eclipse Modeling M2T</a> - based code generator, including Lyo Designer. If these guidelines are not followed, it is very likely that regenerating the code will loose changes and result in defects that are difficult to detect.</p>
 <p>√ Recognize files that were generated by Lyo Designer by the following text at the end of the copyright notice at the beginning of the source file:
-<code>* This file is generated by org.eclipse.lyo.oslc4j.codegenerator</code></p>
+<code> * This file is generated by org.eclipse.lyo.oslc4j.codegenerator</code></p>
 <p>√ Only change code inside protected user code regions that were generated by Lyo Designer
 For example:</p>
 <pre><code>    // Start of user code class_attributes
-    // End of user code</code></pre><p>Any code changes you make outside these protected regions will be lost when the code is regenerated. This includes the addition of new variables or methods.</p>
+    // End of user code
+</code></pre>
+<p>Any code changes you make outside these protected regions will be lost when the code is regenerated. This includes the addition of new variables or methods.</p>
 <p>√ Never add your own protected regions in the source code. They will be lost on regeneration, just like any other changes made outside protected regions. The only way additional protected regions can be added to a source file is through changes in the Lyo Designer .m2t templates. Create a bug on <a href="https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Lyo">Lyo Tools</a> if needed. </p>
 <p>√ Don&#39;t make any changes to code outside protected regions, including deleting code. These changes will be lost on regeneration.</p>
 <p>√ Never use the Java editor Source &gt; Organize Imports function, or any other function that automatically adds code to the source file. This will surely create issues with code changes outside protected user code regions.</p>
 <p>√ Lyo Designer will attempt to identify and preserve protected user code if regenerating the code results in deletion of the user code.</p>
-<p>For example, say you had user code in the body of a method. If you change something in the model so that method is renamed (this happens a lot), then Lyo Designer will notice that there was protected user code in the method that is going to be deleted and will preserve the content in a <file>.java.lost text file. You can use these files to recover the user code, and copy and past the code into the new, renamed method.</file></p>
+<p>For example, say you had user code in the body of a method. If you change something in the model so that method is renamed (this happens a lot), then Lyo Designer will notice that there was protected user code in the method that is going to be deleted and will preserve the content in a <file>.java.lost text file. You can use these files to recover the user code, and copy and past the code into the new, renamed method.</p>
 <p>√ Lyo Designer adds <code>// TODO</code> comments in protected user code areas that typically require additional information. Search for these or explore the eclipse Markers view, Java Tasks, to ensure you have completed the implementation of the generated code.</p>
 <h2>Recovering lost code</h2><p>Sometimes changes to the model will result in renaming a class or method, or the name of a generated method will change because of a change in the Adaptor Interfaces. In this case the Lyo Designer code generator will detect that some code may be lost and will generate a special text file called {Java class name}.java.lost.</p>
 <p>This file will contain all the generated comment markers and user code that was lost. You should examine these files carefully after code generation, and copy the lost code into the appropriate place in the newly generated code. </p>
 <p>Be sure to delete these files after you have addressed any lost user code so they don&#39;t get stored in the SCM system or get overwritten with a new code generation before you have processed them.</p>
 <h2>Regenerating Code</h2><p>Sometimes you might want to remove any changes you have made and start over with a freshly generated file. This is common for generated JSP pages. Since its hard to predict the exact style, format and content of JSP pages that are generated for creation and selection dialogs, as well as small and large preview dialogs. Almost all of these JSP pages are inside protected user code. So if you change something in the model that would require these JSP pages to be completely regenerated, you can simply delete the files and let the generator re-create them. Otherwise the generator will see that whole file as protected and not change anything.</p>
 <h2>Cleaning up Orphaned source files</h2><p>Sometimes when resources are renamed or deleted, Java and JSP files might be left laying around. The Lyo Designer code generator never deletes any files. These need to be manually cleaned up.</p>
-<p>It can be hard to detect these files because of somewhat long and complex file names. One easy way to find them is to list the files (<code>ls -t</code> or <code>ls -lrth</code>) sorted by date, or examine their date property in the eclipse properties view. The ones that have dates older than the most recent code generation are the orphaned files that can/should be deleted.</p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/code-generator.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
+<p>It can be hard to detect these files because of somewhat long and complex file names. One easy way to find them is to list the files (<code>ls -t</code> or <code>ls -lrth</code>) sorted by date, or examine their date property in the eclipse properties view. The ones that have dates older than the most recent code generation are the orphaned files that can/should be deleted.</p>
+</div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/iotp_adaptor/code-generator.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ER4THK2G7V', {'anonymize_ip' : true, 'client_storage': 'none'});</script></html>

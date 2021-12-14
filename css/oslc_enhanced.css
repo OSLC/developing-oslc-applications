@@ -903,3 +903,78 @@ img.logo {
   width: 100px;
   margin: auto;
 }
+
+/* 2021 style harmonization with the main website */
+
+body {
+  font-family: 'Open Sans', 'Source Sans Pro', Tahoma, sans-serif !important;
+  font-weight: 400;
+  font-size: 13pt;
+}
+
+b, strong {
+  font-weight: 600;
+}
+
+
+div.menu.primary ul.items {
+  font-family: Tahoma, 'Roboto', 'Open Sans', sans-serif ;
+  font-weight: 500;
+  line-height: 1.3rem;
+  font-size: 18px;
+}
+
+ul.items li.current a {
+  font-weight: 800 !important;
+}
+
+
+nav, h1, h2, h3, h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400 !important;
+}
+
+h1 {
+  font-size: 34pt !important;
+  font-weight: 300 !important;    
+}
+
+h2 {
+  font-size: 28pt !important;    
+}
+
+h3 {
+  font-size: 22pt !important;    
+}
+
+h4 {
+  font-size: 18pt !important;
+  font-weight: 500 !important;    
+}
+
+
+.main {
+  font-size: 14pt;
+}
+
+main .copy {
+  line-height: 1.8rem;
+}
+
+pre, code {
+  font-family: 'Space Mono', monospace;
+  font-variant-ligatures: none;
+  font-weight: 400;
+}
+
+div > pre {
+  /*code block*/ 
+  font-size: 1.05rem; 
+  line-height: 1.45rem;
+}
+
+p > code {
+  /*inline code*/ 
+  font-size: 1.15rem;
+}
+

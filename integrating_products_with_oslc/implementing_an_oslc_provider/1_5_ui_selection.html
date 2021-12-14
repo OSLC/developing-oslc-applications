@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to develop OSLC applications</title><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><script>// add .mustard/.no-mustard css classes
 Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
 
 Modernizr.load([{
@@ -12,7 +12,8 @@ Modernizr.load([{
 <li>Create a new bug in Bugzilla</li>
 </ul>
 <p>For example, a user of the NinaCRM product will be able to search for and add links to related bugs in Bugzilla without leaving the NinaCRM interface.</p>
-<div class="notice"><p>For more information on OSLC delegated UIs, see the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#Delegated_User_Interface_Dialogs">section about them in the OSLC core specification</a>.</p></div>
+<div class="notice"><p>For more information on OSLC delegated UIs, see the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#Delegated_User_Interface_Dialogs
+">section about them in the OSLC core specification</a>.</p></div>
 
 <p>Because delegated UI dialogs must accept user input and interact with Bugzilla to select or create bugs, they are more complex than collecting and describing bugs. Here&#39;s how we&#39;ll approach the process:</p>
 <ol start="2">
@@ -24,7 +25,7 @@ Modernizr.load([{
 </ol>
 <h2>Adding the location of delegated UI dialogs to Service Providers</h2><p>Because we&#39;re using OSLC4J, it&#39;s relatively trivial to add links to delegated UIs to our Service Provider documents.</p>
 <p>Open <code>BugzillaChangeRequestService.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla</strong> package and search for <code>@OslcDialogs</code> (note the plural).</p>
-<p>These use the imported annotations from OSLC4J: <code>org.eclipse.lyo.oslc4j.core.annotation.OslcDialog</code>, <code>org.eclipse.lyo.oslc4j.core.annotation.OslcDialogs;</code>, and <code>org.eclipse.lyo.oslc4j.core.annotation.OslcQueryCapability;</code></p>
+<p>These use the imported annotations from OSLC4J: <code> org.eclipse.lyo.oslc4j.core.annotation.OslcDialog</code>, <code>org.eclipse.lyo.oslc4j.core.annotation.OslcDialogs;</code>, and <code>org.eclipse.lyo.oslc4j.core.annotation.OslcQueryCapability;</code></p>
 <p>Here are the annotations for the selection dialog and the capability to query for bugs:</p>
 <pre><code>@OslcDialogs(
 {
@@ -48,10 +49,14 @@ Modernizr.load([{
     resourceShape = OslcConstants.PATH_RESOURCE_SHAPES + &quot;/&quot; + Constants.PATH_CHANGE_REQUEST,
     resourceTypes = {Constants.TYPE_CHANGE_REQUEST},
     usages = {OslcConstants.OSLC_USAGE_DEFAULT}
-)</code></pre><p>As with BugzillaChangeRequests, with the appropriate annotations OSLC4J handles the conversion of this information to XML or JSON for you – no additional templating required.</p>
+)
+</code></pre>
+<p>As with BugzillaChangeRequests, with the appropriate annotations OSLC4J handles the conversion of this information to XML or JSON for you – no additional templating required.</p>
 <p>You can explore <code>/src/main/webapp/cm/serviceprovider_html.jsp</code> to see how we add the links to these to the HTML representation of a Service Provider (under the <strong>Resource Selector Dialog</strong> heading).</p>
 <p>With this enabled, we&#39;ve defined that the dialog for selecting or querying for bugs will be at the following URL (assuming your adapter is running at <code>localhost</code> and port <code>8080</code>):</p>
-<pre><code>http://localhost:8080/OSLC4JBugzilla/services/{productID}/changeRequests/selector</code></pre><p>Next, we must create the dialog.</p>
+<pre><code>http://localhost:8080/OSLC4JBugzilla/services/{productID}/changeRequests/selector
+</code></pre>
+<p>Next, we must create the dialog.</p>
 <h2>Adding the dialog to search for and select bugs</h2><p>As with our methods for returning BugzillaChangeRequests, we add another method to our <strong>BugzillaChangeRequestService</strong> class to handle requests for a delegated UI to select bugs.</p>
 <p>In our OSLC4J Bugzilla Adapter, open <code>BugzillaChangeRequestService.java</code> and search for the <code>changeRequestSelector()</code> method:</p>
 <pre><code>@GET
@@ -75,13 +80,15 @@ public void changeRequestSelector(
         try {    
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher(&quot;/cm/changerequest_selector.jsp&quot;); 
             rd.forward(httpServletRequest, httpServletResponse);
-
+        
         } catch (Exception e) {
             throw new ServletException(e);
         }
     }
-
-}</code></pre><p>In short, this method defines two things that could happen if you make a request to a URL with <code>/changeRequests/selector</code>:</p>
+        
+}
+</code></pre>
+<p>In short, this method defines two things that could happen if you make a request to a URL with <code>/changeRequests/selector</code>:</p>
 <ol>
 <li>If the request URL <em>does not</em> have a <code>terms</code> parameter, we dispatch a JSP template (<code>changerequest_selector.jsp</code>) to display a form for the user to fill in the search terms and select a bug.</li>
 <li>If the request <em>does</em> have a <code>terms</code> parameter, the request is an AJAX request coming from the delegated UI that is running in a user&#39;s web browser (code that we&#39;ll discuss below). We call the <code>sendFilteredBugsReponse()</code> method that performs a Bugzilla search (using the J2Bugzilla API) and returns the results in a compact JSON format.</li>
@@ -90,7 +97,9 @@ public void changeRequestSelector(
 <h2>Creating the delegated UI for selection</h2><p>Open <code>/src/main/webapp/cm/changerequest_selector.jsp</code> and explore the contents.</p>
 <p>The JSP page <code>changerequest_selector_dialog.jsp</code> provides the HTML and JavaScript for a Change Request Selector Dialog. There&#39;s a little bit of HTML, because the dialog is pretty simple.</p>
 <p>Because a fair amount of JavaScript code is required to allow a user to enter search terms, display search results, allow the user to make a selection and then notify the delegated UI consumer that a selection has been made, we have stashed those methods in a <code>bugzilla.js</code> file that we load in the <code>&lt;head&gt;</code> of the returned HTML:</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../../../bugzilla.js&quot;&gt;&lt;/script&gt;</code></pre><p>We&#39;ll explore the various JavaScript methods below.</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../../../bugzilla.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>We&#39;ll explore the various JavaScript methods below.</p>
 <h3>Allowing users to search for bugs</h3><p>In <code>changerequest_selector.jsp</code>, here&#39;s the form for the user to enter search terms:</p>
 <pre><code>&lt;input type=&quot;search&quot; 
     style=&quot;width: 335px&quot; 
@@ -99,7 +108,9 @@ public void changeRequestSelector(
     autofocus&gt;
 &lt;button 
     type=&quot;button&quot;
-    onclick=&quot;search( &#39;&lt;%= selectionUri %&gt;&#39; )&quot;&gt;Search&lt;/button&gt;</code></pre><p>Note that when you click the <code>&lt;button&gt;</code>, we call the JavaScript function <code>search()</code>, which we define in the file <code>src/main/webapp/bugzilla.js</code>.</p>
+    onclick=&quot;search( &#39;&lt;%= selectionUri %&gt;&#39; )&quot;&gt;Search&lt;/button&gt;
+</code></pre>
+<p>Note that when you click the <code>&lt;button&gt;</code>, we call the JavaScript function <code>search()</code>, which we define in the file <code>src/main/webapp/bugzilla.js</code>.</p>
 <p>Open <code>bugzilla.js</code>. Near the top, explore the <code>search()</code> function.</p>
 <pre><code>function search(baseUrl){
     var ie = window.navigator.userAgent.indexOf(&quot;MSIE&quot;);
@@ -123,7 +134,7 @@ public void changeRequestSelector(
                      list.add(item, null); 
                 }
             }
-
+        
             searchMessage.style.display = &#39;block&#39;;
             loadingMessage.style.display = &#39;none&#39;;
         }
@@ -133,7 +144,9 @@ public void changeRequestSelector(
     searchMessage.style.display = &#39;none&#39;;
     loadingMessage.style.display = &#39;block&#39;;
     xmlhttp.send();
-}</code></pre><p>In short, this function does the following:</p>
+}
+</code></pre>
+<p>In short, this function does the following:</p>
 <ol>
 <li>Removes any previous search results from the <code>&lt;select id=&quot;results&quot;&gt;</code> element</li>
 <li>Creates an AJAX request </li>
@@ -147,7 +160,9 @@ public void changeRequestSelector(
 <pre><code>&lt;button style=&quot;float: right;&quot; type=&quot;button&quot;
   onclick=&quot;javascript: cancel()&quot;&gt;Cancel&lt;/button&gt;
 &lt;button style=&quot;float: right;&quot; type=&quot;button&quot;
-  onclick=&quot;javascript: select();&quot;&gt;OK&lt;/button&gt;</code></pre><p>When you click the <strong>OK</strong> button, we call the JavaScript function <code>select()</code>, which is also defined in the <code>bugzilla.js</code> file.</p>
+  onclick=&quot;javascript: select();&quot;&gt;OK&lt;/button&gt;
+</code></pre>
+<p>When you click the <strong>OK</strong> button, we call the JavaScript function <code>select()</code>, which is also defined in the <code>bugzilla.js</code> file.</p>
 <p>Open <code>bugzilla.js</code> and search for the <code>select()</code> function:</p>
 <pre><code>function select(){
   list = document.getElementById(&quot;results&quot;);
@@ -155,7 +170,9 @@ public void changeRequestSelector(
     option = list.options[list.selectedIndex];
     sendResponse(option.text, option.value);
   }
-}</code></pre><p>This method finds the bug that the user has selected (<code>list.options[list.selectedIndex]</code>) and sends the title (<code>option.text</code>) and URL (<code>option.value</code>) of the bug in a response to the original window (the <code>sendResponse()</code> method).</p>
+}
+</code></pre>
+<p>This method finds the bug that the user has selected (<code>list.options[list.selectedIndex]</code>) and sends the title (<code>option.text</code>) and URL (<code>option.value</code>) of the bug in a response to the original window (the <code>sendResponse()</code> method).</p>
 <p>Because we&#39;re sending data from a delegated UI in one browser window back to another application with a different host and in a different window, we must use either the <a href="https://developer.mozilla.org/en-US/docs/DOM/window.postMessage"><code>window.postMessage</code></a> method (if supported) or via <code>window.name</code> variables otherwise.</p>
 <p>Explore the <code>sendResponse()</code> method to see how we build the JSON response and determine which cross-window method to use to send it to the requesting application:</p>
 <pre><code>function sendResponse(label, url) {
@@ -170,8 +187,10 @@ public void changeRequestSelector(
     // Post Message protocol in use
     respondWithPostMessage(oslcResponse);
   } 
-}</code></pre><p>We determine whether or not we want to use Window Name or postMessage by looking at the <code>location.hash</code> value for the page: either <code>#oslc-core-windowName-1.0</code> or <code>#oslc-core-postMessage-1.0</code>. We do this because the <em>requesting client</em> is the application that must indicate which cross-domain method <em>it</em> supports; the client does so by requesting our delegated UI with the appropriate hash. We&#39;ll explore this later when we access this delegated UI in the NinaCRM application.</p>
-<p>You can further explore the <code>respondWithPostMessage()</code> and <code>respondWithWindowName()</code> methods in <code>bugzilla.js</code> to see how we send the data to the requesting window – it&#39;s taken almost entirely from the examples in the OSLC Core specification.</p>
+}
+</code></pre>
+<p>We determine whether or not we want to use Window Name or postMessage by looking at the <code>location.hash</code> value for the page: either <code>#oslc-core-windowName-1.0</code> or <code>#oslc-core-postMessage-1.0</code>. We do this because the <em>requesting client</em> is the application that must indicate which cross-domain method <em>it</em> supports; the client does so by requesting our delegated UI with the appropriate hash. We&#39;ll explore this later when we access this delegated UI in the NinaCRM application.</p>
+<p>You can further explore the <code>respondWithPostMessage()</code> and <code>respondWithWindowName()</code> methods in <code>bugzilla.js</code> to see how we send the data to the requesting window – it&#39;s taken almost entirely from the examples in the OSLC Core specification.</p>
 <div class="notice tip">
 <p>
 Note that the selection dialog above will show all Change Requests available for one Bugzilla Product. Some additional work could be done to make this more useful by doing some filtering up-front. For example, it might be useful to show only Change Requests that are assigned to the current user, or to prioritize recently created Change Requests.
@@ -180,7 +199,8 @@ Note that the selection dialog above will show all Change Requests available for
 
 <p>We&#39;ll put this delegated UI to use later when we <a href="../integrating_with_an_oslc_provider/2_2_links_and_previews">implement it in the NinaCRM sample application</a>.</p>
 <p>Next, we&#39;ll create a delegated UI that will allow users to create new bugs in Bugzilla.</p>
-<p><a href="1_6_ui_creation">Next: Part 1.6, UI Creation</a></p></div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/1_5_ui_selection.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
+<p><a href="1_6_ui_creation">Next: Part 1.6, UI Creation</a></p>
+</div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ER4THK2G7V', {'anonymize_ip' : true, 'client_storage': 'none'});</script></html>
