@@ -969,12 +969,12 @@ pre, code {
 
 div > pre {
   /*code block*/ 
-  font-size: 1.05rem; 
+  /* font-size: 1.05rem;  */
   line-height: 1.45rem;
 }
 
 p > code {
   /*inline code*/ 
-  font-size: 1.15rem;
+  /* font-size: 1.15rem; */
 }
 
