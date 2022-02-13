@@ -44,9 +44,7 @@ Make sure your environment is setup for OSLC4J development as instructed on [Ecl
 
 ## <a name="decide-jaxrs"></a>Decide if you want to adopt JAX-RS 1.0 or 2.0?
 Starting with version 4.0.0, Lyo supports JAX-RS 2.0, and no longer depends on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. 
-On the other hand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
-
-we recommend you adopt the latest versions of Lyo.
+On the other hand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the Apache Wink implementation (**retired to Apache Attic** since 2015). We recommend you adopt the latest versions of Lyo.
 
 The instructions below will vary depending on the Lyo version to be adopted. We will refer to the version as *${version.lyo}*, which can then take one of the two values:
 

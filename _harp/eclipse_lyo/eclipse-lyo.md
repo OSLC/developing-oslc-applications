@@ -4,7 +4,7 @@ Eclipse Lyo promotes the use of Linked Data principles and the [OSLC](http://doc
 
 Below are the main active components of the Eclipse Lyo projects. 
 
-See [Sample applications and code](/sample-applications-and-code.html) for example applications that are based on Eclipse Lyo.  
+See [Sample applications and code](../sample-applications-and-code.html) for example applications that are based on Eclipse Lyo.  
 
 # <a name="oslc4j-sdk"></a>OSLC4J SDK
 
@@ -77,11 +77,9 @@ Lyo Designer supports incremental development, where manual changes to the gener
 
 Additional components of the Lyo project include:
 
-* [Lyo Store](https://github.com/eclipse/lyo-store) - a library that provides a simple interface for working with a triplestore via Java objects representing OSLC Resources.
-* [Test Suite](https://wiki.eclipse.org/Lyo/LyoTestSuite) - provides a suite of tests which will test OSLC domain provider implementations against the specification.
-* [Reference Implementations](https://wiki.eclipse.org/Lyo/BuildingOSLC4J) - See how OSLC works directly with working samples and with a simple server to test against.
-* [_Reference Implementations (OUTDATED)_](https://github.com/eclipse/lyo.rio) - a simple, bare-bones reference implementation of the OSLC specifications. RIOs are intended to help those who are adopting OSLC by providing a functioning system that can be explored via a simple UI and REST services, or by taking a look at the source code.
-* [**Perl libraries and samples**](http://wiki.eclipse.org/Lyo/LyoPerl): modules for Perl for interacting with OSLC providers, including the [Net-OSLC PERL library](http://arroway.github.com/Net-OSLC-CM/)
+* [Lyo Store](https://github.com/eclipse/lyo/tree/master/store) - a library that provides a simple interface for working with a triplestore via Java objects representing OSLC Resources.
+* [OSLC Open Project Reference Implementation](https://github.com/oslc-op/refimpl) - See how OSLC works directly with working samples and with a simple server to test against.
+* [Test Suite](https://wiki.eclipse.org/Lyo/LyoTestSuite) - (outdated) provides a suite of tests which will test OSLC domain provider implementations against the specification.
 * [_OSLC4JS Javascript OSLC library (experimental)_](https://wiki.eclipse.org/Lyo/Oslc4Js).
     - [OSLC4JS architecture](http://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html)
     - [Development with OSLC4JS](https://wiki.eclipse.org/DevelopingOslc4Js)
