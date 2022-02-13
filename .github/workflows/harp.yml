@@ -29,7 +29,7 @@ jobs:
         npm install -g harp
     - name: Build
       run: |
-        harp ./_harp/ .
+        harp ./_harp/ ./docs/
     - name: Deploy
       run: |
         git config user.name "GitHub Actions Bot"
