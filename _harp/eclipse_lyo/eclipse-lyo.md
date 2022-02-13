@@ -17,7 +17,7 @@ The library:
 * Provides an OSLC Client with helpful APIs to interact with OSLC Servers. It provides an additional layer of functionality on top of Apache HttpClient, Apache Wink, and OSLC4J that can give you a head start on some of the common use cases such as form login, OAuth handling, service discovery, sending queries, and processing query results.
 * Automates the marshaling/unmarshaling of Java objects to/from Linked Data RDF resources ([Apache Jena](https://jena.apache.org/) model).
 
-**You do not have to use the Eclipse application to use the OSLC4J SDK**: Although much of the documentation assumes you will be using Eclipse, the SDK is available as maven libraries, as detailed [Setup an OSLC Provider/Consumer Application](./setup-an-oslc-provider-consumer-application).</div>
+**You do not have to use the Eclipse IDE to use the Lyo SDK**: Although much of the documentation assumes you will be using Eclipse, the SDK is available as maven libraries, as detailed [Setup an OSLC Provider/Consumer Application](./setup-an-oslc-provider-consumer-application).</div>
 
 
 **Further Information**
