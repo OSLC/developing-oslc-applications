@@ -7,23 +7,24 @@ html.no-js(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title #{ title || 'Learn to develop OSLC applications'}
 
+    link(rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous")
     link(rel="stylesheet" href="#{ site_url }css/oslc.css")
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous")
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous")
-    link(rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous")
-    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous")
     link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" crossorigin="anonymous")
 
     script(src="#{ site_url }js/lib/modernizr.js")
 
-    script.
-      // add .mustard/.no-mustard css classes
-      Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
+    //- script.
+    //-   // add .mustard/.no-mustard css classes
+    //-   Modernizr.addTest( 'mustard', 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window );
 
-      Modernizr.load([{
-        test: Modernizr.mustard,
-        yep: '#{ site_url }css/oslc_enhanced.css'
-      }]);
+    //-   Modernizr.load([{
+    //-     test: Modernizr.mustard,
+    //-     yep: '#{ site_url }css/oslc_enhanced.css'
+    //-   }]);
+    link(rel="stylesheet" href="#{ site_url }css/oslc_enhanced.css")
 
 
   body
@@ -49,7 +50,7 @@ html.no-js(lang="en")
         .menu.primary
           .item.desk-up
             a.image-link(href="#{ site_url }")
-              img(src="#{ site_url }img/logo-new-big.png").logo
+              img(src="#{ site_url }img/logo-new-big.png" width=100 height=100).logo
               span.logo-text
                 abbr.oslc-name(title="#{ org_name }") #{ org_abbr }
                 span.project-name #{ site_name }
