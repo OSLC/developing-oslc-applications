@@ -8,20 +8,20 @@
   "tutorials": {
     "title": "Tutorials"
   },
-  "sample-applications-and-code": {
-    "title": "Sample applications and code"
-  },
   "iotp-adaptor-sample": {
     "title": "Sample OSLC adapter for IoT Platform"
   },
-  "oslc-open-source-node-projects": {
-    "title": "OSLC Open Source Node.js Projects"
+  "sample-applications-and-code": {
+    "title": "Sample applications and code"
   },
   "why-develop-oslc-applications": {
     "title": "Why develop OSLC applications?" 
   },  
   "technical-foundations": {
     "title": "Technical foundations" 
+  },
+  "oslc-open-source-node-projects": {
+    "title": "OSLC4JS Projects"
   },
   "services-resources-and-design-patterns": {
     "title": "Services, resources, and design patterns" 
