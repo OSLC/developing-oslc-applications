@@ -6,7 +6,7 @@ OSLC4JS's goal is to minimize the cost of developing the OSLC specifications, re
 
 ## The OSLC4JS Projects
 
-The following sections provide a brief description of each OSLC4J sub-project and provide links to the development sites and related work products. The figure below shows the relationship between the modules created in the projects, and how they are assembled into a Web application.
+The following sections provide a brief description of each OSLC4JS sub-project and provide links to the development sites and related work products. The figure below shows the relationship between the modules created in the projects, and how they are assembled into a Web application.
 
 ![OSLC4JS Schematic](img/OSLC4JS-schematic.png)
 

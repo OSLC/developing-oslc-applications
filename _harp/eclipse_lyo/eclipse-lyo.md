@@ -6,15 +6,15 @@ Below are the main active components of the Eclipse Lyo projects.
 
 See [Sample applications and code](../sample-applications-and-code.html) for example applications that are based on Eclipse Lyo.  
 
-# <a name="oslc4j-sdk"></a>OSLC4J SDK
+# <a name="oslc4j-sdk"></a>Lyo SDK
 
-Lyo’s central component is the OSLC4J SDK (Software Development Kit) that helps build REST-based servers and clients, compliant with the OSLC standard.
+Lyo’s central component is the SDK (Software Development Kit) that helps build REST-based servers and clients, compliant with the OSLC standard.
 
 The library:
 
 * Allows an OSLC server to publish their RESTful API capabilities, based on the [OSLC Discovery](http://docs.oasis-open.org/oslc-core/oslc-core/v3.0/oslc-core-v3.0-part2-discovery.html) approach. This in turn facilitates for clients to discover and use available capabilities.
 * Provides an OSLC server with JAX-RS Providers and utility classes to facilitate the development of REST operations for accessing, creating, updating and deleting RDF resources.
-* Provides an OSLC Client with helpful APIs to interact with OSLC Servers. It provides an additional layer of functionality on top of Apache HttpClient, Apache Wink, and OSLC4J that can give you a head start on some of the common use cases such as form login, OAuth handling, service discovery, sending queries, and processing query results.
+* Provides an OSLC Client with helpful APIs to interact with OSLC Servers. It provides an additional layer of functionality on top of Apache HttpClient, and JAX-RS Client that can give you a head start on some of the common use cases such as form login, OAuth handling, service discovery, sending queries, and processing query results.
 * Automates the marshaling/unmarshaling of Java objects to/from Linked Data RDF resources ([Apache Jena](https://jena.apache.org/) model).
 
 **You do not have to use the Eclipse IDE to use the Lyo SDK**: Although much of the documentation assumes you will be using Eclipse, the SDK is available as maven libraries, as detailed [Setup an OSLC Provider/Consumer Application](./setup-an-oslc-provider-consumer-application).</div>
@@ -22,13 +22,13 @@ The library:
 
 **Further Information**
 
-* Explore our [tutorials to use the OSLC4J SDK when building an OSLC Server and/or client application](../tutorials).
+* Explore our [tutorials to use Lyo when building an OSLC Server and/or client application](../tutorials).
 * How to [setup an OSLC Server and/or Client](./setup-an-oslc-provider-consumer-application).
 * Javadocs for 
    * [Lyo release 4.1.0 (all components)](https://download.eclipse.org/lyo/docs/all/4.1.0/apidocs/) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
    * [oslc4j-core , Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/core/2.4.0/) - legacy support for JAX-RS 1.0, and the Apache Wink implementation.
    * [Legacy oslc-java-client, Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/oslc-java-client/latest) - legacy support for JAX-RS 1.0, and the Apache Wink implementation. 
-* [Lyo Client sample code](https://github.com/OSLC/lyo-samples) - A Github repository that includes sample code to demonstrates how to use the Lyo OSLC4J SDK oslc4j-client to interact with OSLC Service Providers in various ways. It addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries. See the [README.md](https://github.com/OSLC/lyo-samples/blob/master/README.md) file in the repository for further pointers.
+* [Lyo Client sample code](https://github.com/OSLC/lyo-samples) - A Github repository that includes sample code to demonstrates how to use the Lyo SDK oslc4j-client to interact with OSLC Service Providers in various ways. It addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries. See the [README.md](https://github.com/OSLC/lyo-samples/blob/master/README.md) file in the repository for further pointers.
 * You are also welcome to contact the development team via [lyo-dev mailing list](https://dev.eclipse.org/mailman/listinfo/lyo-dev)
 
 # <a name="lyo-designer"></a>Lyo Designer
@@ -37,10 +37,10 @@ The library:
 
 ![An example domain specification diagram](images/LyoToolchainModel-SpecificationDiagram.png)
 
-Lyo Designer includes a integrated code generator that synthesizes the model into almost-complete OSLC4J-compliant running implementation.
+Lyo Designer includes a integrated code generator that synthesizes the model into almost-complete Lyo-compliant running implementation.
 The resulting code includes:
 
-* Java classes with appropriate OSLC4J-annotations to reflect the modelled RDF resource shapes
+* Java classes with appropriate Lyo annotations to reflect the modelled RDF resource shapes
     * This automates the marshaling/unmarshaling of Java instances as Linked Data RDF resources.
 * JAX-RS Service operations for accessing, updating, creating and deleting RDF resources.
     * These operations handle any of the supported formats (turtle, RDF/XML, Json, etc.)
@@ -56,7 +56,7 @@ Lyo Designer supports incremental development, where manual changes to the gener
 
 * How to [install Lyo Designer](./install-lyo-designer)
 * How to use Lyo Designer to [model a toolchain](./toolchain-modelling-workshop) and generate an initial code base
-* How to use Lyo Designer to [model domain specifications](./domain-specification-modelling-workshop), and generate OSLC4J-annotated Java classes to reflect the defined OSLC Resources.
+* How to use Lyo Designer to [model domain specifications](./domain-specification-modelling-workshop), and generate Lyo-annotated Java classes to reflect the defined OSLC Resources.
 * If you want to contribute to Lyo Designer, you can [work from its source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)
 
 

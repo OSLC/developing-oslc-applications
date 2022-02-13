@@ -1,29 +1,27 @@
-<a name="introduction"></a>Introduction
-============
+#Introduction
+
 With Lyo Designer, you can graphically model your domain specifications according to the OSLC Core specification. A **Domain Specification** defines the types of resources, their properties and relationships, according the [OSLC Core Specification](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification) and the [Resource Shape constraint language](https://archive.open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource).
 
-From such a model, you can produce a library of Java classes, with the appropriate Lyo OSLC4J annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo OSLC4J SDK.
+From such a model, you can produce a library of Java classes, with the appropriate Lyo annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo SDK.
 
 A domains model can also be imported into a toolchain model, to model a complete toolchain, as well as a single server and/or client. (see [Toolchain Modelling Workshop](toolchain-modelling-workshop) for details).
 
-Table of Content:
--------------------------
-1. [Eclipse Setup](#eclipse-setup)
-1. [Create a Modelling Project](#create-modelling-project)
-1. [Model OSLC Domain Specifications](#model-oslc-domain-specifications)
-1. [Setup OSLC4J projects](#setup-oslc4j-projects)
-1. [Generate OSLC4J Java code](#generate-oslc4j-java-code)
-1. [Browsing the generated code](#browsing-generated-code)
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Bug Reporting](#bug-reporting)
+- [Eclipse Setup](#eclipse-setup)
+- [Projects layout](#projects-layout)
+- [Create a Domain Specification Modelling Project](#create-a-domain-specification-modelling-project)
+- [<a name="browsing-generated-code"></a>Browsing the generated code](#browsing-the-generated-code)
 
-Bug Reporting
--------------
+## Bug Reporting
+
 
 Please send any bug reports, questions or suggestions to the project mailinglist lyo-dev@eclipse.org, or report Bugs/features on [Github](https://github.com/eclipse/lyo.designer/issues)
 
-<a name="eclipse-setup"></a>Eclipse Setup
-=============
+## Eclipse Setup
 
-First, make sure your Eclipse environment is setup as expected for general OSLC4J development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+First, make sure your Eclipse environment is setup as expected for general Lyo development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
 Then, make sure you [install Lyo Designer](install-lyo-designer)
 
@@ -88,12 +86,12 @@ diagram](./images/LyoToolchainModel-SpecificationDiagram.png "An example domain 
 1. Now, follow the Domain Specification modelling instructions (*Only this particular section*) from the general [Lyo Designer manual](./toolchain-modelling-workshop#domain-specification-view).
 1. Finally, validate your model by following the validation instructions (*Only this particular section*) from the general [Lyo Designer manual](./toolchain-modelling-workshop#validate-model).
 
-<a name="setup-oslc4j-projects"></a>Setup OSLC4J projects
+<a name="setup-oslc4j-projects"></a>Setup Lyo projects
 =====================
 
-Once the Specification model is complete and validated, you can choose to generate the set of Java classes, with the appropriate Lyo OSLC4J annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo OSLC4J SDK.
+Once the Specification model is complete and validated, you can choose to generate the set of Java classes, with the appropriate Lyo annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo SDK.
 
-It is no longer necessary to manually create the Eclipse OSLC4J projects for the Java classes, since these are created by the generation process. 
+It is no longer necessary to manually create the Eclipse Lyo projects for the Java classes, since these are created by the generation process. 
 
 1. Use the tools pallet to create a **Specification Configuration**, placing it in the Specification Diagram (and not inside any specific Domain Specification). This element lets you configure the Specification model's generation settings. The element consists of two sets of configurations as follows:
     1. **General**: Contains the general generation settings:
@@ -105,11 +103,11 @@ It is no longer necessary to manually create the Eclipse OSLC4J projects for the
         1. *Lyo Version*: Define the version of Lyo libraries to use.
 1. (Optional) If you want to override the genration settings for a specific Domain Specification, you can create a **Specification Configuration** for any specific Domain Specification (by placing it in the Domain Specification). 
 
-<a name="generate-oslc4j-java-code"></a>Generate OSLC4J Java code
+<a name="generate-oslc4j-java-code"></a>Generate Java code for Lyo
 =========================
 You are now ready to generate the code:
 
-1. Right-click inside the Specification Diagram (without selecting any Domain Specification) and select the context menu item **OSLC Lyo Designer > Generate Specification Java Code**
+1. Right-click inside the Specification Diagram (without selecting any Domain Specification) and select the context menu item **OSLC Lyo Designer > Generate Specification Java Code**
 1. You will now be prompted to enter the base path to which the java classes are to be generated.
     * **NOTE:** Alternatively, to avoid such prompt, you can define this path through a *generationPath* property in a *generator.properties* file. The properties file is expected in the same location as the model file.
 1. Press **OK**
@@ -131,7 +129,7 @@ The generated classes contain placeholders that allow the developer to insert ad
 
 To illustrate, open a class file, and note the following placeholder:
 
-    // Start of user code imports
-    // End of user code
+    // Start of user code imports
+    // End of user code
 
 Any code entered between these two lines of code is maintained across subsequent generations. In this example, the placeholder is intended for developer-specific imports, but any Java code can be inserted.
