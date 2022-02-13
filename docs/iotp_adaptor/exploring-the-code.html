@@ -2,14 +2,14 @@
 <h2>Overall architecture and packaging</h2><p>The Lyo Designer code generator generates code into a given folder, it does not generate a complete JEE project. So before using Lyo Designer to generate the code, you need to create the folder and overall structure of a JEE dynamic web application. See <a href="https://github.com/eclipse/lyo.designer/wiki/User-Manual-for-Domain-Specification-Modelling#create-a-modelling-project">eclipse project</a> for details on how to setup a suitable eclipse project.</p>
 <p>Here&#39;s the overall structure of the iotp-adaptor eclipse project:</p>
 <p><img src="./images/Generated-project.png" alt="iotp-adaptor project" title="iotp-adaptor project"></p>
-<h2>Web application and servlets</h2><p>The iotp-adaptor is a JEE dynamic web application that utilizes the eclipse/Lyo OSLC4J SDK. Much of the web application is provided through some key servlets:</p>
+<h2>Web application and servlets</h2><p>The <strong>iotp-adaptor</strong> is a JEE dynamic web application that utilizes the Eclipse Lyo SDK. Much of the web application is provided through some key servlets:</p>
 <ul>
-<li>Application - The javax.ws.rs.Application used by the Wink RestServlet to provide the REST services</li>
-<li>BmxServiceProvidersFactory - servlet providing the IBM Cloud (formerly Bluemix) service providers, corresponding to the IBM Cloud organizations</li>
-<li>IotpServiceProvidersFactory - servlet providing the IBM Watson IoT Platform service providers, corresponding to the Watson IoT Platform organizations</li>
-<li>ServiceProviderCatalogSingleton - servlet providing the service provider catalog that includes the IoT Platform and Bluemix service providers</li>
-<li>ServletListner - handles events in the web application container</li>
-<li>RootServicesService - provides the rootservices resource needed to integrate iotp-adaptor with the jazz-apps.</li>
+<li><code>Application</code> - The javax.ws.rs.Application used by the Wink RestServlet to provide the REST services</li>
+<li><code>BmxServiceProvidersFactory</code> - servlet providing the IBM Cloud (formerly Bluemix) service providers, corresponding to the IBM Cloud organizations</li>
+<li><code>IotpServiceProvidersFactory</code> - servlet providing the IBM Watson IoT Platform service providers, corresponding to the Watson IoT Platform organizations</li>
+<li><code>ServiceProviderCatalogSingleton</code> - servlet providing the service provider catalog that includes the IoT Platform and Bluemix service providers</li>
+<li><code>ServletListner</code> - handles events in the web application container</li>
+<li><code>RootServicesService</code> - provides the rootservices resource needed to integrate iotp-adaptor with the jazz-apps.</li>
 </ul>
 <p>The web application is defined in the web.xml deployment descriptor. There are a few application parameters that should be set in the deployment descriptor including the URL scheme, port and application base URL.</p>
 <pre><code>  &lt;context-param&gt;

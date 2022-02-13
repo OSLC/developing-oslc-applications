@@ -10,36 +10,36 @@
 <li>Tell the CE jazz.net apps the URLs of the ServiceProviderCatalog and TRS provider resources. This is done in the rootservices document which is covered further in <a href="./rootservices">Creating the rootservices document</a>.</li>
 </ol>
 <p>The CE jazz.net applications support a number of approaches to  establishing secure connections between servers. This important, and often challenging topic is covered in further detail in <a href="authentication">Authentication</a>. </p>
-<p>iotp-adaptor uses <a href="https://oauth.net/core/1.0a/">OAuth1.0a</a> as the mechanism for establishing secure connections with the CE jazz.net apps because that&#39;s what&#39;s supported by eclipse/Lyo OSLC4J, and that&#39;s what&#39;s commonly configured for CE and other OSLC server installations. </p>
+<p>iotp-adaptor uses <a href="https://oauth.net/core/1.0a/">OAuth1.0a</a> as the mechanism for establishing secure connections with the CE jazz.net apps because that&#39;s what&#39;s supported by Eclipse Lyo, and that&#39;s what&#39;s commonly configured for CE and other OSLC server installations. </p>
 <p>To add JAX-RS REST services for OAuth1.0a and the iotp-adaptor TRS provider, edit com.ibm.oslc.applicaiton.iotp.servlet/Application.java and add the following user code. Be sure any code you customize is inside Start of user code and End of user code comments:</p>
-<pre><code>        RESOURCE_CLASSES.add(ResourceShapeService.class);
+<pre><code class="language-java">    RESOURCE_CLASSES.add(ResourceShapeService.class);
 
-        // Start of user code Custom Resource Classes
-        // OAuth service and Swagger.io service
-        try {
-            RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.ConsumersService&quot;));
-            RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.OAuthService&quot;));
-            RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.ApiListingResource.class);
-            RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        // TRS service  
-        RESOURCE_CLASSES.add(TrackedResourceSetService.class);
-        
-         // trigger Jena init
-         ModelFactory.createDefaultModel();
-         // force plain XML writer
-         RDFWriterFImpl.alternative(null);
-        // End of user code
+    // Start of user code Custom Resource Classes
+    // OAuth service and Swagger.io service
+    try {
+        RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.ConsumersService&quot;));
+        RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.OAuthService&quot;));
+        RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.ApiListingResource.class);
+        RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    // TRS service  
+    RESOURCE_CLASSES.add(TrackedResourceSetService.class);
+    
+        // trigger Jena init
+        ModelFactory.createDefaultModel();
+        // force plain XML writer
+        RDFWriterFImpl.alternative(null);
+    // End of user code
 </code></pre>
 <p>The OAuth classes have to be added by name instead of through imports because they are defined in a separate, reusable Web application WAR file, not a Java JAR file.</p>
-<p><em><strong>Important</strong></em>: When eclipse/Lyo OSLC4J updated to Apache Jena 3, the behavior of the serialization of RDF/XML changed in a way that cannot be consumed by the jazz.net apps. You&#39;ll notice this if the jazz.net apps can&#39;t read your server provider catalogs, even though the RDF/XML looks completely correct. RDF/XML can have many valid, but syntactically different formats. The following statements configre Jena 3 to use RDF/XML serialization formats that can be consumed by the jazz.net apps (which are still using an earlier version of Jena).</p>
-<pre><code>         // trigger Jena init
-         ModelFactory.createDefaultModel();
-         // force plain XML writer
-         RDFWriterFImpl.alternative(null);
+<p><em><strong>Important</strong></em>: When Eclipse Lyo updated to Apache Jena 3, the behavior of the serialization of RDF/XML changed in a way that cannot be consumed by the jazz.net apps. You&#39;ll notice this if the jazz.net apps can&#39;t read your server provider catalogs, even though the RDF/XML looks completely correct. RDF/XML can have many valid, but syntactically different formats. The following statements configre Jena 3 to use RDF/XML serialization formats that can be consumed by the jazz.net apps (which are still using an earlier version of Jena).</p>
+<pre><code class="language-java">    // trigger Jena init
+    ModelFactory.createDefaultModel();
+    // force plain XML writer
+    RDFWriterFImpl.alternative(null);
 </code></pre>
 <p>You are now ready to implement each of the domain classes. Details are provided in <a href="./implement-domain-class">Implementing a Domain Class</a>. But first, there&#39;s a few details about the code generator that need to be understood in terms of generated vs. user code.</p>
 <h2>Adding User Code to Generated Classes and JSPs</h2><p>The Lyo Designer M2T templates contain markers that indicate where users or developers can add code to customize or complete the implementation of generated modules. When the code generator runs, these markers are added as structured comments in the generated code to indicate the boundaries where developers can add additional or customized code. For example, here&#39;s the generated code for the getDeviceType method that is generated in the CE4IoTConnectorManager.java file:</p>

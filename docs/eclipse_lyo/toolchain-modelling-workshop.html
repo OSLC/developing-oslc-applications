@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Toolchain Modelling Workshop</title><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" crossorigin="anonymous"><script src="https://oslc.github.io/developing-oslc-applications/js/lib/modernizr.js"></script><link rel="stylesheet" href="https://oslc.github.io/developing-oslc-applications/css/oslc_enhanced.css"></head><body><header class="header"><div class="flag"><div class="image"><button title="Main menu" role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="navburger mustard-only"><span class="navburger-line top"></span><span class="navburger-line middle"></span><span class="navburger-line bottom"></span></button></div><div class="body"><a href="https://oslc.github.io/developing-oslc-applications/" class="flag image-link"><div class="image"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-mobile.png" class="logo-img"></div><div class="body"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><br><span class="project-name">Developer Guide</span></span></div></a></div></div></header><div class="sticky-footer-body off-canvas-wrap"><nav class="nav"><div class="menu primary"><div class="item desk-up"><a href="https://oslc.github.io/developing-oslc-applications/" class="image-link"><img src="https://oslc.github.io/developing-oslc-applications/img/logo-new-big.png" width="100" height="100" class="logo"><span class="logo-text"><abbr title="Open Services for Lifecycle Collaboration" class="oslc-name">OSLC</abbr><span class="project-name">Developer Guide</span></span></a></div><ul class="items"><li role="presentation" class="item"><a href="../"><i class="fas fa-level-up-alt"></i> One level up</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-lyo.html">Eclipse Lyo - support for Java developers</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/eclipse-setup-for-lyo-based-development.html">Eclipse Setup for Lyo-based Development</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html">Setup an OSLC Provider/Consumer Application</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/lyo-designer.html">Lyo Designer - Toolchain modelling support</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/install-lyo-designer.html">Lyo Designer - Install</a></li><li role="presentation" class="item current"><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html">Toolchain Modelling Workshop</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html">Domain Specification Modelling Workshop</a></li><li role="presentation" class="item "><a href="https://oslc.github.io/developing-oslc-applications/eclipse_lyo/modelling-howto.html">Modelling - Howto and Advanced Topics</a></li></ul><div><iframe src="https://duckduckgo.com/search.html?width=220&site=oslc.github.io/developing-oslc-applications/&prefill=Search DuckDuckGo&kn=1" style="overflow:hidden;margin:0 0 0 13px;padding:0;width:305px;height:40px;" frameborder="0"></iframe></div></div></nav><main class="main"><div class="card"><header class="header"><h1 class="title">Toolchain Modelling Workshop</h1></header><section class="content"><div class="copy"><h1><a name="Introduction"></a>Introduction</h1><p>This workshop presents the use of Lyo Designer to graphically model a complete OSLC-based toolchain (including the interactions between OSLC servers and clients), and/or single server and/or client.
-The instructions also include a walkthrough of the generated OSLC4J-compliant code.</p>
+The instructions also include a walkthrough of the generated Lyo-compliant code.</p>
 <p>For seperations of concerns, Lyo Designer structures the toolchain model around the following three viewpoints
 (Illustrations and details can be found later in this workshop):</p>
 <ul>
@@ -16,7 +16,7 @@ the set of resources being exposes and/or consumed are defined.</li>
 <li><strong>Adapter Interface View</strong> – To design the internal details of the
 tool interface. Sufficient information is captured in this view, so
 that an almost complete interface code, which is compliant with the
-OSLC4J software development kit (SDK) can be generated.</li>
+Lyo software development kit (SDK) can be generated.</li>
 </ul>
 <p>Working with the model allows you to work at a higher level of
 abstraction, without needing to deal with all the technical details of
@@ -36,29 +36,23 @@ your Eclipse environment.</li>
 modelling your toolchain.</li>
 <li>Graphically specify your toolchain and adaptor
 functionality, from which almost complete code will be generated.</li>
-<li>Perform the steps to generate the necessary OSLC4J code.</li>
+<li>Perform the steps to generate the necessary Lyo code.</li>
 <li>Perform the final implementation steps to make the adaptors
 ready to run.</li>
 </ol>
-<h2>Table of Content:</h2><ol>
-<li><a href="#eclipse-setup">Eclipse Setup</a></li>
-<li><a href="#create-toolchain-modelling-project">Create a Toolchain Modelling Project</a></li>
-<li><a href="#model-toolchain">Model the Toolchain</a><ol>
-<li><a href="#modelling-overview">Modelling Overview</a></li>
-<li><a href="#general-modelling-instructions">General Modelling Instructions</a></li>
-<li><a href="#domain-specification-view">Domain Specification View</a></li>
-<li><a href="#toolchain-view">Toolchain View</a></li>
-<li><a href="#adaptor-interface-view">Adapter Interface View</a></li>
-</ol>
-</li>
-<li><a href="#validate-model">Validate the model</a></li>
-<li><a href="#setup-oslc4j-projects">Setup OSLC4J projects</a></li>
-<li><a href="#generate-oslc4j-java-code">Generate OSLC4J Java code</a></li>
-<li><a href="#browse-generated-code">Browsing the generated code</a></li>
-<li><a href="#fill-in-internal-implementation">Fill in the internal implementation of each adaptor</a></li>
-<li><a href="#run-adaptor">Run the adaptor</a></li>
-</ol>
-<h1><a name="bug-reporting"></a>Bug Reporting</h1><p>The prototype presented here is under development and its features may change over time. Your feedback, suggestions for improvements and bug reports are appreciated. In particular, the graphical notation being used is experimental and certainly needs further improvements. Please send any questions or suggestions to the project mailinglist <a href="mailto:&#x6c;&#121;&#111;&#x2d;&#100;&#101;&#118;&#x40;&#x65;&#99;&#x6c;&#x69;&#x70;&#115;&#x65;&#46;&#111;&#x72;&#103;">&#x6c;&#121;&#111;&#x2d;&#100;&#101;&#118;&#x40;&#x65;&#99;&#x6c;&#x69;&#x70;&#115;&#x65;&#46;&#111;&#x72;&#103;</a>, or report Bugs/features on <a href="https://github.com/eclipse/lyo.designer/issues">Github</a></p>
+<h2>Table of Content:</h2><ul>
+<li><a href="#table-of-content">Table of Content:</a></li>
+<li><a href="#sample-modelling-project">Sample Modelling Project</a></li>
+<li><a href="#projects-layout">Projects layout</a></li>
+<li><a href="#create-modelling-project"><a name="create-modelling-project"></a>Create modelling project</a></li>
+<li><a href="#modelling-overview"><a name="modelling-overview"></a>Modelling Overview</a></li>
+<li><a href="#general-modelling-instructions"><a name="general-modelling-instructions"></a>General Modelling Instructions</a></li>
+<li><a href="#domain-specification-view"><a name="domain-specification-view"></a>Domain Specification View</a></li>
+<li><a href="#toolchain-view"><a name="toolchain-view"></a>Toolchain View</a></li>
+<li><a href="#adapter-interface-view"><a name="adaptor-interface-view"></a>Adapter Interface View</a></li>
+<li><a href="#adding-the-oauth-support">Adding the OAuth support</a></li>
+</ul>
+<h1><a name="bug-reporting"></a>Bug Reporting</h1><p>The prototype presented here is under development and its features may change over time. Your feedback, suggestions for improvements and bug reports are appreciated. In particular, the graphical notation being used is experimental and certainly needs further improvements. Please send any questions or suggestions to the project mailinglist <a href="mailto:&#x6c;&#x79;&#x6f;&#x2d;&#100;&#101;&#118;&#x40;&#x65;&#x63;&#x6c;&#105;&#x70;&#x73;&#101;&#x2e;&#111;&#x72;&#x67;">&#x6c;&#x79;&#x6f;&#x2d;&#100;&#101;&#118;&#x40;&#x65;&#x63;&#x6c;&#105;&#x70;&#x73;&#101;&#x2e;&#111;&#x72;&#x67;</a>, or report Bugs/features on <a href="https://github.com/eclipse/lyo.designer/issues">Github</a></p>
 <h1><a name="references"></a>References</h1><p>If you wish to cite this modelling prototype in scientific papers
     and communications, please reference:</p>
 <ul>
@@ -67,7 +61,7 @@ ready to run.</li>
 <li><p>El-Khoury, Jad. <a href="http://www.sciencedirect.com/science/article/pii/S2352711016300267">&quot;Lyo Code Generator: A Model-based Code Generator for the Development of OSLC-compliant Tool Interfaces.&quot;</a> SoftwareX, 2016.</p>
 </li>
 </ul>
-<h1><a name="eclipse-setup"></a>Eclipse Setup</h1><p>First, make sure your Eclipse environment is setup as expected for general OSLC4J development, as instructed in <a href="./eclipse-setup-for-lyo-based-development">Eclipse Setup for Lyo-based Development</a></p>
+<h1><a name="eclipse-setup"></a>Eclipse Setup</h1><p>First, make sure your Eclipse environment is setup as expected for general Lyo development, as instructed in <a href="./eclipse-setup-for-lyo-based-development">Eclipse Setup for Lyo-based Development</a></p>
 <p>Then, make sure you <a href="install-lyo-designer">install Lyo Designer</a></p>
 <h1><a name="create-toolchain-modelling-project"></a>Create a Toolchain Modelling Project</h1><p>We will here create an Eclipse project within which we create the actual
 model. The java code that will be ultimately generated will be produced
@@ -373,15 +367,15 @@ for general EMF modelling. You are to select to first entry.</li>
 </ul>
 </li>
 </ol>
-<h1><a name="setup-oslc4j-projects"></a>Setup OSLC4J projects</h1><p>Once your model is complete and validated, you are ready to generate the
+<h1><a name="setup-oslc4j-projects"></a>Set up Lyo projects</h1><p>Once your model is complete and validated, you are ready to generate the
 Java code. It is no longer necessary to manually create the Eclipse projects for
 each of the adaptors, since these are created by the generation process. But make sure your adaptor configuration is correct, as instructed <a href="#adaptor-interface-view">above</a>.</p>
-<h1><a name="generate-oslc4j-java-code"></a>Generate OSLC4J Java code</h1><p>Once the toolchain model is defined and validated, you can generate the
+<h1><a name="generate-oslc4j-java-code"></a>Generate Java code for Lyo </h1><p>Once the toolchain model is defined and validated, you can generate the
 corresponding code for each adaptor through the following simple step:</p>
 <ol>
 <li>Trigger the generation<ul>
-<li><strong>For complete toolchain</strong>: Right-click on the toolchain model (<em>toolchain.xml</em>) file, and select <strong>OSLC Lyo Designer &gt; Generate Complete Toolchain Java Code</strong></li>
-<li><strong>For an adaptor</strong>: Right-click on the adaptor in the Toolchain view, and select <strong>OSLC Lyo Designer &gt; Generate Java Code</strong></li>
+<li><strong>For complete toolchain</strong>: Right-click on the toolchain model (<em>toolchain.xml</em>) file, and select <strong>OSLC Lyo Designer &gt; Generate Complete Toolchain Java Code</strong></li>
+<li><strong>For an adaptor</strong>: Right-click on the adaptor in the Toolchain view, and select <strong>OSLC Lyo Designer &gt; Generate Java Code</strong></li>
 </ul>
 </li>
 <li>You will now be prompted to enter the base path to which the java classes are to be generated.<ul>
@@ -400,7 +394,7 @@ adaptor model, and resulting code re-generation.</li>
 <li>Lyo Designer allows you to generate different parts of the code into different projects (or file locations). This allows for better reuse of generated code packages. See <a href="modelling-howto#controlling-generation-parameters">Controlling the generation parameters of Domain Specification(s)</a> for more details.</li>
 </ul>
 <p>Upon a successful code generation, all the necessary Java classes for
-complete ready-to-run OSLC4J projects are produced. The next section
+complete ready-to-run Lyo projects are produced. The next section
 gives an overview of the generated code, before proceeding with an
 explanation of the necessary manual code to be provided.</p>
 <h1><a name="browse-generated-code"></a>Browsing the generated code</h1><p>Besides the <strong>AdaptorManager</strong> class (see next section), all generated
@@ -416,7 +410,7 @@ incremental development of the adaptor model, and its resulting code.</p>
 <em>your.basepackage.name</em>.resources, and note the following
 placeholder:</li>
 </ul>
-<p><code>// Start of user code imports</code><br><code>// End of user code</code></p>
+<p><code>// Start of user code imports</code><br><code>// End of user code</code></p>
 <ul>
 <li>Any code entered between these two lines of code is maintained
 across subsequent generations. In this example, the placeholder is
