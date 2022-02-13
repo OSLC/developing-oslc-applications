@@ -138,25 +138,8 @@
 <td>&quot;true&quot;</td>
 <td>Necessary for cookies to be exchanged across origins</td>
 </tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Integration developers should be aware that for the browser to honor CORS requests and responses, the XHR requests in the client Javascript have to include the &quot;withCredentials: true&quot; parameter.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
+<p>Integration developers should be aware that for the browser to honor CORS requests and responses, the XHR requests in the client Javascript have to include the &quot;withCredentials: true&quot; parameter.</p>
 <h2>Content Security Policies (CSP)</h2><p>In addition to performing client-to-server requests, the adapter within the Windchill Javascript in the browser of a PLM user will also attempt to make requests between the browser&#39;s execution contexts, that is between windows whose source was loaded either from the PLM server (in Windchill extensions) or from the RLIA server (in JSP-loaded scripts) or from the CLM server (in iframe content). Without the use of CSP headers on the servers, the user&#39;s browser will reject those cross-domain requests.</p>
 <blockquote>
 <p>A primary goal of Content Security Policy (CSP) is to mitigate and report Cross-site Scripting (XSS) attacks. XSS attacks exploit the browser&#39;s trust of the content received from the server. Malicious scripts are executed by the victim&#39;s browser because the browser trusts the source of the content, even when it&#39;s not coming from where it seems to be coming from.</p>

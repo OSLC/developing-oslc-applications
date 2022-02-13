@@ -10,7 +10,7 @@
 <li>The browser checks that the certificate was issued by a trusted party (usually a trusted root Certificate Authority or CA), that the certificate is still valid, and that the certificate is related to the site contacted.</li>
 <li>The browser then uses the public key, to encrypt a random symmetric encryption key and sends it to the server with the encrypted URL required as well as other encrypted http data.<ul>
 <li>Asymmetric encryption is used to establish the connection and a shared symmetric encryption key that can be used by the  client and server to encrypt and decrypt requests and responses. The client uses the public key to encrypt the random symmetric encryption key. Only the server with the private key can decrypt this message</li>
-<li>But for the rest of the request/response, the symmetric encryption key is used to encrypt/decrypt on both ends. The client and server both know this key for the duration of the request/transaction </li>
+<li>But for the rest of the request/response, the symmetric encryption key is used to encrypt/decrypt on both ends. The client and server both know this key for the duration of the request/transaction</li>
 </ul>
 </li>
 <li>The web server decrypts the symmetric encryption key using its private key and uses the symmetric key to decrypt the URL and http data. </li>

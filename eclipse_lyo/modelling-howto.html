@@ -2,27 +2,27 @@
 <p>For the <strong>ServiceProvider</strong> web Service:</p>
 <ol>
 <li><em>serviceNamespace</em> - specifies the relative URL for the
- ServiceProvider JAX-RS Service. For example, <em>projects</em>
- will lead to the url
- <em><a href="http://localhost:8080/YourAdaptor/services/projects">http://localhost:8080/YourAdaptor/services/projects</a></em>. The
- default is <em>serviceProviders</em> (leading to the default
- <em><a href="http://localhost:8080/YourAdaptor/services/serviceProviders">http://localhost:8080/YourAdaptor/services/serviceProviders</a></em>).</li>
+ServiceProvider JAX-RS Service. For example, <em>projects</em>
+will lead to the url
+<em><a href="http://localhost:8080/YourAdaptor/services/projects">http://localhost:8080/YourAdaptor/services/projects</a></em>. The
+default is <em>serviceProviders</em> (leading to the default
+<em><a href="http://localhost:8080/YourAdaptor/services/serviceProviders">http://localhost:8080/YourAdaptor/services/serviceProviders</a></em>).</li>
 <li><em>instanceID</em> - specifies the relative URL of a single
- service provider, including the parameter variables
- necessary to identify a specific service provider. For
- example, <em>{projectId}</em> leads to the url
- <em><a href="http://localhost:8080/YourAdaptor/services/projects/1">http://localhost:8080/YourAdaptor/services/projects/1</a></em>
- mapping the value 1 to the <em>projectId</em> parameter in the
- java code. Other IDs can be
- <em>collectionName/{collectionName}/project/{projectName}</em>. The
- default is <em>{serviceProviderId}</em>.</li>
+service provider, including the parameter variables
+necessary to identify a specific service provider. For
+example, <em>{projectId}</em> leads to the url
+<em><a href="http://localhost:8080/YourAdaptor/services/projects/1">http://localhost:8080/YourAdaptor/services/projects/1</a></em>
+mapping the value 1 to the <em>projectId</em> parameter in the
+java code. Other IDs can be
+<em>collectionName/{collectionName}/project/{projectName}</em>. The
+default is <em>{serviceProviderId}</em>.</li>
 </ol>
 <p>For the <strong>Service</strong> web Service:</p>
 <ol>
 <li><em>serviceNamespace</em> - specifies whether the relative URL of the
- web service should build upon the URL of its managing
- service provider (<em>relativeToServiceProvider</em>), or it should be
- standalone (<em>independantOfServiceProvider</em>).</li>
+web service should build upon the URL of its managing
+service provider (<em>relativeToServiceProvider</em>), or it should be
+standalone (<em>independantOfServiceProvider</em>).</li>
 </ol>
 <h1><a name="handling-large-models"></a>Handling Large Models</h1><p>To manage large models, Lyo Designer supports two model structuring techniques, which will be detailed in the following subsections:</p>
 <ol>
@@ -44,8 +44,8 @@
 <ol>
 <li>Open the Model Explorer view.</li>
 <li>Expand the <em>domainModel.xml</em> file until the
- <em>Specification</em> entry is visible. (Do not double-click on the file. Instead, press the triangle/arrow to the left of the file entry.)</li>
-<li> right-click the <em>Specification</em> entry, and select <strong>New Representation &gt; New SpecificationDiagram</strong>.</li>
+<em>Specification</em> entry is visible. (Do not double-click on the file. Instead, press the triangle/arrow to the left of the file entry.)</li>
+<li>right-click the <em>Specification</em> entry, and select <strong>New Representation &gt; New SpecificationDiagram</strong>.</li>
 </ol>
 <p>You can define your Domain Specifications in any of these diagrams. Note the following:</p>
 <ul>
@@ -75,11 +75,11 @@
 <p>Lyo Designer allows you even to model Domain Specification(s) without necessarily generating them. This can be useful if:</p>
 <ul>
 <li>you want to model existing implemented Domain Specifications so that they can be used in the model. That is, you can define OSLC services on such Java classes, but you don&#39;t necessarily want to generate these classes.</li>
-<li>You have previously generated domain specificaitons, and have done manual modifications that you don&#39;t want to overrride. </li>
+<li>You have previously generated domain specificaitons, and have done manual modifications that you don&#39;t want to overrride.</li>
 </ul>
 <p>To configure the generation settings for a single Domain Specification:</p>
 <ol>
-<li> Select <strong>Generation Setting</strong> from the tools pallet, and then select a <strong>Domain Specification</strong> in the diagram.</li>
+<li>Select <strong>Generation Setting</strong> from the tools pallet, and then select a <strong>Domain Specification</strong> in the diagram.</li>
 <li>Set the generation properties as desired.<ul>
 <li><em>Java Files Path</em> - The relative file path to be used to save the generated Java classes.  </li>
 <li><em>Java class Package Name</em> - The package name of the generated Java classes.</li>
@@ -89,7 +89,7 @@
 </ol>
 <p>To configure the generation settings for all Domain Specifications:</p>
 <ol>
-<li> Select <strong>Generation Setting</strong> from the tools pallet, and then select an empty area in the Specification Diagram (that is, do not select any Domain Specification).</li>
+<li>Select <strong>Generation Setting</strong> from the tools pallet, and then select an empty area in the Specification Diagram (that is, do not select any Domain Specification).</li>
 <li>Set the generation properties as above.</li>
 </ol>
 <p>The following rules applies when generation settings are set at different levels in the model:</p>

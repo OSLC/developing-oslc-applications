@@ -9,7 +9,7 @@
 <li><a href="#generate-oslc4j-java-code">Generate OSLC4J Java code</a></li>
 <li><a href="#browsing-generated-code">Browsing the generated code</a></li>
 </ol>
-<h2>Bug Reporting</h2><p>Please send any bug reports, questions or suggestions to the project mailinglist <a href="mailto:&#x6c;&#121;&#111;&#x2d;&#x64;&#101;&#118;&#x40;&#x65;&#99;&#108;&#105;&#112;&#x73;&#101;&#46;&#111;&#114;&#x67;">&#x6c;&#121;&#111;&#x2d;&#x64;&#101;&#118;&#x40;&#x65;&#99;&#108;&#105;&#112;&#x73;&#101;&#46;&#111;&#114;&#x67;</a>, or report Bugs/features on <a href="https://github.com/eclipse/lyo.designer/issues">Github</a></p>
+<h2>Bug Reporting</h2><p>Please send any bug reports, questions or suggestions to the project mailinglist <a href="mailto:&#108;&#x79;&#x6f;&#45;&#x64;&#x65;&#118;&#64;&#x65;&#x63;&#108;&#x69;&#x70;&#x73;&#x65;&#46;&#x6f;&#x72;&#103;">&#108;&#x79;&#x6f;&#45;&#x64;&#x65;&#118;&#64;&#x65;&#x63;&#108;&#x69;&#x70;&#x73;&#x65;&#46;&#x6f;&#x72;&#103;</a>, or report Bugs/features on <a href="https://github.com/eclipse/lyo.designer/issues">Github</a></p>
 <h1><a name="eclipse-setup"></a>Eclipse Setup</h1><p>First, make sure your Eclipse environment is setup as expected for general OSLC4J development, as instructed in <a href="./eclipse-setup-for-lyo-based-development">Eclipse Setup for Lyo-based Development</a></p>
 <p>Then, make sure you <a href="install-lyo-designer">install Lyo Designer</a></p>
 <h1><a name="create-modelling-project"></a>Create a Modelling Project</h1><h2>Projects layout</h2><p>You will need to create an Eclipse (modelling) project within which you will create the specification model. In this model, you will potentially define a number of domain specifications.</p>
@@ -27,21 +27,21 @@
 <li>each <code>domain-project</code> contains the java classes corresponding to one or more domain specifications, generated from the definitions in <code>oslc-model-project</code>.</li>
 </ul>
 <h2>Create a Domain Specification Modelling Project</h2><ol>
-<li> In your Eclipse workspace, switch to the <strong>Modeling</strong> perspective</li>
+<li>In your Eclipse workspace, switch to the <strong>Modeling</strong> perspective</li>
 <li>Create a new modelling project<ol>
-<li> Select <strong>New &gt; Modelling Project</strong></li>
-<li> Choose a project name</li>
+<li>Select <strong>New &gt; Modelling Project</strong></li>
+<li>Choose a project name</li>
 </ol>
 </li>
 <li>Create a Specification model<ol>
-<li> Right click the newly created project, and select <strong>New &gt; other…</strong></li>
-<li> In the Wizards window, navigate and select <em>Lyo Designer &gt; OSLC Domain Model</em>, then press <strong>Next</strong></li>
-<li> choose a suitable file name (say <em>domain.xml</em>) for the model, then press <strong>Next</strong></li>
-<li> Set <strong>Model Object</strong> to <em>Specification</em></li>
-<li> Press <strong>Finish</strong></li>
-<li> Right-click the project again, and select <strong>Viewpoints selection</strong></li>
-<li> select <strong>ToolChainViewpoint</strong></li>
-<li> Press <strong>OK</strong></li>
+<li>Right click the newly created project, and select <strong>New &gt; other…</strong></li>
+<li>In the Wizards window, navigate and select <em>Lyo Designer &gt; OSLC Domain Model</em>, then press <strong>Next</strong></li>
+<li>choose a suitable file name (say <em>domain.xml</em>) for the model, then press <strong>Next</strong></li>
+<li>Set <strong>Model Object</strong> to <em>Specification</em></li>
+<li>Press <strong>Finish</strong></li>
+<li>Right-click the project again, and select <strong>Viewpoints selection</strong></li>
+<li>select <strong>ToolChainViewpoint</strong></li>
+<li>Press <strong>OK</strong></li>
 </ol>
 </li>
 <li>View the initial diagrams<ol>
@@ -50,7 +50,7 @@
 <li><em>Note:</em> Do not double-click on the file. This will instead open the file in an xml editor.</li>
 </ul>
 </li>
-<li> You can now open and edit any of these views, by double-clicking on the desired entry.</li>
+<li>You can now open and edit any of these views, by double-clicking on the desired entry.</li>
 </ol>
 </li>
 </ol>
@@ -82,7 +82,7 @@ diagram" title="An example domain specification diagram"></p>
 </li>
 </ol>
 </li>
-<li>(Optional) If you want to override the genration settings for a specific Domain Specification, you can create a <strong>Specification Configuration</strong> for any specific Domain Specification (by placing it in the Domain Specification). </li>
+<li>(Optional) If you want to override the genration settings for a specific Domain Specification, you can create a <strong>Specification Configuration</strong> for any specific Domain Specification (by placing it in the Domain Specification).</li>
 </ol>
 <h1><a name="generate-oslc4j-java-code"></a>Generate OSLC4J Java code</h1><p>You are now ready to generate the code:</p>
 <ol>

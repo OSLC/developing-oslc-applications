@@ -45,20 +45,20 @@ exit
 ./checksetup.pl
 </code></pre>
 </li>
-<li><p> Once the script is successfully terminated, you can now browse to the Bugzilla homepage at <a href="http://localhost/bugzilla">http://localhost/bugzilla</a>. At the very least, you should be able to login given the admin account.</p>
+<li><p>Once the script is successfully terminated, you can now browse to the Bugzilla homepage at <a href="http://localhost/bugzilla">http://localhost/bugzilla</a>. At the very least, you should be able to login given the admin account.</p>
 </li>
 </ol>
 <h2>Importing the tutorial projects into Eclipse</h2><p>The <a href="https://github.com/eclipse/lyo.docs">Lyo documentation</a> Git repository contains all the necessary code for this tutorial.</p>
 <ol>
 <li><p>Clone the <a href="https://github.com/eclipse/lyo.docs">Lyo documentation</a> Git repository</p>
 <ol>
-<li> In Eclipse, open the Git Repositories view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Other</strong>, search for <code>Git repo</code> and click <strong>OK</strong>.)</li>
-<li> Click <strong>Clone a Git Repository</strong>.</li>
-<li> In the Clone Git Repository window, in the <strong>URI</strong> field paste the following <a href="https://github.com/eclipse/lyo.docs">https://github.com/eclipse/lyo.docs</a>. The <strong>Host</strong> and <strong>Repository</strong> fields will autofill. Leave the <strong>Username</strong> and <strong>Password</strong> fields empty.</li>
-<li> Click <strong>Next</strong>.</li>
-<li> On the Branch Selection page, select <strong>master</strong> and click <strong>Next</strong>.</li>
-<li> For the <strong>Destination</strong>, select a folder for the files or accept the default of your Eclipse workspace.</li>
-<li> Click <strong>Finish</strong>. <code>lyo.docs</code> will appear in the Git Repositories view.</li>
+<li>In Eclipse, open the Git Repositories view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Other</strong>, search for <code>Git repo</code> and click <strong>OK</strong>.)</li>
+<li>Click <strong>Clone a Git Repository</strong>.</li>
+<li>In the Clone Git Repository window, in the <strong>URI</strong> field paste the following <a href="https://github.com/eclipse/lyo.docs">https://github.com/eclipse/lyo.docs</a>. The <strong>Host</strong> and <strong>Repository</strong> fields will autofill. Leave the <strong>Username</strong> and <strong>Password</strong> fields empty.</li>
+<li>Click <strong>Next</strong>.</li>
+<li>On the Branch Selection page, select <strong>master</strong> and click <strong>Next</strong>.</li>
+<li>For the <strong>Destination</strong>, select a folder for the files or accept the default of your Eclipse workspace.</li>
+<li>Click <strong>Finish</strong>. <code>lyo.docs</code> will appear in the Git Repositories view.</li>
 </ol>
 </li>
 <li><p>Next, import the tutorial projects into Eclipse</p>
@@ -68,7 +68,7 @@ exit
 <li>Select <strong>File</strong> &rarr; <strong>Import...</strong></li>
 <li>In the Import dialog that appears select <strong>Maven</strong> &rarr; <strong>Existing Maven Projects</strong>, and click <strong>Next</strong>.</li>
 <li>Browse to the root directory of the recently cloned git repository.</li>
-<li> Select the 2 projects <strong>\lyo-rest-workshop\Lab6</strong> and <strong>\lyo-rest-workshop\ninacrm</strong> and click <strong>Finish</strong>.</li>
+<li>Select the 2 projects <strong>\lyo-rest-workshop\Lab6</strong> and <strong>\lyo-rest-workshop\ninacrm</strong> and click <strong>Finish</strong>.</li>
 </ol>
 </li>
 </ol>
@@ -76,23 +76,23 @@ exit
 <ol>
 <li>In the Project Explorer view, find and edit the file <code>src/main/resources/bugz.properties</code> in the Lab6 project.</li>
 <li>Edit the <code>bugzilla_uri</code> property to the URL of your Bugzilla server. If you’re using the Bugzilla docker container, it will be:
-  <code>bugzilla_uri=http://localhost/bugzilla</code></li>
-<li> For the <code>admin</code> property, provide your Bugzilla user ID.</li>
-<li> Save <code>bugz.properties</code>.</li>
+ <code>bugzilla_uri=http://localhost/bugzilla</code></li>
+<li>For the <code>admin</code> property, provide your Bugzilla user ID.</li>
+<li>Save <code>bugz.properties</code>.</li>
 </ol>
 <h2>Update the applications</h2><p>Update the project configurations for the projects.</p>
 <ol>
-<li><p> In Eclipse, open the Package Explorer view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Package Explorer</strong>)</p>
+<li><p>In Eclipse, open the Package Explorer view. (<strong>Window</strong> &rarr; <strong>Show View</strong> &rarr; <strong>Package Explorer</strong>)</p>
 </li>
 <li><p>In the Package Explorer view, select the following packages:</p>
 <ul>
-<li>  <strong>ninacrm</strong></li>
-<li>  <strong>oslc4j-bugzilla-sample-lab6</strong></li>
+<li><strong>ninacrm</strong></li>
+<li><strong>oslc4j-bugzilla-sample-lab6</strong></li>
 </ul>
 </li>
-<li><p> Right-click and select <strong>Maven</strong> &rarr; <strong>Update Project</strong>.</p>
+<li><p>Right-click and select <strong>Maven</strong> &rarr; <strong>Update Project</strong>.</p>
 </li>
-<li><p> In the Update Maven Project window, verify that those projects are selected and click <strong>OK</strong>.</p>
+<li><p>In the Update Maven Project window, verify that those projects are selected and click <strong>OK</strong>.</p>
 </li>
 </ol>
 <h2>Running the sample applications</h2><h3>Starting the OSLC4J Bugzilla adapter:</h3><ol>
