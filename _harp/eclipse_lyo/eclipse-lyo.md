@@ -26,7 +26,7 @@ The library:
 * Provides an OSLC Client with helpful APIs to interact with OSLC Servers. It provides an additional layer of functionality on top of Apache HttpClient, and JAX-RS Client that can give you a head start on some of the common use cases such as form login, OAuth handling, service discovery, sending queries, and processing query results.
 * Automates the marshaling/unmarshaling of Java objects to/from Linked Data RDF resources ([Apache Jena](https://jena.apache.org/) model).
 
-**You do not have to use the Eclipse IDE to use the Lyo SDK**: Although much of the documentation assumes you will be using Eclipse, the SDK is available as maven libraries, as detailed [Setup an OSLC Provider/Consumer Application](./setup-an-oslc-provider-consumer-application).</div>
+**You do not have to use the Eclipse IDE to use the Lyo SDK**: Although much of the documentation assumes you will be using Eclipse, the SDK is available as maven libraries, as detailed [Setup an OSLC Provider/Consumer Application](./setup-an-oslc-provider-consumer-application).
 
 
 **Further Information**
@@ -88,4 +88,3 @@ Additional components of the Lyo project include:
 * [_OSLC4JS Javascript OSLC library (experimental)_](https://wiki.eclipse.org/Lyo/Oslc4Js).
     - [OSLC4JS architecture](http://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html)
     - [Development with OSLC4JS](https://wiki.eclipse.org/DevelopingOslc4Js)
-
