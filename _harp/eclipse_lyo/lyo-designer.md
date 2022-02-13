@@ -6,10 +6,11 @@ The figure below shows the information modelling interface:
 
 ![An example domain specification diagram](./images/LyoToolchainModel-SpecificationDiagram.png)
 
-Lyo Designer includes a integrated code generator that synthesizes the model into almost-complete OSLC4J-compliant running implementation.
+Lyo Designer includes a integrated code generator that synthesizes the model into almost-complete OSLC-compliant JAX-RS webapps that are ready to run in one of many containers (Jetty, Tomcat, TomEE, WildFly, Payara).
+
 The resulting code includes:
 
-* Java classes with appropriate OSLC4J-annotations to reflect the modelled RDF resource shapes
+* Java classes with appropriate Lyo annotations to reflect the modelled RDF resource shapes
     * This automates the marshaling/unmarshaling of Java instances as Linked Data RDF resources.
 * JAX-RS Service operations for accessing, updating, creating and deleting RDF resources.
     * These operations handle any of the supported formats (turtle, RDF/XML, Json, etc.)
@@ -26,5 +27,5 @@ Lyo Designer supports incremental development, where manual changes to the gener
 
 * How to [install Lyo Designer](./install-lyo-designer)
 * How to use Lyo Designer to [model a toolchain](./toolchain-modelling-workshop) and generate an initial code base
-* How to use Lyo Designer to [model domain specifications](./domain-specification-modelling-workshop), and generate OSLC4J-annotated Java classes to reflect the defined OSLC Resources. 
+* How to use Lyo Designer to [model domain specifications](./domain-specification-modelling-workshop), and generate Lyo-annotated Java classes to reflect the defined OSLC Resources. 
 * If you want to contribute to Lyo Designer, you can [work from its source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)

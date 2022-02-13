@@ -4,9 +4,18 @@ Eclipse Lyo promotes the use of Linked Data principles and the [OSLC](http://doc
 
 Below are the main active components of the Eclipse Lyo projects. 
 
-See [Sample applications and code](../sample-applications-and-code.html) for example applications that are based on Eclipse Lyo.  
+## Contents
 
-# <a name="oslc4j-sdk"></a>Lyo SDK
+- [Contents](#contents)
+- [Lyo SDK](#lyo-sdk)
+- [Lyo Designer](#lyo-designer)
+- [Lyo TRS support](#lyo-trs-support)
+- [Additional components](#additional-components)
+
+See [Sample applications and code](../sample-applications-and-code.html) for example applications that are based on Eclipse Lyo. Specifically, check out [OSLC Open Project Reference Implementation](https://github.com/oslc-op/refimpl) to see how OSLC works directly with working samples and with a simple server to test against.
+
+
+## Lyo SDK
 
 Lyo’s central component is the SDK (Software Development Kit) that helps build REST-based servers and clients, compliant with the OSLC standard.
 
@@ -24,14 +33,11 @@ The library:
 
 * Explore our [tutorials to use Lyo when building an OSLC Server and/or client application](../tutorials).
 * How to [setup an OSLC Server and/or Client](./setup-an-oslc-provider-consumer-application).
-* Javadocs for 
-   * [Lyo release 4.1.0 (all components)](https://download.eclipse.org/lyo/docs/all/4.1.0/apidocs/) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
-   * [oslc4j-core , Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/core/2.4.0/) - legacy support for JAX-RS 1.0, and the Apache Wink implementation.
-   * [Legacy oslc-java-client, Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/oslc-java-client/latest) - legacy support for JAX-RS 1.0, and the Apache Wink implementation. 
+* Javadocs for [Lyo release 4.1.0 (all components)](https://download.eclipse.org/lyo/docs/all/4.1.0/apidocs/) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
 * [Lyo Client sample code](https://github.com/OSLC/lyo-samples) - A Github repository that includes sample code to demonstrates how to use the Lyo SDK oslc4j-client to interact with OSLC Service Providers in various ways. It addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries. See the [README.md](https://github.com/OSLC/lyo-samples/blob/master/README.md) file in the repository for further pointers.
 * You are also welcome to contact the development team via [lyo-dev mailing list](https://dev.eclipse.org/mailman/listinfo/lyo-dev)
 
-# <a name="lyo-designer"></a>Lyo Designer
+## Lyo Designer
 
 [Lyo Designer](lyo-designer) is an Eclipse plugin that allows one to graphically model (1) the overall system architecture, (2) the information model of the RDF resources being shared, and (3) the individual services and operations of each Server in the system. The figure below shows the information modelling interface:
 
@@ -60,7 +66,7 @@ Lyo Designer supports incremental development, where manual changes to the gener
 * If you want to contribute to Lyo Designer, you can [work from its source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)
 
 
-# <a name="trs-sdk"></a>OSLC Tracked Resource Set (TRS) SDK
+## Lyo TRS support
 
 [OSLC Tracked Resource Set (TRS) SDK](https://wiki.eclipse.org/Lyo/TRSSDK) provides a set of java beans that represent the entities within the [TRS specification 2.0](https://archive.open-services.net/wiki/core/TrackedResourceSet-2.0/). (this specification is being migrated to OASIS, as [TRS 3.0 specification](https://raw.githack.com/oasis-tcs/oslc-core/master/specs/trs/tracked-resource-set.html).)
 
@@ -73,12 +79,11 @@ Lyo Designer supports incremental development, where manual changes to the gener
 * [TRS Reference Application guided tour](https://wiki.eclipse.org/Lyo/TRSReferenceApplication) - Provides a guided tour of the TRS reference application and its capabilities.
 * [TRS Workshop](http://wiki.eclipse.org/Lyo/TRSWorkshop) - A TRS workshop for Bugzilla
 
-# <a name="additional-components"></a>Additional components
+## Additional components
 
 Additional components of the Lyo project include:
 
 * [Lyo Store](https://github.com/eclipse/lyo/tree/master/store) - a library that provides a simple interface for working with a triplestore via Java objects representing OSLC Resources.
-* [OSLC Open Project Reference Implementation](https://github.com/oslc-op/refimpl) - See how OSLC works directly with working samples and with a simple server to test against.
 * [Test Suite](https://wiki.eclipse.org/Lyo/LyoTestSuite) - (outdated) provides a suite of tests which will test OSLC domain provider implementations against the specification.
 * [_OSLC4JS Javascript OSLC library (experimental)_](https://wiki.eclipse.org/Lyo/Oslc4Js).
     - [OSLC4JS architecture](http://oslc.github.io/developing-oslc-applications/oslc-open-source-node-projects.html)
