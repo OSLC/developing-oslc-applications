@@ -962,7 +962,7 @@ main .copy {
 }
 
 pre, code {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Overpass Mono', 'Monaco', 'Consolas', monospace;
   font-variant-ligatures: none;
   font-weight: 400;
 }
@@ -971,6 +971,7 @@ div > pre {
   /*code block*/ 
   /* font-size: 1.05rem;  */
   line-height: 1.45rem;
+  font-size: 12pt;
 }
 
 p > code {
