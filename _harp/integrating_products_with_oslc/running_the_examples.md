@@ -4,68 +4,29 @@ This section explains how to setup the development environment to run the OSLC4J
 
 ## Eclipse Setup
 
-Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development)
+Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development)
 
 ## Bugzilla Setup
 
-Unless you have a Bugzilla system (with admin access) you can integrate against, you need to setup a running [Bugzilla system using Docker](https://hub.docker.com/r/bugzilla/bugzilla-dev/) for the purposes of this tutorial.
+Unless you have a Bugzilla system (with admin access) you can integrate against, you need to setup a running [Bugzilla system using Docker](https://hub.docker.com/r/smarx008/bugzilla-dev-lyo) for the purposes of this tutorial.
 
-1. [Set up your Docker environment](https://docs.docker.com/get-started/). This is beyound the scope of this tutorial. 
+1. [Set up your Docker environment](https://docs.docker.com/get-started/). This is beyond the scope of this tutorial. You should be able to use [Rancher Desktop](https://rancherdesktop.io/) as well.
 
-1. Pull the official Bugzilla image from the docker registery
+1. Pull a Bugzilla container from the Docker registery that is ready to work with the Bugzilla OSLC Adaptor
     ```bash
-	docker pull bugzilla/bugzilla-dev
+	docker pull smarx008/bugzilla-dev-lyo
     ```
 
 1. Launch the Bugzilla container, assigning it a convenient name 'bugzilla-dev'.
     ```bash
-	docker run -p 80:80 --name bugzilla-dev bugzilla/bugzilla-dev
+	docker run -p 80:80 --name bugzilla-dev smarx008/bugzilla-dev-lyo
     ```
  
-1. This will start the docker container, with a Bugzilla server. But Bugzilla first needs to be configured before it can be used. In a new shell, login to the container
-    ```bash
-    docker exec -it bugzilla-dev bash
-    ```
-1. Now it is time to configure Bugzilla. You can configure Bugzilla by modifying the file /var/www/html/bugzilla/localconfig as desired. We will here simply assume the initial values without any modifications. If you choose to make changes to the localconfig file, make sure you adjust the commands below accordingly.
-
-1. Login to the Mysql server as root
-    ```bash
-	mysql -h localhost -u root
-    ```
-
-1. Create a new user account (with details matching those defined in the bugzilla localconfig file).
-    ```bash
-	create user 'bugs'@'localhost' identified by 'bugs';
-    ```
-
-1. Create a database 'bugs'
-    ```bash
-	create database bugs;
-    ```
-
-1. Grant the 'bugs' account all privileges to the 'bugs' database
-    ```bash
-	grant all privileges on bugs.* to bugs;
-    ```
-
-1. Exist Mysql and relogin again to make sure the 'bugs' account has access to the 'bugs' database
-    ```bash
-	exit
-    mysql -u bugs -D bugs -p
-	exit
-    ```
-	
-1. Now run the ‘checksetup.pl’ script to initlize the Bugzilla application. Among other things, you will be prompted to create an administration account for Bugzilla.
-	```bash
-    cd /var/www/html/bugzilla/
-	./checksetup.pl
-    ```
-
-1.  Once the script is successfully terminated, you can now browse to the Bugzilla homepage at http://localhost/bugzilla. At the very least, you should be able to login given the admin account.
+1.  You can now browse to the Bugzilla homepage at http://localhost/bugzilla and use `admin:password` as admin credentials.
 
 ## Importing the tutorial projects into Eclipse
 
-The [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository contains all the necessary code for this tutorial.
+The [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository contains all the necessary code for this tutorial. **The finished adaptor can be found under [OSLC/lyo-adaptor-bugzilla](https://github.com/OSLC/lyo-adaptor-bugzilla)**
 
 1. Clone the [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository
     1.  In Eclipse, open the Git Repositories view. (**Window** &rarr; **Show View** &rarr; **Other**, search for `Git repo` and click **OK**.)

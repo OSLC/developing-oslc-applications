@@ -12,14 +12,14 @@ Here's the overall structure of the iotp-adaptor eclipse project:
 
 ## Web application and servlets
 
-The iotp-adaptor is a JEE dynamic web application that utilizes the eclipse/Lyo OSLC4J SDK. Much of the web application is provided through some key servlets:
+The **iotp-adaptor** is a JEE dynamic web application that utilizes the Eclipse Lyo SDK. Much of the web application is provided through some key servlets:
 
-* Application - The javax.ws.rs.Application used by the Wink RestServlet to provide the REST services
-* BmxServiceProvidersFactory - servlet providing the IBM Cloud (formerly Bluemix) service providers, corresponding to the IBM Cloud organizations
-* IotpServiceProvidersFactory - servlet providing the IBM Watson IoT Platform service providers, corresponding to the Watson IoT Platform organizations
-* ServiceProviderCatalogSingleton - servlet providing the service provider catalog that includes the IoT Platform and Bluemix service providers
-* ServletListner - handles events in the web application container
-* RootServicesService - provides the rootservices resource needed to integrate iotp-adaptor with the jazz-apps.
+* `Application` - The javax.ws.rs.Application used by the Wink RestServlet to provide the REST services
+* `BmxServiceProvidersFactory` - servlet providing the IBM Cloud (formerly Bluemix) service providers, corresponding to the IBM Cloud organizations
+* `IotpServiceProvidersFactory` - servlet providing the IBM Watson IoT Platform service providers, corresponding to the Watson IoT Platform organizations
+* `ServiceProviderCatalogSingleton` - servlet providing the service provider catalog that includes the IoT Platform and Bluemix service providers
+* `ServletListner` - handles events in the web application container
+* `RootServicesService` - provides the rootservices resource needed to integrate iotp-adaptor with the jazz-apps.
 
 The web application is defined in the web.xml deployment descriptor. There are a few application parameters that should be set in the deployment descriptor including the URL scheme, port and application base URL.
 

@@ -1,14 +1,14 @@
-# Create an OSLC4J project
+# Create an Eclipse Lyo project
 
-The steps below guide you through the necessary steps of creating a Java project with the necessary configurations to develop any OSLC4J server/client. The instructions assume you are using the Eclipse IDE, but should be equally valid for any other development environment.
+The steps below guide you through the necessary steps of creating a Java project with the necessary configurations to develop any OSLC server/client using Lyo. The instructions assume you are using the Eclipse IDE, but should be equally valid for any other development environment.
 
 ## An alternative to the manual steps below
 An alternative to the instructions on this page is to instead use [Lyo Designer](./lyo-designer) to quickly generate the project, including a very basic code skeleton. The generated project will also include the neccessary setup for OpenApi/Swagger support, TRS, etc.
-1. Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+1. Make sure your environment is setup for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 1. install [Lyo Designer](./install-lyo-designer)
 1. Follow the [Create a Modelling Project](./toolchain-modelling-workshop#create-modelling-project) instructions (*Only this particular section*) to create the Eclipse project.
 1. Follow the [Adapter Interface](./toolchain-modelling-workshop#adaptor-interface-view) instructions (*Only this particular section*) to create a single Adaptor Interface in the model. You do not need to create any additional elements, such as a Service Provider Catalog, Service Provider, etc. Just make sure you set the generation settings as expected.
-1. Follow the [Generate OSLC4J Java code](./toolchain-modelling-workshop#generate-oslc4j-java-code) instructions (*Only this particular section*) to generate your basic project setup.
+1. Follow the [Generate Lyo Java code](./toolchain-modelling-workshop#generate-oslc4j-java-code) instructions (*Only this particular section*) to generate your basic project setup.
 1. You are done! But of course, you can proceed with Lyo Designer to model your complete OSLC Server/Client and generate even more of your project code.
 
 ## Introduction
@@ -38,18 +38,19 @@ Creating the project consists of these steps:
 1. [(Optional) Provide TRS Support](#provide-trs-support)
 1. [Run the server](#run-server)
 
-## <a name="setup-eclipse"></a>Setup Eclipse
+## <a name="setup-eclipse"></a>Set up Eclipse
 
-Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+Make sure your environment is setup for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
 ## <a name="decide-jaxrs"></a>Decide if you want to adopt JAX-RS 1.0 or 2.0?
 Starting with version 4.0.0, Lyo supports JAX-RS 2.0, and no longer depends on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. 
-On the other hand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the Apache Wink implementation (**retired to Apache Attic** since 2015). We recommend you adopt the latest versions of Lyo.
+
+> Older Lyo releases (2.x) only supported JAX-RS 1.0 and required Apache Wink implementation, which is **retired to Apache Attic** since 2015). They also relied on "HP Labs" Jena. We recommend you adopt the latest versions of Lyo.
 
 The instructions below will vary depending on the Lyo version to be adopted. We will refer to the version as *${version.lyo}*, which can then take one of the two values:
 
 * 4.1.0
-* 2.4.0
+* 2.4.0 (unsupported)
 
 ## <a name="create-maven-project"></a>Create a Maven project
 
@@ -83,8 +84,8 @@ We now need to modify the project *pom.xml* file.
 
 ### Setup general POM properties
 
-We need to make sure our project uses UTF-8 and JDK 1.8. We will also use
-properties to define a common version for Lyo packages:
+We need to make sure our project uses UTF-8 and JDK 1.8 (Lyo 5.0 will only support JDK 
+11 and newer). We will also use properties to define a common version for Lyo packages:
 
 Of course, ```ENTER-LYO-VERSION-HERE``` is either ```4.1.0``` or ```2.4.0```, depending on your choice of JAX-RS version.
 
@@ -97,10 +98,9 @@ Of course, ```ENTER-LYO-VERSION-HERE``` is either ```4.1.0``` or ```2.4.0```, de
   <version.lyo>ENTER-LYO-VERSION-HERE</version.lyo>
 </properties>
 ```
-### Lyo repositories
+### Lyo repositories (optional)
 
-an OSLC4J project will use Lyo dependencies that we need to declare. Before we
-can do that, we need to add the Lyo repository. After that, we are ready to add the dependencies.
+A Lyo project will use Lyo dependencies that we need to declare. **All necessary Lyo dependencies are available on Maven Central starting with Lyo 4.0.0.** If you are using Lyo 2.x, you need to add the following entry:
 
 ```xml
 <repositories>
@@ -112,6 +112,13 @@ can do that, we need to add the Lyo repository. After that, we are ready to add 
       <enabled>false</enabled>
     </snapshots>
   </repository>
+</repositories>
+```
+
+If you wish to use the latest development snapshots, you will need the following entry:
+
+```xml
+<repositories>
   <repository>
     <id>lyo-snapshots</id>
     <name>Eclipse Lyo Snapshots</name>
@@ -158,6 +165,7 @@ We require Java EE 6 or higher and JSTL:
 ### JAX-RS implementation dependencies
 
 #### for Lyo 4.1.0 
+
 For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementation, such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. Below is an example for Jersey.
 ```xml
 <dependency>
@@ -173,6 +181,7 @@ For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementa
 ```
 
 #### for Lyo 2.4.0 and earlier 
+
 For Lyo release 2.4.0 (and earlier), a Lyo package includes a dependency to the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
 
 ```
@@ -341,8 +350,8 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 
 With OSLC being based on REST, an OSLC Server can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/). 
 
-The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical OSLC4J project. The instructions are also partially base on 
-[Co-hosting Swagger UI with your Jersey REST API using Maven dependencies](https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8). The instructions provide the minimal settings necessary for an OSLC4J project.
+The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical Lyo project. The instructions are also partially base on 
+[Co-hosting Swagger UI with your Jersey REST API using Maven dependencies](https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8). The instructions provide the minimal settings necessary for a Lyo project.
 
 ### Add Maven dependencies
 

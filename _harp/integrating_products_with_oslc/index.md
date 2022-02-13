@@ -34,7 +34,7 @@ This tutorial is for people who will be writing code to implement OSLC consumers
   </div>
 </div>
 
-## The Sample applications
+## Sample applications
 
 You can follow along with the OSLC Tutorial by using the following software:
 

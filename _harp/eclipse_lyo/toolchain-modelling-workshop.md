@@ -1,7 +1,7 @@
 <a name="Introduction"></a>Introduction
 ============
 This workshop presents the use of Lyo Designer to graphically model a complete OSLC-based toolchain (including the interactions between OSLC servers and clients), and/or single server and/or client.
-The instructions also include a walkthrough of the generated OSLC4J-compliant code.
+The instructions also include a walkthrough of the generated Lyo-compliant code.
 
 For seperations of concerns, Lyo Designer structures the toolchain model around the following three viewpoints
 (Illustrations and details can be found later in this workshop):
@@ -17,7 +17,7 @@ For seperations of concerns, Lyo Designer structures the toolchain model around 
 -   **Adapter Interface View** – To design the internal details of the
     tool interface. Sufficient information is captured in this view, so
     that an almost complete interface code, which is compliant with the
-    OSLC4J software development kit (SDK) can be generated.
+    Lyo software development kit (SDK) can be generated.
 
 Working with the model allows you to work at a higher level of
 abstraction, without needing to deal with all the technical details of
@@ -38,26 +38,22 @@ adaptors.
     modelling your toolchain.
 3.  Graphically specify your toolchain and adaptor
     functionality, from which almost complete code will be generated.
-4.  Perform the steps to generate the necessary OSLC4J code.
+4.  Perform the steps to generate the necessary Lyo code.
 5.  Perform the final implementation steps to make the adaptors
     ready to run.
 
 Table of Content:
 -------------------------
-1. [Eclipse Setup](#eclipse-setup)
-1. [Create a Toolchain Modelling Project](#create-toolchain-modelling-project)
-1. [Model the Toolchain](#model-toolchain)
-   1. [Modelling Overview](#modelling-overview)
-   1. [General Modelling Instructions](#general-modelling-instructions)
-   1. [Domain Specification View](#domain-specification-view)
-   1. [Toolchain View](#toolchain-view)
-   1. [Adapter Interface View](#adaptor-interface-view)
-1. [Validate the model](#validate-model)
-1. [Setup OSLC4J projects](#setup-oslc4j-projects)
-1. [Generate OSLC4J Java code](#generate-oslc4j-java-code)
-1. [Browsing the generated code](#browse-generated-code)
-1. [Fill in the internal implementation of each adaptor](#fill-in-internal-implementation)
-1. [Run the adaptor](#run-adaptor)
+- [Table of Content:](#table-of-content)
+- [Sample Modelling Project](#sample-modelling-project)
+- [Projects layout](#projects-layout)
+- [<a name="create-modelling-project"></a>Create modelling project](#create-modelling-project)
+- [<a name="modelling-overview"></a>Modelling Overview](#modelling-overview)
+- [<a name="general-modelling-instructions"></a>General Modelling Instructions](#general-modelling-instructions)
+- [<a name="domain-specification-view"></a>Domain Specification View](#domain-specification-view)
+- [<a name="toolchain-view"></a>Toolchain View](#toolchain-view)
+- [<a name="adaptor-interface-view"></a>Adapter Interface View](#adapter-interface-view)
+- [Adding the OAuth support](#adding-the-oauth-support)
 
 <a name="bug-reporting"></a>Bug Reporting
 =============
@@ -77,7 +73,7 @@ If you wish to cite this modelling prototype in scientific papers
 <a name="eclipse-setup"></a>Eclipse Setup
 =============
 
-First, make sure your Eclipse environment is setup as expected for general OSLC4J development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+First, make sure your Eclipse environment is setup as expected for general Lyo development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
 Then, make sure you [install Lyo Designer](install-lyo-designer)
 
@@ -370,22 +366,22 @@ Validation](./images/Lyo-ToolchainModelValidation.png " Toolchain Model Validati
         first is specific to the Toochain Editor, while the second is
         for general EMF modelling. You are to select to first entry.
 
-<a name="setup-oslc4j-projects"></a>Setup OSLC4J projects
+<a name="setup-oslc4j-projects"></a>Set up Lyo projects
 =====================
 
 Once your model is complete and validated, you are ready to generate the
 Java code. It is no longer necessary to manually create the Eclipse projects for
 each of the adaptors, since these are created by the generation process. But make sure your adaptor configuration is correct, as instructed [above](#adaptor-interface-view).
 
-<a name="generate-oslc4j-java-code"></a>Generate OSLC4J Java code
+<a name="generate-oslc4j-java-code"></a>Generate Java code for Lyo 
 =========================
 
 Once the toolchain model is defined and validated, you can generate the
 corresponding code for each adaptor through the following simple step:
 
 1. Trigger the generation
-    - __For complete toolchain__: Right-click on the toolchain model (*toolchain.xml*) file, and select **OSLC Lyo Designer &gt; Generate Complete Toolchain Java Code**
-    - __For an adaptor__: Right-click on the adaptor in the Toolchain view, and select **OSLC Lyo Designer &gt; Generate Java Code**
+    - __For complete toolchain__: Right-click on the toolchain model (*toolchain.xml*) file, and select **OSLC Lyo Designer &gt; Generate Complete Toolchain Java Code**
+    - __For an adaptor__: Right-click on the adaptor in the Toolchain view, and select **OSLC Lyo Designer &gt; Generate Java Code**
 1. You will now be prompted to enter the base path to which the java classes are to be generated.
     * **NOTE:** Alternatively, to avoid such prompt, you can define this path through a *generationPath* property in a *generator.properties* file. The properties file is expected in the same location as the model file.
 1. Press **OK**
@@ -399,7 +395,7 @@ adaptor model, and resulting code re-generation.
 * Lyo Designer allows you to generate different parts of the code into different projects (or file locations). This allows for better reuse of generated code packages. See [Controlling the generation parameters of Domain Specification(s)](modelling-howto#controlling-generation-parameters) for more details.
 
 Upon a successful code generation, all the necessary Java classes for
-complete ready-to-run OSLC4J projects are produced. The next section
+complete ready-to-run Lyo projects are produced. The next section
 gives an overview of the generated code, before proceeding with an
 explanation of the necessary manual code to be provided.
 
@@ -420,8 +416,8 @@ incremental development of the adaptor model, and its resulting code.
     *your.basepackage.name*.resources, and note the following
     placeholder:
 
-`// Start of user code imports`\
-`// End of user code`
+`// Start of user code imports`\
+`// End of user code`
 
 -   Any code entered between these two lines of code is maintained
     across subsequent generations. In this example, the placeholder is
