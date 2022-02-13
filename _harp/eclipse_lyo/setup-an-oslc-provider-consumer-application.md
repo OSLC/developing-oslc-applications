@@ -23,8 +23,9 @@ We will here only create the code skeleton. The
 
 As a complement when following the instructions below, you can find sample projects under the [Lyo Adaptor Sample Modelling](https://github.com/OSLC/lyo-adaptor-sample-modelling) git repository.
 
-* For Lyo 4.0.0-SNAPSHOT, please refer to the *4.0.0-SNAPSHOT* branch.
-* For Lyo 2.4.0, please refer to the *master* branch.
+* For Lyo 4.1.0, please refer to the `main-4.x` branch.
+* For Lyo 5.0.0-SNAPSHOT, please refer to the `main-5.x` branch.
+* For Lyo 2.4.0, please refer to the `main-2.x` branch.
 
 Creating the project consists of these steps:
 
@@ -42,14 +43,14 @@ Creating the project consists of these steps:
 Make sure your environment is setup for OSLC4J development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
 ## <a name="decide-jaxrs"></a>Decide if you want to adopt JAX-RS 1.0 or 2.0?
-Starting with the upcoming release 4.0.0, Lyo will support JAX-RS 2.0, and will no longer depend on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc.  
+Starting with version 4.0.0, Lyo supports JAX-RS 2.0, and no longer depends on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. 
 On the other hand, the current Lyo release 2.4.0 (and earlier) supports JAX-RS 1.0, and assumes the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
 
 we recommend you adopt the latest versions of Lyo.
 
 The instructions below will vary depending on the Lyo version to be adopted. We will refer to the version as *${version.lyo}*, which can then take one of the two values:
 
-* 4.0.0-SNAPSHOT
+* 4.1.0
 * 2.4.0
 
 ## <a name="create-maven-project"></a>Create a Maven project
@@ -87,7 +88,7 @@ We now need to modify the project *pom.xml* file.
 We need to make sure our project uses UTF-8 and JDK 1.8. We will also use
 properties to define a common version for Lyo packages:
 
-Of course, ```ENTER-LYO-VERSION-HERE``` is either ```4.0.0-SNAPSHOT``` or ```2.4.0```, depending on your choice of JAX-RS version.
+Of course, ```ENTER-LYO-VERSION-HERE``` is either ```4.1.0``` or ```2.4.0```, depending on your choice of JAX-RS version.
 
 ```xml
 <properties>
@@ -133,7 +134,7 @@ use. We will use the simplest option:
 <dependency>
   <groupId>org.slf4j</groupId>
   <artifactId>slf4j-simple</artifactId>
-  <version>1.7.21</version>
+  <version>1.7.36</version>
   <scope>runtime</scope>
 </dependency>
 ```
@@ -158,7 +159,7 @@ We require Java EE 6 or higher and JSTL:
 
 ### JAX-RS implementation dependencies
 
-#### for Lyo 4.0.0-SNAPSHOT 
+#### for Lyo 4.1.0 
 For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementation, such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. Below is an example for Jersey.
 ```xml
 <dependency>
@@ -238,7 +239,7 @@ RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services
 
 If your OSLC server also needs to consume resources from another server, a dependency to the OSLC client package is needed:
 
-#### for Lyo 4.0.0-SNAPSHOT 
+#### for Lyo 4.1.0 
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.clients</groupId>
@@ -274,7 +275,7 @@ This will make your server available under the path http://localhost:8080/adapto
     <plugin>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-maven-plugin</artifactId>
-      <version>9.4.18.v20190429</version>
+      <version>9.4.45.v20220203</version>
       <configuration>
         <webAppConfig>
           <contextPath>/adaptor-sample</contextPath>
@@ -303,7 +304,7 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 * *com.sample.adaptor* should be the same as the base package name for your project.
 * *8080* should match the port number specified in the POM file for Jetty configuration.
 * ```ENTER-SERVLET-CLASS-HERE``` depends on the Lyo version and choice of JAX-RS implementation:
-  * For ```4.0.0-SNAPSHOT``` and a Jersey implementation: ```org.glassfish.jersey.servlet.ServletContainer```
+  * For ```4.1.0``` and a Jersey implementation: ```org.glassfish.jersey.servlet.ServletContainer```
   * For ```2.4.0```:  ```org.apache.wink.server.internal.servlet.RestServlet```
 
 ```xml
@@ -349,7 +350,7 @@ The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](ht
 
 Add the following Swagger dependency to your maven pom.xml file
 
-#### for Lyo 4.0.0-SNAPSHOT 
+#### for Lyo 4.1.0 
 Assuming you are adopting the Jersey implementation with the version specified above.
 ```xml
 <dependency>

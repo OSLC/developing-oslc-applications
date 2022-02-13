@@ -25,10 +25,9 @@ The library:
 * Explore our [tutorials to use the OSLC4J SDK when building an OSLC Server and/or client application](../tutorials).
 * How to [setup an OSLC Server and/or Client](./setup-an-oslc-provider-consumer-application).
 * Javadocs for 
-   * [oslc4j-core , Lyo release 4.0.0](https://download.eclipse.org/lyo/docs/core/4.0.0-SNAPSHOT/) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
+   * [Lyo release 4.1.0 (all components)](https://download.eclipse.org/lyo/docs/all/4.1.0/apidocs/) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
    * [oslc4j-core , Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/core/2.4.0/) - legacy support for JAX-RS 1.0, and the Apache Wink implementation.
-   * [oslc4j-client, Lyo release 4.0.0](https://download.eclipse.org/lyo/docs/oslc4j-client/latest) - support for JAX-RS 2.0, with no dependency on any particlar implementation of JAX-RS.
-   * [oslc-java-client, Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/oslc-java-client/latest) - legacy support for JAX-RS 1.0, and the Apache Wink implementation. 
+   * [Legacy oslc-java-client, Lyo release 2.4.0 and earlier](https://download.eclipse.org/lyo/docs/oslc-java-client/latest) - legacy support for JAX-RS 1.0, and the Apache Wink implementation. 
 * [Lyo Client sample code](https://github.com/OSLC/lyo-samples) - A Github repository that includes sample code to demonstrates how to use the Lyo OSLC4J SDK oslc4j-client to interact with OSLC Service Providers in various ways. It addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries. See the [README.md](https://github.com/OSLC/lyo-samples/blob/master/README.md) file in the repository for further pointers.
 * You are also welcome to contact the development team via [lyo-dev mailing list](https://dev.eclipse.org/mailman/listinfo/lyo-dev)
 
