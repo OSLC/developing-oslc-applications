@@ -337,4 +337,4 @@ Next, try it with the URL for one of the Service Providers. (The exact URL will 
 
 Now, a client can start with a single URL (for the catalog) and navigate to all of the Service Providers. A client could use this to show a list of Products to a user and allow them to pick which ones to report bugs against, or query for existing bugs.
 
-[Next: Part 1.3, Intro to Oslc4j](1_3_intro_to_oslc4j)
+[Next: Part 1.3, Intro to the Lyo SDK](1_3_intro_to_oslc4j)

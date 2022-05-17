@@ -1,18 +1,18 @@
-# Providing OSLC representations of Bugzilla bugs
+# Providing OSLC representations of Bugzilla bugs using Lyo
 
-In the [previous section](1_2_providing_service_resources) we noted that we used OSLC4J to transform Plain Old Java Object (POJO) representations of OSLC resources into RDF, XML, and JSON formats. In this section, we'll look more closely at how OSLC4J defines OSLC resources. Then we'll make Bugzilla Bugs available as OSLC Change Management resources in a variety of formats.
+In the [previous section](1_2_providing_service_resources) we noted that we used Eclipse Lyo to transform Plain Old Java Object (POJO) representations of OSLC resources into RDF, XML, and JSON formats. In this section, we'll look more closely at how Eclipse Lyo defines OSLC resources. Then we'll make Bugzilla Bugs available as OSLC Change Management resources in a variety of formats.
 
-## What is OSLC4J?
+## What is Eclipse Lyo?
 
-OSLC4J, part of the [Eclipse Lyo](../../eclipse_lyo/eclipse-lyo) project, is a Java SDK for developing OSLC provider or consumer implementations. OSLC resources can be modeled with plain old Java objects (POJOs) which are annotated to provide the information OSLC4J needs to create resource shapes, service provider documents, and to serialize/de-serialize OSLC resources from Java to representations such as RDF or JSON.
+[Eclipse Lyo](../../eclipse_lyo/eclipse-lyo) is a Java SDK for developing OSLC provider or consumer implementations. OSLC resources can be modeled with plain old Java objects (POJOs) which are annotated to provide the information Eclipse Lyo needs to create resource shapes, service provider documents, and to serialize/de-serialize OSLC resources from Java to representations such as RDF or JSON.
 
-## Defining OSLC resources with OSLC4J
+## Defining OSLC resources with Eclipse Lyo
 
-OSLC4J comes with a sample Change Management application that includes the OSLC4J-annotated Java class representing a Change Request (as defined in the OSLC Change Management v2 specification).
+Eclipse Lyo comes with a sample Change Management application that includes the Eclipse Lyo-annotated Java class representing a Change Request (as defined in the OSLC Change Management v2 specification).
 
-The OSLC4J Bugzilla adapter includes that class (**ChangeRequest**) and extends it with Bugzilla-specific attributes (for example, "Product", "Platform", or other attributes that are not part of the OSLC CM specification); this extended change request is called a **BugzillaChangeRequest**.
+The Eclipse Lyo Bugzilla adapter includes that class (**ChangeRequest**) and extends it with Bugzilla-specific attributes (for example, "Product", "Platform", or other attributes that are not part of the OSLC CM specification); this extended change request is called a **BugzillaChangeRequest**.
 
-### Exploring the OSLC4J ChangeRequest class
+### Exploring the Eclipse Lyo ChangeRequest class
 
 Open the file `ChangeRequest.java` in the **org.eclipse.lyo.oslc4j.bugzilla.resources** package and explore the variables and methods. For reference, [here is the definition of a Change Request in the OSLC Change Management specification](http://open-services.net/bin/view/Main/CmSpecificationV2#Resource_ChangeRequest).
 
@@ -50,7 +50,7 @@ Note the OSLC-specific annotations before the method. These are used to not only
 + `@OslcPropertyDefinition` providers the namespace qualified attribute name
 + `@OslcReadOnly` indicates this attribute should appear in the resource shape as read only
 
-Because the *default type in OSLC4J is a string*, there is no type annotation. Look for other attributes with the `@OslcValueType` annotation for examples of attributes that are not strings. 
+Because the *default type in Lyo is a string*, there is no type annotation. Look for other attributes with the `@OslcValueType` annotation for examples of attributes that are not strings. 
 
 
 ### Extending ChangeRequest with Bugzilla attributes
@@ -118,14 +118,14 @@ Recall that in `ServiceProviderCatalogSingleton.java` we registered a Service Pr
 
 ### Providing representations of Bugzilla Bugs as RDF+XML or JSON 
 
-As with Service Providers and the Service Provider Catalog, with OSLC4J we do not have to write manually code the RDF or JSON representation of a bug; the message body writers in OSLC4J automatically serialize the Java object into the appropriate machine-readable format.
+As with Service Providers and the Service Provider Catalog, with Eclipse Lyo we do not have to write manually code the RDF or JSON representation of a bug; the message body writers in Eclipse Lyo automatically serialize the Java object into the appropriate machine-readable format.
 
 The output is handled by the following methods in the __BugzillaChangeRequestService__ class:
 
-+ `getChangeRequests()`: RDF/XML, XML and JSON representation of a change request collection
-+ `getChangeRequest()`: RDF/XML, XML, and JSON representation of a single change request 
++ `getChangeRequests()`: RDF/XML, XML (legacy) and JSON (legacy) representation of a change request collection
++ `getChangeRequest()`: RDF/XML, XML (legacy), and JSON (legacy) representation of a single change request 
 
-Without OSLC4J you could __dispatch a JSP template__, use an __RDF API__, or use an __XML DOM API__ to generate the appropriate output format. 
+Without Eclipse Lyo you could __dispatch a JSP template__, or use an __RDF API__ provided by Jena, for example, to generate the appropriate output format. 
 
 #### Viewing the RDF+XML or JSON representation of a collection of Bugzilla bugs
 
@@ -151,7 +151,7 @@ On the Headers tab, for the **Name** type `Accept` and for the **Value** type an
 
 Then, click **Add/Change** to add the `Accept` header.
 
-Click **Get** to execute the HTTP GET method and you should receive the collection of bugs in the format you requested via `Accept` header. OSLC4J and JAX-RS produce the correct serialization based on the `Accept` header.
+Click **Get** to execute the HTTP GET method and you should receive the collection of bugs in the format you requested via `Accept` header. Eclipse Lyo and JAX-RS produce the correct serialization based on the `Accept` header.
 
 #### Viewing the RDF+XML or JSON representation of a Bugzilla bug
 
@@ -167,7 +167,7 @@ Click **Get** and you should receive the bug in the format you requested via `Ac
 
 ### Displaying a collection of Bugzilla bugs as HTML
 
-OSLC4J can simplify providing collections of bugs in machine-readable formats, but we should also provide a more human-friendly HTML listing of Bugzilla bugs.
+Eclipse Lyo can simplify providing collections of bugs in machine-readable formats, but we should also provide a more human-friendly HTML listing of Bugzilla bugs.
 
 In `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.services** package find the `getHtmlCollection()` method.
 
@@ -242,7 +242,7 @@ You should see a page with links to the bugs, similar to this:
 
 ### Forwarding HTML requests for single Bugzilla bugs
 
-The Bugzilla application itself can create an HTML page with all the details about a bug – that's one of its primary features – so why recreate the wheel? 
+The Bugzilla application itself can create an HTML page with all the details about a bug – that's one of its primary features – so why recreate the wheel? 
 
 In the **BugzillaChangeRequestService** class, note the `getHtmlChangeRequest()` method:
 
@@ -261,7 +261,7 @@ Simple enough: given the ID number (`{changeRequestId}`) for a particular bug, t
 
     http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/531
     
-… will forward you to the Bugzilla page for the bug at this URL:
+… will forward you to the Bugzilla page for the bug at this URL:
 
     https://bugzilla-host.example.com/show_bug.cgi?id=531
 
