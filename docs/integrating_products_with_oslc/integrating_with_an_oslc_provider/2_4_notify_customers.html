@@ -14,9 +14,9 @@
 <p>With the adapter running, navigate to the following URL in a browser: <a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/17">http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/17</a></p>
 <p>(You might have to substitute different ID numbers for the product and bug)</p>
 <p>In a browser, you&#39;ll be forwarded to the HTML page in Bugzilla for the bug. That&#39;s nice for us, but not so useful for a program that must parse the data. How can we request an RDF/XML representation of a bug?</p>
-<p>OSLC providers are required to provide an RDF/XML representation of resources; however, the normal rules of HTTP and Content Negotiation apply. <strong>If you want RDF/XML then you should ask for it.</strong> Specifically, use <code>Accept</code> headers.</p>
+<p>OSLC providers are required to provide an RDF/XML representation of resources; however, the normal rules of HTTP and Content Negotiation apply. <strong>If you want RDF/XML then you should ask for it.</strong> Specifically, use <code>Accept</code> headers. We recommend <a href="https://www.postman.com/downloads/">Postman</a> or <a href="https://insomnia.rest/">Insomnia</a> as a REST client.</p>
 <p>If you send the same request with an <code>Accept</code> header with the content <code>application/rdf+xml</code>, you should receive RDF/XML back from the adapter.</p>
-<p>You can explore this further with the Poster plugin and the Bugzilla adapter <a href="../implementing_an_oslc_provider/1_3_intro_to_oslc4j">where we implemented OSLC representations of Bugzilla bugs</a>.</p>
+<p>You can explore this further using Postman, Insomnia, or another REST client, as well as the Bugzilla adapter <a href="../implementing_an_oslc_provider/1_3_intro_to_oslc4j">where we implemented OSLC representations of Bugzilla bugs</a>.</p>
 <p>Here&#39;s a sample Bugzilla bug represented as an RDF/XML BugzillaChangeRequest resource:</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;rdf:RDF
@@ -57,35 +57,38 @@
 <p>OSLC resources use Dublin Core defined properties, like <code>title</code>, <code>description</code>, and <code>id</code>. They also use OSLC defined properties like <code>status</code>, <code>closed</code>, and <code>inprogress</code>. You can find a listing of the different types of properties allowed and required in the <a href="http://open-services.net/bin/view/Main/CmSpecificationV2">OSLC-CM specification</a>. There are also Bugzilla specific properties like <code>component</code> and <code>priority</code>. </p>
 <p>You can learn more about how our OSLC Bugzilla Adapter generates these representations <a href="../implementing_an_oslc_provider/1_3_intro_to_oslc4j">here</a>.</p>
 <h2>Parsing an OSLC resource</h2><div class="notice tip">
-<p><strong>Note</strong>: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using – <a href="http://wiki.eclipse.org/Lyo/LyoOSLC4J">OSLC4J</a> to convert RDF/XML representations into Java objects, which will most likely be easier to work with. Consider the following to be guidance if you choose to approach this another way.</p>
+<p><strong>Note</strong>: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using – <a href="http://wiki.eclipse.org/Lyo/LyoOSLC4J">OSLC4J</a> to convert RDF/XML representations into Java objects, which will most likely be easier to work with. Consider the following to be guidance if you choose to approach this another way.</p>
 </div>
 
-<p>If you&#39;ve parsed XML before, then the XML above probably does not look too challenging; however, RDF/XML is very flexible and XML parsing tools are not always the best way to process it. Fortunately, there are plenty of commercial and open source RDF parsing tools.</p>
+<p>If you&#39;ve parsed XML before, then the XML above probably does not look too challenging. <strong>We strongly discourage parsing RDF/XML graphs using XML parsers.</strong> XML adheres to the document model and extra processing is needed to interpret XML trees of the RDF/XML documents <em>as graphs.</em></p>
 <h3>Why you need an RDF parser</h3><p>You can see the flexibility of RDF/XML in action if you compare the RDF/XML for the Change Request above to the <a href="http://open-services.rtp.raleigh.ibm.com/bin/view/Main/CmSpecificationV2Samples#Request_with_no_parameters_as_ap">RDF/XML sample Change Request</a> in the <a href="http://open-services.rtp.raleigh.ibm.com/bin/view/Main/CmSpecificationV2">OSLC-CM specification</a>.</p>
 <p>RDF/XML allows RDF property values to be serialized in a variety of ways. For example, property values about a Change Request could be nested inside an <code>&lt;oslc_cm:ChangeRequest&gt;</code> element, as you see in the OSLC-CM samples, where the element itself indicates the Resource Type. Or they could be nested inside an <code>&lt;rdf:Description&gt;</code> element, as you see above, and the type indicated by an <code>&lt;rdf:type&gt;</code> value. Both are valid forms of RDF/XML and allowed by OSLC, so you will have to accept both forms in any parser code that you write. That&#39;s only one example.</p>
 <p>Another reason to use an RDF parser is that RDF/XML is only one way to serialize RDF. Right now RDF/XML is the popular format and the one required by OSLC, but there are other formats including Turtle, N3 and soon an official RDF serialization for JSON. By using a full-featured RDF parser like Jena, which we discuss below, you can read and write any format with the same code.</p>
 <h3>Finding an RDF/XML parser</h3><p>Instead of trying to write your own RDF/XML parser using XML tools, a better approach is to use an existing RDF/XML parser. There is one for every programming language and most are free and/or open source software. Below is a list of the more popular open source RDF tool-kits, the platform and licensing used by each.</p>
 <ul>
-<li><a href="http://jena.apache.org">http://jena.apache.org</a> - Jena (Java) License: ASL2</li>
-<li><a href="http://www.openrdf.org/">http://www.openrdf.org/</a> - OpenRDF / Sesame (Java) License: ASL2 and BSD-like</li>
-<li><a href="http://rdf.rubyforge.org/">http://rdf.rubyforge.org/</a> - RDF.rb (Ruby) License: Public Domain</li>
-<li><a href="http://librdf.org/bindings/">http://librdf.org/bindings/</a> - Redland (C, Perl, PHP, Python and Ruby) License: ASL2</li>
-<li><a href="http://razor.occams.info/code/semweb/">http://razor.occams.info/code/semweb/</a> - SemWeb.NET (C# / .Net) License: GPL2</li>
+<li><a href="https://jena.apache.org">Apache Jena</a> (Java)</li>
+<li><a href="https://rdf4j.org/">RDF4J</a> (Java; formerly known as OpenRDF / Sesame) </li>
+<li><a href="https://ruby-rdf.github.io/">Ruby RDF</a> (Ruby; aka RDF.rb)</li>
+<li><a href="https://rdflib.readthedocs.io/en/stable/">RDFlib</a> (Python)</li>
+<li><a href="https://rdf.js.org/">N3 and others</a> (Javascript)</li>
+<li><a href="https://dotnetrdf.org/">dotNetRDF</a> (C# and other .NET languages)</li>
 </ul>
 <p>All of the above libraries support RDF parsing and serialization, some form of triple-store RDF storage, and SPARQL query... more than you&#39;ll need for a typical OSLC implementation.</p>
 <p>For our implementation, we&#39;ll be using Jena.</p>
-<h3>How to use Jena to parse RDF/XML resource</h3><p><img src="http://open-services.net/images/jena_logo.png" alt="Jena icon"></p>
-<p>Jena is an open source Java library that offers a wide variety of RDF tools including a parser that can handle RDF/XML and other RDF serializations. Using Jena is straight-forward and should be easy for a Java developer.</p>
-<p>Before you start coding, you must get the Jena JAR and all of its dependency JARs into your development classpath. You can do this by <a href="http://jena.sourceforge.net/downloads.html">downloading the Jena ZIP file</a> which contains all of the necessary JARs, and add them to your IDE project. Or, if you are using Maven, then a dependency on groupId <code>com.hp.hpl.jena</code> and artifactId <code>jena</code> to your Maven POM file.</p>
+<h3>How to use Jena to parse RDF/XML resource</h3><p>Apache Jena is an open source Java library that offers a wide variety of RDF tools including a parser that can handle RDF/XML and other RDF serializations. Using Jena is straight-forward and should be easy for a Java developer.</p>
+<p>Before you start coding, you must get <a href="https://jena.apache.org/download/maven.html">add Jena dependencies</a> to your Maven POM file.</p>
 <p>Let&#39;s attempt to GET an OSLC Change Request via HTTP, but this time we will do it in Java. When we get the results, we will parse them with Jena and pull out the properties that Nina needs: the OSLC-CM <code>fixed</code> value and the Dublin Core Terms <code>modified</code> date value.</p>
+<blockquote>
+<p><strong>NOTE:</strong> If you see <code>com.hp.hpl.jena</code> package references in your code, it&#39;s an old &quot;pre-Apache&quot; version of Jena from the v2 branch. Current Jena major version is v4. Lyo dropped support for Jena 2 in Lyo 2.3.0. Please refer to the <a href="https://github.com/eclipse/lyo/wiki/Lyo-5.0-migration-notes">Lyo migration guide</a> to upgrade your code.</p>
+</blockquote>
 <p>Note that the following is not a complete Java class:</p>
 <pre><code>import java.net.HttpURLConnection; // (1)
 import java.net.URL;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.Statement;
 
 // class declaration and other things omitted
 
@@ -124,7 +127,7 @@ System.err.println(&quot;Modified = &quot; + modified.getString());
 </ol>
 <p>With the ability to parse OSLC Change Request resources in RDF/XML form, you can fairly easily figure out the remainder of the application that will automatically notify customers if there have been any updates to critical bugs.</p>
 <h2>The power of OSLC representations</h2><p>The real power of OSLC on display here is that although we&#39;ve written this code with our  OSLC-CM Adapter for Bugzilla in mind, it will work <em>equally well for any other application that provides data according to the OSLC-CM specification</em>. Because OSLC Providers should all expose the same types of data in the same standard formats, you can build integrations <em>for the OSLC standards and specifications</em> that should work with any compatible software. It&#39;s a different way of thinking about integrations that should help you make powerful, flexible, and future-proof ways to connect software. Cool stuff.</p>
-<p>Next, now that we have a simple understanding of Jena, we&#39;ll use it to help us automatically create Bugzilla bugs – no human involvement required.</p>
+<p>Next, now that we have a simple understanding of Jena, we&#39;ll use it to help us automatically create Bugzilla bugs – no human involvement required.</p>
 <p><a href="2_5_automatic_bugs">Next: Part 2.5, Automatic Bugs</a></p>
 </div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}

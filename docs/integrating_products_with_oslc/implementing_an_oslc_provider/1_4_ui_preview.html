@@ -43,8 +43,7 @@ compact.setLargePreview(largePreview);
 </code></pre>
 <p>As with many other methods, we needed to create the Compact and Preview objects and then let OSLC4J take care of serializing them to RDF.</p>
 <h4>Viewing the compact XML representation of a bug.</h4><p>The following assumes the Bugzilla adapter is running at <code>localhost:8080/OSLC4JBugzilla</code></p>
-<p>In Firefox or Chrome, open the Poster plugin.</p>
-<p>for the <strong>URL</strong> field, type the URL for a single bug:</p>
+<p>Using Postman, Insomnia, or another REST client, input the following for the <strong>URL</strong> field:</p>
 <pre><code>http://localhost:8080/OSLC4JBugzilla/services/{productId}/changeRequests/{bugId}
 </code></pre>
 <p>For example, with a product ID of <strong>1</strong> and a bug ID of <strong>10</strong>:</p>
