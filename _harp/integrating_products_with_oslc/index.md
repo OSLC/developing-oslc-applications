@@ -14,7 +14,7 @@
 
 This tutorial explains how to implement OSLC consumers and providers by examining realistic use cases and showing how to implement OSLC specifications with lots of examples and working code. 
 
-> **WARNING!** This tutorial was written for Lyo 2.1 and has not been updated to run on Lyo 5.0, the currently supported version. Please post [on the forum](https://forum.open-services.net/c/sdks/lyo/9) if you encounter any problems in the tutorial!
+> **WARNING!** This tutorial targets Lyo 2.2 and has not been updated to run on Lyo 5.0, the currently supported version. Please post [on the forum](https://forum.open-services.net/c/sdks/lyo/9) if you encounter any problems in the tutorial!
 
 This tutorial walks you through a fully developed adapter, with no need to code. If you want to have a more hands-on approach, you can refer to the complementary [hands-on tutorial](https://github.com/eclipse/lyo.docs/blob/master/lyo-rest-workshop/Lab1/Lyo_OSLC_Workshop.pdf) takes you through the incremental programming steps.
 
