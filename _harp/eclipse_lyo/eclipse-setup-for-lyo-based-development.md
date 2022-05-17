@@ -4,6 +4,8 @@ development:
 1.  Unless already installed, you need to first install the JDK 11 to use Lyo
     5.0 or newer. Older versions of Lyo and Lyo-based applications may require
     JDK 8 to run.
+    1. You also need Maven version 3.6.3 or higher.
+    1. **Pro tip:** use [SDKMAN!](https://sdkman.io/) to install multiple versions of JDK and Maven and switch between them depending on the project. We recommend to `sdk install java 11.0.15-tem` provided by [Eclipse Temurin](https://adoptium.net/) as your default JDK.  
 1.  Install [Eclipse IDE for Java EE
     Developers](https://www.eclipse.org/downloads/packages/release/2022-03/r/eclipse-ide-enterprise-java-and-web-developers)
     distribution. Alternatively, you need to install the plugins included in
