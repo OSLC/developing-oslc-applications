@@ -1,6 +1,54 @@
 # Create an Eclipse Lyo project
 
-The steps below guide you through the necessary steps of creating a Java project with the necessary configurations to develop any OSLC server/client using Lyo. The instructions assume you are using the Eclipse IDE, but should be equally valid for any other development environment.
+The steps below guide you through the necessary steps of creating a Java
+project with the necessary configurations to develop any OSLC server/client
+using Lyo. The instructions assume you are using the Eclipse IDE, but should be
+equally valid for any other development environment.
+
+<!-- omit in toc -->
+## Table of Contents 
+
+- [An alternative to the manual steps below](#an-alternative-to-the-manual-steps-below)
+- [Introduction](#introduction)
+- [Set up Eclipse](#set-up-eclipse)
+- [Decide if you want to adopt JAX-RS 1.0 or 2.0?](#decide-if-you-want-to-adopt-jax-rs-10-or-20)
+- [Create a Maven project](#create-a-maven-project)
+- [Customise the project POM file](#customise-the-project-pom-file)
+  - [Setup general POM properties](#setup-general-pom-properties)
+  - [(Optional) Add Lyo repositories](#optional-add-lyo-repositories)
+  - [SLF4J package dependencies](#slf4j-package-dependencies)
+  - [Servlet dependencies](#servlet-dependencies)
+  - [JAX-RS implementation dependencies](#jax-rs-implementation-dependencies)
+    - [For Lyo 5.x](#for-lyo-5x)
+    - [For Lyo 4.x](#for-lyo-4x)
+    - [For Lyo 2.4.0 and earlier](#for-lyo-240-and-earlier)
+  - [Lyo dependencies](#lyo-dependencies)
+  - [OSLC OAuth support](#oslc-oauth-support)
+  - [OSLC Client support](#oslc-client-support)
+    - [For Lyo 4.0+](#for-lyo-40)
+    - [For Lyo 2.4 and earlier](#for-lyo-24-and-earlier)
+  - [Configure the Embedded Jetty server for quick debugging](#configure-the-embedded-jetty-server-for-quick-debugging)
+- [Customise the web configuration](#customise-the-web-configuration)
+- [(Optional) Provide OpenApi/Swagger Support](#optional-provide-openapiswagger-support)
+  - [Add OpenApi/Swagger Maven dependencies](#add-openapiswagger-maven-dependencies)
+    - [For Lyo 5.0.0](#for-lyo-500)
+    - [For Lyo 4.1.0](#for-lyo-410)
+    - [For Lyo 2.4.0 and earlier](#for-lyo-240-and-earlier-1)
+  - [Co-host Swagger UI with your server](#co-host-swagger-ui-with-your-server)
+  - [Add Swagger-Core's JAX-RS Providers to your Application](#add-swagger-cores-jax-rs-providers-to-your-application)
+  - [Configure Swagger's Servlet in the web.xml](#configure-swaggers-servlet-in-the-webxml)
+  - [Add OpenApi Annotations (Almost Optional)](#add-openapi-annotations-almost-optional)
+    - [@Api](#api)
+    - [@ApiOperation (Optional)](#apioperation-optional)
+    - [@ApiModel (Optional)](#apimodel-optional)
+  - [Access the Swagger UI interactive console](#access-the-swagger-ui-interactive-console)
+  - [Access OpenAPI specification document (yaml file)](#access-openapi-specification-document-yaml-file)
+- [(Optional) Provide TRS Support](#optional-provide-trs-support)
+  - [Add Maven dependencies](#add-maven-dependencies)
+  - [Setup the TRS JAX-RS Provider to your Application](#setup-the-trs-jax-rs-provider-to-your-application)
+  - [Update the TRS data set](#update-the-trs-data-set)
+- [Run the server](#run-the-server)
+  - [Some tips](#some-tips)
 
 ## An alternative to the manual steps below
 An alternative to the instructions on this page is to instead use [Lyo Designer](./lyo-designer) to quickly generate the project, including a very basic code skeleton. The generated project will also include the neccessary setup for OpenApi/Swagger support, TRS, etc.
@@ -38,11 +86,12 @@ Creating the project consists of these steps:
 1. [(Optional) Provide TRS Support](#provide-trs-support)
 1. [Run the server](#run-server)
 
-## <a name="setup-eclipse"></a>Set up Eclipse
+## Set up Eclipse
 
 Make sure your environment is setup for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
-## <a name="decide-jaxrs"></a>Decide if you want to adopt JAX-RS 1.0 or 2.0?
+## Decide if you want to adopt JAX-RS 1.0 or 2.0?
+
 Starting with version 4.0.0, Lyo supports JAX-RS 2.0, and no longer depends on any particlar implementation of JAX-RS. This gives the developer the chance to adopt any preferred implementation such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. 
 
 > Older Lyo releases (2.x) only supported JAX-RS 1.0 and required Apache Wink implementation, which is **retired to Apache Attic** since 2015). They also relied on "HP Labs" Jena. We recommend you adopt the latest versions of Lyo.
@@ -52,7 +101,7 @@ The instructions below will vary depending on the Lyo version to be adopted. We 
 * 4.1.0
 * 2.4.0 (unsupported)
 
-## <a name="create-maven-project"></a>Create a Maven project
+## Create a Maven project
 
 To create a Maven project from an archetype via Eclipse
 
@@ -78,16 +127,13 @@ You should now have the project in Eclipse and the following folder structure:
 
 ![](./images/CreateMavenAdaptorProject_CodeStructure.png)
 
-## <a name="customize-project-pom-file"></a>Customise the project POM file
+## Customise the project POM file
 
 We now need to modify the project *pom.xml* file.
 
 ### Setup general POM properties
 
-We need to make sure our project uses UTF-8 and JDK 1.8 (Lyo 5.0 will only support JDK 
-11 and newer). We will also use properties to define a common version for Lyo packages:
-
-Of course, ```ENTER-LYO-VERSION-HERE``` is either ```4.1.0``` or ```2.4.0```, depending on your choice of JAX-RS version.
+We need to make sure our project uses UTF-8 and JDK 1.8+ (Lyo 5.0 requires JDK 11+). We will also use properties to define a common version for Lyo packages:
 
 ```xml
 <properties>
@@ -98,7 +144,10 @@ Of course, ```ENTER-LYO-VERSION-HERE``` is either ```4.1.0``` or ```2.4.0```, de
   <version.lyo>ENTER-LYO-VERSION-HERE</version.lyo>
 </properties>
 ```
-### Lyo repositories (optional)
+
+In the snippet above, ```ENTER-LYO-VERSION-HERE``` is either ```5.0.0``` or ```2.4.0``` (**not supported since December 2020!**), depending on your choice of JAX-RS version.
+
+### (Optional) Add Lyo repositories
 
 A Lyo project will use Lyo dependencies that we need to declare. **All necessary Lyo dependencies are available on Maven Central starting with Lyo 4.0.0.** If you are using Lyo 2.x, you need to add the following entry:
 
@@ -270,7 +319,7 @@ RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services
 
 If your OSLC server also needs to consume resources from another server, a dependency to the OSLC client package is needed:
 
-#### for Lyo 4.1.0 
+#### For Lyo 4.0+ 
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.clients</groupId>
@@ -279,7 +328,7 @@ If your OSLC server also needs to consume resources from another server, a depen
 </dependency>
 ```
 
-#### for Lyo 2.4.0 and earlier 
+#### For Lyo 2.4 and earlier 
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.clients</groupId>
@@ -306,7 +355,7 @@ This will make your server available under the path http://localhost:8080/adapto
     <plugin>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-maven-plugin</artifactId>
-      <version>9.4.45.v20220203</version>
+      <version>9.4.46.v20220331</version>
       <configuration>
         <webAppConfig>
           <contextPath>/adaptor-sample</contextPath>
@@ -327,7 +376,7 @@ This will make your server available under the path http://localhost:8080/adapto
 </build>
 ```
 
-## <a name="customize-web-configuration"></a>Customise the web configuration
+## Customise the web configuration
 
 Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the template below.
 
@@ -335,8 +384,8 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 * *com.sample.adaptor* should be the same as the base package name for your project.
 * *8080* should match the port number specified in the POM file for Jetty configuration.
 * ```ENTER-SERVLET-CLASS-HERE``` depends on the Lyo version and choice of JAX-RS implementation:
-  * For ```4.1.0``` and a Jersey implementation: ```org.glassfish.jersey.servlet.ServletContainer```
-  * For ```2.4.0```:  ```org.apache.wink.server.internal.servlet.RestServlet```
+  * For ```4.0.0``` and higher, use the Jersey implementation: ```org.glassfish.jersey.servlet.ServletContainer```
+  * For ```2.4.0```, use the legacy Wink implementation: ```org.apache.wink.server.internal.servlet.RestServlet```
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -370,19 +419,45 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 </web-app>
 ```
 
-## <a name="provide-openapi-support"></a>(Optional) Provide OpenApi/Swagger Support
+## (Optional) Provide OpenApi/Swagger Support
 
 With OSLC being based on REST, an OSLC Server can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/). 
 
 The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical Lyo project. The instructions are also partially base on 
 [Co-hosting Swagger UI with your Jersey REST API using Maven dependencies](https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8). The instructions provide the minimal settings necessary for a Lyo project.
 
-### Add Maven dependencies
+### Add OpenApi/Swagger Maven dependencies
 
 Add the following Swagger dependency to your maven pom.xml file
 
-#### for Lyo 4.1.0 
+
+#### For Lyo 5.0.0 
+
 Assuming you are adopting the Jersey implementation with the version specified above.
+
+```xml
+<dependency>
+  <groupId>io.swagger.core.v3</groupId>
+  <artifactId>swagger-jaxrs2</artifactId>
+  <version>2.1.4</version>
+  <exclusions>
+    <exclusion>
+      <!--should be <provided>-->
+      <groupId>jakarta.activation</groupId>
+      <artifactId>jakarta.activation-api</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+<dependency>
+  <groupId>io.swagger.core.v3</groupId>
+  <artifactId>swagger-jaxrs2-servlet-initializer-v2</artifactId>
+  <version>2.1.4</version>
+</dependency>
+```
+
+#### For Lyo 4.1.0 
+Assuming you are adopting the Jersey implementation with the version specified above.
+
 ```xml
 <dependency>
   <groupId>io.swagger</groupId>
@@ -391,7 +466,8 @@ Assuming you are adopting the Jersey implementation with the version specified a
 </dependency>
 ```
 
-#### for Lyo 2.4.0 and earlier 
+#### For Lyo 2.4.0 and earlier 
+
 ```xml
 <dependency>
   <groupId>io.swagger</groupId>
@@ -399,6 +475,7 @@ Assuming you are adopting the Jersey implementation with the version specified a
   <version>1.5.17</version>
 </dependency>
 ```
+
 ### Co-host Swagger UI with your server 
 
 The following steps provide the end-user with an interactive console to the OSLC services, by integrating [Swagger UI](https://swagger.io/swagger-ui/) with your OSLC server.
@@ -555,7 +632,7 @@ You can also access the OpenAPI specification document (yaml file) at:
 
 You can copy the yaml file to a [Swagger Editor](https://editor.swagger.io), to view the API documentation, as well as generate client/Server SDK code for a number of languages and platforms.
 
-## <a name="provide-trs-support"></a>(Optional) Provide TRS Support
+## (Optional) Provide TRS Support
 
 The *TRS Server* library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
 The current implementation supports an In-memory TRS Server that does not persist its TRS resources.
@@ -675,9 +752,9 @@ To update the set of OSLC resources that form the TRS Base and ChangeLog, simply
 * `InmemPagedTrsSingleton.getInmemPagedTrs().onModified(aResource);`
 * `InmemPagedTrsSingleton.getInmemPagedTrs().onDeleted(aResource.getAbout());`
 
-## <a name="run-server"></a>Run the server
+## Run the server
 
-Once the server is developed, you can run it by selecting *Run As --&gt; Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-exploded`.
+Once the server is developed, you can run it by selecting *Run As --&gt; Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-war`.
 
 You can now access your server from http://localhost:8080/adaptor-sample
 
