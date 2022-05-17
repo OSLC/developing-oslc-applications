@@ -246,8 +246,8 @@ public Response getHtmlChangeRequest(@PathParam(&quot;productId&quot;)       fin
 <p>Simple enough: given the ID number (<code>{changeRequestId}</code>) for a particular bug, the OSLC Bugzilla adapter will forward you directly to the web page for the bug in Bugzilla (<code>show_bug.cgi?id={changeRequestId}</code>). For example, a request from the adapter for bug 531 in Product 1 at the following URL…</p>
 <pre><code>http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/531
 </code></pre>
-<p>… will forward you to the Bugzilla page for the bug at this URL:</p>
-<pre><code>https://bugzilla-host.example.com/show_bug.cgi?id=531
+<p>… will forward you to the Bugzilla page for the bug at this URL (if you are running Bugzilla using the provided Docker instructions):</p>
+<pre><code>http://localhost/bugzilla/show_bug.cgi?id=531
 </code></pre>
 <p>That&#39;s useful on its own, but OSLC also specifies a <a href="https://archive.open-services.net/bin/view/Main/OslcCoreUiPreview.html">method called UI Preview </a> for showing preview information about a resource in another tool. We&#39;ll tackle these rich preview formats in the next section.</p>
 <p><a href="1_4_ui_preview">Next: Part 1.4, UI Preview</a></p>
