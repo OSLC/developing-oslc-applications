@@ -977,14 +977,18 @@ pre, code {
 div > pre {
   /*code block*/ 
   font-size: 12pt;
-  background-color: #f3f2f2;
+  background-color: #f4f4f4;
   border-radius: 7px;
   padding: 12px;
-  /* line-height: 1.45rem; */
+  line-height: 1.5 !important;
+  tab-size: 3;
 }
 
 p > code {
   /*inline code*/ 
-  font-size: 14pt;
+  font-size: 13pt;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  padding: 2px;
 }
 
