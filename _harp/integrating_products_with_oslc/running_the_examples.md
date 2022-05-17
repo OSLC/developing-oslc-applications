@@ -38,7 +38,8 @@ The [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository cont
     1. Select **File** &rarr; **Import...**
     1. In the Import dialog that appears select **Maven** &rarr; **Existing Maven Projects**, and click **Next**.
     1. Browse to the root directory of the recently cloned git repository.
-    1.  Select the 2 projects **\lyo-rest-workshop\Lab6** and **\lyo-rest-workshop\ninacrm** and click **Finish**.
+    1. Select the project **./lyo.docs/lyo-rest-workshop/Lab6** from the `lyo.docs` repo and click **Finish**.
+    1. Repeat the steps above for the **./lyo-adaptor-ninacrm** project from the `lyo-adaptor-ninacrm` repo. 
 
 ## Configuring the Bugzilla adapter
 
