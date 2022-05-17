@@ -164,9 +164,33 @@ We require Java EE 6 or higher and JSTL:
 
 ### JAX-RS implementation dependencies
 
-#### for Lyo 4.1.0 
+Lyo depends on JAX-RS APIs and your application needs to add implementations of those APIs.
 
-For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementation, such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. Below is an example for Jersey.
+#### For Lyo 5.x 
+
+For Lyo release 5.0.0 and above, you will need to choose a JAX-RS 2.0 implementation. If you are using Jersey, you should use version 2.35. *Note that starting with Jersey 2.26, HK2 is not bundled with the core artifacts (see the [Jersey migration guide](https://eclipse-ee4j.github.io/jersey.github.io/documentation/2.35/user-guide.html#mig-2.26)).*
+```xml
+<dependency>
+  <groupId>org.glassfish.jersey.core</groupId>
+  <artifactId>jersey-server</artifactId>
+  <version>2.35</version>
+</dependency>
+<dependency>
+  <groupId>org.glassfish.jersey.containers</groupId>
+  <artifactId>jersey-container-servlet</artifactId>
+  <version>2.35</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jersey.inject</groupId>
+    <artifactId>jersey-hk2</artifactId>
+    <version>2.35</version>
+</dependency>
+```
+
+#### For Lyo 4.x 
+
+For Lyo release 4.0.0 and above, you will need to choose a JAX-RS 2.0 implementation, such as [Jersey](https://jersey.github.io/), [RESTEasy](https://resteasy.github.io/), etc. Below is an example for Jersey.
+
 ```xml
 <dependency>
   <groupId>org.glassfish.jersey.core</groupId>
@@ -180,7 +204,7 @@ For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementa
 </dependency>
 ```
 
-#### for Lyo 2.4.0 and earlier 
+#### For Lyo 2.4.0 and earlier 
 
 For Lyo release 2.4.0 (and earlier), a Lyo package includes a dependency to the [Apache Wink implementation](https://svn.apache.org/repos/infra/websites/production/wink/content/index.html).
 
