@@ -935,21 +935,28 @@ nav, h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 34pt !important;
+  font-size: 42pt !important;
   font-weight: 300 !important;    
 }
 
+h1.title {
+  font-weight: 400 !important;    
+}
+
+
 h2 {
-  font-size: 28pt !important;    
+  font-size: 27pt !important;    
+  font-weight: 400 !important;    
 }
 
 h3 {
-  font-size: 22pt !important;    
+  font-size: 21pt !important;    
+  font-weight: 600 !important;    
 }
 
 h4 {
-  font-size: 18pt !important;
-  font-weight: 500 !important;    
+  font-size: 17pt !important;
+  font-weight: 700 !important;    
 }
 
 
@@ -962,20 +969,22 @@ main .copy {
 }
 
 pre, code {
-  font-family: 'Overpass Mono', 'Monaco', 'Consolas', monospace;
+  font-family: 'Roboto Mono', 'Overpass Mono', 'Monaco', 'Consolas', monospace;
   font-variant-ligatures: none;
   font-weight: 400;
 }
 
 div > pre {
   /*code block*/ 
-  /* font-size: 1.05rem;  */
-  line-height: 1.45rem;
   font-size: 12pt;
+  background-color: #f3f2f2;
+  border-radius: 7px;
+  padding: 12px;
+  /* line-height: 1.45rem; */
 }
 
 p > code {
   /*inline code*/ 
-  /* font-size: 1.15rem; */
+  font-size: 1.15rem;
 }
 
