@@ -14,7 +14,7 @@ The Eclipse Lyo Bugzilla adapter includes that class (**ChangeRequest**) and ext
 
 ### Exploring the Eclipse Lyo ChangeRequest class
 
-Open the file `ChangeRequest.java` in the **org.eclipse.lyo.oslc4j.bugzilla.resources** package and explore the variables and methods. For reference, [here is the definition of a Change Request in the OSLC Change Management specification](http://open-services.net/bin/view/Main/CmSpecificationV2#Resource_ChangeRequest).
+Open the file `ChangeRequest.java` in the **org.eclipse.lyo.oslc4j.bugzilla.resources** package and explore the variables and methods. For reference, [here is the definition of a Change Request in the OSLC Change Management specification](https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-shapes.html#changerequest).
 
 First, observe the private variables at the top of the __ChangeRequest__ class. These are the attributes of an OSLC CM V2.0 Change Request. Here are first several, which represent the relationships between Change Requests and other OSLC artifacts:
 
@@ -61,7 +61,7 @@ As with the **ChangeRequest** class, the various getter methods (for example, `g
 
 #### Mapping Bugzilla attributes to OSLC-CM properties
 
-To represent a Bugzilla bug as an RDF/XML document for an OSLC Change Management resource, we must map Bugzilla bug attributes to [OSLC-CM ChangeRequest properties](http://open-services.net/bin/view/Main/CmSpecificationV2#Resource_ChangeRequest). The following attributes line up fairly clearly:
+To represent a Bugzilla bug as an RDF/XML document for an OSLC Change Management resource, we must map Bugzilla bug attributes to [OSLC-CM ChangeRequest properties](https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-shapes.html#changerequest). The following attributes line up fairly clearly:
 
 | Bugzilla Bug field | Maps to RDF predicate | Prefixed name*
 | ------------------ | --------------------- | --------------
@@ -205,7 +205,7 @@ This method's basic activity is to retrieve a list of bugs for a Bugzilla produc
     );
 	rd.forward(httpServletRequest,httpServletResponse);   
 
-There are multiple parameters for this function that allow you to filter the collection with queries, paginate the results, and change the sort order. The Bugzilla Adapter does not use all of these parameters; however they are necessary for full support of [OSLC Queries](http://open-services.net/bin/view/Main/OSLCCoreSpecQuery).
+There are multiple parameters for this function that allow you to filter the collection with queries, paginate the results, and change the sort order. The Bugzilla Adapter does not use all of these parameters; however they are necessary for full support of [OSLC Queries](https://docs.oasis-open-projects.org/oslc-op/query/v3.0/os/oslc-query.html).
 
 Open the file `/src/webapp/cm/changerequest_collection_html.jsp` in **org.eclipse.lyo.oslc4j.bugzilla**. The HTML layout is nearly identical to that of the Service Providers and Catalog. 
 

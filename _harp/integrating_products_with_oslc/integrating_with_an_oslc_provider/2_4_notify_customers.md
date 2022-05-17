@@ -78,7 +78,7 @@ Note the variety of namespace definitions near the top of the document that defi
 
 Inside the `<rdf:RDF>` root element, there is an `<rdf:Description>` element with an attribute of `rdf:about` that is the URI of the Change Request. The `<rdf:type>` element indicates that this is an OSLC CM request. Each XML element represents a property value of the Change Request.
 
-OSLC resources use Dublin Core defined properties, like `title`, `description`, and `id`. They also use OSLC defined properties like `status`, `closed`, and `inprogress`. You can find a listing of the different types of properties allowed and required in the [OSLC-CM specification](http://open-services.net/bin/view/Main/CmSpecificationV2). There are also Bugzilla specific properties like `component` and `priority`. 
+OSLC resources use Dublin Core defined properties, like `title`, `description`, and `id`. They also use OSLC defined properties like `status`, `closed`, and `inprogress`. You can find a listing of the different types of properties allowed and required in the [OSLC-CM specification](https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-spec.html). There are also Bugzilla specific properties like `component` and `priority`. 
 
 You can learn more about how our OSLC Bugzilla Adapter generates these representations [here](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
 

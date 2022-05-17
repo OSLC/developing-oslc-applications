@@ -7,8 +7,7 @@ Now that we have the basic services and resources defined for BugzillaChangeRequ
 
 For example, a user of the NinaCRM product will be able to search for and add links to related bugs in Bugzilla without leaving the NinaCRM interface.
 
-<div class="notice"><p>For more information on OSLC delegated UIs, see the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#Delegated_User_Interface_Dialogs
-">section about them in the OSLC core specification</a>.</p></div>
+> For more information on OSLC delegated UIs, see the [section about them in the OSLC core specification](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/dialogs.html).
 
 Because delegated UI dialogs must accept user input and interact with Bugzilla to select or create bugs, they are more complex than collecting and describing bugs. Here's how we'll approach the process:
 
@@ -53,7 +52,7 @@ Here are the annotations for the selection dialog and the capability to query fo
         usages = {OslcConstants.OSLC_USAGE_DEFAULT}
     )
     
-As with BugzillaChangeRequests, with the appropriate annotations OSLC4J handles the conversion of this information to XML or JSON for you – no additional templating required.
+As with BugzillaChangeRequests, with the appropriate annotations OSLC4J handles the conversion of this information to XML or JSON for you – no additional templating required.
 
 You can explore `/src/main/webapp/cm/serviceprovider_html.jsp` to see how we add the links to these to the HTML representation of a Service Provider (under the **Resource Selector Dialog** heading).
 
@@ -227,7 +226,7 @@ Explore the `sendResponse()` method to see how we build the JSON response and de
 
 We determine whether or not we want to use Window Name or postMessage by looking at the `location.hash` value for the page: either `#oslc-core-windowName-1.0` or `#oslc-core-postMessage-1.0`. We do this because the _requesting client_ is the application that must indicate which cross-domain method _it_ supports; the client does so by requesting our delegated UI with the appropriate hash. We'll explore this later when we access this delegated UI in the NinaCRM application.
 
-You can further explore the `respondWithPostMessage()` and `respondWithWindowName()` methods in `bugzilla.js` to see how we send the data to the requesting window – it's taken almost entirely from the examples in the OSLC Core specification.
+You can further explore the `respondWithPostMessage()` and `respondWithWindowName()` methods in `bugzilla.js` to see how we send the data to the requesting window – it's taken almost entirely from the examples in the OSLC Core specification.
 
 <div class="notice tip">
 <p>

@@ -1,10 +1,9 @@
 # Implementing an OSLC provider 
 
-In this section, we'll be creating an adapter to add [OSLC Change
-Management](http://open-services.net/bin/view/Main/CmSpecificationV2) support
-to [Bugzilla, an open source Defect Tracking system](http://www.bugzilla.org/).
+In this section, we'll be creating an adapter to add [OSLC Change Management](https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-spec.html) support
+to [Bugzilla](https://www.bugzilla.org/), an open source Defect Tracking system.
 Although the Bugzilla adapter is available now as part of Eclipse Lyo, its
-features and architecture are broadly applicable to any adapter that adds OSLC
+features and architecture are broadly applicable to any OSLC adaptor that adds OSLC Server
 support to an existing product.
 
 This video explores some of the challenges and considerations in getting

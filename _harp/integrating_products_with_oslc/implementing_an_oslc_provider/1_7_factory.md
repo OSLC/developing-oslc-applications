@@ -75,7 +75,7 @@ Then we return the new **BugzillaChangeRequest** as the body of a POST response:
 
     return Response.created(about).entity(changeRequest).build();
 
-Note that we set the `Location` header (via `Response.created()`) to the `about` URI for the new **BugzillaChangeRequest**; this is a SHOULD requirement of [the Core specification](http://open-services.net/bin/view/Main/OslcCoreSpecification#Creation_Factories).
+Note that we set the `Location` header (via `Response.created()`) to the `about` URI for the new **BugzillaChangeRequest**; this is a SHOULD requirement of [the Core specification](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/oslc-core.html).
 
 ### Try it out!
 

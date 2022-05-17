@@ -1,6 +1,6 @@
 # Planning out a partial implementation of OSLC-CM 
 
-Our integration use cases that we want to add to Bugzilla require only a partial implementation of the [OSLC Change Management](http://open-services.net/bin/view/Main/CmSpecificationV2) specification:
+Our integration use cases that we want to add to Bugzilla require only a partial implementation of the [OSLC Change Management](https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-spec.html) specification:
 
 + __Service Provider and Catalogs__: These resources describe the services offered and make it possible for consumers of the OSLC CM service to find the ones they need. In Part 2, you will use these to help implement [Automated Bug Creation](../integrating_with_an_oslc_provider/2_5_automatic_bugs) so that the Testing team's build scripts can use Service Provider documents to locate a URL.
 + **OSLC representations for bugs**: This means making each Bug available at a stable URI as an OSLC-CM Change Request resource, with RDF/XML and UI Preview representations via content negotiation. In Part 2, these RDF/XML representations will help [automate customer notifications](../integrating_with_an_oslc_provider/2_4_notify_customers).
