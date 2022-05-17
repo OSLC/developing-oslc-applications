@@ -21,7 +21,7 @@ Unless you have a Bugzilla system (with admin access) you can integrate against,
 
 ## Importing the tutorial projects into Eclipse
 
-The [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository contains all the necessary code for this tutorial. **The finished adaptor can be found under [OSLC/lyo-adaptor-bugzilla](https://github.com/OSLC/lyo-adaptor-bugzilla)**
+The [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository contains the necessary code for this tutorial, while https://github.com/OSLC/lyo-adaptor-ninacrm contains the sample application, NinaCRM, which is used to demonstrate how a 3rd-party tool would integrate with a newly developed OSLC Server. **The finished OSLC Server can be found under [OSLC/lyo-adaptor-bugzilla](https://github.com/OSLC/lyo-adaptor-bugzilla)**
 
 1. Clone the [Lyo documentation](https://github.com/eclipse/lyo.docs) Git repository
     1.  In Eclipse, open the Git Repositories view. (**Window** &rarr; **Show View** &rarr; **Other**, search for `Git repo` and click **OK**.)
