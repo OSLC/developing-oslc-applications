@@ -984,11 +984,12 @@ div > pre {
   tab-size: 3;
 }
 
-p > code {
+code {
   /*inline code*/ 
   font-size: 13pt;
   background-color: #f4f4f4;
   border-radius: 4px;
   padding: 2px;
+  margin: 0 2px;
 }
 
