@@ -52,8 +52,7 @@ This tutorial is for people who will be writing code to implement OSLC consumers
 You can follow along with the OSLC Tutorial by using the following software:
 
 - Bugzilla: a common open-source defect tracking application. In this tutorial,
-  you will configure a running [Bugzilla system using
-  Docker](https://hub.docker.com/r/bugzilla/bugzilla-dev/) if you do not want
+  you will configure a running Bugzilla system using Docker if you do not want
   to set up your own Bugzilla application.
 - OSLC4J Bugzilla adapter: a full-featured adapter that presents Bugzilla bugs
   as OSLC Change Management v2 resources. In our examples, we assume the
