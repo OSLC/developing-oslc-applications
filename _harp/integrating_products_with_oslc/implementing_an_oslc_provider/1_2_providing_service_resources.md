@@ -1,6 +1,6 @@
 # Providing Service Providers and Catalogs 
 
-The next step in implementing the OSLC Change Management specification is to determine what high-level organizational concept in your product best maps to [OSLC Service Providers](https://open-services.net/resources/oslc-primer/#serviceprovider) – the central organizing concept of OSLC that represents a "container" of resources.
+The next step in implementing the OSLC Change Management specification is to determine what high-level organizational concept in your product best maps to [OSLC Service Providers](https://open-services.net/resources/oslc-primer/#serviceprovider) – the central organizing concept of OSLC that represents a "container" of resources.
 
 In Bugzilla, bugs are organized by Product. Before you can use Bugzilla, you have to tell the system which Products exist in order to report bugs against them.
 
@@ -10,19 +10,19 @@ To enable client programs to find the Service Providers provided by Bugzilla (an
 
 Here are the URLs that will be supported with our adapter (running at `/OSLC4JBugzilla/`) for our OSLC-CM implementation:
 
-+ `http://HOST/OSLC4JBugzilla/services/catalog/singleton`  
++ `http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton`  
     This URL will return the [OSLC Service Provider Catalog](https://open-services.net/resources/oslc-primer/#serviceprovidercatalog)
-+ `http://HOST/OSLC4JBugzilla/services/serviceProviders/{product_id}`  
++ `http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/{product_id}`  
     Returns the [OSLC Service Provider](https://open-services.net/resources/oslc-primer/#serviceprovider) for the Product identified by {product_id} number
-+ `http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests`
++ `http://localhost:8080/OSLC4JBugzilla/services/{product_id}/changeRequests`
     If using HTTP GET, returns a list of bugs in the product identified by {product_id}; if using HTTP POST, initiates the Creation Factory for creating a new bug and returns that new bug
-+ `http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests/{change_request_id}`
++ `http://localhost:8080/OSLC4JBugzilla/services/{product_id}/changeRequests/{change_request_id}`
     Returns the Change Request identified by ID {change_request_id}, in a variety of content-types
-+ `http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests/selector`
++ `http://localhost:8080/OSLC4JBugzilla/services/{product_id}/changeRequests/selector`
     This URL is for the delegated UI selection dialog for the Product identified by ID {product_id}
-+ `http://HOST/OSLC4JBugzilla/services/{product_id}/changeRequests/creator`
++ `http://localhost:8080/OSLC4JBugzilla/services/{product_id}/changeRequests/creator`
     Returns Delegated UI creation dialog for the Product identified by ID {product_id}
-+ `http://HOST/OSLC4JBugzilla/services/resourceShapes/changeRequest`
++ `http://localhost:8080/OSLC4JBugzilla/services/resourceShapes/changeRequest`
     Returns the creation and query [Resource Shape](https://open-services.net/resources/oslc-primer/#resourceshapes) for Bugzilla bugs
 
 Each of of the URLs above will be handled by a JAX-RS annotated method and our code will have to be able to form all of those types of URLs. That brings us to an important point about OSLC:
@@ -54,11 +54,11 @@ On the OSLC4J Bugzilla application, all REST services are handled by a Bugzilla 
 
 In our adapter, we use a simple pattern to implement OSLC REST services: for each operation, a JAX-RS method will accept incoming requests, load the data necessary to render a response, perform the requested operation, and then render the resulting RDF or other representations.
 
-The Service Provider Catalog is defined in **ServiceProviderCatalogService** (in the **org.eclipse.lyo.oslc4j.bugzilla.services** package). The catalog is available at the URL `http://HOST/OSLC4JBugzilla/services/catalog/singleton` and will list the OSLC Service Providers (one per Bugzilla product).
+The Service Provider Catalog is defined in **ServiceProviderCatalogService** (in the **org.eclipse.lyo.oslc4j.bugzilla.services** package). The catalog is available at the URL `http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton` and will list the OSLC Service Providers (one per Bugzilla product).
 
 ### Defining a JAX-RS method for the Service Provider Catalog
 
-In the file `ServiceProviderCatalogService.java` (in the **org.eclipse.lyo.oslc4j.bugzilla .servlet** package), view the JAX-RS annotation which defines the class that will run at `http://HOST/OSLC4JBugzilla/services/catalog/`:
+In the file `ServiceProviderCatalogService.java` (in the **org.eclipse.lyo.oslc4j.bugzilla .servlet** package), view the JAX-RS annotation which defines the class that will run at `http://localhost:8080/OSLC4JBugzilla/services/catalog/`:
 
 	@Path("catalog")
 	public class ServiceProviderCatalogService
