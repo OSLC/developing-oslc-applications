@@ -2,7 +2,7 @@
 <h2>What is Eclipse Lyo?</h2><p><a href="../../eclipse_lyo/eclipse-lyo">Eclipse Lyo</a> is a Java SDK for developing OSLC provider or consumer implementations. OSLC resources can be modeled with plain old Java objects (POJOs) which are annotated to provide the information Eclipse Lyo needs to create resource shapes, service provider documents, and to serialize/de-serialize OSLC resources from Java to representations such as RDF or JSON.</p>
 <h2>Defining OSLC resources with Eclipse Lyo</h2><p>Eclipse Lyo comes with a sample Change Management application that includes the Eclipse Lyo-annotated Java class representing a Change Request (as defined in the OSLC Change Management v2 specification).</p>
 <p>The Eclipse Lyo Bugzilla adapter includes that class (<strong>ChangeRequest</strong>) and extends it with Bugzilla-specific attributes (for example, &quot;Product&quot;, &quot;Platform&quot;, or other attributes that are not part of the OSLC CM specification); this extended change request is called a <strong>BugzillaChangeRequest</strong>.</p>
-<h3>Exploring the Eclipse Lyo ChangeRequest class</h3><p>Open the file <code>ChangeRequest.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla.resources</strong> package and explore the variables and methods. For reference, <a href="http://open-services.net/bin/view/Main/CmSpecificationV2#Resource_ChangeRequest">here is the definition of a Change Request in the OSLC Change Management specification</a>.</p>
+<h3>Exploring the Eclipse Lyo ChangeRequest class</h3><p>Open the file <code>ChangeRequest.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla.resources</strong> package and explore the variables and methods. For reference, <a href="https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-shapes.html#changerequest">here is the definition of a Change Request in the OSLC Change Management specification</a>.</p>
 <p>First, observe the private variables at the top of the <strong>ChangeRequest</strong> class. These are the attributes of an OSLC CM V2.0 Change Request. Here are first several, which represent the relationships between Change Requests and other OSLC artifacts:</p>
 <pre><code>private final Set&lt;Link&gt; affectedByDefects           = new HashSet&lt;Link&gt;();
 private final Set&lt;Link&gt; affectsPlanItems            = new HashSet&lt;Link&gt;();
@@ -37,7 +37,7 @@ public String getIdentifier()
 <p>Because the <em>default type in Lyo is a string</em>, there is no type annotation. Look for other attributes with the <code>@OslcValueType</code> annotation for examples of attributes that are not strings. </p>
 <h3>Extending ChangeRequest with Bugzilla attributes</h3><p>Open the file <code>BugzillaChangeRequest.java</code> in the <strong>org.eclipse.lyo.oslc4j.bugzilla.resources</strong> package and explore the variables and methods for the Bugzilla-specific attributes.</p>
 <p>As with the <strong>ChangeRequest</strong> class, the various getter methods (for example, <code>getVersion()</code>) have OSLC annotations.</p>
-<h4>Mapping Bugzilla attributes to OSLC-CM properties</h4><p>To represent a Bugzilla bug as an RDF/XML document for an OSLC Change Management resource, we must map Bugzilla bug attributes to <a href="http://open-services.net/bin/view/Main/CmSpecificationV2#Resource_ChangeRequest">OSLC-CM ChangeRequest properties</a>. The following attributes line up fairly clearly:</p>
+<h4>Mapping Bugzilla attributes to OSLC-CM properties</h4><p>To represent a Bugzilla bug as an RDF/XML document for an OSLC Change Management resource, we must map Bugzilla bug attributes to <a href="https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-shapes.html#changerequest">OSLC-CM ChangeRequest properties</a>. The following attributes line up fairly clearly:</p>
 <table>
 <thead>
 <tr>
@@ -203,7 +203,7 @@ RequestDispatcher rd = httpServletRequest.getRequestDispatcher(
 );
 rd.forward(httpServletRequest,httpServletResponse);   
 </code></pre>
-<p>There are multiple parameters for this function that allow you to filter the collection with queries, paginate the results, and change the sort order. The Bugzilla Adapter does not use all of these parameters; however they are necessary for full support of <a href="http://open-services.net/bin/view/Main/OSLCCoreSpecQuery">OSLC Queries</a>.</p>
+<p>There are multiple parameters for this function that allow you to filter the collection with queries, paginate the results, and change the sort order. The Bugzilla Adapter does not use all of these parameters; however they are necessary for full support of <a href="https://docs.oasis-open-projects.org/oslc-op/query/v3.0/os/oslc-query.html">OSLC Queries</a>.</p>
 <p>Open the file <code>/src/webapp/cm/changerequest_collection_html.jsp</code> in <strong>org.eclipse.lyo.oslc4j.bugzilla</strong>. The HTML layout is nearly identical to that of the Service Providers and Catalog. </p>
 <p>Towards the top, you&#39;ll see that we receive the data:</p>
 <pre><code>&lt;%

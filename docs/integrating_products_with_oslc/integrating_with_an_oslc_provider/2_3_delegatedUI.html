@@ -84,11 +84,10 @@
 </code></pre>
 <p>Note that each button uses the Dojo/Dijit button framework and launches a JavaScript method when clicked.</p>
 <p>Next, we add the <code>selectDialog()</code> and <code>createDialog()</code> JavaScript methods.</p>
-<div class="notice tip">
-<p>The following methods use only the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;up=#Post_Message_and_Window_Name_pro">Post Message Protocol from the OSLC specification</a> and will accordingly only work in newer browsers. To support older browsers, you should also implement the Window Name protocol. For more information, see the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification?sortcol=table;up=#Post_Message_and_Window_Name_pro">OSLC Core Specification</a> and our <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection/">our implementation of Delegated UIs</a>.</p>
-</div>
-
-<p>Because the end-result of both actions is the same – we will be adding a link to either a new or existing bug in Bugzilla – both methods invoke the same <code>postMessageProtocol()</code> method with the appropriate URL:</p>
+<blockquote>
+<p><strong>Tip!</strong> The following methods use only the <a href="https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/dialogs.html#messaging_conformance">Post Message Protocol from the OSLC specification</a>. For more information, see <a href="https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.html">Part 1.5 of the tutorial</a>, where we implement Delegated UIs.</p>
+</blockquote>
+<p>Because the end-result of both actions is the same – we will be adding a link to either a new or existing bug in Bugzilla – both methods invoke the same <code>postMessageProtocol()</code> method with the appropriate URL:</p>
 <pre><code>function selectDefect() {
   postMessageProtocol(selectDialogURL);
 }

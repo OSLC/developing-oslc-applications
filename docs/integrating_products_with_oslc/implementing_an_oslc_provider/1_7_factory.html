@@ -49,7 +49,7 @@ setETagHeader(getETagFromChangeRequest(newChangeRequest), httpServletResponse);
 
 return Response.created(about).entity(changeRequest).build();
 </code></pre>
-<p>Note that we set the <code>Location</code> header (via <code>Response.created()</code>) to the <code>about</code> URI for the new <strong>BugzillaChangeRequest</strong>; this is a SHOULD requirement of <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#Creation_Factories">the Core specification</a>.</p>
+<p>Note that we set the <code>Location</code> header (via <code>Response.created()</code>) to the <code>about</code> URI for the new <strong>BugzillaChangeRequest</strong>; this is a SHOULD requirement of <a href="https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/oslc-core.html">the Core specification</a>.</p>
 <h3>Try it out!</h3><p>If you can create new bugs on your Bugzilla application, you should be able to create a bug via HTTP to our adapter.</p>
 <ol>
 <li><p>In Firefox or Chrome, open the <strong>Poster</strong> plugin.</p>
