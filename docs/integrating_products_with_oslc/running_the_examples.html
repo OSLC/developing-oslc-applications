@@ -4,12 +4,8 @@
 <ol>
 <li><p><a href="https://docs.docker.com/get-started/">Set up your Docker environment</a>. This is beyond the scope of this tutorial. You should be able to use <a href="https://rancherdesktop.io/">Rancher Desktop</a> as well.</p>
 </li>
-<li><p>Pull a Bugzilla container from the Docker registery that is ready to work with the Bugzilla OSLC Adaptor</p>
-<pre><code class="language-bash">docker pull smarx008/bugzilla-dev-lyo
-</code></pre>
-</li>
-<li><p>Launch the Bugzilla container, assigning it a convenient name &#39;bugzilla-dev&#39;.</p>
-<pre><code class="language-bash">docker run -p 80:80 --name bugzilla-dev smarx008/bugzilla-dev-lyo
+<li><p>Launch the Bugzilla container that will be destroyed once you stop it:</p>
+<pre><code class="language-bash">docker run --rm -p 80:80 --name bugzilla-dev smarx008/bugzilla-dev-lyo
 </code></pre>
 </li>
 <li><p>You can now browse to the Bugzilla homepage at <a href="http://localhost/bugzilla">http://localhost/bugzilla</a> and use <code>admin:password</code> as admin credentials.</p>
