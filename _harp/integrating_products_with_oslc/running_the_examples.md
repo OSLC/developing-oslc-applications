@@ -12,14 +12,9 @@ Unless you have a Bugzilla system (with admin access) you can integrate against,
 
 1. [Set up your Docker environment](https://docs.docker.com/get-started/). This is beyond the scope of this tutorial. You should be able to use [Rancher Desktop](https://rancherdesktop.io/) as well.
 
-1. Pull a Bugzilla container from the Docker registery that is ready to work with the Bugzilla OSLC Adaptor
+1. Launch the Bugzilla container that will be destroyed once you stop it:
     ```bash
-	docker pull smarx008/bugzilla-dev-lyo
-    ```
-
-1. Launch the Bugzilla container, assigning it a convenient name 'bugzilla-dev'.
-    ```bash
-	docker run -p 80:80 --name bugzilla-dev smarx008/bugzilla-dev-lyo
+	docker run --rm -p 80:80 --name bugzilla-dev smarx008/bugzilla-dev-lyo
     ```
  
 1.  You can now browse to the Bugzilla homepage at http://localhost/bugzilla and use `admin:password` as admin credentials.
