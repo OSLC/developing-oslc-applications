@@ -57,10 +57,7 @@ equally valid for any other development environment.</p>
 <li><a href="#update-the-trs-data-set">Update the TRS data set</a></li>
 </ul>
 </li>
-<li><a href="#run-the-server">Run the server</a><ul>
-<li><a href="#some-tips">Some tips</a></li>
-</ul>
-</li>
+<li><a href="#run-the-server">Run the server</a></li>
 </ul>
 <h2>An alternative to the manual steps below</h2><p>An alternative to the instructions on this page is to instead use <a href="./lyo-designer">Lyo Designer</a> to quickly generate the project, including a very basic code skeleton. The generated project will also include the neccessary setup for OpenApi/Swagger support, TRS, etc.</p>
 <ol>
@@ -593,19 +590,21 @@ public class InmemPagedTrsSingleton implements Factory&lt;PagedTrs&gt; {
     }
 }
 </code></pre>
-<p>The application is now ready to respond to REST requests from a TRS Client. Once running, the server will respond to requests on the relative path &quot;/trs&quot;.</p>
+<p>The application is now ready to respond to REST requests from a TRS Client. Once running, the server will respond to requests on the relative path <code>/trs</code>.</p>
 <h3>Update the TRS data set</h3><p>To update the set of OSLC resources that form the TRS Base and ChangeLog, simply call the following methods in your code:</p>
 <ul>
 <li><code>InmemPagedTrsSingleton.getInmemPagedTrs().onCreated(aResource);</code></li>
 <li><code>InmemPagedTrsSingleton.getInmemPagedTrs().onModified(aResource);</code></li>
 <li><code>InmemPagedTrsSingleton.getInmemPagedTrs().onDeleted(aResource.getAbout());</code></li>
 </ul>
-<h2>Run the server</h2><p>Once the server is developed, you can run it by selecting <em>Run As --&gt; Maven build ...</em> from the project&#39;s context menu, and setting the goal to <code>clean jetty:run-war</code>.</p>
+<h2>Run the server</h2><p>Once the server is developed, you can run it by selecting <em>Run As ➞ Maven build ...</em> from the project&#39;s context menu, and setting the goal to <code>clean jetty:run-war</code>.</p>
 <p>You can now access your server from <a href="http://localhost:8080/adaptor-sample">http://localhost:8080/adaptor-sample</a></p>
 <ul>
 <li><em>adaptor-sample</em> and <em>8080</em> will depend on your particular settings, as instructed above.</li>
 </ul>
-<h3>Some tips</h3><p>If you get the error <em>Project configuration is not up-to-date with pom.xml</em>, simply right click on the eclipse project and select Maven--&gt;Update Project ...</p>
+<blockquote>
+<p><strong>Pro Tip:</strong> If you get the error <em>Project configuration is not up-to-date with pom.xml</em>, simply right click on the eclipse project and select <em>Maven ➞ Update Project</em> ...</p>
+</blockquote>
 </div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/eclipse_lyo/setup-an-oslc-provider-consumer-application.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());

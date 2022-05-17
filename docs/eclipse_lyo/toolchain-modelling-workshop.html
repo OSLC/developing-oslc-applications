@@ -52,7 +52,7 @@ ready to run.</li>
 <li><a href="#adapter-interface-view"><a name="adaptor-interface-view"></a>Adapter Interface View</a></li>
 <li><a href="#adding-the-oauth-support">Adding the OAuth support</a></li>
 </ul>
-<h1><a name="bug-reporting"></a>Bug Reporting</h1><p>The prototype presented here is under development and its features may change over time. Your feedback, suggestions for improvements and bug reports are appreciated. In particular, the graphical notation being used is experimental and certainly needs further improvements. Please send any questions or suggestions to the project mailinglist <a href="mailto:&#108;&#121;&#111;&#45;&#100;&#x65;&#x76;&#x40;&#x65;&#99;&#108;&#x69;&#112;&#x73;&#101;&#46;&#111;&#114;&#x67;">&#108;&#121;&#111;&#45;&#100;&#x65;&#x76;&#x40;&#x65;&#99;&#108;&#x69;&#112;&#x73;&#101;&#46;&#111;&#114;&#x67;</a>, or report Bugs/features on <a href="https://github.com/eclipse/lyo.designer/issues">Github</a></p>
+<h1><a name="bug-reporting"></a>Bug Reporting</h1><p>The prototype presented here is under development and its features may change over time. Your feedback, suggestions for improvements and bug reports are appreciated. In particular, the graphical notation being used is experimental and certainly needs further improvements. Please send any questions or suggestions to the project mailinglist <a href="mailto:&#108;&#121;&#x6f;&#x2d;&#x64;&#x65;&#118;&#x40;&#x65;&#99;&#108;&#x69;&#112;&#x73;&#101;&#46;&#x6f;&#114;&#103;">&#108;&#121;&#x6f;&#x2d;&#x64;&#x65;&#118;&#x40;&#x65;&#99;&#108;&#x69;&#112;&#x73;&#101;&#46;&#x6f;&#114;&#103;</a>, or report Bugs/features on <a href="https://github.com/eclipse/lyo.designer/issues">Github</a></p>
 <h1><a name="references"></a>References</h1><p>If you wish to cite this modelling prototype in scientific papers
     and communications, please reference:</p>
 <ul>
@@ -486,10 +486,9 @@ debugging purposes:</p>
 </ul>
 </li>
 </ol>
-<h1><a name="fill-in-internal-implementation"></a>Fill in the internal implementation of each adaptor</h1><p>The manual code the developer needs to implement is concentrated in a
-single class - the <strong>AdaptorManager</strong> class (in the
-<em>your.basepackage.name</em> package). The methods that need to be provided
-are:</p>
+<h1>Fill in the internal implementation of each adaptor</h1><p>The manual code the developer needs to implement is concentrated in a single
+class – the <code>AdaptorManager</code> class (in the <code>your.basepackage.name</code> package).
+The methods that need to be provided are:</p>
 <ul>
 <li><strong>contextInitializeServletListener</strong> &amp;
 <strong>contextDestroyServletListener</strong> - to implement any application
@@ -500,23 +499,21 @@ connection to a database.</li>
 such resources.</li>
 </ul>
 <h2>Adding the OAuth support</h2><p>Since Lyo 2.3.0, OAuth registration code is no longer generated for the adaptors.</p>
-<p>In order to enable OAuth on a newly generated adaptor, add the following code to the &#39;&#39;Custom Resource Classes&#39;&#39; protected code block in the <code>Application</code> class:</p>
-<pre><code> RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.ConsumersService&quot;));
- RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.OAuthService&quot;));
+<p>In order to enable OAuth on a newly generated adaptor, add the following code to the <em>Custom Resource Classes</em> protected code block in the <code>Application</code> class:</p>
+<pre><code class="language-java">RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.ConsumersService&quot;));
+RESOURCE_CLASSES.add(Class.forName(&quot;org.eclipse.lyo.server.oauth.webapp.services.OAuthService&quot;));
 </code></pre>
-<h1><a name="run-adaptor"></a>Run the adaptor</h1><p>Once the manual code is completed, You are now ready to run an adaptor.</p>
+<h1>Run the adaptor</h1><p>Once the manual code is completed, You are now ready to run an adaptor.</p>
 <ol>
-<li>Select the menu <strong>Run--&gt;Run Configurations ...</strong></li>
+<li>Select the menu <em>Run ➞Run Configurations ...</em></li>
 <li>Select the newly created configuration</li>
-<li>Click <strong>Run</strong></li>
-<li>You can now browse and debug your adaptor through the generated HTML
-pages starting with
-<a href="http://localhost:8080/YourAdaptor/services/catalog/singleton">http://localhost:8080/YourAdaptor/services/catalog/singleton</a><ul>
-<li>You need to at least implement the getServiceProviderInfos
-method and some of resource C.R.U.D. methods first.</li>
-</ul>
-</li>
+<li>Click <em>Run</em></li>
 </ol>
+<p>You can now browse and debug your adaptor through the generated HTML pages
+starting with
+<a href="http://localhost:8080/YourAdaptor/services/catalog/singleton">http://localhost:8080/YourAdaptor/services/catalog/singleton</a>.
+You need to at least implement the getServiceProviderInfos method and some of
+resource C.R.U.D. methods first.</p>
 </div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/eclipse_lyo/toolchain-modelling-workshop.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
