@@ -4,9 +4,9 @@ Eclipse Lyo promotes the use of Linked Data principles and the [OSLC](http://doc
 
 Below are the main active components of the Eclipse Lyo projects. 
 
-## Contents
+<!-- omit in toc -->
+## Table of Contents
 
-- [Contents](#contents)
 - [Lyo SDK](#lyo-sdk)
 - [Lyo Designer](#lyo-designer)
 - [Lyo TRS support](#lyo-trs-support)
