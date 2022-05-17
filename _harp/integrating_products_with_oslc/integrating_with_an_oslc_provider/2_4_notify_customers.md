@@ -85,11 +85,9 @@ You can learn more about how our OSLC Bugzilla Adapter generates these represent
 
 ## Parsing an OSLC resource
 
-<div class="notice tip">
-<p><strong>Note</strong>: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using – <a href="http://wiki.eclipse.org/Lyo/LyoOSLC4J">OSLC4J</a> to convert RDF/XML representations into Java objects, which will most likely be easier to work with. Consider the following to be guidance if you choose to approach this another way.</p>
-</div>
+> **Note**: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using Eclipse Lyo facilities to convert RDF/XML representations into Java objects, which will most likely be easier to work with. Consider the following to be guidance if you choose to approach this another way.
 
-If you've parsed XML before, then the XML above probably does not look too challenging. **We strongly discourage parsing RDF/XML graphs using XML parsers.** XML adheres to the document model and extra processing is needed to interpret XML trees of the RDF/XML documents *as graphs.*
+If you've parsed XML before, then the XML above probably does not look too challenging. **We strongly discourage parsing RDF/XML graphs using XML document parsers alone.** XML adheres to the document model and extra processing is needed to interpret XML trees of the RDF/XML documents *as graphs.*
 
 
 ### Why you need an RDF parser
