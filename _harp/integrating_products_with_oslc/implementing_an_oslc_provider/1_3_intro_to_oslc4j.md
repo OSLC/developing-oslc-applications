@@ -261,9 +261,9 @@ Simple enough: given the ID number (`{changeRequestId}`) for a particular bug, t
 
     http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/531
     
-… will forward you to the Bugzilla page for the bug at this URL:
+… will forward you to the Bugzilla page for the bug at this URL (if you are running Bugzilla using the provided Docker instructions):
 
-    https://bugzilla-host.example.com/show_bug.cgi?id=531
+    http://localhost/bugzilla/show_bug.cgi?id=531
 
 That's useful on its own, but OSLC also specifies a [method called UI Preview ](https://archive.open-services.net/bin/view/Main/OslcCoreUiPreview.html) for showing preview information about a resource in another tool. We'll tackle these rich preview formats in the next section.
 
