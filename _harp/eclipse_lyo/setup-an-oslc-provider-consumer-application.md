@@ -48,7 +48,6 @@ equally valid for any other development environment.
   - [Setup the TRS JAX-RS Provider to your Application](#setup-the-trs-jax-rs-provider-to-your-application)
   - [Update the TRS data set](#update-the-trs-data-set)
 - [Run the server](#run-the-server)
-  - [Some tips](#some-tips)
 
 ## An alternative to the manual steps below
 An alternative to the instructions on this page is to instead use [Lyo Designer](./lyo-designer) to quickly generate the project, including a very basic code skeleton. The generated project will also include the neccessary setup for OpenApi/Swagger support, TRS, etc.
@@ -743,7 +742,7 @@ public class InmemPagedTrsSingleton implements Factory<PagedTrs> {
 }
 ```
 
-The application is now ready to respond to REST requests from a TRS Client. Once running, the server will respond to requests on the relative path "/trs".
+The application is now ready to respond to REST requests from a TRS Client. Once running, the server will respond to requests on the relative path `/trs`.
 
 ### Update the TRS data set
 To update the set of OSLC resources that form the TRS Base and ChangeLog, simply call the following methods in your code:
@@ -754,12 +753,10 @@ To update the set of OSLC resources that form the TRS Base and ChangeLog, simply
 
 ## Run the server
 
-Once the server is developed, you can run it by selecting *Run As --&gt; Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-war`.
+Once the server is developed, you can run it by selecting *Run As ➞ Maven build ...* from the project's context menu, and setting the goal to `clean jetty:run-war`.
 
 You can now access your server from http://localhost:8080/adaptor-sample
 
 * *adaptor-sample* and *8080* will depend on your particular settings, as instructed above.
 
-### Some tips
-
-If you get the error *Project configuration is not up-to-date with pom.xml*, simply right click on the eclipse project and select Maven--&gt;Update Project ...
+> **Pro Tip:** If you get the error *Project configuration is not up-to-date with pom.xml*, simply right click on the eclipse project and select *Maven ➞ Update Project* ...

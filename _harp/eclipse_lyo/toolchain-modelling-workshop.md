@@ -480,13 +480,12 @@ specification model:
     -   ServiceProvider presentations
     -   ServiceProviderCatalog presentations
 
-<a name="fill-in-internal-implementation"></a>Fill in the internal implementation of each adaptor
+Fill in the internal implementation of each adaptor
 ===================================================
 
-The manual code the developer needs to implement is concentrated in a
-single class - the **AdaptorManager** class (in the
-*your.basepackage.name* package). The methods that need to be provided
-are:
+The manual code the developer needs to implement is concentrated in a single
+class – the `AdaptorManager` class (in the `your.basepackage.name` package).
+The methods that need to be provided are:
 
 -   **contextInitializeServletListener** &
     **contextDestroyServletListener** - to implement any application
@@ -501,21 +500,24 @@ Adding the OAuth support
 
 Since Lyo 2.3.0, OAuth registration code is no longer generated for the adaptors.
 
-In order to enable OAuth on a newly generated adaptor, add the following code to the ''Custom Resource Classes'' protected code block in the <code>Application</code> class:
+In order to enable OAuth on a newly generated adaptor, add the following code to the *Custom Resource Classes* protected code block in the `Application` class:
 
-     RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
-     RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
+```java
+RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
+RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
+```
 
-<a name="run-adaptor"></a>Run the adaptor
+Run the adaptor
 ===============
 
 Once the manual code is completed, You are now ready to run an adaptor.
 
-1.  Select the menu **Run--&gt;Run Configurations ...**
+1.  Select the menu *Run ➞Run Configurations ...*
 2.  Select the newly created configuration
-3.  Click **Run**
-4.  You can now browse and debug your adaptor through the generated HTML
-    pages starting with
-    <http://localhost:8080/YourAdaptor/services/catalog/singleton>
-    -   You need to at least implement the getServiceProviderInfos
-        method and some of resource C.R.U.D. methods first.
+3.  Click *Run*
+
+You can now browse and debug your adaptor through the generated HTML pages
+starting with
+[http://localhost:8080/YourAdaptor/services/catalog/singleton](http://localhost:8080/YourAdaptor/services/catalog/singleton).
+You need to at least implement the getServiceProviderInfos method and some of
+resource C.R.U.D. methods first.
