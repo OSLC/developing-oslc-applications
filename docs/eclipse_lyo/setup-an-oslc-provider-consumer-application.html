@@ -118,7 +118,25 @@ use. We will use the simplest option:</p>
   &lt;version&gt;1.2&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<h3>JAX-RS implementation dependencies</h3><h4>for Lyo 4.1.0</h4><p>For Lyo release 4.0.0-SNAPTSHOT, you will need to choose a JAX-RS 2.0 implementation, such as <a href="https://jersey.github.io/">Jersey</a>, <a href="https://resteasy.github.io/">RESTEasy</a>, etc. Below is an example for Jersey.</p>
+<h3>JAX-RS implementation dependencies</h3><p>Lyo depends on JAX-RS APIs and your application needs to add implementations of those APIs.</p>
+<h4>For Lyo 5.x</h4><p>For Lyo release 5.0.0 and above, you will need to choose a JAX-RS 2.0 implementation. If you are using Jersey, you should use version 2.35. <em>Note that starting with Jersey 2.26, HK2 is not bundled with the core artifacts (see the <a href="https://eclipse-ee4j.github.io/jersey.github.io/documentation/2.35/user-guide.html#mig-2.26">Jersey migration guide</a>).</em></p>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.glassfish.jersey.core&lt;/groupId&gt;
+  &lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
+  &lt;version&gt;2.35&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.glassfish.jersey.containers&lt;/groupId&gt;
+  &lt;artifactId&gt;jersey-container-servlet&lt;/artifactId&gt;
+  &lt;version&gt;2.35&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.glassfish.jersey.inject&lt;/groupId&gt;
+    &lt;artifactId&gt;jersey-hk2&lt;/artifactId&gt;
+    &lt;version&gt;2.35&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4>For Lyo 4.x</h4><p>For Lyo release 4.0.0 and above, you will need to choose a JAX-RS 2.0 implementation, such as <a href="https://jersey.github.io/">Jersey</a>, <a href="https://resteasy.github.io/">RESTEasy</a>, etc. Below is an example for Jersey.</p>
 <pre><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;org.glassfish.jersey.core&lt;/groupId&gt;
   &lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
@@ -130,7 +148,7 @@ use. We will use the simplest option:</p>
   &lt;version&gt;2.25.1&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<h4>for Lyo 2.4.0 and earlier</h4><p>For Lyo release 2.4.0 (and earlier), a Lyo package includes a dependency to the <a href="https://svn.apache.org/repos/infra/websites/production/wink/content/index.html">Apache Wink implementation</a>.</p>
+<h4>For Lyo 2.4.0 and earlier</h4><p>For Lyo release 2.4.0 (and earlier), a Lyo package includes a dependency to the <a href="https://svn.apache.org/repos/infra/websites/production/wink/content/index.html">Apache Wink implementation</a>.</p>
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.lyo.oslc4j.core&lt;/groupId&gt;
   &lt;artifactId&gt;oslc4j-wink&lt;/artifactId&gt;
