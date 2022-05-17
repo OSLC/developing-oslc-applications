@@ -132,7 +132,7 @@ Which indicates the resource shape will be located at the URI `resourceShapes/ch
 
     http://localhost:8080/OSLC4JBugzilla/services/resourceShapes/changeRequest
 
-You can open <http://localhost:8080/OSLC4JBugzilla/services/resourceShapes/changeRequest> in a browser to view the Resource Shape as an RDF/XML document. (You can also use the Poster plugin with an `Accept` header of `application/json` to retrieve it in JSON format.)
+You can open <http://localhost:8080/OSLC4JBugzilla/services/resourceShapes/changeRequest> in a browser to view the Resource Shape as an RDF/XML document. You can also use Postman, Insomnia, or another REST client with an `Accept` header of `application/json` to retrieve it in JSON format.
 
 Note that the document includes not only OSLC CM properties such as `relatedChangeRequest` or `inprogress`, but also Bugzilla-specific properties like `priority` and `version`; this indicates it was assembled from our **BugzillaChangeRequest** class.
 

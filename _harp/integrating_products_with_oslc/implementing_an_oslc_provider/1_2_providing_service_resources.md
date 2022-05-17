@@ -320,7 +320,7 @@ What's happening is the OSLC4J toolkit includes JAX-RS message body writers that
 
 Let's try it out!
 
-1. In Firefox or Chrome, open the Poster plugin. Poster is a browser plugin (for [Firefox](https://addons.mozilla.org/en-us/firefox/addon/poster/) and [Chrome](https://chrome.google.com/webstore/detail/chrome-poster/cdjfedloinmbppobahmonnjigpmlajcd)) which can be used to send HTTP REST requests with full control over HTTP headers and their values.
+1. Download [Postman](https://www.postman.com/downloads/) or [Insomnia](https://insomnia.rest/).
 2. For the __URL__ field, type the URL for the Service Provider Catalog: 
 
         http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton

@@ -67,9 +67,7 @@ As with many other methods, we needed to create the Compact and Preview objects 
 
 The following assumes the Bugzilla adapter is running at `localhost:8080/OSLC4JBugzilla`
 
-In Firefox or Chrome, open the Poster plugin.
-
-for the __URL__ field, type the URL for a single bug:
+Using Postman, Insomnia, or another REST client, input the following for the __URL__ field:
 
     http://localhost:8080/OSLC4JBugzilla/services/{productId}/changeRequests/{bugId}
 

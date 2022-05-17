@@ -32,11 +32,11 @@ With the adapter running, navigate to the following URL in a browser: <http://lo
 
 In a browser, you'll be forwarded to the HTML page in Bugzilla for the bug. That's nice for us, but not so useful for a program that must parse the data. How can we request an RDF/XML representation of a bug?
 
-OSLC providers are required to provide an RDF/XML representation of resources; however, the normal rules of HTTP and Content Negotiation apply. **If you want RDF/XML then you should ask for it.** Specifically, use `Accept` headers.
+OSLC providers are required to provide an RDF/XML representation of resources; however, the normal rules of HTTP and Content Negotiation apply. **If you want RDF/XML then you should ask for it.** Specifically, use `Accept` headers. We recommend [Postman](https://www.postman.com/downloads/) or [Insomnia](https://insomnia.rest/) as a REST client.
 
 If you send the same request with an `Accept` header with the content `application/rdf+xml`, you should receive RDF/XML back from the adapter.
 
-You can explore this further with the Poster plugin and the Bugzilla adapter [where we implemented OSLC representations of Bugzilla bugs](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
+You can explore this further using Postman, Insomnia, or another REST client, as well as the Bugzilla adapter [where we implemented OSLC representations of Bugzilla bugs](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
 
 Here's a sample Bugzilla bug represented as an RDF/XML BugzillaChangeRequest resource:
 
@@ -86,10 +86,10 @@ You can learn more about how our OSLC Bugzilla Adapter generates these represent
 ## Parsing an OSLC resource
 
 <div class="notice tip">
-<p><strong>Note</strong>: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using – <a href="http://wiki.eclipse.org/Lyo/LyoOSLC4J">OSLC4J</a> to convert RDF/XML representations into Java objects, which will most likely be easier to work with. Consider the following to be guidance if you choose to approach this another way.</p>
+<p><strong>Note</strong>: The following discusses using an RDF/XML parser. If you are writing Java, you could also use – in fact, we recommend using – <a href="http://wiki.eclipse.org/Lyo/LyoOSLC4J">OSLC4J</a> to convert RDF/XML representations into Java objects, which will most likely be easier to work with. Consider the following to be guidance if you choose to approach this another way.</p>
 </div>
 
-If you've parsed XML before, then the XML above probably does not look too challenging; however, RDF/XML is very flexible and XML parsing tools are not always the best way to process it. Fortunately, there are plenty of commercial and open source RDF parsing tools.
+If you've parsed XML before, then the XML above probably does not look too challenging. **We strongly discourage parsing RDF/XML graphs using XML parsers.** XML adheres to the document model and extra processing is needed to interpret XML trees of the RDF/XML documents *as graphs.*
 
 
 ### Why you need an RDF parser
@@ -105,11 +105,12 @@ Another reason to use an RDF parser is that RDF/XML is only one way to serialize
 
 Instead of trying to write your own RDF/XML parser using XML tools, a better approach is to use an existing RDF/XML parser. There is one for every programming language and most are free and/or open source software. Below is a list of the more popular open source RDF tool-kits, the platform and licensing used by each.
 
-+ <http://jena.apache.org> - Jena (Java) License: ASL2
-+ <http://www.openrdf.org/> - OpenRDF / Sesame (Java) License: ASL2 and BSD-like
-+ <http://rdf.rubyforge.org/> - RDF.rb (Ruby) License: Public Domain
-+ <http://librdf.org/bindings/> - Redland (C, Perl, PHP, Python and Ruby) License: ASL2
-+ <http://razor.occams.info/code/semweb/> - SemWeb.NET (C# / .Net) License: GPL2
++ [Apache Jena](https://jena.apache.org) (Java)
++ [RDF4J](https://rdf4j.org/) (Java; formerly known as OpenRDF / Sesame) 
++ [Ruby RDF](https://ruby-rdf.github.io/) (Ruby; aka RDF.rb)
++ [RDFlib](https://rdflib.readthedocs.io/en/stable/) (Python)
++ [N3 and others](https://rdf.js.org/) (Javascript)
++ [dotNetRDF](https://dotnetrdf.org/) (C# and other .NET languages)
 
 All of the above libraries support RDF parsing and serialization, some form of triple-store RDF storage, and SPARQL query... more than you'll need for a typical OSLC implementation.
 
@@ -118,23 +119,23 @@ For our implementation, we'll be using Jena.
 
 ### How to use Jena to parse RDF/XML resource
 
-![Jena icon](http://open-services.net/images/jena_logo.png)
+Apache Jena is an open source Java library that offers a wide variety of RDF tools including a parser that can handle RDF/XML and other RDF serializations. Using Jena is straight-forward and should be easy for a Java developer.
 
-Jena is an open source Java library that offers a wide variety of RDF tools including a parser that can handle RDF/XML and other RDF serializations. Using Jena is straight-forward and should be easy for a Java developer.
-
-Before you start coding, you must get the Jena JAR and all of its dependency JARs into your development classpath. You can do this by [downloading the Jena ZIP file](http://jena.sourceforge.net/downloads.html) which contains all of the necessary JARs, and add them to your IDE project. Or, if you are using Maven, then a dependency on groupId `com.hp.hpl.jena` and artifactId `jena` to your Maven POM file.
+Before you start coding, you must get [add Jena dependencies](https://jena.apache.org/download/maven.html) to your Maven POM file.
 
 Let's attempt to GET an OSLC Change Request via HTTP, but this time we will do it in Java. When we get the results, we will parse them with Jena and pull out the properties that Nina needs: the OSLC-CM `fixed` value and the Dublin Core Terms `modified` date value.
+
+> **NOTE:** If you see `com.hp.hpl.jena` package references in your code, it's an old "pre-Apache" version of Jena from the v2 branch. Current Jena major version is v4. Lyo dropped support for Jena 2 in Lyo 2.3.0. Please refer to the [Lyo migration guide](https://github.com/eclipse/lyo/wiki/Lyo-5.0-migration-notes) to upgrade your code.
 
 Note that the following is not a complete Java class:
 
     import java.net.HttpURLConnection; // (1)
     import java.net.URL;
-    import com.hp.hpl.jena.rdf.model.Model;
-    import com.hp.hpl.jena.rdf.model.ModelFactory;
-    import com.hp.hpl.jena.rdf.model.Property;
-    import com.hp.hpl.jena.rdf.model.Resource;
-    import com.hp.hpl.jena.rdf.model.Statement;
+    import org.apache.jena.rdf.model.Model;
+    import org.apache.jena.rdf.model.ModelFactory;
+    import org.apache.jena.rdf.model.Property;
+    import org.apache.jena.rdf.model.Resource;
+    import org.apache.jena.rdf.model.Statement;
 
     // class declaration and other things omitted
 
@@ -177,6 +178,6 @@ With the ability to parse OSLC Change Request resources in RDF/XML form, you can
 
 The real power of OSLC on display here is that although we've written this code with our  OSLC-CM Adapter for Bugzilla in mind, it will work _equally well for any other application that provides data according to the OSLC-CM specification_. Because OSLC Providers should all expose the same types of data in the same standard formats, you can build integrations _for the OSLC standards and specifications_ that should work with any compatible software. It's a different way of thinking about integrations that should help you make powerful, flexible, and future-proof ways to connect software. Cool stuff.
 
-Next, now that we have a simple understanding of Jena, we'll use it to help us automatically create Bugzilla bugs – no human involvement required.
+Next, now that we have a simple understanding of Jena, we'll use it to help us automatically create Bugzilla bugs – no human involvement required.
 
 [Next: Part 2.5, Automatic Bugs](2_5_automatic_bugs)
