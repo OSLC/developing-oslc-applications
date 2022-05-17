@@ -2,9 +2,9 @@
 
 This section explains how to setup the development environment to run the OSLC4J Bugzilla Adapter and the NinaCRM example application.
 
-## Eclipse Setup
+## Environment Setup
 
-Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development)
+Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development). The tutorial requires JDK 8 to be used. The code may run on JDK 11 with the warnings, and certain parts may fail to run on JDK 17 as of 2022-05.
 
 ## Bugzilla Setup
 
