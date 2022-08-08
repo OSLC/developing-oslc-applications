@@ -36,6 +36,9 @@ JRE).<ol>
 </ol>
 </li>
 </ol>
+<p>Eclipse M2E expects <code>JAVA_HOME</code> to be defined in the OS environment variables. This presents some challenges on macOS because Eclipse.app does not typically run from a user shell. To avoid having to start Eclipse.app from a Terminal, use <code>launchctl</code> set an environment variable to be set on all future processes launched by launchd in the caller&#39;s context. For example:</p>
+<p><code>launchctl setenv JAVA_HOME /Users/{userId}/.sdkman/candidates/java/current</code></p>
+<p>Substitute your user id for {userId}. If not using SDKMAN!, use the path to your Java 11 installation. After a reboot, <code>JAVA_HOME</code> will be set to your current <a href="https://sdkman.io/">SDKMAN!</a> JDK.  </p>
 </div></section></div><a role="button" aria-label="Toggle Navigation" data-toggle-class="primary-nav-is-open" data-toggle-target="body" class="close-off-canvas"></a></main></div><footer class="footer"><p>Content licensed under <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 US</a> | <a href="https://github.com/OSLC/developing-oslc-applications/edit/gh-pages/_harp/eclipse_lyo/eclipse-setup-for-lyo-based-development.md" target="_blank" style="font-weight: bold"><i class="fas fa-pencil-alt"></i> Edit this page</a> | <a href="https://github.com/OSLC/developing-oslc-applications/issues">Report an issue</a> | <a href="https://open-services.net/" target="_blank">Open Services for Lifecycle Collaboration</a> <i class="fas fa-external-link-alt"></i></p></footer></body><script>window.site_url = 'https://oslc.github.io/developing-oslc-applications/';</script><script src="https://oslc.github.io/developing-oslc-applications/js/oslc.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER4THK2G7V"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
