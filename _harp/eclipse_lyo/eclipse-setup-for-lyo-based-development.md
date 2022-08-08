@@ -27,3 +27,10 @@ development:
         1.  Click *Remove*.
         1.  Check the newly added JDK, and
         1.  Click *OK*.
+
+Eclipse M2E expects `JAVA_HOME` to be defined in the OS environment variables. This presents some challenges on macOS because Eclipse.app does not typically run from a user shell. To avoid having to start Eclipse.app from a Terminal, use `launchctl` set an environment variable to be set on all future processes launched by launchd in the caller's context. For example:
+
+`launchctl setenv JAVA_HOME /Users/{userId}/.sdkman/candidates/java/current`
+
+Substitute your user id for {userId}. If not using SDKMAN!, use the path to your Java 11 installation. After a reboot, `JAVA_HOME` will be set to your current [SDKMAN!](https://sdkman.io/) JDK.  
+
