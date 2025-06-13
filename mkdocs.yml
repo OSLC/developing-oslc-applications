@@ -1,0 +1,182 @@
+site_name: OSLC Developer Guide
+site_url: https://oslc.github.io/developing-oslc-applications/
+site_description: Learn to develop OSLC applications with Eclipse Lyo
+docs_dir: docs-new
+
+repo_name: oslc-op/developing-oslc-applications
+repo_url: https://github.com/oslc-op/developing-oslc-applications
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - header.autohide
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+
+  palette:
+    - scheme: default
+      # primary: indigo
+      # accent: indigo
+      # primary: 'blue grey'
+      primary: 'teal'
+      accent: 'blue grey'
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode  
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: img/logo-old-50px.png
+  logo: img/logo-new-big.png
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/oslc-op
+    - icon: fontawesome/solid/globe
+      link: https://open-services.net
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: oslc-op
+      repo: developing-oslc-applications
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - redirects:
+      redirect_maps:
+        'eclipse_lyo/eclipse-lyo.html': 'eclipse_lyo/index.html'
+        'eclipse_lyo/setup-an-oslc-provider-consumer-application.html': 'eclipse_lyo/setup.html'
+        'eclipse_lyo/lyo-designer.html': 'eclipse_lyo/designer.html'
+        'eclipse_lyo/lyo-core-internals.html': 'eclipse_lyo/core-internals.html'
+        'eclipse_lyo/install-lyo-designer.html': 'eclipse_lyo/install-designer.html'
+        'eclipse_lyo/eclipse-setup-for-lyo-based-development.html': 'eclipse_lyo/eclipse-setup.html'
+        'eclipse_lyo/toolchain-modelling-workshop.html': 'eclipse_lyo/toolchain-workshop.html'
+        'eclipse_lyo/domain-specification-modelling-workshop.html': 'eclipse_lyo/domain-workshop.html'
+        'eclipse_lyo/modelling-howto.html': 'eclipse_lyo/modeling-howto.html'
+        'eclipse_lyo/lyo-as-osgi-bundles.html': 'eclipse_lyo/osgi-bundles.html'
+        'tutorials.html': 'tutorials.html'
+        'sample-applications-and-code.html': 'samples.html'
+        'technical-foundations.html': 'technical-foundations.html'
+        'why-develop-oslc-applications.html': 'why-develop.html'
+        'services-resources-and-design-patterns.html': 'services-patterns.html'
+        'oslc-open-source-node-projects.html': 'oslc4js.html'
+        'iotp-adaptor-sample.html': 'iotp-sample.html'
+        'additional-security-considerations.html': 'security.html'
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+
+nav:
+  - OSLC for Developers: 
+    - OSLC explainer: index.md
+    - Why Develop OSLC Applications: why-develop-oslc-applications.md
+    - Technical Foundations: technical-foundations.md
+    - Tutorials: tutorials.md
+    - Services & Design Patterns: services-resources-and-design-patterns.md
+    - Security: additional-security-considerations.md
+    - Integration Tutorial: integrating_products_with_oslc/index.md
+  - Eclipse Lyo:
+    - Lyo Java SDK:
+      - Overview: eclipse_lyo/index.md
+      - Setup Guide: eclipse_lyo/setup.md
+      - Advanced topics:
+        - Core Internals: eclipse_lyo/lyo-core-internals.md
+        - OSGi Bundles: eclipse_lyo/lyo-as-osgi-bundles.md
+    - Lyo Designer:
+      - Introduction: eclipse_lyo/designer.md
+      - Installing Designer: eclipse_lyo/install-lyo-designer.md
+      - Modelling How-To: eclipse_lyo/modelling-howto.md
+      - Domain Specification workshop: eclipse_lyo/domain-specification-modelling-workshop.md
+      - Toolchain Modelling workshop: eclipse_lyo/toolchain-modelling-workshop.md
+  - OSLC4JS: oslc-open-source-node-projects.md
+  - oslc4net: https://oslc4net.github.io/
+  - Sample Applications:
+    - Overview: samples.md
+    - IoTP Adaptor: 
+        - IoTP Adaptor Sample: iotp-adaptor-sample.md
+        - User Guide: iotp_adaptor/userGuide/user-guide.md
+        - Developer Guide: iotp_adaptor/developer-guide.md
+        - Getting Started:
+            - Environment Setup: iotp_adaptor/environment-setup.md
+            - Exploring Generated Code: iotp_adaptor/exploring-the-code.md
+            - Implementing Domain Classes: iotp_adaptor/implement-domain-class.md
+            - JUnit Testing: iotp_adaptor/junit-tests.md
+        - Modeling & Code Generation:
+            - Toolchain Model: iotp_adaptor/toolchain-model.md
+            - Code Generation: iotp_adaptor/code-generator.md
+        - Jazz.net Integration:
+            - Authentication: iotp_adaptor/authentication.md
+            - SSL Support: iotp_adaptor/ssl-support.md
+            - Root Services: iotp_adaptor/rootservices.md
+            - Consumer/Friend Connections: iotp_adaptor/consumer-friend.md
+            - Artifact Container Associations: iotp_adaptor/artifact-container-associations.md
+            - Delegated Dialogs: iotp_adaptor/dialogs.md
+            - TRS Provider: iotp_adaptor/trs-provider.md
