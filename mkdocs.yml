@@ -106,28 +106,32 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-plugins:
+plugins:  
   - search:
       lang: en
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
   - redirects:
       redirect_maps:
-        'eclipse_lyo/eclipse-lyo.html': 'eclipse_lyo/'
-        'eclipse_lyo/setup-an-oslc-provider-consumer-application.html': 'eclipse_lyo/setup/'
-        'eclipse_lyo/lyo-designer.html': 'eclipse_lyo/designer/'
-        'eclipse_lyo/lyo-core-internals.html': 'eclipse_lyo/lyo-core-internals/'
-        'eclipse_lyo/install-lyo-designer.html': 'eclipse_lyo/install-lyo-designer/'
-        'eclipse_lyo/eclipse-setup-for-lyo-based-development.html': 'eclipse_lyo/setup/'
-        'eclipse_lyo/toolchain-modelling-workshop.html': 'eclipse_lyo/toolchain-modelling-workshop/'
-        'eclipse_lyo/domain-specification-modelling-workshop.html': 'eclipse_lyo/domain-specification-modelling-workshop/'
-        'eclipse_lyo/modelling-howto.html': 'eclipse_lyo/modelling-howto/'
-        'eclipse_lyo/lyo-as-osgi-bundles.html': 'eclipse_lyo/lyo-as-osgi-bundles/'
-        'tutorials.html': 'tutorials/'
-        'sample-applications-and-code.html': 'samples/'
-        'technical-foundations.html': 'technical-foundations/'
-        'why-develop-oslc-applications.html': 'why-develop-oslc-applications/'
-        'services-resources-and-design-patterns.html': 'services-resources-and-design-patterns/'
-        'oslc-open-source-node-projects.html': 'oslc-open-source-node-projects/'
+        'eclipse_lyo/eclipse-lyo.html': 'eclipse_lyo/index.md'
+        'eclipse_lyo/setup-an-oslc-provider-consumer-application.html': 'eclipse_lyo/setup.md'
+        'eclipse_lyo/lyo-designer.html': 'eclipse_lyo/designer.md'
+        'eclipse_lyo/lyo-core-internals.html': 'eclipse_lyo/lyo-core-internals.md'
+        'eclipse_lyo/install-lyo-designer.html': 'eclipse_lyo/install-lyo-designer.md'
+        'eclipse_lyo/eclipse-setup-for-lyo-based-development.html': 'eclipse_lyo/eclipse-setup-for-lyo-based-development.md'
+        'eclipse_lyo/toolchain-modelling-workshop.html': 'eclipse_lyo/toolchain-modelling-workshop.md'
+        'eclipse_lyo/domain-specification-modelling-workshop.html': 'eclipse_lyo/domain-specification-modelling-workshop.md'
+        'eclipse_lyo/modelling-howto.html': 'eclipse_lyo/modelling-howto.md'
+        'eclipse_lyo/lyo-as-osgi-bundles.html': 'eclipse_lyo/lyo-as-osgi-bundles.md'
+        'tutorials.html': 'tutorials.md'
+        'sample-applications-and-code.html': 'samples.md'
+        'technical-foundations.html': 'technical-foundations.md'
+        'why-develop-oslc-applications.html': 'why-develop-oslc-applications.md'
+        'services-resources-and-design-patterns.html': 'services-resources-and-design-patterns.md'
+        'oslc-open-source-node-projects.html': 'oslc-open-source-node-projects.md'
+        'iotp-adaptor-sample.html': 'iotp-adaptor-sample.md'
+        'additional-security-considerations.html': 'additional-security-considerations.md'
+        'iotp-adaptor-sample.html': 'iotp-adaptor-sample.html'
+        'additional-security-considerations.html': 'additional-security-considerations.html'
         'iotp-adaptor-sample.html': 'iotp-adaptor-sample/'
         'additional-security-considerations.html': 'additional-security-considerations/'
   - git-revision-date-localized:
