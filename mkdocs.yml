@@ -146,11 +146,31 @@ nav:
     - Tutorials: tutorials.md
     - Services & Design Patterns: services-resources-and-design-patterns.md
     - Security: additional-security-considerations.md
-    - Integration Tutorial: integrating_products_with_oslc/index.md
+    - Integration Tutorial: 
+      - Overview: integrating_products_with_oslc/index.md
+      - OSLC Introduction: integrating_products_with_oslc/overview_of_oslc.md
+      - Running Examples: integrating_products_with_oslc/running_the_examples.md
+      - Implementing Provider:
+        - Getting Started: integrating_products_with_oslc/implementing_an_oslc_provider/1_0_implementing_a_provider.md
+        - Planning Provider: integrating_products_with_oslc/implementing_an_oslc_provider/1_1_planning_partial_cm_provider.md
+        - Service Resources: integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources.md
+        - Intro to OSLC4J: integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j.md
+        - UI Preview: integrating_products_with_oslc/implementing_an_oslc_provider/1_4_ui_preview.md
+        - UI Selection: integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.md
+        - UI Creation: integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation.md
+        - Factory: integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory.md
+      - Implementing Consumer:
+        - Getting Started: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_0_implementing_consumer.md
+        - Use Cases: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_1_consumer_use_cases.md
+        - Links & Previews: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_2_links_and_previews.md
+        - Delegated UI: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI.md
+        - Notify Customers: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers.md
+        - Automatic Bugs: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.md
   - Eclipse Lyo:
     - Lyo Java SDK:
       - Overview: eclipse_lyo/index.md
       - Setup Guide: eclipse_lyo/setup.md
+      - Eclipse Setup: eclipse_lyo/eclipse-setup-for-lyo-based-development.md
       - Advanced topics:
         - Core Internals: eclipse_lyo/lyo-core-internals.md
         - OSGi Bundles: eclipse_lyo/lyo-as-osgi-bundles.md
