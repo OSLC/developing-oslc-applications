@@ -37,14 +37,14 @@ theme:
       # primary: indigo
       # accent: indigo
       # primary: 'blue grey'
-      primary: 'teal'
-      accent: 'teal'
+      primary: teal
+      accent: teal
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: teal
+      accent: teal
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
