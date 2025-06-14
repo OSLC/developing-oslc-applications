@@ -10,7 +10,7 @@ The steps below guide you through the necessary steps of creating a Java project
 ### System Requirements
 
 - **JDK 17+** (JDK 17 is the baseline for Eclipse Lyo 6.0+)
-- **Maven 3.6+** or **Gradle 7+**
+- **Maven 3.6+**
 - **IDE** (IntelliJ IDEA, Eclipse, VS Code, etc.)
 
 ### Latest Lyo Versions
