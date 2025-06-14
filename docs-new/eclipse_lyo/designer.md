@@ -56,7 +56,7 @@ Lyo Designer includes an integrated code generator that synthesizes your model i
 
 | Guide | Description |
 |-------|-------------|
-| **[Install Lyo Designer](install-designer.md)** | Step-by-step installation instructions |
+| **[Install Lyo Designer](install-lyo-designer.md)** | Step-by-step installation instructions |
 | **[Toolchain Modeling Workshop](toolchain-modelling-workshop.md)** | Model a complete toolchain and generate code |
 | **[Domain Specification Workshop](domain-specification-modelling-workshop.md)** | Model domain specifications and generate Lyo-annotated Java classes |
 | **[Modeling How-to Guide](modelling-howto.md)** | Advanced modeling techniques and best practices |
@@ -72,7 +72,7 @@ Interested in contributing to Lyo Designer? You can [work from its source code](
 
 ## Next Steps
 
-1. **[Install Lyo Designer](install-designer.md)** in your Eclipse IDE
+1. **[Install Lyo Designer](install-lyo-designer.md)** in your Eclipse IDE
 2. **Follow a workshop** to learn the modeling approach
 3. **Generate your first OSLC application** from a model
 4. **Customize the generated code** for your specific needs

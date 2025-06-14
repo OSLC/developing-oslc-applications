@@ -52,7 +52,7 @@ Covers common scenarios:
 ## More Examples
 
 - **[PROMCODE Lyo Server](https://github.com/OSLC/promcode-lyo-server)** - OSLC PROMCODE domain implementation
-- **[IoT Platform Adapter](iotp-sample.md)** - Sample OSLC adapter for IBM Watson IoT Platform
+- **[IoT Platform Adapter](iotp-adaptor-sample.md)** - Sample OSLC adapter for IBM Watson IoT Platform
 
 ---
 

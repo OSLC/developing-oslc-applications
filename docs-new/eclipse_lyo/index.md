@@ -29,7 +29,7 @@ The library:
 * How to [setup an OSLC Server and/or Client](setup.md).
 * Javadocs for [Lyo release 4.1.0 (all components)](https://download.eclipse.org/lyo/docs/all/4.1.0/apidocs/) - support for JAX-RS 2.0, with no dependency on any particular implementation of JAX-RS.
 * [Lyo Client sample code](https://github.com/OSLC/lyo-samples) - A Github repository that includes sample code to demonstrates how to use the Lyo SDK oslc4j-client to interact with OSLC Service Providers in various ways. It addresses a variety of common OSLC use cases including login, OAuth, service discovery, and queries. See the [README.md](https://github.com/OSLC/lyo-samples/blob/master/README.md) file in the repository for further pointers.
-* [Lyo Core internals](core-internals.md)
+* [Lyo Core internals](lyo-core-internals.md)
 * You are also welcome to contact the development team via [lyo-dev mailing list](https://dev.eclipse.org/mailman/listinfo/lyo-dev)
 
 ## Lyo Designer
@@ -56,7 +56,7 @@ Lyo Designer supports incremental development, where manual changes to the gener
 
 ### Further Information
 
-* How to [install Lyo Designer](install-designer.md)
+* How to [install Lyo Designer](install-lyo-designer.md)
 * How to use Lyo Designer to [model a toolchain](toolchain-modelling-workshop.md) and generate an initial code base
 * How to use Lyo Designer to [model domain specifications](domain-specification-modelling-workshop.md), and generate Lyo-annotated Java classes to reflect the defined OSLC Resources.
 * If you want to contribute to Lyo Designer, you can [work from its source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)

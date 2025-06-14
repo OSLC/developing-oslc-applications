@@ -8,3 +8,7 @@ package.json
 .project
 .settings
 
+
+docs/
+site/
+
