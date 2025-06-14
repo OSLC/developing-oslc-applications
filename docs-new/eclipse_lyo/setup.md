@@ -17,7 +17,6 @@ The steps below guide you through the necessary steps of creating a Java project
 
 - **Current Version**: 7.0.0-SNAPSHOT
 - **Latest Stable**: 6.0.0
-- **LTS Version**: 5.1.1
 
 ## Quick Start
 
