@@ -3,9 +3,9 @@ site_url: https://oslc.github.io/developing-oslc-applications/
 site_description: Learn to develop OSLC applications with Eclipse Lyo
 docs_dir: docs-new
 
-repo_name: oslc-op/developing-oslc-applications
-repo_url: https://github.com/oslc-op/developing-oslc-applications
-edit_uri: edit/main/docs/
+repo_name: oslc/developing-oslc-applications
+repo_url: https://github.com/oslc/developing-oslc-applications
+edit_uri: edit/gh-pages/docs-new/
 
 theme:
   name: material
@@ -38,7 +38,7 @@ theme:
       # accent: indigo
       # primary: 'blue grey'
       primary: 'teal'
-      accent: 'blue grey'
+      accent: 'teal'
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -57,7 +57,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/oslc-op
+      link: https://github.com/oslc
     - icon: fontawesome/solid/globe
       link: https://open-services.net
 
