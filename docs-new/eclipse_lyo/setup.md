@@ -16,7 +16,7 @@ The steps below guide you through the necessary steps of creating a Java project
 ### Latest Lyo Versions
 
 - **Current Version**: 7.0.0-SNAPSHOT
-- **Latest Stable**: 6.0.0
+- **Latest Stable**: 6.0.0.Final
 
 ## Quick Start
 
