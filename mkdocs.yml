@@ -47,12 +47,12 @@ theme:
       accent: indigo
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode  
+        name: Switch to light mode
   font:
     text: Roboto
     code: Roboto Mono
   favicon: img/logo-old-50px.png
-  logo: img/logo-new-big.png
+  logo: img/oslc-logo-white-100.png
 
 extra:
   social:
@@ -161,7 +161,7 @@ nav:
       - Domain Specification workshop: eclipse_lyo/domain-specification-modelling-workshop.md
       - Toolchain Modelling workshop: eclipse_lyo/toolchain-modelling-workshop.md
   - OSLC4JS: oslc-open-source-node-projects.md
-  - oslc4net: https://oslc4net.github.io/
+  - OSLC4Net: https://oslc4net.github.io/
   - Sample Applications:
     - Overview: samples.md
     - IoTP Adaptor: 

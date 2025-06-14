@@ -1,5 +1,9 @@
 # Get Started with Developing OSLC Applications
 
+<div style="text-align: center; margin: 2em 0;">
+<img src="img/oslc-logo-400.png" alt="OSLC Logo" style="max-width: 300px; height: auto;">
+</div>
+
 !!! info "What is OSLC?"
     Open Services for Lifecycle Collaboration (OSLC) is a community that writes specifications to integrate software. Learn more at [Why develop OSLC applications](why-develop-oslc-applications.md) and [at our main site](http://open-services.net/).
 
