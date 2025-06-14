@@ -1,6 +1,6 @@
 site_name: OSLC Developer Guide
 site_url: https://oslc.github.io/developing-oslc-applications/
-site_description: Learn to develop OSLC applications with Eclipse Lyo
+site_description: Learn to develop OSLC applications
 docs_dir: docs-new
 
 repo_name: oslc/developing-oslc-applications
