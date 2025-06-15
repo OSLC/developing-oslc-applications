@@ -10,12 +10,12 @@ The steps below guide you through the necessary steps of creating a Java project
 ### System Requirements
 
 - **JDK 17+** (JDK 17 is the baseline for Eclipse Lyo 6.0+)
-- **Maven 3.6+**
+- **Maven 3.8+**
 - **IDE** (IntelliJ IDEA, Eclipse, VS Code, etc.)
 
 ### Latest Lyo Versions
 
-- **Current Version**: 7.0.0-SNAPSHOT
+- **Development Version**: 7.0.0.Alpha3
 - **Latest Stable**: 6.0.0.Final
 
 ## Quick Start
@@ -31,7 +31,7 @@ The steps below guide you through the necessary steps of creating a Java project
 <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <lyo.version>6.0.0</lyo.version>
+    <lyo.version>6.0.0.Final</lyo.version>
     <jersey.version>3.1.5</jersey.version>
 </properties>
 ```
@@ -70,31 +70,6 @@ The steps below guide you through the necessary steps of creating a Java project
     </dependency>
 </dependencies>
 ```
-
-## Migration from Older Versions
-
-!!! info "Migration Guides Available"
-    **Choose your migration path based on your current Lyo version:**
-    
-    - **[Lyo 2.x → 4.x](migration-2x-4x.md)** - Major JAX-RS and Jena upgrades
-    - **[Lyo 4.x → 5.x](migration-4x-5x.md)** - JDK 11+ requirement and component removal  
-    - **[Lyo 5.x → 6.x](migration-5x-6x.md)** - Jakarta EE migration (javax → jakarta)
-    - **[Lyo 6.x → 7.x](migration-6x-7x.md)** - Security updates (WORK IN PROGRESS)
-    
-    **Direct from Lyo 2.4?** Follow the 2.x→4.x guide first, then continue with subsequent guides.
-
-### Key Changes in Recent Versions
-
-#### Lyo 6.0 (Jakarta EE Migration)
-- **Package Migration**: `javax.*` → `jakarta.*`
-- **JDK Requirement**: JDK 17+ baseline
-- **Jersey Upgrade**: 3.1.5 (Jakarta EE compatible)
-
-#### Lyo 7.0 (Current Development)
-- **Security Update**: Apache Jena 4.10 (addresses CVE-2023-32200)
-- **Removed**: `oslc4j-json4j-provider` (deprecated)
-- **Enhanced**: OSLC Query ResponseInfo handling
-
 ## Example Application Structure
 
 ```
