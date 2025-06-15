@@ -93,7 +93,10 @@ If you were using the JSON4J provider, replace with Jena provider with JSON-LD s
 
 // NEW: Use Jena provider (recommended since Lyo 4.x)
 // Jena provider is the default and preferred JSON provider
-// Usually no code changes needed - just remove json4j dependency
+// remove OslcMediaType.APPLICATION_JSON from @Produces/@Consumes and add OslcMediaType.APPLICATION_JSON_LD instead
+@Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_JSON_LD, OslcMediaType.TEXT_TURTLE, OslcMediaType.APPLICATION_XML })
+@Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_JSON_LD, OslcMediaType.TEXT_TURTLE, OslcMediaType.APPLICATION_XML})
+
 ```
 
 #### 3.2 Jena 4.10 API Changes
