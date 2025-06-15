@@ -1,225 +1,106 @@
-# Modelling How-To
+## Configuring the URLs of JAX-RS web services {#configure-service-url}
 
-This guide covers advanced topics for working with models in Lyo Designer, including URL configuration, handling large models, and controlling code generation.
+For each **ServiceProviderCatalog**, **ServiceProvider** and **Service** in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify the following optional properties:
 
-## Configuring JAX-RS Web Service URLs {#configure-service-url}
+For the **ServiceProvider** web Service:
 
-For each **ServiceProviderCatalog**, **ServiceProvider**, and **Service** in your model, Lyo Designer generates corresponding JAX-RS web services. You can control the relative URLs of these services.
+1.  *serviceNamespace* - specifies the relative URL for the
+    ServiceProvider JAX-RS Service. For example, *projects*
+    will lead to the url
+    *http://localhost:8080/YourAdaptor/services/projects*. The
+    default is *serviceProviders* (leading to the default
+    *<http://localhost:8080/YourAdaptor/services/serviceProviders>*).
+1.  *instanceID* - specifies the relative URL of a single
+    service provider, including the parameter variables
+    necessary to identify a specific service provider. For
+    example, *{projectId}* leads to the url
+    *http://localhost:8080/YourAdaptor/services/projects/1*
+    mapping the value 1 to the *projectId* parameter in the
+    java code. Other IDs can be
+    *collectionName/{collectionName}/project/{projectName}*. The
+    default is *{serviceProviderId}*.
 
-### ServiceProvider URL Configuration
-
-Configure the following optional properties for **ServiceProvider** web services:
-
-#### serviceNamespace
-Specifies the relative URL for the ServiceProvider JAX-RS Service.
-
-!!! example "Example Configuration"
-    - Setting: `projects`
-    - Result: `http://localhost:8080/YourAdaptor/services/projects`
-    - Default: `serviceProviders` → `http://localhost:8080/YourAdaptor/services/serviceProviders`
-
-#### instanceID  
-Specifies the relative URL pattern for individual service providers, including parameter variables.
-
-!!! example "Parameter Examples"
-    - Simple: `{projectId}` → `http://localhost:8080/YourAdaptor/services/projects/1`
-    - Complex: `collectionName/{collectionName}/project/{projectName}`
-    - Default: `{serviceProviderId}`
-
-### Service URL Configuration
-
-For **Service** web services, configure:
-
-#### serviceNamespace
-Controls URL relationship to the managing service provider:
-
-| Value | Description | URL Pattern |
-|-------|-------------|-------------|
-| `relativeToServiceProvider` | Build upon ServiceProvider URL | `/services/projects/1/requirements` |
-| `independentOfServiceProvider` | Standalone URL | `/services/requirements` |
+For the **Service** web Service:
+1.  *serviceNamespace* - specifies whether the relative URL of the
+    web service should build upon the URL of its managing
+    service provider (*relativeToServiceProvider*), or it should be
+    standalone (*independantOfServiceProvider*).
 
 ## Handling Large Models {#handling-large-models}
 
-Lyo Designer supports two approaches for managing large models:
+To manage large models, Lyo Designer supports two model structuring techniques, which will be detailed in the following subsections:
 
-1. **Multiple diagrams** within the same model file
-2. **Model composition** across multiple model files
+1. Creating multiple diagrams within the same model file
+1. Composing a model into multiple model files
 
 ### Common Domains
 
-Reuse existing OSLC domain models to accelerate development:
+But first a sample model that can be used to illustrate the suggested techniques.
 
-!!! tip "Using Common Domains"
-    1. **Clone Repository**: `git clone https://github.com/eclipse/lyo.domains`
-    2. **Import Project**: Import `org.eclipse.lyo.tools.domainmodels`
-    3. **Navigate Models**: Explore predefined OSLC domain specifications
+A model of the OSLC and other common domains is already available for reuse. To reuse these common specifications:
 
-The project includes models for:
-- Core OSLC domains (RM, CM, QM, etc.)
-- Common vocabularies (Dublin Core, FOAF, etc.)
-- Extension domains
+1. Clone the [Github lyo.domains](https://github.com/eclipse/lyo.domains) git repository
+1. Import the project *org.eclipse.lyo.tools.domainmodels*.
+    * This project models many of the OSLC domains across a number of diagrams.
+1. Navigate the model as any other Domain Specification model.
 
-### Multiple Diagrams in One Model
+In the next subsections, you will learn how to import this model into other models for reuse.
 
-Create multiple views of your model for better organization:
+### Creating multiple diagrams within the same model file
 
-1. **Open Model Explorer View**
-2. **Expand Model Structure**
-   - Expand `domainModel.xml` file
-   - Locate the `Specification` entry (don't double-click)
-3. **Create New Diagram**
-   - Right-click `Specification` entry
-   - Select **New Representation → New SpecificationDiagram**
+Within a single model, you can create any number of diagrams, each of which can contain any number of (overlapping) Domain Specifications.
 
-#### Diagram Capabilities
+1. Open the Model Explorer view.
+1.  Expand the *domainModel.xml* file until the
+    *Specification* entry is visible. (Do not double-click on the file. Instead, press the triangle/arrow to the left of the file entry.)
+1.  right-click the *Specification* entry, and select **New Representation &gt; New SpecificationDiagram**.
 
-!!! info "Diagram Features"
-    - **Multiple Specifications**: One diagram can contain multiple Domain Specifications
-    - **Cross-Diagram Views**: Domain Specifications can appear in multiple diagrams
-    - **Drag-and-Drop**: Move specifications between diagrams via Model Explorer
-    - **Synchronized Changes**: Modifications reflect across all diagrams
+You can define your Domain Specifications in any of these diagrams. Note the following:
 
-### Model Composition Across Files
+* A Diagram can contain any number of Domain Specifications.
+* A Domain Specification can be viewed in any number of Specification diagrams.
+    * Once defined in a diagram, you can drag-drop a Domain Specification from the Model Explorer view into any other diagram to represent that domain in additional diagrams.
+* a change to a model entity (a Domain Specification, Resource, Resource Property) are reflected in all diagrams.
 
-Import and reuse models from other projects:
+### Composing a model into multiple model files
 
-1. **Add Model Dependencies**
-   - Right-click **Project Dependencies** in Model Explorer
-   - Select **Add Model**
+You can import and use a previously defined model, through the addition of *Project Dependencies*:
 
-2. **Browse and Select**
-   - Choose **Browse Workspace**
-   - Navigate to desired model file
-   - Click **OK**
+1. In the *Model Explorer* view, right-click on the *Project Dependencies* entry within the modelling project, and select **Add Model**.
+1. select **Browse Workspace**
+1. Navigate and select the desired model.
+1. Press **OK**.
+1. In your own SpecificationDiagram, you can now create relationships to the imported Domain Specifications (or their contained Resources and Resource Properties).
+    1. Expand the imported Specification model (under the the *Project Dependencies* entry) until the Domain Specification entries are visible.
+    1. You can drag-drop any Domain Specification into an existing SpecificationDiagram to visualize its content.
+    1. Also, when selecting the Resource Properties of a Resource, you will notice that all imported Resource properties are available as well.
 
-3. **Use Imported Models**
-   - Expand imported model under **Project Dependencies**
-   - Drag-drop Domain Specifications into diagrams
-   - Reference imported Resource Properties in relationships
+## Controlling the generation parameters of Domain Specification(s) {#controlling-generation-parameters}
 
-!!! success "Benefits of Model Composition"
-    - **Reusability**: Share common domain models
-    - **Modularity**: Separate concerns across projects
-    - **Consistency**: Maintain standard definitions
-    - **Collaboration**: Teams can work on separate model components
+By default, the Java classes corresponding to the OSLC Resources of Domain Specification are generated under the same destination folder path as the containing overall model. Similarly, the java package name is the same as that of the containing model.
 
-## Controlling Generation Parameters {#controlling-generation-parameters}
+It may sometimes be desired to generate OSLC-resource Java classes into a separate java library, which is then included in multiple OSLC projects. For example, you might want to generated the classes from each Domain Specification into a separate Java (maven) projects.
 
-Customize where and how Java classes are generated from your models.
+Lyo Designer allows you to control the generation settings of each individual Domain Specification and/or all Domain Specifications. Such settings will override the *java Class Base Namespace* and *Java Files Base Path* settings of an adaptor.
 
-### Default Generation Behavior
+Lyo Designer allows you even to model Domain Specification(s) without necessarily generating them. This can be useful if:
+* you want to model existing implemented Domain Specifications so that they can be used in the model. That is, you can define OSLC services on such Java classes, but you don't necessarily want to generate these classes.
+* You have previously generated domain specificaitons, and have done manual modifications that you don't want to overrride. 
 
-By default, Java classes are generated:
-- **Location**: Same destination folder as the containing model
-- **Package**: Same package name as the containing model
+To configure the generation settings for a single Domain Specification:
 
-### Use Cases for Custom Generation
+1.  Select **Generation Setting** from the tools pallet, and then select a **Domain Specification** in the diagram.
+1. Set the generation properties as desired.
+    * *Java Files Path* - The relative file path to be used to save the generated Java classes.  
+    * *Java class Package Name* - The package name of the generated Java classes.
+    * *Do Not Generate* - whether the Java classes should be generated at all.
 
-!!! example "Generation Scenarios"
-    - **Separate Libraries**: Generate each Domain Specification into separate Maven projects
-    - **Existing Classes**: Model existing implementations without regenerating
-    - **Manual Modifications**: Preserve custom code changes
-    - **Team Organization**: Different teams manage different domain specifications
+To configure the generation settings for all Domain Specifications:
+1.  Select **Generation Setting** from the tools pallet, and then select an empty area in the Specification Diagram (that is, do not select any Domain Specification).
+1. Set the generation properties as above.
 
-### Domain Specification-Level Settings
+The following rules applies when generation settings are set at different levels in the model:
+* The generation settings of a specific Domain Specification (if defined) override those set for the overall Specification model.
+* The generation settings of the overall Specification model (if defined) override those set for a specific Tool Adaptor.
 
-Configure generation for individual Domain Specifications:
-
-1. **Select Generation Setting** from the tools palette
-2. **Click Domain Specification** in the diagram
-3. **Set Properties**:
-
-| Property | Description | Example |
-|----------|-------------|---------|
-| **Java Files Path** | Relative path for generated classes | `../common-domains/src/main/java` |
-| **Java Class Package Name** | Package name for generated classes | `com.example.oslc.domains.rm` |
-| **Do Not Generate** | Skip generation entirely | `true` (for existing classes) |
-
-### Model-Level Settings
-
-Configure generation for all Domain Specifications:
-
-1. **Select Generation Setting** from tools palette
-2. **Click empty area** in Specification Diagram (not on any Domain Specification)
-3. **Set global properties** using same parameters as above
-
-### Generation Precedence Rules
-
-!!! info "Override Hierarchy"
-    1. **Domain Specification settings** override Model settings
-    2. **Model settings** override Tool Adaptor settings
-    3. **Tool Adaptor settings** are the fallback defaults
-
-### Managing Dependencies
-
-When distributing classes across multiple Java projects:
-
-!!! warning "Dependency Management Required"
-    Set up proper Maven/Gradle dependencies between projects when related classes are in different modules.
-
-**Example Scenario:**
-- Resource `oslc:Requirement` references `dcterms:creator`
-- Range of `dcterms:creator` is `foaf:Person`
-- OSLC and FOAF generated into separate Maven projects
-- **Solution**: Add FOAF project as dependency in OSLC project's `pom.xml`
-
-```xml
-<dependency>
-    <groupId>com.example.domains</groupId>
-    <artifactId>foaf-domain</artifactId>
-    <version>1.0.0</version>
-</dependency>
-```
-
-## Best Practices
-
-### Model Organization
-
-!!! tip "Organization Strategies"
-    - **Domain Separation**: One diagram per major domain
-    - **Functional Grouping**: Group related resources together
-    - **Layered Architecture**: Separate core, extension, and application-specific models
-    - **Consistent Naming**: Use clear, descriptive names for diagrams
-
-### Code Generation Strategy
-
-!!! success "Generation Best Practices"
-    - **Start Simple**: Begin with single-project generation
-    - **Plan Dependencies**: Map resource relationships before splitting projects
-    - **Version Control**: Keep model files and generated code in sync
-    - **Documentation**: Document custom generation settings
-
-### Collaborative Development
-
-!!! info "Team Collaboration"
-    - **Shared Models**: Use common domain models across teams
-    - **Clear Ownership**: Define who maintains each model component
-    - **Change Management**: Coordinate model changes across dependent projects
-    - **Regular Sync**: Keep imported models up to date
-
-## Troubleshooting
-
-### Common Issues
-
-!!! bug "Generation Problems"
-    **Problem**: Classes not generated or in wrong location
-    
-    **Solutions**:
-    - Verify generation settings at correct level
-    - Check file path permissions
-    - Ensure target directories exist
-
-!!! bug "Dependency Errors"
-    **Problem**: Compilation errors in generated code
-    
-    **Solutions**:
-    - Add missing Maven/Gradle dependencies
-    - Verify import statements in generated classes
-    - Check model references and relationships
-
-## Related Topics
-
-- [Lyo Designer Overview](designer.md)
-- [Installing Lyo Designer](install-lyo-designer.md)
-- [Domain Specification Modelling Workshop](domain-specification-modelling-workshop.md)
-- [Setup Development Environment](setup.md)
+**Important to note** that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource *oslc:Requirement* contains a reference property *dcterms:creator*, whose range is Resource *foaf:Person*. If the *OSLC* and *FOAF* Domain Specifications are generated into different maven projects, the *OSLC* maven project should include a maven dependency to the *FOAF* maven project.

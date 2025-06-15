@@ -1,33 +1,75 @@
-# Integrating Products with OSLC - Tutorial Overview
+# Integrating products with OSLC - Tutorial Overview
 
-This comprehensive tutorial explains how to implement OSLC consumers and providers through realistic use cases, working code examples, and step-by-step implementation guidance.
+<!-- omit in toc -->
+## Table of Contents
 
-!!! info "Tutorial Format"
-    This tutorial walks through a fully developed adapter with no coding required. For hands-on programming, see the complementary [hands-on workshop](https://github.com/eclipse/lyo.docs/blob/master/lyo-rest-workshop/Lab1/Lyo_OSLC_Workshop.pdf).
+- [Introduction](#introduction)
+- [Audience](#audience)
+- [Sample applications](#sample-applications)
 
-!!! warning "Version Notice"
-    This tutorial targets **Lyo 2.2** and has not been updated for Lyo 5.0+ (current supported version). Please post on the [forum](https://forum.open-services.net/c/sdks/lyo/9) if you encounter problems.
+## Introduction
 
-## Tutorial Structure
+*Older version of the tutorial for Lyo 2.1 can be [downloaded as pdf](integrating_with_oslc_tutorial.pdf).*
 
-### Part 1: OSLC Provider Implementation
-**[Implementing an OSLC Provider](implementing_an_oslc_provider/1_0_implementing_a_provider.md)**
+This tutorial explains how to implement OSLC consumers and providers by examining realistic use cases and showing how to implement OSLC specifications with lots of examples and working code. 
 
-Transform Bugzilla into a Change Management OSLC specification provider:
+> **WARNING!** This tutorial targets Lyo 2.2 and has not been updated to run on Lyo 5.0, the currently supported version. Please post [on the forum](https://forum.open-services.net/c/sdks/lyo/9) if you encounter any problems in the tutorial!
 
-- Architecture and integration design
-- OSLC catalogs and resource representations
-- Delegated UI implementation
-- Programmatic bug creation
+This tutorial walks you through a fully developed adapter, with no need to code. If you want to have a more hands-on approach, you can refer to the complementary [hands-on tutorial](https://github.com/eclipse/lyo.docs/blob/master/lyo-rest-workshop/Lab1/Lyo_OSLC_Workshop.pdf) takes you through the incremental programming steps.
 
-### Part 2: OSLC Consumer Implementation  
-**[Implementing an OSLC Consumer](integrating_with_an_oslc_provider/2_0_implementing_consumer.md)**
+It is organized into the following parts:
 
-Build a consumer application that integrates with the Bugzilla provider:
+1. This introduction
+2. [__A brief overview of OSLC__](overview_of_oslc)
+3. [**Downloading and starting the sample applications**](running_the_examples)
+3. [**Part 1**, turning Bugzilla into a provider of the Change Management OSLC specification](implementing_an_oslc_provider/1_0_implementing_a_provider). We'll walk through the architecture of the integration, create OSLC catalogs and representations, provide delegated UIs, and allow you to create Bugzilla bugs programmatically.
+4. [**Part 2**, turning a home-grown application into a consumer of the Change Management OSLC specification](integrating_with_an_oslc_provider/2_0_implementing_consumer) that works with the Bugzilla adapter from Part 1. We'll implement links to Bugzilla bugs, UI previews, delegated UIs, and automated bug creation.
 
-- Link management with Bugzilla bugs
-- UI preview implementation
-- Delegated UI integration
+## Audience
+
+This tutorial is for people who will be writing code to implement OSLC consumers and providers; we assume the following about you:
+
++ You understand the basics of software development, web architecture, HTTP, [linked data](http://youtu.be/40mjwqGEKBU), and [RDF](http://www.youtube.com/watch?v=Nk9TOx1sBUk&feature=share&list=PLpqpu1CS6Rj4dRKWX1UICKseBq_20nk6k)
++ You want to learn more about OSLC
++ You can follow examples in XML, JSON, HTML, and JavaScript
++ You can understand server-side programming languages, particularly in Java and JSP (see below)
++ You want to learn more about how [Eclipse Lyo](../eclipse_lyo/eclipse-lyo) can help you more quickly develop OSLC-driven integrations
+
+> **On the choice of server-side programming language** 
+> Although our sample applications use Java and JSP, many of the methods of
+> implementing OSLC are the same regardless of your choice of server-side
+> programming-language. Later versions of this document might expand to other
+> languages and platforms. OSLC is a community effort and we'd love your help
+> in adding examples in different programming languages to this tutorial (or
+> other material) to help those on other platforms such as Perl, PHP, Python,
+> Ruby, or .Net.  
+
+## Sample applications
+
+You can follow along with the OSLC Tutorial by using the following software:
+
+- Bugzilla: a common open-source defect tracking application. In this tutorial,
+  you will configure a running Bugzilla system using Docker if you do not want
+  to set up your own Bugzilla application.
+- OSLC4J Bugzilla adapter: a full-featured adapter that presents Bugzilla bugs
+  as OSLC Change Management v2 resources. In our examples, we assume the
+  Bugzilla adapter is running at
+  [http://localhost:8080/OSLC4JBugzilla](http://localhost:8080/OSLC4JBugzilla)
+- NinaCRM: A simple, fictional Customer Relationship Management (CRM) system
+  that hosts OSLC UI Preview and OSLC Delegated UI examples, implemented as a
+  Java EE web application. In our examples, we assume that NinaCRM is running
+  at [http://localhost:8181/ninacrm](http://localhost:8181/ninacrm)
+- Poster browser plugin (for
+  [Firefox](https://addons.mozilla.org/en-US/firefox/addon/poster/) or
+  [Chrome](https://chrome.google.com/webstore/detail/chrome-poster/cdjfedloinmbppobahmonnjigpmlajcd)):
+  we will browse and manipulate OSLC resources with this plugin that makes it
+  easy to issue HTTP requests and set custom headers. An alternative for
+  Firefox is
+  [RESTClient](https://addons.mozilla.org/en-us/firefox/addon/restclient/).
+
+For more information, see our section about [downloading, building, and starting the NinaCRM and OSLC4J Bugzilla applications](running_the_examples).
+
+Get Started: [A brief overview of OSLC](overview_of_oslc)
 - Automated bug creation workflows
 
 ## Getting Started

@@ -1,89 +1,45 @@
-# Using The OSLC adaptor for Watson IoT Platform
+# User Guide
 
-!!! info "User Guide Overview"
-    How to install, configure, administer and use the iotp-adaptor to manage the lifecycle of IBM Watson IoT Platform Resources.
+## Configuration 
 
-## Introduction
+### Step 1: Configure the Adaptor Server
 
-The IBM Continuous Engineering (CE) development tools and methods combined with the IBM Watson IoT Platform help development teams to design and implement complex, reliable, and secure IoT solutions. The iotp-adaptor project demonstrates how to use the eclipse/Lyo Designer toolchain modeler and code generator to build an OSLC adaptor that extends these capabilities to support scalable development of IBM Watson IoT Platform solutions.
+The Adaptor is a REST service that provides the OSLC Resources. Like any REST service, the adaptor is configured with a base URL, on which all the OSLC URLs are built. The base URL is set through the file **adaptor.properties** that you find under the **configuration** folder. Simply update the **baseURL** property according to your needs.
 
-The iotp-adaptor is a JEE Web application (WAR file) that exposes the Watson IoT Platform resources as OSLC resources. It provides the typical OSLC capabilities including:
+### Step 2: Configure Adaptor for the Toolchain Models
 
-* **OSLC Discovery**: the OSLC ServiceProvider resources correspond to the Watson IoT Platform organizations
-* **CRUD operations** on RDF resource representations in various RDF serialization formats
-* **Creation factories** to create Watson IoT Platform resources
-* **Delegated creation and selection dialogs** to establish links between CE requirements, change requests, design elements, test cases, etc. and Watson IoT Platform resources
-* **Resource preview** for displaying links and small and large preview
-* **Minimal OSLC query capability**
-* **Simple Tracked Resource Set provider** for device types
+The adaptor needs to know what the toolchain model look like. For this purpose, the adaptor reads model files. The model defines what resources are exposed as OSLC Resources. And for each such resource, the model defines the properties that are exposed (as OSLC Properties), and possibly how the properties are connected to OSLC (or external) resources.
 
-See [iotp-adaptor Developer Guide](../developer-guide.md) for documentation on how the iotp-adaptor OSLC server was developed.
+To configure the adaptor according to your models, place the model files under the **models** folder. Model files have a *ttl* extension.
 
-The source code is available in a the GitHub [iotp-adaptor Project](https://github.com/OSLC/iotp-adaptor).
+To better understand how models are defined, examine the provided sample models. Further instructions are provided on the [toolchain model tutorial](/iotp_adaptor/toolchain-model/).
 
-## Business Challenge
+### Step 3: Define & Configure the IoT Platform connections
 
-The Internet of Things (IoT) is driving businesses to transform themselves into connected, digital enterprises to take advantage of new opportunities for optimizing operations, increasing customer engagement and loyalty, developing new revenue streams and business models, disrupting existing markets, and innovating faster with an IoT feedback loop that informs business and engineering leaders.
+The adaptor can read data from a number of different IoT Platforms. To do so, the adaptor needs to first be told what platforms to connect to, and how to connect to those platforms. This can be done in a couple of ways:
 
-But being fast to market, which is challenging in its own right, is not enough. IoT solutions that interact with the physical world through sensors and actuators can cause serious harm, financial loss, or reputation damage if the solution fails to perform. Doing enterprise-scale transformations to realize enterprise-level business value requires enterprise-appropriate systems and software engineering processes.
+1. **Through the configuration file.** The file **platforms.properties** lists the different platforms to connect to.
+2. **Dynamically through the REST interface.** The adaptor provides REST services to add a platform connection on the fly.
 
-Systems engineers and developers need to be able to connect their IoT Platform development activities with the rest of their Systems and Software Engineering methods and tools in order to:
+In this instruction, we stick to the first approach.
 
-* Ensure IoT solutions meet business requirements and customer needs
-* Manage complex system-of-systems development across multiple teams
-* Validate solution architecture against system requirements
-* Enable effective change management and impact analysis
-* Maintain traceability across the solution lifecycle
+1. Examine the file **platforms.properties**. It provides a sample connection to a Watson IoT Platform.
+2. Update the file to meet your needs.
 
-## Integration Solutions
+Note that each Platform connection is assigned a unique (arbitrary) identifier. In the sample file, *sampleWatsonIoTConnector* is the identifier assigned to the Platform connector. The remaining properties for that connector has that identifier as a prefix.
 
-IoT solutions have many components that are typically hosted on multiple runtime environments and developed by multiple teams. Coordinating across these teams while designing, building, and evolving an enterprise solution is especially challenging.
+Also note that the last property (i.e. *sampleWatsonIoTConnector.TripletStoreHandler.resourceFactory.maxSize*) controls the max number of cached resources. For a large number of IoT instances, make sure this number is big enough.
 
-IBM IoT Continuous Engineering (CE) tools and practices can be employed to design and build dependable enterprise IoT solutions. The iotp-adaptor is an example of how to use OSLC to extend development practices by including the teams who build IoT solution components on the IBM Watson IoT Platform. Using iotp-adaptor, you can work with views of your IoT solution, including IoT Platform devices. You can link these IoT Platform artifacts to any other artifact in the Continuous Engineering solution, such as requirements, change requests, or test cases. You can also use Rational Engineering Lifecycle Management for traceability and impact analysis of potential changes to your IoT solutions.
+### Step 4: Start the Adaptor
 
-The iotp-adaptor provides an OSLC server that exposes IBM Watson IoT Platform artifacts using standard OSLC capabilities. The IoT Platform artifacts participate in change management, impact analysis, requirements-driven development, requirements-driven testing, and other common development practices.
+Start the adaptor by running the script **start.bat** (on Windows) or **start.sh** (on Linux).
 
-The following diagram shows how the IoT CE environment works with the Watson IoT Platform:
+Note that the adaptor will first try to connect to the platforms defined in step 3. If the adaptor cannot connect to any platform (possibly due to the lack of, or wrong, credentials), then the adaptor will fail to start.
 
-![iotp-adaptor concepts](images/concepts-detailed.png "iotp-adaptor Concepts")
+Assuming the connection to the platforms is successful, the adaptor is now ready to receive OSLC requests.
 
-* The CE solution runs on Cloud or in your data center. For more information, see the CE Connector for IoT Installation Guide.
-* iotp-adaptor is a WAR file that runs on the CE Jazz Team Server. It requests information from the Watson IoT Platform and from IBM Cloud about the resources that are available in the IBM Watson IoT Platform and Node-RED applications.
-* As soon as the IoT Platform artifacts are represented as OSLC resources in the CE solution, you can use existing CE capabilities and practices with those resources.
+## Where to go from here?
 
-## Business Value
+Test that the adaptor is running correctly by accessing the Service Provider Catalog. Point your browser to: *${baseURL}/services* 
 
-OSLC adaptors integrate lifecycle management tools like IBM's Continuous Engineering Solutions with the resources who's lifecycle teams need to manage. This helps close the gap between client demands and solution capabilities. Addressing the challenges above with OSLC integration solutions helps teams:
-
-* **Turn existing products into connected products**
-* **Innovate faster** with an IoT feedback loop to business leaders and engineering, including use of Watson services for advanced analytics
-* **Achieve consistency and robustness** across the product development process to enable efficient, cost effective, and reliable (high quality) implementation
-    * Design complex system-of-systems solutions (requirements management, systems engineering, MBSE)
-    * Manage change effectively across the IoT solution lifecycle (change requests following customized workflow, traceability, and impact analysis of lifecycle artifacts)
-    * Manage risk (particularly deployment risks) and respond more effectively when risks materialize
-    * Enable validation of the solution architecture against the system requirements and use cases
-    * Improve development collaboration across geographical and organizational boundaries
-* **Develop your solution design ground truth** necessary to estimate costs and effort
-
-## Introduction to the Watson IoT Platform Domain
-
-The IoT Platform Domain defines a design-level view of Watson IoT Platform resources in IBM Rhapsody Design manager. This view provides an abstraction of the IoT Platform organization and application implementation details in order to facilitate the design and lifecycle management of your IoT devices and Node-RED flows. The IoT Platform domain defines the analysis and design artifacts that can be integrated with other lifecycle management artifacts including requirements, work items, test cases and other UML or SysML model elements.
-
-The IoT Platform domain is organized into two parts or ontologies: Bluemix and the IoT Platform, as shown in the following UML model sketches:
-
-![IoT Platform and Bluemix Domains](images/iot-and-bluemix-packages.png "IoT Platform and Bluemix Domains")
-
-The Bluemix ontology covers design artifacts that are common to all Bluemix projects. A Bluemix Organization establishes the unit of organization and user management for the Spaces that it contains. Spaces can be used to scope applications and provisioned services for different purposes or lifecycle phases. For example, a typical organization might have different spaces for managing different lifecycle phases such as development, testing, preproduction and production. Applications represent the deployed instances of the Bluemix runtime platform with its bound services. Applications typically have routes that provide access to the running application. All of the Bluemix classes, and many of the Watson IoT Platform artifacts described below specialize Platform Resource which provides a platform URI property that supports direct navigation from Design Manager to the represented Watson IoT Platform resource.
-
-!!! note "Technical Preview Note"
-    This technical preview imports Node-RED applications from Bluemix. The Bluemix organizations, spaces, and other applications and services are not currently included.
-
-![Bluemix Ontology](images/bluemix-ontology.png "Bluemix Ontology")
-
-The IoT Platform ontology extends the Bluemix ontology with artifacts that represent design artifacts derived from Watson IoT Platform devices and applications. IoTP Organization extends Bluemix Organization to address IoT Platform specific properties. Like a Bluemix Organization. IoTP Organization is the unit of user management. An IoTP Organization manages Device Types, each with their own Device Properties. Device Type and Device Property classes abstract the Watson IoT Platform device type and device schema elements. A Device represents an instance of a Device Type, and something that would be deployed to the Watson IoT Platform to collect real-time data.
-
-The IoTP Organization also manages Rules for real-time analytics. A Rule has a condition property which is a string representation of the RTI rule condition. The design view enables you to see and manage dependencies between the rules and the devices they reference.
-
-A Node-RED Application is a specialization of a Bluemix Application and represents the Node-RED applications in a Bluemix organization. This allows you to manage the dependencies between your Node-RED flows and the devices they use.
-
-![IoT Platform Ontology](images/iotp-ontology.png "IoT Platform Ontology")
+For a sample hands-on tutorial, go [here](/iotp_adaptor/IoTP-Adaptor-Howto).
