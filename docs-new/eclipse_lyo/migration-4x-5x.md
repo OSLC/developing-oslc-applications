@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2 
+---
 # Migrating from Lyo 4.x to 5.x
 
 !!! note "Content generated with LLM assistance"
@@ -216,33 +220,33 @@ mvn package
 #### 5.2 Common Migration Issues
 
 **Issue: Build fails with missing JDK 8**
-```
-[ERROR] Source option 8 is no longer supported. Use 11 or later.
-```
+
+> [ERROR] Source option 8 is no longer supported. Use 11 or later.
+
 **Solution:** Update JDK to 11+ and update Maven compiler properties.
 
 **Issue: TRS order type mismatch**
-```
-java.lang.ClassCastException: java.lang.Integer cannot be cast to java.math.BigInteger
-```
+
+> java.lang.ClassCastException: java.lang.Integer cannot be cast to java.math.BigInteger
+
 **Solution:** Update TRS code to use BigInteger for order properties.
 
 **Issue: Jena reader/writer not found**
-```
-java.lang.NoSuchMethodError: org.apache.jena.rdf.model.Model.getReader()
-```
+
+> java.lang.NoSuchMethodError: org.apache.jena.rdf.model.Model.getReader()
+
 **Solution:** Update to use RDFReaderI/RDFWriterI interfaces.
 
 **Issue: Store implementation not available**
-```
-java.lang.NoClassDefFoundError: JenaTdbStoreImpl
-```
+
+> java.lang.NoClassDefFoundError: JenaTdbStoreImpl
+
 **Solution:** Migrate to SparqlStoreImpl with DatasetQueryExecutorImpl.
 
 **JAX-RS 2.0 to Jena 4.5 Transition Issues:**
-```
-java.lang.NoSuchMethodError: org.apache.jena.rdf.model.RDFReader.read()
-```
+
+> java.lang.NoSuchMethodError: org.apache.jena.rdf.model.RDFReader.read()
+
 **Solution:** Update to Jena 4.5 compatible API calls:
 ```java
 // OLD (Jena 3.x compatible)
@@ -253,9 +257,9 @@ RDFReaderI reader = model.getReader("RDF/XML");
 ```
 
 **CVE-2021-41042 Related Validation:**
-```
-org.apache.jena.shared.JenaException: Malformed RDF/XML input detected
-```
+
+> org.apache.jena.shared.JenaException: Malformed RDF/XML input detected
+
 **Solution:** This is the security fix working correctly. Ensure your RDF/XML inputs are valid:
 ```java
 // Validate RDF inputs more strictly
@@ -269,9 +273,9 @@ try {
 ```
 
 **TRS BigInteger Migration:**
-```
-java.lang.ClassCastException: java.lang.Integer cannot be cast to java.math.BigInteger
-```
+
+> java.lang.ClassCastException: java.lang.Integer cannot be cast to java.math.BigInteger
+
 **Solution:** Update TRS order handling:
 ```java
 // OLD: 32-bit integers

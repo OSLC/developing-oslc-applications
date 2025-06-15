@@ -109,7 +109,7 @@ markdown_extensions:
 plugins:  
   - search:
       lang: en
-      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      separator: '[\s\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;'
   - redirects:
       redirect_maps:
         'eclipse_lyo/eclipse-lyo.html': 'eclipse_lyo/index.md'

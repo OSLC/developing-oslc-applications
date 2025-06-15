@@ -1,3 +1,7 @@
+---
+search:
+  boost: 1.1 
+---
 # Migrating from Lyo 6.x to 7.x
 
 !!! note "Content generated with LLM assistance"
@@ -21,10 +25,10 @@ Migration from Lyo 6.x to 7.x involves:
 
 | Component | Lyo 6.x | Lyo 7.x |
 |-----------|---------|---------|
-| **JDK** | 17+ | 17+ (17, 21, 23, 24-ea tested) |
-| **Apache Jena** | 4.8 | 4.10 |
-| **Jersey** | 3.1.5 | 3.1.5 |
-| **Jakarta EE** | 9+ | 9+ |
+| **JDK baseline** | 17 | 17 (21 planned) |
+| **Apache Jena** | 4.8 | 4.10 (5.x planned) |
+| **Jersey** | 3.1.5 | 3.1.5 (3.1.10 planned) |
+| **Jakarta EE** | EE10 | EE10 |
 
 ### Breaking Changes Summary
 
@@ -81,7 +85,7 @@ If using the deprecated JSON4J provider:
 ### Phase 3: Code Changes (Minimal Expected)
 
 #### 3.1 JSON4J Provider Replacement
-If you were using the JSON4J provider, replace with Jena provider:
+If you were using the JSON4J provider, replace with Jena provider with JSON-LD support:
 
 ```java
 // OLD: JSON4J provider (removed)
@@ -144,9 +148,9 @@ ResponseInfo responseInfo = result.getResponseInfo();
 ### Common Migration Issues
 
 #### Issue: Missing JSON4J Provider
-```
-java.lang.ClassNotFoundException: org.eclipse.lyo.oslc4j.json4j.provider.Json4JProvider
-```
+
+> java.lang.ClassNotFoundException: org.eclipse.lyo.oslc4j.json4j.provider.Json4JProvider
+
 **Solution:** Remove the `oslc4j-json4j-provider` dependency. Use the default Jena provider instead.
 
 #### Issue: JSON Serialization Changes
@@ -156,15 +160,15 @@ Different JSON output format after migration
 **Solution:** The Jena provider produces JSON-LD. If you need different JSON format, implement a custom provider or use transformation.
 
 #### Issue: Jena API Compatibility
-```
-java.lang.NoSuchMethodError: org.apache.jena.xxx
-```
+
+> java.lang.NoSuchMethodError: org.apache.jena.xxx
+
 **Solution:** Check Jena 4.10 release notes for any breaking API changes and update code accordingly.
 
 **Jena RDF Serialization Changes:**
-```
-org.apache.jena.riot.RiotException: Unexpected serialization format
-```
+
+> org.apache.jena.riot.RiotException: Unexpected serialization format
+
 **Solution:** Use RDFDataMgr for consistent serialization:
 ```java
 // OLD: Direct model writing
@@ -175,9 +179,9 @@ RDFDataMgr.write(outputStream, model, Lang.RDFXML);
 ```
 
 **Jena Model Loading:**
-```
-org.apache.jena.shared.JenaException: Model loading failed with Jena 4.10
-```
+
+> org.apache.jena.shared.JenaException: Model loading failed with Jena 4.10
+
 **Solution:** Ensure that all transitive deps were compiled while targeting Jena 4.10.
 
 ## Testing Checklist

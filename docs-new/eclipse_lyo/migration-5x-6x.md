@@ -1,3 +1,7 @@
+---
+search:
+  boost: 3 
+---
 # Migrating from Lyo 5.x to 6.x
 
 !!! note "Content generated with LLM assistance"
@@ -328,57 +332,56 @@ mvn package
 #### 5.2 Common Migration Issues
 
 **Issue: NoClassDefFoundError for javax classes**
-```
-java.lang.NoClassDefFoundError: javax/servlet/http/HttpServlet
-```
+
+> java.lang.NoClassDefFoundError: javax/servlet/http/HttpServlet
+
 **Solution:** Ensure all `javax.*` imports are changed to `jakarta.*` and dependencies are updated.
 
 **Issue: Jersey injection problems**
-```
-java.lang.IllegalStateException: ServiceLocator has been shut down
-```
+
+> java.lang.IllegalStateException: ServiceLocator has been shut down
+
 **Solution:** Update Jersey configuration and ensure HK2 dependency is included.
 
 **Issue: JSTL tags not found**
-```
-org.apache.jasper.JasperException: The absolute uri: http://java.sun.com/jsp/jstl/core cannot be resolved
-```
+
+> org.apache.jasper.JasperException: The absolute uri: http://java.sun.com/jsp/jstl/core cannot be resolved
+
 **Solution:** Update JSTL taglib URI to `jakarta.tags.core`.
 
 **Issue: Servlet container compatibility**
-```
-java.lang.UnsupportedClassVersionError: jakarta/servlet/ServletException
-```
+
+> java.lang.UnsupportedClassVersionError: jakarta/servlet/ServletException
+
 **Solution:** Ensure application server supports Jakarta EE 9+ (check the versions on your server, in your Dockerfile, and the Jetty Maven plugin version in POM.xml).
 
 **Problem:** Domain classes fail with URISyntaxException after Jakarta migration
-```
-java.net.URISyntaxException: Illegal character in path at index X
-    at java.net.URI$Parser.fail(URI.java:2848)
-    at java.net.URI$Parser.checkChars(URI.java:3021)
-```
+
+> java.net.URISyntaxException: Illegal character in path at index X
+> at java.net.URI$Parser.fail(URI.java:2848)
+> at java.net.URI$Parser.checkChars(URI.java:3021)
 
 **Solution Steps:**
 
 Double-check the `@OslcService` annotations.
 
 **Package Import Conflicts:**
-```
-error: package javax.servlet does not exist
-import javax.servlet.http.HttpServletRequest;
-```
+
+> error: package javax.servlet does not exist
+> import javax.servlet.http.HttpServletRequest;
+
 **Solution:** Use IDE refactoring tools or Eclipse Transformer to update all imports systematically.
 
 **Mixed Namespace ClassCastException:**
-```
-java.lang.ClassCastException: jakarta.servlet.ServletContext cannot be cast to javax.servlet.ServletContext
-```
+
+> java.lang.ClassCastException: jakarta.servlet.ServletContext cannot be cast to javax.servlet.ServletContext
+
 **Solution:** Ensure all servlet-related code uses Jakarta packages consistently. Check for transitive dependencies still using javax.* packages.
 
 **Jersey 3.x Provider Registration:**
-```
-java.lang.IllegalStateException: Provider class X not recognized in Jakarta context
-```
+
+> java.lang.IllegalStateException: Provider class X not recognized in Jakarta context
+
 **Solution:** Update provider registration for Jakarta EE:
 ```java
 @ApplicationPath("/services")
@@ -394,9 +397,9 @@ public class JakartaOslcApplication extends Application {
 ```
 
 **JSP/JSTL Migration Issues:**
-```
-org.apache.jasper.JasperException: Unable to compile class for JSP
-```
+
+> org.apache.jasper.JasperException: Unable to compile class for JSP
+
 **Solution:** Update JSP page directives and JSTL imports:
 ```jsp
 <%-- OLD: Java EE ---%>
@@ -407,9 +410,9 @@ org.apache.jasper.JasperException: Unable to compile class for JSP
 ```
 
 **Authentication/Authorization Migration:**
-```
-java.security.NoSuchProviderException: Jakarta security provider not found
-```
+
+> java.security.NoSuchProviderException: Jakarta security provider not found
+
 **Solution:** Update security configuration to use Jakarta EE security APIs:
 ```java
 // OLD: javax.servlet.http.HttpServletRequest

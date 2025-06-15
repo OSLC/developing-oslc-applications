@@ -1,3 +1,7 @@
+---
+search:
+  boost: 2 
+---
 # Migrating from Lyo 2.x to 4.x
 
 !!! note "Content generated with LLM assistance"
@@ -239,9 +243,9 @@ mvn package
 #### 5.2 Common Issues and Solutions
 
 **Issue: Missing JAX-RS classes**
-```
-java.lang.ClassNotFoundException: javax.ws.rs.core.Application
-```
+
+> java.lang.ClassNotFoundException: javax.ws.rs.core.Application
+
 **Solution:** Add JAX-RS API dependency:
 ```xml
 <dependency>
@@ -252,45 +256,38 @@ java.lang.ClassNotFoundException: javax.ws.rs.core.Application
 ```
 
 **Issue: Jena package not found**
-```
-java.lang.NoClassDefFoundError: com/hp/hpl/jena/rdf/model/Model
-```
+
+> java.lang.NoClassDefFoundError: com/hp/hpl/jena/rdf/model/Model
+
 **Solution:** Update all Jena imports to use `org.apache.jena.*` packages.
 
 **Issue: Jersey injection problems**
-```
-java.lang.IllegalStateException: ServiceLocatorImpl has been shut down
-```
+
+> java.lang.IllegalStateException: ServiceLocatorImpl has been shut down
+
 **Solution:** Add Jersey HK2 dependency as shown in step 2.2.
 
 **JAX-RS 1.x to 2.0 API Changes:**
-```
-java.lang.NoSuchMethodError: javax.ws.rs.core.Response.created()
-```
+
+> java.lang.NoSuchMethodError: javax.ws.rs.core.Response.created()
+
 **Solution:** Make sure you do not have transitive deps to JAX-RS 1.x and all transitive deps were compiled targeting JAX-RS 2 API. Run `mvn dependency:tree` to check.
 
 **Jena 2.x to 3.x Package Migration:**
 
-```
-java.lang.ClassNotFoundException: com.hp.hpl.jena.rdf.model.Model
-```
+> java.lang.ClassNotFoundException: com.hp.hpl.jena.rdf.model.Model
 
-**Solution:** Check if any transitive dependencies rely on old Jena versions. 
+**Solution:** Check if any transitive dependencies rely on old Jena versions.
 
 **ServletContext Initialization Issues:**
 
-```
-java.lang.IllegalStateException: ServletContext attribute 'lyo.store' not found
-```
+> java.lang.IllegalStateException: ServletContext attribute 'lyo.store' not found
 
 **Solution:** Update web.xml to use Jersey ServletContainer.
 
 **Problem:** MessageBodyWriter not found for collections with Jersey 3.x
 
-```
-javax.ws.rs.core.NoContentException: MessageBodyReader not found for media type=application/rdf+xml, 
-type=class java.util.ArrayList$SubList, genericType=java.util.List<Resource>
-```
+> javax.ws.rs.core.NoContentException: MessageBodyReader not found for media type=application/rdf+xml, type=class java.util.ArrayList$SubList, genericType=java.util.List<Resource>
 
 **Root Cause:** Jersey has different collection handling than Wink.
 
