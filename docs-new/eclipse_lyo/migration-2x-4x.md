@@ -263,6 +263,56 @@ java.lang.IllegalStateException: ServiceLocatorImpl has been shut down
 ```
 **Solution:** Add Jersey HK2 dependency as shown in step 2.2.
 
+**JAX-RS 1.x to 2.0 API Changes:**
+```
+java.lang.NoSuchMethodError: javax.ws.rs.core.Response.created()
+```
+**Solution:** Make sure you do not have transitive deps to JAX-RS 1.x and all transitive deps were compiled targeting JAX-RS 2 API. Run `mvn dependency:tree` to check.
+
+**Jena 2.x to 3.x Package Migration:**
+
+```
+java.lang.ClassNotFoundException: com.hp.hpl.jena.rdf.model.Model
+```
+
+**Solution:** Check if any transitive dependencies rely on old Jena versions. 
+
+**ServletContext Initialization Issues:**
+
+```
+java.lang.IllegalStateException: ServletContext attribute 'lyo.store' not found
+```
+
+**Solution:** Update web.xml to use Jersey ServletContainer.
+
+**Problem:** MessageBodyWriter not found for collections with Jersey 3.x
+
+```
+javax.ws.rs.core.NoContentException: MessageBodyReader not found for media type=application/rdf+xml, 
+type=class java.util.ArrayList$SubList, genericType=java.util.List<Resource>
+```
+
+**Root Cause:** Jersey has different collection handling than Wink.
+
+**Solution Steps:**
+
+   ```java
+   // ❌ Jersey may not handle SubLists properly
+   @GET
+   @Produces(MediaType.APPLICATION_XML)
+   public List<Resource> getResources() {
+       return allResources.subList(0, 10);  // SubList issue
+   }
+   
+   // ✅ Use proper ArrayList for Jersey
+   @GET
+   @Produces(MediaType.APPLICATION_XML)
+   public List<Resource> getResources() {
+       List<Resource> subset = new ArrayList<>(allResources.subList(0, 10));
+       return subset;
+   }
+   ```
+
 ## Advanced Migration Topics
 
 ### Custom JAX-RS Providers

@@ -161,6 +161,25 @@ java.lang.NoSuchMethodError: org.apache.jena.xxx
 ```
 **Solution:** Check Jena 4.10 release notes for any breaking API changes and update code accordingly.
 
+**Jena RDF Serialization Changes:**
+```
+org.apache.jena.riot.RiotException: Unexpected serialization format
+```
+**Solution:** Use RDFDataMgr for consistent serialization:
+```java
+// OLD: Direct model writing
+model.write(outputStream, "RDF/XML");
+
+// NEW: Use RDFDataMgr for Jena 4.10
+RDFDataMgr.write(outputStream, model, Lang.RDFXML);
+```
+
+**Jena Model Loading:**
+```
+org.apache.jena.shared.JenaException: Model loading failed with Jena 4.10
+```
+**Solution:** Ensure that all transitive deps were compiled while targeting Jena 4.10.
+
 ## Testing Checklist
 
 - [ ] Application builds successfully with Lyo 7.x

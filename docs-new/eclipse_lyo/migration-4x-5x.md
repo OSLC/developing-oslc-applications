@@ -239,6 +239,49 @@ java.lang.NoClassDefFoundError: JenaTdbStoreImpl
 ```
 **Solution:** Migrate to SparqlStoreImpl with DatasetQueryExecutorImpl.
 
+**JAX-RS 2.0 to Jena 4.5 Transition Issues:**
+```
+java.lang.NoSuchMethodError: org.apache.jena.rdf.model.RDFReader.read()
+```
+**Solution:** Update to Jena 4.5 compatible API calls:
+```java
+// OLD (Jena 3.x compatible)
+RDFReader reader = model.getReader("RDF/XML");
+
+// NEW (Jena 4.5 compatible)
+RDFReaderI reader = model.getReader("RDF/XML");
+```
+
+**CVE-2021-41042 Related Validation:**
+```
+org.apache.jena.shared.JenaException: Malformed RDF/XML input detected
+```
+**Solution:** This is the security fix working correctly. Ensure your RDF/XML inputs are valid:
+```java
+// Validate RDF inputs more strictly
+try {
+    Model model = ModelFactory.createDefaultModel();
+    model.read(inputStream, null, "RDF/XML");
+} catch (JenaException e) {
+    // Handle malformed RDF more gracefully
+    logger.warn("Invalid RDF input rejected: " + e.getMessage());
+}
+```
+
+**TRS BigInteger Migration:**
+```
+java.lang.ClassCastException: java.lang.Integer cannot be cast to java.math.BigInteger
+```
+**Solution:** Update TRS order handling:
+```java
+// OLD: 32-bit integers
+int order = changeEvent.getOrder();
+
+// NEW: BigInteger for TRS order
+BigInteger order = changeEvent.getOrder();
+int orderValue = order.intValue(); // if you need int
+```
+
 ## Migration from Lyo 2.4.0
 
 If migrating directly from Lyo 2.4.0:
