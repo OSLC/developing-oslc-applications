@@ -188,6 +188,7 @@ nav:
       - Toolchain Modelling workshop: eclipse_lyo/toolchain-modelling-workshop.md
   - OSLC4JS: oslc-open-source-node-projects.md
   - OSLC4Net: https://oslc4net.github.io/
+  - PyOSLC: https://github.com/cslab/pyoslc
   - Sample Applications:
     - Overview: samples.md
     - IoTP Adaptor: 
