@@ -91,4 +91,4 @@ Ready to start developing with Eclipse Lyo? Here are your next steps:
 1. **[Setup Guide](setup.md)** - Configure your development environment
 2. **[Tutorials](../tutorials.md)** - Step-by-step guides to building OSLC applications
 3. **[Sample Code](../samples.md)** - Working examples and reference implementations
-4. **[Migration Guides](migration-4x-5x.md)** - Upgrade between Lyo versions
+4. **[Migration Overview](migration-overview.md)** - Upgrade between Lyo versions safely

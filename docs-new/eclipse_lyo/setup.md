@@ -74,9 +74,14 @@ The steps below guide you through the necessary steps of creating a Java project
 ## Migration from Older Versions
 
 !!! info "Migration Guides Available"
-    - [Migrating from Lyo 4.x to 5.x](migration-4x-5x.md)
-    - [Migrating from Lyo 5.x to 6.x](migration-5x-6x.md)
-    - [Migrating from Lyo 6.x to 7.x](migration-6x-7x.md)
+    **Choose your migration path based on your current Lyo version:**
+    
+    - **[Lyo 2.x → 4.x](migration-2x-4x.md)** - Major JAX-RS and Jena upgrades
+    - **[Lyo 4.x → 5.x](migration-4x-5x.md)** - JDK 11+ requirement and component removal  
+    - **[Lyo 5.x → 6.x](migration-5x-6x.md)** - Jakarta EE migration (javax → jakarta)
+    - **[Lyo 6.x → 7.x](migration-6x-7x.md)** - Security updates (WORK IN PROGRESS)
+    
+    **Direct from Lyo 2.4?** Follow the 2.x→4.x guide first, then continue with subsequent guides.
 
 ### Key Changes in Recent Versions
 

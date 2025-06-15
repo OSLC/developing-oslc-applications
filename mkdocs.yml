@@ -166,11 +166,17 @@ nav:
         - Delegated UI: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_3_delegatedUI.md
         - Notify Customers: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_4_notify_customers.md
         - Automatic Bugs: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.md
-  - Eclipse Lyo:
+  - Eclipse Lyo:    
     - Lyo Java SDK:
       - Overview: eclipse_lyo/index.md
       - Setup Guide: eclipse_lyo/setup.md
       - Eclipse Setup: eclipse_lyo/eclipse-setup-for-lyo-based-development.md
+      - Migration Guides:
+        - Migration Overview: eclipse_lyo/migration-overview.md
+        - Lyo 2.x → 4.x: eclipse_lyo/migration-2x-4x.md
+        - Lyo 4.x → 5.x: eclipse_lyo/migration-4x-5x.md
+        - Lyo 5.x → 6.x: eclipse_lyo/migration-5x-6x.md
+        - Lyo 6.x → 7.x: eclipse_lyo/migration-6x-7x.md
       - Advanced topics:
         - Core Internals: eclipse_lyo/lyo-core-internals.md
         - OSGi Bundles: eclipse_lyo/lyo-as-osgi-bundles.md
