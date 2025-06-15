@@ -12,7 +12,7 @@ The adaptor needs to know what the toolchain model look like. For this purpose, 
 
 To configure the adaptor according to your models, place the model files under the **models** folder. Model files have a *ttl* extension.
 
-To better understand how models are defined, examine the provided sample models. Further instructions are provided on the [toolchain model tutorial](/iotp_adaptor/toolchain-model/).
+To better understand how models are defined, examine the provided sample models. Further instructions are provided on the [toolchain model tutorial](../toolchain-model.md).
 
 ### Step 3: Define & Configure the IoT Platform connections
 
