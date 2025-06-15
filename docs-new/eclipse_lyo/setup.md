@@ -1,7 +1,7 @@
 # Setup an OSLC Provider/Consumer Application
 
-!!! warning "Content Under Migration"
-    This page is being updated to reflect the latest Eclipse Lyo versions (5.x, 6.x, 7.x). The current content covers older versions and may contain outdated information.
+!!! tip "Start with Lyo Designer"
+    If you are just getting started with Lyo, try Lyo Designer. Once you get familiar with the generated code, you should feel more confident creating Lyo projects from scratch.
 
 The steps below guide you through the necessary steps of creating a Java project with the necessary configurations to develop any OSLC server/client using Eclipse Lyo. The instructions assume you are using a modern IDE but should be valid for any development environment.
 
