@@ -42,4 +42,4 @@ Assuming the connection to the platforms is successful, the adaptor is now ready
 
 Test that the adaptor is running correctly by accessing the Service Provider Catalog. Point your browser to: *${baseURL}/services* 
 
-For a sample hands-on tutorial, go [here](/iotp_adaptor/IoTP-Adaptor-Howto).
+For a sample hands-on tutorial, go [here](../IoTP-Adaptor-Howto.md).

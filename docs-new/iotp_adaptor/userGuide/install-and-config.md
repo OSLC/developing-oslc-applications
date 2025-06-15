@@ -1,6 +1,6 @@
 # Installation
 
-The iopt-adaptor is sample code available at [OSLC/iotp-adaptor](https://github.com/OSLC/iotp-adaptor). The GitHub repo does not contain a build of the adaptor, so you will need to build one yourself. [Environment Setup](../environment-setup) describes in detail how to do this in an eclipse Maven project. But if you have maven installed on your machine, you can easily use the command line to build the WAR file.
+The iopt-adaptor is sample code available at [OSLC/iotp-adaptor](https://github.com/OSLC/iotp-adaptor). The GitHub repo does not contain a build of the adaptor, so you will need to build one yourself. [Environment Setup](../environment-setup.md) describes in detail how to do this in an eclipse Maven project. But if you have maven installed on your machine, you can easily use the command line to build the WAR file.
 
 ```
 git clone https://github.com/OSLC/iotp-adaptor.git

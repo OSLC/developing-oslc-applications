@@ -38,7 +38,7 @@ Providing these capabilities enables the integration of OSLC based clients and s
 
 iotp-adaptor is a simple OSLC adaptor that has no persistence of its own and does no user management. Login is delegated to the IBM Watson IoT Platform using your IBM Cloud credentials. All resources are stored in the Watson IoT Platform, and all links between the CE tools and the IoT Platform resources are stored in the CE tools repositories. 
 
-Lyo Designer does generate a Web application that uses OSLC discovery to provide a "debug" interface on the OSLC representations of the IoT Platform resources. See [Generated Debug Web App](./iotp_adaptor/userGuide/debug-interface) for details. This generated Web application could be extended to provide additional UI and integration capabilities that could compliment the Watson IoT Platform UI. However this is not necessary in this case because the Watson IoT Platform already provides a sufficient Web UI. 
+Lyo Designer does generate a Web application that uses OSLC discovery to provide a "debug" interface on the OSLC representations of the IoT Platform resources. See [Generated Debug Web App](iotp_adaptor/userGuide/debug-interface.md) for details. This generated Web application could be extended to provide additional UI and integration capabilities that could compliment the Watson IoT Platform UI. However this is not necessary in this case because the Watson IoT Platform already provides a sufficient Web UI. 
 
 Other adaptors may need additional UI, workflow scripting and other capabilities. Lyo Designer can be used to create a starting point for such applications.
 - No independent storage or user management

@@ -24,7 +24,7 @@ Lyo Designer supports incremental development, where manual changes to the gener
 
 ### Tutorials and Documentation
 
-* How to [install Lyo Designer](./install-lyo-designer)
-* How to use Lyo Designer to [model a toolchain](./toolchain-modelling-workshop) and generate an initial code base
-* How to use Lyo Designer to [model domain specifications](./domain-specification-modelling-workshop), and generate Lyo-annotated Java classes to reflect the defined OSLC Resources.
+* How to [install Lyo Designer](install-lyo-designer.md)
+* How to use Lyo Designer to [model a toolchain](toolchain-modelling-workshop.md) and generate an initial code base
+* How to use Lyo Designer to [model domain specifications](domain-specification-modelling-workshop.md), and generate Lyo-annotated Java classes to reflect the defined OSLC Resources.
 

@@ -20,10 +20,10 @@ This tutorial walks you through a fully developed adapter, with no need to code.
 It is organized into the following parts:
 
 1. This introduction
-2. [__A brief overview of OSLC__](overview_of_oslc)
-3. [**Downloading and starting the sample applications**](running_the_examples)
-3. [**Part 1**, turning Bugzilla into a provider of the Change Management OSLC specification](implementing_an_oslc_provider/1_0_implementing_a_provider). We'll walk through the architecture of the integration, create OSLC catalogs and representations, provide delegated UIs, and allow you to create Bugzilla bugs programmatically.
-4. [**Part 2**, turning a home-grown application into a consumer of the Change Management OSLC specification](integrating_with_an_oslc_provider/2_0_implementing_consumer) that works with the Bugzilla adapter from Part 1. We'll implement links to Bugzilla bugs, UI previews, delegated UIs, and automated bug creation.
+2. [__A brief overview of OSLC__](overview_of_oslc.md)
+3. [**Downloading and starting the sample applications**](running_the_examples.md)
+3. [**Part 1**, turning Bugzilla into a provider of the Change Management OSLC specification](implementing_an_oslc_provider/1_0_implementing_a_provider.md). We'll walk through the architecture of the integration, create OSLC catalogs and representations, provide delegated UIs, and allow you to create Bugzilla bugs programmatically.
+4. [**Part 2**, turning a home-grown application into a consumer of the Change Management OSLC specification](integrating_with_an_oslc_provider/2_0_implementing_consumer.md) that works with the Bugzilla adapter from Part 1. We'll implement links to Bugzilla bugs, UI previews, delegated UIs, and automated bug creation.
 
 ## Audience
 
