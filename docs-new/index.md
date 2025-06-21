@@ -1,10 +1,19 @@
-Open Services for Lifecycle Collaboration (OSLC) is a community that writes specifications to integrate software. Learn more at [Why develop OSLC applications](why-develop-oslc-applications.md) and [at our main site](http://open-services.net/).
+<div class="notice">
+  <div class="header">
+    <h2 class="title">&ldquo;OSL-<a href="http://i.imgur.com/Z5YNc0z.gif">whaaaat</a> now?&rdquo;</h2>
+  </div>
+  <div class="content">
+    Open Services for Lifecycle Collaboration (OSLC) is a community that writes specifications to integrate software. Learn more at <a href="why-develop-oslc-applications.html">Why develop OSLC applications</a> and <a href="http://open-services.net/">at our main site</a>.
+  </div>
+</div>
 
-For a high-level overview of how to add OSLC support to software, we recommend our video "Getting started on implementing OSLC":
+For a high-level overview of how to add OSLC support to software, we recommend our video "[Getting started on implementing OSLC](http://www.youtube.com/watch?v=-oXqudLmNMI)":
 
 <iframe width="640" height="360" src="//www.youtube.com/embed/-oXqudLmNMI" frameborder="0" allowfullscreen></iframe>
 
-## Explore our tutorial
+
+Explore our tutorial
+----------------------------------------------
 
 For a more detailed look at what goes into OSLC support, read through our tutorials "[Integrating Products with OSLC](tutorials.md)", which walks you through building an adapter that adds OSLC support to the popular Bugzilla defect-tracking software. 
 
@@ -27,4 +36,5 @@ If you are **building an OSLC consumer application**, you'll learn how to:
 - [Create new bugs automatically](integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.md)
 
 The tutorial has working sample applications and [detailed instructions for running them](integrating_products_with_oslc/running_the_examples.md).
+
 

@@ -26,19 +26,19 @@ The Lyo Designer code generator creates an [OSLC Core 2.0](https://archive.open-
 
 The iotp-adaptor Developer Guide walks through all of these considerations and provides example solutions. Here's an overview of each of the sections in the Developer Guide:
 
-* [eclipse environment setup](./environment-setup.md): describes how to setup an eclipse development environment for developing the model and code. Eclipse is required in order to use Lyo Designer, which is an eclipse plug-in.
-* [The toolchain model](./toolchain-model.md) - describes the design of the Watson IoT Platform OSLC domain model, and the model of the OSLC services that are provided
-* [Generating the server code](./code-generator.md) - explains how to generate the server implementation using the Lyo Designer code generator with additional details for managing embedded user code.
-* [Exploring the generated code](./exploring-the-code.md)  - looks at the structure of the iotp-adaptor eclipse project, and discusses the key folders and files of the generated application.
-* [https and SSL support](./ssl-support.md) - discusses the important topic of secure connections and how to configure the Web application to support SSL, and how to manage self-assigned certificates.
-* [Authentication](./authentication.md) - addresses the often sticky problem of end-user login as well as server-to-server connections through OAuth.
-* [Creating the rootservices document](./rootservices.md) - Describes how to provide a rootservices document which is required to establish consumer/friend connections between the jazz.net applications (primarily the Jazz Team Server) and the iotp-adaptor.
-* [Connecting Servers](./consumer-friend.md) - describes how to create a consumer/friend relationship using OAuth in order to establish server-to-server communications with jazz.net applications
-* [Artifact Container Associations](./artifact-container-associations.md) - describes how to configure jazz.net application project areas so they are able to access OSLC services provided by iotp-adaptor
-* [Updating generated dialogs](./dialogs.md) - explains how to customize the preview and delegated dialogs created by the Lyo Designer code generator
-* [Implementing a Domain Class](./implement-domain-class.md) - summarizes all of the user code that needs to be developed to implement an adaptor domain class, using DeviceType as an example.
-* [Implementing a TRS Provider](./trs-provider.md) - provides and overview of the design and implementation of the iotp-adaptor TRS provider
-* [JUnit Tests](./junit-tests.md) - describes an example of a typical JUnit test that tests the OSLC CRUD operations of an IoT Platform resource.
+* [eclipse environment setup](./environment-setup.html): describes how to setup an eclipse development environment for developing the model and code. Eclipse is required in order to use Lyo Designer, which is an eclipse plug-in.
+* [The toolchain model](./toolchain-model.html) - describes the design of the Watson IoT Platform OSLC domain model, and the model of the OSLC services that are provided
+* [Generating the server code](./code-generator.html) - explains how to generate the server implementation using the Lyo Designer code generator with additional details for managing embedded user code.
+* [Exploring the generated code](./exploring-the-code.html)  - looks at the structure of the iotp-adaptor eclipse project, and discusses the key folders and files of the generated application.
+* [https and SSL support](./ssl-support.html) - discusses the important topic of secure connections and how to configure the Web application to support SSL, and how to manage self-assigned certificates.
+* [Authentication](./authentication.html) - addresses the often sticky problem of end-user login as well as server-to-server connections through OAuth.
+* [Creating the rootservices document](./rootservices.html) - Describes how to provide a rootservices document which is required to establish consumer/friend connections between the jazz.net applications (primarily the Jazz Team Server) and the iotp-adaptor.
+* [Connecting Servers](./consumer-friend.html) - describes how to create a consumer/friend relationship using OAuth in order to establish server-to-server communications with jazz.net applications
+* [Artifact Container Associations](./artifact-container-associations.html) - describes how to configure jazz.net application project areas so they are able to access OSLC services provided by iotp-adaptor
+* [Updating generated dialogs](./dialogs.html) - explains how to customize the preview and delegated dialogs created by the Lyo Designer code generator
+* [Implementing a Domain Class](./implement-domain-class.html) - summarizes all of the user code that needs to be developed to implement an adaptor domain class, using DeviceType as an example.
+* [Implementing a TRS Provider](./trs-provider.html) - provides and overview of the design and implementation of the iotp-adaptor TRS provider
+* [JUnit Tests](./junit-tests.html) - describes an example of a typical JUnit test that tests the OSLC CRUD operations of an IoT Platform resource.
 
 # Resources
 
@@ -54,3 +54,4 @@ The iotp-adaptor Developer Guide walks through all of these considerations and p
 # Call for Contrubtion
 
 This documentation site is under continuous development as we discover more information about how to develop OSLC clients and servers that integrate with the jazz.net applications. We encourage you to contribute if you find something missing, incorrect, or unclear. You can email suggestions to [Jim Amsden](mailto:jamsden@us.ibm.com).
+

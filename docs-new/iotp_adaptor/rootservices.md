@@ -84,7 +84,7 @@ The rootservices document defines a number of service providers for this purpose
     <oslc_cm:cmServiceProviders rdf:resource="https://ce4iot.rtp.raleigh.ibm.com:9443/iotp/services/catalog/singleton" />
 ```
 
-iotp-adaptor resources are all modeled to be subclasses of oslc_am:Resource, but are "marked" to masquerade as oslc_rm:Requirement and oslc_cm:ChangeRequest in order to be able to participate as link targets to standard OSLC domain link types supported by the jazz.net applications. See [The toolchain model](./toolchain-model) for details.
+iotp-adaptor resources are all modeled to be subclasses of oslc_am:Resource, but are "marked" to masquerade as oslc_rm:Requirement and oslc_cm:ChangeRequest in order to be able to participate as link targets to standard OSLC domain link types supported by the jazz.net applications. See [The toolchain model](./toolchain-model.md) for details.
 
 The service provider catalog URLs are used to access OSLC discovery resources to so the client can discover what OSLC services are available, and at what URL.
 
@@ -165,6 +165,7 @@ String about = (String) request.getAttribute("about");
 		</trs:TrackedResourceSetProvider>		
 	</iotp:trackedResourceSetProvider>
 </rdf:Description>```
+
 
 
 

@@ -14,4 +14,4 @@ In this section, we'll integrate a sample homegrown Customer Relationship Manage
 
 First up, we'll discuss the specific use cases that we want to support.
 
-[Next: Part 2.1, Consumer Use Cases](2_1_consumer_use_cases)
+[Next: Part 2.1, Consumer Use Cases](2_1_consumer_use_cases.md)

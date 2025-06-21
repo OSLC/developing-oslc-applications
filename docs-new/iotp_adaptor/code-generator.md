@@ -12,16 +12,16 @@ The code will be generated in the iotp-adaptor project using the following folde
 
 ![Generated project structure](./images/Generated-project.png "Generated project structure")
 
-We'll be exploring this code in [Exploring the generated code](./exploring-the-code). The rest of this document covers some additional things that are needed after the first generation in order to support integration with the CE jazz.net apps.
+We'll be exploring this code in [Exploring the generated code](./exploring-the-code.md). The rest of this document covers some additional things that are needed after the first generation in order to support integration with the CE jazz.net apps.
 
 ## Add the OAuth REST Service
 
 Integration with the jazz.net apps requires first adding a friend server to the jazz.net app in order to:
 
 1. Establish a secure connection between the servers so they can send and receive HTTP requests
-2. Tell the CE jazz.net apps the URLs of the ServiceProviderCatalog and TRS provider resources. This is done in the rootservices document which is covered further in [Creating the rootservices document](./rootservices).
+2. Tell the CE jazz.net apps the URLs of the ServiceProviderCatalog and TRS provider resources. This is done in the rootservices document which is covered further in [Creating the rootservices document](./rootservices.md).
 
-The CE jazz.net applications support a number of approaches to  establishing secure connections between servers. This important, and often challenging topic is covered in further detail in [Authentication](authentication). 
+The CE jazz.net applications support a number of approaches to  establishing secure connections between servers. This important, and often challenging topic is covered in further detail in [Authentication](authentication.md). 
 
 iotp-adaptor uses [OAuth1.0a](https://oauth.net/core/1.0a/) as the mechanism for establishing secure connections with the CE jazz.net apps because that's what's supported by Eclipse Lyo, and that's what's commonly configured for CE and other OSLC server installations. 
 
@@ -62,7 +62,7 @@ The OAuth classes have to be added by name instead of through imports because th
     RDFWriterFImpl.alternative(null);
 ```
 
-You are now ready to implement each of the domain classes. Details are provided in [Implementing a Domain Class](./implement-domain-class). But first, there's a few details about the code generator that need to be understood in terms of generated vs. user code.
+You are now ready to implement each of the domain classes. Details are provided in [Implementing a Domain Class](./implement-domain-class.md). But first, there's a few details about the code generator that need to be understood in terms of generated vs. user code.
 
 ## Adding User Code to Generated Classes and JSPs
 
@@ -152,3 +152,4 @@ Sometimes you might want to remove any changes you have made and start over with
 Sometimes when resources are renamed or deleted, Java and JSP files might be left laying around. The Lyo Designer code generator never deletes any files. These need to be manually cleaned up.
 
 It can be hard to detect these files because of somewhat long and complex file names. One easy way to find them is to list the files (`ls -t` or `ls -lrth`) sorted by date, or examine their date property in the eclipse properties view. The ones that have dates older than the most recent code generation are the orphaned files that can/should be deleted.
+

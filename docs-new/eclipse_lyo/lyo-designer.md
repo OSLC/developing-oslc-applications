@@ -22,9 +22,11 @@ The resulting code includes:
 
 Lyo Designer supports incremental development, where manual changes to the generated code are preserved upon changes to the model, and subsequent code regeneration.
 
+
 ### Tutorials and Documentation
 
-* How to [install Lyo Designer](install-lyo-designer.md)
-* How to use Lyo Designer to [model a toolchain](toolchain-modelling-workshop.md) and generate an initial code base
-* How to use Lyo Designer to [model domain specifications](domain-specification-modelling-workshop.md), and generate Lyo-annotated Java classes to reflect the defined OSLC Resources.
+* How to [install Lyo Designer](./install-lyo-designer.md)
+* How to use Lyo Designer to [model a toolchain](./toolchain-modelling-workshop.md) and generate an initial code base
+* How to use Lyo Designer to [model domain specifications](./domain-specification-modelling-workshop.md), and generate Lyo-annotated Java classes to reflect the defined OSLC Resources. 
+* If you want to contribute to Lyo Designer, you can [work from its source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)
 

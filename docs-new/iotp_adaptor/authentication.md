@@ -13,7 +13,7 @@ The jazz.net CE applications establish client/server communication in 2 steps:
 1. Creating a relationship at the application/server level ("friendship" or consumer-provider/client-server relationship), which enables the two applications to communicate, and
 1. Creating artifact container associations at the project area level, which for the jazz.net apps specifies for an individual project area which artifact containers (or service providers, often other project areas) on other servers it can access.
 
-Project area associations are used to establish connections between service providers to enable access through OSLC. These associations are primarily used for creation and selection dialogs, and resource preview, providing the OSLC discovery information the clients need to get the creation and selection dialog URLs, the queryBase URL, etc. This important topic is covered in [Artifact Container Associations](./artifact-container-associations).
+Project area associations are used to establish connections between service providers to enable access through OSLC. These associations are primarily used for creation and selection dialogs, and resource preview, providing the OSLC discovery information the clients need to get the creation and selection dialog URLs, the queryBase URL, etc. This important topic is covered in [Artifact Container Associations](./artifact-container-associations.md).
 
 This section deals with authentication in the context of integrating an OSLC server with the jazz.net apps. There are two kinds of authentication to consider:
 
@@ -249,3 +249,4 @@ OAuth Authentication is done in following steps:
 8. Upon successful validation, the service provider issues the access token to access the protected resources.
 9. After the OAuth handshake completes, the access token is issued and the consumer can use the access token to access the protected resources on behalf of the user.
 10. The service provider validates each incoming OAuth request and returns the protected resources if the consumer is authorized.1: Obtaining the Unauthorized Request Token
+

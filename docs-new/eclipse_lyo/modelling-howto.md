@@ -1,4 +1,5 @@
-## Configuring the URLs of JAX-RS web services {#configure-service-url}
+<a name="configure-service-url"></a>Configuring the URLs of JAX-RS web services
+==================
 
 For each **ServiceProviderCatalog**, **ServiceProvider** and **Service** in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify the following optional properties:
 
@@ -26,15 +27,15 @@ For the **Service** web Service:
     service provider (*relativeToServiceProvider*), or it should be
     standalone (*independantOfServiceProvider*).
 
-## Handling Large Models {#handling-large-models}
-
+<a name="handling-large-models"></a>Handling Large Models
+==================
 To manage large models, Lyo Designer supports two model structuring techniques, which will be detailed in the following subsections:
 
 1. Creating multiple diagrams within the same model file
 1. Composing a model into multiple model files
 
-### Common Domains
-
+Common Domains
+---------------
 But first a sample model that can be used to illustrate the suggested techniques.
 
 A model of the OSLC and other common domains is already available for reuse. To reuse these common specifications:
@@ -46,8 +47,8 @@ A model of the OSLC and other common domains is already available for reuse. To 
 
 In the next subsections, you will learn how to import this model into other models for reuse.
 
-### Creating multiple diagrams within the same model file
-
+Creating multiple diagrams within the same model file
+---------------
 Within a single model, you can create any number of diagrams, each of which can contain any number of (overlapping) Domain Specifications.
 
 1. Open the Model Explorer view.
@@ -62,8 +63,8 @@ You can define your Domain Specifications in any of these diagrams. Note the fol
     * Once defined in a diagram, you can drag-drop a Domain Specification from the Model Explorer view into any other diagram to represent that domain in additional diagrams.
 * a change to a model entity (a Domain Specification, Resource, Resource Property) are reflected in all diagrams.
 
-### Composing a model into multiple model files
-
+Composing a model into multiple model files
+---------------
 You can import and use a previously defined model, through the addition of *Project Dependencies*:
 
 1. In the *Model Explorer* view, right-click on the *Project Dependencies* entry within the modelling project, and select **Add Model**.
@@ -75,7 +76,8 @@ You can import and use a previously defined model, through the addition of *Proj
     1. You can drag-drop any Domain Specification into an existing SpecificationDiagram to visualize its content.
     1. Also, when selecting the Resource Properties of a Resource, you will notice that all imported Resource properties are available as well.
 
-## Controlling the generation parameters of Domain Specification(s) {#controlling-generation-parameters}
+<a name="controlling-generation-parameters"></a>Controlling the generation parameters of Domain Specification(s)
+=========================
 
 By default, the Java classes corresponding to the OSLC Resources of Domain Specification are generated under the same destination folder path as the containing overall model. Similarly, the java package name is the same as that of the containing model.
 
@@ -103,4 +105,4 @@ The following rules applies when generation settings are set at different levels
 * The generation settings of a specific Domain Specification (if defined) override those set for the overall Specification model.
 * The generation settings of the overall Specification model (if defined) override those set for a specific Tool Adaptor.
 
-**Important to note** that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource *oslc:Requirement* contains a reference property *dcterms:creator*, whose range is Resource *foaf:Person*. If the *OSLC* and *FOAF* Domain Specifications are generated into different maven projects, the *OSLC* maven project should include a maven dependency to the *FOAF* maven project.
+**Important to note** that when related Java classes are distributed into different Java projects, it is necessary to set dependencies betweeen these Java projects, in order for the code to compile. For example Resource *oslc:Requirement* contains a reference property *dcterms:creator*, whose range is Resource *foaf:Person*. If the *OSLC* and *FOAF* Domain Specifications are generated into different maven projects, th   e *OSLC* maven project should include a maven dependency to the *FOAF* maven project.

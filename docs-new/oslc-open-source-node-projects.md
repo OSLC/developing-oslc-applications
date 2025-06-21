@@ -22,5 +22,3 @@ A [oslc4js Slack Channel](https://openintegrations.slack.com/archives/oslc4js) h
 [OSLC Server](https://github.com/OSLC/oslc-server) | A minimal OSLC server that uses the oslc-service and ldp-service and can be accessed using a browser REST client. An instance of this server is deployed to IBM Bluemix in order to provide a platform for OSLC experimentation and testing. | [Wiki](https://github.com/OSLC/oslc-server/wiki)
 [LDP App](https://github.com/OSLC/ldp-app) | A sample [Linked Data Platform](https://www.w3.org/TR/2015/REC-ldp-20150226/) (LDP) Web application that uses the LDP Service and supports CRUD operations and a graph of linked data. | [Wiki](https://github.com/OSLC/ldp-app/wiki)
 [LDP Service](https://github.com/OSLC/ldp-service) | Express middleware providing LDP capabilities to Web apps, with storage of JSON-DL in MongoDB. | [Wiki](https://github.com/OSLC/ldp-service/wiki)<br>[npm package](https://www.npmjs.com/package/ldp-service)
-
-

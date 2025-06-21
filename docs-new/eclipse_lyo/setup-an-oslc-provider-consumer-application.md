@@ -50,12 +50,12 @@ equally valid for any other development environment.
 - [Run the server](#run-the-server)
 
 ## An alternative to the manual steps below
-An alternative to the instructions on this page is to instead use [Lyo Designer](./designer.md) to quickly generate the project, including a very basic code skeleton. The generated project will also include the neccessary setup for OpenApi/Swagger support, TRS, etc.
+An alternative to the instructions on this page is to instead use [Lyo Designer](./lyo-designer.md) to quickly generate the project, including a very basic code skeleton. The generated project will also include the neccessary setup for OpenApi/Swagger support, TRS, etc.
 1. Make sure your environment is setup for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md)
 1. install [Lyo Designer](./install-lyo-designer.md)
-1. Follow the [Create a Modelling Project](./toolchain-modelling-workshop.md#create-modelling-project) instructions (*Only this particular section*) to create the Eclipse project.
-1. Follow the [Adapter Interface](./toolchain-modelling-workshop.md#adaptor-interface-view) instructions (*Only this particular section*) to create a single Adaptor Interface in the model. You do not need to create any additional elements, such as a Service Provider Catalog, Service Provider, etc. Just make sure you set the generation settings as expected.
-1. Follow the [Generate Lyo Java code](./toolchain-modelling-workshop.md#generate-oslc4j-java-code) instructions (*Only this particular section*) to generate your basic project setup.
+1. Follow the [Create a Modelling Project](./toolchain-modelling-workshop#create-modelling-project) instructions (*Only this particular section*) to create the Eclipse project.
+1. Follow the [Adapter Interface](./toolchain-modelling-workshop#adaptor-interface-view) instructions (*Only this particular section*) to create a single Adaptor Interface in the model. You do not need to create any additional elements, such as a Service Provider Catalog, Service Provider, etc. Just make sure you set the generation settings as expected.
+1. Follow the [Generate Lyo Java code](./toolchain-modelling-workshop#generate-oslc4j-java-code) instructions (*Only this particular section*) to generate your basic project setup.
 1. You are done! But of course, you can proceed with Lyo Designer to model your complete OSLC Server/Client and generate even more of your project code.
 
 ## Introduction
@@ -636,7 +636,7 @@ You can copy the yaml file to a [Swagger Editor](https://editor.swagger.io), to 
 The *TRS Server* library is a set of ready-to-use classes that provide the required REST services for TRS, with minimal effort. 
 The current implementation supports an In-memory TRS Server that does not persist its TRS resources.
 These classes are however designed to be extended for a persistent solution. 
-For a thourough walkthough of TRS solutions, which among other things ensures persisting the TRS Logs, visit the [additional information on TRS](./index.md#trs-sdk)  
+For a thourough walkthough of TRS solutions, which among other things ensures persisting the TRS Logs, visit the [additional information on TRS](./eclipse-lyo#trs-sdk)  
 
 ### Add Maven dependencies
 
@@ -760,3 +760,4 @@ You can now access your server from http://localhost:8080/adaptor-sample
 * *adaptor-sample* and *8080* will depend on your particular settings, as instructed above.
 
 > **Pro Tip:** If you get the error *Project configuration is not up-to-date with pom.xml*, simply right click on the eclipse project and select *Maven ➞ Update Project* ...
+

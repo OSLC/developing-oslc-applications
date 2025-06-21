@@ -23,7 +23,7 @@ Jad El-Khoury maintains an adaptor that is code generated under a public reposit
 * git clone http://git.md.kth.se:8080/scm/git/se.kth.md.iee.pub
 * Then import existing projects into your workspace browsing to `~/git/se.kth.md.iee.pub`. There will be four eclipse projects that can be imported from there.
 
-The toolchain code generator creates an {adapter}Manager class that has to be implemented after code generation to get, create and search domain model elements. See [Exploring the generated code](./exploring-the-code) and [Implementing a Domain Class](./implement-domain-class) for details.
+The toolchain code generator creates an {adapter}Manager class that has to be implemented after code generation to get, create and search domain model elements. See [Exploring the generated code](./exploring-the-code.md) and [Implementing a Domain Class](./implement-domain-class.md) for details.
 
 The eclipse setup information at [Installing Lyo Designer](https://github.com/eclipse/lyo.designer/wiki/User-Manual-for-Domain-Specification-Modelling#eclipse-setup) includes all the packages necessary to also run an OSLC4J application. To build the generator itself, all that is necessary is (1) Acceleo (2) EMF Facet SDK and (3) EMF - Eclipse Modeling Framework SDK (Diagram Editor for Ecore is optional). The Lyo Designer editor is a Sirius 5.x model editor.
 
@@ -51,7 +51,7 @@ The toolchain model is structured around the following three viewpoints:
 
 ## Install the code generator
 
-See [eclipse environment setup](./environment-setup) for detailed instructions on how to install the Lyo Code Generator and Toolchain. Here's a brief summary:
+See [eclipse environment setup](./environment-setup.md) for detailed instructions on how to install the Lyo Code Generator and Toolchain. Here's a brief summary:
 
 1. Install eclipse OXYGEN.3, Eclipse IDE for Java EE Developers
 1. Set JAVA_HOME
@@ -224,7 +224,7 @@ An easy way to solve this is to provide only a single creation dialog, and add a
   	<option value="rule">Rule</option>
   </select>
 ```
-We'll cover this in more detail when looking at the [generated code](./exploring-the-code). For now, we'll have Lyo Designer just generate a single creation dialog for generic resources, and edit the generated dialogs to add the type select element and the code for processing it.
+We'll cover this in more detail when looking at the [generated code](./exploring-the-code.md). For now, we'll have Lyo Designer just generate a single creation dialog for generic resources, and edit the generated dialogs to add the type select element and the code for processing it.
 
 ![Creation Dialogs](./images/Creation-Dialogs.png "Creation Dialogs")
 
@@ -296,6 +296,7 @@ The current implementation does not support the OSLC query capability. Rather th
 
 The final part of the adaptor model is the iotp-adaptor Toolchain diagram. A Toolchain diagram defines the OSLC client and server applications that will be generated that consume and provide OSLC domain resources using the defined services. Each adaptor interface of the toolchain defines an OSLC server that can provide and consume resources. For iotp-adaptor, like most OSLC adapters, there is only one adaptor interface, and it only provides managed resources, it doesn't consume any from any other OSLC server.
 
-![iotp-adaptor](./images/CE4IoTConnector.png "iotp-adaptor Toolchain")
+![iotp-adaptor](./images/iotp-adaptor.png "iotp-adaptor")
 
 The Java Class Base Namespace `com.ibm.oslc.adaptor.iotp` provides the package name to be used to contain all the generated Java classes.
+

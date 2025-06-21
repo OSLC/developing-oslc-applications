@@ -11,4 +11,4 @@ started with adding OSLC support to existing applications:
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-oXqudLmNMI" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Next: [Part 1.1, Planning Partial CM Provider](1_1_planning_partial_cm_provider) 
+Next: [Part 1.1, Planning Partial CM Provider](1_1_planning_partial_cm_provider.md) 

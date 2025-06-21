@@ -143,11 +143,11 @@ Most of the REST services are defined in a set of generate services classes.
 
 ## Resource classes
 
-All the iotp-adaptor resources are generated into the com.ibm.oslc.adaptor.iotp.resources package. These classes provide the interface and implementation of all the bmx and iotp domain classes. See [Implementing a Domain Class](./implement-domain-class) for details on what additional development needs to be done to complete the domain class implementations.
+All the iotp-adaptor resources are generated into the com.ibm.oslc.adaptor.iotp.resources package. These classes provide the interface and implementation of all the bmx and iotp domain classes. See [Implementing a Domain Class](./implement-domain-class.md) for details on what additional development needs to be done to complete the domain class implementations.
 
 ## The CE4IoTConnectorManager
 
-The CE4IoTConnectorManager class is where most of adaptor code is implemented. The stubbed methods generated in this class define the low-level CRUD operations used to implement the REST services. There is a set of method created for each domain class to create, get, update, delete and query instances of that class. See [Implementing a Domain Class](./implement-domain-class) for details on how these methods are implemented using the IoT Platform and Bluemix REST APIs.
+The CE4IoTConnectorManager class is where most of adaptor code is implemented. The stubbed methods generated in this class define the low-level CRUD operations used to implement the REST services. There is a set of method created for each domain class to create, get, update, delete and query instances of that class. See [Implementing a Domain Class](./implement-domain-class.md) for details on how these methods are implemented using the IoT Platform and Bluemix REST APIs.
 
 ## Other Implementation Classes
 
@@ -163,6 +163,7 @@ There are a number of other classes that implement capabilities needed by CE4IoT
 | IoTPAPIImpelementation | Implements methods to create service provider info instances (described above) from the Bluemix and IoT platform organizations the user is a member of |
 | IoTPClient | provides a minimal Java API for logging into the Watson IoT Platform and doing CRUD operations on platform resources using the IoT Platform REST APIs. |
 | RootServicesService | A servlet that implements the rootservices resource needed to integrate with the IBM jazz-apps |
+
 
 
 

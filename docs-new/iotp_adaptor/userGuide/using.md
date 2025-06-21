@@ -44,4 +44,4 @@ Individual tools often provide their own fine-grained traceability and impact an
 
 With Rational Engineering Lifecycle Manager you unlock the data from the CE applications, and perform impact analysis across tools. Each individual tool provides additional details that support a richer impact analysis of change.
 
-iotp-adaptor supports a minimal OSLC Tracked Resource Set (TRS) provider for IoT Platform device types. See the [IBM Continuous Engineering Connector for IoT in Rational Engineering Lifecycle Manager 6.0.5.1](https://jazz.net/downloads/ce4iot-connector/releases/6.0.5.1?p=userGuide) documentation for information on how to configure iotp-adaptor as an LQE data source, and to create RELM views.
+iotp-adaptor supports a minimal OSLC Tracked Resource Set (TRS) provider for IoT Platform device types. See the [IBM Continuous Engineering Connector for IoT in Rational Engineering Lifecycle Manager 6.0.5.1](https://jazz.net/downloads/ce4iot-connector/releases/6.0.5.1?p=userGuide) documentation for information on how to configure iotp-adaptor as an LQE data source, and to create RELM views. 

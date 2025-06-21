@@ -4,7 +4,7 @@ This section explains how to setup the development environment to run the OSLC4J
 
 ## Environment Setup
 
-Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development). The tutorial requires JDK 8 to be used. The code may run on JDK 11 with the warnings, and certain parts may fail to run on JDK 17 as of 2022-05.
+Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development.md). The tutorial requires JDK 8 to be used. The code may run on JDK 11 with the warnings, and certain parts may fail to run on JDK 17 as of 2022-05.
 
 ## Bugzilla Setup
 
@@ -99,4 +99,5 @@ This will start the application. You will see a lot of messages in the Console v
 
 When the server starts, in your web browser navigate to [http://localhost:8181/ninacrm](http://localhost:8181/ninacrm) to see the NinaCRM example.
 
-Next: [Part 1, turning Bugzilla into a provider of the Change Management OSLC specification](implementing_an_oslc_provider/1_0_implementing_a_provider)
+Next: [Part 1, turning Bugzilla into a provider of the Change Management OSLC specification](implementing_an_oslc_provider/1_0_implementing_a_provider.md)
+

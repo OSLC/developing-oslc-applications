@@ -16,7 +16,7 @@ Here's how UI Preview works in an OSLC consumer:
 4. You send an HTTP GET for the small or large preview.
 5. The OSLC provider returns HTML that you can show to the user.
 
-We explored the OSLC Provider side of this in more detail  [earlier in this tutorial](../implementing_an_oslc_provider/1_4_ui_preview).
+We explored the OSLC Provider side of this in more detail  [earlier in this tutorial](../implementing_an_oslc_provider/1_4_ui_preview.md).
 
 ### Example XML for a UI preview
 
@@ -81,7 +81,7 @@ With a proxy service, we can now implement the rest of UI Previews in the browse
 
 ### Displaying Links to resources
 
-[Starting the NinaCRM sample application and the Bugzilla adapter](../running_the_examples).
+[Starting the NinaCRM sample application and the Bugzilla adapter](../running_the_examples.md).
 
 Open <http://localhost:8181/ninacrm/> in a web browser. You'll see a sample incident:
 
@@ -221,4 +221,5 @@ Hover over any of the **Related Defects** links. (You will probably have to log 
 Next up, we'll explore how to use OSLC Delegated UIs to allow our support reps to both select and create new bugs in Bugzilla without leaving the NinaCRM application.
 
 
-[Next: Part 2.3, DelegatedUI](2_3_delegatedUI)
+[Next: Part 2.3, DelegatedUI](2_3_delegatedUI.md)
+

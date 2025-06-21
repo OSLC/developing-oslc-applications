@@ -234,8 +234,9 @@ Note that the selection dialog above will show all Change Requests available for
 </p>
 </div>
 
-We'll put this delegated UI to use later when we [implement it in the NinaCRM sample application](../integrating_with_an_oslc_provider/2_2_links_and_previews).
+We'll put this delegated UI to use later when we [implement it in the NinaCRM sample application](../integrating_with_an_oslc_provider/2_2_links_and_previews.md).
 
 Next, we'll create a delegated UI that will allow users to create new bugs in Bugzilla.
 
-[Next: Part 1.6, UI Creation](1_6_ui_creation)
+[Next: Part 1.6, UI Creation](1_6_ui_creation.md)
+

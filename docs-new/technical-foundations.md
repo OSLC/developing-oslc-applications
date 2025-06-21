@@ -8,11 +8,12 @@ To build software that supports OSLC, you should be familiar with the following 
 
 If you're new to linked data and RDF, we've put together [a playlist of videos](https://archive.open-services.net/resources/videos/linked-data-and-rdf-overview-playlist/) that can help you catch up.
 
+
 ### RESTful web architecture and HTTP
 
 You should be familiar with designing [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer#Architectural_constraints) applications.
 
-For a quick primer, we recommend ["Learn REST" by Dr. M. Elkstein](http://rest.elkstein.org/), particularly these sections:
+For a quick primer, we recommend [“Learn REST” by Dr. M. Elkstein](http://rest.elkstein.org/), particularly these sections:
 
 1. [What is REST?](http://rest.elkstein.org/2008/02/what-is-rest.html)
 2. [REST as Lightweight Web Services](http://rest.elkstein.org/2008/02/rest-as-lightweight-web-services.html)
@@ -22,11 +23,13 @@ For a quick primer, we recommend ["Learn REST" by Dr. M. Elkstein](http://rest.e
 
 For OSLC implementations, you must use [HTTP protocol](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol).
 
+
 ### RDF, Turtle, JSON, and HTML
 
 We require services and resources to be represented in [**RDF**](http://www.w3.org/RDF/), but you might prefer to supplement that with a variety of machine-readable and human-readable formats like Turtle, JSON, or HTML.
 
 Instead of string parsing and regular expressions, you will definitely want to explore using an RDF parser such as [Apache Jena](http://jena.apache.org/).
+
 
 ### OAuth
 

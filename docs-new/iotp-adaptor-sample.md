@@ -1,8 +1,6 @@
-# IoTP Adaptor Sample
-
 iotp-adaptor is a partial implementation of an OSLC adapter for IBM Watson IoT Platform resources developed using eclipse/Lyo Designer. This adaptor provides an example of how to build an OSLC adaptor using [Lyo Designer](https://github.com/eclipse/lyo.designer/wiki), and how to customize the generated adaptor to expose Watson IoT Platform resources through OSLC capabilities and enable integration with IBM's jazz.net based [Continuous Engineering](https://jazz.net/products/continuous-engineering-solution/) solution.  
 
-The [iotp-adaptor project](https://github.com/OSLC/iotp-adaptor) provides source code for a subset of [IBM Rational Engineering Lifecycle Manager](https://jazz.net/products/rational-engineering-lifecycle-manager/) (CE) version 6.0.6. The intent of providing this source code and documentation is help others who are developing OSLC integrations with IBM offerings. The [Developer Guide](iotp_adaptor/developer-guide.md) provides the additional information you need to integrate OSLC clients and servers with the IBM jazz-based applications. This includes:
+The [iotp-adaptor project](https://github.com/OSLC/iotp-adaptor) provides source code for a subset of [IBM Rational Engineering Lifecycle Manager](https://jazz.net/products/rational-engineering-lifecycle-manager/) (CE) version 6.0.6. The intent of providing this source code and documentation is help others who are developing OSLC integrations with IBM offerings. The [Developer Guide](./iotp_adaptor/developer-guide.md) provides the additional information you need to integrate OSLC clients and servers with the IBM jazz-based applications. This includes:
 
 * Providing a rootservices document for discovering server discovery capabilities
 * Establishing Consumer/Friend relationships using OAuth to allow servers to interact
@@ -10,15 +8,15 @@ The [iotp-adaptor project](https://github.com/OSLC/iotp-adaptor) provides source
 * What link types are available in each of the applications based on the chosen artifact container association
 * Specific integration requirements of each CE application (RDNG, RTC and RQM) that you need to know to get the integrations working
 
-[iotp-adaptor User Guide](iotp_adaptor/userGuide/user-guide.md) is a simple user's guide for installing, configuring, administering and using iotp-adapter with the CE tools.
+[iotp-adaptor User Guide](./iotp_adaptor/userGuide/user-guide.md) is a simple user's guide for installing, configuring, administering and using iotp-adapter with the CE tools.
 
-[iotp-adaptor Developer Guide](iotp_adaptor/developer-guide.md) provides the complete documentation on how the server was developed.
+[iotp-adaptor Developer Guide](./iotp_adaptor/developer-guide.md) provides the complete documentation on how the server was developed.
 
 ## What is an Adaptor?
 
 Developing integrations using OSLC follows a number of common patterns:
 
-* **Facade** - OSLC native implementation in the tool or through a plugin using tool's extensibility mechanisms - very tool specific
+* **Facade** - OSLC native implementation in the tool or through a plugin using tool’s extensibility mechanisms - very tool specific
 * **Mediator** - OSLC adapter for the tool (tool responsible for storage) - using Lyo Designer, factors out all OSLC capabilities and requires only implementation of connector manager.
 * **Data mining** - into common OSLC manager (e.g. Rational Design Manager, MID Smartfacts) can result in data redundancy and ETL overhead
 * **Synchronization** - of common or overlapping data between tools - limited traceability and impact analysis (e.g., Tasktop Integration Hub)
@@ -38,90 +36,11 @@ Providing these capabilities enables the integration of OSLC based clients and s
 
 iotp-adaptor is a simple OSLC adaptor that has no persistence of its own and does no user management. Login is delegated to the IBM Watson IoT Platform using your IBM Cloud credentials. All resources are stored in the Watson IoT Platform, and all links between the CE tools and the IoT Platform resources are stored in the CE tools repositories. 
 
-Lyo Designer does generate a Web application that uses OSLC discovery to provide a "debug" interface on the OSLC representations of the IoT Platform resources. See [Generated Debug Web App](iotp_adaptor/userGuide/debug-interface.md) for details. This generated Web application could be extended to provide additional UI and integration capabilities that could compliment the Watson IoT Platform UI. However this is not necessary in this case because the Watson IoT Platform already provides a sufficient Web UI. 
+Lyo Designer does generate a Web application that uses OSLC discovery to provide a "debug" interface on the OSLC representations of the IoT Platform resources. See [Generated Debug Web App](./iotp_adaptor/userGuide/debug-interface.md) for details. This generated Web application could be extended to provide additional UI and integration capabilities that could compliment the Watson IoT Platform UI. However this is not necessary in this case because the Watson IoT Platform already provides a sufficient Web UI. 
 
-Other adaptors may need additional UI, workflow scripting and other capabilities. Lyo Designer can be used to create a starting point for such applications.
-- No independent storage or user management
+Other adaptors may need additional UI, workflow scripting and other capabilities. Lyo Designer can be used to create a starting point for such applications. 
 
-#### Complex Adaptors
-- Provide OSLC capabilities on multiple data sources
-- Include integration hub functionality
-- Own storage facilities and user management
-- Custom UI for unsupported integrations
 
-### OSLC Capabilities
 
-Essential OSLC services that adaptors provide:
 
-!!! success "Core OSLC Services"
-    - **CRUD Operations** - Resource management with RDF representations
-    - **Service Discovery** - ServiceProviderCatalog and ServiceProviders
-    - **Query Capability** - Tool-independent resource querying
-    - **Delegated Dialogs** - Cross-application resource creation/selection
-    - **Resource Preview** - Link visualization with icons and labels
-    - **Tracked Resource Sets** - Efficient cross-tool data contribution
 
-### Integration Support Levels
-
-**Enabling Integration:**
-- Provides OSLC capabilities for resource linking
-- Focuses on predictable formats and rich semantics
-- Supports basic cross-tool connections
-
-**Supporting Integration:**
-- Establishes and maintains link semantics
-- Enables workflow automation based on link relationships
-- Provides advanced integration logic
-
-## IoTP Adaptor Architecture
-
-The iotp-adaptor is designed as a **simple OSLC adaptor** with the following characteristics:
-
-!!! info "Architecture Details"
-    - **No Independent Persistence** - All data stored in Watson IoT Platform
-    - **Delegated Authentication** - Uses IBM Cloud credentials via Watson IoT Platform
-    - **Distributed Link Storage** - Links stored in CE tools repositories
-    - **Generated Debug Interface** - Web application for OSLC resource debugging
-
-### Authentication Flow
-
-```mermaid
-graph LR
-    A[User] --> B[iotp-adaptor]
-    B --> C[IBM Watson IoT Platform]
-    C --> D[IBM Cloud Authentication]
-    D --> E[Access Granted]
-```
-
-### Resource Management
-
-- **Resource Storage**: Watson IoT Platform
-- **Link Management**: CE tools repositories  
-- **User Interface**: Watson IoT Platform Web UI
-- **Debug Interface**: Generated by Lyo Designer
-
-!!! note "Extension Possibilities"
-    The generated Web application can be extended to provide additional UI and integration capabilities complementing the Watson IoT Platform UI.
-
-## Getting Started
-
-1. **Review Documentation**
-   - [Developer Guide](iotp_adaptor/developer-guide.md) for development details
-   - [User Guide](iotp_adaptor/userGuide/user-guide.md) for setup instructions
-
-2. **Explore the Code**
-   - [GitHub Repository](https://github.com/OSLC/iotp-adaptor)
-   - Generated adapter code structure
-   - Custom integration implementations
-
-3. **Set Up Environment**
-   - Follow [environment setup guide](iotp_adaptor/environment-setup.md)
-   - Configure IBM Watson IoT Platform
-   - Set up CE tools integration
-
-## Related Resources
-
-- [Eclipse Lyo Designer](eclipse_lyo/designer.md)
-- [OSLC Technical Foundations](technical-foundations.md)
-- [Sample Applications and Code](samples.md)
-- [Why Develop OSLC Applications](why-develop-oslc-applications.md)

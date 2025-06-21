@@ -4,7 +4,7 @@ By creating this friend relationship and associating project areas, you can link
 
 ## Adding A Friend
 
-[The User Guide](./userGuide/administration) documents how to add a friend to the jazz.net consumer apps to the iotp-adaptor server. Adding a friend requires the URL to the iotp-adaptor rootservices document. This URL must be known to the user and is typically `https://server:port/rootservices`. 
+[The User Guide](./userGuide/administration.md) documents how to add a friend to the jazz.net consumer apps to the iotp-adaptor server. Adding a friend requires the URL to the iotp-adaptor rootservices document. This URL must be known to the user and is typically `https://server:port/rootservices`. 
 
 An administrator opens the jazz.net server admin page, typically the Jazz Team Server (JTS), and adds a friend providing the iotp-adaptor server rootservices URL.  The JTS uses the OAuth1.0a URLs in the rootservices document to know what authentication scheme to use. The administrator specifies the OAuth secret and the server generates the consumer key. The authentication is completed by having an admin of the iotp-adaptor server accept the provisional key which completes the OAuth authentication sequence. 
 
@@ -53,4 +53,5 @@ This dependency in the iotp-adaptor pom.xml file causes the oauth-webapp to be m
     <type>war</type>
 </dependency>
 ```
+
 

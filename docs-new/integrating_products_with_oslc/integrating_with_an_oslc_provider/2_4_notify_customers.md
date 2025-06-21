@@ -36,7 +36,7 @@ OSLC providers are required to provide an RDF/XML representation of resources; h
 
 If you send the same request with an `Accept` header with the content `application/rdf+xml`, you should receive RDF/XML back from the adapter.
 
-You can explore this further using Postman, Insomnia, or another REST client, as well as the Bugzilla adapter [where we implemented OSLC representations of Bugzilla bugs](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
+You can explore this further using Postman, Insomnia, or another REST client, as well as the Bugzilla adapter [where we implemented OSLC representations of Bugzilla bugs](../implementing_an_oslc_provider/1_3_intro_to_oslc4j.md).
 
 Here's a sample Bugzilla bug represented as an RDF/XML BugzillaChangeRequest resource:
 
@@ -80,7 +80,7 @@ Inside the `<rdf:RDF>` root element, there is an `<rdf:Description>` element wit
 
 OSLC resources use Dublin Core defined properties, like `title`, `description`, and `id`. They also use OSLC defined properties like `status`, `closed`, and `inprogress`. You can find a listing of the different types of properties allowed and required in the [OSLC-CM specification](https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-spec.html). There are also Bugzilla specific properties like `component` and `priority`. 
 
-You can learn more about how our OSLC Bugzilla Adapter generates these representations [here](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
+You can learn more about how our OSLC Bugzilla Adapter generates these representations [here](../implementing_an_oslc_provider/1_3_intro_to_oslc4j.md).
 
 
 ## Parsing an OSLC resource
@@ -178,4 +178,5 @@ The real power of OSLC on display here is that although we've written this code 
 
 Next, now that we have a simple understanding of Jena, we'll use it to help us automatically create Bugzilla bugs – no human involvement required.
 
-[Next: Part 2.5, Automatic Bugs](2_5_automatic_bugs)
+[Next: Part 2.5, Automatic Bugs](2_5_automatic_bugs.md)
+

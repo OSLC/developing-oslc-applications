@@ -13,4 +13,5 @@ Here are the major resources defined in the [OSLC Core specification](https://ar
 | Delegated User Interface (UI) dialogs | A method for embedding an interface to create or find resources inside another tool | [OSLC Primer: Delegated UI dialogs](https://open-services.net/resources/oslc-primer/#delegated-user-interface-dialogs) |
 | UI Previews | A method for discovering and displaying a preview of a resource in another tool | [OSLC Primer: UI Preview](https://open-services.net/resources/oslc-primer/#ui-preview) |
 
+
 To explore some of our other specifications, the OSLC Core Workgroup maintains [a list of OSLC vocabularies and specifications](https://archive.open-services.net/wiki/core/Vocabulary-index/) that includes relationship diagrams.
