@@ -112,8 +112,8 @@ plugins:
       separator: '[\s\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;'
   - redirects:
       redirect_maps:
-        'eclipse_lyo/eclipse-lyo.html': 'eclipse_lyo/index.md'
-        'eclipse_lyo/setup-an-oslc-provider-consumer-application.html': 'eclipse_lyo/setup.md'
+        'eclipse_lyo/eclipse-lyo.html': 'eclipse_lyo/eclipse-lyo.md'
+        'eclipse_lyo/setup-an-oslc-provider-consumer-application.html': 'eclipse_lyo/setup-an-oslc-provider-consumer-application.md'
         'eclipse_lyo/lyo-designer.html': 'eclipse_lyo/designer.md'
         'eclipse_lyo/lyo-core-internals.html': 'eclipse_lyo/lyo-core-internals.md'
         'eclipse_lyo/install-lyo-designer.html': 'eclipse_lyo/install-lyo-designer.md'
@@ -123,7 +123,7 @@ plugins:
         'eclipse_lyo/modelling-howto.html': 'eclipse_lyo/modelling-howto.md'
         'eclipse_lyo/lyo-as-osgi-bundles.html': 'eclipse_lyo/lyo-as-osgi-bundles.md'
         'tutorials.html': 'tutorials.md'
-        'sample-applications-and-code.html': 'samples.md'
+        'sample-applications-and-code.html': 'sample-applications-and-code.md'
         'technical-foundations.html': 'technical-foundations.md'
         'why-develop-oslc-applications.html': 'why-develop-oslc-applications.md'
         'services-resources-and-design-patterns.html': 'services-resources-and-design-patterns.md'
@@ -168,8 +168,8 @@ nav:
         - Automatic Bugs: integrating_products_with_oslc/integrating_with_an_oslc_provider/2_5_automatic_bugs.md
   - Eclipse Lyo:    
     - Lyo Java SDK:
-      - Overview: eclipse_lyo/index.md
-      - Setup Guide: eclipse_lyo/setup.md
+      - Overview: eclipse_lyo/eclipse-lyo.md
+      - Setup Guide: eclipse_lyo/setup-an-oslc-provider-consumer-application.md
       - Eclipse Setup: eclipse_lyo/eclipse-setup-for-lyo-based-development.md
       - Migration Guides:
         - Migration Overview: eclipse_lyo/migration-overview.md
@@ -190,7 +190,7 @@ nav:
   - OSLC4Net: https://oslc4net.github.io/
   - PyOSLC: https://github.com/cslab/pyoslc
   - Sample Applications:
-    - Overview: samples.md
+    - Overview: sample-applications-and-code.md
     - IoTP Adaptor: 
         - IoTP Adaptor Sample: iotp-adaptor-sample.md
         - User Guide: iotp_adaptor/userGuide/user-guide.md
