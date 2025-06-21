@@ -296,6 +296,6 @@ The current implementation does not support the OSLC query capability. Rather th
 
 The final part of the adaptor model is the iotp-adaptor Toolchain diagram. A Toolchain diagram defines the OSLC client and server applications that will be generated that consume and provide OSLC domain resources using the defined services. Each adaptor interface of the toolchain defines an OSLC server that can provide and consume resources. For iotp-adaptor, like most OSLC adapters, there is only one adaptor interface, and it only provides managed resources, it doesn't consume any from any other OSLC server.
 
-![iotp-adaptor](./images/CE4IoTConnector.png "iotp-adaptor Toolchain")
+![iotp-adaptor](./images/iotp-adaptor.png "iotp-adaptor")
 
 The Java Class Base Namespace `com.ibm.oslc.adaptor.iotp` provides the package name to be used to contain all the generated Java classes.

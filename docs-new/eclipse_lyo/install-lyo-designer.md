@@ -1,129 +1,57 @@
 # Installing Lyo Designer
 
-Lyo Designer is available both as a standalone application and as plugins for existing Eclipse installations.
+1. Make sure you have Java 8 installed on your platform.
+1. Download the Lyo Designer application for your target operating system from [Lyo download site](https://download.eclipse.org/lyo/product/binaries/stable/)
+1. Unzip your download to any desired application. 
+1. Run the lyodesigner executable.
+1. Regularly try to update the application by selecting ***help\--\>Check for Updates***
 
-!!! info "Java Requirements"
-    Lyo Designer requires **Java 8** for the standalone application. Plugin installations may have different requirements based on your Eclipse version.
+## Installing as plugins on an Eclipse installation
+You can also install Lyo Designer as a set of plugins into an existing Eclipse installation.
+This is recommended for advanced users that can deal with conflicts in plugin dependencies when installing multiple plugins.
 
-## Standalone Application
+The Modelling environment and code generator are known to work on Eclipse
+versions up until Eclipse 2020-09 (v4.18).
 
-### Download and Installation
+The easiest way to install Lyo Designer is via the update-site
+`http://download.eclipse.org/lyo/p2/stable/` (This URL is intended to
+be accessed via the Eclipse update functionality, and not via a web
+browser.)
 
-1. **Download** the Lyo Designer application for your operating system from the [Lyo download site](https://download.eclipse.org/lyo/product/binaries/stable/)
-2. **Extract** the downloaded archive to your desired location
-3. **Run** the `lyodesigner` executable
-4. **Update regularly** by selecting **Help → Check for Updates**
+1. First make sure your Eclipse environment is setup
+as expected for general Lyo-based development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+1.  Select ***Help \--\> Install New Software\...***
+1.  Set ***Work With:*** to the update site
+    <http://download.eclipse.org/lyo/p2/stable/>
+1.  Select both features (1) ***Lyo Code Generator*** and (2) ***Lyo
+    Toolchain Designer***.
+1.  Proceed with the installation steps.
+1.  Install the following plugins
+    * Acceleo
+    * Sirius Integration with Xtext
+    * Sirius Properties Views - Runtime Support
+    * Sirius Properties Views - Specifier Support
+    * Sirius Specifier Environment
 
-!!! tip "System Requirements"
-    - Java 8 (required)
-    - 4GB RAM minimum, 8GB recommended
-    - 1GB free disk space
+**Problems installing?**: If you face problems installing the plugin
+    (or when updating to a new version), try one of the following:
+    1.  check the \"Contact all update sites during install to find
+        required software\" option
+    2.  check/uncheck "Group items by category" (particularly the case,
+        if you get the message "there are no categorized items")
+    3.  uninstall existing version and then re-install the plugin again.
 
-## Plugin Installation
+# Bleeding edge
 
-For advanced users who want to integrate Lyo Designer into an existing Eclipse IDE.
+**USE AT YOUR RISK**
 
-!!! warning "Compatibility"
-    The modeling environment and code generator work on Eclipse versions up to **Eclipse 2020-09 (v4.18)**. Plugin dependency conflicts may occur with other plugins.
+You can configure the Lyo Designer application to get updates from yet-unreleased builds of Lyo Designer.
+1. Select ***Window\--\>Preferences***
+1. Select ***Install/Update\--\>Available Software Sites***
+1. Either enable or create a new site with the location <https://download.eclipse.org/lyo/product/p2/edge>
+1. Click ***Apply and Close***.
+1. Update the appliation by selecting ***help\--\>Check for Updates***
 
-### Prerequisites
+## Lyo Designer Plugins
 
-First ensure your Eclipse environment is properly configured for Lyo development:
-- Follow the [Eclipse Setup Guide](setup.md)
-- Install Eclipse IDE for Enterprise Java and Web Developers
-
-### Installation Steps
-
-1. **Open Eclipse Update Manager**
-   - Select **Help → Install New Software...**
-
-2. **Add Update Site**
-   - Set **Work With:** to `http://download.eclipse.org/lyo/p2/stable/`
-
-3. **Select Features**
-   - ☑️ **Lyo Code Generator**
-   - ☑️ **Lyo Toolchain Designer**
-
-4. **Complete Installation**
-   - Follow the installation wizard
-   - Restart Eclipse when prompted
-
-### Required Additional Plugins
-
-Install these additional plugins for full functionality:
-
-!!! note "Required Dependencies"
-    - **Acceleo** - Template-based code generation
-    - **Sirius Integration with Xtext** - Modeling language support
-    - **Sirius Properties Views - Runtime Support** - Property editing
-    - **Sirius Properties Views - Specifier Support** - Property specification
-    - **Sirius Specifier Environment** - Complete modeling environment
-
-### Troubleshooting Installation
-
-If you encounter installation problems:
-
-!!! tip "Common Solutions"
-    1. **Enable dependency resolution**: Check "Contact all update sites during install to find required software"
-    2. **Toggle categorization**: Check/uncheck "Group items by category"
-    3. **Clean installation**: Uninstall existing version and reinstall
-    4. **Check proxy settings**: Ensure Eclipse can access update sites
-
-## Bleeding Edge Updates
-
-!!! danger "Use at Your Own Risk"
-    Bleeding edge builds contain unreleased features and may be unstable.
-
-### Standalone Application
-
-1. **Open Preferences**
-   - Select **Window → Preferences**
-
-2. **Configure Update Sites**
-   - Select **Install/Update → Available Software Sites**
-   - Enable or create site: `https://download.eclipse.org/lyo/product/p2/edge`
-   - Click **Apply and Close**
-
-3. **Update Application**
-   - Select **Help → Check for Updates**
-
-### Plugin Installation
-
-For plugin installations, use the edge update site:
-`http://download.eclipse.org/lyo/p2/edge/`
-
-## Verification
-
-After installation, verify Lyo Designer is working:
-
-1. **Create New Project**
-   - **File → New → Other → Lyo → Lyo Modelling Project**
-
-2. **Check Code Generation**
-   - Right-click on model file → **Lyo → Generate Complete Lyo-based Application**
-
-3. **Validate Modeling Tools**
-   - Open `.aird` files to access the modeling perspective
-
-## Next Steps
-
-Once Lyo Designer is installed:
-
-- [Lyo Designer Overview](designer.md) - Understanding the tool
-- [Modelling How-To](modelling-howto.md) - Create your first model
-- [Setup Development Environment](setup.md) - Configure your workspace
-
-## Getting Help
-
-- **[Lyo Forum](https://forum.open-services.net/)** - Community support
-- **[GitHub Issues](https://github.com/eclipse/lyo.designer/issues)** - Bug reports
-- **[Eclipse Lyo Documentation](https://eclipse.org/lyo/docs/)** - Official documentation
-
-## Update Schedule
-
-!!! info "Release Cycle"
-    - **Stable releases**: Quarterly
-    - **Edge builds**: Weekly (development snapshots)
-    - **LTS releases**: Annually
-
-Check the [Lyo release page](https://github.com/eclipse/lyo/releases) for the latest version information.
+For Lyo Designer installed as plugins, you can specify the update site <http://download.eclipse.org/lyo/p2/edge/>.

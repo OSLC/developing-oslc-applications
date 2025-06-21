@@ -1,10 +1,10 @@
 # Providing OSLC representations of Bugzilla bugs using Lyo
 
-In the [previous section](1_2_providing_service_resources.md) we noted that we used Eclipse Lyo to transform Plain Old Java Object (POJO) representations of OSLC resources into RDF, XML, and JSON formats. In this section, we'll look more closely at how Eclipse Lyo defines OSLC resources. Then we'll make Bugzilla Bugs available as OSLC Change Management resources in a variety of formats.
+In the [previous section](1_2_providing_service_resources) we noted that we used Eclipse Lyo to transform Plain Old Java Object (POJO) representations of OSLC resources into RDF, XML, and JSON formats. In this section, we'll look more closely at how Eclipse Lyo defines OSLC resources. Then we'll make Bugzilla Bugs available as OSLC Change Management resources in a variety of formats.
 
 ## What is Eclipse Lyo?
 
-[Eclipse Lyo](../../eclipse_lyo/eclipse-lyo.md) is a Java SDK for developing OSLC provider or consumer implementations. OSLC resources can be modeled with plain old Java objects (POJOs) which are annotated to provide the information Eclipse Lyo needs to create resource shapes, service provider documents, and to serialize/de-serialize OSLC resources from Java to representations such as RDF or JSON.
+[Eclipse Lyo](../../eclipse_lyo/eclipse-lyo) is a Java SDK for developing OSLC provider or consumer implementations. OSLC resources can be modeled with plain old Java objects (POJOs) which are annotated to provide the information Eclipse Lyo needs to create resource shapes, service provider documents, and to serialize/de-serialize OSLC resources from Java to representations such as RDF or JSON.
 
 ## Defining OSLC resources with Eclipse Lyo
 
@@ -104,7 +104,7 @@ You can explore the `fromBug()` method to see how the other properties are set.
 
 ## Providing OSLC representations of Bugzilla bugs
 
-Like with the **ServiceProviderService** and **ServiceProviderCatalogService** (discussed in [in more detail in the previous section](1_2_providing_service_resources.md)), the **BugzillaChangeRequestService** class has many JAX-RS methods to handle both collections of BugzillaChangeRequests and individual BugzillaChangeRequests with a a variety of HTTP requests and output formats.
+Like with the **ServiceProviderService** and **ServiceProviderCatalogService** (discussed in [in more detail in the previous section](1_2_providing_service_resources)), the **BugzillaChangeRequestService** class has many JAX-RS methods to handle both collections of BugzillaChangeRequests and individual BugzillaChangeRequests with a a variety of HTTP requests and output formats.
 
 Open `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.services** package. 
 
@@ -267,4 +267,4 @@ Simple enough: given the ID number (`{changeRequestId}`) for a particular bug, t
 
 That's useful on its own, but OSLC also specifies a [method called UI Preview ](https://archive.open-services.net/bin/view/Main/OslcCoreUiPreview.html) for showing preview information about a resource in another tool. We'll tackle these rich preview formats in the next section.
 
-[Next: Part 1.4, UI Preview](1_4_ui_preview.md)
+[Next: Part 1.4, UI Preview](1_4_ui_preview)

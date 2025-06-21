@@ -21,7 +21,7 @@ The iotp-adaptor is a JEE Web application (WAR file) that exposes the Watson IoT
 * Minimal OSLC query capability
 * Simple Tracked Resource Set provider for device types
 
-See [iotp-adaptor Developer Guide](../developer-guide.md) for documentation on how the iotp-adaptor OSLC server was developed.
+See [iotp-adaptor Developer Guide](../developer-guide) for documentation on how the iotp-adaptor OSLC server was developed.
 
 The source code is available in a the GitHub [iotp-adaptor Project](https://github.com/OSLC/iotp-adaptor).
 
@@ -85,5 +85,4 @@ The IoTP Organization also manages Rules for real-time analytics. A Rule has a c
 A Node-RED Application is a specialization of a Bluemix Application and represents the Node-RED applications in a Bluemix organization. This allows you to manage the dependencies between your Node-RED flows and the devices they use.
 
 ![IoT Platform Ontology](images/iotp-ontology.png "IoT Platform Ontology")
-
 

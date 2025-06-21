@@ -1,18 +1,5 @@
-# Tutorials
+## Tutorials 
 
-This section contains step-by-step tutorials for developing OSLC applications.
+1. The [walkthrough tutorial](integrating_products_with_oslc) walks you through a working adapter that adds OSLC Change Management support to Bugzilla and a simple consumer application. You will work with a fully developed adapter, with no need to code.
 
-## Getting Started
-
-Coming soon - comprehensive tutorials for:
-
-- Building your first OSLC server
-- Implementing OSLC client functionality  
-- Working with delegated UI
-- Using TRS (Tracked Resource Set)
-
-## Legacy Tutorial Content
-
-The existing tutorial content is being migrated from the Harp-based system. Please check back soon for updated content.
-
-For now, you can refer to the [Eclipse Lyo documentation](eclipse_lyo/index.md) for development guidance.
+1. The [hands-on tutorial](https://github.com/eclipse/lyo.docs/blob/master/lyo-rest-workshop/Lyo_OSLC_Workshop.pdf) takes you through the incremental programming steps to enable Bugzilla as an OSLC-CM service provider.

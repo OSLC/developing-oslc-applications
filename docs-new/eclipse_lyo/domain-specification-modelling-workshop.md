@@ -1,285 +1,135 @@
-# Domain Specification Modelling Workshop
+#Introduction
 
-This workshop guides you through creating OSLC domain specifications using Lyo Designer's graphical modeling capabilities.
+With Lyo Designer, you can graphically model your domain specifications according to the OSLC Core specification. A **Domain Specification** defines the types of resources, their properties and relationships, according the [OSLC Core Specification](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification) and the [Resource Shape constraint language](https://archive.open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource).
 
-## Introduction
+From such a model, you can produce a library of Java classes, with the appropriate Lyo annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo SDK.
 
-With Lyo Designer, you can graphically model your domain specifications according to the OSLC Core specification. A **Domain Specification** defines the types of resources, their properties and relationships, following the [OSLC Core Specification](https://docs.oasis-open.org/oslc-core/oslc-core/v3.0/oslc-core-v3.0.html) and the [Resource Shape constraint language](https://docs.oasis-open.org/oslc-core/oslc-core/v3.0/oslc-core-v3.0.html#resource-shapes).
+A domains model can also be imported into a toolchain model, to model a complete toolchain, as well as a single server and/or client. (see [Toolchain Modelling Workshop](toolchain-modelling-workshop) for details).
 
-**Benefits:**
-- Generate Java classes with appropriate Lyo annotations
-- Reflect defined OSLC Resources and their properties
-- Use generated classes in OSLC application development with Lyo SDK
-- Import domain models into toolchain models for complete integration
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Bug Reporting](#bug-reporting)
+- [Eclipse Setup](#eclipse-setup)
+- [Projects layout](#projects-layout)
+- [Create a Domain Specification Modelling Project](#create-a-domain-specification-modelling-project)
+- [<a name="browsing-generated-code"></a>Browsing the generated code](#browsing-the-generated-code)
 
-!!! tip "Related Workshop"
-    Domain models can be imported into toolchain models for complete server/client modeling. See [Toolchain Modelling Workshop](toolchain-modelling-workshop.md) for details.
+## Bug Reporting
 
-## Prerequisites
 
-### Development Environment
+Please send any bug reports, questions or suggestions to the project mailinglist lyo-dev@eclipse.org, or report Bugs/features on [Github](https://github.com/eclipse/lyo.designer/issues)
 
-Before starting, ensure your environment is properly configured:
+## Eclipse Setup
 
-1. **Eclipse Setup**: Follow the [Eclipse Setup Guide](setup.md) for Lyo-based development
-2. **Lyo Designer**: Install using the [Lyo Designer Installation Guide](install-lyo-designer.md)
+First, make sure your Eclipse environment is setup as expected for general Lyo development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
 
-### Getting Help
+Then, make sure you [install Lyo Designer](install-lyo-designer)
 
-!!! question "Support Resources"
-    - **Mailing List**: [lyo-dev@eclipse.org](mailto:lyo-dev@eclipse.org)
-    - **GitHub Issues**: [Lyo Designer Issues](https://github.com/eclipse/lyo.designer/issues)
-    - **Community Forum**: [OSLC Forum](https://forum.open-services.net/)
+<a name="create-modelling-project"></a>Create a Modelling Project
+==========================
+Projects layout
+---------------
 
-## Project Structure
+You will need to create an Eclipse (modelling) project within which you will create the specification model. In this model, you will potentially define a number of domain specifications.
 
-### Recommended Layout
+You may also choose to distribute the domain specifications into a number of different Java libraries, each of which is itself an Eclipse project.
 
-Organize your projects using this structure for optimal development:
+So, a recommended structure of your projects is the following:
 
-```
-oslc-project/
-├── oslc-model-project/          # Lyo Designer modeling project
-├── domain1-project/             # Java classes for domain 1
-├── domain2-project/             # Java classes for domain 2
-└── README.md
-```
+    oslc-project/
+        oslc-model-project/
+        domain1-project/
+        domain2-project/
 
-**Directory purposes:**
-- **oslc-project**: Git repository root
-- **oslc-model-project**: Lyo Designer modeling project (model management)
-- **domain-project**: Java classes for domain specifications (generated code)
+Where
 
-!!! tip "Project Distribution"
-    You can distribute domain specifications into separate Java libraries, each as its own Eclipse project for better modularity.
+* The top `oslc-project` directory may be a git repository root
+* `oslc-model-project` is the Lyo Designer modelling project, where your model is managed.
+* each `domain-project` contains the java classes corresponding to one or more domain specifications, generated from the definitions in `oslc-model-project`.
 
-## Creating a Domain Specification Project
 
-### Step 1: Create Modeling Project
+Create a Domain Specification Modelling Project
+------------------------------------------------
+1.  In your Eclipse workspace, switch to the **Modeling** perspective
+1.  Create a new modelling project
+    1.  Select **New &gt; Modelling Project**
+    1.  Choose a project name
+1.  Create a Specification model
+    1.  Right click the newly created project, and select **New &gt; other…**
+    1.  In the Wizards window, navigate and select *Lyo Designer &gt; OSLC Domain Model*, then press **Next**
+    1.  choose a suitable file name (say *domain.xml*) for the model, then press **Next**
+    1.  Set **Model Object** to *Specification*
+    1.  Press **Finish**
+    1.  Right-click the project again, and select **Viewpoints selection**
+    1.  select **ToolChainViewpoint**
+    1.  Press **OK**
+1.  View the initial diagrams
+    1. In the Model Explorer, by pressing the triangle/arrow to the left of the *domain.xml* file , expand the file structure until the
+        *SpecificationDiagram* entry is visible.
+        * *Note:* Do not double-click on the file. This will instead open the file in an xml editor.
+    1.  You can now open and edit any of these views, by double-clicking on the desired entry.
 
-1. **Switch to Modeling Perspective**
-   - In Eclipse, select **Window → Open Perspective → Modeling**
+*Note:* Lyo Designer also allows you to break up the model into a set of modelling projects for more complicated organisation. See [Handling Large Models](modelling-howto#handling-large-models) for more details.
 
-2. **Create New Project**
-   - Select **File → New → Modeling Project**
-   - Choose a descriptive project name (e.g., `oslc-domain-model`)
+<a name="model-oslc-domain-specifications"></a>Model OSLC Domain Specifications
+===================
 
-### Step 2: Create Specification Model
+You are now ready to graphically specify the OSLC domain specifications.
 
-1. **Create Domain Model**
-   - Right-click the project → **New → Other...**
-   - Navigate to **Lyo Designer → OSLC Domain Model**
-   - Click **Next**
+In the *SpecificationDiagram*, you can define a set of domain specifications, within which you define *Resources* and
+*Resource Properties*.
 
-2. **Configure Model**
-   - Choose filename (e.g., `domain.xml`)
-   - Click **Next**
-   - Set **Model Object** to `Specification`
-   - Click **Finish**
+![An example domain specification
+diagram](./images/LyoToolchainModel-SpecificationDiagram.png "An example domain specification diagram")
 
-3. **Enable Viewpoints**
-   - Right-click project → **Viewpoints Selection**
-   - Select **ToolChainViewpoint**
-   - Click **OK**
+1. First make sure you have an overview of Lyo Designer's modelling capabilities through the [General Lyo Modelling Instructions](toolchain-modelling-workshop#general-modelling-instructions).
+1. Now, follow the Domain Specification modelling instructions (*Only this particular section*) from the general [Lyo Designer manual](./toolchain-modelling-workshop#domain-specification-view).
+1. Finally, validate your model by following the validation instructions (*Only this particular section*) from the general [Lyo Designer manual](./toolchain-modelling-workshop#validate-model).
 
-### Step 3: Access Modeling Views
+<a name="setup-oslc4j-projects"></a>Setup Lyo projects
+=====================
 
-1. **Open Model Explorer**
-   - Expand the model file by clicking the triangle/arrow next to `domain.xml`
-   - **Important**: Don't double-click the file (opens XML editor)
+Once the Specification model is complete and validated, you can choose to generate the set of Java classes, with the appropriate Lyo annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo SDK.
 
-2. **Access Diagrams**
-   - Look for `SpecificationDiagram` entry
-   - Double-click to open and edit diagrams
+It is no longer necessary to manually create the Eclipse Lyo projects for the Java classes, since these are created by the generation process. 
 
-!!! note "Advanced Organization"
-    For complex models, Lyo Designer supports breaking models into multiple projects. See [Handling Large Models](modelling-howto.md#handling-large-models) for details.
+1. Use the tools pallet to create a **Specification Configuration**, placing it in the Specification Diagram (and not inside any specific Domain Specification). This element lets you configure the Specification model's generation settings. The element consists of two sets of configurations as follows:
+    1. **General**: Contains the general generation settings:
+        1. *Files Base Path*: The path where the generated files will be generated. Set the path relative to your current location, which is the modelling project.
+        1. *Java Base Package Name*: the name of the base Java root package from which the code of your adaptor will be generated.
+    1. **Project Configuration**: relating to the generation of the development project-specific files, such as the *Pom.xml* and *web.xml* files
+        1. *Do Not Generate Project Configuration Files*: Set this property if you don't want the automatic generation of these files. 
+        1. *Group Id*, *Artifact Id* & *Version*: define the maven project settings.
+        1. *Lyo Version*: Define the version of Lyo libraries to use.
+1. (Optional) If you want to override the genration settings for a specific Domain Specification, you can create a **Specification Configuration** for any specific Domain Specification (by placing it in the Domain Specification). 
 
-## Modeling Domain Specifications
+<a name="generate-oslc4j-java-code"></a>Generate Java code for Lyo
+=========================
+You are now ready to generate the code:
 
-### Specification Diagram Overview
+1. Right-click inside the Specification Diagram (without selecting any Domain Specification) and select the context menu item **OSLC Lyo Designer > Generate Specification Java Code**
+1. You will now be prompted to enter the base path to which the java classes are to be generated.
+    * **NOTE:** Alternatively, to avoid such prompt, you can define this path through a *generationPath* property in a *generator.properties* file. The properties file is expected in the same location as the model file.
+1. Press **OK**
+1. Once successful, you will be prompted with a dialog that confirms generation completion.
 
-In the **SpecificationDiagram**, you define:
-- **Domain Specifications**: Logical groupings of related resources
-- **Resources**: OSLC resource types (e.g., Requirement, Defect, TestCase)
-- **Resource Properties**: Attributes and relationships of resources
+**Notes**: 
+* Lyo Designer supports an incremental development of the
+adaptor model. Any manual changes to the generated code (within
+designated placeholders) are maintained upon a subsequent change in the
+adaptor model, and resulting code re-generation.
+* Lyo Designer allows you to generate different parts of the code into different projects (or file locations). This allows for better reuse of generated code packages. See [Controlling the generation parameters of Domain Specification(s)](modelling-howto#controlling-generation-parameters) for more details.
 
-![Domain Specification Example](images/LyoToolchainModel-SpecificationDiagram.png)
 
-*Example domain specification diagram showing resources and their relationships*
+<a name="browsing-generated-code"></a>Browsing the generated code
+---------------------------
+For each OSLC-resource in each of the Domain Specifications, a corresponding Java class is is produced. The class includes the appropriate OSLC annotations, instance attributes, getters, setters, etc.
 
-### Modeling Steps
+The generated classes contain placeholders that allow the developer to insert additional code and hence modify the generated default code where necessary. such manual code remains intact after subsequent generations, if modifications are placed within the designated placeholders. This allows for the incremental development of the model, and its resulting code.
 
-1. **Learn Lyo Designer Basics**
-   - Review [General Lyo Modeling Instructions](toolchain-modelling-workshop.md#general-modelling-instructions)
-   - Understand the modeling interface and tools
+To illustrate, open a class file, and note the following placeholder:
 
-2. **Create Domain Specifications**
-   - Follow the [Domain Specification Modeling Guide](toolchain-modelling-workshop.md#domain-specification-view)
-   - Focus only on the domain specification section
-
-3. **Validate Your Model**
-   - Use the [Model Validation Instructions](toolchain-modelling-workshop.md#validate-model)
-   - Ensure your model is complete and consistent
-
-### Best Practices
-
-!!! success "Modeling Guidelines"
-    - **Use Standard Vocabularies**: Leverage Dublin Core, FOAF, and OSLC standard properties
-    - **Consistent Naming**: Follow consistent naming conventions across resources
-    - **Clear Relationships**: Define clear relationships between resources
-    - **Validation**: Regularly validate your model during development
-
-## Setting Up Lyo Projects
-
-Once your specification model is complete and validated, generate Java classes with appropriate Lyo annotations.
-
-!!! info "Automatic Project Creation"
-    Modern Lyo Designer automatically creates Eclipse projects during generation - no manual setup required!
-
-### Configuration Steps
-
-1. **Create Specification Configuration**
-   - Use the tools palette to create a **Specification Configuration**
-   - Place it in the Specification Diagram (**not** inside a specific Domain Specification)
-
-2. **Configure General Settings**
-   
-   | Setting | Description | Example |
-   |---------|-------------|---------|
-   | **Files Base Path** | Relative path for generated files | `../my-domain-lib/src/main/java` |
-   | **Java Base Package Name** | Root package for generated code | `com.example.oslc.domains` |
-
-3. **Configure Project Settings**
-   
-   | Setting | Description | Required |
-   |---------|-------------|----------|
-   | **Do Not Generate Project Files** | Skip pom.xml/web.xml generation | Optional |
-   | **Group Id** | Maven group identifier | Yes |
-   | **Artifact Id** | Maven artifact identifier | Yes |
-   | **Version** | Project version | Yes |
-   | **Lyo Version** | Lyo library version to use | Yes |
-
-!!! tip "Domain-Specific Configuration"
-    Create additional **Specification Configuration** elements within specific Domain Specifications to override global settings.
-
-## Generating Java Code
-
-### Generation Process
-
-1. **Trigger Generation**
-   - Right-click in Specification Diagram (don't select any Domain Specification)
-   - Choose **OSLC Lyo Designer → Generate Specification Java Code**
-
-2. **Specify Output Path**
-   - Enter the base path for Java class generation
-   - **Alternative**: Create `generator.properties` file with `generationPath` property
-
-3. **Confirm Generation**
-   - Click **OK** to start generation
-   - Wait for completion confirmation dialog
-
-### Generation Features
-
-!!! success "Incremental Development Support"
-    - **Incremental Updates**: Manual changes within designated placeholders are preserved
-    - **Flexible Output**: Generate different parts to different projects/locations
-    - **Code Reuse**: Better package reuse through configurable generation
-
-**Advanced Configuration**: See [Controlling Generation Parameters](modelling-howto.md#controlling-generation-parameters) for multi-project setups.
-
-## Exploring Generated Code
-
-### Generated Structure
-
-For each OSLC resource in your Domain Specifications, Lyo Designer generates:
-
-- **Java Class**: Complete POJO with OSLC annotations
-- **Instance Attributes**: Properties defined in the model
-- **Getters/Setters**: Accessor methods for all properties
-- **OSLC Annotations**: Proper annotation for OSLC compliance
-
-### Code Placeholders
-
-Generated classes include placeholders for custom code:
-
-```java
-public class MyResource extends AbstractResource {
     // Start of user code imports
     // End of user code
-    
-    // Generated code...
-    
-    public String getCustomProperty() {
-        // Start of user code getCustomProperty
-        // End of user code
-        return customProperty;
-    }
-}
-```
 
-!!! warning "Placeholder Usage"
-    **Always place custom code within designated placeholders** to preserve changes during regeneration.
-
-### Common Placeholder Types
-
-| Placeholder | Purpose | Example Usage |
-|-------------|---------|---------------|
-| `// Start of user code imports` | Custom imports | Additional library imports |
-| `// Start of user code class` | Class-level code | Static methods, constants |
-| `// Start of user code [methodName]` | Method implementation | Custom validation, computation |
-
-## Next Steps
-
-### Development Workflow
-
-1. **Iterative Development**
-   - Modify model as requirements evolve
-   - Regenerate code preserving custom modifications
-   - Test generated classes in your application
-
-2. **Integration**
-   - Use generated classes in OSLC servers/clients
-   - Follow [Setup Guide](setup.md) for application development
-   - Refer to [Sample Applications](../samples.md) for examples
-
-### Advanced Topics
-
-- **[Modelling How-To](modelling-howto.md)**: Advanced modeling techniques
-- **[Toolchain Modelling](toolchain-modelling-workshop.md)**: Complete server/client modeling
-- **[Lyo Designer](designer.md)**: Comprehensive designer documentation
-
-## Troubleshooting
-
-### Common Issues
-
-!!! bug "Generation Problems"
-    **Problem**: Code generation fails or produces errors
-    
-    **Solutions**:
-    - Validate model before generation
-    - Check file paths and permissions
-    - Verify Lyo Designer installation
-    - Review Eclipse error log
-
-!!! bug "Compilation Errors"
-    **Problem**: Generated code doesn't compile
-    
-    **Solutions**:
-    - Check Java project configuration
-    - Verify Lyo dependencies in pom.xml
-    - Ensure proper package structure
-    - Review custom code in placeholders
-
-### Getting Help
-
-- **[Lyo Designer Issues](https://github.com/eclipse/lyo.designer/issues)**: Bug reports and feature requests
-- **[Lyo Developer List](mailto:lyo-dev@eclipse.org)**: Development questions
-- **[OSLC Forum](https://forum.open-services.net/)**: Community support
-
-## Related Resources
-
-- [Eclipse Lyo Overview](index.md)
-- [Lyo Designer Documentation](designer.md)
-- [Toolchain Modelling Workshop](toolchain-modelling-workshop.md)
-- [Sample Applications](../samples.md)
+Any code entered between these two lines of code is maintained across subsequent generations. In this example, the placeholder is intended for developer-specific imports, but any Java code can be inserted.
