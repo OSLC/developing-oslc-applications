@@ -181,7 +181,7 @@ nav:
         - Core Internals: eclipse_lyo/lyo-core-internals.md
         - OSGi Bundles: eclipse_lyo/lyo-as-osgi-bundles.md
     - Lyo Designer:
-      - Introduction: eclipse_lyo/designer.md
+      - Introduction: eclipse_lyo/lyo-designer.md
       - Installing Designer: eclipse_lyo/install-lyo-designer.md
       - Modelling How-To: eclipse_lyo/modelling-howto.md
       - Domain Specification workshop: eclipse_lyo/domain-specification-modelling-workshop.md
