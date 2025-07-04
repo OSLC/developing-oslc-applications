@@ -4,7 +4,9 @@ To build software that supports OSLC, you should be familiar with the following 
 
 [Linked data](http://www.w3.org/DesignIssues/LinkedData.html) is the main technical foundation of all of our specifications. The video below provides a brief overview of the value of linked data and how we implement it with OSLC:
 
-<iframe width="640" height="480" src="//www.youtube.com/embed/40mjwqGEKBU" frameborder="0" allowfullscreen></iframe>
+<center>
+<iframe width="640" height="480" src="https://www.youtube-nocookie.com/embed/40mjwqGEKBU" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</center>
 
 If you're new to linked data and RDF, we've put together [a playlist of videos](https://archive.open-services.net/resources/videos/linked-data-and-rdf-overview-playlist/) that can help you catch up.
 

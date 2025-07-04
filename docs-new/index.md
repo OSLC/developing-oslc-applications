@@ -9,8 +9,9 @@
 
 For a high-level overview of how to add OSLC support to software, we recommend our video "[Getting started on implementing OSLC](http://www.youtube.com/watch?v=-oXqudLmNMI)":
 
-<iframe width="640" height="360" src="//www.youtube.com/embed/-oXqudLmNMI" frameborder="0" allowfullscreen></iframe>
-
+<center>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-oXqudLmNMI" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</center>
 
 Explore our tutorial
 ----------------------------------------------

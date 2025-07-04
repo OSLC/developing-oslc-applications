@@ -1,6 +1,10 @@
 Lyo Designer is an Eclipse plugin that allows one to graphically model (1) the overall system architecture, (2) the information model of the RDF resources being shared, and (3) the individual services and operations of each Server in the system. 
 
-A short [video demonstration of Lyo Designer](https://www.youtube.com/watch?v=tZxPzlSTdeM).
+A short [video demonstration of Lyo Designer](https://www.youtube.com/watch?v=tZxPzlSTdeM):
+
+<center>
+<iframe width="640" height="480" src="https://www.youtube-nocookie.com/embed/tZxPzlSTdeM" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</center>
 
 The figure below shows the information modelling interface:
 
