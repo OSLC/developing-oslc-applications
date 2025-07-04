@@ -14,7 +14,7 @@ Successful operation of the integration adapter requires that each of these prot
  
 ## Session Management Cookie (JSESSIONID)
  
-If you install the Adapter web application and Collaborative Lifecycle Management (CLM) on the same WebSphere Application Server or if the Adapter and CLM are behind the same reverse proxy, such as IBM HTTP Server (IHS), you must change the HTTP session management cookie name. CLM and the adapter both use the same JSESSIONID cookie in an HTTP session. CLM sometimes resets the cookie when you log in, which causes the adapter to lose its session in some linking scenarios. See [Changing the HTTP session management cookie name for Apache Tomcat](ChangingHTTPcookienameTomcat.html) or [Changing the HTTP session management cookie name for WebSphere](ChangingHTTPcookienameWAS.html) as required.
+If you install the Adapter web application and Collaborative Lifecycle Management (CLM) on the same WebSphere Application Server or if the Adapter and CLM are behind the same reverse proxy, such as IBM HTTP Server (IHS), you must change the HTTP session management cookie name. CLM and the adapter both use the same JSESSIONID cookie in an HTTP session. CLM sometimes resets the cookie when you log in, which causes the adapter to lose its session in some linking scenarios. See [Changing the HTTP session management cookie name for Apache Tomcat](https://stackoverflow.com/questions/877064/changing-cookie-jsessionid-name), for example.
  
 ## HTTP / HTTPS Mixed-mode Blocking
  
@@ -73,33 +73,34 @@ To assure that proper SSL keys are published and then are trusted:
 When finished, you should have 3 root-signed certificates and 6 trust relationships. If one or more of these 9 configurations is incorrect, the Adapter integration will fail in one or more ways.
  
 # Cross-Origin Resource Sharing (CORS)
- 
+
+For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy. This means that a web application using those APIs can only request HTTP resources from the same domain the application was loaded from unless CORS headers are used. Read more about CORS on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
+
+
 Within the Adapter integration, the Windchill Javascript in the browser of a PLM user will attempt to make requests directly to the CLM server from script that was sourced either from the PLM server (in Windchill extensions) or from the RLIA server (in JSP-loaded scripts). Without CORS support on the CLM server, the user's browser will reject those cross-origin requests.
- 
+
 Note that CORS-blocking is particularly difficult to diagnose because the browsers are required by the CORS standards to return HTTP 200 (OK) for XHR requests that have, in fact, never been sent to the servers.
  
 >Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to let a user agent gain permission to access selected resources from a server on a different origin (domain) than the site currently in use. A user agent makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port than the one from which the current document originated.
  
 >An example of a cross-origin request: A HTML page served from http://domain-a.com makes an &lt;img&gt; src request for http://domain-b.com/image.jpg. Many pages on the web today load resources like CSS stylesheets, images, and scripts from separate domains, such as content delivery networks (CDNs).
  
->For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy. This means that a web application using those APIs can only request HTTP resources from the same domain the application was loaded from unless CORS headers are used.
-<footer>"MDN CORS Site":https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS </footer>
- 
 Server-side CORS support can either be implemented directly within the servlet controllers of the target application (e.g. within the internal code of Jazz CLM itself) or by features of the execution environment hosting the CLM application (e.g. within IBM WAS Liberty).
- 
-See [Configuring CORS for Apache Tomcat](ConfiguringCORSforApacheTomcat.html) or [Configuring CORS for IBM WAS Liberty](ConfiguringCORSforIBMWASLiberty.html) as appropriate. If you deploy a different execution host, consult its documentation for how to enable CORS.
  
 Regardless of which execution environment is in use, the configuration for CORS necessary for the adapter includes the following HTTP Headers with the values shown:
  
 | Source| Header| Value| Note|
 | ----- | ----- | ---- | ---- |
-| Client | Origin | @https://windchill.acme.com@ | Predates CORS but must be included in requests from the client to the server
-| Server | Access-Control-Allow-Origin | @https://windchill.acme.com@ | Replace this with the URL(s) for your PLM server(s) |
+| Client | Origin | `https://windchill.acme.com` | Predates CORS but must be included in requests from the client to the server
+| Server | Access-Control-Allow-Origin | `https://windchill.acme.com` | Replace this with the URL(s) for your PLM server(s) |
 | Server | Access-Control-Allow-Methods | OPTIONS, GET, DELETE, POST, PUT, PATCH | OPTIONS is necessary for XHR pre-flight CORS requests |
 | Server | Access-Control-Allow-Headers | Origin, Authorization, DoorsRP-Request-Type | Which headers can pass client-to-server across origins |
 | Server | Access-Control-Expose-Headers | WWW-Authenticate, X-jazz-web-oauth-url | Which headers can flow back from server-to-client |
 | Server | Access-Control-Allow-Credentials | "true" | Necessary for cookies to be exchanged across origins |
- 
+
+!!! warning
+    The `Access-Control-Allow-Origin` header must not be hardcoded to `*` when used together with `Access-Control-Allow-Credentials`.
+
 Integration developers should be aware that for the browser to honor CORS requests and responses, the XHR requests in the client Javascript have to include the "withCredentials: true" parameter.
  
 ## Content Security Policies (CSP)
@@ -121,7 +122,7 @@ To configure CSP support in Jazz CLM for the PLM server:
 2. Select Manage this Application from the Administration menu
 3. Select Whitelist from the panel of Consumers, Friends, and Whitelist
 4. Add a new URL for the PLM server to the set of any Whitelisted URLs already present
-   * for example, @https://windchill.acme.com@
+   * for example, `https://windchill.acme.com`
  
 ## Cross-Site Request Forgery (CSRF)
  
