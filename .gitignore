@@ -12,3 +12,4 @@ package.json
 docs/
 site/
 
+.cache/

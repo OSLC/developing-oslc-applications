@@ -49,8 +49,8 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: 'Roboto'
+    code: 'Roboto Mono'
   favicon: img/logo-old-50px.png
   logo: img/oslc-logo-white-100.png
 
@@ -107,6 +107,7 @@ markdown_extensions:
   - pymdownx.tilde
 
 plugins:  
+  - privacy
   - search:
       lang: en
       separator: '[\s\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;'
