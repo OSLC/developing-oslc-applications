@@ -494,6 +494,8 @@ After successful migration to Lyo 6.x:
 
 - **[Lyo 6.0 Release Notes](https://github.com/eclipse/lyo/releases/tag/v6.0.0)**
 - **[Jakarta EE Migration Guide](https://jakarta.ee/resources/)**
+- **[Jakarta EE / JakartaEE support table for Eclipse Jetty](https://jetty.org/download.html#version-history)**
+- **[Tomcat Version Support Matrix](https://tomcat.apache.org/whichversion.html)**
 - **[Jersey 3.x Migration Guide](https://eclipse-ee4j.github.io/jersey.github.io/documentation/latest/migration.html)**
 - **[RefImpl Jakarta Migration PR](https://github.com/oslc-op/refimpl/pull/198)**
 - **[OSLC Community Forum](https://forum.open-services.net/c/sdks/lyo/9)**

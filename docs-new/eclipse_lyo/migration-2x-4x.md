@@ -62,7 +62,26 @@ Remove old Eclipse repositories from your `pom.xml`:
 
 ### Phase 2: Dependency Updates
 
-#### 2.1 Update Lyo Versions
+#### 2.1 Remove Eclipse Maven Repositories
+Lyo is available on Maven Central since 4.0, so Eclipse repositories are no longer needed:
+
+```xml
+<!-- REMOVE: Old Eclipse repositories from pom.xml -->
+<!--
+<repositories>
+    <repository>
+        <id>lyo-releases</id>
+        <url>https://repo.eclipse.org/content/repositories/lyo-releases/</url>
+    </repository>
+    <repository>
+        <id>lyo-snapshots</id>
+        <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
+    </repository>
+</repositories>
+-->
+```
+
+#### 2.2 Update Lyo Versions
 Update your `pom.xml` dependency versions:
 
 ```xml
@@ -226,6 +245,9 @@ import org.eclipse.lyo.client.OslcClient;
 OslcClient client = new OslcClient(OSLCConstants.OSLC2_0);
 ```
 
+!!! tip "Migration Example"
+    See **[example migration from old client in Lyo Samples](https://github.com/OSLC/lyo-samples/commit/b564fb93ebed626c99ce23d2429ea515fe17f6b4)** for a complete code example of client migration.
+
 ### Phase 5: Testing and Validation
 
 #### 5.1 Build and Test
@@ -338,11 +360,35 @@ Review configuration patterns - some Wink-specific configurations need Jersey eq
 After successful migration to Lyo 4.x:
 
 1. **Validate Functionality**: Test all OSLC operations thoroughly
-3. **Plan Next Migration**: Consider migrating to [Lyo 5.x](migration-4x-5x.md) for additional improvements
+2. **Plan Next Migration**: Consider migrating to [Lyo 5.x](migration-4x-5x.md) for additional improvements
+
+## Migration Paths from Older Versions
+
+If you're migrating from versions older than 2.x, follow these incremental upgrade paths:
+
+### From Lyo 1.x, 2.0.0, or 3.0.0-SNAPSHOT
+1. **Upgrade to JDK 8** from JDK 7
+2. **Migrate to Lyo 2.1.2** (except dependencies in `lyo.server` group like `oauth-webapp`; keep them at 2.1.0)
+3. **Follow the Lyo 2.2.0 upgrade path** below
+
+### From Lyo 2.1.2
+1. **Ensure JDK 8 migration** is complete
+2. **Follow the Lyo 2.2.0 upgrade path** below
+
+### From Lyo 2.2.0
+1. **Upgrade Jena** from 2.x (HP Labs Jena) to Apache Jena 4.x
+2. **Update all Jena imports** from `com.hp.hpl.jena.*` to `org.apache.jena.*`
+3. **Follow this guide** for final migration to Lyo 4.x
+
+### From Lyo 2.4.0
+Follow this migration guide directly - this is the most common starting point.
+
+!!! warning "Incremental Migration Recommended"
+    For versions before 2.4.0, use the incremental approach above rather than attempting a direct migration to 4.x. This reduces risk and makes troubleshooting easier.
 
 ## Additional Resources
 
 - **[Lyo 4.0 Release Notes](https://github.com/eclipse/lyo/releases/tag/v4.0.0)**
 - **[Jersey Migration Guide](https://eclipse-ee4j.github.io/jersey.github.io/documentation/latest/migration.html)**
-- **[Apache Jena Migration](https://jena.apache.org/documentation/notes/migrate-jena2-jena3.html)**
+- **[Apache Jena Migration](https://jena.apache.org/documentation/migrate_jena2_jena3.html)**
 - **[OSLC Community Forum](https://forum.open-services.net/c/sdks/lyo/9)**

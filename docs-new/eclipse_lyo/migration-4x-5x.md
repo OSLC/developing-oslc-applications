@@ -88,10 +88,14 @@ Follow the recommended incremental migration path:
 </properties>
 ```
 
+**What this version removes:**
+- JDK 8 support
+- `server/wink` and `server/registry` components
+
 **What to test:**
-- Application builds without removed Lyo artifacts
-- No usage of old Wink-based client
+- Application builds without removed Lyo artifacts (especially old Wink-based client)
 - JDK 11+ compatibility
+- No missing `lyo-validation` dependencies
 
 #### 2.2 Lyo 5.0.0.alpha2 → Jena 4.0 Compatibility
 ```xml
@@ -100,11 +104,15 @@ Follow the recommended incremental migration path:
 </properties>
 ```
 
+**What this version changes:**
+- Jena 4.0 upgrade with API changes
+
 **What to test:**
 - Jena 4.0 API changes compatibility
 - Any custom Jena code still works
+- Review Lyo project Git history for Jena 4.0 related changes if needed
 
-#### 2.3 Lyo 5.0.0.alpha3 → Jersey Upgrade
+#### 2.3 Lyo 5.0.0.alpha3 → Jersey Upgrade  
 ```xml
 <properties>
     <lyo.version>5.0.0.alpha3</lyo.version>
@@ -112,8 +120,12 @@ Follow the recommended incremental migration path:
 </properties>
 ```
 
+**What this version changes:**
+- Jersey 2.25 → 2.35 upgrade
+- Jena 4.0.0 → 4.2.0 upgrade
+
 **What to test:**
-- Jersey 2.25 → 2.35 compatibility
+- Jersey 2.25 → 2.35 compatibility (see [OSLC RefImpl example](https://github.com/oslc-op/refimpl/commit/82c7ccef65af7a292c40bbee51a84b92a81add1d))
 - JAX-RS functionality still works
 
 #### 2.4 Lyo 5.0.0.alpha4 → SPARQL Changes
@@ -122,6 +134,9 @@ Follow the recommended incremental migration path:
     <lyo.version>5.0.0.alpha4</lyo.version>
 </properties>
 ```
+
+**What this version changes:**
+- Jena 4.3 upgrade with SPARQL-related changes
 
 **What to test:**
 - [SPARQL-related changes in Jena 4.3](https://jena.apache.org/documentation/sparql-apis/#changes)
@@ -307,6 +322,6 @@ After successful migration to Lyo 5.x:
 ## Additional Resources
 
 - **[Lyo 5.0 Release Notes](https://github.com/eclipse/lyo/releases/tag/v5.0.0)**
-- **[Jena 4.x Migration Guide](https://jena.apache.org/documentation/notes/migrate-jena3-jena4.html)**
+- **[Lyo 5.0 Javadocs](https://download.eclipse.org/lyo/docs/all/5.0.0.Final/apidocs/)**
 - **[CVE-2021-41042 Details](https://nvd.nist.gov/vuln/detail/CVE-2021-41042)**
 - **[OSLC Community Forum](https://forum.open-services.net/c/sdks/lyo/9)**
