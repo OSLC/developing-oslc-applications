@@ -3,7 +3,7 @@
 This workshop presents the use of Lyo Designer to graphically model a complete OSLC-based toolchain (including the interactions between OSLC servers and clients), and/or single server and/or client.
 The instructions also include a walkthrough of the generated Lyo-compliant code.
 
-For seperations of concerns, Lyo Designer structures the toolchain model around the following three viewpoints
+For separation of concerns, Lyo Designer structures the toolchain model around the following three viewpoints
 (Illustrations and details can be found later in this workshop):
 
 -   **Domain Specification View** – To define the types of resources,
@@ -11,7 +11,7 @@ For seperations of concerns, Lyo Designer structures the toolchain model around 
     Specification](https://archive.open-services.net/bin/view/Main/OslcCoreSpecification)
     and the [Resource Shape constraint
     language](https://archive.open-services.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource).
-    - Lyo Designer can also be used to solely model domains, as instructed under the [Domain Specification Modelling Workshop](./domain-specification-modelling-workshop).
+    - Lyo Designer can also be used to solely model domains, as instructed under the [Domain Specification Modelling Workshop](./domain-specification-modelling-workshop.md).
 -   **Toolchain View** – To allocate resources to tools. For each tool,
     the set of resources being exposes and/or consumed are defined.
 -   **Adapter Interface View** – To design the internal details of the
@@ -42,28 +42,10 @@ adaptors.
 5.  Perform the final implementation steps to make the adaptors
     ready to run.
 
-Table of Content:
--------------------------
-- [Table of Content:](#table-of-content)
-- [Sample Modelling Project](#sample-modelling-project)
-- [Projects layout](#projects-layout)
-- [<a name="create-modelling-project"></a>Create modelling project](#create-modelling-project)
-- [<a name="modelling-overview"></a>Modelling Overview](#modelling-overview)
-- [<a name="general-modelling-instructions"></a>General Modelling Instructions](#general-modelling-instructions)
-- [<a name="domain-specification-view"></a>Domain Specification View](#domain-specification-view)
-- [<a name="toolchain-view"></a>Toolchain View](#toolchain-view)
-- [<a name="adaptor-interface-view"></a>Adapter Interface View](#adapter-interface-view)
-- [Adding the OAuth support](#adding-the-oauth-support)
-
-<a name="bug-reporting"></a>Bug Reporting
-=============
-
-The prototype presented here is under development and its features may change over time. Your feedback, suggestions for improvements and bug reports are appreciated. In particular, the graphical notation being used is experimental and certainly needs further improvements. Please send any questions or suggestions to the project mailinglist lyo-dev@eclipse.org, or report Bugs/features on [Github](https://github.com/eclipse/lyo.designer/issues)
-
 <a name="references"></a>References
 ==========
 
-If you wish to cite this modelling prototype in scientific papers
+If you wish to cite this Lyo Designer in academic publications
     and communications, please reference:
 
 -   Jad El-khoury, Didem Gurdur, Mattias Nyberg, ["A Model-Driven Engineering Approach to Software Tool Interoperability based on Linked Data"](http://www.thinkmind.org/index.php?view=article&articleid=soft_v9_n34_2016_8), International Journal On Advances in Software, vol. 9, no. 3 & 4, s. 248-259, 2016.
@@ -73,9 +55,9 @@ If you wish to cite this modelling prototype in scientific papers
 <a name="eclipse-setup"></a>Eclipse Setup
 =============
 
-First, make sure your Eclipse environment is setup as expected for general Lyo development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+First, make sure your Eclipse environment is setup as expected for general Lyo development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md)
 
-Then, make sure you [install Lyo Designer](install-lyo-designer)
+Then, make sure you [install Lyo Designer](install-lyo-designer.md)
 
 <a name="create-toolchain-modelling-project"></a>Create a Toolchain Modelling Project
 ====================================
@@ -88,6 +70,10 @@ Sample Modelling Project
 ------------------------
 
 As a complement when following the instructions below, you can find the code for a completed workshop under the [Lyo Adaptor Sample Modelling](https://github.com/OSLC/lyo-adaptor-sample-modelling) git repository.
+
+!!! failure
+
+    The *Lyo Adaptor Sample Modelling* application is deprecated. Follow the [OSLC Reference Implementation](https://github.com/oslc-op/refimpl) for best practices.
 
 Projects layout
 ---------------
@@ -129,7 +115,7 @@ Where
     1.  You can now open and edit any of these views, by double-clicking
         on the desired entry.
 
-*Note:* Lyo Designer also allows you to break up the model into a set of modelling projects for more complicated organisation. See [Handling Large Models](modelling-howto#handling-large-models) for more details.
+*Note:* Lyo Designer also allows you to break up the model into a set of modelling projects for more complicated organisation. See [Handling Large Models](modelling-howto.md#handling-large-models) for more details.
 
 <a name="model-toolchain"></a>Model the Toolchain
 ===================
@@ -207,7 +193,7 @@ In this view, you can define the set of domain specifications of
 relevance to the tool-chain, including the definition of *Resources* and
 *Resource Properties* that form each *Domain Specification*.
 
-The instructions below explain how to define your domains within the same toolchain model. Lyo Designer also allows you to import and reuse existing Domain Specification models, as instructed under the [Domain Specification Modelling Workshop](domain-specification-modelling-workshop)
+The instructions below explain how to define your domains within the same toolchain model. Lyo Designer also allows you to import and reuse existing Domain Specification models, as instructed under the [Domain Specification Modelling Workshop](domain-specification-modelling-workshop.md)
 
 ![An example domain specification
 diagram](./images/LyoToolchainModel-SpecificationDiagram.png "An example domain specification diagram")
@@ -313,7 +299,7 @@ diagram](./images/LyoToolchainModel-AdaptorInterfaceDiagram.png "An example adap
     1.  For the newly created **ServiceProvider**, fill-in the
         **ServiceProvider** properties (*title*, *description*) as
         defined according to OSLC.
-    1. For each **ServiceProviderCatalog** and **ServiceProvider** in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify some of the provided optional properties, as instructed in [Configuring the URLs of the OSLC Services](modelling-howto#configure-service-url).
+    1. For each **ServiceProviderCatalog** and **ServiceProvider** in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify some of the provided optional properties, as instructed in [Configuring the URLs of the OSLC Services](modelling-howto.md#configure-service-url).
 1.  For each **ServiceProvider**, create any structure of **Services**
     and their contained **[Selection Dialog | Creation Dialog | Creation Factories]** capabilities. 
     A Service element need to be directly associated with existing
@@ -321,9 +307,9 @@ diagram](./images/LyoToolchainModel-AdaptorInterfaceDiagram.png "An example adap
     1.  From the Pallet, select the **CreateService** tool
     1.  In the diagram, select the **ServiceProvider** to which this
         Service element belongs.
-    1. For each **Service** in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify some of the provided optional properties, as instructed in [Configuring the URLs of the OSLC Services](modelling-howto#configure-service-url).
+    1. For each **Service** in the model, there will be a corresponding JAX-RS web service, that responds to web requests on a specific relative URL. If you want to control the relative URLs of these web services, specify some of the provided optional properties, as instructed in [Configuring the URLs of the OSLC Services](modelling-howto.md#configure-service-url).
 1. To define a particular capability, select from the Pallet the desired **[Selection Dialog | Creation Dialog | Creation Factories]** tool.
-    1. In the diagram, select the **Service** to which this capabiliy element belongs.
+    1. In the diagram, select the **Service** to which this capability element belongs.
     1. For each **[Selection Dialog | Creation Dialog | Creation Factories]**, there will be a corresponding JAX-RS method under the web service of its containing **Service**. The **URI** property under such an element define the relative URL of the method.
     1.  Define the **Resources** being managed by this capability
         1.  From the Pallet, select the **AddManagedResource** tool
@@ -340,7 +326,7 @@ diagram](./images/LyoToolchainModel-AdaptorInterfaceDiagram.png "An example adap
         1.  From the Pallet, select the **AddManagedResource** tool
         2.  In the diagram, select the **Web Service** that manages the Resource.
 1.  Define the **Resources** that the adaptor consumes
-    1.  From the Pallet, select the **AddComsumedResource** tool
+    1.  From the Pallet, select the **AddConsumedResource** tool
     2.  In the diagram, select the **RequiredAdaptor** element.
 1.  View the Toolchain view and note that any added Provided/Consumed
     resources are now also represented as ports in the toolchain view.
@@ -357,13 +343,13 @@ Validation](./images/Lyo-ToolchainModelValidation.png " Toolchain Model Validati
 1.  In the **ModelExplorer**, double-click on the toolchain model
     (*toolchain.xml*) file, to open the model using a standard editor.
 2.  Select the menu item **Lyo Designer &gt; Validate**
-3.  If you receive *Valiation Problems*, press **Details** to read the
+3.  If you receive *Validation Problems*, press **Details** to read the
     error details, and correct your model accordingly.
 4.  You can also validate any part of the complete model, but navigating
     down to the particular element in the model tree diagram, before
     selecting the **validate** menu.
     -   Note: The context menu may contain two **Validate** menu items. The
-        first is specific to the Toochain Editor, while the second is
+        first is specific to the Toolchain Editor, while the second is
         for general EMF modelling. You are to select to first entry.
 
 <a name="setup-oslc4j-projects"></a>Set up Lyo projects
@@ -392,7 +378,7 @@ corresponding code for each adaptor through the following simple step:
 adaptor model. Any manual changes to the generated code (within
 designated placeholders) are maintained upon a subsequent change in the
 adaptor model, and resulting code re-generation.
-* Lyo Designer allows you to generate different parts of the code into different projects (or file locations). This allows for better reuse of generated code packages. See [Controlling the generation parameters of Domain Specification(s)](modelling-howto#controlling-generation-parameters) for more details.
+* Lyo Designer allows you to generate different parts of the code into different projects (or file locations). This allows for better reuse of generated code packages. See [Controlling the generation parameters of Domain Specification(s)](modelling-howto.md#controlling-generation-parameters) for more details.
 
 Upon a successful code generation, all the necessary Java classes for
 complete ready-to-run Lyo projects are produced. The next section

@@ -62,13 +62,9 @@ You can follow along with the OSLC Tutorial by using the following software:
   that hosts OSLC UI Preview and OSLC Delegated UI examples, implemented as a
   Java EE web application. In our examples, we assume that NinaCRM is running
   at [http://localhost:8181/ninacrm](http://localhost:8181/ninacrm)
-- Poster browser plugin (for
-  [Firefox](https://addons.mozilla.org/en-US/firefox/addon/poster/) or
-  [Chrome](https://chrome.google.com/webstore/detail/chrome-poster/cdjfedloinmbppobahmonnjigpmlajcd)):
-  we will browse and manipulate OSLC resources with this plugin that makes it
-  easy to issue HTTP requests and set custom headers. An alternative for
-  Firefox is
-  [RESTClient](https://addons.mozilla.org/en-us/firefox/addon/restclient/).
+- Download a REST client extension like
+  [RESTClient](https://addons.mozilla.org/en-us/firefox/addon/restclient/) or
+  an application (Postman, HTTPie, hurl etc).
 
 For more information, see our section about [downloading, building, and starting the NinaCRM and OSLC4J Bugzilla applications](running_the_examples).
 

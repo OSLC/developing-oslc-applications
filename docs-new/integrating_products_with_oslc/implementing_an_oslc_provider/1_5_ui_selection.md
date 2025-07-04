@@ -228,14 +228,11 @@ We determine whether or not we want to use Window Name or postMessage by looking
 
 You can further explore the `respondWithPostMessage()` and `respondWithWindowName()` methods in `bugzilla.js` to see how we send the data to the requesting window – it's taken almost entirely from the examples in the OSLC Core specification.
 
-<div class="notice tip">
-<p>
-Note that the selection dialog above will show all Change Requests available for one Bugzilla Product. Some additional work could be done to make this more useful by doing some filtering up-front. For example, it might be useful to show only Change Requests that are assigned to the current user, or to prioritize recently created Change Requests.
-</p>
-</div>
+!!! tip
+    Note that the selection dialog above will show all Change Requests available for one Bugzilla Product. Some additional work could be done to make this more useful by doing some filtering up-front. For example, it might be useful to show only Change Requests that are assigned to the current user, or to prioritize recently created Change Requests.
 
-We'll put this delegated UI to use later when we [implement it in the NinaCRM sample application](../integrating_with_an_oslc_provider/2_2_links_and_previews).
+
+We'll put this delegated UI to use later when we [implement it in the NinaCRM sample application](../integrating_with_an_oslc_provider/2_2_links_and_previews.md).
 
 Next, we'll create a delegated UI that will allow users to create new bugs in Bugzilla.
 
-[Next: Part 1.6, UI Creation](1_6_ui_creation)

@@ -36,7 +36,7 @@ OSLC providers are required to provide an RDF/XML representation of resources; h
 
 If you send the same request with an `Accept` header with the content `application/rdf+xml`, you should receive RDF/XML back from the adapter.
 
-You can explore this further using Postman, Insomnia, or another REST client, as well as the Bugzilla adapter [where we implemented OSLC representations of Bugzilla bugs](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
+You can explore this further using Postman, Insomnia, or another REST client, as well as the Bugzilla adapter [where we implemented OSLC representations of Bugzilla bugs](../implementing_an_oslc_provider/1_3_intro_to_oslc4j.md).
 
 Here's a sample Bugzilla bug represented as an RDF/XML BugzillaChangeRequest resource:
 
@@ -80,7 +80,7 @@ Inside the `<rdf:RDF>` root element, there is an `<rdf:Description>` element wit
 
 OSLC resources use Dublin Core defined properties, like `title`, `description`, and `id`. They also use OSLC defined properties like `status`, `closed`, and `inprogress`. You can find a listing of the different types of properties allowed and required in the [OSLC-CM specification](https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/os/change-mgt-spec.html). There are also Bugzilla specific properties like `component` and `priority`. 
 
-You can learn more about how our OSLC Bugzilla Adapter generates these representations [here](../implementing_an_oslc_provider/1_3_intro_to_oslc4j).
+You can learn more about how our OSLC Bugzilla Adapter generates these representations [here](../implementing_an_oslc_provider/1_3_intro_to_oslc4j.md).
 
 
 ## Parsing an OSLC resource
@@ -123,7 +123,7 @@ Before you start coding, you must get [add Jena dependencies](https://jena.apach
 
 Let's attempt to GET an OSLC Change Request via HTTP, but this time we will do it in Java. When we get the results, we will parse them with Jena and pull out the properties that Nina needs: the OSLC-CM `fixed` value and the Dublin Core Terms `modified` date value.
 
-> **NOTE:** If you see `com.hp.hpl.jena` package references in your code, it's an old "pre-Apache" version of Jena from the v2 branch. Current Jena major version is v4. Lyo dropped support for Jena 2 in Lyo 2.3.0. Please refer to the [Lyo migration guide](https://github.com/eclipse/lyo/wiki/Lyo-5.0-migration-notes) to upgrade your code.
+> **NOTE:** If you see `com.hp.hpl.jena` package references in your code, it's an old "pre-Apache" version of Jena from the v2 branch. Current Jena major version is v4. Lyo dropped support for Jena 2 in Lyo 2.3.0. Please refer to the [Lyo migration guide](../../eclipse_lyo/migration-overview.md) to upgrade your code.
 
 Note that the following is not a complete Java class:
 
@@ -177,5 +177,3 @@ With the ability to parse OSLC Change Request resources in RDF/XML form, you can
 The real power of OSLC on display here is that although we've written this code with our  OSLC-CM Adapter for Bugzilla in mind, it will work _equally well for any other application that provides data according to the OSLC-CM specification_. Because OSLC Providers should all expose the same types of data in the same standard formats, you can build integrations _for the OSLC standards and specifications_ that should work with any compatible software. It's a different way of thinking about integrations that should help you make powerful, flexible, and future-proof ways to connect software. Cool stuff.
 
 Next, now that we have a simple understanding of Jena, we'll use it to help us automatically create Bugzilla bugs – no human involvement required.
-
-[Next: Part 2.5, Automatic Bugs](2_5_automatic_bugs)

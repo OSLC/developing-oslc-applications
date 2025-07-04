@@ -9,7 +9,7 @@ In this section, we’ll explore how to make our Bugzilla Adapter into a provide
 
 ## Add UI Preview handling to the BugzillaChangeRequestService class
 
-In the [previous section](1_3_intro_to_oslc4j) we explored how the **BugzillaChangeRequestService** class handles requests for collections of __BugzillaChangeRequests__ or individual __BugzillaChangeRequests__.
+In the [previous section](1_3_intro_to_oslc4j.md) we explored how the **BugzillaChangeRequestService** class handles requests for collections of __BugzillaChangeRequests__ or individual __BugzillaChangeRequests__.
 
 To add UI Preview support, we will add two methods to the service:
 
@@ -189,8 +189,6 @@ For example, with a product ID of **1** and a bug ID of **10**:
     
 You should see a small table with details about the bug, similar to this:
 
-![A small table of information about a bug in the browser](http://open-services.net/uploads/resources/uipreview-html.png)
+![A small table of information about a bug in the browser](http://archive.open-services.net/uploads/resources/uipreview-html.png)
 
 Now, given a URI link to a resource, we can provide some human-readable and usable presentations for that link, including a quick peak into the Bug using UI Preview. Later in this tutorial we'll explore how other applications can discover and display these previews.
-
-[Next: Part 1.5, UI Selection](1_5_ui_selection)

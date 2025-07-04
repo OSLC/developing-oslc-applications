@@ -92,7 +92,7 @@ Once we've navigated from a Catalog to a Service Provider resource, here's a sam
 	  </oslc:ServiceProvider>
 	</rdf:RDF>
 	
-You can read more about [implementing Service Providers](../implementing_an_oslc_provider/1_2_providing_service_resources) and [implementing creation factories](../implementing_an_oslc_provider/1_7_factory) for our Bugzilla adapter.
+You can read more about [implementing Service Providers](../implementing_an_oslc_provider/1_2_providing_service_resources.md) and [implementing creation factories](../implementing_an_oslc_provider/1_7_factory.md) for our Bugzilla adapter.
 
 Of most interest to our team developing a way to automatically create bugs are the contents of the `<oslc:service>` element (**(1)**). The Service has an `oslc:creationFactory` property (**(2)**) with a value of `oslc:CreationFactory`. The creation factory has values that indicate it is for creating Change Requests (**(3)**), the URI for posting new Change Requests (**(4)**), and the URI of the [Resource Shape](http://archive.open-services.net/resources/tutorials/oslc-primer/resourceshapes) (**(5)**) that lists the required fields for bug creation. The usage value (**(5)**) indicates that this is the default Creation Factory to use.
 
@@ -205,7 +205,7 @@ Next, we set up a Jena Model object and adds namespace prefixes. These are not s
 
 Once the Model is set up, we create a Resource object using a base URI that is the empty string. We won't know the URI of the new bug until the OSLC-CM provider has created it and tells us the new URI via the HTTP Location header. 
 
-    com.hp.hpl.jena.rdf.model.Resource resource = model.createResource("");
+    org.apache.jena.rdf.model.Resource resource = model.createResource("");
 
 Once we have a Resource, we are ready to add property values for each of the required properties:
 

@@ -4,7 +4,21 @@ This section explains how to setup the development environment to run the OSLC4J
 
 ## Environment Setup
 
-Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development). The tutorial requires JDK 8 to be used. The code may run on JDK 11 with the warnings, and certain parts may fail to run on JDK 17 as of 2022-05.
+Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development.md). Lyo 6+ requires JDK 17 as a baseline. Sample code relying on earlier versions of Lyo may require an older version of the JDK - see the table below.
+
+| Lyo version | JDK baseline |
+| ----------- | ------------ |
+| Lyo 6 | JDK 17 |
+| Lyo 5 | JDK 11 |
+| Lyo 4 | JDK 8+ |
+| Lyo 2.1.2 - 2.4 | JDK 7 |
+
+!!! question "What about Lyo 3?"
+    Lyo 3 was never released to avoid any confusion regarding OSLC 3 / Lyo 3 versioning. The next version of Lyo after 2.4 is 4.0.
+
+??? question "What about Lyo `3.0.0-SNAPSHOT`?"
+    There was, indeed, version `3.0.0-SNAPSHOT` that was a development version after Lyo 2.1.0. That version was abandoned; bug fixes were released in 2.1.2, non-breaking features were released in 2.2.0, while breaking changes were reverted.
+
 
 ## Bugzilla Setup
 
@@ -98,5 +112,3 @@ This will start the application. You will see a lot of messages in the Console v
 
 
 When the server starts, in your web browser navigate to [http://localhost:8181/ninacrm](http://localhost:8181/ninacrm) to see the NinaCRM example.
-
-Next: [Part 1, turning Bugzilla into a provider of the Change Management OSLC specification](implementing_an_oslc_provider/1_0_implementing_a_provider)

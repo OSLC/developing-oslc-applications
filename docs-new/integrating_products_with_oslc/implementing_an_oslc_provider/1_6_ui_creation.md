@@ -265,11 +265,9 @@ Back in `bugzilla.js` the `onreadystatechange` callback evaluates that JSON resp
 	  }
 	};
 
-We'll [put this dialog to use in the NinaCRM application later on](../integrating_with_an_oslc_provider/2_3_delegatedUI).
+We'll [put this dialog to use in the NinaCRM application later on](../integrating_with_an_oslc_provider/2_3_delegatedUI.md).
 
 We now have the ability to use user interface delegation as a way to provide a simple way for consumer applications to both create and select bugs. We’ve also exposed this capability from our service provider resource definition. 
 
 Next, we'll explore how to make it easier for other applications to create new bugs programmatically.
-
-[Next: Part 1.7, Factory](1_7_factory)
 

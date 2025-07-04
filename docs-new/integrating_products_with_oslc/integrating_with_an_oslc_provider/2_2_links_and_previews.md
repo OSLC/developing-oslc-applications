@@ -6,7 +6,7 @@ In this section, we'll add the ability to quickly preview linked resources to th
 
 OSLC UI Previews makes it easy to show an in-context preview of a resource when a user "hovers" over the link to that resource, so the user can see what is at the other end and decide whether or not to click through to get more information. The illustration below shows UI Preview in action on IBM Rational's Jazz.net site. A user has put his mouse-pointer over a link to a Build and a preview of that build has appeared on the screen:
 
-![A pop-up window displays a preview of a resource when the user hovers over a link to that resource](http://open-services.net/images/ill_2.jpg)
+![A pop-up window displays a preview of a resource when the user hovers over a link to that resource](https://archive.open-services.net/images/ill_2.jpg)
 
 Here's how UI Preview works in an OSLC consumer: 
 
@@ -16,41 +16,43 @@ Here's how UI Preview works in an OSLC consumer:
 4. You send an HTTP GET for the small or large preview.
 5. The OSLC provider returns HTML that you can show to the user.
 
-We explored the OSLC Provider side of this in more detail  [earlier in this tutorial](../implementing_an_oslc_provider/1_4_ui_preview).
+We explored the OSLC Provider side of this in more detail  [earlier in this tutorial](../implementing_an_oslc_provider/1_4_ui_preview.md).
 
 ### Example XML for a UI preview
 
 Here's an example of the XML that an OSLC Provider will return when you request the UI Preview representation of a resource:
 
-	<?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
 
-	<rdf:RDF
-	   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	   xmlns:dcterms="http://purl.org/dc/terms/"
-	   xmlns:oslc="http://open-services.net/ns/core#">
-	   <oslc:Compact
-		 rdf:about="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/10">
-		 <dcterms:title>incidents common connexion</dcterms:title>
-		 <oslc:shortTitle>ChangeRequest 10</oslc:shortTitle>
-		 <oslc:icon rdf:resource="http://example.com/bugzilla/images/favicon.ico" />
-		 <oslc:smallPreview>
-		   <oslc:Preview>
-			 <oslc:document
-			   rdf:resource="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/10/smallPreview" />
-			 <oslc:hintWidth>11em</oslc:hintWidth>
-			 <oslc:hintHeight>45em</oslc:hintHeight>
-		   </oslc:Preview>
-	   </oslc:smallPreview>
-	   <oslc:largePreview>
-		   <oslc:Preview>
-			 <oslc:document    
-			   rdf:resource="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/10/largePreview" />
-			 <oslc:hintWidth>20em</oslc:hintWidth>
-			 <oslc:hintHeight>45em</oslc:hintHeight>
-		   </oslc:Preview>
-		   </oslc:largePreview>
-	   </oslc:Compact>
-	</rdf:RDF>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:oslc="http://open-services.net/ns/core#">
+	<oslc:Compact
+		rdf:about="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/10">
+		<dcterms:title>incidents common connexion</dcterms:title>
+		<oslc:shortTitle>ChangeRequest 10</oslc:shortTitle>
+		<oslc:icon rdf:resource="http://example.com/bugzilla/images/favicon.ico" />
+		<oslc:smallPreview>
+		<oslc:Preview>
+			<oslc:document
+			rdf:resource="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/10/smallPreview" />
+			<oslc:hintWidth>11em</oslc:hintWidth>
+			<oslc:hintHeight>45em</oslc:hintHeight>
+		</oslc:Preview>
+	</oslc:smallPreview>
+	<oslc:largePreview>
+		<oslc:Preview>
+			<oslc:document    
+			rdf:resource="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/10/largePreview" />
+			<oslc:hintWidth>20em</oslc:hintWidth>
+			<oslc:hintHeight>45em</oslc:hintHeight>
+		</oslc:Preview>
+		</oslc:largePreview>
+	</oslc:Compact>
+</rdf:RDF>
+```
 
 The sample above includes both a small (`<oslc:smallPreview>`) and large (`<oslc:largePreview>`). Both have a document URI (`rdf:resource`) which is the location of the HTML version of the preview. Each preview also includes a width (`oslc:hintWidth`) and height (`oslc:hintHeight`) which tell you how much space you should give the preview in your web page.
 
@@ -81,20 +83,22 @@ With a proxy service, we can now implement the rest of UI Previews in the browse
 
 ### Displaying Links to resources
 
-[Starting the NinaCRM sample application and the Bugzilla adapter](../running_the_examples).
+[Start the NinaCRM sample application and the Bugzilla adapter](../running_the_examples.md).
 
 Open <http://localhost:8181/ninacrm/> in a web browser. You'll see a sample incident:
 
-![Sample incident #676 in the NinaCRM sample application](http://open-services.net/uploads/resources/nina-start.png)
+![Sample incident #676 in the NinaCRM sample application](http://archive.open-services.net/uploads/resources/nina-start.png)
 
 At the bottom, find the **Related Defects** heading. This is where we show links to related bugs in Bugzilla; the HTML is a simple unordered list:
 
-	<h3>Related Defects</h3>
-	<ul id="linkList">
-		<li><a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/2">Bug #2</a></li>
-		<li><a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/1">Bug #1</a></li>
-		<li><a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/8">Bug #8</a></li>
-	</ul>
+```html
+<h3>Related Defects</h3>
+<ul id="linkList">
+	<li><a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/2">Bug #2</a></li>
+	<li><a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/1">Bug #1</a></li>
+	<li><a href="http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/8">Bug #8</a></li>
+</ul>
+```
 
 Note that the URLs are to our Bugzilla adapter.
 
@@ -102,7 +106,10 @@ Without any JavaScript, this would function perfectly well to navigate to the li
 
 ### Showing UI Previews via Dojo Tooltip Widgets
 
-Throughout this, we'll be using the [Dojo JavaScript toolkit](dojotoolkit.org/) to smooth out browser differences and build UI components like buttons and [tooltips](http://dojotoolkit.org/reference-guide/1.8/dijit/Tooltip.html).
+!!! note
+    Dojo toolkit is outdated. Lyo 7 relies on Bootstrap 5 instead. The tutorial was not updated. See either the code generated by Lyo Designer or Bootstrap documentation for an example usage.
+
+Throughout this, we'll be using the [Dojo JavaScript toolkit](https://dojotoolkit.org/) to smooth out browser differences and build UI components like buttons and [tooltips](http://dojotoolkit.org/reference-guide/1.8/dijit/Tooltip.html).
 
 Open the file `index.jsp` in `/src/main/webapp/` and search for `dojo.addOnLoad(addPreviewMouseOverHandlers)`.
 
@@ -215,10 +222,7 @@ If you're running the sample applications, open <http://localhost:8181/ninacrm/>
 
 Hover over any of the **Related Defects** links. (You will probably have to log in with your Bugzilla username and password.) You should see a tooltip appear with the small preview of the bug:
 
-![Small UI preview of a bug that is linked from the sample incident](http://open-services.net/uploads/resources/nina-preview.png)
+![Small UI preview of a bug that is linked from the sample incident](http://archive.open-services.net/uploads/resources/nina-preview.png)
 
 
 Next up, we'll explore how to use OSLC Delegated UIs to allow our support reps to both select and create new bugs in Bugzilla without leaving the NinaCRM application.
-
-
-[Next: Part 2.3, DelegatedUI](2_3_delegatedUI)

@@ -8,5 +8,3 @@ To learn more about core OSLC concepts and architectural underpinnings, read the
 
 For more information on the value of integrating with open protocols, read our whitepaper ["The Case for Open Services"](https://archive.open-services.net/resources/whitepapers/the-case-for-open-services/).
 
-Next: [Downloading and starting the sample applications](running_the_examples)
-

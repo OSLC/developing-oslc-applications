@@ -36,5 +36,3 @@ Here's our plan of action to add OSLC-CM support to NinaCRM.
 + If the bug has updated since last run, send an email to customer with summary
 
 First up, we'll implement OSLC links and previews in NinaCRM.
-
-[Next: Part 2.2, Links and Previews](2_2_links_and_previews)

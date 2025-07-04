@@ -8,7 +8,7 @@ This setup is known to work on Eclipse
 version [Eclipse 2020-12](https://www.eclipse.org/downloads/packages/release/2020-12/r/eclipse-ide-enterprise-java-developers).
 
 1. Make sure your Eclipse environment is setup
-as expected for general Lyo-based development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+as expected for general Lyo-based development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md)
 
 1. Install Jersey plugins from Orbit
     1.  Select ***Help \--\> Install New Software\...***

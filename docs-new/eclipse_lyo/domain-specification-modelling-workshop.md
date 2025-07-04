@@ -4,15 +4,7 @@ With Lyo Designer, you can graphically model your domain specifications accordin
 
 From such a model, you can produce a library of Java classes, with the appropriate Lyo annotations to reflect the defined OSLC Resources, and their properties. These classes can then be further used in the development of OSLC applications using the Lyo SDK.
 
-A domains model can also be imported into a toolchain model, to model a complete toolchain, as well as a single server and/or client. (see [Toolchain Modelling Workshop](toolchain-modelling-workshop) for details).
-
-## Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Bug Reporting](#bug-reporting)
-- [Eclipse Setup](#eclipse-setup)
-- [Projects layout](#projects-layout)
-- [Create a Domain Specification Modelling Project](#create-a-domain-specification-modelling-project)
-- [<a name="browsing-generated-code"></a>Browsing the generated code](#browsing-the-generated-code)
+A domains model can also be imported into a toolchain model, to model a complete toolchain, as well as a single server and/or client. (see [Toolchain Modelling Workshop](toolchain-modelling-workshop.md) for details).
 
 ## Bug Reporting
 
@@ -21,9 +13,9 @@ Please send any bug reports, questions or suggestions to the project mailinglist
 
 ## Eclipse Setup
 
-First, make sure your Eclipse environment is setup as expected for general Lyo development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development)
+First, make sure your Eclipse environment is setup as expected for general Lyo development, as instructed in [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md)
 
-Then, make sure you [install Lyo Designer](install-lyo-designer)
+Then, make sure you [install Lyo Designer](install-lyo-designer.md)
 
 <a name="create-modelling-project"></a>Create a Modelling Project
 ==========================
@@ -50,6 +42,7 @@ Where
 
 Create a Domain Specification Modelling Project
 ------------------------------------------------
+
 1.  In your Eclipse workspace, switch to the **Modeling** perspective
 1.  Create a new modelling project
     1.  Select **New &gt; Modelling Project**
@@ -69,7 +62,7 @@ Create a Domain Specification Modelling Project
         * *Note:* Do not double-click on the file. This will instead open the file in an xml editor.
     1.  You can now open and edit any of these views, by double-clicking on the desired entry.
 
-*Note:* Lyo Designer also allows you to break up the model into a set of modelling projects for more complicated organisation. See [Handling Large Models](modelling-howto#handling-large-models) for more details.
+*Note:* Lyo Designer also allows you to break up the model into a set of modelling projects for more complicated organisation. See [Handling Large Models](modelling-howto.md#handling-large-models) for more details.
 
 <a name="model-oslc-domain-specifications"></a>Model OSLC Domain Specifications
 ===================
@@ -82,9 +75,9 @@ In the *SpecificationDiagram*, you can define a set of domain specifications, wi
 ![An example domain specification
 diagram](./images/LyoToolchainModel-SpecificationDiagram.png "An example domain specification diagram")
 
-1. First make sure you have an overview of Lyo Designer's modelling capabilities through the [General Lyo Modelling Instructions](toolchain-modelling-workshop#general-modelling-instructions).
-1. Now, follow the Domain Specification modelling instructions (*Only this particular section*) from the general [Lyo Designer manual](./toolchain-modelling-workshop#domain-specification-view).
-1. Finally, validate your model by following the validation instructions (*Only this particular section*) from the general [Lyo Designer manual](./toolchain-modelling-workshop#validate-model).
+1. First make sure you have an overview of Lyo Designer's modelling capabilities through the [General Lyo Modelling Instructions](toolchain-modelling-workshop.md#general-modelling-instructions).
+1. Now, follow the Domain Specification modelling instructions (*Only this particular section*) from the general [Lyo Designer manual](./toolchain-modelling-workshop.md#domain-specification-view).
+1. Finally, validate your model by following the validation instructions (*Only this particular section*) from the general [Lyo Designer manual](./toolchain-modelling-workshop.md#validate-model).
 
 <a name="setup-oslc4j-projects"></a>Setup Lyo projects
 =====================
@@ -118,7 +111,7 @@ You are now ready to generate the code:
 adaptor model. Any manual changes to the generated code (within
 designated placeholders) are maintained upon a subsequent change in the
 adaptor model, and resulting code re-generation.
-* Lyo Designer allows you to generate different parts of the code into different projects (or file locations). This allows for better reuse of generated code packages. See [Controlling the generation parameters of Domain Specification(s)](modelling-howto#controlling-generation-parameters) for more details.
+* Lyo Designer allows you to generate different parts of the code into different projects (or file locations). This allows for better reuse of generated code packages. See [Controlling the generation parameters of Domain Specification(s)](modelling-howto.md#controlling-generation-parameters) for more details.
 
 
 <a name="browsing-generated-code"></a>Browsing the generated code

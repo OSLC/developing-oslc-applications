@@ -12,7 +12,7 @@ By using Delegated UI, Nina will enable support reps to add links from Incidents
 
 ### The mechanics of Delegated UI
 
-Earlier in this tutorial, we walked through an implementation of Delegated UIs for OSLC4JBugzilla, both for [selecting bugs](../implementing_an_oslc_provider/1_5_ui_selection) and [creating new bugs](../implementing_an_oslc_provider/1_6_ui_creation). In addition to providing the UI and handling the results, the OSLC4JBugzilla adapter (or any other OSLC provider application) announces in its [Service Provider Documents](../implementing_an_oslc_provider/1_2_providing_service_resources) the URL location and recommended size of the UI.
+Earlier in this tutorial, we walked through an implementation of Delegated UIs for OSLC4JBugzilla, both for [selecting bugs](../implementing_an_oslc_provider/1_5_ui_selection.md) and [creating new bugs](../implementing_an_oslc_provider/1_6_ui_creation.md). In addition to providing the UI and handling the results, the OSLC4JBugzilla adapter (or any other OSLC provider application) announces in its [Service Provider Documents](../implementing_an_oslc_provider/1_2_providing_service_resources.md) the URL location and recommended size of the UI.
 
 The application that wants to use the Delegated UI (the OSLC Consumer) creates an `<iframe>` for the Delegated UI so that the user can interact with it. The Consumer application must also listen to the `<iframe>` do something with the results of the user's actions.
 
@@ -21,69 +21,71 @@ You can learn more about Delegated UI in the [OSLC Primer](http://archive.open-s
 
 ## Parsing the Service Provider Documents
 
-<div class="notice">
-<p><strong>Note</strong>: The NinaCRM sample application does <em>not</em> retrieve a Service Provider document and parse its contents to locate Delegated UIs; for simplicity, the URLs for the delegated UIs are hard-coded in the <code>index.jsp</code> file. </p>
-<p>A better implementation would be one that properly parses the Service Provider and thus could work with any OSLC Provider.</p>
-</div>
+!!! note
+	The NinaCRM sample application does *not* retrieve a Service Provider document and parse its contents to locate Delegated UIs; for simplicity, the URLs for the delegated UIs are hard-coded in the `index.jsp` file.
 
-As we noted when [we implemented Service Providers and Catalogs](../implementing_an_oslc_provider/1_2_providing_service_resources), one of the cores of OSLC is that clients should not have to hard-code any URLs other than a Service Provider Catalog. Clients should be able to parse the Catalog and navigate from the Catalog to the Service Providers; the Service Providers will then expose the available OSLC services.
+	A better implementation would be one that properly parses the Service Provider and thus could work with any OSLC Provider.
 
-If you'd like to follow along with a real Service Provider Catalog or Service Provider, see the ["Viewing the machine-readable formats of a Service Provider Catalog" section near the bottom of this section](../implementing_an_oslc_provider/1_2_providing_service_resources).
+As we noted when [we implemented Service Providers and Catalogs](../implementing_an_oslc_provider/1_2_providing_service_resources.md), one of the cores of OSLC is that clients should not have to hard-code any URLs other than a Service Provider Catalog. Clients should be able to parse the Catalog and navigate from the Catalog to the Service Providers; the Service Providers will then expose the available OSLC services.
+
+If you'd like to follow along with a real Service Provider Catalog or Service Provider, see the ["Viewing the machine-readable formats of a Service Provider Catalog" section near the bottom of this section](../implementing_an_oslc_provider/1_2_providing_service_resources.md).
 
 Below is a part of a sample RDF/XML representation of a Service Provider that exposes both a Delegated UI for selection (`<oslc:selectionDialog>`) and a Delegated UI for Creation (`<oslc:creationDialog >`):
 
-	<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-	<rdf:RDF
-	   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	   xmlns:dcterms="http://purl.org/dc/terms/"
-	   xmlns:oslc="http://open-services.net/ns/core#">
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:oslc="http://open-services.net/ns/core#">
 
-	   <oslc:ServiceProvider rdf:about="http://localhost:8080/OSLC4JBugzilla/services">  <!-- (1)-->
-		  <dcterms:title>Service Provider Catalog</dcterms:title>
-		  <dcterms:description>
-			Simple OSLC Reference Implementation (SORI) for Change Management Service Document
-		  </dcterms:description>
+	<oslc:ServiceProvider rdf:about="http://localhost:8080/OSLC4JBugzilla/services">  <!-- (1)-->
+		<dcterms:title>Service Provider Catalog</dcterms:title>
+		<dcterms:description>
+		Simple OSLC Reference Implementation (SORI) for Change Management Service Document
+		</dcterms:description>
 
-		  <!-- etc. etc. etc. omitted everything up to oslc:service property -->
+		<!-- etc. etc. etc. omitted everything up to oslc:service property -->
 
-		  <oslc:service>  <!-- (2)-->
-			<oslc:Service>
-			   <oslc:domain rdf:resource="http://open-services.net/ns/cm#"/>
+		<oslc:service>  <!-- (2)-->
+		<oslc:Service>
+			<oslc:domain rdf:resource="http://open-services.net/ns/cm#"/>
 
-			<!-- etc. etc. etc. omitted everything Delegated UI information -->
+		<!-- etc. etc. etc. omitted everything Delegated UI information -->
 
-			   <oslc:selectionDialog>  <!-- (3)-->
-				  <oslc:Dialog>
-					<dcterms:title>CM Resource Selector</dcterms:title>
-					<oslc:label>Picker</oslc:label> <!-- (4)-->
-					<oslc:dialog  <!-- (5)-->
-					   rdf:resource="http://10.0.1.3:8080/OSLC4JBugzilla/services/1/changeRequests/selector"/>
-					<oslc:hintHeight>325px</oslc:hintHeight> <!-- (6)-->
-					<oslc:hintWidth>525px</oslc:hintWidth>
-					<oslc:resourceType  <!-- (7)-->
-					   rdf:resource="http://open-services.net/ns/cm#ChangeRequest"/>
-					<oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
-				  </oslc:Dialog>
-			   </oslc:selectionDialog>
+			<oslc:selectionDialog>  <!-- (3)-->
+				<oslc:Dialog>
+				<dcterms:title>CM Resource Selector</dcterms:title>
+				<oslc:label>Picker</oslc:label> <!-- (4)-->
+				<oslc:dialog  <!-- (5)-->
+					rdf:resource="http://10.0.1.3:8080/OSLC4JBugzilla/services/1/changeRequests/selector"/>
+				<oslc:hintHeight>325px</oslc:hintHeight> <!-- (6)-->
+				<oslc:hintWidth>525px</oslc:hintWidth>
+				<oslc:resourceType  <!-- (7)-->
+					rdf:resource="http://open-services.net/ns/cm#ChangeRequest"/>
+				<oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+				</oslc:Dialog>
+			</oslc:selectionDialog>
 
-			   <oslc:creationDialog> <!-- (8)-->
-				  <oslc:Dialog>
-					<dcterms:title>CM Resource Creator</dcterms:title>
-					<oslc:label>Creator</oslc:label>  
-					<oslc:dialog rdf:resource=
-					   "http://10.0.1.3:8080/OSLC4JBugzilla/services/1/changeRequests/creator"/>
-					<oslc:hintHeight>375px</oslc:hintHeight>
-					<oslc:hintWidth>600px</oslc:hintWidth>
-					<oslc:resourceType rdf:resource=
-					   "http://open-services.net/ns/cm#ChangeRequest"/>
-					<oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
-				  </oslc:Dialog>
-			   </oslc:creationDialog>
-			</oslc:Service>
-		  </oslc:service>
+			<oslc:creationDialog> <!-- (8)-->
+				<oslc:Dialog>
+				<dcterms:title>CM Resource Creator</dcterms:title>
+				<oslc:label>Creator</oslc:label>  
+				<oslc:dialog rdf:resource=
+					"http://10.0.1.3:8080/OSLC4JBugzilla/services/1/changeRequests/creator"/>
+				<oslc:hintHeight>375px</oslc:hintHeight>
+				<oslc:hintWidth>600px</oslc:hintWidth>
+				<oslc:resourceType rdf:resource=
+					"http://open-services.net/ns/cm#ChangeRequest"/>
+				<oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+				</oslc:Dialog>
+			</oslc:creationDialog>
+		</oslc:Service>
+		</oslc:service>
 
-	  </oslc:ServiceProvider>
-	</rdf:RDF>
+	</oslc:ServiceProvider>
+</rdf:RDF>
+```
 
 Note that both of the delegated UIs have a URL location (`rdf:resource`) and suggested sizes for the dialogs (`<oslc:hintHeight>` and `<oslc:hintWidth>`).
 
@@ -218,20 +220,18 @@ With all these in place, you should now be able to add links to our incident pag
 
 Here's the dialog for selection:
 
-![Sample delegated dialog for selecting bugs on the incident page](http://open-services.net/uploads/resources/nina-select.png)
+![Sample delegated dialog for selecting bugs on the incident page](http://archive.open-services.net/uploads/resources/nina-select.png)
 
 You can search for bugs directly:
 
-![Using the delegated dialog for selection to search for water](http://open-services.net/uploads/resources/nina-query.png)
+![Using the delegated dialog for selection to search for water](http://archive.open-services.net/uploads/resources/nina-query.png)
 
 You can also create new bugs right from the page:
 
-![Dialog for creating new bugs on the incident page](http://open-services.net/uploads/resources/nina-create-1.png)
+![Dialog for creating new bugs on the incident page](http://archive.open-services.net/uploads/resources/nina-create-1.png)
 
 Either way, the new or selected bug appears on the page (complete with the ability to see a UI preview of the bug):
 
-![Bug #3266 added to the incident page](http://open-services.net/uploads/resources/nina-added-1.png)
+![Bug #3266 added to the incident page](http://archive.open-services.net/uploads/resources/nina-added-1.png)
 
 At this point, we've completed our first milestone goals: the CRM system now uses links,  OSLC UI Preview, and OSLC delegated dialogs to make it faster for support reps to find and create bugs.
-
-[Next: Part 2.4, Notify Customers](2_4_notify_customers)

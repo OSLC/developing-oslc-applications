@@ -154,7 +154,7 @@ nav:
         - Getting Started: integrating_products_with_oslc/implementing_an_oslc_provider/1_0_implementing_a_provider.md
         - Planning Provider: integrating_products_with_oslc/implementing_an_oslc_provider/1_1_planning_partial_cm_provider.md
         - Service Resources: integrating_products_with_oslc/implementing_an_oslc_provider/1_2_providing_service_resources.md
-        - Intro to OSLC4J: integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j.md
+        - Intro to Lyo: integrating_products_with_oslc/implementing_an_oslc_provider/1_3_intro_to_oslc4j.md
         - UI Preview: integrating_products_with_oslc/implementing_an_oslc_provider/1_4_ui_preview.md
         - UI Selection: integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.md
         - UI Creation: integrating_products_with_oslc/implementing_an_oslc_provider/1_6_ui_creation.md
@@ -192,7 +192,7 @@ nav:
   - Sample Applications:
     - Overview: sample-applications-and-code.md
     - IoTP Adaptor: 
-        - IoTP Adaptor Sample: iotp-adaptor-sample.md
+        - IoTP Adaptor Sample: iotp_adaptor/index.md
         - User Guide: iotp_adaptor/userGuide/user-guide.md
         - Developer Guide: iotp_adaptor/developer-guide.md
         - Getting Started:

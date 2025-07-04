@@ -4,7 +4,7 @@ The next step in implementing the OSLC Change Management specification is to det
 
 In Bugzilla, bugs are organized by Product. Before you can use Bugzilla, you have to tell the system which Products exist in order to report bugs against them.
 
-Given that, in our adapter each Bugzilla Product will be represented by an OSLC Service Provider REST service. Each Service Provider will include URIs for [a Delegated UI for bug selection](1_5_ui_selection), a [Delegated UI for bug creation](1_6_ui_creation), a Query Capability so that bugs can be queried via HTTP GET, and [a Creation Factory](1_7_factory) so that new bugs can be created via HTTP POST.
+Given that, in our adapter each Bugzilla Product will be represented by an OSLC Service Provider REST service. Each Service Provider will include URIs for [a Delegated UI for bug selection](1_5_ui_selection.md), a [Delegated UI for bug creation](1_6_ui_creation.md), a Query Capability so that bugs can be queried via HTTP GET, and [a Creation Factory](1_7_factory.md) so that new bugs can be created via HTTP POST.
 
 To enable client programs to find the Service Providers provided by Bugzilla (and because one Bugzilla instance can have multiple Products), we'll use [an OSLC Service Provider Catalog](https://open-services.net/resources/oslc-primer/#serviceprovidercatalog). When a client wants to connect to Bugzilla, it first fetches the catalog, which provides a list of Service Providers. In the end, a client can start with the URI of the one Service Provider Catalog offered by Bugzilla and navigate to the Service Providers (one per Product in Bugzilla).
 
@@ -140,7 +140,7 @@ And near the bottom of the file, we loop through the service providers in the ca
 
 If you're running the example applications, you can see this in action at <http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton>.
 
-![Screen capture of the Service Provider Catalog in a web browser](http://open-services.net/uploads/resources/serviceprovidercatalog-html.png)
+![Screen capture of the Service Provider Catalog in a web browser](http://archive.open-services.net/uploads/resources/serviceprovidercatalog-html.png)
 
 ## Retrieving and displaying details about a Service Provider
 
@@ -241,7 +241,7 @@ If you're running the example applications, browse to <http://localhost:8080/OSL
 
 Click on the link for any Service Provider (the number of Service Providers you'll see depends on the number of available Products on your Bugzilla server). You should see an HTML page with links to the available REST services, similar to this:
 
-![Screen capture of a Service Provider in a web browser](http://open-services.net/uploads/resources/serviceprovidercatalog-html.png)
+![Screen capture of a Service Provider in a web browser](http://archive.open-services.net/uploads/resources/serviceprovidercatalog-html.png)
 
 
 
@@ -336,5 +336,3 @@ Let's try it out!
 Next, try it with the URL for one of the Service Providers. (The exact URL will depend on the Product ID of the products on your Bugzilla server.)
 
 Now, a client can start with a single URL (for the catalog) and navigate to all of the Service Providers. A client could use this to show a list of Products to a user and allow them to pick which ones to report bugs against, or query for existing bugs.
-
-[Next: Part 1.3, Intro to the Lyo SDK](1_3_intro_to_oslc4j)
