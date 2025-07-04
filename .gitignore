@@ -13,3 +13,5 @@ docs/
 site/
 
 .cache/
+
+.venv/
