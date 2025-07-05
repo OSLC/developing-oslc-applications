@@ -13,6 +13,13 @@
 1. Regularly try to update the application by selecting ***Help → Check for
    Updates***
 
+!!! tip "Pro tip: which Lyo Designer version do I need?"
+    Normally, you want the latest stable version as linked above.
+
+    The latest development version is usually a risky choice, but could be good to access latest features (esp. if there was no stable release in the last 6 months), or to open projects that are using the development version already (e.g., we normally apply latest development version of Lyo Designer on the Reference Implementation project).
+
+    Older versions may be useful to open an older project where its import crashes in the newer versions of Lyo Designer. Normally, this should not happen - latest versions of Lyo Designer can recognize older versions of the metamodel and display warnings when some parts of the opened model need to me updated. Older versions can be downloaded from the [Releases](https://download.eclipse.org/lyo/product/binaries/releases/) page. 
+
 ## Installing as plugins on an Eclipse installation
 
 You can also install Lyo Designer as a set of plugins into an existing Eclipse
