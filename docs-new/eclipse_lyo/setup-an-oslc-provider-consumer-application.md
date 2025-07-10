@@ -9,7 +9,7 @@ An alternative to the instructions on this page is to use [Lyo Designer](./lyo-d
 1. Set up the environment for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md).
 1. Install [Lyo Designer](./install-lyo-designer.md).
 1. Follow the [Create a Modelling Project](./toolchain-modelling-workshop.md#create-modelling-project) instructions (*Only this particular section*) to create the Eclipse project.
-1. Follow the [Adapter Interface](./toolchain-modelling-workshop.md#adaptor-interface-view) instructions (*Only this particular section*) to create a single Adaptor Interface in the model. Do not create additional elements, such as a Service Provider Catalog, Service Provider, etc. Set the generation settings as expected.
+1. Follow the [Adaptor Interface](./toolchain-modelling-workshop.md#adaptor-interface-view) instructions (*Only this particular section*) to create a single Adaptor Interface in the model. Do not create additional elements, such as a Service Provider Catalog, Service Provider, etc. Set the generation settings as expected.
 1. Follow the [Generate Lyo Java code](./toolchain-modelling-workshop.md#generate-oslc4j-java-code) instructions (*Only this particular section*) to generate the basic project setup.
 1. The process is complete! Lyo Designer can be used to model the complete OSLC Server/Client and generate additional project code.
 
