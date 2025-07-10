@@ -59,7 +59,7 @@ Next, select the `maven-archetype-webapp` archetype:
 
 ![](./images/CreateMavenAdaptorProject_Step2.png)
 
-Next, fill in the **Group Id**, **Artefact Id**, and the **Package Base**.
+Next, fill in the **Group Id**, **Artifact Id**, and the **Package Base**.
 
 * The **Package Base** value (`com.sample.adaptor` on this page) will be used as a base package for the server code.
 
