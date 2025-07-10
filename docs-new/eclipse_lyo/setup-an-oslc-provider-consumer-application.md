@@ -7,10 +7,10 @@ equally valid for any other development environment.
 
 ## An alternative to the manual steps below
 
-An alternative to the instructions on this page is to instead use [Lyo Designer](./lyo-designer.md) to quickly generate the project, including a very basic code skeleton. The generated project will also include the neccessary setup for OpenApi/Swagger support, TRS, etc.
+An alternative to the instructions on this page is to instead use [Lyo Designer](./lyo-designer.md) to quickly generate the project, including a very basic code skeleton. The generated project will also include the necessary setup for OpenApi/Swagger support, TRS, etc.
 
-1. Make sure your environment is setup for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md)
-1. install [Lyo Designer](./install-lyo-designer.md)
+1. Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md)
+1. Install [Lyo Designer](./install-lyo-designer.md)
 1. Follow the [Create a Modelling Project](./toolchain-modelling-workshop.md#create-modelling-project) instructions (*Only this particular section*) to create the Eclipse project.
 1. Follow the [Adapter Interface](./toolchain-modelling-workshop.md#adaptor-interface-view) instructions (*Only this particular section*) to create a single Adaptor Interface in the model. You do not need to create any additional elements, such as a Service Provider Catalog, Service Provider, etc. Just make sure you set the generation settings as expected.
 1. Follow the [Generate Lyo Java code](./toolchain-modelling-workshop.md#generate-oslc4j-java-code) instructions (*Only this particular section*) to generate your basic project setup.
@@ -34,7 +34,7 @@ As a complement when following the instructions below, you can find sample proje
 
 Creating the project consists of these steps:
 
-1. [Setup Eclipse](#set-up-eclipse)
+1. [Set up Eclipse](#set-up-eclipse)
 1. [Decide if you want to adopt JAX-RS 1.0 or 2.0?](#decide-jaxrs)
 1. [Create a Maven project](#create-maven-project)
 1. [Customise the project POM file](#customize-project-pom-file)
@@ -45,14 +45,14 @@ Creating the project consists of these steps:
 
 ## Set up Eclipse
 
-Make sure your environment is setup for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md)
+Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](./eclipse-setup-for-lyo-based-development.md)
 
 ## Create a Maven project
 
-To create a Maven project from an archetype via Eclipse
+To create a Maven project from an archetype via Eclipse:
 
-1. select *File -> New -> Other*
-1. then select *Maven Project* under *Maven* group.
+1. Select *File -> New -> Other*
+1. Then select *Maven Project* under *Maven* group.
 1. Leave the *Create a simple project* checkbox unchecked.
 1. Uncheck the *Use default Workspace location* option and point it to the project root
 1. Press *Next*
@@ -63,7 +63,7 @@ Next, select the `maven-archetype-webapp` archetype:
 
 ![](./images/CreateMavenAdaptorProject_Step2.png)
 
-Next, Fill in the **Group Id**, **Artefact Id**, and the **Package Base**.
+Next, fill in the **Group Id**, **Artefact Id**, and the **Package Base**.
 
 * The **Package Base** value (`com.sample.adaptor` on this page) will be used as a base package for your server code.
 
@@ -77,7 +77,7 @@ You should now have the project in Eclipse and the following folder structure:
 
 We now need to modify the project *pom.xml* file.
 
-### Setup general POM properties
+### Set up general POM properties
 
 We will also use properties to define a common version for Lyo packages:
 
@@ -93,7 +93,7 @@ We will also use properties to define a common version for Lyo packages:
 
 ### (Optional) Add Lyo repositories
 
-Lyo release artifacts are on Maven central since 4.0.0 - no action needed from your side.
+Lyo release artefacts are on Maven central since 4.0.0 - no action needed from your side.
 
 If you wish to use the latest development snapshots, you will need the following entry:
 
@@ -151,7 +151,7 @@ Lyo depends on JAX-RS APIs and your application needs to add implementations of 
 
 #### For Lyo 5.x 
 
-For Lyo release 5.0.0 and above, you will need to choose a JAX-RS 2.0 implementation. If you are using Jersey, you should use version 2.35. *Note that starting with Jersey 2.26, HK2 is not bundled with the core artifacts (see the [Jersey migration guide](https://eclipse-ee4j.github.io/jersey.github.io/documentation/2.35/user-guide.html#mig-2.26)).*
+For Lyo release 5.0.0 and above, you will need to choose a JAX-RS 2.0 implementation. If you are using Jersey, you should use version 2.35. *Note that starting with Jersey 2.26, HK2 is not bundled with the core artefacts (see the [Jersey migration guide](https://eclipse-ee4j.github.io/jersey.github.io/documentation/2.35/user-guide.html#mig-2.26)).*
 ```xml
 <dependency>
   <groupId>org.glassfish.jersey.core</groupId>
@@ -215,7 +215,7 @@ If your server needs to support OAuth, include the following:
 </dependency>
 ```
 
-To support OAuth, you will need to add the following JAX-RS Providers to your Application (the `javax.ws.rs.core.Application` subclass)
+To support OAuth, you will need to add the following JAX-RS Providers to your Application (the `javax.ws.rs.core.Application` subclass):
 ```java
 RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
 RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
@@ -316,7 +316,7 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 
 With OSLC being based on REST, an OSLC Server can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/). 
 
-The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical Lyo project. The instructions are also partially base on 
+The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical Lyo project. The instructions are also partially based on 
 [Co-hosting Swagger UI with your Jersey REST API using Maven dependencies](https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8). The instructions provide the minimal settings necessary for a Lyo project.
 
 ### Add OpenApi/Swagger Maven dependencies
@@ -449,7 +449,7 @@ The OpenApi documentation can be achieved with as little as adding `@Api` to eac
 
 #### `@Api`
 
-1. For each REST service (ie. OSLC Service), simply add the `@Api` annotation.
+1. For each REST service (i.e. OSLC Service), simply add the `@Api` annotation.
 1. (*OPTIONAL*) add the *value* and *description* details. The *value* is used to group the REST methods into common categories, helping in the structuring of the methods in the documentation. You can give it the same value as that of the @Path annotation, collecting all REST methods for the same service together.
 
 ```java
@@ -466,7 +466,7 @@ For each REST method, add the `@ApiOperation` Swagger annotation.
     In [OpenApi](https://swagger.io/docs/specification/paths-and-operations/), an operation is considered unique based on the combination of its path and HTTP method. This means you cannot define multiple C.R.U.D. methods for the same path and method—even if they differ by parameters such as `Accept` or `Content-Type`.
 
 !!! example
-    If your OSLC Service defines separate Java methods to handle HTML and RDF/XML content types for the same path and HTTP method, OpenApi will only recognize one of these methods and ignore the other.
+    If your OSLC Service defines separate Java methods to handle HTML and RDF/XML content types for the same path and HTTP method, OpenApi will only recognise one of these methods and ignore the other.
 
     **Workaround:** Annotate ALL methods that are identified as unique with the complete list of media types in the *produces* property of the `@ApiOperation` annotation. This way, the generated documentation correctly indicates the existence of all methods.
 
@@ -484,7 +484,7 @@ For each REST method, add the `@ApiOperation` Swagger annotation.
 For each Java class that models an OSLC-resource (`@OslcName` annotation), add an `@ApiModel` annotation that refers to the Shape of the resource, since a Shape is a more accurate description of the object, than the one automatically generated by Swagger.
 
 ```java
-@ApiModel(description = "The  model below is only a object structure as derived by swagger.  For a more accurate RDF Description, refer to the Requirement Resource Shape.")
+@ApiModel(description = "The model below is only an object structure as derived by swagger. For a more accurate RDF Description, refer to the Requirement Resource Shape.")
 @OslcNamespace(Oslc_rmDomainConstants.REQUIREMENT_NAMESPACE)
 @OslcName(Oslc_rmDomainConstants.REQUIREMENT_LOCALNAME)
 @OslcResourceShape(title = "Requirement Resource Shape", describes = Oslc_rmDomainConstants.REQUIREMENT_TYPE)
@@ -525,9 +525,9 @@ Add a dependency for the TRS Server library:
     </dependency>
 
 
-### Setup the TRS JAX-RS Provider to your Application
+### Set up the TRS JAX-RS Provider to your Application
 
-The *TRS Server* library already contains a `TrackedResourceSetService` class  that can handle the REST calls for TRS Base and ChangeLog. For this service to work, you will only need to provide a binding to a singleton of a class that implements the `PagedTrs` class.
+The *TRS Server* library already contains a `TrackedResourceSetService` class that can handle the REST calls for TRS Base and ChangeLog. For this service to work, you will only need to provide a binding to a singleton of a class that implements the `PagedTrs` class.
 
 Register the TRS JAX-RS Provider `TrackedResourceSetService` in your Application (the `javax.ws.rs.core.Application` subclass).
 
@@ -545,7 +545,7 @@ public class Application extends javax.ws.rs.core.Application {
     ...
 ```
 
-Provide the necessary binding definition for the  `PagedTrs` class.
+Provide the necessary binding definition for the `PagedTrs` class.
 
 ```java
 import java.util.Collections;
@@ -566,8 +566,8 @@ public class Application extends javax.ws.rs.core.Application {
     }
 ```
 
-Define the `InmemPagedTrsSingleton` singleton class. You will need to complete the code example below, with
-* the code that populates  `uris` with the intial set of resources to be managed by `InmemPagedTrs`. 
+Define the `InmemPagedTrsSingleton` singleton class. You will need to complete the code example below, with:
+* the code that populates `uris` with the initial set of resources to be managed by `InmemPagedTrs`; 
 * the desired `basePageLimit` and `changelogPageLimit` parameters. 
 
 ```java
@@ -606,7 +606,7 @@ public class InmemPagedTrsSingleton implements Factory<PagedTrs> {
             
             ArrayList<URI> uris = new ArrayList<URI>();
             
-            //TODO: populate uris with the intial set of resources to be managed by the InmemPagedTrs instance
+            //TODO: populate uris with the initial set of resources to be managed by the InmemPagedTrs instance
             ....
             // not thread-safe
             inmemPagedTrs = new InmemPagedTrs(<basePageLimit>, <changelogPageLimit>,
