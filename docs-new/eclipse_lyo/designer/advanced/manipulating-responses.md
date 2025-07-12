@@ -6,7 +6,7 @@ Initially, you may be tempted to edit the generated code directly. However, it i
 
 !!! tip "Reminder about code generation"
 
-    You may be familiar with a few code generators, such as in Ruby on Rails. Those are _scaffolding_ generators, meant to help you get started. They generate code only once and let you modify it if needed. Some other generators, e.g. to generate OpenAPI clients, may be designed to be always regenerated from the definitions. Lyo Designer features an MBSE-style (model-based systems engineering) code generator that is designed to be used repeatedly and symbiotically when designing an OSLC Server.
+    You may be familiar with a few code generators, such as in Ruby on Rails. Those are _scaffolding_ generators, meant to help you get started. They generate code only once and encourage you modify it further. Some other generators, e.g. to generate OpenAPI clients, may be designed to be always regenerated from the definitions. Lyo Designer features an MBSE-style (model-based systems engineering) code generator that is designed to be used repeatedly and symbiotically when designing an OSLC Server.
 
 
 Preferred options include (in the order of preference):
