@@ -12,7 +12,7 @@ Initially, you may be tempted to edit the generated code directly. However, it i
 Preferred options include (in the order of preference):
 
 1. Adjust the model definition so that Lyo Designer generates the code that suits your needs.
-1. Find a code segment separated by comments `Start of user code` and `End of user` and place your code there. Such code will be preserved upon re-generation.
+1. Find a code segment separated by comments `Start of user code` and `End of user code` and place your code there. Such code will be preserved upon re-generation.
 1. [File a bug](https://github.com/eclipse-lyo/lyo.designer/issues/new?template=BLANK_ISSUE) on Lyo Designer and request a new user code block to be added where you need it.
 1. Consider changes to the dependency injection in the `ApplicationBinder` to use your implementations where necessary.
 1. Consider using an interceptor below.
