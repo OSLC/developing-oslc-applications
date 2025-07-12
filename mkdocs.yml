@@ -192,6 +192,8 @@ nav:
       - Modelling How-To: eclipse_lyo/modelling-howto.md
       - Domain Specification workshop: eclipse_lyo/domain-specification-modelling-workshop.md
       - Toolchain Modelling workshop: eclipse_lyo/toolchain-modelling-workshop.md
+      - Advanced topics:
+        - Overriding Lyo Designer output: eclipse_lyo/designer/advanced/manipulating-responses.md
   - OSLC4JS: oslc-open-source-node-projects.md
   - OSLC4Net: https://oslc4net.github.io/
   - PyOSLC: https://github.com/cslab/pyoslc
