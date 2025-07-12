@@ -1,6 +1,6 @@
 # Overriding Lyo Designer output
 
-Sometimes, Lyo Designer generates a code, which, in turn, produces REST responses that you would like to modify.
+Sometimes, Lyo Designer generates code, which, in turn, produces REST responses that you would like to modify.
 
 Initially, you may be tempted to edit the generated code directly. However, it is best not make manual changes to the generated code. This helps prevent you changes from being overwritten by Lyo Designer the next time you re-generate the code.
 
