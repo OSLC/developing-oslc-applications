@@ -446,7 +446,7 @@ Based on the refimpl migration (commit 3ca27c7), key changes include:
 <maven.compiler.target>17</maven.compiler.target>
 
 <!-- Update dependencies -->
-<version.lyo>6.0.0-SNAPSHOT</version.lyo>
+<version.lyo>6.0.0.Final</version.lyo>
 <jersey.version>3.1.5</jersey.version>
 ```
 
