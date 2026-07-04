@@ -25,16 +25,17 @@ Migration from Lyo 6.x to 7.x involves:
 
 | Component | Lyo 6.x | Lyo 7.x |
 |-----------|---------|---------|
-| **JDK baseline** | 17 | 17 (21 planned) |
+| **JDK baseline** | 17 | 21 |
 | **Apache Jena** | 4.8 | 4.10 (5.x planned) |
 | **Jersey** | 3.1.5 | 3.1.5 (3.1.10 planned) |
 | **Jakarta EE** | EE10 | EE10 |
 
 ### Breaking Changes Summary
 
+- ❌ **JDK 17 support removed** (JDK 21+ required)
 - ❌ **`oslc4j-json4j-provider` removed** (deprecated dependency)
 - 🔄 **Apache Jena 4.10 API changes** (minor breaking changes)
-- ✅ **Most applications should migrate seamlessly**
+- ✅ **Most applications should migrate seamlessly if compiled with Java 21**
 
 ## Step-by-Step Migration
 
@@ -60,12 +61,30 @@ grep -r "org.apache.jena" src/
 ### Phase 2: Dependency Updates
 
 #### 2.1 Update Lyo Version
+Update the Lyo version in your properties. Note that starting with version `7.0.0.Alpha4`, Eclipse Lyo introduced a **Bill of Materials (BOM)** to simplify dependency management and ensure version convergence across different Lyo artifacts:
+
 ```xml
 <properties>
-    <lyo.version>7.0.0.Alpha3</lyo.version>
+    <lyo.version>7.0.0-Alpha.10</lyo.version> <!-- Use the latest available version -->
     <!-- Other versions remain the same -->
     <jersey.version>3.1.5</jersey.version>
 </properties>
+```
+
+You can optionally manage Lyo dependencies via the new BOM in `<dependencyManagement>`:
+
+```xml
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.lyo</groupId>
+            <artifactId>lyo-bom</artifactId>
+            <version>${lyo.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 ```
 
 #### 2.2 Remove Deprecated Dependencies
@@ -81,6 +100,19 @@ If using the deprecated JSON4J provider:
 </dependency>
 -->
 ```
+
+!!! note "Wink JSON4J Classes Usage"
+    If the project code (such as generated selection/creation dialogue methods) still imports and uses classes from `org.apache.wink.json4j.*` (like `JSONObject`, `JSONArray`, or `JSONException`), a direct dependency on Apache Wink JSON4J shall be added to the `pom.xml` to avoid compilation errors:
+
+    ```xml
+    <dependency>
+        <groupId>org.apache.wink</groupId>
+        <artifactId>wink-json4j</artifactId>
+        <version>1.4</version>
+    </dependency>
+    ```
+
+    The `Json4JProvidersRegistry` and `JsonHelper` imports and registrations shall also be removed from the JAX-RS Application registration logic, as these specific helpers were part of the removed `oslc4j-json4j-provider` wrapper.
 
 ### Phase 3: Code Changes (Minimal Expected)
 
