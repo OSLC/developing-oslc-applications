@@ -26,7 +26,7 @@ Migration from Lyo 6.x to 7.x involves:
 | Component | Lyo 6.x | Lyo 7.x |
 |-----------|---------|---------|
 | **JDK baseline** | 17 | 21 |
-| **Apache Jena** | 4.8 | 4.10 (5.x planned) |
+| **Apache Jena** | 4.8 | 6.1.0 |
 | **Jersey** | 3.1.5 | 3.1.5 (3.1.10 planned) |
 | **Jakarta EE** | EE10 | EE10 |
 
@@ -34,7 +34,7 @@ Migration from Lyo 6.x to 7.x involves:
 
 - ❌ **JDK 17 support removed** (JDK 21+ required)
 - ❌ **`oslc4j-json4j-provider` removed** (deprecated dependency)
-- 🔄 **Apache Jena 4.10 API changes** (minor breaking changes)
+- 🔄 **Apache Jena 5.x and 6.x API changes** (minor downstream breaking changes unless your app uses TDB1 directly)
 - ✅ **Most applications should migrate seamlessly if compiled with Java 21**
 
 ## Step-by-Step Migration
@@ -65,7 +65,7 @@ Update the Lyo version in your properties. Note that starting with version `7.0.
 
 ```xml
 <properties>
-    <lyo.version>7.0.0-Alpha.10</lyo.version> <!-- Use the latest available version -->
+    <lyo.version>7.0.0-Alpha.12</lyo.version> <!-- Use the latest available version -->
     <!-- Other versions remain the same -->
     <jersey.version>3.1.5</jersey.version>
 </properties>
