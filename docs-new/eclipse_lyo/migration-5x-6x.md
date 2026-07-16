@@ -169,6 +169,38 @@ Replace all Java EE dependencies with Jakarta EE equivalents:
 </dependency>
 ```
 
+#### 2.5 Swagger Dependencies (if using Swagger)
+
+If the project integrates Swagger for OpenAPI documentation, the Swagger JAX-RS integration dependencies shall be updated to their Jakarta EE compatible counterparts (using the `-jakarta` artifact ID suffix):
+
+```xml
+<!-- OLD: Swagger dependencies (javax namespace) -->
+<!--
+<dependency>
+    <groupId>io.swagger.core.v3</groupId>
+    <artifactId>swagger-jaxrs2</artifactId>
+    <version>${swagger.version}</version>
+</dependency>
+<dependency>
+    <groupId>io.swagger.core.v3</groupId>
+    <artifactId>swagger-jaxrs2-servlet-initializer-v2</artifactId>
+    <version>${swagger.version}</version>
+</dependency>
+-->
+
+<!-- NEW: Swagger dependencies (jakarta namespace) -->
+<dependency>
+    <groupId>io.swagger.core.v3</groupId>
+    <artifactId>swagger-jaxrs2-jakarta</artifactId>
+    <version>${swagger.version}</version>
+</dependency>
+<dependency>
+    <groupId>io.swagger.core.v3</groupId>
+    <artifactId>swagger-jaxrs2-servlet-initializer-v2-jakarta</artifactId>
+    <version>${swagger.version}</version>
+</dependency>
+```
+
 ### Phase 3: Code Migration
 
 #### 3.1 Package Name Changes
@@ -336,6 +368,13 @@ mvn package
 > java.lang.NoClassDefFoundError: javax/servlet/http/HttpServlet
 
 **Solution:** Ensure all `javax.*` imports are changed to `jakarta.*` and dependencies are updated.
+
+**Issue: NoClassDefFoundError for JAX-RS / javax classes during server startup (e.g. HttpHeaders)**
+
+> java.lang.NoClassDefFoundError: javax/ws/rs/core/HttpHeaders
+> at org.glassfish.jersey.server.model.IntrospectionModeller...
+
+**Solution:** Ensure that the Swagger/OpenAPI dependencies are migrated to their Jakarta EE equivalents with the `-jakarta` suffix (e.g., `swagger-jaxrs2-jakarta` and `swagger-jaxrs2-servlet-initializer-v2-jakarta` instead of `swagger-jaxrs2` and `swagger-jaxrs2-servlet-initializer-v2`).
 
 **Issue: Jersey injection problems**
 
