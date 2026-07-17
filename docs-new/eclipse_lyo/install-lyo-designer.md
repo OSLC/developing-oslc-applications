@@ -76,7 +76,63 @@ yet-unreleased builds of Lyo Designer.
 
 ## Running from source
 
-If you wish to alter the source code of Lyo Designer (e.g., to contribute new
-features) or the generator templates (to update the structure of the generated
-code), you will need to [run Lyo Designer from
-source](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code).
+### Prereqisites
+
+Install JDK 17 and ensure it is the default JDK on your systems. For example, using winget:
+
+```powershell
+winget install -e --id EclipseAdoptium.Temurin.17.JDK
+```
+
+### Eclipse installation
+
+Get a fresh install of _Eclipse IDE for Enterprise Java and Web Developers_ (version
+[2022-03 R](https://www.eclipse.org/downloads/packages/release/2022-03/r)). Do not use 
+_Eclipse Installer._
+
+Open the Eclipse IDE and do a preliminary setup:
+
+- Uncheck ***Project → Build Automatically***
+- Add your JDK 17 under ***Window → Preferences → Java → Installed JREs.*** Make sure it is selected by default.
+
+Install required plugins from Eclipse:
+
+- Open ***Help → Install New Software...***
+- Select **2022-03** under ***Work with***
+- Uncheck the _**Contact all update sites during install to find required software**_
+- Select the following plugins:
+  - ***Modeling → Acceleo***
+  - ***Modeling → Sirius Specifier Environment***
+  - ***Modeling → EMF - Eclipse Modeling Framework SDK*** (not ***EclipseRT Target Platform Components → EMF - Eclipse Modeling Framework SDK***)
+
+!!! danger "Risk of breaking your installation"
+    You must ensure that all plugin installations are done with the _**Contact all update sites during install to find required software**_ option **UNCHECKED.**
+    Leaving it checked could lead to incompatible newer versions of plugin dependencies to be pulled.
+
+Install required plugins from Eclipse Lyo:
+
+- Open ***Help → Install New Software...***
+- Paste `https://download.eclipse.org/lyo/bundle/p2/releases/6.0.0.Final/` under ***Work with*** and press Enter.
+- Select the entire ***Lyo OSGi Bundles*** group
+
+!!! warning "Ignore the SLF4J resolution error"
+    When installing ***Lyo OSGi Bundles*** with the _**Contact all update sites during install to find required software**_ option unchecked, you may encounter resolution warnings for the `slf4j.api` plugin.
+    Proceed with _**Keep my installation the same and modify the items being installed to be compatible.**_
+
+Import Lyo Designer sources:
+
+- Clone this repository
+- Open ***File → Import Projects***
+- Use the ***Import Existing Projects***
+- Provide the path to the cloned repository under  ***Import Existing Projects*** and import all projects.
+
+Initial setup:
+
+- Select ***Project → Clean...*** and build the entire workspace.
+- Create a new *Eclipse Application* configuration called **Tool Chain
+    Design**
+  - Select **Run → Run Configurations ...**
+  - Select **Eclipse Application**
+  - Press **New** button to create a new configuration
+    - In the new dialog, Set **name** to *Lyo Designer*
+    - In Arguments tab, change **VM argument** value to `-Xms256m -Xmx2048m`
