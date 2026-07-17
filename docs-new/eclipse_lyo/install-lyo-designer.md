@@ -90,7 +90,7 @@ Get a fresh install of _Eclipse IDE for Enterprise Java and Web Developers_ (ver
 [2022-03 R](https://www.eclipse.org/downloads/packages/release/2022-03/r)). Do not use 
 _Eclipse Installer._
 
-Open Eclipse IDE and do a preliminary setup:
+Open the Eclipse IDE and do a preliminary setup:
 
 - Uncheck ***Project → Build Automatically***
 - Add your JDK 17 under ***Window → Preferences → Java → Installed JREs.*** Make sure it is selected by default.
@@ -99,16 +99,25 @@ Install required plugins from Eclipse:
 
 - Open ***Help → Install New Software...***
 - Select **2022-03** under ***Work with***
+- Uncheck the _**Contact all update sites during install to find required software**_
 - Select the following plugins:
   - ***Modeling → Acceleo***
   - ***Modeling → Sirius Specifier Environment***
   - ***Modeling → EMF - Eclipse Modeling Framework SDK*** (not ***EclipseRT Target Platform Components → EMF - Eclipse Modeling Framework SDK***)
+
+!!! danger "Risk of breaking your installation"
+    You must ensure that all plugin installations are done with the _**Contact all update sites during install to find required software**_ option **UNCHECKED.**
+    Leaving it checked could lead to incompatible newer versions of plugin dependencies to be pulled.
 
 Install required plugins from Eclipse Lyo:
 
 - Open ***Help → Install New Software...***
 - Paste `https://download.eclipse.org/lyo/bundle/p2/releases/6.0.0.Final/` under ***Work with*** and press Enter.
 - Select the entire ***Lyo OSGi Bundles*** group
+
+!!! warning "Ignore the SLF4J resolution error"
+    When installing ***Lyo OSGi Bundles*** with the _**Contact all update sites during install to find required software**_ option unchecked, you may encounter resolution warnings for the `slf4j.api` plugin.
+    Proceed with _**Keep my installation the same and modify the items being installed to be compatible.**_
 
 Import Lyo Designer sources:
 
