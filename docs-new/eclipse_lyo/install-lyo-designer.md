@@ -54,7 +54,7 @@ Development](./eclipse-setup-for-lyo-based-development.md)
     If you face problems installing the plugin (or when
     updating to a new version), try one of the following:
 
-    1. Check the "Contact all update sites during install to find required
+    1. Make sure the correct update site is selected in the dropdown. DO NOT check the "Contact all update sites during install to find required
       software" option.
     2. Check/uncheck "Group items by category" (particularly the case, if you get
       the message "there are no categorized items").
