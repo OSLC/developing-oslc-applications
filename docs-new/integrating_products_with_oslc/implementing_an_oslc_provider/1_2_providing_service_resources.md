@@ -58,7 +58,7 @@ The Service Provider Catalog is defined in **ServiceProviderCatalogService** (in
 
 ### Defining a JAX-RS method for the Service Provider Catalog
 
-In the file `ServiceProviderCatalogService.java` (in the **org.eclipse.lyo.oslc4j.bugzilla .servlet** package), view the JAX-RS annotation which defines the class that will run at `http://localhost:8080/OSLC4JBugzilla/services/catalog/`:
+In the file `ServiceProviderCatalogService.java` (in the **org.eclipse.lyo.oslc4j.bugzilla.services** package), view the JAX-RS annotation which defines the class that will run at `http://localhost:8080/OSLC4JBugzilla/services/catalog/`:
 
 	@Path("catalog")
 	public class ServiceProviderCatalogService

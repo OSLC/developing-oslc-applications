@@ -123,7 +123,7 @@ Before you start coding, you must get [add Jena dependencies](https://jena.apach
 
 Let's attempt to GET an OSLC Change Request via HTTP, but this time we will do it in Java. When we get the results, we will parse them with Jena and pull out the properties that Nina needs: the OSLC-CM `fixed` value and the Dublin Core Terms `modified` date value.
 
-> **NOTE:** If you see `com.hp.hpl.jena` package references in your code, it's an old "pre-Apache" version of Jena from the v2 branch. Current Jena major version is v4. Lyo dropped support for Jena 2 in Lyo 2.3.0. Please refer to the [Lyo migration guide](../../eclipse_lyo/migration-overview.md) to upgrade your code.
+> **NOTE:** If you see `com.hp.hpl.jena` package references in your code, it's an old "pre-Apache" version of Jena from the v2 branch. Modern versions of Jena use `org.apache.jena`. Lyo dropped support for Jena 2 in Lyo 2.3.0, and Jena dependencies are managed by `lyo-bom` in Lyo 7.0.0. Please refer to the [Lyo migration guide](../../eclipse_lyo/migration-overview.md) to upgrade your code.
 
 Note that the following is not a complete Java class:
 
@@ -137,7 +137,7 @@ Note that the following is not a complete Java class:
 
     // class declaration and other things omitted
 
-    String resourceURI = "http://localhost:8080/OSLC4JBugzilla/services/1/ChangeRequests/1";
+    String resourceURI = "http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests/1";
     URL url = new URL(resourceURI);  // (2)
     HttpURLConnection conn = (HttpURLConnection)url.openConnection();
     conn.setRequestProperty("Accept", "application/rdf+xml");  // (3)

@@ -19,7 +19,7 @@ To add UI Preview support, we will add two methods to the service:
 
 ### Provide the compact XML representation of a Bugzilla bug
 
-Open the file `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.servcies** package and find the `getCompact()` method.
+Open the file `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.services** package and find the `getCompact()` method.
 
 Note the `@Produces` annotation:
 
@@ -93,7 +93,7 @@ Now, let's set up the HTML for these previews.
 
 In the last section, the `getCompact()` method in the **BugzillaChangeRequestService** created preview resources pointing to `changeRequests/{id}/smallPreview` and `changeRequests/{id}/largePreview`.
 
-Open the file `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.servcies** package and find the `smallPreview()` method:
+Open the file `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.services** package and find the `smallPreview()` method:
 
 	@GET
 	@Path("{changeRequestId}/smallPreview")
@@ -125,7 +125,7 @@ Then, it sets some attributes and dispatches a JSP:
 	RequestDispatcher rd = httpServletRequest.getRequestDispatcher("/cm/changerequest_preview_small.jsp");
 	rd.forward(httpServletRequest,httpServletResponse);
 	
-Now, let's look at that JSP template. Open the file `/src/webapp/cm/changerequest_preview_small.jsp` in **org.eclipse.lyo.oslc4j.bugzilla** and browse the contents. The code near the top extracts the fields we want from the Change Request:
+Now, let's look at that JSP template. Open the file `src/main/webapp/cm/changerequest_preview_small.jsp` in **org.eclipse.lyo.oslc4j.bugzilla** and browse the contents. The code near the top extracts the fields we want from the Change Request:
 
 	<%
 	BugzillaChangeRequest changeRequest = (BugzillaChangeRequest)request.getAttribute("changeRequest");

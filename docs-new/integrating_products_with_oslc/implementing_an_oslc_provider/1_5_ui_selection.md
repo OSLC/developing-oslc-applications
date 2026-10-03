@@ -11,8 +11,8 @@ For example, a user of the NinaCRM product will be able to search for and add li
 
 Because delegated UI dialogs must accept user input and interact with Bugzilla to select or create bugs, they are more complex than collecting and describing bugs. Here's how we'll approach the process:
 
-2. See how OSLC4J helps provide delegated UI locations to the Service Provider document
-1. Understand how to define a basic dialog with the J2Bugzilla API and generate the appropriate responses
+1. See how OSLC4J helps provide delegated UI locations to the Service Provider document
+2. Understand how to define a basic dialog with the J2Bugzilla API and generate the appropriate responses
 3. Add methods to **BugzillaChangeRequestService** for the selection and creation of change requests
 4. Add forms and JavaScript code to handle interacting with the consumer of the dialogs
 5. Test the dialogs to ensure the appropriate response is given
@@ -22,7 +22,7 @@ Because delegated UI dialogs must accept user input and interact with Bugzilla t
 
 Because we're using OSLC4J, it's relatively trivial to add links to delegated UIs to our Service Provider documents.
 
-Open `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla** package and search for `@OslcDialogs` (note the plural).
+Open `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.services** package and search for `@OslcDialogs` (note the plural).
 
 These use the imported annotations from OSLC4J: ` org.eclipse.lyo.oslc4j.core.annotation.OslcDialog`, `org.eclipse.lyo.oslc4j.core.annotation.OslcDialogs;`, and `org.eclipse.lyo.oslc4j.core.annotation.OslcQueryCapability;`
 
@@ -173,10 +173,10 @@ In short, this function does the following:
 
 1. Removes any previous search results from the `<select id="results">` element
 2. Creates an AJAX request 
-4. Get the search query from the value of the `<input id="searchTerms">` element.
+3. Gets the search query from the value of the `<input id="searchTerms">` element
 4. Sends an AJAX request to `/changeRequests/selector` with a `terms=` parameter. Recall that this type of request to our adapter will run a search in Bugzilla and return the results in a JSON format.
-3. A callback evaluates the search results with the `eval()` method, loops through the results, and adds each result as an `<option>` element to the `#results` element.
-5. Reveals a loading message while making the request; hides the message when finished.
+5. A callback evaluates the search results with the `eval()` method, loops through the results, and adds each result as an `<option>` element to the `#results` element
+6. Reveals a loading message while making the request; hides the message when finished
 
 
 Now in our delegated UI, users can search for bugs in Bugzilla, see a list of results, and select amongst them from a `<select>` element. Next, we will allow them to do something with their selection.

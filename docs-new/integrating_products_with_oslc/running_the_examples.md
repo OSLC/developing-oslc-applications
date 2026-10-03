@@ -97,6 +97,9 @@ In your web browser navigate to the OSLC Catalog at [http://localhost:8080/OSLC4
 
 Log in with your Bugzilla user ID and password.
 
+!!! note "Running Lab6 on modern Java versions"
+    The `Lab6` and `ninacrm` sample projects were developed for Lyo 2.2 and Java 7/8. When using modern JDKs (such as JDK 21), ensure that Eclipse or Maven runs the application with a Java 8 runtime to prevent JSP compilation errors.
+
 ### Starting NinaCRM
 
 1. In the Package Explorer view, expand **ninacrm**.
