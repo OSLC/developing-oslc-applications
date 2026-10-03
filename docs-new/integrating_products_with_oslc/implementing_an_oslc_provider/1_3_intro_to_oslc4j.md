@@ -221,7 +221,7 @@ rd.forward(httpServletRequest,httpServletResponse);
 
 There are multiple parameters for this function that allow you to filter the collection with queries, paginate the results, and change the sort order. The Bugzilla Adapter does not use all of these parameters; however they are necessary for full support of [OSLC Queries](https://docs.oasis-open-projects.org/oslc-op/query/v3.0/os/oslc-query.html).
 
-Open the file `/src/webapp/cm/changerequest_collection_html.jsp` in **org.eclipse.lyo.oslc4j.bugzilla**. The HTML layout is nearly identical to that of the Service Providers and Catalog. 
+Open the file `src/main/webapp/cm/changerequest_collection_html.jsp` in **org.eclipse.lyo.oslc4j.bugzilla**. The HTML layout is nearly identical to that of the Service Providers and Catalog. 
 
 Towards the top, you'll see that we receive the data:
 
@@ -251,7 +251,7 @@ And towards the bottom of the file, we loop through the list of bugs and output 
 Let's try it out! From the Service Provider Catalog, you can navigate to a list of all bugs for a product.
 
 1. If you’re running the example applications, browse to <http://localhost:8080/OSLC4JBugzilla/services/catalog/singleton>.
-2. Click on the link for any Service Provider for a product (for example, if the product ID is "1": <http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/1>.
+2. Click on the link for any Service Provider for a product (for example, if the product ID is "1": <http://localhost:8080/OSLC4JBugzilla/services/serviceProviders/1>).
 3. Then click on the first link under the **OSLC-CM Resource Query Capability and Resource Shape** heading. For example, if the product ID is "1":     <http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests>
 
 You should see a page with links to the bugs, similar to this:

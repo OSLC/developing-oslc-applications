@@ -5,16 +5,16 @@ Providing [a delegated user interface (UI) dialog](https://open-services.net/res
 Here's the plan:
 
 1. Add the location of our delegated UI to our Service Provider representations
-1. Create a utility method that accepts a **BugzillaChangeRequest** and creates a bug in Bugzilla
-2. Create a service to handle requests to display a delegated UI to create bugs.
-3. Create a service to accept a **BugzillaChangeRequest** via HTTP POST (sent from the delegated UI form) and create a new bug.
+2. Create a utility method that accepts a **BugzillaChangeRequest** and creates a bug in Bugzilla
+3. Create a service to handle requests to display a delegated UI to create bugs
+4. Create a service to accept a **BugzillaChangeRequest** via HTTP POST (sent from the delegated UI form) and create a new bug
 
 
 ## Adding the location of the delegated UI for creation to Service Providers
 
 As with our delegated UI for selection, it's relatively easy to add the location of our delegated UI for creation to the various representations of service providers.
 
-Open `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla** package and search for `@OslcDialog` (_not_ plural). You’ll see two occurrences: one near the top for the Selection Dialog and Query Capability and one farther down the Creation Dialog:
+Open `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.services** package and search for `@OslcDialog` (_not_ plural). You’ll see two occurrences: one near the top for the Selection Dialog and Query Capability and one farther down the Creation Dialog:
 
     @OslcDialog
     (

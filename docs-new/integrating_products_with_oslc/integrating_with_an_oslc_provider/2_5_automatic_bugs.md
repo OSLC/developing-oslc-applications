@@ -238,7 +238,7 @@ With the ability to build RDF/XML representations of a bug in place, we can writ
 					   String platform, 
 					   String opsys) {
 
-	  String bug = formNewBug(title, version, component plaform, opsys); // (1) 
+	  String bug = formNewBug(title, version, component, platform, opsys); // (1) 
 	  
 	  try {
 		 URL createURL = new URL(creationURL);  // (2)
@@ -277,11 +277,6 @@ Next, we create a URL object with the URL of the target Change Request Creation 
 
 Finally, we write out the bug to the server (**(5)**). To confirm that the POST worked, we write out the results (**(6)**) and the response code (**(7)**) and the Location header (**(8)**). If all went well, the response code should be `201`, which means `Created`, and the Location will be the URI of the newly created bug.
 
-<div class="notice tip">
-<div class="header">
-<h3 class="title">Try it out!</h3>
-</div>
-<div class="body">If you'd like to more details or want to try to post a bug using RDF/XML, see <a href="/integrating_products_with_oslc/implementing_an_oslc_provider/1_7_factory/">our walkthrough of implementing a Creation Factory for our Bugzilla adapter</a>.
-</div>
-</div>
+!!! tip "Try it out!"
+    If you'd like more details or want to try to post a bug using RDF/XML, see [our walkthrough of implementing a Creation Factory for our Bugzilla adapter](../implementing_an_oslc_provider/1_7_factory.md).
 

@@ -115,9 +115,10 @@ In the `index.jsp` file, search for the comment `Add link via OSLC Delegated Pic
 
 Note that each button uses the Dojo/Dijit button framework and launches a JavaScript method when clicked.
 
-Next, we add the `selectDialog()` and `createDialog()` JavaScript methods.
+Next, we add the `selectDefect()` and `createDefect()` JavaScript methods.
 
-> **Tip!** The following methods use only the [Post Message Protocol from the OSLC specification](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/dialogs.html#messaging_conformance). For more information, see [Part 1.5 of the tutorial](https://oslc.github.io/developing-oslc-applications/integrating_products_with_oslc/implementing_an_oslc_provider/1_5_ui_selection.html), where we implement Delegated UIs.
+!!! tip
+    The following methods use only the [Post Message Protocol from the OSLC specification](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/dialogs.html#messaging_conformance). For more information, see [Part 1.5 of the tutorial](../implementing_an_oslc_provider/1_5_ui_selection.md), where we implement Delegated UIs.
 
 Because the end-result of both actions is the same – we will be adding a link to either a new or existing bug in Bugzilla – both methods invoke the same `postMessageProtocol()` method with the appropriate URL:
 

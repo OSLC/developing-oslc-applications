@@ -12,7 +12,7 @@ Recall that when we created a delegated UI for creating new bugs, we wrote code 
 
 ### Adding the Creation Factory to Service Provider documents
 
-Open the file `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.bugzilla.services** package.
+Open the file `BugzillaChangeRequestService.java` in the **org.eclipse.lyo.oslc4j.bugzilla.services** package.
 
 First search for the `@OslcCreationFactory` annotation: 
 
@@ -84,7 +84,7 @@ If you can create new bugs on your Bugzilla application, you should be able to c
 1. In Firefox or Chrome, open the **Poster** plugin.
 2. In the **URL** field, type the URL for the Creation Factory (replace {ProductID} with a valid ID for a Bugzilla product):
     
-        http://oslc:8080/OSLC4JBugzilla/services/1/changeRequests
+        http://localhost:8080/OSLC4JBugzilla/services/1/changeRequests
 3. In the **User Auth** fields, type your Bugzilla username and password.
 4. On the **Headers** tab, for the **Name** type `Content-Type` and for the **Value** type `application/rdf+xml`
 5. In the **Body** field enter the following example RDF/XML content. Change `you@example.com` to reflect your Bugzilla login/email; you might have to change some values depending on how your Bugzilla product has been configured, specifically `bugz:operatingSystem` and `bugz:component`.
@@ -106,7 +106,7 @@ If you can create new bugs on your Bugzilla application, you should be able to c
 			 <bugz:version>unspecified</bugz:version>
 			 <bugz:platform>PC</bugz:platform>
 			 <dcterms:contributor>
-			   <foaf:Person rdf:about="http://oslc:8080/OSLC4JBugzilla/person?mbox=you%40example.com">
+			   <foaf:Person rdf:about="http://localhost:8080/OSLC4JBugzilla/person?mbox=you%40example.com">
 				 <foaf:mbox>you@example.com</foaf:mbox>
 			   </foaf:Person>
 			 </dcterms:contributor>
