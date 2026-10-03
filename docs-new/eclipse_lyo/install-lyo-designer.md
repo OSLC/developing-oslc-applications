@@ -76,7 +76,7 @@ yet-unreleased builds of Lyo Designer.
 
 ## Running from source
 
-### Prereqisites
+### Prerequisites
 
 Install JDK 17 and ensure it is the default JDK on your systems. For example, using winget:
 
@@ -112,7 +112,7 @@ Install required plugins from Eclipse:
 Install required plugins from Eclipse Lyo:
 
 - Open ***Help → Install New Software...***
-- Paste `https://download.eclipse.org/lyo/bundle/p2/releases/6.0.0.Final/` under ***Work with*** and press Enter.
+- Paste `https://download.eclipse.org/lyo/bundle/p2/edge/` under ***Work with*** and press Enter.
 - Select the entire ***Lyo OSGi Bundles*** group
 
 !!! warning "Ignore the SLF4J resolution error"
@@ -122,17 +122,23 @@ Install required plugins from Eclipse Lyo:
 Import Lyo Designer sources:
 
 - Clone this repository
+- Run `mvn clean install` on the model projects (or from the repository root) to generate the model code.
 - Open ***File → Import Projects***
 - Use the ***Import Existing Projects***
-- Provide the path to the cloned repository under  ***Import Existing Projects*** and import all projects.
+- Provide the path to the cloned repository under ***Import Existing Projects*** and import all projects.
 
 Initial setup:
 
 - Select ***Project → Clean...*** and build the entire workspace.
-- Create a new *Eclipse Application* configuration called **Tool Chain
-    Design**
+- Create a new *Eclipse Application* configuration called **_Lyo Designer_**:
   - Select **Run → Run Configurations ...**
   - Select **Eclipse Application**
   - Press **New** button to create a new configuration
     - In the new dialog, Set **name** to *Lyo Designer*
     - In Arguments tab, change **VM argument** value to `-Xms256m -Xmx2048m`
+
+!!! note "Validation problems on launch"
+    When launching the child IDE, two validation problems can be safely ignored:
+
+    - `jakarta.xml.bind-api`
+    - `org.apache.xalan`
