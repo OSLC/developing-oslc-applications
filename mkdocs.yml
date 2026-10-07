@@ -183,6 +183,7 @@ nav:
         - Lyo 4.x → 5.x: eclipse_lyo/migration-4x-5x.md
         - Lyo 5.x → 6.x: eclipse_lyo/migration-5x-6x.md
         - Lyo 6.x → 7.x: eclipse_lyo/migration-6x-7x.md
+        - Jersey → Quarkus: eclipse_lyo/migrating-to-quarkus.md
       - Advanced topics:
         - Core Internals: eclipse_lyo/lyo-core-internals.md
         - OSGi Bundles: eclipse_lyo/lyo-as-osgi-bundles.md
