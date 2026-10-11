@@ -1,11 +1,9 @@
 You first need to setup an Eclipse environment for general Lyo
 development:
 
-1.  Unless already installed, you need to first install the JDK 11 to use Lyo
-    5.0 or newer. Older versions of Lyo and Lyo-based applications may require
-    JDK 8 to run.
-    1. You also need Maven version 3.6.3 or higher.
-    1. **Pro tip:** use [SDKMAN!](https://sdkman.io/) to install multiple versions of JDK and Maven and switch between them depending on the project. We recommend to `sdk install java 11.0.15-tem` provided by [Eclipse Temurin](https://adoptium.net/) as your default JDK.  
+1.  Unless already installed, install JDK 21 to use Lyo 7.0 or newer. Earlier versions of Lyo may require JDK 17 (Lyo 6), JDK 11 (Lyo 5), or JDK 8 (Lyo 4).
+    1. Maven version 3.8 or higher is required.
+    1. **Pro tip:** use [SDKMAN!](https://sdkman.io/) to install multiple versions of JDK and Maven and switch between them depending on the project. We recommend `sdk install java 21-tem` provided by [Eclipse Temurin](https://adoptium.net/) as your default JDK.  
 1.  Install [Eclipse IDE for Java EE
     Developers](https://www.eclipse.org/downloads/packages/release/2022-03/r/eclipse-ide-enterprise-java-and-web-developers)
     distribution. Alternatively, you need to install the plugins included in
@@ -32,5 +30,5 @@ Eclipse M2E expects `JAVA_HOME` to be defined in the OS environment variables. T
 
 `launchctl setenv JAVA_HOME /Users/{userId}/.sdkman/candidates/java/current`
 
-Substitute your user id for {userId}. If not using SDKMAN!, use the path to your Java 11 installation. After a reboot, `JAVA_HOME` will be set to your current [SDKMAN!](https://sdkman.io/) JDK.  
+Substitute your user id for {userId}. If not using SDKMAN!, use the path to your Java 21 installation. After a reboot, `JAVA_HOME` will be set to your current [SDKMAN!](https://sdkman.io/) JDK.  
 

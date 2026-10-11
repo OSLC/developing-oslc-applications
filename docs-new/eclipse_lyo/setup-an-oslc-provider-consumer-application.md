@@ -31,7 +31,6 @@ As a complement when following the instructions below, you can find sample proje
 Creating the project consists of these steps:
 
 1. [Set up Eclipse](#set-up-eclipse)
-1. [Decide if you want to adopt JAX-RS 1.0 or 2.0?](#decide-jaxrs)
 1. [Create a Maven project](#create-maven-project)
 1. [Customise the project POM file](#customize-project-pom-file)
 1. [Customise the web configuration](#customize-web-configuration)
@@ -75,16 +74,33 @@ Modify the project `pom.xml` file.
 
 ### Set up general POM properties
 
-Use properties to define a common version for Lyo packages:
+Use properties to define the Java version and common version for Lyo packages:
 
 ```xml
 <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  <maven.compiler.source>17</maven.compiler.source>
-  <maven.compiler.target>17</maven.compiler.target>
-  <version.lyo>6.0.0.Final</version.lyo>
+  <maven.compiler.release>21</maven.compiler.release>
+  <version.lyo>7.0.0.Beta3</version.lyo>
 </properties>
+```
+
+### Use the Lyo BOM
+
+Eclipse Lyo provides a Bill of Materials (`lyo-bom`) to manage versions for Lyo modules and related dependencies (such as Jena, Jersey, and Jakarta APIs). Add `lyo-bom` to the `<dependencyManagement>` section:
+
+```xml
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.lyo</groupId>
+      <artifactId>lyo-bom</artifactId>
+      <version>${version.lyo}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
 ```
 
 ### (Optional) Add Lyo repositories
@@ -111,61 +127,49 @@ If using the latest development snapshots is required, the following entry is ne
 
 ### SLF4J package dependencies
 
-Lyo uses SLF4J for logging, leaving the choice of the actual logging library to use. The simplest option:
+Lyo uses SLF4J for logging, leaving the choice of the logging library to use. The simplest option:
 
 ```xml
 <dependency>
   <groupId>org.slf4j</groupId>
   <artifactId>slf4j-simple</artifactId>
-  <version>1.7.36</version>
   <scope>runtime</scope>
 </dependency>
 ```
 
 ### Servlet dependencies
 
-Java EE 6 or higher and JSTL are required:
+Jakarta EE 10 (Servlet 6.0) and JSTL 3.0 are required:
 
 ```xml
 <dependency>
-  <groupId>javax.servlet</groupId>
-  <artifactId>javax.servlet-api</artifactId>
-  <version>3.1.0</version>
+  <groupId>jakarta.servlet</groupId>
+  <artifactId>jakarta.servlet-api</artifactId>
   <scope>provided</scope>
 </dependency>
 <dependency>
-  <groupId>javax.servlet</groupId>
-  <artifactId>jstl</artifactId>
-  <version>1.2</version>
+  <groupId>jakarta.servlet.jsp.jstl</groupId>
+  <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+  <scope>provided</scope>
 </dependency>
 ```
 
 ### JAX-RS implementation dependencies
 
-Lyo depends on JAX-RS APIs and your application needs to add implementations of those APIs.
-
-#### For Lyo 5.x 
-
-For Lyo release 5.0.0 and above, choose a JAX-RS 2.0 implementation. If using Jersey, use version 2.35. 
-
-!!! note
-    Starting with Jersey 2.26, HK2 is not bundled with the core artefacts (see the [Jersey migration guide](https://eclipse-ee4j.github.io/jersey.github.io/documentation/2.35/user-guide.html#mig-2.26)).
+Lyo depends on Jakarta RESTful Web Services APIs. The application must provide an implementation of these APIs. When using Jersey (3.1.x), the versions are managed by `lyo-bom`:
 
 ```xml
 <dependency>
   <groupId>org.glassfish.jersey.core</groupId>
   <artifactId>jersey-server</artifactId>
-  <version>2.35</version>
 </dependency>
 <dependency>
   <groupId>org.glassfish.jersey.containers</groupId>
   <artifactId>jersey-container-servlet</artifactId>
-  <version>2.35</version>
 </dependency>
 <dependency>
     <groupId>org.glassfish.jersey.inject</groupId>
     <artifactId>jersey-hk2</artifactId>
-    <version>2.35</version>
 </dependency>
 ```
 
@@ -177,44 +181,34 @@ The minimal Lyo dependencies are:
 <dependency>
   <groupId>org.eclipse.lyo.oslc4j.core</groupId>
   <artifactId>oslc4j-core</artifactId>
-  <version>${version.lyo}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.lyo.oslc4j.core</groupId>
   <artifactId>oslc4j-jena-provider</artifactId>
-  <version>${version.lyo}</version>
-</dependency>
-<dependency>
-  <groupId>org.eclipse.lyo.oslc4j.core</groupId>
-  <artifactId>oslc4j-json4j-provider</artifactId>
-  <version>${version.lyo}</version>
 </dependency>
 ```
 
 ### OSLC OAuth support
 
-If your server needs to support OAuth, include the following:
+If the server needs to support OAuth, include the following:
 
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.server</groupId>
   <artifactId>oauth-core</artifactId>
-  <version>${version.lyo}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.lyo.server</groupId>
   <artifactId>oauth-consumer-store</artifactId>
-  <version>${version.lyo}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.lyo.server</groupId>
   <artifactId>oauth-webapp</artifactId>
-  <version>${version.lyo}</version>
   <type>war</type>
 </dependency>
 ```
 
-To support OAuth, add the following JAX-RS Providers to the Application (the `javax.ws.rs.core.Application` subclass):
+To support OAuth, add the following JAX-RS providers to the Application (the `jakarta.ws.rs.core.Application` subclass):
 
 ```java
 RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
@@ -223,49 +217,41 @@ RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services
 
 ### OSLC Client support
 
-If your OSLC server also needs to consume resources from another server, a dependency to the OSLC client package is needed:
+If the OSLC server must also consume resources from another server, add a dependency on the OSLC client package:
 
-#### For Lyo 4.0+ 
 ```xml
 <dependency>
   <groupId>org.eclipse.lyo.clients</groupId>
   <artifactId>oslc-client</artifactId>
-  <version>${version.lyo}</version>
 </dependency>
 ```
 
-### Configure the Embedded Jetty server for quick debugging
+### Configure the embedded Jetty server for quick debugging
 
-Finally, use an embedded servlet container during the debugging to simplify the development process.
+Use an embedded servlet container during debugging to simplify the development process. For Jakarta EE 10, use `jetty-ee10-maven-plugin`.
 
-Replace the existing `<build>` entry with the Jetty configuration below, using the following customisations:
+Replace the existing `<build>` entry with the Jetty configuration below, using the following customizations:
 
-* `adaptor-sample` is the context path that can be the same as the eclipse project name (or something more appropriate)
+* `adaptor-sample` is the context path that can match the Eclipse project name (or another chosen value).
 * `8080` is the port number to run the services on.
 
-This will make the server available under the path http://localhost:8080/adaptor-sample.
+This configuration makes the server available at `http://localhost:8080/adaptor-sample`.
 
 ```xml
 <build>
   <plugins>
     <plugin>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-maven-plugin</artifactId>
-      <version>9.4.46.v20220331</version>
+      <groupId>org.eclipse.jetty.ee10</groupId>
+      <artifactId>jetty-ee10-maven-plugin</artifactId>
+      <version>12.1.11</version>
       <configuration>
-        <webAppConfig>
+        <webApp>
           <contextPath>/adaptor-sample</contextPath>
-        </webAppConfig>
-        <reload>automatic</reload>
-        <scanIntervalSeconds>5</scanIntervalSeconds>
-        <systemProperties>
-          <systemProperty>
-            <name>jetty.port</name>
-            <value>8080</value>
-          </systemProperty>
-        </systemProperties>
-        <stopKey />
-        <stopPort />
+        </webApp>
+        <httpConnector>
+          <port>8080</port>
+        </httpConnector>
+        <scan>5</scan>
       </configuration>
     </plugin>
   </plugins>
@@ -274,18 +260,18 @@ This will make the server available under the path http://localhost:8080/adaptor
 
 ## Customise the web configuration
 
-Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the template below.
+Modify the parameters in `src/main/webapp/WEB-INF/web.xml` according to the template below:
 
-* `Adaptor Sample` could be the same as the eclipse project name (or something more appropriate).
-* `com.sample.adaptor` should be the same as the base package name for the project.
-* `8080` should match the port number specified in the POM file for Jetty configuration.
+* `Adaptor Sample` can match the Eclipse project name (or another chosen value).
+* `com.sample.adaptor` must match the base package name for the project.
+* `8080` must match the port number specified in the POM file for Jetty configuration.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://java.sun.com/xml/ns/javaee"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-  id="WebApp_ID" version="3.0">
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+  version="6.0">
   <display-name>Adaptor Sample</display-name>
   <context-param>
     <description>Base URI for the adaptor.</description>
@@ -300,7 +286,7 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
     <servlet-name>JAX-RS Servlet</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
     <init-param>
-      <param-name>javax.ws.rs.Application</param-name>
+      <param-name>jakarta.ws.rs.Application</param-name>
       <param-value>com.sample.adaptor.servlet.Application</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
@@ -314,35 +300,22 @@ Modify the parameters in `/src/main/webapp/WEB-INF/web.xml` according to the tem
 
 ## (Optional) Provide OpenApi/Swagger Support
 
-With OSLC being based on REST, an OSLC Server can relatively easily be documented using [OpenApi/Swagger](https://swagger.io/). 
+With OSLC being based on REST, an OSLC server can be documented using [OpenApi/Swagger](https://swagger.io/). 
 
-The instructions below are based on [Swagger Core JAX RS Project Setup 1.5.X](https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-JAX-RS-Project-Setup-1.5.X), compiled for a typical Lyo project. The instructions are also partially based on [Co-hosting Swagger UI with your Jersey REST API using Maven dependencies](https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8). The instructions provide the minimal settings necessary for a Lyo project.
+The instructions provide the minimal settings necessary for a Lyo project using OpenAPI 3 and Jakarta REST.
 
 ### Add OpenApi/Swagger Maven dependencies
 
-Add the following Swagger dependency to the maven pom.xml file.
-
-#### For Lyo 5.0.0 
-
-Assuming the Jersey implementation is adopted with the version specified above.
+Add the following Swagger dependencies to the `pom.xml` file. The versions are managed by `lyo-bom`:
 
 ```xml
 <dependency>
   <groupId>io.swagger.core.v3</groupId>
-  <artifactId>swagger-jaxrs2</artifactId>
-  <version>2.1.4</version>
-  <exclusions>
-    <exclusion>
-      <!--should be <provided>-->
-      <groupId>jakarta.activation</groupId>
-      <artifactId>jakarta.activation-api</artifactId>
-    </exclusion>
-  </exclusions>
+  <artifactId>swagger-jaxrs2-jakarta</artifactId>
 </dependency>
 <dependency>
   <groupId>io.swagger.core.v3</groupId>
-  <artifactId>swagger-jaxrs2-servlet-initializer-v2</artifactId>
-  <version>2.1.4</version>
+  <artifactId>swagger-jaxrs2-servlet-initializer-v2-jakarta</artifactId>
 </dependency>
 ```
 
@@ -374,7 +347,7 @@ Add the following plugins to the existing `<plugins>` entry of the `pom.xml` fil
                       <artifactItem>
                           <groupId>org.webjars</groupId>
                           <artifactId>swagger-ui</artifactId>
-                          <version>3.25.0</version>
+                          <version>5.32.8</version>
                       </artifactItem>
                   </artifactItems>
                   <outputDirectory>${project.build.directory}/swagger-ui</outputDirectory>
@@ -390,7 +363,7 @@ Add the following plugins to the existing `<plugins>` entry of the `pom.xml` fil
       <configuration>
           <webResources combine.children="append">
               <resource>
-                  <directory>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/3.25.0</directory>
+                  <directory>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/5.32.8</directory>
                   <includes>
                       <include>**/*.*</include>
                   </includes>
@@ -403,63 +376,47 @@ Add the following plugins to the existing `<plugins>` entry of the `pom.xml` fil
 </build>
 ```
 
-### Add Swagger-Core's JAX-RS Providers to your Application
+### Add OpenAPI JAX-RS providers to your Application
 
-Add swagger-core's JAX-RS Providers to the Application class that extends ```javax.ws.rs.core.Application```:
+Add the OpenAPI JAX-RS providers and definition to the Application class that extends `jakarta.ws.rs.core.Application`:
 
 ```java
-public class Application extends javax.ws.rs.core.Application {
+import io.swagger.v3.jaxrs2.integration.resources.AcceptHeaderOpenApiResource;
+import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.servers.Server;
+
+@OpenAPIDefinition(info = @Info(title = "Adaptor Sample", version = "1.0.0"), servers = @Server(url = "/services/"))
+public class Application extends jakarta.ws.rs.core.Application {
   private static final Set<Class<?>> RESOURCE_CLASSES = new HashSet<Class<?>>();
     static
     {
       ...
-      RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.ApiListingResource.class);
-      RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+      RESOURCE_CLASSES.add(OpenApiResource.class);
+      RESOURCE_CLASSES.add(AcceptHeaderOpenApiResource.class);
       ...
     }
     ...
 ```
 
-### Configure Swagger's Servlet in the web.xml
-
-Add the following to the `web.xml`:
-
-* `swagger.api.basepath` depends on the particular settings, as instructed above.
-
-```xml
-  <servlet>
-    <servlet-name>DefaultJaxrsConfig</servlet-name>
-    <servlet-class>io.swagger.jaxrs.config.DefaultJaxrsConfig</servlet-class>
-    <init-param>
-      <param-name>api.version</param-name>
-      <param-value>1.0.0</param-value>
-    </init-param>
-    <init-param>
-      <param-name>swagger.api.basepath</param-name>
-      <param-value>http://localhost:8080/adaptor-sample/services/</param-value>
-    </init-param>
-    <load-on-startup>2</load-on-startup>
-  </servlet>
-```
-
 ### Add OpenApi Annotations (Almost Optional)
 
-The OpenApi documentation can be achieved with as little as adding `@Api` to each REST/OSLC service in your project. This is detailed in the first step below. While the remaining instructions are optional, they are highly recommended to provide a documentation that can best reflect the OSLC services.
+The OpenAPI documentation can be enhanced by adding OpenAPI 3 annotations.
 
-#### `@Api`
+#### `@Tag`
 
-1. For each REST service (i.e. OSLC Service), simply add the `@Api` annotation.
-1. (*OPTIONAL*) add the `value` and `description` details. The `value` is used to group the REST methods into common categories, helping in the structuring of the methods in the documentation. You can give it the same value as that of the @Path annotation, collecting all REST methods for the same service together.
+1. For each REST service (i.e. OSLC Service), add the `@Tag` annotation to group operations.
 
 ```java
-@Api(value = "requirements", description = "OSLC service for resources of type" + "Requirement")
+@Tag(name = "requirements", description = "OSLC service for resources of type Requirement")
 @OslcService(Oslc_rmDomainConstants.REQUIREMENTS_MANAGEMENT_DOMAIN)
 @Path("requirements")
 ```
 
-#### `@ApiOperation` (Optional)
+#### `@Operation` (Optional)
 
-For each REST method, add the `@ApiOperation` Swagger annotation.
+For each REST method, add the `@Operation` annotation.
 
 !!! important "OpenApi Operation Uniqueness"
     In [OpenApi](https://swagger.io/docs/specification/paths-and-operations/), an operation is considered unique based on the combination of its path and HTTP method. This means you cannot define multiple C.R.U.D. methods for the same path and method—even if they differ by parameters such as `Accept` or `Content-Type`.
@@ -467,23 +424,22 @@ For each REST method, add the `@ApiOperation` Swagger annotation.
 !!! example
     If your OSLC Service defines separate Java methods to handle HTML and RDF/XML content types for the same path and HTTP method, OpenApi will only recognise one of these methods and ignore the other.
 
-    **Workaround:** Annotate ALL methods that are identified as unique with the complete list of media types in the `produces` property of the `@ApiOperation` annotation. This way, the generated documentation correctly indicates the existence of all methods.
+    **Workaround:** Annotate ALL methods that are identified as unique with the complete list of media types in the `produces` property of the `@Operation` annotation. This way, the generated documentation correctly indicates the existence of all methods.
 
     ```java
         @GET
-        @ApiOperation(value = "GET on Requirement resources",
-        produces = OslcMediaType.APPLICATION_RDF_XML + ", " + MediaType.TEXT_HTML)
+        @Operation(summary = "GET on Requirement resources")
         @Path("{requirementId}")
         @Produces(OslcMediaType.APPLICATION_RDF_XML)
         public Requirement getRequirement(
     ```
 
-#### `@ApiModel` (Optional)
+#### `@Schema` (Optional)
 
-For each Java class that models an OSLC-resource (`@OslcName` annotation), add an `@ApiModel` annotation that refers to the Shape of the resource, since a Shape is a more accurate description of the object, than the one automatically generated by Swagger.
+For each Java class that models an OSLC-resource (`@OslcName` annotation), add a `@Schema` annotation that refers to the Shape of the resource, since a Shape is a more accurate description of the object, than the one automatically generated by Swagger.
 
 ```java
-@ApiModel(description = "The model below is only an object structure as derived by swagger. For a more accurate RDF Description, refer to the Requirement Resource Shape.")
+@Schema(description = "The model below is only an object structure as derived by swagger. For a more accurate RDF Description, refer to the Requirement Resource Shape.")
 @OslcNamespace(Oslc_rmDomainConstants.REQUIREMENT_NAMESPACE)
 @OslcName(Oslc_rmDomainConstants.REQUIREMENT_LOCALNAME)
 @OslcResourceShape(title = "Requirement Resource Shape", describes = Oslc_rmDomainConstants.REQUIREMENT_TYPE)
@@ -493,7 +449,7 @@ public class Requirement
 
 ### Access the Swagger UI interactive console
 
-Before accessing the [Swagger UI](https://swagger.io/swagger-ui/) interactive console for the first time, edit the `swagger-ui/index.html` file, replacing the url `http://petstore.swagger.io/v2/swagger.json` with the URL of the YAML file `http://localhost:8080/adaptor-sample/services/swagger.yaml`.
+Before accessing the [Swagger UI](https://swagger.io/swagger-ui/) interactive console for the first time, edit the `swagger-ui/index.html` file, replacing the default url `http://petstore.swagger.io/v2/swagger.json` with the URL of the YAML file `http://localhost:8080/adaptor-sample/services/openapi.yaml`.
 
 The generated interactive API console can be accessed via:
 
@@ -503,7 +459,7 @@ The generated interactive API console can be accessed via:
 
 You can also access the OpenAPI specification document (yaml file) at:
 
-    http://localhost:8080/adaptor-sample/services/swagger.yaml
+    http://localhost:8080/adaptor-sample/services/openapi.yaml
 
 You can copy the yaml file to a [Swagger Editor](https://editor.swagger.io), to view the API documentation, as well as generate client/Server SDK code for a number of languages and platforms.
 
@@ -518,22 +474,23 @@ For a thorough walkthrough of TRS solutions, which among other things ensures pe
 
 Add a dependency for the TRS Server library:
 
-    <dependency>
-      <groupId>org.eclipse.lyo.trs</groupId>
-      <artifactId>trs-server</artifactId>
-        <version>${version.lyo}</version>
-    </dependency>
+```xml
+<dependency>
+  <groupId>org.eclipse.lyo.trs</groupId>
+  <artifactId>trs-server</artifactId>
+</dependency>
+```
 
 ### Set up the TRS JAX-RS Provider to your Application
 
 The *TRS Server* library already contains a `TrackedResourceSetService` class that can handle the REST calls for TRS Base and ChangeLog. For this service to work, you will only need to provide a binding to a singleton of a class that implements the `PagedTrs` class.
 
-Register the TRS JAX-RS Provider `TrackedResourceSetService` in your Application (the `javax.ws.rs.core.Application` subclass):
+Register the TRS JAX-RS Provider `TrackedResourceSetService` in your Application (the `jakarta.ws.rs.core.Application` subclass):
 
 ```java
 import org.eclipse.lyo.oslc4j.trs.server.service.TrackedResourceSetService;
 ...
-public class Application extends javax.ws.rs.core.Application {
+public class Application extends jakarta.ws.rs.core.Application {
     private static final Set<Class<?>>         RESOURCE_CLASSES                          = new HashSet<Class<?>>();
     static
     {
@@ -552,7 +509,7 @@ import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
 import com.sample.adaptor.InmemPagedTrsSingleton;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 ...
-public class Application extends javax.ws.rs.core.Application {
+public class Application extends jakarta.ws.rs.core.Application {
     ...
     @Override
     public Set<Object> getSingletons() {
@@ -576,7 +533,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.ws.rs.core.UriBuilder;
+import jakarta.ws.rs.core.UriBuilder;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
 import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;

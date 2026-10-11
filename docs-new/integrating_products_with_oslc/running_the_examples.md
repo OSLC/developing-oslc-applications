@@ -4,10 +4,11 @@ This section explains how to setup the development environment to run the OSLC4J
 
 ## Environment Setup
 
-Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development.md). Lyo 6+ requires JDK 17 as a baseline. Sample code relying on earlier versions of Lyo may require an older version of the JDK - see the table below.
+Make sure your environment is set up for Lyo development as instructed on [Eclipse Setup for Lyo-based Development](../eclipse_lyo/eclipse-setup-for-lyo-based-development.md). Lyo 7+ requires JDK 21, and Lyo 6 requires JDK 17 as a baseline. Sample code relying on earlier versions of Lyo can require an older version of the JDK - see the table below.
 
 | Lyo version | JDK baseline |
 | ----------- | ------------ |
+| Lyo 7 | JDK 21 |
 | Lyo 6 | JDK 17 |
 | Lyo 5 | JDK 11 |
 | Lyo 4 | JDK 8+ |
