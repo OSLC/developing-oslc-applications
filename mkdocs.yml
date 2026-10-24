@@ -186,6 +186,13 @@ nav:
       - Advanced topics:
         - Core Internals: eclipse_lyo/lyo-core-internals.md
         - OSGi Bundles: eclipse_lyo/lyo-as-osgi-bundles.md
+        - Contributor guides:
+          - Contributor overview: eclipse_lyo/contributor-overview.md
+          - Dependency review: eclipse_lyo/dependency-review.md
+          - Lyo 5.0 migration notes: eclipse_lyo/lyo-5-migration-notes.md
+          - Lyo client: eclipse_lyo/lyo-client.md
+          - Release process: eclipse_lyo/release-process.md
+          - Documentation sites: eclipse_lyo/documentation-sites.md
     - Lyo Designer:
       - Introduction: eclipse_lyo/lyo-designer.md
       - Installing Designer: eclipse_lyo/install-lyo-designer.md
