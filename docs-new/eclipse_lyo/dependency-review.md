@@ -1,11 +1,20 @@
----
-title: Dependency review
----
+# Dependency review
 
-To make a dependency list:
+Create an inventory of Maven dependencies before reviewing a release.
+Run the command from the SDK repository root:
 
-    mvn dependency:list | grep :jar: | grep INFO | sort -u > FILE_A
+```sh
+mvn -B dependency:list -Dstyle.color=never > dependencies-current.txt
+```
 
-To make a CQ diff between two dependency lists:
+Compare inventories from the previous release and the proposed release:
 
-    diff FILE_A FILE_B | grep '>' > cq_diff-A_B.txt
+```sh
+diff -u dependencies-previous.txt dependencies-current.txt
+```
+
+The inventory helps identify dependency changes. It does not establish that dependencies have completed IP review.
+Consult the [Eclipse Dash license tool](https://github.com/eclipse-dash/dash-licenses) for current review tooling and options.
+
+The earlier instructions on this page called the inventory comparison a “CQ diff”.
+Use the current Eclipse review process when acting on the results.

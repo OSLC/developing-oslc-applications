@@ -1,7 +1,4 @@
----
-title: Lyo 5.0 migration notes
----
+# Lyo 5.0 migration notes
 
-> [!NOTE]
-> 
-> The migration notes were moved under https://oslc.github.io/developing-oslc-applications/eclipse_lyo/migration-overview/
+The migration notes are maintained in the [migration guides](migration-overview.md).
+For the transition to Lyo 5, see [Lyo 4.x to 5.x](migration-4x-5x.md).
